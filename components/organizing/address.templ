@@ -1,0 +1,28 @@
+package organizing
+
+import (
+	"strings"
+
+	"github.com/invopop/gobl/org"
+)
+
+templ Address(addr *org.Address) {
+	<div class="org-address">
+		@addressLines(addr)
+	</div>
+}
+
+templ AddressWithLabel(addr *org.Address) {
+	<div class="org-address">
+		if addr.Label != "" {
+			<span class="label">{ addr.Label }:</span>
+		}
+		@addressLines(addr)
+	</div>
+}
+
+templ addressLines(addr *org.Address) {
+	<span>
+		{ strings.Join(buildAddressLines(addr), ", ") }
+	</span>
+}

@@ -1,0 +1,10 @@
+package billing
+
+import (
+	"github.com/invopop/gobl/bill"
+)
+
+templ Invoice(inv *bill.Invoice) {
+	<h1>{ inv.Code }</h1>
+	@supplier(inv.Supplier)
+}

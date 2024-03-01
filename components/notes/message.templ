@@ -1,0 +1,18 @@
+package notes
+
+import (
+	"github.com/invopop/gobl/note"
+)
+
+templ Message(msg *note.Message) {
+	<div class="message">
+		if msg.Title != "" {
+			<h1 class="message-title">
+				{ msg.Title }
+			</h1>
+		}
+		<div class="message-content">
+			{ msg.Content }
+		</div>
+	</div>
+}

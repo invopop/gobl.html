@@ -1,0 +1,37 @@
+package components
+
+import (
+	"github.com/invopop/gobl"
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/note"
+	"github.com/invopop/gobl.html/components/billing"
+	"github.com/invopop/gobl.html/components/notes"
+)
+
+templ Envelope(env *gobl.Envelope) {
+	<html data-theme="light">
+		<head>
+			<title>GOBL HTML Generator</title>
+			<meta charset="utf-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"/>
+			<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"/>
+			<style>
+                .container { margin-top: 15px; }
+                .save-button { margin-top: 20px; }
+            </style>
+		</head>
+		<body>
+			<div class="container">
+				switch doc := env.Extract().(type) {
+					case *bill.Invoice:
+						@billing.Invoice(doc)
+					case *note.Message:
+						@notes.Message(doc)
+					default:
+						<p>Unkown document type</p>
+				}
+			</div>
+		</body>
+	</html>
+}

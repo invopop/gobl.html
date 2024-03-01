@@ -1,0 +1,28 @@
+package billing
+
+import (
+	"github.com/invopop/gobl/bill"
+)
+
+templ lines(inv *bill.Invoice) {
+	<div class="lines">
+		<table>
+			<thead>
+				<tr>
+					<th>Item</th>
+				</tr>
+			</thead>
+			<tbody>
+				for _, l := range inv.Lines {
+					@line(inv, l)
+				}
+			</tbody>
+		</table>
+	</div>
+}
+
+templ line(_ *bill.Invoice, l *bill.Line) {
+	<tr>
+		<td>{ l.Quantity.String() }</td>
+	</tr>
+}
