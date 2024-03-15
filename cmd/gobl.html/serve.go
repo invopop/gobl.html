@@ -9,6 +9,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/invopop/ctxi18n"
 	"github.com/invopop/gobl"
 	goblhtml "github.com/invopop/gobl.html"
 	"github.com/labstack/echo/v4"
@@ -50,7 +51,12 @@ func (c *serveOpts) runE(cmd *cobra.Command, args []string) error {
 	e := echo.New()
 
 	e.GET("/", func(c echo.Context) error {
-		out, err := goblhtml.Render(c.Request().Context(), env)
+		// Set the locale to English to start with
+		ctx, err := ctxi18n.WithLocale(c.Request().Context(), "en")
+		if err != nil {
+			return fmt.Errorf("setting locale: %w", err)
+		}
+		out, err := goblhtml.Render(ctx, env)
 		if err != nil {
 			return fmt.Errorf("generating html: %w", err)
 		}

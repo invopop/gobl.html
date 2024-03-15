@@ -1,0 +1,20 @@
+package billing
+
+import (
+	"github.com/invopop/gobl/org"
+	"github.com/invopop/gobl.html/components/organizing"
+)
+
+templ customer(party *org.Party) {
+	<div class="org-party">
+		<div>
+			<strong>
+				@T("billing.customer.label")
+			</strong>
+		</div>
+		<div class="name">{ party.Name }</div>
+		for _, a := range party.Addresses {
+			@organizing.AddressWithLabel(a)
+		}
+	</div>
+}

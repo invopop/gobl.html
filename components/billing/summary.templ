@@ -1,0 +1,37 @@
+package billing
+
+import "github.com/invopop/gobl/bill"
+
+templ summary(inv *bill.Invoice) {
+	<div class="summary">
+		<h2>Summary</h2>
+		<table>
+			<tr>
+				<th>Issue Date</th>
+				<td>{ inv.IssueDate.String() }</td>
+			</tr>
+			if inv.ValueDate != nil {
+				<tr>
+					<th>Value Date</th>
+					<td>{ inv.ValueDate.String() }</td>
+				</tr>
+			}
+			if inv.OperationDate != nil {
+				<tr>
+					<th>Operation Date</th>
+					<td>{ inv.OperationDate.String() }</td>
+				</tr>
+			}
+			<tr>
+				<th>Currency</th>
+				<td>{ string(inv.Currency) }</td>
+			</tr>
+			for _, pre := range inv.Preceding {
+				<tr>
+					<th>Preceding Invoice</th>
+					<td>{ invoiceCode(pre.Series, pre.Code) }</td>
+				</tr>
+			}
+		</table>
+	</div>
+}

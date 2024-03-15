@@ -1,0 +1,5 @@
+en:
+  test: "Customer:"
+  billing:
+    customer:
+      label: "Customer:"

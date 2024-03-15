@@ -1,0 +1,13 @@
+package billing
+
+import "github.com/invopop/ctxi18n/i18n"
+
+// T wraps around the i18n T method
+templ T(key string, args ...any) {
+	{ i18n.T(ctx, key, args...) }
+}
+
+// N wraps around the i18n N method
+templ N(key string, n int, args ...any) {
+	{ i18n.N(ctx, key, n, args...) }
+}
