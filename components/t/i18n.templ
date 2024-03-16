@@ -1,0 +1,33 @@
+package t
+
+import (
+	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl/num"
+	"github.com/invopop/gobl/currency"
+)
+
+// T wraps around the i18n T method
+templ T(key string, args ...any) {
+	{ i18n.T(ctx, key, args...) }
+}
+
+// N wraps around the i18n N method
+templ N(key string, n int, args ...any) {
+	{ i18n.N(ctx, key, n, args...) }
+}
+
+// A takes an GOBL num.Amount and formats it according to the
+// localization rules.
+templ A(a num.Amount) {
+	{ a.String() }
+}
+
+// P takes a percentage and formats it for the current locale.
+templ P(p num.Percentage) {
+	{ p.String() }
+}
+
+// C outputs an amount with it's currency symbol.
+templ C(a num.Amount, cur currency.Code) {
+	{ a.String() } { string(cur) }
+}

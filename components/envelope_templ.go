@@ -12,7 +12,7 @@ import "bytes"
 
 import (
 	"github.com/invopop/gobl"
-	"github.com/invopop/gobl.html/components/billing"
+	"github.com/invopop/gobl.html/components/billing/invoice"
 	"github.com/invopop/gobl.html/components/notes"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/note"
@@ -37,7 +37,7 @@ func Envelope(env *gobl.Envelope) templ.Component {
 		}
 		switch doc := env.Extract().(type) {
 		case *bill.Invoice:
-			templ_7745c5c3_Err = billing.Invoice(doc).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = invoice.Invoice(doc).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

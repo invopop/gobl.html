@@ -1,4 +1,4 @@
-package billing
+package invoice
 
 import "github.com/invopop/gobl/bill"
 
@@ -29,7 +29,7 @@ templ summary(inv *bill.Invoice) {
 			for _, pre := range inv.Preceding {
 				<tr>
 					<th>Preceding Invoice</th>
-					<td>{ invoiceCode(pre.Series, pre.Code) }</td>
+					<td>{ code(pre.Series, pre.Code) }</td>
 				</tr>
 			}
 		</table>

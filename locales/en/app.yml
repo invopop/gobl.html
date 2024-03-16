@@ -1,5 +1,28 @@
 en:
-  test: "Customer:"
   billing:
-    customer:
-      label: "Customer:"
+    invoice:
+      supplier:
+        label: "Supplier:"
+
+      customer:
+        label: "Customer:"
+
+      lines:
+        i: "#"
+        description: "Description"
+        quantity: "Qty."
+        price: "Price"
+        discount: "Disc."
+        charges: "Chgs."
+        total: "Total"
+        sum: "Sum"
+        discount_sum: "Sum Discounts"
+        charge_sum: "Sum Charges"
+
+      totals:
+        prices_include_tax: "Included tax"
+        total: "Total"
+        taxes: "Tax"
+        total_with_tax: "Total with tax"
+        total_to_pay: "Total to pay"
+        outlays: "Outlay %{index}: %{txt}"

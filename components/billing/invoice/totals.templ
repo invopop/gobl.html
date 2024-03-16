@@ -1,0 +1,101 @@
+package invoice
+
+import (
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/ctxi18n/i18n"
+)
+
+templ totals(inv *bill.Invoice, totals *bill.Totals) {
+	<div class="totals">
+		<table>
+			<tbody>
+				@totalsAddBases(inv, totals)
+				@totalsOutlaysAndPayable(inv, totals)
+			</tbody>
+		</table>
+	</div>
+}
+
+templ totalsAddBases(inv *bill.Invoice, totals *bill.Totals) {
+	if totals.TaxIncluded != nil {
+		<tr>
+			<th>
+				@t.T("billing.invoice.totals.prices_include_tax")
+			</th>
+			<td>
+				@t.C(*totals.TaxIncluded, inv.Currency)
+			</td>
+		</tr>
+	}
+	if !totals.Total.Equals(totals.Sum) {
+		<tr class="sum">
+			<th>
+				@t.T("billing.invoice.totals.total")
+			</th>
+			<td>
+				@t.C(totals.Total, inv.Currency)
+			</td>
+		</tr>
+	}
+	if totals.TaxIncluded == nil || !totals.TaxIncluded.Equals(totals.Tax) {
+		<tr class="tax">
+			<th>
+				@t.T("billing.invoice.totals.taxes")
+			</th>
+			<td>
+				@t.C(totals.Tax, inv.Currency)
+			</td>
+		</tr>
+	}
+	if !totals.TotalWithTax.Equals(totals.Payable) {
+		<tr class="payable">
+			<th>
+				@t.T("billing.invoice.totals.total_with_tax")
+			</th>
+			<td>
+				@t.C(totals.TotalWithTax, inv.Currency)
+			</td>
+		</tr>
+	}
+}
+
+templ totalsOutlaysAndPayable(inv *bill.Invoice, totals *bill.Totals) {
+	if totals.Outlays != nil {
+		for _, o := range inv.Outlays {
+			<tr class="outlay">
+				<th>
+					@t.T("billing.invoice.totals.outlay", i18n.M{"i": o.Index, "txt": outlayText(o)})
+				</th>
+				<td>
+					@t.C(o.Amount, inv.Currency)
+				</td>
+			</tr>
+		}
+	}
+	<tr class="payable">
+		<th>
+			if inv.Type.In(bill.InvoiceTypeCreditNote) {
+				// Credit notes aren't necessarily payable.
+				// Use a generic term for the total label
+				@t.T("billing.invoice.totals.total")
+			} else {
+				@t.T("billing.invoice.totals.total_to_pay")
+			}
+		</th>
+		<td>
+			@t.C(totals.Payable, inv.Currency)
+		</td>
+	</tr>
+}
+
+func outlayText(outlay *bill.Outlay) string {
+	txt := outlay.Description
+	if outlay.Code != "" {
+		txt = outlay.Code + " " + txt
+	}
+	if outlay.Date != nil {
+		txt += " " + outlay.Date.String()
+	}
+	return txt
+}

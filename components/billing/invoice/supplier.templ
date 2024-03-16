@@ -1,14 +1,17 @@
-package billing
+package invoice
 
 import (
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl.html/components/organizing"
+	"github.com/invopop/gobl.html/components/t"
 )
 
 templ supplier(party *org.Party) {
 	<div class="org-party">
 		<div>
-			<strong>Supplier:</strong>
+			<strong>
+				@t.T("billing.supplier.label")
+			</strong>
 		</div>
 		<div class="name">{ party.Name }</div>
 		for _, a := range party.Addresses {

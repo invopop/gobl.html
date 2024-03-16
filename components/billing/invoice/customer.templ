@@ -1,15 +1,16 @@
-package billing
+package invoice
 
 import (
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl.html/components/organizing"
+	"github.com/invopop/gobl.html/components/t"
 )
 
 templ customer(party *org.Party) {
 	<div class="org-party">
 		<div>
 			<strong>
-				@T("billing.customer.label")
+				@t.T("billing.invoice.customer.label")
 			</strong>
 		</div>
 		<div class="name">{ party.Name }</div>

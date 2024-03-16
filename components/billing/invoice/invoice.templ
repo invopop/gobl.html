@@ -1,11 +1,13 @@
-package billing
+package invoice
 
 import (
 	"github.com/invopop/gobl/bill"
 )
 
 templ Invoice(inv *bill.Invoice) {
-	<h1>{ invoiceCode(inv.Series, inv.Code) }</h1>
+	<h1>{ code(inv.Series, inv.Code) }</h1>
 	@supplier(inv.Supplier)
 	@customer(inv.Customer)
+	@lines(inv)
+	@totals(inv, inv.Totals)
 }

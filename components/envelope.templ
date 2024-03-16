@@ -4,7 +4,7 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/note"
-	"github.com/invopop/gobl.html/components/billing"
+	"github.com/invopop/gobl.html/components/billing/invoice"
 	"github.com/invopop/gobl.html/components/notes"
 )
 
@@ -25,7 +25,7 @@ templ Envelope(env *gobl.Envelope) {
 			<div class="container">
 				switch doc := env.Extract().(type) {
 					case *bill.Invoice:
-						@billing.Invoice(doc)
+						@invoice.Invoice(doc)
 					case *note.Message:
 						@notes.Message(doc)
 					default:

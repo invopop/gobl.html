@@ -1,0 +1,125 @@
+package invoice
+
+import (
+	"fmt"
+
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl.html/components/t"
+)
+
+templ lines(inv *bill.Invoice) {
+	@linesWithSupport(inv, prepareLineSupport(inv))
+}
+
+templ linesWithSupport(inv *bill.Invoice, ls *lineSupport) {
+	<div class="lines">
+		<table>
+			<thead>
+				<tr>
+					<th>
+						@t.T("billing.invoice.lines.i")
+					</th>
+					<th>
+						@t.T("billing.invoice.lines.description")
+					</th>
+					<th>
+						@t.T("billing.invoice.lines.quantity")
+					</th>
+					<th>
+						@t.T("billing.invoice.lines.price")
+					</th>
+					for _, cat := range ls.categories {
+						<th>
+							{ cat.Name.String() }
+						</th>
+					}
+					if ls.discounts {
+						<th>
+							@t.T("billing.invoice.lines.discount")
+						</th>
+					}
+					if ls.charges {
+						<th>
+							@t.T("billing.invoice.lines.charges")
+						</th>
+					}
+					<th>
+						@t.T("billing.invoice.lines.total")
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				for _, l := range inv.Lines {
+					@line(inv, l, ls)
+				}
+			</tbody>
+		</table>
+	</div>
+}
+
+templ line(inv *bill.Invoice, l *bill.Line, ls *lineSupport) {
+	<tr>
+		<td>
+			if l.Item.Ref != "" {
+				{ l.Item.Ref }
+			} else {
+				{ fmt.Sprint(l.Index) }
+			}
+		</td>
+		<td>
+			<span>{ l.Item.Name }</span>
+			if l.Item.Description != "" {
+				<br/>
+				<small>{ l.Item.Description }</small>
+			}
+		</td>
+		<td>
+			@t.A(l.Quantity)
+		</td>
+		<td>
+			@t.C(l.Item.Price, inv.Currency)
+		</td>
+		for _, cat := range ls.categories {
+			<td>
+				if combo := l.Taxes.Get(cat.Code); combo != nil {
+					@t.P(*combo.Percent)
+				} else {
+					<!-- empty -->
+				}
+			</td>
+		}
+		if ls.discounts {
+			<td>
+				@lineGroupDiscounts(inv, l)
+			</td>
+		}
+		if ls.charges {
+			<td>
+				@lineGroupCharges(inv, l)
+			</td>
+		}
+		<td>
+			@t.C(l.Total, inv.Currency)
+		</td>
+	</tr>
+}
+
+templ lineGroupDiscounts(inv *bill.Invoice, l *bill.Line) {
+	for _, d := range l.Discounts {
+		if d.Percent != nil {
+			@t.P(*d.Percent)
+		} else {
+			@t.C(d.Amount.Invert(), inv.Currency)
+		}
+	}
+}
+
+templ lineGroupCharges(inv *bill.Invoice, l *bill.Line) {
+	for _, c := range l.Charges {
+		if c.Percent != nil {
+			@t.P(*c.Percent)
+		} else {
+			@t.C(c.Amount.Invert(), inv.Currency)
+		}
+	}
+}
