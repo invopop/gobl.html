@@ -25,4 +25,4 @@ en:
         taxes: "Tax"
         total_with_tax: "Total with tax"
         total_to_pay: "Total to pay"
-        outlays: "Outlay %{index}: %{txt}"
+        outlays: "Outlay %{i}: %{txt}"
