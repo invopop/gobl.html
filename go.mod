@@ -4,9 +4,9 @@ go 1.22.1
 
 require (
 	github.com/a-h/templ v0.2.598
-	github.com/invopop/ctxi18n v0.2.0
-	github.com/invopop/gobl v0.68.0
-	github.com/invopop/princepdf v0.0.0-20240404215508-9fb580804bef
+	github.com/invopop/ctxi18n v0.3.0
+	github.com/invopop/gobl v0.71.0
+	github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a
 	github.com/labstack/echo/v4 v4.11.4
 	github.com/piglig/go-qr v0.2.4
 	github.com/spf13/cobra v1.8.0
