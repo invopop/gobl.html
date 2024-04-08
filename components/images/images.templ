@@ -1,0 +1,8 @@
+package images
+
+// QR generates a QR Code image inside an HTML img tag.
+templ QR(code string) {
+	if qr := generateQR(code); qr != "" {
+		<img src={ qr }/>
+	}
+}

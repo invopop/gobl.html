@@ -1,0 +1,53 @@
+package invoice
+
+import (
+	"github.com/invopop/gobl/pkg/here"
+	"github.com/invopop/ctxi18n/i18n"
+)
+
+templ footer() {
+	<style type="text/css">
+        /*
+        section.footer {
+            background-color: pink;
+            position: running(footer);
+        }
+        @page {
+            @bottom {
+                content: element(footer);
+            }
+        }
+        */
+    </style>
+	<section class="footer">
+		@templ.Raw(footerPageStyles(ctx))
+		//<div>
+		//   Page <span class="page-number" /> of <span class="page-total" />.
+		//</div>
+	</section>
+}
+
+func footerPageStyles(ctx context.Context) string {
+	return here.Doc(`
+        <style type="text/css">
+            @page {
+                @bottom-left {
+                    padding-left: 6mm;
+                    padding-top: 2mm;
+                    margin-top: 0mm;
+                    vertical-align: top;
+			        border-top: 1px solid #E5E7EB;
+                    content: "` + i18n.T(ctx, "billing.invoice.footer.generator") + `";
+                }
+                @bottom-right {
+                    padding-right: 6mm;
+                    padding-top: 2mm;
+                    margin-top: 0mm;
+                    vertical-align: top;
+			        border-top: 1px solid #E5E7EB;
+                    content: ` + i18n.T(ctx, "billing.invoice.footer.page") + `;
+                }
+            }
+        </style>
+    `)
+}

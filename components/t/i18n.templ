@@ -2,6 +2,7 @@ package t
 
 import (
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl/cal"
 	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/currency"
 )
@@ -16,18 +17,50 @@ templ N(key string, n int, args ...any) {
 	{ i18n.N(ctx, key, n, args...) }
 }
 
-// A takes an GOBL num.Amount and formats it according to the
-// localization rules.
-templ A(a num.Amount) {
-	{ a.String() }
+// L localizes a GOBL num.Amount or num.Percentage according to the rules
+// defined in the context.
+templ L(a any) {
+	{ localize(ctx, a) }
 }
 
-// P takes a percentage and formats it for the current locale.
-templ P(p num.Percentage) {
-	{ p.String() }
+// LM localizes amounts using the currency and formatter defined in the context.
+templ LM(a num.Amount) {
+	{ localizeMoney(ctx, a) }
 }
 
-// C outputs an amount with it's currency symbol.
-templ C(a num.Amount, cur currency.Code) {
-	{ a.String() } { string(cur) }
+// LC localizes and amount using the formatting defined by the specified currency,
+// ignoring any formatter defined in the context.
+templ LC(a num.Amount, cur currency.Code) {
+	{ localizeCurrency(ctx, a, cur) }
+}
+
+// Scope helps set a scope around the context
+templ Scope(key string) {
+	if ctx = i18n.WithScope(ctx, key); true {
+		{ children... }
+	}
+}
+
+func localize(ctx context.Context, a any) string {
+	f := GetFormatter(ctx).WithoutUnit()
+	switch v := a.(type) {
+	case num.Amount:
+		return f.Amount(v)
+	case num.Percentage:
+		return f.Percentage(v)
+	case cal.Date:
+		return v.String()
+	default:
+		return "!(UNKOWN TYPE)"
+	}
+}
+
+func localizeMoney(ctx context.Context, a num.Amount) string {
+	f := GetFormatter(ctx)
+	return f.Amount(a)
+}
+
+func localizeCurrency(_ context.Context, a num.Amount, cur currency.Code) string {
+	f := cur.Def().Formatter()
+	return f.Amount(a)
 }

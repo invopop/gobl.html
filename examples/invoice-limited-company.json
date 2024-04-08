@@ -1,0 +1,176 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "8873ceba-0431-11ed-80ae-b24117999d50",
+		"dig": {
+			"alg": "sha256",
+			"val": "908b5d0e800504f174dc7bb7e31a8c99646d3851d8dc7feb0d237d6d1063a5d6"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"type": "standard",
+		"code": "FAKE20220001",
+		"issue_date": "2022-02-01",
+		"currency": "EUR",
+		"tax": {},
+		"supplier": {
+			"name": "Biz España S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B28774008"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@bizspain.es"
+				}
+			],
+			"registration": {
+				"office": "Registro Mercantil de Madrid",
+				"volume": "27590",
+				"sheet": "129",
+				"page": "M-497191",
+				"entry": "1"
+			}
+		},
+		"customer": {
+			"name": "Customer Spain S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B33105842"
+			},
+			"addresses": [
+				{
+					"num": "10",
+					"street": "Calle Mayor",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28003",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "sam@customer.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Development Day Rate",
+					"price": "200.00"
+				},
+				"sum": "4000.00",
+				"discounts": [
+					{
+						"percent": "5%",
+						"amount": "200.00",
+						"reason": "Just because"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "3800.00"
+			},
+			{
+				"i": 2,
+				"quantity": "10",
+				"item": {
+					"name": "Something random",
+					"price": "100.00"
+				},
+				"sum": "1000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "1000.00"
+			},
+			{
+				"i": 3,
+				"quantity": "5",
+				"item": {
+					"name": "Additional random services",
+					"price": "34.50"
+				},
+				"sum": "172.50",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "10.0%"
+					}
+				],
+				"total": "172.50"
+			}
+		],
+		"payment": {
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "ES31 0240 4036 4573 9340 5564",
+						"name": "RANDOM"
+					}
+				]
+			}
+		},
+		"totals": {
+			"sum": "4972.50",
+			"total": "4972.50",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "4800.00",
+								"percent": "21.0%",
+								"amount": "1008.00"
+							},
+							{
+								"key": "reduced",
+								"base": "172.50",
+								"percent": "10.0%",
+								"amount": "17.25"
+							}
+						],
+						"amount": "1025.25"
+					}
+				],
+				"sum": "1025.25"
+			},
+			"tax": "1025.25",
+			"total_with_tax": "5997.75",
+			"payable": "5997.75"
+		},
+		"notes": [
+			{
+				"code": "gratitude",
+				"text": "Thank you for your custom! If you require assistance with this invoice please get in touch."
+			}
+		]
+	}
+}

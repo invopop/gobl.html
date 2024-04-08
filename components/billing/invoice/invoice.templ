@@ -1,13 +1,347 @@
 package invoice
 
 import (
+	"fmt"
+
+	"github.com/invopop/gobl"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/org"
+	"github.com/invopop/gobl/tax"
+	"github.com/invopop/gobl.html/components/t"
+
+	"github.com/invopop/gobl.html/components/billing/invoice/regimes/es"
+	"github.com/invopop/gobl.html/components/billing/invoice/regimes/co"
 )
 
-templ Invoice(inv *bill.Invoice) {
-	<h1>{ code(inv.Series, inv.Code) }</h1>
-	@supplier(inv.Supplier)
-	@customer(inv.Customer)
-	@lines(inv)
-	@totals(inv, inv.Totals)
+// Invoice renders a complete GOBL bill.Invoice object.
+templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
+	<style type="text/css">
+		article.invoice {
+			display: flex;
+			flex-wrap: wrap;
+		}
+		header {
+			width: 100%;
+			order: 1;
+			display: flex;
+			flex-flow: row wrap;
+			border-bottom: 1px solid #E5E7EB;
+		}
+		header div.details {
+			flex: 1;
+			border-right: 1px solid #E5E7EB;
+		}
+		header div.contacts {
+			flex: 1;
+			/*display: flex;
+			flex-flow: column wrap;*/
+		}
+		section {
+			padding: 0mm 6mm;
+			/* width: 100%; */
+			flex: 100%;
+		}
+		section.title {
+			padding-top: 6mm;
+			padding-bottom: 6mm;
+		}
+		section.title .hero {
+			margin-bottom: 6mm;
+		}
+		section.title .alias {
+			font-size: 16pt;
+			font-weight: bold;
+			color: #030712;
+		}
+		section.title .hero img {
+			max-width: 100%;
+			max-height: 10mm;
+		}
+		section.title h1.type {
+		}
+		section.title h2.code {
+			font-size: 12pt;
+			color: #030712;
+		}
+		section.summary {
+			padding-top: 0mm;
+			padding-bottom: 0mm;
+		}
+		section.summary h2.title {
+			display: none;
+		}
+		section.summary ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			flex-flow: row wrap;
+		}
+		section.summary li {
+			margin-bottom: 6mm;
+			flex: 50%;
+		}
+		section.summary span.label {
+			display: block;
+			font-weight: bold;
+		}
+		section.summary span.value {
+			display: block;
+		}
+		section.supplier {
+			padding-top: 6mm;
+			padding-bottom: 6mm;
+		}
+		section.customer {
+			padding-top: 6mm;
+			padding-bottom: 6mm;
+			border-top: 1px solid #E5E7EB;
+		}
+		section.lines {
+			order: 5;
+			padding-top: 6mm;
+			padding-bottom: 0mm;
+
+		}
+		section.lines h2 {
+			display: none;
+		}
+		section.lines table {
+			width: 100%;
+		}
+		section.lines th, section.lines td {
+			text-align: left;
+			border-bottom: 1px solid #E5E7EB;
+			padding: 1.5mm 2mm;
+			margin: 0px;
+		}
+		section.lines th {
+			background-color: #F3F4F6;
+		}
+		section.lines .i,
+		section.lines .ref {
+			width: fit-content;
+		}
+		section.lines .price,
+		section.lines .tax,
+		section.lines .discount,
+		section.lines .charge,
+		section.lines .total {
+			text-align: right;
+			width: fit-content;
+			white-space: nowrap;
+		}
+		section.lines .description,
+		section.lines .reason {
+			white-space: wrap;
+		}
+		section.lines .label {
+			font-weight: bold;
+		}
+		div.totals {
+			order: 8;
+			display: flex;
+			flex-wrap: row;
+			width: 100%;
+			padding-top: 6mm;
+		}
+		div.totals td, div.totals th {
+			padding: 1.5mm 2mm;
+		}
+		section.totals {
+			order: 2;
+			flex: 1;
+		}
+		section.totals h2 {
+			display: none;
+		}
+		section.totals table {
+			padding-right: 1cm;
+			padding-left: 1cm;
+			width: auto;
+			margin-right: 0;
+			margin-left: auto;
+		}
+		section.totals th {
+			text-align: right;
+			border-bottom: 1px solid #E5E7EB;
+			font-weight: normal;
+		}
+		section.totals td {
+			text-align: right;
+			border-bottom: 1px solid #E5E7EB;
+		}
+		section.totals tr:last-child th,
+		section.totals tr:last-child td {
+			border-bottom: 0;
+		}
+		section.totals tr.strong th,
+		section.totals tr.strong td {
+			font-weight: bold;
+		}
+		section.taxes {
+			order: 1;
+			flex: 1;
+		}
+		section.taxes h2 {
+			display: none;
+		}
+		section.taxes table {
+			padding-right: 1cm;
+			padding-left: 1cm;
+			margin-left: 0;
+			width: 90%;
+		}
+		section.taxes th, section.taxes td {
+			text-align: right;
+			padding: 1.5mm 2mm;
+		}
+		section.taxes th {
+			background-color: #F3F4F6;
+		}
+		section.taxes td {
+			border-bottom: 1px solid #E5E7EB;
+		}
+		section.taxes th.category,
+		section.taxes td.category {
+			text-align: left;
+		}
+		section.payment {
+			margin-top: 6mm;
+			border-top: 1px solid #E5E7EB;
+			padding-top: 6mm;
+			order: 10;
+			display: flex;
+			flex-flow: row;
+		}
+		section.payment h2.title {
+			display: none;
+		}
+		section.payment ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+		section.payment ul.instructions {
+			margin-right: 6mm;
+			flex: 1;
+		}
+		section.payment li {
+			break-inside: avoid;
+			margin-bottom: 3mm;
+		}
+		section.payment span.label {
+			display: block;
+			font-weight: bold;
+		}
+		section.payment span.value {
+			display: block;
+		}
+		section.payment table td {
+			padding: 1.5mm 3mm 1.5mm 0mm;
+		}
+		section.payment .due-dates span.percent:before {
+			content: "("
+		}
+		section.payment .due-dates span.percent:after {
+			content: ")"
+		}
+		section.notes {
+			order: 15;
+			margin-top: 6mm;
+			border-top: 1px solid #E5E7EB;
+			padding-top: 6mm;
+		}
+		section.footer {
+			order: 20;
+		}
+		section.extensions {
+			order: 15;
+			padding-top: 6mm;
+		}
+		section.extensions:empty {
+			display: none;
+		}
+		.org-party .name {
+			font-weight: bold;
+			font-size: 12pt;
+			color: #030712;
+		}
+	</style>
+	<article class="invoice">
+		<header>
+			<div class="details">
+				@title(inv)
+				@summary(inv)
+			</div>
+			<div class="contacts">
+				@supplier(inv.Supplier)
+				if inv.Customer != nil {
+					@customer(inv.Customer)
+				}
+			</div>
+		</header>
+		@lines(inv)
+		<div class="totals">
+			@totals(inv, inv.Totals)
+			@taxes(inv, inv.Totals.Taxes)
+		</div>
+		@payment(inv)
+		@notes(inv)
+		<section class="extensions">
+			// Region specific information
+			@es.TicketBAIQR(env)
+			@co.DIANQR(env, inv)
+		</section>
+		@footer()
+	</article>
+}
+
+templ title(inv *bill.Invoice) {
+	<section class="title">
+		<div class="hero">
+			if img := supplierLogo(inv); img != nil {
+				<img src={ img.URL } alt={ img.Label }/>
+			} else {
+				<div class="alias">
+					{ supplierAlias(inv) }
+				</div>
+			}
+		</div>
+		<h1 class="type">
+			@t.T("billing.invoice.title." + i18nTitleTag(inv))
+		</h1>
+		<h2 class="code">
+			{ code(inv.Series, inv.Code) }
+		</h2>
+	</section>
+}
+
+func i18nTitleTag(inv *bill.Invoice) string {
+	typ := string(inv.Type)
+	if inv.Tax.ContainsTag(tax.TagSimplified) {
+		typ = typ + "-simplified"
+	}
+	return typ
+}
+
+func supplierAlias(inv *bill.Invoice) string {
+	if inv.Supplier.Alias != "" {
+		return inv.Supplier.Alias
+	}
+	return inv.Supplier.Name
+}
+
+func supplierLogo(inv *bill.Invoice) *org.Image {
+	if len(inv.Supplier.Logos) > 0 {
+		return inv.Supplier.Logos[0]
+	}
+	return nil
+}
+
+func code(series, code string) string {
+	if series == "" {
+		return code
+	}
+	return fmt.Sprintf("%s-%s", series, code)
 }

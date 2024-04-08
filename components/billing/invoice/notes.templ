@@ -1,0 +1,70 @@
+package invoice
+
+import (
+	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/org"
+	"github.com/invopop/gobl.html/components/t"
+)
+
+templ notes(inv *bill.Invoice) {
+	if len(inv.Notes) > 0 {
+		<section class="notes">
+			@t.Scope("billing.invoice.notes") {
+				<h2>
+					@t.T(".title")
+				</h2>
+				for _, note := range inv.Notes {
+					<div class="note">
+						{ note.Text }
+					</div>
+				}
+				if inv.Supplier.Registration != nil {
+					@noteRegSummary(inv.Supplier.Registration)
+				}
+			}
+		</section>
+	}
+}
+
+templ noteRegSummary(reg *org.Registration) {
+	<div class="registration">
+		@t.Scope(".reg") {
+			<div>
+				<span class="title">
+					@t.T(".inscription")
+				</span>
+				if reg.Book != "" {
+					<span class="book">
+						@t.T(".book", i18n.M{"id": reg.Book})
+					</span>
+				}
+				if reg.Volume != "" {
+					<span class="volume">
+						@t.T(".volume", i18n.M{"id": reg.Volume})
+					</span>
+				}
+				if reg.Sheet != "" {
+					<span class="sheet">
+						@t.T(".sheet", i18n.M{"id": reg.Sheet})
+					</span>
+				}
+				if reg.Section != "" {
+					<span class="section">
+						@t.T(".section", i18n.M{"id": reg.Section})
+					</span>
+				}
+				if reg.Page != "" {
+					<span class="page">
+						@t.T(".page", i18n.M{"id": reg.Page})
+					</span>
+				}
+				if reg.Entry != "" {
+					<span class="entry">
+						@t.T(".entry", i18n.M{"id": reg.Entry})
+					</span>
+				}
+			</div>
+		}
+	</div>
+}

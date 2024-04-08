@@ -1,37 +1,110 @@
 package invoice
 
-import "github.com/invopop/gobl/bill"
+import (
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/cal"
+	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/currency"
+)
 
 templ summary(inv *bill.Invoice) {
-	<div class="summary">
-		<h2>Summary</h2>
-		<table>
-			<tr>
-				<th>Issue Date</th>
-				<td>{ inv.IssueDate.String() }</td>
-			</tr>
-			if inv.ValueDate != nil {
-				<tr>
-					<th>Value Date</th>
-					<td>{ inv.ValueDate.String() }</td>
-				</tr>
+	<section class="summary">
+		@t.Scope("billing.invoice.summary") {
+			<h2 class="title">
+				@t.T(".title")
+			</h2>
+			<ul>
+				<li class="issue-date">
+					<span class="label">
+						@t.T(".issue_date")
+					</span>
+					<span class="value">
+						{ inv.IssueDate.String() }
+					</span>
+				</li>
+				<li class="currency">
+					<span class="label">
+						@t.T(".currency")
+					</span>
+					<span class="value">
+						{ currencyName(ctx, inv.Currency) }
+					</span>
+				</li>
+				if inv.ValueDate != nil {
+					<li class="value-date">
+						<span class="label">
+							@t.T(".value_date")
+						</span>
+						<span class="value">
+							{ inv.ValueDate.String() }
+						</span>
+					</li>
+				}
+				if inv.OperationDate != nil {
+					<li class="op-date">
+						<span class="label">
+							@t.T(".operation_date")
+						</span>
+						<span class="value">
+							{ inv.OperationDate.String() }
+						</span>
+					</li>
+				}
+				for _, pre := range inv.Preceding {
+					<li class="preceding">
+						<span class="label">
+							@t.T(".preceding_invoice")
+						</span>
+						<span class="label">
+							{ code(pre.Series, pre.Code) }
+						</span>
+					</li>
+				}
+				if inv.Ordering != nil {
+					@summaryOrderingRows(inv)
+				}
+			</ul>
+		}
+	</section>
+}
+
+templ summaryOrderingRows(inv *bill.Invoice) {
+	if inv.Ordering.Code != "" {
+		<li class="ordering-code">
+			<span class="label">
+				@t.T(".order")
+			</span>
+			<span class="value">
+				{ inv.Ordering.Code }
+			</span>
+		</li>
+	}
+	if inv.Ordering.Period != nil {
+		@summaryOrderPeriodRows(inv.Ordering.Period)
+	}
+}
+
+templ summaryOrderPeriodRows(p *cal.Period) {
+	<li class="ordering-period">
+		<span class="label">
+			if p.Label != "" {
+				@t.T(".order_period_label", i18n.M{"label": p.Label})
+			} else {
+				@t.T(".order_period")
 			}
-			if inv.OperationDate != nil {
-				<tr>
-					<th>Operation Date</th>
-					<td>{ inv.OperationDate.String() }</td>
-				</tr>
-			}
-			<tr>
-				<th>Currency</th>
-				<td>{ string(inv.Currency) }</td>
-			</tr>
-			for _, pre := range inv.Preceding {
-				<tr>
-					<th>Preceding Invoice</th>
-					<td>{ code(pre.Series, pre.Code) }</td>
-				</tr>
-			}
-		</table>
-	</div>
+		</span>
+		<span class="value">
+			@t.T(".order_period_range", i18n.M{"start": p.Start, "end": p.End})
+		</span>
+	</li>
+}
+
+func currencyName(ctx context.Context, cur currency.Code) string {
+	def := cur.Def()
+	if def == nil {
+		return string(cur)
+	}
+
+	return i18n.T(ctx, "billing.invoice.summary.currency_value", i18n.M{"desc": def.Name, "code": cur})
 }

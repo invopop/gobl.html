@@ -7,15 +7,10 @@ import (
 )
 
 templ supplier(party *org.Party) {
-	<div class="org-party">
-		<div>
-			<strong>
-				@t.T("billing.supplier.label")
-			</strong>
-		</div>
-		<div class="name">{ party.Name }</div>
-		for _, a := range party.Addresses {
-			@organizing.AddressWithLabel(a)
-		}
-	</div>
+	<section class="supplier">
+		<h2>
+			@t.T("billing.invoice.supplier.title")
+		</h2>
+		@organizing.Party(party)
+	</section>
 }

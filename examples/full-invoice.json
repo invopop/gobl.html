@@ -1,0 +1,249 @@
+{
+  "$schema": "https://gobl.org/draft-0/envelope",
+  "head": {
+    "uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
+    "dig": {
+      "alg": "sha256",
+      "val": "5dae0878ae8dd5b540b31e58dba6bb2bdfc7f921f68a5f517cfeb89668eea34d"
+    }
+  },
+  "doc": {
+    "$schema": "https://gobl.org/draft-0/bill/invoice",
+    "type": "standard",
+    "code": "FAKE20220001",
+    "issue_date": "2022-02-01",
+    "currency": "EUR",
+    "tax": {},
+    "supplier": {
+      "name": "Biz España S.L.",
+      "tax_id": {
+        "country": "ES",
+        "code": "B28774008"
+      },
+      "identities": [
+        {
+          "type": "LEI",
+          "code": "1010101010"
+        },
+        {
+          "code": "ABC1234"
+        }
+      ],
+      "addresses": [
+        {
+          "num": "42",
+          "street": "Calle Pradillo",
+          "locality": "Madrid",
+          "region": "Madrid",
+          "code": "28002",
+          "country": "ES"
+        }
+      ],
+      "emails": [
+        {
+          "addr": "billing@bizspain.es"
+        }
+      ],
+      "logos": [
+        {
+          "label": "Invopop",
+          "url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+        }
+      ]
+    },
+    "customer": {
+      "name": "Customer Spain S.L.",
+      "tax_id": {
+        "country": "ES",
+        "code": "B33105842"
+      },
+      "identities": [
+        {
+          "label": "Código de Cliente",
+          "code": "123456789ABC"
+        }
+      ],
+      "addresses": [
+        {
+          "label": "Office",
+          "po_box": "20",
+          "num": "10",
+          "street": "Calle Mayor",
+          "locality": "Madrid",
+          "region": "Madrid",
+          "code": "28003",
+          "country": "ES"
+        }
+      ],
+      "emails": [
+        {
+          "addr": "sam@customer.com"
+        }
+      ]
+    },
+    "lines": [
+      {
+        "i": 1,
+        "quantity": "20",
+        "item": {
+          "name": "Development Day Rate",
+          "price": "200.00"
+        },
+        "sum": "4000.00",
+        "discounts": [
+          {
+            "percent": "5%",
+            "amount": "200.00",
+            "reason": "Just because"
+          }
+        ],
+        "taxes": [
+          {
+            "cat": "VAT",
+            "rate": "standard",
+            "percent": "21.0%"
+          }
+        ],
+        "total": "3800.00"
+      },
+      {
+        "i": 2,
+        "quantity": "10",
+        "item": {
+          "name": "Something random",
+          "price": "100.00"
+        },
+        "sum": "1000.00",
+        "taxes": [
+          {
+            "cat": "VAT",
+            "rate": "standard",
+            "percent": "21.0%"
+          }
+        ],
+        "total": "1000.00"
+      },
+      {
+        "i": 3,
+        "quantity": "5",
+        "item": {
+          "name": "Additional random services",
+          "price": "34.50"
+        },
+        "sum": "172.50",
+        "taxes": [
+          {
+            "cat": "VAT",
+            "rate": "reduced",
+            "percent": "10.0%"
+          },
+          {
+            "cat": "IRPF",
+            "percent": "15%"
+          }
+        ],
+        "total": "172.50"
+      }
+    ],
+    "charges": [
+      {
+        "i": 1,
+        "amount": "15.00",
+        "reason": "Impuesto de Turismo"
+      }
+    ],
+    "outlays": [
+      {
+        "i": 1,
+        "description": "Something paid for by us",
+        "amount": "200.00"
+      }
+    ],
+    "ordering": {
+      "code": "111-9244735-1237858",
+      "period": {
+        "label": "Service period",
+        "start": "2022-02-01",
+        "end": "2022-02-28"
+      }
+    },
+    "payment": {
+      "advances": [
+        {
+          "date": "2022-01-15",
+          "ref": "PAY1234",
+          "description": "Prepayment with Paypal",
+          "percent": "30%",
+          "amount": "1796.06"
+        }
+      ],
+      "instructions": {
+        "key": "credit-transfer",
+        "credit_transfer": [
+          {
+            "iban": "ES31 0240 4036 4573 9340 5564",
+            "name": "RANDOM"
+          }
+        ]
+      }
+    },
+    "totals": {
+      "sum": "4972.50",
+      "charge": "15.00",
+      "total": "4987.50",
+      "taxes": {
+        "categories": [
+          {
+            "code": "VAT",
+            "rates": [
+              {
+                "key": "standard",
+                "base": "4800.00",
+                "percent": "21.0%",
+                "amount": "1008.00"
+              },
+              {
+                "key": "reduced",
+                "base": "172.50",
+                "percent": "10.0%",
+                "amount": "17.25"
+              }
+            ],
+            "amount": "1025.25"
+          },
+          {
+            "code": "IRPF",
+            "retained": true,
+            "rates": [
+              {
+                "base": "172.50",
+                "percent": "15%",
+                "amount": "25.88"
+              }
+            ],
+            "amount": "25.88"
+          }
+        ],
+        "sum": "999.38"
+      },
+      "tax": "999.38",
+      "total_with_tax": "5986.88",
+      "outlays": "200.00",
+      "payable": "6186.88",
+      "advance": "1796.06",
+      "due": "4390.81"
+    },
+    "notes": [
+      {
+        "text": "Thank you for you business!"
+      },
+      {
+        "key": "legal",
+        "text": "Please pay within 30 days according to some random law in the country we sell from that you should comply with because we want to be paid sooner.",
+        "meta": {
+          "position": "footer"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+package co
+
+import (
+	"regexp"
+
+	"github.com/invopop/gobl"
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/regimes/co"
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/components/images"
+)
+
+var dianQRHTTPRegexp = regexp.MustCompile(`https.+`)
+
+templ DIANQR(env *gobl.Envelope, inv *bill.Invoice) {
+	if cude := dianCUDE(env); cude != "" {
+		if qr := dianQR(env); qr != "" {
+			@generateQR(inv, cude, qr)
+		}
+	}
+}
+
+templ generateQR(inv *bill.Invoice, code, qr string) {
+	<style type="text/css">
+        .dian-qr {
+			break-inside: avoid;
+            font-family: monospace;
+            font-size: 7pt;
+        }
+        .dian-qr img {
+            width: 30mm;
+            height: 30mm;
+        }
+    </style>
+	<div class="dian-qr">
+		<div class="image">
+			<a href={ templ.URL(dianURL(qr)) }>
+				@images.QR(qr)
+			</a>
+		</div>
+		if pcude := dianPrecedingCUDE(inv); pcude != "" {
+			<div class="cude">
+				@t.T("billing.invoice.regimes.co.cude", i18n.M{"cude": code})
+			</div>
+			<div class="cufe">
+				@t.T("billing.invoice.regimes.co.preceding_cufe", i18n.M{"cufe": pcude})
+			</div>
+		} else {
+			<div class="cufe">
+				@t.T("billing.invoice.regimes.co.cufe", i18n.M{"cufe": code})
+			</div>
+		}
+	</div>
+}
+
+func dianURL(qr string) string {
+	return dianQRHTTPRegexp.FindString(qr)
+}
+
+func dianCUDE(env *gobl.Envelope) string {
+	for _, stamp := range env.Head.Stamps {
+		switch stamp.Provider {
+		case co.StampProviderDIANCUDE:
+			return stamp.Value
+		}
+	}
+	return ""
+}
+
+func dianPrecedingCUDE(inv *bill.Invoice) string {
+	if len(inv.Preceding) == 0 {
+		return ""
+	}
+	for _, stamp := range inv.Preceding[0].Stamps {
+		switch stamp.Provider {
+		case co.StampProviderDIANCUDE:
+			return stamp.Value
+		}
+	}
+	return ""
+}
+
+func dianQR(env *gobl.Envelope) string {
+	for _, stamp := range env.Head.Stamps {
+		switch stamp.Provider {
+		case co.StampProviderDIANQR:
+			return stamp.Value
+		}
+	}
+	return ""
+}

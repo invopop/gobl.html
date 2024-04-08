@@ -1,92 +1,175 @@
 package invoice
 
 import (
+	"fmt"
+
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl/pay"
 )
 
 templ totals(inv *bill.Invoice, totals *bill.Totals) {
-	<div class="totals">
-		<table>
-			<tbody>
-				@totalsAddBases(inv, totals)
-				@totalsOutlaysAndPayable(inv, totals)
-			</tbody>
-		</table>
-	</div>
+	<section class="totals">
+		@t.Scope("billing.invoice.totals") {
+			<h2>
+				@t.T(".title")
+			</h2>
+			<table>
+				<tbody>
+					@totalsBaseRows(totals)
+					@totalsPayableRows(inv, totals)
+					@totalsDueRows(inv, totals)
+				</tbody>
+			</table>
+		}
+	</section>
 }
 
-templ totalsAddBases(inv *bill.Invoice, totals *bill.Totals) {
+templ totalsBaseRows(totals *bill.Totals) {
+	<tr class="sum strong">
+		<th>
+			@t.T(".sum")
+		</th>
+		<td>
+			@t.LM(totals.Sum)
+		</td>
+	</tr>
+	if totals.Discount != nil {
+		<tr class="discount">
+			<th>
+				@t.T(".discount")
+			</th>
+			<td>
+				@t.LM(totals.Discount.Invert())
+			</td>
+		</tr>
+	}
+	if totals.Charge != nil {
+		<tr class="charges">
+			<th>
+				@t.T(".charge")
+			</th>
+			<td>
+				@t.LM(*totals.Charge)
+			</td>
+		</tr>
+	}
 	if totals.TaxIncluded != nil {
 		<tr>
 			<th>
-				@t.T("billing.invoice.totals.prices_include_tax")
+				@t.T(".prices_include_tax")
 			</th>
 			<td>
-				@t.C(*totals.TaxIncluded, inv.Currency)
+				@t.LM(*totals.TaxIncluded)
 			</td>
 		</tr>
 	}
 	if !totals.Total.Equals(totals.Sum) {
-		<tr class="sum">
+		<tr class="total">
 			<th>
-				@t.T("billing.invoice.totals.total")
+				@t.T(".total")
 			</th>
 			<td>
-				@t.C(totals.Total, inv.Currency)
+				@t.LM(totals.Total)
 			</td>
 		</tr>
 	}
 	if totals.TaxIncluded == nil || !totals.TaxIncluded.Equals(totals.Tax) {
 		<tr class="tax">
 			<th>
-				@t.T("billing.invoice.totals.taxes")
+				@t.T(".taxes")
 			</th>
 			<td>
-				@t.C(totals.Tax, inv.Currency)
+				@t.LM(totals.Tax)
 			</td>
 		</tr>
 	}
 	if !totals.TotalWithTax.Equals(totals.Payable) {
-		<tr class="payable">
+		<tr class="total-with-tax strong">
 			<th>
-				@t.T("billing.invoice.totals.total_with_tax")
+				@t.T(".total_with_tax")
 			</th>
 			<td>
-				@t.C(totals.TotalWithTax, inv.Currency)
+				@t.LM(totals.TotalWithTax)
 			</td>
 		</tr>
 	}
 }
 
-templ totalsOutlaysAndPayable(inv *bill.Invoice, totals *bill.Totals) {
+templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 	if totals.Outlays != nil {
 		for _, o := range inv.Outlays {
 			<tr class="outlay">
 				<th>
-					@t.T("billing.invoice.totals.outlay", i18n.M{"i": o.Index, "txt": outlayText(o)})
+					@t.T(".outlay", i18n.M{"i": o.Index, "txt": outlayText(o)})
 				</th>
 				<td>
-					@t.C(o.Amount, inv.Currency)
+					@t.LM(o.Amount)
 				</td>
 			</tr>
 		}
 	}
-	<tr class="payable">
+	<tr class="payable strong">
 		<th>
 			if inv.Type.In(bill.InvoiceTypeCreditNote) {
 				// Credit notes aren't necessarily payable.
 				// Use a generic term for the total label
-				@t.T("billing.invoice.totals.total")
+				@t.T(".total")
 			} else {
-				@t.T("billing.invoice.totals.total_to_pay")
+				@t.T(".total_to_pay")
 			}
 		</th>
 		<td>
-			@t.C(totals.Payable, inv.Currency)
+			@t.LM(totals.Payable)
 		</td>
 	</tr>
+}
+
+templ totalsDueRows(inv *bill.Invoice, totals *bill.Totals) {
+	if totals.Advances != nil {
+		for _, adv := range inv.Payment.Advances {
+			<tr class="advance">
+				<th>
+					@t.T(".advance", advanceMap(adv))
+				</th>
+				<td>
+					@t.LM(adv.Amount)
+				</td>
+			</tr>
+		}
+		if len(inv.Payment.Advances) > 1 {
+			<tr class="advance-sum">
+				<th>
+					@t.T(".advance_sum")
+				</th>
+				<td>
+					@t.LM(*totals.Advances)
+				</td>
+			</tr>
+		}
+		<tr class="due strong">
+			<th>
+				@t.T(".due_sum")
+			</th>
+			<td>
+				@t.LM(*totals.Due)
+			</td>
+		</tr>
+	}
+}
+
+func advanceMap(adv *pay.Advance) i18n.M {
+	txt := adv.Description
+	if adv.Ref != "" {
+		txt = fmt.Sprintf("%s (%s)", txt, adv.Ref)
+	}
+	date := ""
+	if adv.Date != nil {
+		// TODO: add date formatting
+		date = adv.Date.String()
+	}
+	return i18n.M{"date": date, "txt": txt}
 }
 
 func outlayText(outlay *bill.Outlay) string {

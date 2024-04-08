@@ -1,0 +1,96 @@
+package invoice
+
+import (
+	"fmt"
+
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/tax"
+	"github.com/invopop/gobl.html/components/t"
+)
+
+templ taxes(inv *bill.Invoice, taxes *tax.Total) {
+	if taxes != nil {
+		<section class="taxes">
+			@t.Scope("billing.invoice.taxes") {
+				<h2>
+					@t.T(".title")
+				</h2>
+				<table>
+					<thead>
+						<tr>
+							<th class="category">
+								@t.T(".category")
+							</th>
+							<th class="base">
+								@t.T(".base")
+							</th>
+							<th class="rate">
+								@t.T(".rate")
+							</th>
+							<th class="amount">
+								@t.T(".amount")
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						for _, cat := range taxes.Categories {
+							for i, rate := range cat.Rates {
+								@taxRateRow(inv, cat, rate, taxCategoryRowSpan(cat, i))
+							}
+						}
+					</tbody>
+				</table>
+			}
+		</section>
+	}
+}
+
+templ taxRateRow(inv *bill.Invoice, cat *tax.CategoryTotal, rate *tax.RateTotal, span int) {
+	<tr>
+		if span > 0 {
+			<td rowspan={ fmt.Sprint(span) } class="category">
+				{ taxCategoryTotalName(inv, cat) }
+			</td>
+		}
+		<td class="base">
+			@t.LM(rate.Base)
+		</td>
+		<td class="rate">
+			if rate.Percent != nil {
+				if cat.Retained {
+					@t.L(rate.Percent.Invert())
+				} else {
+					@t.L(*rate.Percent)
+				}
+			}
+			if rate.Surcharge != nil {
+				+@t.P(rate.Surcharge.Percent)
+			}
+		</td>
+		<td class="amount">
+			if cat.Retained {
+				@t.LM(rate.Amount.Invert())
+			} else {
+				@t.LM(rate.Amount)
+			}
+		</td>
+	</tr>
+}
+
+// taxCategoryRowSpan is used to determine the rowspan for the tax category name
+// which may need to be spread across multiple rows.
+func taxCategoryRowSpan(ct *tax.CategoryTotal, row int) int {
+	if len(ct.Rates) == 1 {
+		return 1
+	}
+	if row == 0 {
+		return len(ct.Rates)
+	}
+	return 0
+}
+
+func taxCategoryTotalName(inv *bill.Invoice, cat *tax.CategoryTotal) string {
+	r := inv.TaxRegime()
+	category := r.Category(cat.Code)
+	return category.Name.String()
+}

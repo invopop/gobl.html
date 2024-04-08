@@ -9,6 +9,7 @@ type lineSupport struct {
 	categories []*tax.Category
 	discounts  bool
 	charges    bool
+	refs       bool
 }
 
 // prepareLineSupport goes through the invoice lines and determines
@@ -25,10 +26,24 @@ func prepareLineSupport(inv *bill.Invoice) *lineSupport {
 		if len(l.Charges) > 0 {
 			ls.charges = true
 		}
+		if l.Item.Ref != "" {
+			ls.refs = true
+		}
 		for _, combo := range l.Taxes {
 			cats = addCategory(cats, r.Category(combo.Category))
 		}
 	}
+	for _, row := range inv.Discounts {
+		if row.Ref != "" {
+			ls.refs = true
+		}
+	}
+	for _, row := range inv.Charges {
+		if row.Ref != "" {
+			ls.refs = true
+		}
+	}
+
 	ls.categories = cats
 
 	return ls

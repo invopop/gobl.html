@@ -14,24 +14,63 @@ templ Envelope(env *gobl.Envelope) {
 			<title>GOBL HTML Generator</title>
 			<meta charset="utf-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"/>
-			<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"/>
-			<style>
-                .container { margin-top: 15px; }
-                .save-button { margin-top: 20px; }
+			<link rel="preconnect" href="https://fonts.googleapis.com"/>
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+			<style type="text/css">
+				@page {
+					font-family: "Inter", sans-serif;
+					size: A4 portrait;
+					margin: 0mm;
+					margin-bottom: 15mm;
+					counter-increment: page;
+					font-size: 9pt;
+					line-height: 1.5em;
+					color: #4B5563;
+				}
+				body {
+					font-family: "Inter", sans-serif;
+					font-size: 9pt;
+					line-height: 1.5em;
+					margin: 0;
+					/* color: #030712; */
+					/* color: #6B7280; */
+					color: #4B5563;
+				}
+				article.envelope {
+					min-height: 100%;
+				}
+				article, section, header, div, h1, h2, h3, h4, table, th, td, p {
+					font-size: 1em;
+					margin: 0;
+				}
+				h1, h2, h3, h4 {
+					font-weight: bold;
+					/* color: #030712; */
+				}
+				table {
+					border-spacing: 0;
+					border-collapse: collapse;
+				}
+				th, td {
+					text-align: left;
+				}
+				section.footer span.page-number:before {
+					content: counter(page);
+				}
             </style>
 		</head>
 		<body>
-			<div class="container">
+			<article class="envelope">
 				switch doc := env.Extract().(type) {
 					case *bill.Invoice:
-						@invoice.Invoice(doc)
+						@invoice.Invoice(env, doc)
 					case *note.Message:
 						@notes.Message(doc)
 					default:
 						<p>Unkown document type</p>
 				}
-			</div>
+			</article>
 		</body>
 	</html>
 }

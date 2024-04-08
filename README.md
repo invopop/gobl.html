@@ -13,3 +13,9 @@ GOBL HTML uses [templ](https://templ.guide/) to define a set of components in Go
 ```bash
 templ generate
 ```
+
+During development, it can help massive to have hot reload to be able to make changes and see them quickly. You can do this using the following example command:
+
+```bash
+templ generate --watch --cmd="go run ./cmd/gobl.html serve --pdf prince"
+```

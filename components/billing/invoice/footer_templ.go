@@ -11,12 +11,11 @@ import "io"
 import "bytes"
 
 import (
-	"github.com/invopop/gobl.html/components/organizing"
-	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl/org"
+	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl/pkg/here"
 )
 
-func supplier(party *org.Party) templ.Component {
+func footer() templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -33,19 +32,11 @@ func supplier(party *org.Party) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = t.T("billing.invoice.supplier.title").Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = templ.Raw(footerPageStyles(ctx)).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 2)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = organizing.Party(party).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 3)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -54,4 +45,29 @@ func supplier(party *org.Party) templ.Component {
 		}
 		return templ_7745c5c3_Err
 	})
+}
+
+func footerPageStyles(ctx context.Context) string {
+	return here.Doc(`
+        <style type="text/css">
+            @page {
+                @bottom-left {
+                    padding-left: 6mm;
+                    padding-top: 2mm;
+                    margin-top: 0mm;
+                    vertical-align: top;
+			        border-top: 1px solid #E5E7EB;
+                    content: "` + i18n.T(ctx, "billing.invoice.footer.generator") + `";
+                }
+                @bottom-right {
+                    padding-right: 6mm;
+                    padding-top: 2mm;
+                    margin-top: 0mm;
+                    vertical-align: top;
+			        border-top: 1px solid #E5E7EB;
+                    content: ` + i18n.T(ctx, "billing.invoice.footer.page") + `;
+                }
+            }
+        </style>
+    `)
 }

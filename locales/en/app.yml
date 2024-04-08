@@ -1,14 +1,37 @@
 en:
   billing:
     invoice:
+      title:
+        standard: "Invoice"
+        standard-simplified: "Simplified Invoice"
+        proforma: "Proforma Invoice"
+        corrective: "Corrective Invoice"
+        credit-note: "Credit Note"
+        debit-note: "Debit Note"
+
+      summary:
+        title: "Summary"
+        issue_date: "Issue Date"
+        value_date: "Value Date"
+        operation_date: "Operation Date"
+        currency: "Currency"
+        currency_value: "%{desc} (%{code})"
+        preceding_invoice: "Previous Invoice"
+        order: "Order"
+        order_period: "Period"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} to %{end}"
+
       supplier:
-        label: "Supplier:"
+        title: "Supplier"
 
       customer:
-        label: "Customer:"
+        title: "Customer"
 
       lines:
+        title: "Lines"
         i: "#"
+        ref: "Ref."
         description: "Description"
         quantity: "Qty."
         price: "Price"
@@ -20,9 +43,98 @@ en:
         charge_sum: "Sum Charges"
 
       totals:
+        sum: "Sum"
+        discount: "Discount"
+        charge: "Charge"
+        title: "Totals"
         prices_include_tax: "Included tax"
         total: "Total"
         taxes: "Tax"
         total_with_tax: "Total with tax"
         total_to_pay: "Total to pay"
-        outlays: "Outlay %{i}: %{txt}"
+        outlay: "Outlay %{i}: %{txt}"
+        advance: "Advance: %{date} %{txt}"
+        advance_sum: "Sum advances"
+        due_sum: "Total due"
+
+      taxes:
+        title: "Taxes"
+        category: "Tax"
+        base: "Base"
+        rate: "Rate"
+        amount: "Amount"
+
+      payment:
+        title: "Payment"
+        instructions:
+          method: "Method of payment"
+          ref: "Reference"
+          bank_data: "Bank transfer instructions"
+          card: "Card Payment"
+          card_detail: "Payment made to card ending %{last4} belonging to %{holder}"
+          observations: "Payment Notes"
+          bank_name: "Bank: %{name}"
+          iban: "IBAN: %{iban}"
+          account_number: "Account number: %{num}"
+          bic: "BIC: %{bic}"
+          methods:
+            card: "Bank card"
+            credit_transfer: "Bank transfer"
+            cash: "Cash"
+            direct_debit: "Direct debit"
+            online: "Online"
+        terms:
+          key: "Payment Terms"
+          notes: "Payment Terms Notes"
+          due_dates: "Due dates"
+          keys:
+            na: "Not specified"
+            end_of_month: "End of month"
+            due_date: "On due date"
+            deferred: "After due date"
+            proximo: "Next month"
+            instant: "On invoice delivery"
+            elective: "Chosen by customer"
+            pending: "To determine by supplier"
+            advanced: "Paid"
+            delivery: "On delivery"
+
+      notes:
+        title: "Notes"
+        reg:
+          book: "Book %{id}"
+          volume: "Volume %{id}"
+          sheet: "Sheet %{id}"
+          section: "Section %{id}"
+          page: "Page %{id}"
+          entry: "Entry %{id}"
+          inscription: "Inscribed in:"
+
+      footer:
+        # page: "Page <span class='page-number'/> of <span class='pages-number'/>"
+        page: "'Page ' counter(page) ' of ' counter(pages)"
+        generator: "GOBL"
+
+      regimes:
+        co:
+          cufe: "CUFE: %{cufe}"
+          cude: "CUDE: %{cude}"
+          preceding_cufe: "CUFE Previous invoice: %{cufe}"
+
+  organizing:
+    party:
+      tax_id: "%{label}: (%{country}) %{code}"
+      tel: "Tel: %{num}"
+      tel_label: "Tel: %{num} (%{label})"
+      email:
+        one: "Email: %{addr}"
+        other: "Emails: %{addr}"
+      email_label: "%{addr} (%{label})"
+      identity: "%{label}: %{code}"
+      identity_code: "Identitiy code"
+      po_box: "P.O. Box %{po_box}"
+      labels:
+        default: "Tax Code"
+    address:
+      label: "%{label}:"
+      country: "(%{country})"

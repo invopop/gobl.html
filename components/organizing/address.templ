@@ -3,7 +3,10 @@ package organizing
 import (
 	"strings"
 
+	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl/l10n"
 	"github.com/invopop/gobl/org"
+	"github.com/invopop/gobl.html/components/t"
 )
 
 templ Address(addr *org.Address) {
@@ -15,7 +18,10 @@ templ Address(addr *org.Address) {
 templ AddressWithLabel(addr *org.Address) {
 	<div class="org-address">
 		if addr.Label != "" {
-			<span class="label">{ addr.Label }:</span>
+			<span class="label">
+				@t.T("organizing.address.label", i18n.M{"label": addr.Label})
+				&nbsp;
+			</span>
 		}
 		@addressLines(addr)
 	</div>
@@ -24,5 +30,45 @@ templ AddressWithLabel(addr *org.Address) {
 templ addressLines(addr *org.Address) {
 	<span>
 		{ strings.Join(buildAddressLines(addr), ", ") }
+		if addr.Country != "" {
+			@t.T("organizing.address.country", i18n.M{"country": i18n.T(ctx, "country_names."+addr.Country.String())})
+		}
 	</span>
+}
+
+func buildAddressLines(addr *org.Address) []string {
+	lines := []string{}
+	if addr.Street != "" {
+		lines = append(lines, buildStreetWithNumbers(addr))
+	}
+	if addr.StreetExtra != "" {
+		lines = append(lines, addr.StreetExtra)
+	}
+	lines = append(lines, addr.Locality)
+	if addr.Region != "" {
+		lines = append(lines, addr.Region)
+	}
+	return lines
+}
+
+func buildStreetWithNumbers(addr *org.Address) string {
+	str := addr.Street
+	if addr.Number != "" {
+		if addrNumberFirst(addr) {
+			str = addr.Number + " " + str
+		} else {
+			str = str + " " + addr.Number
+		}
+	}
+	return str
+}
+
+func addrNumberFirst(addr *org.Address) bool {
+	// TODO: add more countries here!
+	switch addr.Country {
+	case l10n.GB, l10n.US, l10n.CA, l10n.FR:
+		return true
+	default:
+		return false
+	}
 }

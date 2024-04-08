@@ -1,0 +1,222 @@
+package invoice
+
+import (
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/pay"
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/ctxi18n/i18n"
+)
+
+templ payment(inv *bill.Invoice) {
+	if inv.Payment != nil {
+		<section class="payment">
+			@t.Scope("billing.invoice.payment") {
+				<h2 class="title">
+					@t.T(".title")
+				</h2>
+				if inv.Payment.Instructions != nil {
+					@paymentInstructions(inv.Payment.Instructions)
+				}
+				if inv.Payment.Terms != nil {
+					@paymentTerms(inv.Payment.Terms)
+				}
+			}
+		</section>
+	}
+}
+
+templ paymentInstructions(inst *pay.Instructions) {
+	@t.Scope(".instructions") {
+		<ul class="instructions">
+			if pm := paymentInstrMethodName(ctx, inst); pm != "" {
+				<li class="method-name">
+					<span class="label">
+						@t.T(".method")
+					</span>
+					<span class="value">
+						{ pm }
+					</span>
+				</li>
+			}
+			if inst.Ref != "" {
+				<li class="ref">
+					<span class="label">
+						@t.T(".ref")
+					</span>
+					<span class="value">
+						{ inst.Ref }
+					</span>
+				</li>
+			}
+			if len(inst.CreditTransfer) > 0 {
+				<li class="bank-data">
+					<span class="label">
+						@t.T(".bank_data")
+					</span>
+					for _, ct := range inst.CreditTransfer {
+						<span class="value">
+							@paymentCreditTransferRow(ct)
+						</span>
+					}
+				</li>
+			}
+			if inst.Card != nil {
+				<li class="card">
+					<span class="label">
+						@t.T(".card")
+					</span>
+					<span class="value">
+						@t.T(".card_detaul", i18n.M{"last4": inst.Card.Last4, "holder": inst.Card.Holder})
+					</span>
+				</li>
+			}
+			// TODO: Direct Debit
+			// TODO: Online
+			if inst.Notes != "" {
+				<li class="notes">
+					<span class="label">
+						@t.T(".observations")
+					</span>
+					<span class="value">
+						{ inst.Notes }
+					</span>
+				</li>
+			}
+		</ul>
+	}
+}
+
+templ paymentCreditTransferRow(ct *pay.CreditTransfer) {
+	<span class="credit-transfer">
+		if ct.Name != "" {
+			<span class="bank-name">
+				@t.T(".bank_name", i18n.M{"name": ct.Name})
+			</span>
+		}
+		if ct.IBAN != "" {
+			<span class="iban">
+				@t.T(".iban", i18n.M{"iban": ct.IBAN})
+			</span>
+		}
+		if ct.Number != "" {
+			<span class="account-number">
+				@t.T(".account_number", i18n.M{"num": ct.Number})
+			</span>
+		}
+		if ct.BIC != "" {
+			<span class="bic">
+				@t.T(".bic", i18n.M{"bic": ct.BIC})
+			</span>
+		}
+	</span>
+}
+
+templ paymentTerms(terms *pay.Terms) {
+	@t.Scope(".terms") {
+		<ul class="terms">
+			if terms.Key != "" {
+				<li class="terms-key">
+					<span class="label">
+						@t.T(".key")
+					</span>
+					<span class="value">
+						{ paymentTermsKeyName(ctx, terms) }
+					</span>
+				</li>
+			}
+			if terms.Notes != "" {
+				<li class="terms-notes">
+					<span class="label">
+						@t.T(".notes")
+					</span>
+					<span class="value">
+						{ terms.Notes }
+					</span>
+				</li>
+			}
+			if len(terms.DueDates) > 0 {
+				<li class="due-dates">
+					<span class="label">
+						@t.T(".due_dates")
+					</span>
+					<span class="value">
+						@paymentDueDates(terms)
+					</span>
+				</li>
+			}
+		</ul>
+	}
+}
+
+templ paymentDueDates(terms *pay.Terms) {
+	<table class="due-dates">
+		<tbody>
+			for _, dd := range terms.DueDates {
+				<tr>
+					<td class="date">
+						if dd.Date != nil {
+							@t.L(*dd.Date)
+						}
+					</td>
+					<td class="notes">
+						{ dd.Notes }
+						if dd.Percent != nil {
+							<span class="percent">
+								@t.L(*dd.Percent)
+							</span>
+						}
+					</td>
+					<td class="amount">
+						@t.LM(dd.Amount)
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+
+func paymentInstrMethodName(ctx context.Context, inst *pay.Instructions) string {
+	if inst.Detail != "" {
+		return inst.Detail
+	}
+	ctx = i18n.WithScope(ctx, ".methods")
+	switch inst.Key {
+	case pay.MeansKeyCard:
+		return i18n.T(ctx, ".card")
+	case pay.MeansKeyCreditTransfer:
+		return i18n.T(ctx, ".credit_transfer")
+	case pay.MeansKeyCash:
+		return i18n.T(ctx, ".cash")
+	case pay.MeansKeyDirectDebit:
+		return i18n.T(ctx, ".direct_debit")
+	case pay.MeansKeyOnline:
+		return i18n.T(ctx, ".online")
+	}
+	return ""
+}
+
+func paymentTermsKeyName(ctx context.Context, terms *pay.Terms) string {
+	ctx = i18n.WithScope(ctx, ".keys")
+	switch terms.Key {
+	case pay.TermKeyEndOfMonth:
+		return i18n.T(ctx, ".end_of_month")
+	case pay.TermKeyDueDate:
+		return i18n.T(ctx, ".due_date")
+	case pay.TermKeyDeferred:
+		return i18n.T(ctx, ".deferred")
+	case pay.TermKeyProximo:
+		return i18n.T(ctx, ".proximo")
+	case pay.TermKeyInstant:
+		return i18n.T(ctx, ".instant")
+	case pay.TermKeyElective:
+		return i18n.T(ctx, ".elective")
+	case pay.TermKeyPending:
+		return i18n.T(ctx, ".pending")
+	case pay.TermKeyAdvanced:
+		return i18n.T(ctx, ".advanced")
+	case pay.TermKeyDelivery:
+		return i18n.T(ctx, ".delivery")
+	default:
+		return i18n.T(ctx, ".na")
+	}
+}

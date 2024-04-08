@@ -8,81 +8,184 @@ import (
 )
 
 templ lines(inv *bill.Invoice) {
-	@linesWithSupport(inv, prepareLineSupport(inv))
+	@t.Scope("billing.invoice.lines") {
+		@linesWithSupport(inv, prepareLineSupport(inv))
+	}
 }
 
 templ linesWithSupport(inv *bill.Invoice, ls *lineSupport) {
-	<div class="lines">
+	<section class="lines">
+		<h2>
+			@t.T(".title")
+		</h2>
 		<table>
 			<thead>
 				<tr>
-					<th>
-						@t.T("billing.invoice.lines.i")
+					<th class="ref">
+						@t.T(".i")
 					</th>
-					<th>
-						@t.T("billing.invoice.lines.description")
+					if ls.refs {
+						<th class="ref">
+							@t.T(".ref")
+						</th>
+					}
+					<th class="description">
+						@t.T(".description")
 					</th>
-					<th>
-						@t.T("billing.invoice.lines.quantity")
+					<th class="quantity">
+						@t.T(".quantity")
 					</th>
-					<th>
-						@t.T("billing.invoice.lines.price")
+					<th class="price">
+						@t.T(".price")
 					</th>
 					for _, cat := range ls.categories {
-						<th>
+						<th class="tax">
 							{ cat.Name.String() }
 						</th>
 					}
 					if ls.discounts {
-						<th>
-							@t.T("billing.invoice.lines.discount")
+						<th class="discount">
+							@t.T(".discount")
 						</th>
 					}
 					if ls.charges {
-						<th>
-							@t.T("billing.invoice.lines.charges")
+						<th class="charge">
+							@t.T(".charges")
 						</th>
 					}
-					<th>
-						@t.T("billing.invoice.lines.total")
+					<th class="total">
+						@t.T(".total")
 					</th>
 				</tr>
 			</thead>
-			<tbody>
-				for _, l := range inv.Lines {
-					@line(inv, l, ls)
-				}
-			</tbody>
+			@linesBody(inv, ls)
+			@discountsBody(inv, ls)
+			@chargesBody(inv, ls)
 		</table>
-	</div>
+	</section>
 }
 
-templ line(inv *bill.Invoice, l *bill.Line, ls *lineSupport) {
+templ linesBody(inv *bill.Invoice, ls *lineSupport) {
+	<tbody>
+		for _, l := range inv.Lines {
+			@line(inv, l, ls)
+		}
+	</tbody>
+}
+
+templ line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) {
 	<tr>
-		<td>
-			if l.Item.Ref != "" {
-				{ l.Item.Ref }
-			} else {
-				{ fmt.Sprint(l.Index) }
-			}
+		<td class="ref">
+			{ fmt.Sprint(l.Index) }
 		</td>
-		<td>
+		if ls.refs {
+			<td class="ref">
+				if l.Item.Ref != "" {
+					{ l.Item.Ref }
+				} else {
+					<!-- empty -->
+				}
+			</td>
+		}
+		<td class="description">
 			<span>{ l.Item.Name }</span>
 			if l.Item.Description != "" {
 				<br/>
 				<small>{ l.Item.Description }</small>
 			}
 		</td>
-		<td>
-			@t.A(l.Quantity)
+		<td class="quantity">
+			@t.L(l.Quantity)
 		</td>
-		<td>
-			@t.C(l.Item.Price, inv.Currency)
+		<td class="price">
+			@t.LM(l.Item.Price)
 		</td>
 		for _, cat := range ls.categories {
-			<td>
+			<td class="tax">
 				if combo := l.Taxes.Get(cat.Code); combo != nil {
-					@t.P(*combo.Percent)
+					@t.L(*combo.Percent)
+				} else {
+					<!-- empty -->
+				}
+			</td>
+		}
+		if ls.discounts {
+			<td class="discount">
+				@lineGroupDiscounts(l)
+			</td>
+		}
+		if ls.charges {
+			<td class="charge">
+				@lineGroupCharges(l)
+			</td>
+		}
+		<td class="total">
+			@t.LM(l.Total)
+		</td>
+	</tr>
+}
+
+templ lineGroupDiscounts(l *bill.Line) {
+	for _, d := range l.Discounts {
+		if d.Percent != nil {
+			@t.L(*d.Percent)
+		} else {
+			@t.LM(d.Amount.Invert())
+		}
+	}
+}
+
+templ lineGroupCharges(l *bill.Line) {
+	for _, c := range l.Charges {
+		if c.Percent != nil {
+			@t.L(*c.Percent)
+		} else {
+			@t.LM(c.Amount)
+		}
+	}
+}
+
+templ discountsBody(inv *bill.Invoice, ls *lineSupport) {
+	if len(inv.Discounts) > 0 {
+		<tbody class="discounts">
+			for _, row := range inv.Discounts {
+				@discountRow(row, ls)
+			}
+		</tbody>
+	}
+}
+
+templ discountRow(row *bill.Discount, ls *lineSupport) {
+	<tr>
+		<td class="i">
+			{ fmt.Sprintf("D%d", row.Index) }
+		</td>
+		if ls.refs {
+			<td class="ref">
+				if row.Ref != "" {
+					{ row.Ref }
+				} else {
+					<!-- empty -->
+				}
+			</td>
+		}
+		<td class="reason">
+			{ row.Reason }
+		</td>
+		<td class="quantity">
+			<!-- no quantity -->
+		</td>
+		<td class="percent">
+			if row.Percent != nil {
+				@t.L(*row.Percent)
+			} else {
+				<!-- empty -->
+			}
+		</td>
+		for _, cat := range ls.categories {
+			<td class="tax">
+				if combo := row.Taxes.Get(cat.Code); combo != nil {
+					@t.L(*combo.Percent)
 				} else {
 					<!-- empty -->
 				}
@@ -90,36 +193,78 @@ templ line(inv *bill.Invoice, l *bill.Line, ls *lineSupport) {
 		}
 		if ls.discounts {
 			<td>
-				@lineGroupDiscounts(inv, l)
+				<!-- empty -->
 			</td>
 		}
 		if ls.charges {
 			<td>
-				@lineGroupCharges(inv, l)
+				<!-- empty -->
 			</td>
 		}
-		<td>
-			@t.C(l.Total, inv.Currency)
+		<td class="total">
+			@t.LM(row.Amount.Invert())
 		</td>
 	</tr>
 }
 
-templ lineGroupDiscounts(inv *bill.Invoice, l *bill.Line) {
-	for _, d := range l.Discounts {
-		if d.Percent != nil {
-			@t.P(*d.Percent)
-		} else {
-			@t.C(d.Amount.Invert(), inv.Currency)
-		}
+templ chargesBody(inv *bill.Invoice, ls *lineSupport) {
+	if len(inv.Charges) > 0 {
+		<tbody class="charges">
+			for _, row := range inv.Charges {
+				@chargeRow(row, ls)
+			}
+		</tbody>
 	}
 }
 
-templ lineGroupCharges(inv *bill.Invoice, l *bill.Line) {
-	for _, c := range l.Charges {
-		if c.Percent != nil {
-			@t.P(*c.Percent)
-		} else {
-			@t.C(c.Amount.Invert(), inv.Currency)
+templ chargeRow(row *bill.Charge, ls *lineSupport) {
+	<tr>
+		<td class="ref">
+			{ fmt.Sprintf("C%d", row.Index) }
+		</td>
+		if ls.refs {
+			<td class="ref">
+				if row.Ref != "" {
+					{ row.Ref }
+				} else {
+					<!-- empty -->
+				}
+			</td>
 		}
-	}
+		<td class="reason">
+			{ row.Reason }
+		</td>
+		<td class="quantity">
+			<!-- no quantity -->
+		</td>
+		<td class="percent">
+			if row.Percent != nil {
+				@t.L(*row.Percent)
+			} else {
+				<!-- empty -->
+			}
+		</td>
+		for _, cat := range ls.categories {
+			<td class="tax">
+				if combo := row.Taxes.Get(cat.Code); combo != nil {
+					@t.L(*combo.Percent)
+				} else {
+					<!-- empty -->
+				}
+			</td>
+		}
+		if ls.discounts {
+			<td>
+				<!-- empty -->
+			</td>
+		}
+		if ls.charges {
+			<td>
+				<!-- empty -->
+			</td>
+		}
+		<td class="total">
+			@t.LM(row.Amount)
+		</td>
+	</tr>
 }

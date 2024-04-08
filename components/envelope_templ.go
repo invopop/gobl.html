@@ -31,13 +31,13 @@ func Envelope(env *gobl.Envelope) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<html data-theme=\"light\"><head><title>GOBL HTML Generator</title><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css\"><link rel=\"stylesheet\" href=\"https://unpkg.com/@picocss/pico@latest/css/pico.min.css\"><style>\n                .container { margin-top: 15px; }\n                .save-button { margin-top: 20px; }\n            </style></head><body><div class=\"container\">")
+		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 1)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		switch doc := env.Extract().(type) {
 		case *bill.Invoice:
-			templ_7745c5c3_Err = invoice.Invoice(doc).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = invoice.Invoice(env, doc).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -47,12 +47,12 @@ func Envelope(env *gobl.Envelope) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		default:
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p>Unkown document type</p>")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 2)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></body></html>")
+		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 3)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
