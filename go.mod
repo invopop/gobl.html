@@ -45,9 +45,3 @@ require (
 	golang.org/x/text v0.14.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
-
-replace (
-// github.com/invopop/ctxi18n => ../ctxi18n
-// github.com/invopop/gobl => ../gobl
-// github.com/invopop/princepdf => ../princepdf
-)
