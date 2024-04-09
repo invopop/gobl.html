@@ -15,9 +15,9 @@ templ notes(inv *bill.Invoice) {
 					@t.T(".title")
 				</h2>
 				for _, note := range inv.Notes {
-					<div class="note">
+					<p class="note">
 						{ note.Text }
-					</div>
+					</p>
 				}
 				if inv.Supplier.Registration != nil {
 					@noteRegSummary(inv.Supplier.Registration)

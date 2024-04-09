@@ -9,8 +9,8 @@ import (
 	"github.com/invopop/gobl/tax"
 	"github.com/invopop/gobl.html/components/t"
 
-	"github.com/invopop/gobl.html/components/billing/invoice/regimes/es"
-	"github.com/invopop/gobl.html/components/billing/invoice/regimes/co"
+	"github.com/invopop/gobl.html/components/regimes/es"
+	"github.com/invopop/gobl.html/components/regimes/co"
 )
 
 // Invoice renders a complete GOBL bill.Invoice object.
@@ -19,6 +19,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 		article.invoice {
 			display: flex;
 			flex-wrap: wrap;
+			height: 100%;
 		}
 		header {
 			width: 100%;
@@ -230,6 +231,9 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 			break-inside: avoid;
 			margin-bottom: 3mm;
 		}
+		section.payment li:last-child {
+			margin-bottom: 0;
+		}
 		section.payment span.label {
 			display: block;
 			font-weight: bold;
@@ -238,7 +242,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 			display: block;
 		}
 		section.payment table td {
-			padding: 1.5mm 3mm 1.5mm 0mm;
+			padding-right: 3mm;
 		}
 		section.payment .due-dates span.percent:before {
 			content: "("
@@ -251,9 +255,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 			margin-top: 6mm;
 			border-top: 1px solid #E5E7EB;
 			padding-top: 6mm;
-		}
-		section.footer {
-			order: 20;
+			break-inside: avoid;
 		}
 		section.extensions {
 			order: 15;
@@ -268,6 +270,8 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 			color: #030712;
 		}
 	</style>
+	// Footer needs to be at the top to show on all pages
+	@footer()
 	<article class="invoice">
 		<header>
 			<div class="details">
@@ -293,7 +297,6 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 			@es.TicketBAIQR(env)
 			@co.DIANQR(env, inv)
 		</section>
-		@footer()
 	</article>
 }
 

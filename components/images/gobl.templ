@@ -1,0 +1,26 @@
+package images
+
+import (
+	"fmt"
+	"embed"
+	"encoding/base64"
+)
+
+//go:embed gobl_black.svg
+
+// Content stores some of the embedded images
+var Content embed.FS
+
+// GOBL provides the GOBL logo.
+templ GOBL() {
+	<img src={ goblImage() } alt="GOBL"/>
+}
+
+func goblImage() string {
+	data, err := Content.ReadFile("gobl_black.svg")
+	if err != nil {
+		return fmt.Sprintf("error reading image: %s\n", err.Error())
+	}
+	str := base64.StdEncoding.EncodeToString(data)
+	return "data:image/svg+xml;base64," + str
+}

@@ -87,6 +87,7 @@
         "quantity": "20",
         "item": {
           "name": "Development Day Rate",
+          "description": "Development services for the month of February 2022",
           "price": "200.00"
         },
         "sum": "4000.00",

@@ -1,102 +1,138 @@
 package organizing
 
 import (
-    "strings"
+	"strings"
 
-    "github.com/invopop/gobl/l10n"
-    "github.com/invopop/gobl/org"
-    "github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl/l10n"
+	"github.com/invopop/gobl/org"
+	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/regimes/co"
+	"github.com/invopop/gobl/tax"
+	"github.com/invopop/gobl/cbc"
 )
 
 templ Party(party *org.Party) {
-    <div class="org-party">
-        @t.Scope("organizing.party") {
-            <div class="name">{ party.Name }</div>
-            for _, a := range party.Addresses {
-                @AddressWithLabel(a)
-            }
-            if len(party.Telephones) > 0 {
-                @telephones(party.Telephones)
-            }
-            if len(party.Emails) > 0 {
-                @emails(party.Emails)
-            }
-            if party.TaxID != nil {
-                @taxID(party)
-            }
-            if len(party.Identities) > 0 {
-                @identities(party.Identities)
-            }
-        }
-    </div>
+	<div class="org-party">
+		@t.Scope("organizing.party") {
+			<div class="name">{ party.Name }</div>
+			for _, a := range party.Addresses {
+				@AddressWithLabel(a)
+			}
+			if len(party.Telephones) > 0 {
+				@telephones(party.Telephones)
+			}
+			if len(party.Emails) > 0 {
+				@emails(party.Emails)
+			}
+			if party.TaxID != nil {
+				@taxID(party)
+			}
+			@partyExtensions(party)
+			if len(party.Identities) > 0 {
+				@identities(party.Identities)
+			}
+		}
+	</div>
 }
 
 templ taxID(party *org.Party) {
-    <div class="tax-id">
-        @t.T(".tax_id", i18n.M{"label": taxIDLabel(ctx, party), "country": party.TaxID.Country.String(), "code": party.TaxID.Code})
-    </div>
+	<div class="tax-id">
+		@t.T(".tax_id", i18n.M{"label": taxIDLabel(ctx, party), "country": party.TaxID.Country.String(), "code": taxIDCode(party)})
+	</div>
 }
 
 templ telephones(tels []*org.Telephone) {
-    for _, tel := range tels {
-        <div class="telephone">
-            if tel.Label != "" {
-                @t.T(".tel_label", i18n.M{"num": tel.Number, "label": tel.Label})
-            } else {
-                @t.T(".tel", i18n.M{"num": tel.Number})
-            }
-        </div>
-    }
+	for _, tel := range tels {
+		<div class="telephone">
+			if tel.Label != "" {
+				@t.T(".tel_label", i18n.M{"num": tel.Number, "label": tel.Label})
+			} else {
+				@t.T(".tel", i18n.M{"num": tel.Number})
+			}
+		</div>
+	}
 }
 
 templ emails(emails []*org.Email) {
-    <div class="emails">
-        @t.N(".email", len(emails), i18n.M{"addr": emailAddresses(ctx, emails)})
-    </div>
+	<div class="emails">
+		@t.N(".email", len(emails), i18n.M{"addr": emailAddresses(ctx, emails)})
+	</div>
 }
 
 templ identities(idents []*org.Identity) {
-    for _, ident := range idents {
-        <div class="identitiy">
-            @t.T(".identity", i18n.M{"label": identityLabel(ctx, ident), "code": ident.Code})
-        </div>
-    }
+	for _, ident := range idents {
+		<div class="identitiy">
+			@t.T(".identity", i18n.M{"label": identityLabel(ctx, ident), "code": ident.Code})
+		</div>
+	}
+}
+
+templ partyExtensions(party *org.Party) {
+	for k, v := range party.Ext {
+		if txt := mapPartyExtension(ctx, k, v); txt != "" {
+			<div class="party-extension">
+				{ txt }
+			</div>
+		}
+	}
 }
 
 func emailAddresses(ctx context.Context, emails []*org.Email) string {
-    str := make([]string, len(emails))
-    for i, e := range emails {
-        str[i] = emailAddress(ctx, e)
-    }
-    return strings.Join(str, ", ")
+	str := make([]string, len(emails))
+	for i, e := range emails {
+		str[i] = emailAddress(ctx, e)
+	}
+	return strings.Join(str, ", ")
 }
 
 func emailAddress(ctx context.Context, email *org.Email) string {
-    if email.Label != "" {
-        return i18n.T(ctx, ".email_label", i18n.M{"addr": email.Address, "label": email.Label})
-    }
-    return email.Address
+	if email.Label != "" {
+		return i18n.T(ctx, ".email_label", i18n.M{"addr": email.Address, "label": email.Label})
+	}
+	return email.Address
 }
 
 func identityLabel(ctx context.Context, ident *org.Identity) string {
-    if ident.Label != "" {
-        return ident.Label
-    }
-    if ident.Type != "" {
-        return ident.Type.String()
-    }
-    return i18n.T(ctx, ".identity_code")
+	if ident.Label != "" {
+		return ident.Label
+	}
+	if ident.Type != "" {
+		return ident.Type.String()
+	}
+	return i18n.T(ctx, ".identity_code")
 }
 
 func taxIDLabel(ctx context.Context, party *org.Party) string {
-    tID := party.TaxID
-    switch tID.Country {
-    case l10n.ES:
-        return "NIF"
-    case l10n.CO:
-        return "NIT"
-    default:
-        return i18n.T(ctx, ".labels.default")
-    }
+	tID := party.TaxID
+	switch tID.Country {
+	case l10n.ES:
+		return "NIF"
+	case l10n.CO:
+		return "NIT"
+	case l10n.MX:
+		return "RFC"
+	default:
+		return i18n.T(ctx, ".labels.default")
+	}
+}
+
+func taxIDCode(party *org.Party) string {
+	tID := party.TaxID
+	code := tID.Code.String()
+	switch tID.Country {
+	case l10n.CO:
+		return co.FormatTaxIDCode(code)
+	default:
+		return tID.Code.String()
+	}
+}
+
+func mapPartyExtension(ctx context.Context, k cbc.Key, v tax.ExtValue) string {
+	// find the key translation
+	label := i18n.T(ctx, ".ext_map."+k.String())
+	if !strings.HasPrefix(label, "!") { // if match found
+		return i18n.T(ctx, ".ext", i18n.M{"label": label, "value": v.String()})
+	}
+	return ""
 }

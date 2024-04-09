@@ -56,9 +56,19 @@ templ summary(inv *bill.Invoice) {
 						<span class="label">
 							@t.T(".preceding_invoice")
 						</span>
-						<span class="label">
+						<span class="value">
 							{ code(pre.Series, pre.Code) }
 						</span>
+						if pre.IssueDate != nil {
+							<span class="value">
+								{ pre.IssueDate.String() }
+							</span>
+						}
+						if pre.Reason != "" {
+							<span class="value">
+								{ pre.Reason }
+							</span>
+						}
 					</li>
 				}
 				if inv.Ordering != nil {

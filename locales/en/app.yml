@@ -135,6 +135,10 @@ en:
       po_box: "P.O. Box %{po_box}"
       labels:
         default: "Tax Code"
+      ext: "%{label}: %{value}"
+      ext_map:
+        # Ensure this list is up to date in all locales!
+        co-dian-municipality: "Municipality"
     address:
       label: "%{label}:"
       country: "(%{country})"

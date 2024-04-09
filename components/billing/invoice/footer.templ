@@ -3,28 +3,56 @@ package invoice
 import (
 	"github.com/invopop/gobl/pkg/here"
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/components/images"
 )
 
 templ footer() {
 	<style type="text/css">
-        /*
-        section.footer {
-            background-color: pink;
-            position: running(footer);
+        @media screen {
+            footer {
+                display: none;
+            }
+        }
+        @media print {
+            footer {
+                position: running(footer);
+                text-align: center;
+                padding: 2mm 6mm;
+            }
         }
         @page {
             @bottom {
                 content: element(footer);
             }
         }
-        */
+        footer .page {
+        }
+        footer .page-number:before {
+            content: counter(page);
+        }
+        footer .pages-number:before {
+            content: counter(pages);
+        }
+        footer .gobl-logo {
+            float: right;
+            margin-top: -9mm;
+        }
+        footer .gobl-logo img {
+            width: 8mm;
+            height: 8mm;
+        }
     </style>
-	<section class="footer">
-		@templ.Raw(footerPageStyles(ctx))
-		//<div>
-		//   Page <span class="page-number" /> of <span class="page-total" />.
-		//</div>
-	</section>
+	<footer>
+		// @templ.Raw(footerPageStyles(ctx))
+		<div class="page">
+			Page <span class="page-number"></span> of <span class="pages-number"></span>
+		</div>
+		<div class="gobl-logo">
+			<a href="https://gobl.org">
+				@images.GOBL()
+			</a>
+		</div>
+	</footer>
 }
 
 func footerPageStyles(ctx context.Context) string {
