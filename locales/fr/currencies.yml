@@ -1,0 +1,168 @@
+fr:
+  currencies:
+    AED: Dirham des Émirats arabes unis
+    AFN: Afghani
+    ALL: Lek
+    AMD: Dram
+    ANG: Florin des Antilles néerlandaises
+    AOA: Kwanza
+    ARS: Peso argentin
+    AUD: Dollar australien
+    AWG: Florin arubain
+    AZN: Manat azerbaïdjanais
+    BAM: Mark convertible
+    BBD: Dollar de la Barbade
+    BDT: Taka
+    BGN: Lev
+    BHD: Dinar de Bahreïn
+    BIF: Franc burundais
+    BMD: Dollar des Bermudes
+    BND: Dollar de Brunei
+    BOB: Boliviano
+    BOV: MVDOL
+    BRL: Real
+    BSD: Dollar des Bahamas
+    BTN: Ngultrum
+    BWP: Pula
+    BYN: Rouble biélorusse
+    BZD: Dollar de Belize
+    CAD: Dollar canadien
+    CDF: Franc congolais
+    CHE: Euro WIR
+    CHF: Franc suisse
+    CHW: Franc WIR
+    CLF: Unidad de fomento
+    CLP: Peso chilien
+    CNY: Yuan renminbi
+    COP: Peso colombien
+    COU: Unidad de valor real
+    CRC: Colon costaricien
+    CUC: Peso convertible
+    CUP: Peso cubain
+    CVE: Escudo de Cabo Verde
+    CZK: Couronne tchèque
+    DJF: Franc de Djibouti
+    DKK: Couronne danoise
+    DOP: Peso dominicain
+    DZD: Dinar algérien
+    EGP: Livre égyptienne
+    ERN: Nakfa
+    ETB: Birr
+    EUR: Euro
+    FJD: Dollar des Fidji
+    FKP: Livre des Falkland
+    GBP: Livre sterling
+    GEL: Lari
+    GHS: Cedi ghanéen
+    GIP: Livre de Gibraltar
+    GMD: Dalasi
+    GNF: Franc guinéen
+    GTQ: Quetzal
+    GYD: Dollar du Guyana
+    HKD: Dollar de Hong Kong
+    HNL: Lempira
+    HRK: Gourde
+    HTG: Gourde
+    HUF: Forint
+    IDR: Rupiah
+    ILS: Shekel
+    INR: Roupie indienne
+    IQD: Dinar iraquien
+    IRR: Rial iranien
+    ISK: Couronne islandaise
+    JMD: Dollar jamaïcain
+    JOD: Dinar jordanien
+    JPY: Yen
+    KES: Shilling kényan
+    KGS: Som
+    KHR: Riel
+    KMF: Franc comorien
+    KPW: Won nord-coréen
+    KRW: Won sud-coréen
+    KWD: Dinar koweïtien
+    KYD: Dollar des Îles Caïmans
+    KZT: Tenge
+    LAK: Kip
+    LBP: Livre libanaise
+    LKR: Roupie sri-lankaise
+    LRD: Dollar libérien
+    LSL: Loti
+    LYD: Dinar libyen
+    MAD: Dirham marocain
+    MDL: Leu moldave
+    MGA: Ariary
+    MKD: Denar
+    MMK: Kyat
+    MNT: Tugrik
+    MOP: Pataca
+    MRU: Ouguiya
+    MUR: Roupie mauricienne
+    MVR: Rufiyaa
+    MWK: Kwacha du Malawi
+    MXN: Peso mexicain
+    MXV: Unité de conversion mexicain
+    MYR: Ringgit
+    MZN: Metical
+    NAD: Dollar namibien
+    NGN: Naira
+    NIO: Córdoba oro
+    NOK: Couronne norvégienne
+    NPR: Roupie népalaise
+    NZD: Dollar néo-zélandais
+    OMR: Rial d’Oman
+    PAB: Balboa
+    PEN: Sol
+    PGK: Kina
+    PHP: Peso philippin
+    PKR: Roupie pakistanaise
+    PLN: Zloty
+    PYG: Guarani
+    QAR: Rial du Qatar
+    RON: Leu roumain
+    RSD: Dinar serbe
+    RUB: Rouble russe
+    RWF: Franc rwandais
+    SAR: Riyal saoudien
+    SBD: Dollar des Îles Salomon
+    SCR: Roupie seychelloise
+    SDG: Livre soudanaise
+    SEK: Couronne suédoise
+    SGD: Dollar de Singapour
+    SHP: Livre de Sainte-Hélène
+    SLL: Leone
+    SOS: Shilling somalien
+    SRD: Dollar surinamais
+    SSP: Livre sud-soudanaise
+    STN: Dobra
+    SVC: Colon salvadorien
+    SYP: Livre syrienne
+    SZL: Lilangeni
+    THB: Baht
+    TJS: Somoni
+    TMT: Manat turkmène
+    TND: Dinar tunisien
+    TOP: Pa’anga
+    TRY: Livre turque
+    TTD: Dollar de Trinité-et-Tobago
+    TWD: Nouveau dollar de Taïwan
+    TZS: Shilling tanzanien
+    UAH: Hryvnia
+    UGX: Shilling ougandais
+    USD: Dollar des États-Unis
+    USN: Dollar des États-Unis (Lendemain)
+    UYI: Peso uruguayen (unités indexées)
+    UYU: Peso uruguayen
+    UYW: Unité prévisionnelle
+    UZS: Sum
+    VES: Bolivar souverain
+    VND: Dông
+    VUV: Vatu
+    WST: Tala
+    XAF: Franc CFA (BEAC)
+    XCD: Dollar des Caraïbes orientales
+    XOF: Franc CFA (BCEAO)
+    XPF: Franc CFP
+    YER: Riyal yéménite
+    ZAR: Rand
+    ZMW: Kwacha de Zambie
+    ZWL: Dollar zimbabwéen

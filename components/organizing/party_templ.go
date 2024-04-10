@@ -92,7 +92,7 @@ func Party(party *org.Party) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			if party.TaxID != nil {
+			if showTaxID(party) {
 				templ_7745c5c3_Err = taxID(party).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -339,6 +339,10 @@ func identityLabel(ctx context.Context, ident *org.Identity) string {
 		return ident.Type.String()
 	}
 	return i18n.T(ctx, ".identity_code")
+}
+
+func showTaxID(party *org.Party) bool {
+	return party.TaxID != nil && party.TaxID.Code != cbc.CodeEmpty
 }
 
 func taxIDLabel(ctx context.Context, party *org.Party) string {

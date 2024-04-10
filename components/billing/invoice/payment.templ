@@ -8,7 +8,7 @@ import (
 )
 
 templ payment(inv *bill.Invoice) {
-	if inv.Payment != nil {
+	if showPayments(inv) {
 		<section class="payment">
 			@t.Scope("billing.invoice.payment") {
 				<h2 class="title">
@@ -173,6 +173,16 @@ templ paymentDueDates(terms *pay.Terms) {
 			}
 		</tbody>
 	</table>
+}
+
+func showPayments(inv *bill.Invoice) bool {
+	if inv.Payment == nil {
+		return false
+	}
+	if inv.Payment.Instructions == nil && inv.Payment.Terms == nil {
+		return false
+	}
+	return true
 }
 
 func paymentInstrMethodName(ctx context.Context, inst *pay.Instructions) string {

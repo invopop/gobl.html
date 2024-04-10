@@ -1,11 +1,27 @@
 package invoice
 
 import (
+	"fmt"
+
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/yuin/goldmark"
+	"github.com/yuin/goldmark/extension"
 )
+
+var markdown goldmark.Markdown
+
+func init() {
+	// prepare the markdown renderer
+	markdown = goldmark.New(
+		goldmark.WithExtensions(
+			extension.NewLinkify(),
+		),
+	)
+}
 
 templ notes(inv *bill.Invoice) {
 	if len(inv.Notes) > 0 {
@@ -15,9 +31,9 @@ templ notes(inv *bill.Invoice) {
 					@t.T(".title")
 				</h2>
 				for _, note := range inv.Notes {
-					<p class="note">
-						{ note.Text }
-					</p>
+					<div class="note">
+						@templ.Raw(renderNote(note))
+					</div>
 				}
 				if inv.Supplier.Registration != nil {
 					@noteRegSummary(inv.Supplier.Registration)
@@ -28,43 +44,49 @@ templ notes(inv *bill.Invoice) {
 }
 
 templ noteRegSummary(reg *org.Registration) {
-	<div class="registration">
+	<div class="note registration">
 		@t.Scope(".reg") {
-			<div>
-				<span class="title">
-					@t.T(".inscription")
+			<span class="title">
+				@t.T(".inscription")
+			</span>
+			if reg.Book != "" {
+				<span class="book">
+					@t.T(".book", i18n.M{"id": reg.Book})
 				</span>
-				if reg.Book != "" {
-					<span class="book">
-						@t.T(".book", i18n.M{"id": reg.Book})
-					</span>
-				}
-				if reg.Volume != "" {
-					<span class="volume">
-						@t.T(".volume", i18n.M{"id": reg.Volume})
-					</span>
-				}
-				if reg.Sheet != "" {
-					<span class="sheet">
-						@t.T(".sheet", i18n.M{"id": reg.Sheet})
-					</span>
-				}
-				if reg.Section != "" {
-					<span class="section">
-						@t.T(".section", i18n.M{"id": reg.Section})
-					</span>
-				}
-				if reg.Page != "" {
-					<span class="page">
-						@t.T(".page", i18n.M{"id": reg.Page})
-					</span>
-				}
-				if reg.Entry != "" {
-					<span class="entry">
-						@t.T(".entry", i18n.M{"id": reg.Entry})
-					</span>
-				}
-			</div>
+			}
+			if reg.Volume != "" {
+				<span class="volume">
+					@t.T(".volume", i18n.M{"id": reg.Volume})
+				</span>
+			}
+			if reg.Sheet != "" {
+				<span class="sheet">
+					@t.T(".sheet", i18n.M{"id": reg.Sheet})
+				</span>
+			}
+			if reg.Section != "" {
+				<span class="section">
+					@t.T(".section", i18n.M{"id": reg.Section})
+				</span>
+			}
+			if reg.Page != "" {
+				<span class="page">
+					@t.T(".page", i18n.M{"id": reg.Page})
+				</span>
+			}
+			if reg.Entry != "" {
+				<span class="entry">
+					@t.T(".entry", i18n.M{"id": reg.Entry})
+				</span>
+			}
 		}
 	</div>
+}
+
+func renderNote(note *cbc.Note) string {
+	buf := new(bytes.Buffer)
+	if err := markdown.Convert([]byte(note.Text), buf); err != nil {
+		return fmt.Sprintf("!(ERR %v)", err.Error())
+	}
+	return buf.String()
 }

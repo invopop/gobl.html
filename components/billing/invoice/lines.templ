@@ -35,6 +35,11 @@ templ linesWithSupport(inv *bill.Invoice, ls *lineSupport) {
 					<th class="quantity">
 						@t.T(".quantity")
 					</th>
+					if ls.units {
+						<th class="unit">
+							@t.T(".unit")
+						</th>
+					}
 					<th class="price">
 						@t.T(".price")
 					</th>
@@ -97,6 +102,15 @@ templ line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) {
 		<td class="quantity">
 			@t.L(l.Quantity)
 		</td>
+		if ls.units {
+			<td class="unit">
+				if l.Item.Unit != "" {
+					{ string(l.Item.Unit) }
+				} else {
+					<!-- empty -->
+				}
+			</td>
+		}
 		<td class="price">
 			@t.LM(l.Item.Price)
 		</td>
@@ -175,6 +189,11 @@ templ discountRow(row *bill.Discount, ls *lineSupport) {
 		<td class="quantity">
 			<!-- no quantity -->
 		</td>
+		if ls.units {
+			<td>
+				<!-- empty -->
+			</td>
+		}
 		<td class="percent">
 			if row.Percent != nil {
 				@t.L(*row.Percent)
@@ -237,6 +256,11 @@ templ chargeRow(row *bill.Charge, ls *lineSupport) {
 		<td class="quantity">
 			<!-- no quantity -->
 		</td>
+		if ls.units {
+			<td>
+				<!-- empty -->
+			</td>
+		}
 		<td class="percent">
 			if row.Percent != nil {
 				@t.L(*row.Percent)

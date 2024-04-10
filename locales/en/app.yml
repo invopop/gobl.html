@@ -1,4 +1,6 @@
 en:
+  page: "Page %{page} of %{count}"
+
   billing:
     invoice:
       title:
@@ -34,6 +36,7 @@ en:
         ref: "Ref."
         description: "Description"
         quantity: "Qty."
+        unit: "Unit"
         price: "Price"
         discount: "Disc."
         charges: "Chgs."
@@ -109,11 +112,6 @@ en:
           page: "Page %{id}"
           entry: "Entry %{id}"
           inscription: "Inscribed in:"
-
-      footer:
-        # page: "Page <span class='page-number'/> of <span class='pages-number'/>"
-        page: "'Page ' counter(page) ' of ' counter(pages)"
-        generator: "GOBL"
 
       regimes:
         co:

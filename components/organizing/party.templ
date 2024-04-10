@@ -25,7 +25,7 @@ templ Party(party *org.Party) {
 			if len(party.Emails) > 0 {
 				@emails(party.Emails)
 			}
-			if party.TaxID != nil {
+			if showTaxID(party) {
 				@taxID(party)
 			}
 			@partyExtensions(party)
@@ -101,6 +101,10 @@ func identityLabel(ctx context.Context, ident *org.Identity) string {
 		return ident.Type.String()
 	}
 	return i18n.T(ctx, ".identity_code")
+}
+
+func showTaxID(party *org.Party) bool {
+	return party.TaxID != nil && party.TaxID.Code != cbc.CodeEmpty
 }
 
 func taxIDLabel(ctx context.Context, party *org.Party) string {

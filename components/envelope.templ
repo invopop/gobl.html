@@ -21,7 +21,7 @@ templ Envelope(env *gobl.Envelope) {
 				@page {
 					font-family: "Inter", sans-serif;
 					size: A4 portrait;
-					margin: 0mm;
+					margin: 10mm;
 					margin-bottom: 20mm;
 					counter-increment: page;
 					font-size: 9pt;
@@ -33,9 +33,15 @@ templ Envelope(env *gobl.Envelope) {
 					font-size: 9pt;
 					line-height: 1.5em;
 					margin: 0;
+					margin-bottom: 0mm;
 					/* color: #030712; */
 					/* color: #6B7280; */
 					color: #4B5563;
+				}
+				@media screen {
+					body {
+						margin: 10mm;
+					}	
 				}
 				article.envelope {
 					min-height: 100%;
@@ -45,8 +51,11 @@ templ Envelope(env *gobl.Envelope) {
 					margin: 0;
 				}
 				h1, h2, h3, h4 {
-					font-weight: bold;
+					font-weight: 500;
 					/* color: #030712; */
+				}
+				a {
+					color: #4B5563;
 				}
 				table {
 					border-spacing: 0;
@@ -62,6 +71,8 @@ templ Envelope(env *gobl.Envelope) {
 		</head>
 		<body>
 			<article class="envelope">
+				// footer required at start to appear on all pages
+				@footerPrint(env)
 				switch doc := env.Extract().(type) {
 					case *bill.Invoice:
 						@invoice.Invoice(env, doc)
@@ -70,6 +81,7 @@ templ Envelope(env *gobl.Envelope) {
 					default:
 						<p>Unkown document type</p>
 				}
+				@footerScreen(env)
 			</article>
 		</body>
 	</html>

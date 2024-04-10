@@ -115,6 +115,7 @@ func currencyName(ctx context.Context, cur currency.Code) string {
 	if def == nil {
 		return string(cur)
 	}
-
-	return i18n.T(ctx, "billing.invoice.summary.currency_value", i18n.M{"desc": def.Name, "code": cur})
+	// does a translation for the currency name exist?
+	name := i18n.T(ctx, "currencies."+string(cur), i18n.Default(def.Name))
+	return i18n.T(ctx, "billing.invoice.summary.currency_value", i18n.M{"desc": name, "code": cur})
 }

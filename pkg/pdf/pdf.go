@@ -6,6 +6,14 @@ import (
 	"context"
 )
 
+// Config defines options used to configure the PDF convertor.
+type Config func(any)
+
+type config struct {
+	url  string
+	auth string
+}
+
 // Option defines a functional option to configure the PDF conversion
 type Option func(*options)
 
@@ -31,6 +39,23 @@ type Attachment struct {
 	Description string
 }
 
+// WithURL sets the URL to use for the connection to a remote server if needed.
+func WithURL(url string) Config {
+	return func(in any) {
+		conf := in.(*config)
+		conf.url = url
+	}
+}
+
+// WithAuthToken defines an authentication token to use to connect to the remote
+// server if required by the PDF service.
+func WithAuthToken(token string) Config {
+	return func(in any) {
+		conf := in.(*config)
+		conf.auth = token
+	}
+}
+
 // WithMetadata adds the provided metadata to include in the conversion request.
 func WithMetadata(md *Metadata) Option {
 	return func(o *options) {
@@ -52,11 +77,17 @@ type Convertor interface {
 	HTML(ctx context.Context, data []byte, opts ...Option) ([]byte, error)
 }
 
-// New creates a new PDF convertor using the provider.
-func New(provider string) (Convertor, error) {
+// New creates a new PDF convertor using the provider and any Config options that it might
+// require. This method maps the provider to the correct implementation, or returns
+// nil if no matching convertor was found.
+func New(provider string, conf ...Config) (Convertor, error) {
 	switch provider {
 	case "prince":
 		return newPrinceConvertor()
+	case "gotenberg":
+		return newGotenbergConvertor(conf...)
+	case "weasyprint":
+		return newWeasyprintConvertor(conf...)
 	default:
 		return nil, nil
 	}

@@ -21,8 +21,9 @@ import (
 
 type serveOpts struct {
 	*rootOpts
-	port string
-	pdf  string
+	port   string
+	pdf    string
+	pdfURL string
 
 	convertor pdf.Convertor
 }
@@ -41,6 +42,7 @@ func (s *serveOpts) cmd() *cobra.Command {
 	f := cmd.Flags()
 	f.StringVarP(&s.port, "port", "p", "3000", "port to listen on")
 	f.StringVarP(&s.pdf, "pdf", "", "", "PDF convertor to use")
+	f.StringVarP(&s.pdfURL, "pdf-url", "", "", "URL of the PDF convertor to use (if needed)")
 
 	return cmd
 }
@@ -50,7 +52,11 @@ func (s *serveOpts) runE(cmd *cobra.Command, args []string) error {
 	defer cancel()
 
 	var err error
-	if s.convertor, err = pdf.New(s.pdf); err != nil {
+	opts := make([]pdf.Config, 0)
+	if s.pdfURL != "" {
+		opts = append(opts, pdf.WithURL(s.pdfURL))
+	}
+	if s.convertor, err = pdf.New(s.pdf, opts...); err != nil {
 		return fmt.Errorf("preparing PDF convertor: %w", err)
 	}
 

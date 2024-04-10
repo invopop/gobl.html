@@ -24,13 +24,21 @@ templ DIANQR(env *gobl.Envelope, inv *bill.Invoice) {
 templ generateQR(inv *bill.Invoice, code, qr string) {
 	<style type="text/css">
         .dian-qr {
+			display: flex;
 			break-inside: avoid;
             font-family: monospace;
             font-size: 7pt;
         }
+		.dian-qr .image {
+			margin-right: 6mm;
+		}
+		.dian-qr .text {
+			margin-top: auto;
+			word-break: break-all;
+		}
         .dian-qr img {
-            width: 30mm;
-            height: 30mm;
+            width: 24mm;
+            height: 24mm;
         }
     </style>
 	<div class="dian-qr">
@@ -39,18 +47,20 @@ templ generateQR(inv *bill.Invoice, code, qr string) {
 				@images.QR(qr)
 			</a>
 		</div>
-		if pcude := dianPrecedingCUDE(inv); pcude != "" {
-			<div class="cude">
-				@t.T("billing.invoice.regimes.co.cude", i18n.M{"cude": code})
-			</div>
-			<div class="cufe">
-				@t.T("billing.invoice.regimes.co.preceding_cufe", i18n.M{"cufe": pcude})
-			</div>
-		} else {
-			<div class="cufe">
-				@t.T("billing.invoice.regimes.co.cufe", i18n.M{"cufe": code})
-			</div>
-		}
+		<div class="text">
+			if pcude := dianPrecedingCUDE(inv); pcude != "" {
+				<div class="cude">
+					@t.T("billing.invoice.regimes.co.cude", i18n.M{"cude": code})
+				</div>
+				<div class="cufe">
+					@t.T("billing.invoice.regimes.co.preceding_cufe", i18n.M{"cufe": pcude})
+				</div>
+			} else {
+				<div class="cufe">
+					@t.T("billing.invoice.regimes.co.cufe", i18n.M{"cufe": code})
+				</div>
+			}
+		</div>
 	</div>
 }
 

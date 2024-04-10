@@ -1,0 +1,107 @@
+package components
+
+import (
+	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/components/images"
+	"github.com/invopop/ctxi18n/i18n"
+)
+
+templ footerPrint(env *gobl.Envelope) {
+	<style type="text/css">
+        @media screen {
+            footer.screen {
+                display: block;
+            }
+            footer.print {
+                display: none;
+            }
+        }
+        @media print {
+            footer.screen {
+                display: none;
+            }
+            footer.print {
+                display: block;
+            }
+        }
+        @page {
+            @bottom {
+                content: element(footer);
+            }
+        }
+        footer {
+            height: 12mm;
+            text-align: right;
+            padding: 4mm 0mm;
+        }
+        footer.print {
+            position: running(footer);
+        }
+        footer.screen {
+            padding: 2mm 0mm;
+        }
+        footer .page {
+        }
+        footer .page-number {
+            content: counter(page);
+        }
+        footer .pages-number {
+            content: counter(pages);
+        }
+        footer .gobl-logo {
+            float: left;
+        }
+        footer.print .notes:after {
+            content: " · ";
+        }
+        footer .gobl-logo img {
+            width: 8mm;
+            height: 8mm;
+        }
+        footer.print .gobl-logo {
+            margin-top: -7mm;
+        }
+    </style>
+	<footer class="print">
+		@footerNotes(env)
+		@footerPage()
+		@footerGOBLLogo()
+	</footer>
+}
+
+templ footerScreen(env *gobl.Envelope) {
+	<footer class="screen">
+		@footerNotes(env)
+		@footerGOBLLogo()
+	</footer>
+}
+
+templ footerPage() {
+	<span class="page">
+		@templ.Raw(pageNumber(ctx))
+	</span>
+}
+
+templ footerNotes(env *gobl.Envelope) {
+	if env.Head.Notes != "" {
+		<span class="notes">
+			@templ.Raw(env.Head.Notes)
+		</span>
+	}
+}
+
+templ footerGOBLLogo() {
+	<div class="gobl-logo">
+		<a href="https://gobl.org">
+			@images.GOBL()
+		</a>
+	</div>
+}
+
+func pageNumber(ctx context.Context) string {
+	txt := i18n.T(ctx, "page", i18n.M{
+		"page":  `<span class="page-number">1</span>`,
+		"count": `<span class="pages-number">1</span>`,
+	})
+	return txt
+}

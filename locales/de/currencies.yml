@@ -1,0 +1,168 @@
+de:
+  currencies:
+    AED: VAE-Dirham
+    AFN: Afghani
+    ALL: Lek
+    AMD: Armenischer Dram
+    ANG: Niederländischer-Antillen-Gulden
+    AOA: Kwanza
+    ARS: Argentinischer Peso
+    AUD: Australischer Dollar
+    AWG: Aruba-Florin
+    AZN: Aserbaidschan-Manat
+    BAM: Konvertible Mark
+    BBD: Barbados-Dollar
+    BDT: Taka
+    BGN: Bulgarischer Lew
+    BHD: Bahrain-Dinar
+    BIF: Burundi-Franc
+    BMD: Bermuda-Dollar
+    BND: Brunei-Dollar
+    BOB: Boliviano
+    BOV: Mvdol
+    BRL: Brasilianischer Real
+    BSD: Bahama-Dollar
+    BTN: Ngultrum
+    BWP: Pula
+    BYN: Belarussischer Rubel
+    BZD: Belize-Dollar
+    CAD: Kanadischer Dollar
+    CDF: Kongo-Franc
+    CHE: WIR Euro
+    CHF: Schweizer Franken
+    CHW: WIR Franken
+    CLF: Unidad de Fomento
+    CLP: Chilenischer Peso
+    CNY: Renminbi Yuan
+    COP: Kolumbianischer Peso
+    COU: Unidad de Valor Real
+    CRC: Costa-Rica-Colón
+    CUC: Kubanischer konvertible Peso
+    CUP: Kubanischer Peso
+    CVE: Kap-Verde-Escudo
+    CZK: Tschechischer Krone
+    DJF: Dschibuti-Franc
+    DKK: Dänischer Krone
+    DOP: Dominikanischer Peso
+    DZD: Algerischer Dinar
+    EGP: Ägyptisches Pfund
+    ERN: Nakfa
+    ETB: Birr
+    EUR: Euro
+    FJD: Fidschi-Dollar
+    FKP: Falkland-Pfund
+    GBP: Britisches Pfund
+    GEL: Georgischer Lari
+    GHS: Ghana Cedi
+    GIP: Gibraltar-Pfund
+    GMD: Dalasi
+    GNF: Guineischer Franc
+    GTQ: Quetzal
+    GYD: Guyana-Dollar
+    HKD: Hongkong-Dollar
+    HNL: Lempira
+    HRK: Kroatischer Kuna
+    HTG: Gourde
+    HUF: Ungarischer Forint
+    IDR: Indonesischer Rupiah
+    ILS: Schekel
+    INR: Indischer Rupie
+    IQD: Irakischer Dinar
+    IRR: Iranischer Rial
+    ISK: Isländischer Krone
+    JMD: Jamaika-Dollar
+    JOD: Jordanischer Dinar
+    JPY: Yen
+    KES: Kenia-Schilling
+    KGS: Som
+    KHR: Riel
+    KMF: Komoren-Franc
+    KPW: Nordkoreanischer Won
+    KRW: Südkoreanischer Won
+    KWD: Kuwait-Dinar
+    KYD: Kaiman-Dollar
+    KZT: Tenge
+    LAK: Laotischer Kip
+    LBP: Libanesisches Pfund
+    LKR: Sri-Lanka-Rupie
+    LRD: Liberianischer Dollar
+    LSL: Loti
+    LYD: Libyscher Dinar
+    MAD: Marokkanischer Dirham
+    MDL: Moldau-Leu
+    MGA: Ariary
+    MKD: Denar
+    MMK: Kyat
+    MNT: Tögrög
+    MOP: Pataca
+    MRU: Ouguiya
+    MUR: Mauritius-Rupie
+    MVR: Rufiyaa
+    MWK: Malawi-Kwacha
+    MXN: Mexikanischer Peso
+    MXV: Mexikanischer Unidad de Inversion (UDI)
+    MYR: Malaysischer Ringgit
+    MZN: Mosambikanischer Metical
+    NAD: Namibia-Dollar
+    NGN: Naira
+    NIO: Córdoba Oro
+    NOK: Norwegischer Krone
+    NPR: Nepalesischer Rupie
+    NZD: Neuseeland-Dollar
+    OMR: Omanischer Rial
+    PAB: Balboa
+    PEN: Sol
+    PGK: Kina
+    PHP: Philippinischer Peso
+    PKR: Pakistanischer Rupie
+    PLN: Złoty
+    PYG: Guaraní
+    QAR: Katar-Riyal
+    RON: Rumänischer Leu
+    RSD: Serbischer Dinar
+    RUB: Russischer Rubel
+    RWF: Ruanda-Franc
+    SAR: Saudi-Riyal
+    SBD: Salomonen-Dollar
+    SCR: Seychellen-Rupie
+    SDG: Sudanesiches Pfund
+    SEK: Schwedischer Krone
+    SGD: Singapur-Dollar
+    SHP: St.-Helena-Pfund
+    SLL: Leone
+    SOS: Somali-Schilling
+    SRD: Suriname-Dollar
+    SSP: Südsudanesischer Pfund
+    STN: Dobra
+    SVC: El-Salvador-Colón
+    SYP: Syrisches Pfund
+    SZL: Lilangeni
+    THB: Baht
+    TJS: Somoni
+    TMT: Turkmenistan-Manat
+    TND: Tunesischer Dinar
+    TOP: Paʻanga
+    TRY: Türkischer Lira
+    TTD: Trinidad-und-Tobago-Dollar
+    TWD: Neuer Taiwan-Dollar
+    TZS: Tansania-Schilling
+    UAH: Hrywnja
+    UGX: Uganda-Schilling
+    USD: US-Dollar
+    USN: US-Dollar (nächster Tag)
+    UYI: Uruguayischer Peso in konvertiblen Einheiten
+    UYU: Uruguayischer Peso
+    UYW: Uruguayischer Nominallohnindex
+    UZS: Soʻm
+    VES: Venezolanischer Bolívar
+    VND: Đồng
+    VUV: Vatu
+    WST: Tala
+    XAF: CFA-Franc BEAC
+    XCD: Ostkaribischer Dollar
+    XOF: CFA-Franc BCEAO
+    XPF: CFP-Franc
+    YER: Jemen-Rial
+    ZAR: Südafrikanischer Rand
+    ZMW: Sambischer Kwacha
+    ZWL: Simbabwe-Dollar

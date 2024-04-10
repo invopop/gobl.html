@@ -30,7 +30,7 @@ func payment(inv *bill.Invoice) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if inv.Payment != nil {
+		if showPayments(inv) {
 			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 1)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -552,6 +552,16 @@ func paymentDueDates(terms *pay.Terms) templ.Component {
 		}
 		return templ_7745c5c3_Err
 	})
+}
+
+func showPayments(inv *bill.Invoice) bool {
+	if inv.Payment == nil {
+		return false
+	}
+	if inv.Payment.Instructions == nil && inv.Payment.Terms == nil {
+		return false
+	}
+	return true
 }
 
 func paymentInstrMethodName(ctx context.Context, inst *pay.Instructions) string {

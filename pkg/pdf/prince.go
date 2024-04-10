@@ -6,6 +6,8 @@ import (
 	"github.com/invopop/princepdf"
 )
 
+// The princeConvertor is by far the best option for converting HTML to PDF for GOBL documents.
+// Response times are fast and the quality of the PDFs is excellent.
 type princeConvertor struct {
 	client *princepdf.Client
 }
