@@ -1,0 +1,128 @@
+fr:
+  page: "Page %{page} sur %{count}"
+  billing:
+    invoice:
+      title:
+        standard: "Facture"
+        standard-simplified: "Facture simplifiée"
+        proforma: "Facture proforma"
+        corrective: "Facture corrective"
+        credit-note: "Note de crédit"
+        debit-note: "Note de débit"
+      summary:
+        title: "Résumé"
+        issue_date: "Date d'émission"
+        value_date: "Date de valeur"
+        operation_date: "Date d'opération"
+        currency: "Devise"
+        currency_value: "%{desc} (%{code})"
+        preceding_invoice: "Facture précédente"
+        order: "Commande"
+        order_period: "Période"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} à %{end}"
+      supplier:
+        title: "Fournisseur"
+      customer:
+        title: "Client"
+      lines:
+        title: "Lignes"
+        i: "#"
+        ref: "Réf."
+        description: "Description"
+        quantity: "Qté."
+        unit: "Unité"
+        price: "Prix"
+        discount: "Remise"
+        charges: "Frais"
+        total: "Total"
+      totals:
+        sum: "Somme"
+        discount: "Remise"
+        charge: "Frais"
+        title: "Totals"
+        prices_include_tax: "Taxes incluses"
+        total: "Total"
+        taxes: "Taxes"
+        total_with_tax: "Total avec taxe"
+        total_to_pay: "Total à payer"
+        outlay: "Débours %{i}: %{txt}"
+        advance: "Avance: %{date} %{txt}"
+        advance_sum: "Somme des avances"
+        due_sum: "Total dû"
+      taxes:
+        title: "Taxes"
+        category: "Taxe"
+        base: "Base"
+        rate: "Taux"
+        amount: "Montant"
+      payment:
+        title: "Paiement"
+        instructions:
+          method: "Méthode de paiement"
+          ref: "Référence"
+          bank_data: "Instructions de virement bancaire"
+          card: "Paiement par carte"
+          card_detail: "Paiement effectué avec la carte se terminant par %{last4} appartenant à %{holder}"
+          observations: "Notes de paiement"
+          bank_name: "Banque: %{name}"
+          iban: "IBAN: %{iban}"
+          account_number: "Numéro de compte: %{num}"
+          bic: "BIC: %{bic}"
+          methods:
+            card: "Carte bancaire"
+            credit_transfer: "Virement bancaire"
+            cash: "Espèces"
+            direct_debit: "Prélèvement automatique"
+            online: "En ligne"
+        terms:
+          key: "Conditions de paiement"
+          notes: "Notes sur les conditions de paiement"
+          due_dates: "Dates d'échéance"
+          keys:
+            na: "Non spécifié"
+            end_of_month: "Fin du mois"
+            due_date: "À la date d'échéance"
+            deferred: "Après la date d'échéance"
+            proximo: "Le mois prochain"
+            instant: "À la livraison de la facture"
+            elective: "Choisi par le client"
+            pending: "À déterminer par le fournisseur"
+            advanced: "Payé"
+            delivery: "À la livraison"
+      notes:
+        title: "Notes"
+        reg:
+          book: "Livre %{id}"
+          volume: "Volume %{id}"
+          sheet: "Feuille %{id}"
+          section: "Section %{id}"
+          page: "Page %{id}"
+          entry: "Entrée %{id}"
+          inscription: "Inscrit dans :"
+      regimes:
+        co:
+          cufe: "CUFE : %{cufe}"
+          cude: "CUDE : %{cude}"
+          preceding_cufe: "CUFE Facture précédente : %{cufe}"
+  organizing:
+    party:
+      tax_id: "%{label} : (%{country}) %{code}"
+      tel: "Tél : %{num}"
+      tel_label: "Tél : %{num} (%{label})"
+      email:
+        one: "Email : %{addr}"
+        other: "Emails : %{addr}"
+      email_label: "%{addr} (%{label})"
+      identity: "%{label} : %{code}"
+      identity_code: "Code d'identité"
+      po_box: "Boîte postale %{po_box}"
+      labels:
+        default: "Code fiscal"
+      ext: "%{label} : %{value}"
+      ext_map:
+        # Assurez-vous que cette liste est à jour dans toutes les langues !
+        co-dian-municipality: "Municipalité"
+    address:
+      label: "%{label} :"
+      country: "(%{country})"

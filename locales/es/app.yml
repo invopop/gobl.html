@@ -1,0 +1,139 @@
+es:
+  page: "Página %{page} de %{count}"
+
+  billing:
+    invoice:
+      title:
+        standard: "Factura"
+        standard-simplified: "Factura Simplificada"
+        proforma: "Factura Proforma"
+        corrective: "Factura Correctiva"
+        credit-note: "Nota de Crédito"
+        debit-note: "Nota de Débito"
+
+      summary:
+        title: "Resumen"
+        issue_date: "Fecha de Emisión"
+        value_date: "Fecha de Valor"
+        operation_date: "Fecha de Operación"
+        currency: "Moneda"
+        currency_value: "%{desc} (%{code})"
+        preceding_invoice: "Factura Anterior"
+        order: "Orden"
+        order_period: "Período"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} a %{end}"
+
+      supplier:
+        title: "Proveedor"
+
+      customer:
+        title: "Cliente"
+
+      lines:
+        title: "Líneas"
+        i: "#"
+        ref: "Ref."
+        description: "Descripción"
+        quantity: "Cant."
+        unit: "Unidad"
+        price: "Precio"
+        discount: "Desc."
+        charges: "Cargos"
+        total: "Total"
+
+      totals:
+        sum: "Suma"
+        discount: "Descuento"
+        charge: "Cargo"
+        title: "Totales"
+        prices_include_tax: "Impuestos incluidos"
+        total: "Total"
+        taxes: "Impuesto"
+        total_with_tax: "Total con impuesto"
+        total_to_pay: "Total a pagar"
+        outlay: "Suplido %{i}: %{txt}"
+        advance: "Anticipo: %{date} %{txt}"
+        advance_sum: "Suma Anticipos"
+        due_sum: "Total adeudado"
+
+      taxes:
+        title: "Impuestos"
+        category: "Impuesto"
+        base: "Base"
+        rate: "Tasa"
+        amount: "Monto"
+
+      payment:
+        title: "Pago"
+        instructions:
+          method: "Método de pago"
+          ref: "Referencia"
+          bank_data: "Instrucciones de transferencia bancaria"
+          card: "Pago con Tarjeta"
+          card_detail: "Pago realizado con tarjeta terminada en %{last4} perteneciente a %{holder}"
+          observations: "Notas de Pago"
+          bank_name: "Banco: %{name}"
+          iban: "IBAN: %{iban}"
+          account_number: "Número de cuenta: %{num}"
+          bic: "BIC: %{bic}"
+          methods:
+            card: "Tarjeta bancaria"
+            credit_transfer: "Transferencia bancaria"
+            cash: "Efectivo"
+            direct_debit: "Domiciliación bancaria"
+            online: "En línea"
+        terms:
+          key: "Términos de Pago"
+          notes: "Notas de Términos de Pago"
+          due_dates: "Fechas de vencimiento"
+          keys:
+            na: "No especificado"
+            end_of_month: "Fin de mes"
+            due_date: "En fecha de vencimiento"
+            deferred: "Después de la fecha de vencimiento"
+            proximo: "Próximo mes"
+            instant: "En la entrega de la factura"
+            elective: "Elegido por el cliente"
+            pending: "A determinar por el proveedor"
+            advanced: "Pagado"
+            delivery: "En la entrega"
+
+      notes:
+        title: "Notas"
+        reg:
+          book: "Libro %{id}"
+          volume: "Volumen %{id}"
+          sheet: "Hoja %{id}"
+          section: "Sección %{id}"
+          page: "Página %{id}"
+          entry: "Entrada %{id}"
+          inscription: "Inscrito en:"
+
+      regimes:
+        co:
+          cufe: "CUFE: %{cufe}"
+          cude: "CUDE: %{cude}"
+          preceding_cufe: "CUFE Factura anterior: %{cufe}"
+
+  organizing:
+    party:
+      tax_id: "%{label}: (%{country}) %{code}"
+      tel: "Tel: %{num}"
+      tel_label: "Tel: %{num} (%{label})"
+      email:
+        one: "Email: %{addr}"
+        other: "Emails: %{addr}"
+      email_label: "%{addr} (%{label})"
+      identity: "%{label}: %{code}"
+      identity_code: "Código de Identidad"
+      po_box: "Apartado Postal %{po_box}"
+      labels:
+        default: "Código Fiscal"
+      ext: "%{label}: %{value}"
+      ext_map:
+        # Asegúrese de que esta lista esté actualizada en todos los idiomas!
+        co-dian-municipality: "Municipio"
+    address:
+      label: "%{label}:"
+      country: "(%{country})"

@@ -1,0 +1,128 @@
+it:
+  page: "Pagina %{page} di %{count}"
+  billing:
+    invoice:
+      title:
+        standard: "Fattura"
+        standard-simplified: "Fattura Semplificata"
+        proforma: "Fattura Proforma"
+        corrective: "Fattura Correttiva"
+        credit-note: "Nota di Credito"
+        debit-note: "Nota di Debito"
+      summary:
+        title: "Riepilogo"
+        issue_date: "Data Emissione"
+        value_date: "Data Valuta"
+        operation_date: "Data Operazione"
+        currency: "Valuta"
+        currency_value: "%{desc} (%{code})"
+        preceding_invoice: "Fattura Precedente"
+        order: "Ordine"
+        order_period: "Periodo"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} a %{end}"
+      supplier:
+        title: "Fornitore"
+      customer:
+        title: "Cliente"
+      lines:
+        title: "Righe"
+        i: "#"
+        ref: "Rif."
+        description: "Descrizione"
+        quantity: "Q.tà"
+        unit: "Unità"
+        price: "Prezzo"
+        discount: "Sconto"
+        charges: "Oneri"
+        total: "Totale"
+      totals:
+        sum: "Somma"
+        discount: "Sconto"
+        charge: "Oneri"
+        title: "Totali"
+        prices_include_tax: "Tasse incluse"
+        total: "Totale"
+        taxes: "Tasse"
+        total_with_tax: "Totale con tasse"
+        total_to_pay: "Totale da pagare"
+        outlay: "Spesa %{i}: %{txt}"
+        advance: "Anticipo: %{date} %{txt}"
+        advance_sum: "Somma anticipi"
+        due_sum: "Totale dovuto"
+      taxes:
+        title: "Tasse"
+        category: "Tassa"
+        base: "Base"
+        rate: "Aliquota"
+        amount: "Importo"
+      payment:
+        title: "Pagamento"
+        instructions:
+          method: "Metodo di pagamento"
+          ref: "Riferimento"
+          bank_data: "Istruzioni per bonifico bancario"
+          card: "Pagamento con carta"
+          card_detail: "Pagamento effettuato con carta terminante in %{last4} intestata a %{holder}"
+          observations: "Note di pagamento"
+          bank_name: "Banca: %{name}"
+          iban: "IBAN: %{iban}"
+          account_number: "Numero di conto: %{num}"
+          bic: "BIC: %{bic}"
+          methods:
+            card: "Carta di credito"
+            credit_transfer: "Bonifico bancario"
+            cash: "Contanti"
+            direct_debit: "Addebito diretto"
+            online: "Online"
+        terms:
+          key: "Termini di pagamento"
+          notes: "Note sui termini di pagamento"
+          due_dates: "Scadenze"
+          keys:
+            na: "Non specificato"
+            end_of_month: "Fine mese"
+            due_date: "In scadenza"
+            deferred: "Dopo la scadenza"
+            proximo: "Mese successivo"
+            instant: "Alla consegna della fattura"
+            elective: "Scelto dal cliente"
+            pending: "Da determinare dal fornitore"
+            advanced: "Pagato"
+            delivery: "Alla consegna"
+      notes:
+        title: "Note"
+        reg:
+          book: "Libro %{id}"
+          volume: "Volume %{id}"
+          sheet: "Foglio %{id}"
+          section: "Sezione %{id}"
+          page: "Pagina %{id}"
+          entry: "Voce %{id}"
+          inscription: "Iscritto in:"
+      regimes:
+        co:
+          cufe: "CUFE: %{cufe}"
+          cude: "CUDE: %{cude}"
+          preceding_cufe: "CUFE Fattura precedente: %{cufe}"
+  organizing:
+    party:
+      tax_id: "%{label}: (%{country}) %{code}"
+      tel: "Tel: %{num}"
+      tel_label: "Tel: %{num} (%{label})"
+      email:
+        one: "Email: %{addr}"
+        other: "Email: %{addr}"
+      email_label: "%{addr} (%{label})"
+      identity: "%{label}: %{code}"
+      identity_code: "Codice Identità"
+      po_box: "C.P. %{po_box}"
+      labels:
+        default: "Codice Fiscale"
+      ext: "%{label}: %{value}"
+      ext_map:
+        # Assicurarsi che questa lista sia aggiornata in tutte le lingue!
+        co-dian-municipality: "Comune"
+    address:
+      label: "%{label}:"
+      country: "(%{country})"

@@ -23,4 +23,6 @@
 # Go workspace file
 go.work
 
+localazy.json
+
 /gobl.html

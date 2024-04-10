@@ -1,0 +1,139 @@
+de:
+  page: "Seite %{page} von %{count}"
+
+  billing:
+    invoice:
+      title:
+        standard: "Rechnung"
+        standard-simplified: "Vereinfachte Rechnung"
+        proforma: "Proforma-Rechnung"
+        corrective: "Korrekturrechnung"
+        credit-note: "Gutschrift"
+        debit-note: "Belastungsanzeige"
+
+      summary:
+        title: "Zusammenfassung"
+        issue_date: "Ausstellungsdatum"
+        value_date: "Wertstellungsdatum"
+        operation_date: "Buchungsdatum"
+        currency: "Währung"
+        currency_value: "%{desc} (%{code})"
+        preceding_invoice: "Vorherige Rechnung"
+        order: "Bestellung"
+        order_period: "Zeitraum"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} bis %{end}"
+
+      supplier:
+        title: "Lieferant"
+
+      customer:
+        title: "Kunde"
+
+      lines:
+        title: "Positionen"
+        i: "#"
+        ref: "Ref."
+        description: "Beschreibung"
+        quantity: "Menge"
+        unit: "Einheit"
+        price: "Preis"
+        discount: "Rabatt"
+        charges: "Gebühren"
+        total: "Gesamt"
+
+      totals:
+        sum: "Summe"
+        discount: "Rabatt"
+        charge: "Gebühr"
+        title: "Summen"
+        prices_include_tax: "Inklusive Steuern"
+        total: "Gesamt"
+        taxes: "Steuern"
+        total_with_tax: "Gesamt inkl. Steuern"
+        total_to_pay: "Gesamt zu zahlen"
+        outlay: "Auslage %{i}: %{txt}"
+        advance: "Vorauszahlung: %{date} %{txt}"
+        advance_sum: "Summe der Vorauszahlungen"
+        due_sum: "Gesamtbetrag fällig"
+
+      taxes:
+        title: "Steuern"
+        category: "Steuer"
+        base: "Basis"
+        rate: "Satz"
+        amount: "Betrag"
+
+      payment:
+        title: "Zahlung"
+        instructions:
+          method: "Zahlungsmethode"
+          ref: "Referenz"
+          bank_data: "Banküberweisungsanweisungen"
+          card: "Kartenzahlung"
+          card_detail: "Zahlung mit Karte mit den letzten 4 Ziffern %{last4} von %{holder}"
+          observations: "Zahlungshinweise"
+          bank_name: "Bank: %{name}"
+          iban: "IBAN: %{iban}"
+          account_number: "Kontonummer: %{num}"
+          bic: "BIC: %{bic}"
+          methods:
+            card: "Bankkarte"
+            credit_transfer: "Banküberweisung"
+            cash: "Bargeld"
+            direct_debit: "Lastschrift"
+            online: "Online"
+        terms:
+          key: "Zahlungsbedingungen"
+          notes: "Zahlungsbedingungen Hinweise"
+          due_dates: "Fälligkeitsdaten"
+          keys:
+            na: "Nicht angegeben"
+            end_of_month: "Ende des Monats"
+            due_date: "Am Fälligkeitstag"
+            deferred: "Nach Fälligkeitstag"
+            proximo: "Nächster Monat"
+            instant: "Bei Rechnungszustellung"
+            elective: "Vom Kunden gewählt"
+            pending: "Vom Lieferanten zu bestimmen"
+            advanced: "Bezahlt"
+            delivery: "Bei Lieferung"
+
+      notes:
+        title: "Hinweise"
+        reg:
+          book: "Buch %{id}"
+          volume: "Band %{id}"
+          sheet: "Blatt %{id}"
+          section: "Abschnitt %{id}"
+          page: "Seite %{id}"
+          entry: "Eintrag %{id}"
+          inscription: "Eingetragen in:"
+
+      regimes:
+        co:
+          cufe: "CUFE: %{cufe}"
+          cude: "CUDE: %{cude}"
+          preceding_cufe: "CUFE Vorherige Rechnung: %{cufe}"
+
+  organizing:
+    party:
+      tax_id: "%{label}: (%{country}) %{code}"
+      tel: "Tel: %{num}"
+      tel_label: "Tel: %{num} (%{label})"
+      email:
+        one: "E-Mail: %{addr}"
+        other: "E-Mails: %{addr}"
+      email_label: "%{addr} (%{label})"
+      identity: "%{label}: %{code}"
+      identity_code: "Identitätscode"
+      po_box: "Postfach %{po_box}"
+      labels:
+        default: "Steuernummer"
+      ext: "%{label}: %{value}"
+      ext_map:
+        # Stellen Sie sicher, dass diese Liste in allen Sprachen auf dem neuesten Stand ist!
+        co-dian-municipality: "Gemeinde"
+    address:
+      label: "%{label}:"
+      country: "(%{country})"

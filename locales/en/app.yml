@@ -41,9 +41,6 @@ en:
         discount: "Disc."
         charges: "Chgs."
         total: "Total"
-        sum: "Sum"
-        discount_sum: "Sum Discounts"
-        charge_sum: "Sum Charges"
 
       totals:
         sum: "Sum"

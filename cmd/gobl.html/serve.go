@@ -85,9 +85,17 @@ func (s *serveOpts) runE(cmd *cobra.Command, args []string) error {
 
 func (s *serveOpts) render(c echo.Context, env *gobl.Envelope) ([]byte, error) {
 	var err error
+
+	locale := c.QueryParam("locale")
+	if locale == "" {
+		locale = "en"
+	}
+
+	fmt.Printf("LOCALE: %v\n", locale)
+
 	// Set the locale to English to start with
 	ctx := c.Request().Context()
-	ctx, err = ctxi18n.WithLocale(ctx, "en")
+	ctx, err = ctxi18n.WithLocale(ctx, locale)
 	if err != nil {
 		return nil, fmt.Errorf("setting locale: %w", err)
 	}

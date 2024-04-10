@@ -3,7 +3,7 @@ package locales
 
 import "embed"
 
-//go:embed en
+//go:embed en de es fr it
 
 // Content is the embedded content for the locales.
 var Content embed.FS
