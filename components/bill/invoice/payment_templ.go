@@ -129,7 +129,7 @@ func paymentInstructions(inst *pay.Instructions) templ.Component {
 				var templ_7745c5c3_Var5 string
 				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(pm)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/billing/invoice/payment.templ`, Line: 36, Col: 10}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/payment.templ`, Line: 36, Col: 10}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 				if templ_7745c5c3_Err != nil {
@@ -156,7 +156,7 @@ func paymentInstructions(inst *pay.Instructions) templ.Component {
 				var templ_7745c5c3_Var6 string
 				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(inst.Ref)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/billing/invoice/payment.templ`, Line: 46, Col: 16}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/payment.templ`, Line: 46, Col: 16}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 				if templ_7745c5c3_Err != nil {
@@ -237,7 +237,7 @@ func paymentInstructions(inst *pay.Instructions) templ.Component {
 				var templ_7745c5c3_Var7 string
 				templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(inst.Notes)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/billing/invoice/payment.templ`, Line: 80, Col: 18}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/payment.templ`, Line: 80, Col: 18}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 				if templ_7745c5c3_Err != nil {
@@ -391,7 +391,7 @@ func paymentTerms(terms *pay.Terms) templ.Component {
 				var templ_7745c5c3_Var11 string
 				templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(paymentTermsKeyName(ctx, terms))
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/billing/invoice/payment.templ`, Line: 122, Col: 39}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/payment.templ`, Line: 122, Col: 39}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 				if templ_7745c5c3_Err != nil {
@@ -418,7 +418,7 @@ func paymentTerms(terms *pay.Terms) templ.Component {
 				var templ_7745c5c3_Var12 string
 				templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(terms.Notes)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/billing/invoice/payment.templ`, Line: 132, Col: 19}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/payment.templ`, Line: 132, Col: 19}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 				if templ_7745c5c3_Err != nil {
@@ -506,7 +506,7 @@ func paymentDueDates(terms *pay.Terms) templ.Component {
 			var templ_7745c5c3_Var14 string
 			templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(dd.Notes)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/billing/invoice/payment.templ`, Line: 161, Col: 16}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/payment.templ`, Line: 161, Col: 16}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 			if templ_7745c5c3_Err != nil {

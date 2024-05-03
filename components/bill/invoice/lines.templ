@@ -5,6 +5,7 @@ import (
 
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/regimes/mx"
 )
 
 templ lines(inv *bill.Invoice) {
@@ -45,7 +46,7 @@ templ linesWithSupport(inv *bill.Invoice, ls *lineSupport) {
 					</th>
 					for _, cat := range ls.categories {
 						<th class="tax">
-							{ cat.Name.String() }
+							{ cat.Name.In(t.Lang(ctx)) }
 						</th>
 					}
 					if ls.discounts {
@@ -98,6 +99,7 @@ templ line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) {
 				<br/>
 				<small>{ l.Item.Description }</small>
 			}
+			@mx.LineExtensions(l)
 		</td>
 		<td class="quantity">
 			@t.L(l.Quantity)
@@ -117,7 +119,11 @@ templ line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) {
 		for _, cat := range ls.categories {
 			<td class="tax">
 				if combo := l.Taxes.Get(cat.Code); combo != nil {
-					@t.L(*combo.Percent)
+					if combo.Percent != nil {
+						@t.L(*combo.Percent)
+					} else {
+						&mdash;
+					}
 				} else {
 					<!-- empty -->
 				}

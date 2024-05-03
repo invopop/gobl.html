@@ -1,0 +1,105 @@
+package mx
+
+import (
+	"github.com/invopop/gobl"
+	"github.com/invopop/gobl/head"
+	"github.com/invopop/gobl/regimes/mx"
+	"github.com/invopop/gobl.html/components/images"
+)
+
+templ signatures(h *head.Header) {
+	<style type="text/css">
+        .cfdi {
+			break-inside: avoid;
+            font-size: 7pt;
+			line-height: 1.6em;
+        }
+		.cfdi .image {
+			float: left;
+			margin-right: 6mm;
+		}
+		.cfdi .text {
+			margin-top: auto;
+		}
+        .cfdi img {
+            width: 30mm;
+            height: 30mm;
+        }
+		.cfdi .series::before {
+			content: "("
+		}
+		.cfdi .series::after {
+			content: ")"
+		}
+		.cfdi .value,
+		.cfdi .signature {
+            font-family: monospace;
+		}
+		.cfdi .signature {
+			word-break: break-all;
+			font-size: 5pt;
+		}
+    </style>
+	<section class="cfdi">
+		if qr := satURL(h); qr != "" {
+			<div class="image">
+				<a href={ templ.URL(qr) }>
+					@images.QR(qr)
+				</a>
+			</div>
+		}
+		<div class="text">
+			if st := h.GetStamp(mx.StampSATUUID); st != nil {
+				<div>
+					<b>Folio Fiscal:</b>
+					<span class="value">{ st.Value }</span>
+				</div>
+			}
+			if st := h.GetStamp(mx.StampSATTimestamp); st != nil {
+				<div>
+					<b>Fecha y hora de certificación:</b>
+					<span class="value">{ st.Value }</span>
+				</div>
+			}
+			if st := h.GetStamp(mx.StampCFDISignature); st != nil {
+				<div>
+					<b>Sello digital del CFDI</b>
+					if st := h.GetStamp(mx.StampCFDISerial); st != nil {
+						<span class="series">Serie: <span class="value">{ st.Value }</span></span>
+					}
+					<span class="signature">{ st.Value }</span>
+				</div>
+			}
+			if st := h.GetStamp(mx.StampSATSignature); st != nil {
+				<div>
+					<b>Sello digital del SAT</b>
+					if st := h.GetStamp(mx.StampSATSerial); st != nil {
+						<span class="series">Serie: <span class="value">{ st.Value }</span></span>
+					}
+					<span class="signature">{ st.Value }</span>
+				</div>
+			}
+			if st := h.GetStamp(mx.StampSATChain); st != nil {
+				<div>
+					<b>Cadena Original del complemento de certificación digital del SAT</b>
+					<span class="signature">{ st.Value }</span>
+				</div>
+			}
+			<div>
+				Este documento es una represetnación impresa de un CFDI.
+			</div>
+		</div>
+	</section>
+}
+
+func satURL(h *head.Header) string {
+	st := h.GetStamp(mx.StampSATURL)
+	if st == nil {
+		return ""
+	}
+	return st.Value
+}
+
+func hasSignatures(env *gobl.Envelope) bool {
+	return env.Head.GetStamp(mx.StampSATChain) != nil
+}

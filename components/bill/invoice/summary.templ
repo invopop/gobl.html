@@ -1,8 +1,12 @@
 package invoice
 
 import (
+	"strings"
+
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cal"
+	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/tax"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/currency"
@@ -20,7 +24,7 @@ templ summary(inv *bill.Invoice) {
 						@t.T(".issue_date")
 					</span>
 					<span class="value">
-						{ inv.IssueDate.String() }
+						@t.L(inv.IssueDate)
 					</span>
 				</li>
 				<li class="currency">
@@ -37,7 +41,7 @@ templ summary(inv *bill.Invoice) {
 							@t.T(".value_date")
 						</span>
 						<span class="value">
-							{ inv.ValueDate.String() }
+							@t.L(inv.ValueDate)
 						</span>
 					</li>
 				}
@@ -47,7 +51,7 @@ templ summary(inv *bill.Invoice) {
 							@t.T(".operation_date")
 						</span>
 						<span class="value">
-							{ inv.OperationDate.String() }
+							@t.L(inv.OperationDate)
 						</span>
 					</li>
 				}
@@ -61,7 +65,7 @@ templ summary(inv *bill.Invoice) {
 						</span>
 						if pre.IssueDate != nil {
 							<span class="value">
-								{ pre.IssueDate.String() }
+								@t.L(pre.IssueDate)
 							</span>
 						}
 						if pre.Reason != "" {
@@ -73,6 +77,20 @@ templ summary(inv *bill.Invoice) {
 				}
 				if inv.Ordering != nil {
 					@summaryOrderingRows(inv)
+				}
+				if inv.Tax != nil {
+					for k, v := range inv.Tax.Ext {
+						if label := mapTaxExtension(ctx, k, v); label != "" {
+							<li class="tax-ext">
+								<span class="label">
+									{ label }
+								</span>
+								<span class="value">
+									{ v.String() }
+								</span>
+							</li>
+						}
+					}
 				}
 			</ul>
 		}
@@ -118,4 +136,13 @@ func currencyName(ctx context.Context, cur currency.Code) string {
 	// does a translation for the currency name exist?
 	name := i18n.T(ctx, "currencies."+string(cur), i18n.Default(def.Name))
 	return i18n.T(ctx, "billing.invoice.summary.currency_value", i18n.M{"desc": name, "code": cur})
+}
+
+func mapTaxExtension(ctx context.Context, k cbc.Key, v tax.ExtValue) string {
+	// find the key translation
+	label := i18n.T(ctx, ".ext_map."+k.String())
+	if strings.HasPrefix(label, "!") { // if match found
+		return ""
+	}
+	return label
 }

@@ -35,16 +35,18 @@ templ generateTicketBAIQR(code, qr string) {
 			height: 25mm;
 		}
 	</style>
-	<div class="ticketbai">
-		<div class="label">
-			{ code }
+	<section>
+		<div class="ticketbai">
+			<div class="label">
+				{ code }
+			</div>
+			<div class="qr">
+				<a href={ templ.URL(qr) }>
+					@images.QR(qr)
+				</a>
+			</div>
 		</div>
-		<div class="qr">
-			<a href={ templ.URL(qr) }>
-				@images.QR(qr)
-			</a>
-		</div>
-	</div>
+	</section>
 }
 
 func ticketbaiCode(env *gobl.Envelope) string {

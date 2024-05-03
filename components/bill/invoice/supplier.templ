@@ -1,16 +1,16 @@
 package invoice
 
 import (
-	"github.com/invopop/gobl/org"
-	"github.com/invopop/gobl.html/components/organizing"
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/components/t"
 )
 
-templ supplier(party *org.Party) {
+templ supplier(inv *bill.Invoice) {
 	<section class="supplier">
 		<h2>
 			@t.T("billing.invoice.supplier.title")
 		</h2>
-		@organizing.Party(party)
+		@org.Party(inv.Supplier)
 	</section>
 }

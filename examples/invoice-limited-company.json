@@ -13,9 +13,6 @@
     "code": "FAKE20220001",
     "issue_date": "2022-02-01",
     "currency": "EUR",
-    "tax": {
-      "prices_include": "VAT"
-    },
     "supplier": {
       "name": "Biz España S.L.",
       "tax_id": {

@@ -99,30 +99,30 @@ fr:
           section: "Section %{id}"
           page: "Page %{id}"
           entry: "Entrée %{id}"
-          inscription: "Inscrit dans :"
+          inscription: "Inscrit dans:"
       regimes:
         co:
-          cufe: "CUFE : %{cufe}"
-          cude: "CUDE : %{cude}"
-          preceding_cufe: "CUFE Facture précédente : %{cufe}"
+          cufe: "CUFE: %{cufe}"
+          cude: "CUDE: %{cude}"
+          preceding_cufe: "CUFE Facture précédente: %{cufe}"
   organizing:
     party:
-      tax_id: "%{label} : (%{country}) %{code}"
-      tel: "Tél : %{num}"
-      tel_label: "Tél : %{num} (%{label})"
+      tax_id: "%{label}: (%{country}) %{code}"
+      tel: "Tél: %{num}"
+      tel_label: "Tél: %{num} (%{label})"
       email:
-        one: "Email : %{addr}"
-        other: "Emails : %{addr}"
+        one: "Email: %{addr}"
+        other: "Emails: %{addr}"
       email_label: "%{addr} (%{label})"
-      identity: "%{label} : %{code}"
+      identity: "%{label}: %{code}"
       identity_code: "Code d'identité"
       po_box: "Boîte postale %{po_box}"
       labels:
         default: "Code fiscal"
-      ext: "%{label} : %{value}"
+      ext: "%{label}: %{value}"
       ext_map:
         # Assurez-vous que cette liste est à jour dans toutes les langues !
         co-dian-municipality: "Municipalité"
     address:
-      label: "%{label} :"
+      label: "%{label}"
       country: "(%{country})"

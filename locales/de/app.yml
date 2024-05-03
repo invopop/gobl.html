@@ -129,7 +129,7 @@ de:
       identity_code: "Identitätscode"
       po_box: "Postfach %{po_box}"
       labels:
-        default: "Steuernummer"
+        default: "Steuercode"
       ext: "%{label}: %{value}"
       ext_map:
         # Stellen Sie sicher, dass diese Liste in allen Sprachen auf dem neuesten Stand ist!

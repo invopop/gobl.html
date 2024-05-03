@@ -1,16 +1,16 @@
 package invoice
 
 import (
-	"github.com/invopop/gobl/org"
-	"github.com/invopop/gobl.html/components/organizing"
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/components/t"
 )
 
-templ customer(party *org.Party) {
+templ customer(inv *bill.Invoice) {
 	<section class="customer">
 		<h2>
 			@t.T("billing.invoice.customer.title")
 		</h2>
-		@organizing.Party(party)
+		@org.Party(inv.Customer)
 	</section>
 }

@@ -5,8 +5,8 @@ go 1.22.1
 require (
 	github.com/a-h/templ v0.2.598
 	github.com/go-resty/resty/v2 v2.12.0
-	github.com/invopop/ctxi18n v0.4.0
-	github.com/invopop/gobl v0.71.0
+	github.com/invopop/ctxi18n v0.6.0
+	github.com/invopop/gobl v0.74.2-0.20240429205753-51d26c7ca2f8
 	github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a
 	github.com/labstack/echo/v4 v4.11.4
 	github.com/piglig/go-qr v0.2.4
@@ -23,7 +23,7 @@ require (
 	github.com/bahlo/generic-list-go v0.2.0 // indirect
 	github.com/buger/jsonparser v1.1.1 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/google/uuid v1.3.0 // indirect
+	github.com/google/uuid v1.6.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/invopop/jsonschema v0.12.0 // indirect
 	github.com/invopop/validation v0.3.0 // indirect
@@ -47,3 +47,5 @@ require (
 	golang.org/x/text v0.14.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+// replace github.com/invopop/gobl => ../gobl

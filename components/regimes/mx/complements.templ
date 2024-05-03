@@ -1,0 +1,287 @@
+package mx
+
+import (
+	"fmt"
+
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/num"
+	"github.com/invopop/gobl/regimes/mx"
+	"github.com/invopop/gobl/tax"
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/currency"
+)
+
+templ complements(inv *bill.Invoice) {
+	for _, c := range inv.Complements {
+		switch obj := c.Instance().(type) {
+			case *mx.FoodVouchers:
+				@foodVouchers(obj)
+			case *mx.FuelAccountBalance:
+				@fuelAccountBalance(obj)
+		}
+	}
+}
+
+templ foodVouchers(fv *mx.FoodVouchers) {
+	<style type="text/css">
+        .mx-food-vouchers {
+			break-inside: avoid;
+            font-size: 7pt;
+			line-height: 1.6em;
+        }
+        .mx-food-vouchers h2 {
+            font-size: 9pt;
+            padding-bottom: 6px;
+        }
+        .mx-food-vouchers table {
+            width: 100%;
+        }
+        .mx-food-vouchers th,
+        .mx-food-vouchers td {
+            text-align: left;
+			border-bottom: 0.5px solid #E5E7EB;
+			padding: 1.5mm 2mm;
+			margin: 0px;
+        }
+        .mx-food-vouchers thead th {
+			font-weight: 600;
+			background-color: #F3F4F6;
+        }
+        .mx-food-vouchers tfoot th {
+			font-weight: 600;
+            text-align: right;
+            border-bottom: 0px;
+        }
+        .mx-food-vouchers .amount, 
+        .mx-food-vouchers .total {
+            text-align: right;
+        }
+    </style>
+	<section class="mx-food-vouchers">
+		<h2>
+			Complemento de Vales de Despensa
+		</h2>
+		<table>
+			<thead>
+				<tr>
+					<th class="index">#</th>
+					<th class="e-wallet-id">ID</th>
+					<th class="issue-date-time">Fecha</th>
+					<th class="employee-tax-code">RFC</th>
+					<th class="employee-curp">CURP</th>
+					<th class="employee-name">Nombre</th>
+					<th class="employee-social-security">Seg. Social</th>
+					<th class="amount">Importe</th>
+				</tr>
+			</thead>
+			<tbody>
+				for i, line := range fv.Lines {
+					<tr>
+						<td class="index">
+							{ fmt.Sprint(i+1) }
+						</td>
+						<td class="e-wallet-id">
+							{ line.EWalletID.String() }
+						</td>
+						<td class="issue-date-time">
+							@t.L(line.IssueDateTime)
+						</td>
+						if line.Employee != nil {
+							<td class="employee-tax-code">
+								{ line.Employee.TaxCode.String() }
+							</td>
+							<td class="employee-curp">
+								{ line.Employee.CURP.String() }
+							</td>
+							<td class="employee-name">
+								{ line.Employee.Name }
+							</td>
+							<td class="employee-social-security">
+								{ line.Employee.SocialSecurity.String() }
+							</td>
+						} else {
+							<td colspan="4">
+								<!-- empty -->
+							</td>
+						}
+						<td class="amount">
+							@t.LM(line.Amount)
+						</td>
+					</tr>
+				}
+			</tbody>
+			<tfoot>
+				<tr>
+					<th colspan="7" class="label">
+						Total:
+					</th>
+					<th class="total">
+						@t.LM(fv.Total)
+					</th>
+				</tr>
+			</tfoot>
+		</table>
+	</section>
+}
+
+templ fuelAccountBalance(b *mx.FuelAccountBalance) {
+	<style type="text/css">
+        .mx-fuel-account-balance {
+			break-inside: avoid;
+            font-size: 7pt;
+			line-height: 1.6em;
+        }
+        .mx-fuel-account-balance h2 {
+            font-size: 9pt;
+            padding-bottom: 6px;
+        }
+        .mx-fuel-account-balance table {
+            width: 100%;
+        }
+        .mx-fuel-account-balance th,
+        .mx-fuel-account-balance td {
+            text-align: left;
+			border-bottom: 0.5px solid #E5E7EB;
+			padding: 1.5mm 2mm;
+			margin: 0px;
+        }
+        .mx-fuel-account-balance thead th {
+			font-weight: 600;
+			background-color: #F3F4F6;
+        }
+        .mx-fuel-account-balance tfoot th {
+			font-weight: 600;
+            text-align: right;
+            border-bottom: 0px;
+        }
+        .mx-fuel-account-balance .amount, 
+        .mx-fuel-account-balance .total {
+            text-align: right;
+        }
+    </style>
+	<section class="mx-fuel-account-balance">
+		<h2>
+			Complemento de Estado de Cuenta de Combustibles para Monederos Electrónicos
+		</h2>
+		<table>
+			<thead>
+				<tr>
+					<th class="e-wallet-id">Id.</th>
+					<th class="purchase-date-time">Fecha</th>
+					<th class="vendor-tax-code">RFC</th>
+					<th class="service-station-code">ID Estación</th>
+					<th class="purchase-code">FolioOp</th>
+					<th class="quantity">Litros</th>
+					<th class="item-price">Precio</th>
+					<th class="item-name">Combustible</th>
+					<th class="sum">Suma</th>
+					<th class="tax-vat">IVA</th>
+					<th class="tax-ieps">IEPS</th>
+					<th class="total">Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				for _, line := range b.Lines {
+					<tr>
+						<td class="e-wallet-id">
+							{ line.EWalletID.String() }
+						</td>
+						<td class="purchase-date-time">
+							@t.L(line.PurchaseDateTime)
+						</td>
+						<td class="vendor-tax-code">
+							{ line.VendorTaxCode.String() }
+						</td>
+						<td class="service-station-code">
+							{ line.ServiceStationCode.String() }
+						</td>
+						<td class="purchase-code">
+							{ line.PurchaseCode.String() }
+						</td>
+						<td class="quantity">
+							@t.L(line.Quantity)
+						</td>
+						if line.Item != nil {
+							<td class="item-price">
+								@t.LM(line.Item.Price)
+								if u := string(line.Item.Unit); u != "" {
+									/{ string(line.Item.Unit) }
+								}
+							</td>
+							<td class="item-name">
+								{ line.Item.Name }
+							</td>
+						} else {
+							<td colspan="2">
+								<!-- empty -->
+							</td>
+						}
+						<td class="sum">
+							@t.LM(line.Total)
+						</td>
+						<td class="tax-vat">
+							if a := fuelAccountTax(line.Taxes, tax.CategoryVAT); a != nil {
+								@t.LM(*a)
+							}
+						</td>
+						<td class="tax-ieps">
+							if a := fuelAccountTax(line.Taxes, mx.TaxCategoryIEPS); a != nil {
+								@t.LM(*a)
+							}
+						</td>
+						<td class="total">
+							@t.LM(fuelAccountTotal(line))
+						</td>
+					</tr>
+				}
+			</tbody>
+			<tfoot>
+				<tr>
+					<th colspan="8" class="label">
+						Total:
+					</th>
+					<th class="sum">
+						@t.LM(b.Subtotal)
+					</th>
+					<th class="tax-vat">
+						@t.LM(fuelAccountTaxTotal(b, tax.CategoryVAT))
+					</th>
+					<th class="tax-ieps">
+						@t.LM(fuelAccountTaxTotal(b, mx.TaxCategoryIEPS))
+					</th>
+					<th class="total">
+						@t.LM(b.Total)
+					</th>
+				</tr>
+			</tfoot>
+		</table>
+	</section>
+}
+
+func fuelAccountTaxTotal(b *mx.FuelAccountBalance, code cbc.Code) num.Amount {
+	sum := currency.MXN.Def().Zero()
+	for _, line := range b.Lines {
+		if a := fuelAccountTax(line.Taxes, code); a != nil {
+			sum = sum.Add(*a)
+		}
+	}
+	return sum
+}
+
+func fuelAccountTotal(line *mx.FuelAccountLine) num.Amount {
+	sum := line.Total
+	for _, t := range line.Taxes {
+		sum = sum.Add(t.Amount)
+	}
+	return sum
+}
+
+func fuelAccountTax(taxes []*mx.FuelAccountTax, code cbc.Code) *num.Amount {
+	for _, row := range taxes {
+		if row.Category == code {
+			return &row.Amount
+		}
+	}
+	return nil
+}

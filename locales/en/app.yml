@@ -23,6 +23,8 @@ en:
         order_period: "Period"
         order_period_label: "%{label}"
         order_period_range: "%{start} to %{end}"
+        ext_map:
+          mx-cfdi-issue-place: "Place of Issue"
 
       supplier:
         title: "Supplier"
@@ -132,8 +134,10 @@ en:
         default: "Tax Code"
       ext: "%{label}: %{value}"
       ext_map:
-        # Ensure this list is up to date in all locales!
         co-dian-municipality: "Municipality"
+        mx-cfdi-fiscal-regime: "Régimen Fiscal"
+        mx-cfdi-post-code: "Lugar"
+        mx-cfdi-use: "Uso CFDI"
     address:
       label: "%{label}:"
       country: "(%{country})"

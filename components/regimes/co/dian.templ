@@ -25,7 +25,6 @@ templ generateQR(inv *bill.Invoice, code, qr string) {
 	<style type="text/css">
         .dian-qr {
 			display: flex;
-			break-inside: avoid;
             font-family: monospace;
             font-size: 7pt;
         }
@@ -41,7 +40,7 @@ templ generateQR(inv *bill.Invoice, code, qr string) {
             height: 24mm;
         }
     </style>
-	<div class="dian-qr">
+	<section class="dian-qr">
 		<div class="image">
 			<a href={ templ.URL(dianURL(qr)) }>
 				@images.QR(qr)
@@ -61,7 +60,7 @@ templ generateQR(inv *bill.Invoice, code, qr string) {
 				</div>
 			}
 		</div>
-	</div>
+	</section>
 }
 
 func dianURL(qr string) string {

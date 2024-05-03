@@ -11,10 +11,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/invopop/ctxi18n"
+	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
 	goblhtml "github.com/invopop/gobl.html"
 	"github.com/invopop/gobl.html/pkg/pdf"
+	"github.com/invopop/gobl/org"
 	"github.com/labstack/echo/v4"
 	"github.com/spf13/cobra"
 )
@@ -83,24 +84,30 @@ func (s *serveOpts) runE(cmd *cobra.Command, args []string) error {
 	return startErr
 }
 
-func (s *serveOpts) render(c echo.Context, env *gobl.Envelope) ([]byte, error) {
+func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope) ([]byte, error) {
+	ctx := c.Request().Context()
 	var err error
 
-	locale := c.QueryParam("locale")
-	if locale == "" {
-		locale = "en"
+	// Prepare the request options
+	opts := make([]goblhtml.Option, 0)
+	if req.DateFormat != "" {
+		opts = append(opts, goblhtml.WithCalFormatter(req.DateFormat, "", time.UTC))
+	}
+	opts = append(opts, goblhtml.WithLocale(req.Locale))
+
+	// Add some of the extras to the output
+	if req.LogoURL != "" {
+		logo := &org.Image{
+			URL:    req.LogoURL,
+			Height: req.LogoHeight,
+		}
+		opts = append(opts, goblhtml.WithLogo(logo))
+	}
+	if req.Notes != "" {
+		opts = append(opts, goblhtml.WithNotes(req.Notes))
 	}
 
-	fmt.Printf("LOCALE: %v\n", locale)
-
-	// Set the locale to English to start with
-	ctx := c.Request().Context()
-	ctx, err = ctxi18n.WithLocale(ctx, locale)
-	if err != nil {
-		return nil, fmt.Errorf("setting locale: %w", err)
-	}
-
-	out, err := goblhtml.Render(ctx, env)
+	out, err := goblhtml.Render(ctx, env, opts...)
 	if err != nil {
 		return nil, fmt.Errorf("generating html: %w", err)
 	}
@@ -108,12 +115,25 @@ func (s *serveOpts) render(c echo.Context, env *gobl.Envelope) ([]byte, error) {
 	return out, nil
 }
 
-func (s *serveOpts) generate(c echo.Context) error {
-	filename := c.Param("filename")
-	ext := filepath.Ext(filename)
-	filename = strings.TrimSuffix(filename, ext) + ".json"
+type options struct {
+	Filename   string    `param:"filename"`
+	Locale     i18n.Code `query:"locale"`
+	DateFormat string    `query:"date_format"`
+	LogoURL    string    `query:"logo_url"`
+	LogoHeight int32     `query:"logo_height"`
+	Notes      string    `query:"notes"`
+}
 
-	ed, err := os.ReadFile(filepath.Join("./examples", filename))
+func (s *serveOpts) generate(c echo.Context) error {
+	req := new(options)
+	if err := c.Bind(req); err != nil {
+		return fmt.Errorf("binding options: %w", err)
+	}
+
+	ext := filepath.Ext(req.Filename)
+	req.Filename = strings.TrimSuffix(req.Filename, ext) + ".json"
+
+	ed, err := os.ReadFile(filepath.Join("./examples", req.Filename))
 	if err != nil {
 		return fmt.Errorf("loading file: %w", err)
 	}
@@ -123,7 +143,7 @@ func (s *serveOpts) generate(c echo.Context) error {
 		return fmt.Errorf("unmarshalling file: %w", err)
 	}
 
-	data, err := s.render(c, env)
+	data, err := s.render(c, req, env)
 	if err != nil {
 		return err
 	}

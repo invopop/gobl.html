@@ -34,7 +34,10 @@ func prepareLineSupport(inv *bill.Invoice) *lineSupport {
 			ls.units = true
 		}
 		for _, combo := range l.Taxes {
-			cats = addCategory(cats, r.Category(combo.Category))
+			cat := r.Category(combo.Category)
+			if cat != nil {
+				cats = addCategory(cats, cat)
+			}
 		}
 	}
 	for _, row := range inv.Discounts {

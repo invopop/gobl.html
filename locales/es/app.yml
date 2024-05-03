@@ -23,6 +23,8 @@ es:
         order_period: "Período"
         order_period_label: "%{label}"
         order_period_range: "%{start} a %{end}"
+        ext_map:
+          mx-cfdi-issue-place: "Lugar de Expedición"
 
       supplier:
         title: "Proveedor"
@@ -132,7 +134,6 @@ es:
         default: "Código Fiscal"
       ext: "%{label}: %{value}"
       ext_map:
-        # Asegúrese de que esta lista esté actualizada en todos los idiomas!
         co-dian-municipality: "Municipio"
     address:
       label: "%{label}:"

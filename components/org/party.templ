@@ -1,4 +1,4 @@
-package organizing
+package org
 
 import (
 	"strings"
@@ -16,6 +16,9 @@ templ Party(party *org.Party) {
 	<div class="org-party">
 		@t.Scope("organizing.party") {
 			<div class="name">{ party.Name }</div>
+			if party.Alias != "" {
+				<div class="alias">{ party.Alias }</div>
+			}
 			for _, a := range party.Addresses {
 				@AddressWithLabel(a)
 			}

@@ -1,0 +1,13 @@
+package mx
+
+import (
+	"github.com/invopop/gobl"
+	"github.com/invopop/gobl/bill"
+)
+
+templ CFDI(env *gobl.Envelope, inv *bill.Invoice) {
+	@complements(inv)
+	if hasSignatures(env) {
+		@signatures(env.Head)
+	}
+}

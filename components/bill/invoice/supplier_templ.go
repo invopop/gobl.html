@@ -11,12 +11,12 @@ import "io"
 import "bytes"
 
 import (
-	"github.com/invopop/gobl.html/components/organizing"
+	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl/org"
+	"github.com/invopop/gobl/bill"
 )
 
-func customer(party *org.Party) templ.Component {
+func supplier(inv *bill.Invoice) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -33,7 +33,7 @@ func customer(party *org.Party) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = t.T("billing.invoice.customer.title").Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = t.T("billing.invoice.supplier.title").Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -41,7 +41,7 @@ func customer(party *org.Party) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = organizing.Party(party).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = org.Party(inv.Supplier).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

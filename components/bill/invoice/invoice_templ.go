@@ -21,6 +21,7 @@ import (
 
 	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/regimes/es"
+	"github.com/invopop/gobl.html/components/regimes/mx"
 )
 
 // Invoice renders a complete GOBL bill.Invoice object.
@@ -53,12 +54,12 @@ func Invoice(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = supplier(inv.Supplier).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = supplier(inv).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		if inv.Customer != nil {
-			templ_7745c5c3_Err = customer(inv.Customer).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = customer(inv).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -104,6 +105,10 @@ func Invoice(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		templ_7745c5c3_Err = co.DIANQR(env, inv).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = mx.CFDI(env, inv).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -172,7 +177,7 @@ func title(inv *bill.Invoice) templ.Component {
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(supplierAlias(inv))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/billing/invoice/invoice.templ`, Line: 317, Col: 25}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/invoice.templ`, Line: 324, Col: 25}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -198,7 +203,7 @@ func title(inv *bill.Invoice) templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(code(inv.Series, inv.Code))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/billing/invoice/invoice.templ`, Line: 325, Col: 31}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/invoice.templ`, Line: 332, Col: 31}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {

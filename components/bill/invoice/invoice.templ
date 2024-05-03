@@ -11,6 +11,7 @@ import (
 
 	"github.com/invopop/gobl.html/components/regimes/es"
 	"github.com/invopop/gobl.html/components/regimes/co"
+	"github.com/invopop/gobl.html/components/regimes/mx"
 )
 
 // Invoice renders a complete GOBL bill.Invoice object.
@@ -100,7 +101,6 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 			order: 5;
 			padding-top: 6mm;
 			padding-bottom: 0mm;
-
 		}
 		section.lines h2 {
 			display: none;
@@ -137,6 +137,12 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 			white-space: wrap;
 		}
 		section.lines .label {
+			font-weight: 500;
+		}
+		section.lines .description .extensions {
+			display: block;
+		}
+		section.lines .description .extensions .label {
 			font-weight: 500;
 		}
 		div.totals {
@@ -263,13 +269,13 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 		section.notes .note {
 			margin-bottom: 3mm;
 		}
-		section.extensions {
+		.extensions section {
 			break-inside: avoid;
 			padding-top: 6mm;
 			padding-bottom: 6mm;
 			border-bottom: 0.5px solid #E5E7EB;
 		}
-		section.extensions:empty {
+		.extensions:empty {
 			display: none;
 		}
 		.org-party .name {
@@ -287,9 +293,9 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 				@summary(inv)
 			</div>
 			<div class="contacts">
-				@supplier(inv.Supplier)
+				@supplier(inv)
 				if inv.Customer != nil {
-					@customer(inv.Customer)
+					@customer(inv)
 				}
 			</div>
 		</header>
@@ -300,11 +306,12 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 		</div>
 		@payment(inv)
 		@notes(inv)
-		<section class="extensions">
+		<div class="extensions">
 			// Region specific information
 			@es.TicketBAIQR(env)
 			@co.DIANQR(env, inv)
-		</section>
+			@mx.CFDI(env, inv)
+		</div>
 	</article>
 }
 

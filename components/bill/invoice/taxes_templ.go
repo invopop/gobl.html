@@ -150,9 +150,9 @@ func taxRateRow(inv *bill.Invoice, cat *tax.CategoryTotal, rate *tax.RateTotal, 
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var4 string
-			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(taxCategoryTotalName(inv, cat))
+			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(taxCategoryTotalName(ctx, inv, cat))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/billing/invoice/taxes.templ`, Line: 51, Col: 36}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/taxes.templ`, Line: 51, Col: 41}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -187,14 +187,19 @@ func taxRateRow(inv *bill.Invoice, cat *tax.CategoryTotal, rate *tax.RateTotal, 
 					return templ_7745c5c3_Err
 				}
 			}
-		}
-		if rate.Surcharge != nil {
+		} else {
 			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 16)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 17)
+		if rate.Surcharge != nil {
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 17)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 18)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -209,7 +214,7 @@ func taxRateRow(inv *bill.Invoice, cat *tax.CategoryTotal, rate *tax.RateTotal, 
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 18)
+		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 19)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -232,8 +237,8 @@ func taxCategoryRowSpan(ct *tax.CategoryTotal, row int) int {
 	return 0
 }
 
-func taxCategoryTotalName(inv *bill.Invoice, cat *tax.CategoryTotal) string {
+func taxCategoryTotalName(ctx context.Context, inv *bill.Invoice, cat *tax.CategoryTotal) string {
 	r := inv.TaxRegime()
 	category := r.Category(cat.Code)
-	return category.Name.String()
+	return category.Name.In(t.Lang(ctx))
 }

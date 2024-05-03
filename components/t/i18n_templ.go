@@ -77,8 +77,8 @@ func N(key string, n int, args ...any) templ.Component {
 	})
 }
 
-// L localizes a GOBL num.Amount or num.Percentage according to the rules
-// defined in the context.
+// L localizes a GOBL num.Amount, num.Percentage, cal.DateTime, or cal.Date according
+// to the rules defined in the context.
 func L(a any) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
@@ -197,21 +197,26 @@ func Scope(key string) templ.Component {
 }
 
 func localize(ctx context.Context, a any) string {
-	f := GetFormatter(ctx).WithoutUnit()
 	switch v := a.(type) {
 	case num.Amount:
-		return f.Amount(v)
+		nf := numFormatter(ctx).WithoutUnit()
+		return nf.Amount(v)
 	case num.Percentage:
-		return f.Percentage(v)
+		nf := numFormatter(ctx).WithoutUnit()
+		return nf.Percentage(v)
+	case cal.DateTime:
+		cf := calFormatter(ctx)
+		return v.In(cf.Location).Format(cf.DateTime)
 	case cal.Date:
-		return v.String()
+		cf := calFormatter(ctx)
+		return v.Time().Format(cf.Date)
 	default:
 		return "!(UNKOWN TYPE)"
 	}
 }
 
 func localizeMoney(ctx context.Context, a num.Amount) string {
-	f := GetFormatter(ctx)
+	f := numFormatter(ctx)
 	return f.Amount(a)
 }
 

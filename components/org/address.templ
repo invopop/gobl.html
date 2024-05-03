@@ -1,4 +1,4 @@
-package organizing
+package org
 
 import (
 	"strings"
@@ -47,6 +47,9 @@ func buildAddressLines(addr *org.Address) []string {
 	lines = append(lines, addr.Locality)
 	if addr.Region != "" {
 		lines = append(lines, addr.Region)
+	}
+	if addr.Code != "" {
+		lines = append(lines, addr.Code)
 	}
 	return lines
 }
