@@ -22,7 +22,7 @@ func newPrinceConvertor() (*princeConvertor, error) {
 	return c, nil
 }
 
-func (pc *princeConvertor) HTML(ctx context.Context, data []byte, opts ...Option) ([]byte, error) {
+func (pc *princeConvertor) HTML(_ context.Context, data []byte, opts ...Option) ([]byte, error) {
 	o := prepareOptions(opts)
 	j := new(princepdf.Job)
 	j.Input = &princepdf.Input{

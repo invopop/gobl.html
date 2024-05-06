@@ -1,3 +1,4 @@
+// Package internal is used for internal option configuration.
 package internal
 
 import (

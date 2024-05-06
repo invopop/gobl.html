@@ -1,3 +1,4 @@
+// Package main provides the entry point for the gobl.html command-line tool.
 package main
 
 import (

@@ -33,7 +33,7 @@ func newWeasyprintConvertor(opts ...Config) (*weasyprintConvertor, error) {
 	return gc, nil
 }
 
-func (gc *weasyprintConvertor) HTML(ctx context.Context, data []byte, opts ...Option) ([]byte, error) {
+func (gc *weasyprintConvertor) HTML(_ context.Context, data []byte, _ ...Option) ([]byte, error) {
 	buf := bytes.NewBuffer(data)
 	resp, err := gc.client.R().
 		SetFileReader("html", "index.html", buf).

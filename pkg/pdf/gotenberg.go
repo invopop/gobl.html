@@ -34,7 +34,7 @@ func newGotenbergConvertor(opts ...Config) (*gotenbergConvertor, error) {
 	return gc, nil
 }
 
-func (gc *gotenbergConvertor) HTML(ctx context.Context, data []byte, opts ...Option) ([]byte, error) {
+func (gc *gotenbergConvertor) HTML(_ context.Context, data []byte, _ ...Option) ([]byte, error) {
 	buf := bytes.NewBuffer(data)
 	resp, err := gc.client.R().
 		SetFileReader("files", "index.html", buf).

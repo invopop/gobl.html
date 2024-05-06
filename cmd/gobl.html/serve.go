@@ -48,7 +48,7 @@ func (s *serveOpts) cmd() *cobra.Command {
 	return cmd
 }
 
-func (s *serveOpts) runE(cmd *cobra.Command, args []string) error {
+func (s *serveOpts) runE(cmd *cobra.Command, _ []string) error {
 	ctx, cancel := context.WithCancel(cmd.Context())
 	defer cancel()
 
