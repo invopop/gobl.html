@@ -6,11 +6,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/invopop/ctxi18n"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components"
-	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal"
+	srclocales "github.com/invopop/gobl.html/locales"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/currency"
 	"github.com/invopop/gobl/num"
@@ -18,46 +18,49 @@ import (
 )
 
 const (
-	defaultLanguage i18n.Code = "en"
+	defaultLocale i18n.Code = "en"
 )
 
-// Option defines a configuration option to use for rendering.
-type Option func(*options)
+var locales *i18n.Locales
 
-type options struct {
-	locale       i18n.Code
-	calFormatter *t.CalFormatter
-	numFormatter *num.Formatter
-	logo         *org.Image
-	notes        string
+func init() {
+	// Locales are loaded into a global variable for this package so that
+	// users can continue to use their own locales outside of this one.
+	locales = new(i18n.Locales)
+	if err := locales.LoadWithDefault(srclocales.Content, defaultLocale); err != nil {
+		panic(fmt.Errorf("loading locales: %w", err))
+	}
 }
+
+// Option defines a configuration option to use for rendering.
+type Option func(*internal.Opts)
 
 // WithLogo overrides whatever logo was defined in the original envelope,
 // if at all, using the provided logo according to the document type.
 func WithLogo(logo *org.Image) Option {
-	return func(o *options) {
-		o.logo = logo
+	return func(o *internal.Opts) {
+		o.Logo = logo
 	}
 }
 
 // WithNotes adds the provided string to the envelope notes.
 func WithNotes(txt string) Option {
-	return func(o *options) {
-		o.notes = txt
+	return func(o *internal.Opts) {
+		o.Notes = txt
 	}
 }
 
 // WithLocale sets the locale to use for rendering.
 func WithLocale(locale i18n.Code) Option {
-	return func(o *options) {
-		o.locale = locale
+	return func(o *internal.Opts) {
+		o.Locale = locale
 	}
 }
 
 // WithCalFormatter prepares simple date and datetime formatting.
 func WithCalFormatter(date, dateTime string, loc *time.Location) Option {
-	return func(o *options) {
-		cf := t.CalFormatterISO
+	return func(o *internal.Opts) {
+		cf := internal.CalFormatterISO
 		if date != "" {
 			cf.Date = date
 		}
@@ -67,64 +70,52 @@ func WithCalFormatter(date, dateTime string, loc *time.Location) Option {
 		if loc != nil {
 			cf.Location = loc
 		}
-		o.calFormatter = &cf
+		o.CalFormatter = &cf
 	}
 }
 
 // WithNumFormatter defines a customer number formatter to use instead of
 // that provided by default for the currency.
 func WithNumFormatter(nf num.Formatter) Option {
-	return func(o *options) {
-		o.numFormatter = &nf
+	return func(o *internal.Opts) {
+		o.NumFormatter = &nf
 	}
 }
 
 // Render takes the GOBL envelope and attempts to render an HTML document
 // from it.
 func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, error) {
-	conf := new(options)
+	o := new(internal.Opts)
 	for _, opt := range opts {
-		opt(conf)
+		opt(o)
 	}
 
 	// Prepare the Locale
-	if conf.locale == "" {
-		conf.locale = defaultLanguage
+	if o.Locale == "" {
+		o.Locale = defaultLocale
 	}
-	ctx, err := ctxi18n.WithLocale(ctx, string(conf.locale))
-	if err != nil {
-		return nil, fmt.Errorf("preparing locale: %w", err)
+	l := locales.Match(string(o.Locale))
+	if l == nil {
+		l = locales.Get(defaultLocale)
 	}
-
-	// Is there a calendar formatter?
-	if conf.calFormatter != nil {
-		ctx = t.WithCalFormatter(ctx, *conf.calFormatter)
-	}
+	ctx = l.WithContext(ctx)
 
 	// Extract the currency to use for formatting
-	if conf.numFormatter == nil {
+	if o.NumFormatter == nil {
 		cur := currency.EUR
 		switch doc := env.Extract().(type) {
 		case *bill.Invoice:
 			cur = doc.Currency
 		}
 		nf := cur.Def().Formatter()
-		conf.numFormatter = &nf
-	}
-	ctx = t.WithNumFormatter(ctx, *conf.numFormatter)
-
-	// Does a logo need to be replaced?
-	if conf.logo != nil {
-		switch doc := env.Extract().(type) {
-		case *bill.Invoice:
-			doc.Supplier.Logos = []*org.Image{conf.logo}
-		}
+		o.NumFormatter = &nf
 	}
 
-	// Any additional notes?
-	if conf.notes != "" {
-		env.Head.Notes = conf.notes
+	if o.CalFormatter == nil {
+		o.CalFormatter = &internal.CalFormatterISO
 	}
+
+	ctx = internal.WithOptions(ctx, o)
 
 	out := components.Envelope(env)
 	buf := new(bytes.Buffer)

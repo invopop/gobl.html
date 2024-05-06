@@ -123,7 +123,7 @@ templ summaryOrderPeriodRows(p *cal.Period) {
 			}
 		</span>
 		<span class="value">
-			@t.T(".order_period_range", i18n.M{"start": p.Start, "end": p.End})
+			@t.T(".order_period_range", i18n.M{"start": t.Localize(ctx, p.Start), "end": t.Localize(ctx, p.End)})
 		</span>
 	</li>
 }

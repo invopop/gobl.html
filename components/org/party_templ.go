@@ -11,6 +11,8 @@ import "io"
 import "bytes"
 
 import (
+	"cmp"
+	"slices"
 	"strings"
 
 	"github.com/invopop/ctxi18n/i18n"
@@ -52,7 +54,7 @@ func Party(party *org.Party) templ.Component {
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(party.Name)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 17, Col: 33}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 19, Col: 33}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -70,7 +72,7 @@ func Party(party *org.Party) templ.Component {
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(party.Alias)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 19, Col: 36}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 21, Col: 36}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
@@ -307,8 +309,8 @@ func partyExtensions(party *org.Party) templ.Component {
 			templ_7745c5c3_Var9 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		for k, v := range party.Ext {
-			if txt := mapPartyExtension(ctx, k, v); txt != "" {
+		for _, k := range extensionKeys(party.Ext) {
+			if txt := mapPartyExtension(ctx, k, party.Ext[k]); txt != "" {
 				templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 20)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -316,7 +318,7 @@ func partyExtensions(party *org.Party) templ.Component {
 				var templ_7745c5c3_Var10 string
 				templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(txt)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 77, Col: 9}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 79, Col: 9}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 				if templ_7745c5c3_Err != nil {
@@ -398,4 +400,15 @@ func mapPartyExtension(ctx context.Context, k cbc.Key, v tax.ExtValue) string {
 		return i18n.T(ctx, ".ext", i18n.M{"label": label, "value": v.String()})
 	}
 	return ""
+}
+
+func extensionKeys(ext tax.Extensions) []cbc.Key {
+	keys := make([]cbc.Key, 0, len(ext))
+	for k := range ext {
+		keys = append(keys, k)
+	}
+	slices.SortFunc(keys, func(a, b cbc.Key) int {
+		return cmp.Compare(a.String(), b.String())
+	})
+	return keys
 }

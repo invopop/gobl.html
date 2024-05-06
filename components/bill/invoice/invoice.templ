@@ -8,17 +8,15 @@ import (
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
 	"github.com/invopop/gobl.html/components/t"
-
 	"github.com/invopop/gobl.html/components/regimes/es"
 	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/regimes/mx"
+	"github.com/invopop/gobl.html/internal"
 )
 
 // Invoice renders a complete GOBL bill.Invoice object.
 templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 	<style type="text/css">
-		article.invoice {
-		}
 		header {
 			width: 100%;
 			display: flex;
@@ -54,8 +52,6 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 		section.title .hero img {
 			max-width: 100%;
 			/* max-height: 10mm; */
-		}
-		section.title h1.type {
 		}
 		section.title h2.code {
 			font-size: 12pt;
@@ -318,7 +314,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 templ title(inv *bill.Invoice) {
 	<section class="title">
 		<div class="hero">
-			if img := supplierLogo(inv); img != nil {
+			if img := supplierLogo(ctx, inv); img != nil {
 				<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
 			} else {
 				<div class="alias">
@@ -350,7 +346,11 @@ func supplierAlias(inv *bill.Invoice) string {
 	return inv.Supplier.Name
 }
 
-func supplierLogo(inv *bill.Invoice) *org.Image {
+func supplierLogo(ctx context.Context, inv *bill.Invoice) *org.Image {
+	opts := internal.Options(ctx)
+	if opts.Logo != nil {
+		return opts.Logo
+	}
 	if len(inv.Supplier.Logos) > 0 {
 		return inv.Supplier.Logos[0]
 	}

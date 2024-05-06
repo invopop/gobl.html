@@ -14,6 +14,7 @@ import (
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
+	"github.com/invopop/gobl.html/internal"
 )
 
 func footerPrint(env *gobl.Envelope) templ.Component {
@@ -137,12 +138,12 @@ func footerNotes(env *gobl.Envelope) templ.Component {
 			templ_7745c5c3_Var4 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if env.Head.Notes != "" {
+		if txt := footerNotesText(ctx, env); txt != "" {
 			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 7)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.Raw(env.Head.Notes).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = templ.Raw(txt).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -196,4 +197,14 @@ func pageNumber(ctx context.Context) string {
 		"count": `<span class="pages-number">1</span>`,
 	})
 	return txt
+}
+
+func footerNotesText(ctx context.Context, env *gobl.Envelope) string {
+	if opts := internal.Options(ctx); opts.Notes != "" {
+		return opts.Notes
+	}
+	if env.Head.Notes != "" {
+		return env.Head.Notes
+	}
+	return ""
 }

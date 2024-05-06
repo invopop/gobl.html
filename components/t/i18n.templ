@@ -1,6 +1,9 @@
 package t
 
 import (
+	"fmt"
+	"reflect"
+
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl/cal"
 	"github.com/invopop/gobl/num"
@@ -20,7 +23,7 @@ templ N(key string, n int, args ...any) {
 // L localizes a GOBL num.Amount, num.Percentage, cal.DateTime, or cal.Date according
 // to the rules defined in the context.
 templ L(a any) {
-	{ localize(ctx, a) }
+	{ Localize(ctx, a) }
 }
 
 // LM localizes amounts using the currency and formatter defined in the context.
@@ -41,7 +44,15 @@ templ Scope(key string) {
 	}
 }
 
-func localize(ctx context.Context, a any) string {
+// Localize returns a localized string representation of the given value.
+func Localize(ctx context.Context, a any) string {
+	val := reflect.ValueOf(a)
+	if val.Kind() == reflect.Ptr {
+		if val.IsNil() {
+			return ""
+		}
+		a = val.Elem().Interface()
+	}
 	switch v := a.(type) {
 	case num.Amount:
 		nf := numFormatter(ctx).WithoutUnit()
@@ -56,7 +67,7 @@ func localize(ctx context.Context, a any) string {
 		cf := calFormatter(ctx)
 		return v.Time().Format(cf.Date)
 	default:
-		return "!(UNKOWN TYPE)"
+		return fmt.Sprintf("!(UNKOWN TYPE %T)", a)
 	}
 }
 

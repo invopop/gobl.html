@@ -19,6 +19,7 @@
 # vendor/
 
 *.hide.json
+*.hide.html
 
 # Go workspace file
 go.work

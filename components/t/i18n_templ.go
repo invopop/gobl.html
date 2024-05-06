@@ -11,6 +11,9 @@ import "io"
 import "bytes"
 
 import (
+	"fmt"
+	"reflect"
+
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl/cal"
 	"github.com/invopop/gobl/currency"
@@ -34,7 +37,7 @@ func T(key string, args ...any) templ.Component {
 		var templ_7745c5c3_Var2 string
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(i18n.T(ctx, key, args...))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 11, Col: 28}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 14, Col: 28}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
@@ -64,7 +67,7 @@ func N(key string, n int, args ...any) templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(i18n.N(ctx, key, n, args...))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 16, Col: 31}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 19, Col: 31}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -93,9 +96,9 @@ func L(a any) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		var templ_7745c5c3_Var6 string
-		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(localize(ctx, a))
+		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(Localize(ctx, a))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 22, Col: 19}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 25, Col: 19}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -125,7 +128,7 @@ func LM(a num.Amount) templ.Component {
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(localizeMoney(ctx, a))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 27, Col: 24}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 30, Col: 24}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -156,7 +159,7 @@ func LC(a num.Amount, cur currency.Code) templ.Component {
 		var templ_7745c5c3_Var10 string
 		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(localizeCurrency(ctx, a, cur))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 33, Col: 32}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 36, Col: 32}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
@@ -196,7 +199,15 @@ func Scope(key string) templ.Component {
 	})
 }
 
-func localize(ctx context.Context, a any) string {
+// Localize returns a localized string representation of the given value.
+func Localize(ctx context.Context, a any) string {
+	val := reflect.ValueOf(a)
+	if val.Kind() == reflect.Ptr {
+		if val.IsNil() {
+			return ""
+		}
+		a = val.Elem().Interface()
+	}
 	switch v := a.(type) {
 	case num.Amount:
 		nf := numFormatter(ctx).WithoutUnit()
@@ -211,7 +222,7 @@ func localize(ctx context.Context, a any) string {
 		cf := calFormatter(ctx)
 		return v.Time().Format(cf.Date)
 	default:
-		return "!(UNKOWN TYPE)"
+		return fmt.Sprintf("!(UNKOWN TYPE %T)", a)
 	}
 }
 

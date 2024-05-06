@@ -1,6 +1,8 @@
 package org
 
 import (
+	"cmp"
+	"slices"
 	"strings"
 
 	"github.com/invopop/gobl/l10n"
@@ -72,8 +74,8 @@ templ identities(idents []*org.Identity) {
 }
 
 templ partyExtensions(party *org.Party) {
-	for k, v := range party.Ext {
-		if txt := mapPartyExtension(ctx, k, v); txt != "" {
+	for _, k := range extensionKeys(party.Ext) {
+		if txt := mapPartyExtension(ctx, k, party.Ext[k]); txt != "" {
 			<div class="party-extension">
 				{ txt }
 			</div>
@@ -144,4 +146,15 @@ func mapPartyExtension(ctx context.Context, k cbc.Key, v tax.ExtValue) string {
 		return i18n.T(ctx, ".ext", i18n.M{"label": label, "value": v.String()})
 	}
 	return ""
+}
+
+func extensionKeys(ext tax.Extensions) []cbc.Key {
+	keys := make([]cbc.Key, 0, len(ext))
+	for k := range ext {
+		keys = append(keys, k)
+	}
+	slices.SortFunc(keys, func(a, b cbc.Key) int {
+		return cmp.Compare(a.String(), b.String())
+	})
+	return keys
 }

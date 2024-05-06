@@ -4,6 +4,7 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/internal"
 )
 
 templ footerPrint(env *gobl.Envelope) {
@@ -83,9 +84,9 @@ templ footerPage() {
 }
 
 templ footerNotes(env *gobl.Envelope) {
-	if env.Head.Notes != "" {
+	if txt := footerNotesText(ctx, env); txt != "" {
 		<span class="notes">
-			@templ.Raw(env.Head.Notes)
+			@templ.Raw(txt)
 		</span>
 	}
 }
@@ -104,4 +105,14 @@ func pageNumber(ctx context.Context) string {
 		"count": `<span class="pages-number">1</span>`,
 	})
 	return txt
+}
+
+func footerNotesText(ctx context.Context, env *gobl.Envelope) string {
+	if opts := internal.Options(ctx); opts.Notes != "" {
+		return opts.Notes
+	}
+	if env.Head.Notes != "" {
+		return env.Head.Notes
+	}
+	return ""
 }

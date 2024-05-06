@@ -6,9 +6,6 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-
-	"github.com/invopop/ctxi18n"
-	"github.com/invopop/gobl.html/locales"
 )
 
 // build data provided by goreleaser and mage setup
@@ -27,10 +24,6 @@ func main() {
 func run() error {
 	ctx, cancel := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
 	defer cancel()
-
-	if err := ctxi18n.LoadWithDefault(locales.Content, "en"); err != nil {
-		return fmt.Errorf("loading locales: %w", err)
-	}
 
 	return root().cmd().ExecuteContext(ctx)
 }
