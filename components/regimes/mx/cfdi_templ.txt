@@ -1,0 +1,22 @@
+<style type=\"text/css\">\n        .cfdi {\n\t\t\tbreak-inside: avoid;\n            font-size: 7pt;\n\t\t\tline-height: 1.6em;\n        }\n\t\t.cfdi .image {\n\t\t\tfloat: left;\n\t\t\tmargin-right: 6mm;\n\t\t}\n\t\t.cfdi .text {\n\t\t\tmargin-top: auto;\n\t\t}\n        .cfdi img {\n            width: 30mm;\n            height: 30mm;\n        }\n\t\t.cfdi .series::before {\n\t\t\tcontent: \"(\"\n\t\t}\n\t\t.cfdi .series::after {\n\t\t\tcontent: \")\"\n\t\t}\n\t\t.cfdi .value,\n\t\t.cfdi .signature {\n            font-family: monospace;\n\t\t}\n\t\t.cfdi .signature {\n\t\t\tword-break: break-all;\n\t\t\tfont-size: 5pt;\n\t\t}\n    </style><div class=\"cfdi\">
+<div class=\"image\"><a href=\"
+\">
+</a></div>
+<div class=\"text\">
+<div><b>Folio Fiscal:</b> <span class=\"value\">
+</span></div>
+<div><b>Fecha y hora de certificación:</b> <span class=\"value\">
+</span></div>
+<div><b>Sello digital del CFDI</b> 
+<span class=\"series\">Serie: <span class=\"value\">
+</span></span> 
+<span class=\"signature\">
+</span></div>
+<div><b>Sello digital del SAT</b> 
+<span class=\"series\">Serie: <span class=\"value\">
+</span></span> 
+<span class=\"signature\">
+</span></div>
+<div><b>Cadena Original del complemento de certificación digital del SAT</b> <span class=\"signature\">
+</span></div>
+<div>Este documento es una represetnación impresa de un CFDI.</div></div></div>

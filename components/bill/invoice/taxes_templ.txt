@@ -1,0 +1,19 @@
+<section class=\"taxes\">
+<h2>
+</h2><table><thead><tr><th class=\"category\">
+</th><th class=\"base\">
+</th><th class=\"rate\">
+</th><th class=\"amount\">
+</th></tr></thead> <tbody>
+</tbody></table>
+</section>
+<tr>
+<td rowspan=\"
+\" class=\"category\">
+</td>
+<td class=\"base\">
+</td><td class=\"rate\">
+&mdash; 
++@t.P(rate.Surcharge.Percent)
+</td><td class=\"amount\">
+</td></tr>

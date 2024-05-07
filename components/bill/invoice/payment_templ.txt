@@ -1,0 +1,54 @@
+<section class=\"payment\">
+<h2 class=\"title\">
+</h2>
+ 
+</section>
+<ul class=\"instructions\">
+<li class=\"method-name\"><span class=\"label\">
+</span> <span class=\"value\">
+</span></li>
+<li class=\"ref\"><span class=\"label\">
+</span> <span class=\"value\">
+</span></li>
+<li class=\"bank-data\"><span class=\"label\">
+</span> 
+<span class=\"value\">
+</span>
+</li>
+<li class=\"card\"><span class=\"label\">
+</span> <span class=\"value\">
+</span></li>
+<li class=\"notes\"><span class=\"label\">
+</span> <span class=\"value\">
+</span></li>
+</ul>
+<span class=\"credit-transfer\">
+<span class=\"bank-name\">
+</span> 
+<span class=\"iban\">
+</span> 
+<span class=\"account-number\">
+</span> 
+<span class=\"bic\">
+</span>
+</span>
+<ul class=\"terms\">
+<li class=\"terms-key\"><span class=\"label\">
+</span> <span class=\"value\">
+</span></li>
+<li class=\"terms-notes\"><span class=\"label\">
+</span> <span class=\"value\">
+</span></li>
+<li class=\"due-dates\"><span class=\"label\">
+</span> <span class=\"value\">
+</span></li>
+</ul>
+<table class=\"due-dates\"><tbody>
+<tr><td class=\"date\">
+</td><td class=\"notes\">
+ 
+<span class=\"percent\">
+</span>
+</td><td class=\"amount\">
+</td></tr>
+</tbody></table>

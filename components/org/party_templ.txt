@@ -1,0 +1,21 @@
+<div class=\"org-party\">
+<div class=\"name\">
+</div>
+<div class=\"alias\">
+</div>
+ 
+ 
+ 
+ 
+ 
+</div>
+<div class=\"tax-id\">
+</div>
+<div class=\"telephone\">
+</div>
+<div class=\"emails\">
+</div>
+<div class=\"identitiy\">
+</div>
+<div class=\"party-extension\">
+</div>

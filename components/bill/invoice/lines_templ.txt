@@ -1,0 +1,89 @@
+<section class=\"lines\"><h2>
+</h2><table><thead><tr><th class=\"ref\">
+</th>
+<th class=\"ref\">
+</th>
+<th class=\"description\">
+</th><th class=\"quantity\">
+</th>
+<th class=\"unit\">
+</th>
+<th class=\"price\">
+</th>
+<th class=\"tax\">
+</th>
+<th class=\"discount\">
+</th>
+<th class=\"charge\">
+</th>
+<th class=\"total\">
+</th></tr></thead>
+</table></section>
+<tbody>
+</tbody>
+<tr><td class=\"ref\">
+</td>
+<td class=\"ref\">
+<!-- empty -->
+</td>
+<td class=\"description\"><span>
+</span> 
+<br><small>
+</small>
+</td><td class=\"quantity\">
+</td>
+<td class=\"unit\">
+<!-- empty -->
+</td>
+<td class=\"price\">
+</td>
+<td class=\"tax\">
+&mdash;
+<!-- empty -->
+</td>
+<td class=\"discount\">
+</td>
+<td class=\"charge\">
+</td>
+<td class=\"total\">
+</td></tr>
+<tbody class=\"discounts\">
+</tbody>
+<tr><td class=\"i\">
+</td>
+<td class=\"ref\">
+<!-- empty -->
+</td>
+<td class=\"reason\">
+</td><td class=\"quantity\"><!-- no quantity --></td>
+<td><!-- empty --></td>
+<td class=\"percent\">
+<!-- empty -->
+</td>
+<td class=\"tax\">
+<!-- empty -->
+</td>
+<td><!-- empty --></td>
+<td><!-- empty --></td>
+<td class=\"total\">
+</td></tr>
+<tbody class=\"charges\">
+</tbody>
+<tr><td class=\"ref\">
+</td>
+<td class=\"ref\">
+<!-- empty -->
+</td>
+<td class=\"reason\">
+</td><td class=\"quantity\"><!-- no quantity --></td>
+<td><!-- empty --></td>
+<td class=\"percent\">
+<!-- empty -->
+</td>
+<td class=\"tax\">
+<!-- empty -->
+</td>
+<td><!-- empty --></td>
+<td><!-- empty --></td>
+<td class=\"total\">
+</td></tr>

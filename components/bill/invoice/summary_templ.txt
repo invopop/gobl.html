@@ -1,0 +1,32 @@
+<section class=\"summary\">
+<h2 class=\"title\">
+</h2><ul><li class=\"issue-date\"><span class=\"label\">
+</span> <span class=\"value\">
+</span></li><li class=\"currency\"><span class=\"label\">
+</span> <span class=\"value\">
+</span></li>
+<li class=\"value-date\"><span class=\"label\">
+</span> <span class=\"value\">
+</span></li>
+<li class=\"op-date\"><span class=\"label\">
+</span> <span class=\"value\">
+</span></li>
+<li class=\"preceding\"><span class=\"label\">
+</span> <span class=\"value\">
+</span> 
+<span class=\"value\">
+</span> 
+<span class=\"value\">
+</span>
+</li>
+<li class=\"tax-ext\"><span class=\"label\">
+</span> <span class=\"value\">
+</span></li>
+</ul>
+</section>
+<li class=\"ordering-code\"><span class=\"label\">
+</span> <span class=\"value\">
+</span></li>
+<li class=\"ordering-period\"><span class=\"label\">
+</span> <span class=\"value\">
+</span></li>

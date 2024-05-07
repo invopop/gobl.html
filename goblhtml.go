@@ -22,6 +22,7 @@ const (
 	defaultLocale i18n.Code = "en"
 )
 
+// locales contains the database of locales defined for this package.
 var locales *i18n.Locales
 
 func init() {

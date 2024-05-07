@@ -1,0 +1,9 @@
+<style type=\"text/css\">\n        .dian-qr {\n\t\t\tdisplay: flex;\n            font-family: monospace;\n            font-size: 7pt;\n        }\n\t\t.dian-qr .image {\n\t\t\tmargin-right: 6mm;\n\t\t}\n\t\t.dian-qr .text {\n\t\t\tmargin-top: auto;\n\t\t\tword-break: break-all;\n\t\t}\n        .dian-qr img {\n            width: 24mm;\n            height: 24mm;\n        }\n    </style><section class=\"dian-qr\"><div class=\"image\"><a href=\"
+\">
+</a></div><div class=\"text\">
+<div class=\"cude\">
+</div><div class=\"cufe\">
+</div>
+<div class=\"cufe\">
+</div>
+</div></section>
