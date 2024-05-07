@@ -1,9 +1,0 @@
-<div class=\"org-address\">
-</div>
-<div class=\"org-address\">
-<span class=\"label\">
-&nbsp;</span>
-</div>
-<span>
- 
-</span>

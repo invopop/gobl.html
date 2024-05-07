@@ -30,7 +30,7 @@ func LineExtensions(line *bill.Line) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		if line.Item.Ext.Has(mx.ExtKeyCFDIProdServ) {
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 1)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span class=\"extensions\"><span class=\"label\">Clave SAT:</span> <span class=\"value\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -43,7 +43,7 @@ func LineExtensions(line *bill.Line) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 2)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</span></span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

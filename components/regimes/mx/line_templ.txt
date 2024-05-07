@@ -1,2 +1,0 @@
-<span class=\"extensions\"><span class=\"label\">Clave SAT:</span> <span class=\"value\">
-</span></span>
