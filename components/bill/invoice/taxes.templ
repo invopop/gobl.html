@@ -9,7 +9,7 @@ import (
 )
 
 templ taxes(inv *bill.Invoice, taxes *tax.Total) {
-	if taxes != nil {
+	if taxes != nil && len(taxes.Categories) > 0 {
 		<section class="taxes">
 			@t.Scope("billing.invoice.taxes") {
 				<h2>

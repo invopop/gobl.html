@@ -1,0 +1,127 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
+		"dig": {
+			"alg": "sha256",
+			"val": "ac1ea2ef0d248f7f7a9bfdcb608f864571bdb746d55ce6ebbf6e803c07ca787f"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"uuid": "018f57cc-cc50-7289-a654-a2507af6c889",
+		"type": "standard",
+		"series": "FAKE",
+		"code": "0001",
+		"issue_date": "2024-05-08",
+		"currency": "USD",
+		"supplier": {
+			"name": "Invopop Inc.",
+			"tax_id": {
+				"country": "US"
+			},
+			"addresses": [
+				{
+					"num": "1111B",
+					"street": "S Governors Ave #6229",
+					"locality": "Dover",
+					"region": "DE",
+					"code": "19904",
+					"country": "US"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@invopop.com"
+				}
+			],
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+				}
+			]
+		},
+		"customer": {
+			"name": "Customer Random Inc.",
+			"tax_id": {
+				"country": "US"
+			},
+			"identities": [
+				{
+					"label": "Código de Cliente",
+					"code": "123456789ABC"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Office",
+					"po_box": "20",
+					"num": "10",
+					"street": "Calle Mayor",
+					"locality": "Madrid",
+					"region": "CA",
+					"code": "28003",
+					"country": "US"
+				}
+			],
+			"emails": [
+				{
+					"addr": "sam@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Development Day Rate",
+					"description": "Development services for the month of February 2022",
+					"price": "200.00"
+				},
+				"sum": "4000.00",
+				"discounts": [
+					{
+						"percent": "5%",
+						"amount": "200.00",
+						"reason": "Just because"
+					}
+				],
+				"total": "3800.00"
+			},
+			{
+				"i": 2,
+				"quantity": "10",
+				"item": {
+					"name": "Something random",
+					"price": "100.00"
+				},
+				"sum": "1000.00",
+				"total": "1000.00"
+			}
+		],
+		"totals": {
+			"sum": "4800.00",
+			"total": "4800.00",
+			"taxes": {
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "4800.00",
+			"payable": "4800.00"
+		},
+		"notes": [
+			{
+				"text": "Thank you for you business!"
+			},
+			{
+				"key": "legal",
+				"text": "Please pay within 30 days according to some random law in the country we sell from that you should comply with because we want to be paid sooner.",
+				"meta": {
+					"position": "footer"
+				}
+			}
+		]
+	}
+}

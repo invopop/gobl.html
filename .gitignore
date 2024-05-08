@@ -20,6 +20,9 @@
 *.hide.json
 *.hide.html
 
+# Ingore all templ txt files
+*_templ.txt
+
 # Go workspace file
 go.work
 
