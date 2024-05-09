@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/currency"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl/pay"
@@ -124,6 +125,16 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 			@t.LM(totals.Payable)
 		</td>
 	</tr>
+	for _, er := range totalExchangeRates(inv) {
+		<tr class="exchange-rate">
+			<th>
+				@t.T(".exchange_rate", i18n.M{"to": er.To, "amount": t.Localize(ctx, er.Amount)})
+			</th>
+			<td>
+				@t.LCD(er.Convert(totals.Payable), er.To)
+			</td>
+		</tr>
+	}
 }
 
 templ totalsDueRows(inv *bill.Invoice, totals *bill.Totals) {
@@ -157,6 +168,16 @@ templ totalsDueRows(inv *bill.Invoice, totals *bill.Totals) {
 			</td>
 		</tr>
 	}
+}
+
+func totalExchangeRates(inv *bill.Invoice) []*currency.ExchangeRate {
+	list := make([]*currency.ExchangeRate, 0, len(inv.ExchangeRates))
+	for _, er := range inv.ExchangeRates {
+		if er.From == inv.Currency {
+			list = append(list, er)
+		}
+	}
+	return list
 }
 
 func advanceMap(adv *pay.Advance) i18n.M {

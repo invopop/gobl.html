@@ -259,6 +259,16 @@
         		section.lines .description .extensions .label {
         			font-weight: 500;
         		}
+        		section.lines .alt-price {
+        			display: block;
+        			font-style: italic;
+        		}
+        		section.lines .alt-price:before {
+        			content: '(';
+        		}
+        		section.lines .alt-price:after {
+        			content: ')';
+        		}
         		div.totals {
         			order: 8;
         			display: flex;
@@ -301,6 +311,9 @@
         		section.totals tr.strong th,
         		section.totals tr.strong td {
         			font-weight: 600;
+        		}
+        		section.totals .exchange-rate {
+        			font-style: italic;
         		}
         		section.taxes {
         			order: 1;

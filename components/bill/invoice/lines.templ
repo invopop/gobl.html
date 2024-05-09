@@ -115,6 +115,7 @@ templ line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) {
 		}
 		<td class="price">
 			@t.LM(l.Item.Price)
+			@lineItemAltPrices(l)
 		</td>
 		for _, cat := range ls.categories {
 			<td class="tax">
@@ -143,6 +144,14 @@ templ line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) {
 			@t.LM(l.Total)
 		</td>
 	</tr>
+}
+
+templ lineItemAltPrices(l *bill.Line) {
+	for _, a := range l.Item.AltPrices {
+		<span class="alt-price">
+			@t.LCD(a.Value, a.Currency)
+		</span>
+	}
 }
 
 templ lineGroupDiscounts(l *bill.Line) {

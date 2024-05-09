@@ -50,6 +50,7 @@ it:
         advance: "Anticipo: %{date} %{txt}"
         advance_sum: "Somma anticipi"
         due_sum: "Totale dovuto"
+        exchange_rate: "Cambio in %{to} (%{amount})"
       taxes:
         title: "Tasse"
         category: "Tassa"

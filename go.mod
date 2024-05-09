@@ -49,4 +49,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-// replace github.com/invopop/gobl => ../gobl
+replace github.com/invopop/gobl => ../gobl

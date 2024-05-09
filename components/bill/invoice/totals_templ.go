@@ -16,6 +16,7 @@ import (
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/currency"
 	"github.com/invopop/gobl/pay"
 )
 
@@ -330,6 +331,28 @@ func totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
+		for _, er := range totalExchangeRates(inv) {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<tr class=\"exchange-rate\"><th>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = t.T(".exchange_rate", i18n.M{"to": er.To, "amount": t.Localize(ctx, er.Amount)}).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</th><td>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = t.LCD(er.Convert(totals.Payable), er.To).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</td></tr>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
 		if !templ_7745c5c3_IsBuffer {
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteTo(templ_7745c5c3_W)
 		}
@@ -425,6 +448,16 @@ func totalsDueRows(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 		}
 		return templ_7745c5c3_Err
 	})
+}
+
+func totalExchangeRates(inv *bill.Invoice) []*currency.ExchangeRate {
+	list := make([]*currency.ExchangeRate, 0, len(inv.ExchangeRates))
+	for _, er := range inv.ExchangeRates {
+		if er.From == inv.Currency {
+			list = append(list, er)
+		}
+	}
+	return list
 }
 
 func advanceMap(adv *pay.Advance) i18n.M {

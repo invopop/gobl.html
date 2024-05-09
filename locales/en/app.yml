@@ -58,6 +58,7 @@ en:
         advance: "Advance: %{date} %{txt}"
         advance_sum: "Sum advances"
         due_sum: "Total due"
+        exchange_rate: "Exchange to %{to} (%{amount})"
 
       taxes:
         title: "Taxes"
