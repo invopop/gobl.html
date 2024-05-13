@@ -37,6 +37,12 @@ templ LC(a num.Amount, cur currency.Code) {
 	{ localizeCurrency(ctx, a, cur) }
 }
 
+// LCD localizes and amount using the formatting defined by the specified currency,
+// and uses the disembiguate symbol.
+templ LCD(a num.Amount, cur currency.Code) {
+	{ localizeCurrency(ctx, a, cur, currency.WithDisambiguateSymbol()) }
+}
+
 // Scope helps set a scope around the context
 templ Scope(key string) {
 	if ctx = i18n.WithScope(ctx, key); true {
@@ -76,7 +82,7 @@ func localizeMoney(ctx context.Context, a num.Amount) string {
 	return f.Amount(a)
 }
 
-func localizeCurrency(_ context.Context, a num.Amount, cur currency.Code) string {
-	f := cur.Def().Formatter()
+func localizeCurrency(_ context.Context, a num.Amount, cur currency.Code, opts ...currency.FormatOption) string {
+	f := cur.Def().Formatter(opts...)
 	return f.Amount(a)
 }

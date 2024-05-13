@@ -1,11 +1,17 @@
 package components
 
 import (
+	"fmt"
+	"io/fs"
+	"path/filepath"
+
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/note"
 	"github.com/invopop/gobl.html/components/bill/invoice"
 	"github.com/invopop/gobl.html/components/notes"
+	"github.com/invopop/gobl.html/assets"
+	"github.com/invopop/gobl.html/internal"
 )
 
 templ Envelope(env *gobl.Envelope) {
@@ -17,57 +23,7 @@ templ Envelope(env *gobl.Envelope) {
 			<link rel="preconnect" href="https://fonts.googleapis.com"/>
 			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
-			<style type="text/css">
-				@page {
-					font-family: "Inter", sans-serif;
-					size: A4 portrait;
-					margin: 10mm;
-					margin-bottom: 20mm;
-					counter-increment: page;
-					font-size: 9pt;
-					line-height: 1.5em;
-					color: #4B5563;
-				}
-				body {
-					font-family: "Inter", sans-serif;
-					font-size: 9pt;
-					line-height: 1.5em;
-					margin: 0;
-					margin-bottom: 0mm;
-					/* color: #030712; */
-					/* color: #6B7280; */
-					color: #4B5563;
-				}
-				@media screen {
-					body {
-						margin: 10mm;
-					}	
-				}
-				article.envelope {
-					min-height: 100%;
-				}
-				article, section, header, div, h1, h2, h3, h4, table, th, td, p {
-					font-size: 1em;
-					margin: 0;
-				}
-				h1, h2, h3, h4 {
-					font-weight: 500;
-					/* color: #030712; */
-				}
-				a {
-					color: #4B5563;
-				}
-				table {
-					border-spacing: 0;
-					border-collapse: collapse;
-				}
-				th, td {
-					text-align: left;
-				}
-				section.footer span.page-number:before {
-					content: counter(page);
-				}
-            </style>
+			@stylesheets()
 		</head>
 		<body>
 			<article class="envelope">
@@ -85,4 +41,54 @@ templ Envelope(env *gobl.Envelope) {
 			</article>
 		</body>
 	</html>
+}
+
+templ stylesheets() {
+	if opts := internal.Options(ctx); opts != nil {
+		if opts.EmbedStylesheets {
+			for _, data := range stylesheetData() {
+				@templ.Raw(`<style type="text/css">` + data + `</style>`)
+			}
+		} else {
+			for _, ss := range stylesheetFilenames() {
+				<link rel="stylesheet" href={ ss }/>
+			}
+		}
+	}
+}
+
+// stylesheetFilenames just provides the filenames of all the styles
+func stylesheetFilenames() []string {
+	list := []string{}
+	err := fs.WalkDir(assets.Content, "styles", func(path string, _ fs.DirEntry, _ error) error {
+		if filepath.Ext(path) != ".css" {
+			return nil
+		}
+		list = append(list, path)
+		return nil
+	})
+	if err != nil {
+		panic(err)
+	}
+	return list
+}
+
+// stylesheetData provides a list of data objects of all the stylesheets
+func stylesheetData() []string {
+	list := make([]string, 0)
+	err := fs.WalkDir(assets.Content, "styles", func(path string, _ fs.DirEntry, _ error) error {
+		if filepath.Ext(path) != ".css" {
+			return nil
+		}
+		data, err := fs.ReadFile(assets.Content, path)
+		if err != nil {
+			return fmt.Errorf("reading file: %w", err)
+		}
+		list = append(list, string(data))
+		return nil
+	})
+	if err != nil {
+		panic(err)
+	}
+	return list
 }

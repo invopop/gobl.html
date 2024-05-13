@@ -4,6 +4,9 @@ package pdf
 
 import (
 	"context"
+	"fmt"
+	"io/fs"
+	"path/filepath"
 )
 
 // Config defines options used to configure the PDF convertor.
@@ -19,6 +22,7 @@ type Option func(*options)
 
 type options struct {
 	metadata    *Metadata
+	styles      []*Stylesheet
 	attachments []*Attachment
 }
 
@@ -29,6 +33,12 @@ type Metadata struct {
 	Author   string
 	Keywords string
 	Creator  string
+}
+
+// Stylesheet descriptions a document to upload with the HTML for styles.
+type Stylesheet struct {
+	Data     []byte
+	Filename string
 }
 
 // Attachment is used to embed files inside the PDF when supported by
@@ -53,6 +63,30 @@ func WithAuthToken(token string) Config {
 	return func(in any) {
 		conf := in.(*config)
 		conf.auth = token
+	}
+}
+
+// WithStylesheets prepares the stylesheets to be included in the PDF generation
+// request.
+func WithStylesheets(src fs.FS) Option {
+	return func(o *options) {
+		err := fs.WalkDir(src, "styles", func(path string, _ fs.DirEntry, _ error) error {
+			if filepath.Ext(path) != ".css" {
+				return nil
+			}
+			data, err := fs.ReadFile(src, path)
+			if err != nil {
+				return fmt.Errorf("reading file: %w", err)
+			}
+			o.styles = append(o.styles, &Stylesheet{
+				Filename: path,
+				Data:     data,
+			})
+			return nil
+		})
+		if err != nil {
+			panic(err)
+		}
 	}
 }
 

@@ -14,6 +14,7 @@ import (
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
 	goblhtml "github.com/invopop/gobl.html"
+	"github.com/invopop/gobl.html/assets"
 	"github.com/invopop/gobl.html/pkg/pdf"
 	"github.com/invopop/gobl/org"
 	"github.com/labstack/echo/v4"
@@ -63,6 +64,7 @@ func (s *serveOpts) runE(cmd *cobra.Command, _ []string) error {
 
 	e := echo.New()
 
+	e.StaticFS("/styles", echo.MustSubFS(assets.Content, "styles"))
 	e.GET("/:filename", s.generate)
 
 	var startErr error
@@ -84,12 +86,11 @@ func (s *serveOpts) runE(cmd *cobra.Command, _ []string) error {
 	return startErr
 }
 
-func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope) ([]byte, error) {
+func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opts []goblhtml.Option) ([]byte, error) {
 	ctx := c.Request().Context()
 	var err error
 
 	// Prepare the request options
-	opts := make([]goblhtml.Option, 0)
 	if req.DateFormat != "" {
 		opts = append(opts, goblhtml.WithCalFormatter(req.DateFormat, "", time.UTC))
 	}
@@ -143,7 +144,11 @@ func (s *serveOpts) generate(c echo.Context) error {
 		return fmt.Errorf("unmarshalling file: %w", err)
 	}
 
-	data, err := s.render(c, req, env)
+	opts := make([]goblhtml.Option, 0)
+	if ext == ".pdf" {
+		opts = append(opts, goblhtml.WithEmbeddedStylesheets())
+	}
+	data, err := s.render(c, req, env, opts)
 	if err != nil {
 		return err
 	}

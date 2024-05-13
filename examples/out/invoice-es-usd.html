@@ -43,7 +43,7 @@
                 Invoice
               </h1>
               <h2 class="code">
-                SAMPLE-001
+                EXPORT-001
               </h2>
             </section>
             <section class="summary">
@@ -56,7 +56,7 @@
                     Issue Date
                   </span>
                   <span class="value">
-                    2022-02-01
+                    2024-05-09
                   </span>
                 </li>
                 <li class="currency">
@@ -64,7 +64,7 @@
                     Currency
                   </span>
                   <span class="value">
-                    Euro (EUR)
+                    United States Dollar (USD)
                   </span>
                 </li>
               </ul>
@@ -98,10 +98,7 @@
               </h2>
               <div class="org-party">
                 <div class="name">
-                  Sample Consumer
-                </div>
-                <div class="tax-id">
-                  NIF: (ES) 54387763P
+                  Sample Consumer Inc.
                 </div>
               </div>
             </section>
@@ -123,11 +120,17 @@
                 <th class="quantity">
                   Qty.
                 </th>
+                <th class="unit">
+                  Unit
+                </th>
                 <th class="price">
                   Price
                 </th>
                 <th class="tax">
                   VAT
+                </th>
+                <th class="discount">
+                  Disc.
                 </th>
                 <th class="total">
                   Total
@@ -141,20 +144,84 @@
                 </td>
                 <td class="description">
                   <span>
-                    Item being purchased
+                    Development services from Spain
+                  </span>
+                </td>
+                <td class="quantity">
+                  20
+                </td>
+                <td class="unit">
+                  h
+                </td>
+                <td class="price">
+                  $100.00
+                  <span class="alt-price">
+                    €90,00
+                  </span>
+                </td>
+                <td class="tax">
+                  21.0%
+                </td>
+                <td class="discount">
+                  10%
+                </td>
+                <td class="total">
+                  $1,800.00
+                </td>
+              </tr>
+              <tr>
+                <td class="ref">
+                  2
+                </td>
+                <td class="description">
+                  <span>
+                    Development services from Mexico
                   </span>
                 </td>
                 <td class="quantity">
                   10
                 </td>
+                <td class="unit">
+                  h
+                </td>
                 <td class="price">
-                  €100,00
+                  $88.80
+                  <span class="alt-price">
+                    MEX$1,500.00
+                  </span>
                 </td>
                 <td class="tax">
-                  21,0%
+                  21.0%
                 </td>
+                <td class="discount"></td>
                 <td class="total">
-                  €1.000,00
+                  $888.00
+                </td>
+              </tr>
+              <tr>
+                <td class="ref">
+                  3
+                </td>
+                <td class="description">
+                  <span>
+                    Financial service
+                  </span>
+                </td>
+                <td class="quantity">
+                  1
+                </td>
+                <td class="unit">
+                  <!-- empty -->
+                </td>
+                <td class="price">
+                  $10.00
+                </td>
+                <td class="tax">
+                  0.0%
+                </td>
+                <td class="discount"></td>
+                <td class="total">
+                  $10.00
                 </td>
               </tr>
             </tbody>
@@ -172,7 +239,7 @@
                     Sum
                   </th>
                   <td>
-                    €1.000,00
+                    $2,698.00
                   </td>
                 </tr>
                 <tr class="tax">
@@ -180,7 +247,7 @@
                     Tax
                   </th>
                   <td>
-                    €210,00
+                    $564.48
                   </td>
                 </tr>
                 <tr class="payable strong">
@@ -188,7 +255,15 @@
                     Total to pay
                   </th>
                   <td>
-                    €1.210,00
+                    $3,262.48
+                  </td>
+                </tr>
+                <tr class="exchange-rate">
+                  <th>
+                    Exchange to EUR (0.875967)
+                  </th>
+                  <td>
+                    €2.857,82
                   </td>
                 </tr>
               </tbody>
@@ -217,17 +292,28 @@
               </thead>
               <tbody>
                 <tr>
-                  <td rowspan="1" class="category">
+                  <td rowspan="2" class="category">
                     VAT
                   </td>
                   <td class="base">
-                    €1.000,00
+                    $2,688.00
                   </td>
                   <td class="rate">
-                    21,0%
+                    21.0%
                   </td>
                   <td class="amount">
-                    €210,00
+                    $564.48
+                  </td>
+                </tr>
+                <tr>
+                  <td class="base">
+                    $10.00
+                  </td>
+                  <td class="rate">
+                    0.0%
+                  </td>
+                  <td class="amount">
+                    $0.00
                   </td>
                 </tr>
               </tbody>

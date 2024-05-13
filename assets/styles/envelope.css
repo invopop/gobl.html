@@ -1,0 +1,98 @@
+@page {
+    font-family: "Inter", sans-serif;
+    size: A4 portrait;
+    margin: 10mm;
+    margin-bottom: 20mm;
+    counter-increment: page;
+    font-size: 9pt;
+    line-height: 1.5em;
+    color: #4B5563;
+}
+body {
+    font-family: "Inter", sans-serif;
+    font-size: 9pt;
+    line-height: 1.5em;
+    margin: 0;
+    margin-bottom: 0mm;
+    /* color: #030712; */
+    /* color: #6B7280; */
+    color: #4B5563;
+}
+@media screen {
+    body {
+        margin: 10mm;
+    }	
+    footer.screen {
+        display: block;
+    }
+    footer.print {
+        display: none;
+    }
+}
+article.envelope {
+    min-height: 100%;
+}
+article, section, header, div, h1, h2, h3, h4, table, th, td, p {
+    font-size: 1em;
+    margin: 0;
+}
+h1, h2, h3, h4 {
+    font-weight: 500;
+    /* color: #030712; */
+}
+a {
+    color: #4B5563;
+}
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+th, td {
+    text-align: left;
+}
+section.footer span.page-number:before {
+    content: counter(page);
+}
+@media print {
+    footer.screen {
+        display: none;
+    }
+    footer.print {
+        display: block;
+    }
+}
+@page {
+    @bottom {
+        content: element(footer);
+    }
+}
+footer {
+    height: 12mm;
+    text-align: right;
+    padding: 4mm 0mm;
+}
+footer.print {
+    position: running(footer);
+}
+footer.screen {
+    padding: 2mm 0mm;
+}
+footer .page-number {
+    content: counter(page);
+}
+footer .pages-number {
+    content: counter(pages);
+}
+footer .gobl-logo {
+    float: left;
+}
+footer.print .notes:after {
+    content: " · ";
+}
+footer .gobl-logo img {
+    width: 8mm;
+    height: 8mm;
+}
+footer.print .gobl-logo {
+    margin-top: -7mm;
+}

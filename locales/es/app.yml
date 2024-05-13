@@ -58,6 +58,7 @@ es:
         advance: "Anticipo: %{date} %{txt}"
         advance_sum: "Suma Anticipos"
         due_sum: "Total adeudado"
+        exchange_rate: "Cambio a %{to} (%{amount})"
 
       taxes:
         title: "Impuestos"

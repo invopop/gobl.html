@@ -8,61 +8,6 @@ import (
 )
 
 templ footerPrint(env *gobl.Envelope) {
-	<style type="text/css">
-        @media screen {
-            footer.screen {
-                display: block;
-            }
-            footer.print {
-                display: none;
-            }
-        }
-        @media print {
-            footer.screen {
-                display: none;
-            }
-            footer.print {
-                display: block;
-            }
-        }
-        @page {
-            @bottom {
-                content: element(footer);
-            }
-        }
-        footer {
-            height: 12mm;
-            text-align: right;
-            padding: 4mm 0mm;
-        }
-        footer.print {
-            position: running(footer);
-        }
-        footer.screen {
-            padding: 2mm 0mm;
-        }
-        footer .page {
-        }
-        footer .page-number {
-            content: counter(page);
-        }
-        footer .pages-number {
-            content: counter(pages);
-        }
-        footer .gobl-logo {
-            float: left;
-        }
-        footer.print .notes:after {
-            content: " · ";
-        }
-        footer .gobl-logo img {
-            width: 8mm;
-            height: 8mm;
-        }
-        footer.print .gobl-logo {
-            margin-top: -7mm;
-        }
-    </style>
 	<footer class="print">
 		@footerNotes(env)
 		@footerPage()
