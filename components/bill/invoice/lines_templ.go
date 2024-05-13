@@ -731,9 +731,16 @@ func discountRow(row *bill.Discount, ls *lineSupport) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			if combo := row.Taxes.Get(cat.Code); combo != nil {
-				templ_7745c5c3_Err = t.L(*combo.Percent).Render(ctx, templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
+				if combo.Percent != nil {
+					templ_7745c5c3_Err = t.L(*combo.Percent).Render(ctx, templ_7745c5c3_Buffer)
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+				} else {
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("&mdash;")
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
 				}
 			} else {
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!-- empty -->")
@@ -833,7 +840,7 @@ func chargeRow(row *bill.Charge, ls *lineSupport) templ.Component {
 		var templ_7745c5c3_Var22 string
 		templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("C%d", row.Index))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/lines.templ`, Line: 256, Col: 34}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/lines.templ`, Line: 260, Col: 34}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var22))
 		if templ_7745c5c3_Err != nil {
@@ -852,7 +859,7 @@ func chargeRow(row *bill.Charge, ls *lineSupport) templ.Component {
 				var templ_7745c5c3_Var23 string
 				templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinStringErrs(row.Ref)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/lines.templ`, Line: 261, Col: 14}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/lines.templ`, Line: 265, Col: 14}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var23))
 				if templ_7745c5c3_Err != nil {
@@ -876,7 +883,7 @@ func chargeRow(row *bill.Charge, ls *lineSupport) templ.Component {
 		var templ_7745c5c3_Var24 string
 		templ_7745c5c3_Var24, templ_7745c5c3_Err = templ.JoinStringErrs(row.Reason)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/lines.templ`, Line: 268, Col: 15}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/lines.templ`, Line: 272, Col: 15}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var24))
 		if templ_7745c5c3_Err != nil {
@@ -917,9 +924,16 @@ func chargeRow(row *bill.Charge, ls *lineSupport) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			if combo := row.Taxes.Get(cat.Code); combo != nil {
-				templ_7745c5c3_Err = t.L(*combo.Percent).Render(ctx, templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
+				if combo.Percent == nil {
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("&mdash;")
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+				} else {
+					templ_7745c5c3_Err = t.L(*combo.Percent).Render(ctx, templ_7745c5c3_Buffer)
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
 				}
 			} else {
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!-- empty -->")

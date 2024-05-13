@@ -219,7 +219,11 @@ templ discountRow(row *bill.Discount, ls *lineSupport) {
 		for _, cat := range ls.categories {
 			<td class="tax">
 				if combo := row.Taxes.Get(cat.Code); combo != nil {
-					@t.L(*combo.Percent)
+					if combo.Percent != nil {
+						@t.L(*combo.Percent)
+					} else {
+						&mdash;
+					}
 				} else {
 					<!-- empty -->
 				}
@@ -286,7 +290,11 @@ templ chargeRow(row *bill.Charge, ls *lineSupport) {
 		for _, cat := range ls.categories {
 			<td class="tax">
 				if combo := row.Taxes.Get(cat.Code); combo != nil {
-					@t.L(*combo.Percent)
+					if combo.Percent == nil {
+						&mdash;
+					} else {
+						@t.L(*combo.Percent)
+					}
 				} else {
 					<!-- empty -->
 				}
