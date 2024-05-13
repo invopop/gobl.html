@@ -66,7 +66,7 @@ func WithAuthToken(token string) Config {
 	}
 }
 
-// WithStylesheet prepares the filesheet to be included in the PDF generation
+// WithStylesheets prepares the stylesheets to be included in the PDF generation
 // request.
 func WithStylesheets(src fs.FS) Option {
 	return func(o *options) {
