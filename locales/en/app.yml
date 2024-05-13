@@ -129,7 +129,7 @@ en:
         other: "Emails: %{addr}"
       email_label: "%{addr} (%{label})"
       identity: "%{label}: %{code}"
-      identity_code: "Identitiy code"
+      identity_code: "Identity code"
       po_box: "P.O. Box %{po_box}"
       labels:
         default: "Tax Code"

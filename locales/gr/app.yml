@@ -1,0 +1,144 @@
+gr:
+  page: "Σελίδα %{page} από %{count}"
+
+  billing:
+    invoice:
+      title:
+        standard: "Τιμολόγιο"
+        standard-simplified: "Απλοποιημένο Τιμολόγιο"
+        proforma: "Προτιμολόγιο"
+        corrective: "Διορθωτικό Τιμολόγιο"
+        credit-note: "Πιστωτικό Σημείωμα"
+        debit-note: "Χρεωστικό Σημείωμα"
+
+      summary:
+        title: "Περίληψη"
+        issue_date: "Ημερομηνία Έκδοσης"
+        value_date: "Ημερομηνία Αξίας"
+        operation_date: "Ημερομηνία Ενέργειας"
+        currency: "Νόμισμα"
+        currency_value: "%{desc} (%{code})"
+        preceding_invoice: "Προηγούμενο Τιμολόγιο"
+        order: "Παραγγελία"
+        order_period: "Περίοδος"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} έως %{end}"
+        ext_map:
+          mx-cfdi-issue-place: "Τόπος Έκδοσης"
+
+      supplier:
+        title: "Προμηθευτής"
+
+      customer:
+        title: "Πελάτης"
+
+      lines:
+        title: "Γραμμές"
+        i: "#"
+        ref: "Αναφ."
+        description: "Περιγραφή"
+        quantity: "Ποσ."
+        unit: "Μονάδα"
+        price: "Τιμή"
+        discount: "Έκπτωση"
+        charges: "Χρεώσεις"
+        total: "Σύνολο"
+
+      totals:
+        sum: "Άθροισμα"
+        discount: "Έκπτωση"
+        charge: "Χρέωση"
+        title: "Σύνολα"
+        prices_include_tax: "Συμπεριλαμβάνεται φόρος"
+        total: "Σύνολο"
+        taxes: "Φόρος"
+        total_with_tax: "Σύνολο με φόρο"
+        total_to_pay: "Σύνολο προς πληρωμή"
+        outlay: "Έξοδος %{i}: %{txt}"
+        advance: "Προκαταβολή: %{date} %{txt}"
+        advance_sum: "Άθροισμα προκαταβολών"
+        due_sum: "Σύνολο οφειλόμενου"
+        exchange_rate: "Ισοτιμία προς %{to} (%{amount})"
+
+      taxes:
+        title: "Φόροι"
+        category: "Φόρος"
+        base: "Βάση"
+        rate: "Ποσοστό"
+        amount: "Ποσό"
+
+      payment:
+        title: "Πληρωμή"
+        instructions:
+          method: "Μέθοδος πληρωμής"
+          ref: "Αναφορά"
+          bank_data: "Οδηγίες τραπεζικής μεταφοράς"
+          card: "Πληρωμή με κάρτα"
+          card_detail: "Πληρωμή προς κάρτα με τελευταία 4 ψηφία %{last4} που ανήκει σε %{holder}"
+          observations: "Σημειώσεις πληρωμής"
+          bank_name: "Τράπεζα: %{name}"
+          iban: "IBAN: %{iban}"
+          account_number: "Αριθμός λογαριασμού: %{num}"
+          bic: "BIC: %{bic}"
+          methods:
+            card: "Κάρτα τραπέζης"
+            credit_transfer: "Τραπεζική μεταφορά"
+            cash: "Μετρητά"
+            direct_debit: "Άμεση πίστωση"
+            online: "Διαδικτυακά"
+        terms:
+          key: "Όροι πληρωμής"
+          notes: "Σημειώσεις όρων πληρωμής"
+          due_dates: "Ημερομηνίες πληρωμής"
+          keys:
+            na: "Δεν έχει καθοριστεί"
+            end_of_month: "Τέλος μήνα"
+            due_date: "Στην ημερομηνία πληρωμής"
+            deferred: "Μετά την ημερομηνία πληρωμής"
+            proximo: "Επόμενος μήνας"
+            instant: "Κατά την παράδοση του τιμολογίου"
+            elective: "Επιλεγμένος από τον πελάτη"
+            pending: "Να καθοριστεί από τον προμηθευτή"
+            advanced: "Πληρωμένο"
+            delivery: "Κατά την παράδοση"
+
+      notes:
+        title: "Σημειώσεις"
+        reg:
+          book: "Βιβλίο %{id}"
+          volume: "Τόμος %{id}"
+          sheet: "Φύλλο %{id}"
+          section: "Ενότητα %{id}"
+          page: "Σελίδα %{id}"
+          entry: "Καταχώρηση %{id}"
+          inscription: "Εγγεγραμμένο σε:"
+
+      regimes:
+        co:
+          cufe: "CUFE: %{cufe}"
+          cude: "CUDE: %{cude}"
+          preceding_cufe: "CUFE Προηγούμενου τιμολογίου: %{cufe}"
+
+  organizing:
+    party:
+      tax_id: "%{label}: (%{country}) %{code}"
+      tel: "Τηλ: %{num}"
+      tel_label: "Τηλ: %{num} (%{label})"
+      email:
+        one: "Email: %{addr}"
+        other: "Emails: %{addr}"
+      email_label: "%{addr} (%{label})"
+      identity: "%{label}: %{code}"
+      identity_code: "Κωδικός Ταυτότητας"
+      po_box: "Τ.Θ. %{po_box}"
+      labels:
+        default: "Φορολογικός Κωδικός"
+      ext: "%{label}: %{value}"
+      ext_map:
+        co-dian-municipality: "Δήμος"
+        mx-cfdi-fiscal-regime: "Φορολογικό Καθεστώς"
+        mx-cfdi-post-code: "Τοποθεσία"
+        mx-cfdi-use: "Χρήση CFDI"
+    address:
+      label: "%{label}:"
+      country: "(%{country})"

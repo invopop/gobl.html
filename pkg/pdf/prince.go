@@ -32,6 +32,12 @@ func (pc *princeConvertor) HTML(_ context.Context, data []byte, opts ...Option) 
 		"data.html": data,
 	}
 
+	if len(o.styles) > 0 {
+		for _, ss := range o.styles {
+			j.Input.Styles = append(j.Input.Styles, ss.Filename)
+			j.Files[ss.Filename] = ss.Data
+		}
+	}
 	if len(o.attachments) > 0 {
 		for _, a := range o.attachments {
 			j.Files[a.Filename] = a.Data

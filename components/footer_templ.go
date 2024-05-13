@@ -30,7 +30,7 @@ func footerPrint(env *gobl.Envelope) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<style type=\"text/css\">\n        @media screen {\n            footer.screen {\n                display: block;\n            }\n            footer.print {\n                display: none;\n            }\n        }\n        @media print {\n            footer.screen {\n                display: none;\n            }\n            footer.print {\n                display: block;\n            }\n        }\n        @page {\n            @bottom {\n                content: element(footer);\n            }\n        }\n        footer {\n            height: 12mm;\n            text-align: right;\n            padding: 4mm 0mm;\n        }\n        footer.print {\n            position: running(footer);\n        }\n        footer.screen {\n            padding: 2mm 0mm;\n        }\n        footer .page {\n        }\n        footer .page-number {\n            content: counter(page);\n        }\n        footer .pages-number {\n            content: counter(pages);\n        }\n        footer .gobl-logo {\n            float: left;\n        }\n        footer.print .notes:after {\n            content: \" · \";\n        }\n        footer .gobl-logo img {\n            width: 8mm;\n            height: 8mm;\n        }\n        footer.print .gobl-logo {\n            margin-top: -7mm;\n        }\n    </style><footer class=\"print\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<footer class=\"print\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -11,9 +11,15 @@ import "io"
 import "bytes"
 
 import (
+	"fmt"
+	"io/fs"
+	"path/filepath"
+
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/assets"
 	"github.com/invopop/gobl.html/components/bill/invoice"
 	"github.com/invopop/gobl.html/components/notes"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/note"
 )
@@ -31,7 +37,15 @@ func Envelope(env *gobl.Envelope) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<html data-theme=\"light\"><head><title>GOBL HTML Generator</title><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap\" rel=\"stylesheet\"><style type=\"text/css\">\n\t\t\t\t@page {\n\t\t\t\t\tfont-family: \"Inter\", sans-serif;\n\t\t\t\t\tsize: A4 portrait;\n\t\t\t\t\tmargin: 10mm;\n\t\t\t\t\tmargin-bottom: 20mm;\n\t\t\t\t\tcounter-increment: page;\n\t\t\t\t\tfont-size: 9pt;\n\t\t\t\t\tline-height: 1.5em;\n\t\t\t\t\tcolor: #4B5563;\n\t\t\t\t}\n\t\t\t\tbody {\n\t\t\t\t\tfont-family: \"Inter\", sans-serif;\n\t\t\t\t\tfont-size: 9pt;\n\t\t\t\t\tline-height: 1.5em;\n\t\t\t\t\tmargin: 0;\n\t\t\t\t\tmargin-bottom: 0mm;\n\t\t\t\t\t/* color: #030712; */\n\t\t\t\t\t/* color: #6B7280; */\n\t\t\t\t\tcolor: #4B5563;\n\t\t\t\t}\n\t\t\t\t@media screen {\n\t\t\t\t\tbody {\n\t\t\t\t\t\tmargin: 10mm;\n\t\t\t\t\t}\t\n\t\t\t\t}\n\t\t\t\tarticle.envelope {\n\t\t\t\t\tmin-height: 100%;\n\t\t\t\t}\n\t\t\t\tarticle, section, header, div, h1, h2, h3, h4, table, th, td, p {\n\t\t\t\t\tfont-size: 1em;\n\t\t\t\t\tmargin: 0;\n\t\t\t\t}\n\t\t\t\th1, h2, h3, h4 {\n\t\t\t\t\tfont-weight: 500;\n\t\t\t\t\t/* color: #030712; */\n\t\t\t\t}\n\t\t\t\ta {\n\t\t\t\t\tcolor: #4B5563;\n\t\t\t\t}\n\t\t\t\ttable {\n\t\t\t\t\tborder-spacing: 0;\n\t\t\t\t\tborder-collapse: collapse;\n\t\t\t\t}\n\t\t\t\tth, td {\n\t\t\t\t\ttext-align: left;\n\t\t\t\t}\n\t\t\t\tsection.footer span.page-number:before {\n\t\t\t\t\tcontent: counter(page);\n\t\t\t\t}\n            </style></head><body><article class=\"envelope\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<html data-theme=\"light\"><head><title>GOBL HTML Generator</title><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap\" rel=\"stylesheet\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = stylesheets().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</head><body><article class=\"envelope\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -69,4 +83,85 @@ func Envelope(env *gobl.Envelope) templ.Component {
 		}
 		return templ_7745c5c3_Err
 	})
+}
+
+func stylesheets() templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
+		if !templ_7745c5c3_IsBuffer {
+			templ_7745c5c3_Buffer = templ.GetBuffer()
+			defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var2 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var2 == nil {
+			templ_7745c5c3_Var2 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		if opts := internal.Options(ctx); opts != nil {
+			if opts.EmbedStylesheets {
+				for _, data := range stylesheetData() {
+					templ_7745c5c3_Err = templ.Raw(`<style type="text/css">`+data+`</style>`).Render(ctx, templ_7745c5c3_Buffer)
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+				}
+			} else {
+				for _, ss := range stylesheetFilenames() {
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"")
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(ss))
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\">")
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+				}
+			}
+		}
+		if !templ_7745c5c3_IsBuffer {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteTo(templ_7745c5c3_W)
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+// stylesheetFilenames just provides the filenames of all the styles
+func stylesheetFilenames() []string {
+	list := []string{}
+	err := fs.WalkDir(assets.Content, "styles", func(path string, _ fs.DirEntry, _ error) error {
+		if filepath.Ext(path) != ".css" {
+			return nil
+		}
+		list = append(list, path)
+		return nil
+	})
+	if err != nil {
+		panic(err)
+	}
+	return list
+}
+
+// stylesheetData provides a list of data objects of all the stylesheets
+func stylesheetData() []string {
+	list := make([]string, 0)
+	err := fs.WalkDir(assets.Content, "styles", func(path string, _ fs.DirEntry, _ error) error {
+		if filepath.Ext(path) != ".css" {
+			return nil
+		}
+		data, err := fs.ReadFile(assets.Content, path)
+		if err != nil {
+			return fmt.Errorf("reading file: %w", err)
+		}
+		list = append(list, string(data))
+		return nil
+	})
+	if err != nil {
+		panic(err)
+	}
+	return list
 }

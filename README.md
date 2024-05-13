@@ -14,11 +14,33 @@ GOBL HTML uses [templ](https://templ.guide/) to define a set of components in Go
 templ generate
 ```
 
-During development, it can help massive to have hot reload to be able to make changes and see them quickly. You can do this using the following example command:
+During development, it can help massive to have hot reload to be able to make changes and see them quickly. There are two mechanisms we're currently using:
+
+#### Air
+
+Air is a great tool to auto reload potentially any project, but works great with Go. Install with:
+
+```bash
+go install github.com/cosmtrek/air@latest
+```
+
+The `.toml` is already configured and ready in this repository, so simply run:
+
+```bash
+air
+```
+
+Air is a bit more reliable at detecting file changes, especially for stylesheets. It's configured to offer a proxy with auto-reload, but of course that will only work at the moment when viewing HTML documents, not PDFs. You'll always need to wait a few seconds before page reloads to give the system chance to recompile.
+
+#### Templ Watcher
+
+Templ comes with a watch flag that can also be useful. It has the disadvantage however that it uses `.txt` files for comparisons and the generated code should not be uploaded to git directly. Start the process with:
 
 ```bash
 templ generate --watch --cmd="go run ./cmd/gobl.html serve --pdf prince"
 ```
+
+Before uploading changes to git, be sure to re-run the regular `templ generate` command, as the live version makes temporary modifications to files that need to be replaced.
 
 ### Testing
 

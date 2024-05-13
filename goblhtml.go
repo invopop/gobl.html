@@ -84,6 +84,14 @@ func WithNumFormatter(nf num.Formatter) Option {
 	}
 }
 
+// WithEmbeddedStylesheets indicates that the stylesheets should be embedded
+// inside the HTML document as opposed to links.
+func WithEmbeddedStylesheets() Option {
+	return func(o *internal.Opts) {
+		o.EmbedStylesheets = true
+	}
+}
+
 // Render takes the GOBL envelope and attempts to render an HTML document
 // from it.
 func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, error) {
