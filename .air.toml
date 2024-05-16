@@ -42,7 +42,7 @@ time = false
 clean_on_exit = false
 
 [proxy]
-enabled = true
+enabled = false
 app_port = 3001
 proxy_port = 3000
 

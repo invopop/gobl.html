@@ -9,7 +9,11 @@ import (
 templ supplier(inv *bill.Invoice) {
 	<section class="supplier">
 		<h2>
-			@t.T("billing.invoice.supplier.title")
+			if inv.Supplier != nil && inv.Supplier.Label != "" {
+				{ inv.Supplier.Label }
+			} else {
+				@t.T("billing.invoice.supplier.title")
+			}
 		</h2>
 		@org.Party(inv.Supplier)
 	</section>
