@@ -114,6 +114,8 @@ en:
           inscription: "Inscribed in:"
 
       regimes:
+        pl:
+          ksef-id: "ID: %{id}"
         co:
           cufe: "CUFE: %{cufe}"
           cude: "CUDE: %{cude}"

@@ -30,6 +30,7 @@
 		],
 		"supplier": {
 			"name": "Provide One S.L.",
+			"label": "Host",
 			"tax_id": {
 				"country": "ES",
 				"code": "B98602642"
@@ -52,6 +53,7 @@
 		},
 		"customer": {
 			"name": "Sample Consumer Inc.",
+			"label": "Client",
 			"tax_id": {
 				"country": "US"
 			}

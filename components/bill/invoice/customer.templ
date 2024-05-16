@@ -9,7 +9,11 @@ import (
 templ customer(inv *bill.Invoice) {
 	<section class="customer">
 		<h2>
-			@t.T("billing.invoice.customer.title")
+			if inv.Customer != nil && inv.Customer.Label != "" {
+				{ inv.Customer.Label }
+			} else {
+				@t.T("billing.invoice.customer.title")
+			}
 		</h2>
 		@org.Party(inv.Customer)
 	</section>
