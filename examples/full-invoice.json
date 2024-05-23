@@ -185,6 +185,13 @@
             "iban": "ES31 0240 4036 4573 9340 5564",
             "name": "RANDOM"
           }
+        ],
+        "online": [
+          {
+            "key": "paypal",
+            "label": "Paypal",
+            "url": "https://www.paypal.com/pay?ref=PAY1234"
+          }
         ]
       }
     },

@@ -3,7 +3,7 @@ testdata_dir = "testdata"
 tmp_dir = "tmp"
 
 [build]
-args_bin = ["serve", "-p", "3001", "--pdf", "prince"]
+args_bin = ["serve", "-p", "3000", "--pdf", "prince"]
 bin = "./gobl.html"
 cmd = "templ generate && go build ./cmd/gobl.html"
 delay = 1000
@@ -43,8 +43,8 @@ clean_on_exit = false
 
 [proxy]
 enabled = false
-app_port = 3001
-proxy_port = 3000
+app_port = 3000
+proxy_port = 3001
 
 [screen]
 clear_on_rebuild = false

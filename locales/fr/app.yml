@@ -41,7 +41,7 @@ fr:
         discount: "Remise"
         charge: "Frais"
         title: "Totals"
-        prices_include_tax: "Taxe incluse"
+        prices_include: "%{tax} incluse"
         total: "Total"
         taxes: "Taxe"
         total_with_tax: "Total avec taxe"
