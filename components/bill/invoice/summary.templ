@@ -111,6 +111,18 @@ templ summaryOrderingRows(inv *bill.Invoice) {
 	if inv.Ordering.Period != nil {
 		@summaryOrderPeriodRows(inv.Ordering.Period)
 	}
+	for _, ident := range inv.Ordering.Identities {
+		if ident.Label != "" {
+			<li class="ordering-ident">
+				<span class="label">
+					{ ident.Label }
+				</span>
+				<span class="value">
+					{ ident.Code.String() }
+				</span>
+			</li>
+		}
+	}
 }
 
 templ summaryOrderPeriodRows(p *cal.Period) {

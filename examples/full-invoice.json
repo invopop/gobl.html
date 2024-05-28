@@ -162,6 +162,12 @@
     ],
     "ordering": {
       "code": "111-9244735-1237858",
+      "identities": [
+        {
+          "label": "Provider Ref.",
+          "code": "PROV1234"
+        }
+      ],
       "period": {
         "label": "Service period",
         "start": "2022-02-01",
