@@ -47,7 +47,7 @@ de:
         discount: "Rabatt"
         charge: "Gebühr"
         title: "Summen"
-        prices_include_tax: "Inklusive Steuern"
+        prices_include: "Inklusive %{tax}"
         total: "Gesamt"
         taxes: "Steuern"
         total_with_tax: "Gesamt inkl. Steuern"

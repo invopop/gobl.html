@@ -66,12 +66,29 @@ templ paymentInstructions(inst *pay.Instructions) {
 						@t.T(".card")
 					</span>
 					<span class="value">
-						@t.T(".card_detaul", i18n.M{"last4": inst.Card.Last4, "holder": inst.Card.Holder})
+						@t.T(".card_detail", i18n.M{"last4": inst.Card.Last4, "holder": inst.Card.Holder})
 					</span>
 				</li>
 			}
 			// TODO: Direct Debit
-			// TODO: Online
+			if len(inst.Online) > 0 {
+				<li class="online">
+					<span class="label">
+						@t.T(".online")
+					</span>
+					for _, ol := range inst.Online {
+						<span class="value">
+							<a href={ templ.SafeURL(ol.URL) }>
+								if ol.Label != "" {
+									{ ol.Label }
+								} else {
+									{ ol.URL }
+								}
+							</a>
+						</span>
+					}
+				</li>
+			}
 			if inst.Notes != "" {
 				<li class="notes">
 					<span class="label">

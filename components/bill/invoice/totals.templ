@@ -18,7 +18,7 @@ templ totals(inv *bill.Invoice, totals *bill.Totals) {
 			</h2>
 			<table>
 				<tbody>
-					@totalsBaseRows(totals)
+					@totalsBaseRows(inv, totals)
 					@totalsPayableRows(inv, totals)
 					@totalsDueRows(inv, totals)
 				</tbody>
@@ -27,7 +27,7 @@ templ totals(inv *bill.Invoice, totals *bill.Totals) {
 	</section>
 }
 
-templ totalsBaseRows(totals *bill.Totals) {
+templ totalsBaseRows(inv *bill.Invoice, totals *bill.Totals) {
 	<tr class="sum strong">
 		<th>
 			@t.T(".sum")
@@ -59,7 +59,7 @@ templ totalsBaseRows(totals *bill.Totals) {
 	if totals.TaxIncluded != nil {
 		<tr>
 			<th>
-				@t.T(".prices_include_tax")
+				@t.T(".prices_include", i18n.M{"tax": totalPricesIncludeTax(ctx, inv)})
 			</th>
 			<td>
 				@t.LM(*totals.TaxIncluded)
@@ -168,6 +168,15 @@ templ totalsDueRows(inv *bill.Invoice, totals *bill.Totals) {
 			</td>
 		</tr>
 	}
+}
+
+func totalPricesIncludeTax(ctx context.Context, inv *bill.Invoice) string {
+	if inv.Tax == nil || inv.Tax.PricesInclude == "" {
+		return ""
+	}
+	r := inv.TaxRegime()
+	category := r.Category(inv.Tax.PricesInclude)
+	return category.Name.In(t.Lang(ctx))
 }
 
 func totalExchangeRates(inv *bill.Invoice) []*currency.ExchangeRate {

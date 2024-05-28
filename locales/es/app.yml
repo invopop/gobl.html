@@ -49,7 +49,7 @@ es:
         discount: "Descuento"
         charge: "Cargo"
         title: "Totales"
-        prices_include_tax: "Impuestos incluidos"
+        prices_include: "%{tax} incluido"
         total: "Total"
         taxes: "Impuesto"
         total_with_tax: "Total con impuesto"

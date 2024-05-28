@@ -49,7 +49,7 @@ gr:
         discount: "Έκπτωση"
         charge: "Χρέωση"
         title: "Σύνολα"
-        prices_include_tax: "Συμπεριλαμβάνεται φόρος"
+        prices_include: "Συμπεριλαμβάνεται %{tax}"
         total: "Σύνολο"
         taxes: "Φόρος"
         total_with_tax: "Σύνολο με φόρο"

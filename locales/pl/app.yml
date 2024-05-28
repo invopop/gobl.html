@@ -47,7 +47,7 @@ pl:
         discount: "Rabat"
         charge: "Opłata"
         title: "Sumy"
-        prices_include_tax: "Podatek wliczony"
+        prices_include_tax: "%{tax} wliczony"
         total: "Suma"
         taxes: "Podatek"
         total_with_tax: "Suma z podatkiem"

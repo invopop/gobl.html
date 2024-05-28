@@ -49,7 +49,7 @@ en:
         discount: "Discount"
         charge: "Charge"
         title: "Totals"
-        prices_include_tax: "Included tax"
+        prices_include: "Included %{tax}"
         total: "Total"
         taxes: "Tax"
         total_with_tax: "Total with tax"
@@ -80,6 +80,7 @@ en:
           iban: "IBAN: %{iban}"
           account_number: "Account number: %{num}"
           bic: "BIC: %{bic}"
+          online: "Online"
           methods:
             card: "Bank card"
             credit_transfer: "Bank transfer"

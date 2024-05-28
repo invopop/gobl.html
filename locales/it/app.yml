@@ -41,7 +41,7 @@ it:
         discount: "Sconto"
         charge: "Oneri"
         title: "Totali"
-        prices_include_tax: "Tasse incluse"
+        prices_include: "%{tax} incluse"
         total: "Totale"
         taxes: "Tasse"
         total_with_tax: "Totale con tasse"

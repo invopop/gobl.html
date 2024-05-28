@@ -55,7 +55,7 @@ func totals(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = totalsBaseRows(totals).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = totalsBaseRows(inv, totals).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -91,7 +91,7 @@ func totals(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 	})
 }
 
-func totalsBaseRows(totals *bill.Totals) templ.Component {
+func totalsBaseRows(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -173,7 +173,7 @@ func totalsBaseRows(totals *bill.Totals) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = t.T(".prices_include_tax").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = t.T(".prices_include", i18n.M{"tax": totalPricesIncludeTax(ctx, inv)}).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -448,6 +448,15 @@ func totalsDueRows(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 		}
 		return templ_7745c5c3_Err
 	})
+}
+
+func totalPricesIncludeTax(ctx context.Context, inv *bill.Invoice) string {
+	if inv.Tax == nil || inv.Tax.PricesInclude == "" {
+		return ""
+	}
+	r := inv.TaxRegime()
+	category := r.Category(inv.Tax.PricesInclude)
+	return category.Name.In(t.Lang(ctx))
 }
 
 func totalExchangeRates(inv *bill.Invoice) []*currency.ExchangeRate {
