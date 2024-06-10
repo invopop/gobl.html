@@ -377,6 +377,8 @@ func taxIDLabel(ctx context.Context, party *org.Party) string {
 		return "RFC"
 	case l10n.FR:
 		return "TVA"
+	case l10n.PT:
+		return "NIF"
 	default:
 		return i18n.T(ctx, ".labels.default")
 	}
