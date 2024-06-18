@@ -1,0 +1,66 @@
+package pt
+
+import (
+	"github.com/invopop/gobl"
+  "github.com/invopop/gobl/regimes/pt"
+)
+
+templ ATQR(env *gobl.Envelope) {
+  if atcud := atATCUD(env); atcud != "" {
+    if qr := atQR(env); qr != "" {
+      @generateATQR(atcud, qr)
+    }
+  }
+}
+
+templ generateATQR(atcud, qr string) {
+	<style type="text/css">
+		.at {
+			break-inside: avoid;
+			text-align: center;
+			padding: 3mm;
+			border: 1px solid #E5E7EB;
+			width: 6cm;
+		}
+		.at .label {
+			font-family: monospace;
+			font-size: 7pt;
+			text-align: center;
+			margin-bottom: 2mm;
+		}
+		.at img {
+			width: 30mm;
+			height: 30mm;
+		}
+	</style>
+	<section>
+		<div class="at">
+			<div class="label">
+				ATCUD: { atcud }
+			</div>
+			<div class="qr">
+				<img src={ generateQR(qr) }/>
+			</div>
+		</div>
+	</section>
+}
+
+func atATCUD(env *gobl.Envelope) string {
+	for _, stamp := range env.Head.Stamps {
+		switch stamp.Provider {
+		case pt.StampProviderATATCUD:
+			return stamp.Value
+		}
+	}
+	return ""
+}
+
+func atQR(env *gobl.Envelope) string {
+	for _, stamp := range env.Head.Stamps {
+		switch stamp.Provider {
+		case pt.StampProviderATQR:
+			return stamp.Value
+		}
+	}
+	return ""
+}
