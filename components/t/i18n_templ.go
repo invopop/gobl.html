@@ -126,7 +126,7 @@ func LM(a num.Amount) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		var templ_7745c5c3_Var8 string
-		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(localizeMoney(ctx, a))
+		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(LocalizeMoney(ctx, a))
 		if templ_7745c5c3_Err != nil {
 			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 30, Col: 24}
 		}
@@ -157,7 +157,7 @@ func LC(a num.Amount, cur currency.Code) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		var templ_7745c5c3_Var10 string
-		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(localizeCurrency(ctx, a, cur))
+		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(LocalizeCurrency(ctx, a, cur))
 		if templ_7745c5c3_Err != nil {
 			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 36, Col: 32}
 		}
@@ -188,7 +188,7 @@ func LCD(a num.Amount, cur currency.Code) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		var templ_7745c5c3_Var12 string
-		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(localizeCurrency(ctx, a, cur, currency.WithDisambiguateSymbol()))
+		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(LocalizeCurrency(ctx, a, cur, currency.WithDisambiguateSymbol()))
 		if templ_7745c5c3_Err != nil {
 			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 42, Col: 67}
 		}
@@ -257,12 +257,16 @@ func Localize(ctx context.Context, a any) string {
 	}
 }
 
-func localizeMoney(ctx context.Context, a num.Amount) string {
+// LocalizeMoney will localise a monetary amount using the context's currency
+// and formatter.
+func LocalizeMoney(ctx context.Context, a num.Amount) string {
 	f := numFormatter(ctx)
 	return f.Amount(a)
 }
 
-func localizeCurrency(_ context.Context, a num.Amount, cur currency.Code, opts ...currency.FormatOption) string {
+// LocalizeCurrency will produce a localized string representation of the given
+// amount for the provided currency.
+func LocalizeCurrency(_ context.Context, a num.Amount, cur currency.Code, opts ...currency.FormatOption) string {
 	f := cur.Def().Formatter(opts...)
 	return f.Amount(a)
 }

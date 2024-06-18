@@ -62,6 +62,8 @@ templ taxRateRow(inv *bill.Invoice, cat *tax.CategoryTotal, rate *tax.RateTotal,
 				} else {
 					@t.L(*rate.Percent)
 				}
+			} else if txt := taxExemptionCode(rate.Ext); txt != "" {
+				{ txt }
 			} else {
 				&mdash;
 			}
@@ -95,4 +97,15 @@ func taxCategoryTotalName(ctx context.Context, inv *bill.Invoice, cat *tax.Categ
 	r := inv.TaxRegime()
 	category := r.Category(cat.Code)
 	return category.Name.In(t.Lang(ctx))
+}
+
+// taxExemptionCode looks at the exemption reasons and tries to extract the
+// first code. We'll see if this is a good idea or not.
+func taxExemptionCode(ext tax.Extensions) string {
+	if len(ext) > 0 {
+		for _, v := range ext {
+			return fmt.Sprintf("(%s)", v.String())
+		}
+	}
+	return ""
 }

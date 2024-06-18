@@ -103,13 +103,14 @@ de:
       notes:
         title: "Hinweise"
         reg:
+          capital: "Sozialkapital %{amount}"
+          registration: "Registrierung:"
           book: "Buch %{id}"
           volume: "Band %{id}"
           sheet: "Blatt %{id}"
           section: "Abschnitt %{id}"
           page: "Seite %{id}"
           entry: "Eintrag %{id}"
-          inscription: "Eingetragen in:"
 
       regimes:
         co:

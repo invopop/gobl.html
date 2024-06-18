@@ -105,13 +105,14 @@ es:
       notes:
         title: "Notas"
         reg:
+          capital: "Capital Social %{amount}"
+          registration: "Registro:"
           book: "Libro %{id}"
           volume: "Volumen %{id}"
           sheet: "Hoja %{id}"
           section: "Sección %{id}"
           page: "Página %{id}"
           entry: "Entrada %{id}"
-          inscription: "Inscrito en:"
 
       regimes:
         co:

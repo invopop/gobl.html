@@ -10,6 +10,7 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
+	"github.com/yuin/goldmark/renderer/html"
 )
 
 var markdown goldmark.Markdown
@@ -20,11 +21,15 @@ func init() {
 		goldmark.WithExtensions(
 			extension.NewLinkify(),
 		),
+		goldmark.WithRendererOptions(
+			// NOTE: Please remove this!
+			html.WithUnsafe(),
+		),
 	)
 }
 
 templ notes(inv *bill.Invoice) {
-	if len(inv.Notes) > 0 {
+	if len(inv.Notes) > 0 || inv.Supplier.Registration != nil {
 		<section class="notes">
 			@t.Scope("billing.invoice.notes") {
 				<h2>
@@ -47,8 +52,20 @@ templ noteRegSummary(reg *org.Registration) {
 	<div class="note registration">
 		@t.Scope(".reg") {
 			<span class="title">
-				@t.T(".inscription")
+				@t.T(".registration")
 			</span>
+			if reg.Capital != nil {
+				if a := registrationCapital(ctx, reg); a != "" {
+					<span class="capital">
+						@t.T(".capital", i18n.M{"amount": a})
+					</span>
+				}
+			}
+			if reg.Office != "" {
+				<span class="office">
+					{ reg.Office }
+				</span>
+			}
 			if reg.Book != "" {
 				<span class="book">
 					@t.T(".book", i18n.M{"id": reg.Book})
@@ -79,6 +96,11 @@ templ noteRegSummary(reg *org.Registration) {
 					@t.T(".entry", i18n.M{"id": reg.Entry})
 				</span>
 			}
+			if reg.Other != "" {
+				<span class="other">
+					{ reg.Other }
+				</span>
+			}
 		}
 	</div>
 }
@@ -89,4 +111,14 @@ func renderNote(note *cbc.Note) string {
 		return fmt.Sprintf("!(ERR %v)", err.Error())
 	}
 	return buf.String()
+}
+
+func registrationCapital(ctx context.Context, reg *org.Registration) string {
+	if reg.Capital != nil {
+		if reg.Currency != "" {
+			return t.LocalizeCurrency(ctx, *reg.Capital, reg.Currency)
+		}
+		return t.LocalizeMoney(ctx, *reg.Capital)
+	}
+	return ""
 }

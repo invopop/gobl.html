@@ -1,0 +1,134 @@
+pt:
+  page: "Página %{page} de %{count}"
+
+  billing:
+    invoice:
+      title:
+        standard: "Fatura"
+        standard-simplified: "Fatura Simplificada"
+        proforma: "Fatura Proforma"
+        corrective: "Fatura Corretiva"
+        credit-note: "Nota de Crédito"
+        debit-note: "Nota de Débito"
+
+      summary:
+        title: "Resumo"
+        issue_date: "Data de Emissão"
+        value_date: "Data de Valor"
+        operation_date: "Data de Operação"
+        currency: "Moeda"
+        currency_value: "%{desc} (%{code})"
+        preceding_invoice: "Fatura Anterior"
+        order: "Ordem"
+        order_period: "Período"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} a %{end}"
+
+      supplier:
+        title: "Fornecedor"
+
+      customer:
+        title: "Cliente"
+
+      lines:
+        title: "Linhas"
+        i: "#"
+        ref: "Ref."
+        description: "Descrição"
+        quantity: "Qtd."
+        unit: "Unidade"
+        price: "Preço"
+        discount: "Desc."
+        charges: "Encargos"
+        total: "Total"
+
+      totals:
+        sum: "Soma"
+        discount: "Desconto"
+        charge: "Encargo"
+        title: "Totais"
+        prices_include: "%{tax} incluído"
+        total: "Total"
+        taxes: "Imposto"
+        total_with_tax: "Total com imposto"
+        total_to_pay: "Total a pagar"
+        outlay: "Despesa %{i}: %{txt}"
+        advance: "Adiantamento: %{date} %{txt}"
+        advance_sum: "Soma dos adiantamentos"
+        due_sum: "Total devido"
+        exchange_rate: "Câmbio para %{to} (%{amount})"
+
+      taxes:
+        title: "Impostos"
+        category: "Imposto"
+        base: "Base"
+        rate: "Taxa"
+        amount: "Quantia"
+
+      payment:
+        title: "Pagamento"
+        instructions:
+          method: "Método de pagamento"
+          ref: "Referência"
+          bank_data: "Instruções de transferência bancária"
+          card: "Pagamento com Cartão"
+          card_detail: "Pagamento efetuado com cartão terminando em %{last4} pertencente a %{holder}"
+          observations: "Notas de Pagamento"
+          bank_name: "Banco: %{name}"
+          iban: "IBAN: %{iban}"
+          account_number: "Número da conta: %{num}"
+          bic: "BIC: %{bic}"
+          online: "Online"
+          methods:
+            card: "Cartão bancário"
+            credit_transfer: "Transferência bancária"
+            cash: "Dinheiro"
+            direct_debit: "Débito direto"
+            online: "Online"
+        terms:
+          key: "Condições de Pagamento"
+          notes: "Notas das Condições de Pagamento"
+          due_dates: "Datas de vencimento"
+          keys:
+            na: "Não especificado"
+            end_of_month: "Fim do mês"
+            due_date: "Na data de vencimento"
+            deferred: "Após a data de vencimento"
+            proximo: "Próximo mês"
+            instant: "Na entrega da fatura"
+            elective: "Escolhido pelo cliente"
+            pending: "A determinar pelo fornecedor"
+            advanced: "Pago"
+            delivery: "Na entrega"
+
+      notes:
+        title: "Notas"
+        reg:
+          capital: "Capital Social %{amount}"
+          regisration: "Registada:"
+          book: "Livro %{id}"
+          volume: "Volume %{id}"
+          sheet: "Folha %{id}"
+          section: "Seção %{id}"
+          page: "Página %{id}"
+          entry: "Entrada %{id}"
+
+  organizing:
+    party:
+      tax_id: "%{label}: (%{country}) %{code}"
+      tel: "Tel: %{num}"
+      tel_label: "Tel: %{num} (%{label})"
+      email:
+        one: "Email: %{addr}"
+        other: "Emails: %{addr}"
+      email_label: "%{addr} (%{label})"
+      identity: "%{label}: %{code}"
+      identity_code: "Código de Identidade"
+      po_box: "Caixa Postal %{po_box}"
+      labels:
+        default: "Código Fiscal"
+      ext: "%{label}: %{value}"
+
+    address:
+      label: "%{label}:"
+      country: "(%{country})"

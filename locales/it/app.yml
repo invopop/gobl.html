@@ -94,13 +94,14 @@ it:
       notes:
         title: "Note"
         reg:
+          capital: "Capitale sociale %{amount}"
+          registration: "Registrazione:"
           book: "Libro %{id}"
           volume: "Volume %{id}"
           sheet: "Foglio %{id}"
           section: "Sezione %{id}"
           page: "Pagina %{id}"
           entry: "Voce %{id}"
-          inscription: "Iscritto in:"
       regimes:
         co:
           cufe: "CUFE: %{cufe}"

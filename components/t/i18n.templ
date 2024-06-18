@@ -28,19 +28,19 @@ templ L(a any) {
 
 // LM localizes amounts using the currency and formatter defined in the context.
 templ LM(a num.Amount) {
-	{ localizeMoney(ctx, a) }
+	{ LocalizeMoney(ctx, a) }
 }
 
 // LC localizes and amount using the formatting defined by the specified currency,
 // ignoring any formatter defined in the context.
 templ LC(a num.Amount, cur currency.Code) {
-	{ localizeCurrency(ctx, a, cur) }
+	{ LocalizeCurrency(ctx, a, cur) }
 }
 
 // LCD localizes and amount using the formatting defined by the specified currency,
 // and uses the disembiguate symbol.
 templ LCD(a num.Amount, cur currency.Code) {
-	{ localizeCurrency(ctx, a, cur, currency.WithDisambiguateSymbol()) }
+	{ LocalizeCurrency(ctx, a, cur, currency.WithDisambiguateSymbol()) }
 }
 
 // Scope helps set a scope around the context
@@ -77,12 +77,16 @@ func Localize(ctx context.Context, a any) string {
 	}
 }
 
-func localizeMoney(ctx context.Context, a num.Amount) string {
+// LocalizeMoney will localise a monetary amount using the context's currency
+// and formatter.
+func LocalizeMoney(ctx context.Context, a num.Amount) string {
 	f := numFormatter(ctx)
 	return f.Amount(a)
 }
 
-func localizeCurrency(_ context.Context, a num.Amount, cur currency.Code, opts ...currency.FormatOption) string {
+// LocalizeCurrency will produce a localized string representation of the given
+// amount for the provided currency.
+func LocalizeCurrency(_ context.Context, a num.Amount, cur currency.Code, opts ...currency.FormatOption) string {
 	f := cur.Def().Formatter(opts...)
 	return f.Amount(a)
 }
