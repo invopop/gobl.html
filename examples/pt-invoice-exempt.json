@@ -1,0 +1,109 @@
+{
+  "$schema": "https://gobl.org/draft-0/envelope",
+  "head": {
+    "uuid": "01902adc-05c8-7000-8703-60c8dcf87bd6",
+    "dig": {
+      "alg": "sha256",
+      "val": "8ae55bfaea91bf68e15511581b0eb5fdef72fbaf84904b4dd9ea75d2bb1643c2"
+    },
+    "stamps": [
+      {
+        "prv": "at-atcud",
+        "val": "AAJFJ3JYDP-27"
+      },
+      {
+        "prv": "at-qr",
+        "val": "A:508025338*B:999999990*C:PT*D:FT*E:N*F:20240618*G:FT IXTEST-01/27*H:AAJFJ3JYDP-27*I1:PT*I2:100.00*N:0.00*O:100.00*Q:vVWj*R:192"
+      },
+      {
+        "prv": "at-hash",
+        "val": "vVWj"
+      },
+      {
+        "prv": "at-app-id",
+        "val": "192"
+      }
+    ]
+  },
+  "doc": {
+    "$schema": "https://gobl.org/draft-0/bill/invoice",
+    "uuid": "01902adc-055a-7000-88ea-0dc88769ee3c",
+    "type": "standard",
+    "code": "FT IXTEST-01/27",
+    "issue_date": "2024-06-18",
+    "currency": "EUR",
+    "supplier": {
+      "uuid": "28437140-ce65-481a-a58c-9de1fc8dfedd",
+      "name": "IX test",
+      "tax_id": {
+        "country": "PT",
+        "code": "508025338"
+      },
+      "addresses": [
+        {
+          "street": "Rua do Hotelzinho",
+          "locality": "Lisboa",
+          "code": "1000-000"
+        }
+      ],
+      "registration": {
+        "capital": "2000000.00",
+        "currency": "EUR",
+        "other": "CRC Porto sob nº123123123 - SIRPEEE: PT000123"
+      }
+    },
+    "customer": {
+      "name": "Maria Santos Silva"
+    },
+    "lines": [
+      {
+        "i": 1,
+        "quantity": "1",
+        "item": {
+          "name": "Noite em quarto duplo",
+          "price": "100.00"
+        },
+        "sum": "100.00",
+        "taxes": [
+          {
+            "cat": "VAT",
+            "rate": "exempt",
+            "ext": {
+              "pt-exemption-code": "M41"
+            }
+          }
+        ],
+        "total": "100.00"
+      }
+    ],
+    "totals": {
+      "sum": "100.00",
+      "total": "100.00",
+      "taxes": {
+        "categories": [
+          {
+            "code": "VAT",
+            "rates": [
+              {
+                "key": "exempt",
+                "ext": {
+                  "pt-exemption-code": "M41"
+                },
+                "base": "100.00",
+                "amount": "0.00"
+              }
+            ],
+            "amount": "0.00"
+          }
+        ],
+        "sum": "0.00"
+      },
+      "tax": "0.00",
+      "total_with_tax": "100.00",
+      "payable": "100.00"
+    }
+  },
+  "sigs": [
+    "eyJhbGciOiJFUzI1NiIsImtpZCI6IjlkNzkzOGM5LTcxOTUtNDEyMy04NDE5LTY4MjA0NjMwMGVjMyJ9.eyJ1dWlkIjoiMDE5MDJhZGMtMDVjOC03MDAwLTg3MDMtNjBjOGRjZjg3YmQ2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjhhZTU1YmZhZWE5MWJmNjhlMTU1MTE1ODFiMGViNWZkZWY3MmZiYWY4NDkwNGI0ZGQ5ZWE3NWQyYmIxNjQzYzIifSwic3RhbXBzIjpbeyJwcnYiOiJhdC1hdGN1ZCIsInZhbCI6IkFBSkZKM0pZRFAtMjcifSx7InBydiI6ImF0LXFyIiwidmFsIjoiQTo1MDgwMjUzMzgqQjo5OTk5OTk5OTAqQzpQVCpEOkZUKkU6TipGOjIwMjQwNjE4Kkc6RlQgSVhURVNULTAxLzI3Kkg6QUFKRkozSllEUC0yNypJMTpQVCpJMjoxMDAuMDAqTjowLjAwKk86MTAwLjAwKlE6dlZXaipSOjE5MiJ9LHsicHJ2IjoiYXQtaGFzaCIsInZhbCI6InZWV2oifSx7InBydiI6ImF0LWFwcC1pZCIsInZhbCI6IjE5MiJ9XX0.kFgvcooSXribSVkgKfR5km2WrpyNVIY2qNQC1J_WxTPXaLavgWPGW0seYyZpcYhv0TA_FmUFUTteD-U-pOksDw"
+  ]
+}

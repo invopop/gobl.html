@@ -187,6 +187,20 @@ func taxRateRow(inv *bill.Invoice, cat *tax.CategoryTotal, rate *tax.RateTotal, 
 					return templ_7745c5c3_Err
 				}
 			}
+		} else if txt := taxExemptionCode(rate.Ext); txt != "" {
+			var templ_7745c5c3_Var5 string
+			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(txt)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/taxes.templ`, Line: 65, Col: 9}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" ")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 		} else {
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("&mdash; ")
 			if templ_7745c5c3_Err != nil {
@@ -241,4 +255,15 @@ func taxCategoryTotalName(ctx context.Context, inv *bill.Invoice, cat *tax.Categ
 	r := inv.TaxRegime()
 	category := r.Category(cat.Code)
 	return category.Name.In(t.Lang(ctx))
+}
+
+// taxExemptionCode looks at the exemption reasons and tries to extract the
+// first code. We'll see if this is a good idea or not.
+func taxExemptionCode(ext tax.Extensions) string {
+	if len(ext) > 0 {
+		for _, v := range ext {
+			return fmt.Sprintf("(%s)", v.String())
+		}
+	}
+	return ""
 }

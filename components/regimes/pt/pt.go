@@ -3,7 +3,10 @@ package pt
 import (
 	"bytes"
 	"encoding/base64"
+	"fmt"
 
+	"github.com/invopop/gobl"
+	"github.com/invopop/gobl/regimes/pt"
 	go_qr "github.com/piglig/go-qr"
 )
 
@@ -15,6 +18,17 @@ const (
 	// Error correction level
 	atQRCorLvl = go_qr.Medium
 )
+
+// FooterNotes handles the special case when a document contains special
+// notes that need to be added to the footer
+func FooterNotes(env *gobl.Envelope) string {
+	if appID := atAppID(env); appID != "" {
+		if hash := atHash(env); hash != "" {
+			return fmt.Sprintf("<b>%s</b> &middot; Processado por programa certificado %s/AT", hash, appID)
+		}
+	}
+	return ""
+}
 
 // generateQR implements a custom QR code generator that complies with the AT spec.
 func generateQR(qrval string) string {
@@ -41,4 +55,44 @@ func generateQR(qrval string) string {
 
 	str := base64.StdEncoding.EncodeToString(buf.Bytes())
 	return "data:image/svg+xml;base64," + str
+}
+
+func atAppID(env *gobl.Envelope) string {
+	for _, stamp := range env.Head.Stamps {
+		switch stamp.Provider {
+		case pt.StampProviderATAppID:
+			return stamp.Value
+		}
+	}
+	return ""
+}
+
+func atHash(env *gobl.Envelope) string {
+	for _, stamp := range env.Head.Stamps {
+		switch stamp.Provider {
+		case pt.StampProviderATHash:
+			return stamp.Value
+		}
+	}
+	return ""
+}
+
+func atATCUD(env *gobl.Envelope) string {
+	for _, stamp := range env.Head.Stamps {
+		switch stamp.Provider {
+		case pt.StampProviderATATCUD:
+			return stamp.Value
+		}
+	}
+	return ""
+}
+
+func atQR(env *gobl.Envelope) string {
+	for _, stamp := range env.Head.Stamps {
+		switch stamp.Provider {
+		case pt.StampProviderATQR:
+			return stamp.Value
+		}
+	}
+	return ""
 }

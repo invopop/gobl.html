@@ -106,13 +106,14 @@ en:
       notes:
         title: "Notes"
         reg:
+          capital: "Social Capital %{amount}"
+          registration: "Registration:"
           book: "Book %{id}"
           volume: "Volume %{id}"
           sheet: "Sheet %{id}"
           section: "Section %{id}"
           page: "Page %{id}"
           entry: "Entry %{id}"
-          inscription: "Inscribed in:"
 
       regimes:
         pl:
@@ -131,6 +132,8 @@ en:
         one: "Email: %{addr}"
         other: "Emails: %{addr}"
       email_label: "%{addr} (%{label})"
+      website: "Web: %{url}"
+      website_label: "%{label}: %{url}"
       identity: "%{label}: %{code}"
       identity_code: "Identity code"
       po_box: "P.O. Box %{po_box}"

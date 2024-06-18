@@ -104,13 +104,14 @@ pt:
       notes:
         title: "Notas"
         reg:
+          capital: "Capital Social %{amount}"
+          regisration: "Registada:"
           book: "Livro %{id}"
           volume: "Volume %{id}"
           sheet: "Folha %{id}"
           section: "Seção %{id}"
           page: "Página %{id}"
           entry: "Entrada %{id}"
-          inscription: "Inscrito em:"
 
   organizing:
     party:

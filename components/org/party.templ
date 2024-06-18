@@ -30,6 +30,9 @@ templ Party(party *org.Party) {
 			if len(party.Emails) > 0 {
 				@emails(party.Emails)
 			}
+			if len(party.Websites) > 0 {
+				@websites(party.Websites)
+			}
 			if showTaxID(party) {
 				@taxID(party)
 			}
@@ -63,6 +66,18 @@ templ emails(emails []*org.Email) {
 	<div class="emails">
 		@t.N(".email", len(emails), i18n.M{"addr": emailAddresses(ctx, emails)})
 	</div>
+}
+
+templ websites(websites []*org.Website) {
+	for _, web := range websites {
+		<div class="website">
+			if web.Label != "" {
+				@t.T(".website_label", i18n.M{"label": web.Label, "url": web.URL})
+			} else {
+				@t.T(".website", i18n.M{"url": web.URL})
+			}
+		</div>
+	}
 }
 
 templ identities(idents []*org.Identity) {

@@ -105,13 +105,14 @@ gr:
       notes:
         title: "Σημειώσεις"
         reg:
+          registration: "Εγγραφή:"
+          capital: "Κοινωνικό Κεφάλαιο %{amount}"
           book: "Βιβλίο %{id}"
           volume: "Τόμος %{id}"
           sheet: "Φύλλο %{id}"
           section: "Ενότητα %{id}"
           page: "Σελίδα %{id}"
           entry: "Καταχώρηση %{id}"
-          inscription: "Εγγεγραμμένο σε:"
 
       regimes:
         co:

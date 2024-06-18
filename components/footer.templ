@@ -1,10 +1,13 @@
 package components
 
 import (
+	"strings"
+
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/internal"
+	"github.com/invopop/gobl.html/components/regimes/pt"
 )
 
 templ footerPrint(env *gobl.Envelope) {
@@ -53,11 +56,15 @@ func pageNumber(ctx context.Context) string {
 }
 
 func footerNotesText(ctx context.Context, env *gobl.Envelope) string {
+	out := make([]string, 0)
+	// special case for PT
+	if txt := pt.FooterNotes(env); txt != "" {
+		out = append(out, txt)
+	}
 	if opts := internal.Options(ctx); opts.Notes != "" {
-		return opts.Notes
+		out = append(out, opts.Notes)
+	} else if env.Head.Notes != "" {
+		out = append(out, env.Head.Notes)
 	}
-	if env.Head.Notes != "" {
-		return env.Head.Notes
-	}
-	return ""
+	return strings.Join(out, " &middot; ")
 }

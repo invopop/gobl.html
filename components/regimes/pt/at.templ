@@ -2,30 +2,27 @@ package pt
 
 import (
 	"github.com/invopop/gobl"
-  "github.com/invopop/gobl/regimes/pt"
 )
 
 templ ATQR(env *gobl.Envelope) {
-  if atcud := atATCUD(env); atcud != "" {
-    if qr := atQR(env); qr != "" {
-      @generateATQR(atcud, qr)
-    }
-  }
+	if atcud := atATCUD(env); atcud != "" {
+		if qr := atQR(env); qr != "" {
+			@generateATQR(atcud, qr)
+		}
+	}
 }
 
 templ generateATQR(atcud, qr string) {
 	<style type="text/css">
 		.at {
 			break-inside: avoid;
-			text-align: center;
-			padding: 3mm;
-			border: 1px solid #E5E7EB;
-			width: 6cm;
+			text-align: right;
+			/* width: 6cm; */
 		}
 		.at .label {
 			font-family: monospace;
 			font-size: 7pt;
-			text-align: center;
+			text-align: right;
 			margin-bottom: 2mm;
 		}
 		.at img {
@@ -33,7 +30,7 @@ templ generateATQR(atcud, qr string) {
 			height: 30mm;
 		}
 	</style>
-	<section>
+	<section class="pt">
 		<div class="at">
 			<div class="label">
 				ATCUD: { atcud }
@@ -43,24 +40,4 @@ templ generateATQR(atcud, qr string) {
 			</div>
 		</div>
 	</section>
-}
-
-func atATCUD(env *gobl.Envelope) string {
-	for _, stamp := range env.Head.Stamps {
-		switch stamp.Provider {
-		case pt.StampProviderATATCUD:
-			return stamp.Value
-		}
-	}
-	return ""
-}
-
-func atQR(env *gobl.Envelope) string {
-	for _, stamp := range env.Head.Stamps {
-		switch stamp.Provider {
-		case pt.StampProviderATQR:
-			return stamp.Value
-		}
-	}
-	return ""
 }

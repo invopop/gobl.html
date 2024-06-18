@@ -12,7 +12,6 @@ import "bytes"
 
 import (
 	"github.com/invopop/gobl"
-	"github.com/invopop/gobl/regimes/pt"
 )
 
 func ATQR(env *gobl.Envelope) templ.Component {
@@ -56,14 +55,14 @@ func generateATQR(atcud, qr string) templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<style type=\"text/css\">\n\t\t.at {\n\t\t\tbreak-inside: avoid;\n\t\t\ttext-align: center;\n\t\t\tpadding: 3mm;\n\t\t\tborder: 1px solid #E5E7EB;\n\t\t\twidth: 6cm;\n\t\t}\n\t\t.at .label {\n\t\t\tfont-family: monospace;\n\t\t\tfont-size: 7pt;\n\t\t\ttext-align: center;\n\t\t\tmargin-bottom: 2mm;\n\t\t}\n\t\t.at img {\n\t\t\twidth: 30mm;\n\t\t\theight: 30mm;\n\t\t}\n\t</style><section><div class=\"at\"><div class=\"label\">ATCUD: ")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<style type=\"text/css\">\n\t\t.at {\n\t\t\tbreak-inside: avoid;\n\t\t\ttext-align: right;\n\t\t\t/* width: 6cm; */\n\t\t}\n\t\t.at .label {\n\t\t\tfont-family: monospace;\n\t\t\tfont-size: 7pt;\n\t\t\ttext-align: right;\n\t\t\tmargin-bottom: 2mm;\n\t\t}\n\t\t.at img {\n\t\t\twidth: 30mm;\n\t\t\theight: 30mm;\n\t\t}\n\t</style><section class=\"pt\"><div class=\"at\"><div class=\"label\">ATCUD: ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var3 string
 		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(atcud)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/pt/at.templ`, Line: 38, Col: 18}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/pt/at.templ`, Line: 35, Col: 18}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {
@@ -86,24 +85,4 @@ func generateATQR(atcud, qr string) templ.Component {
 		}
 		return templ_7745c5c3_Err
 	})
-}
-
-func atATCUD(env *gobl.Envelope) string {
-	for _, stamp := range env.Head.Stamps {
-		switch stamp.Provider {
-		case pt.StampProviderATATCUD:
-			return stamp.Value
-		}
-	}
-	return ""
-}
-
-func atQR(env *gobl.Envelope) string {
-	for _, stamp := range env.Head.Stamps {
-		switch stamp.Provider {
-		case pt.StampProviderATQR:
-			return stamp.Value
-		}
-	}
-	return ""
 }
