@@ -1,3 +1,4 @@
+// Package pt provides the Portuguese regime specific output.
 package pt
 
 import (
