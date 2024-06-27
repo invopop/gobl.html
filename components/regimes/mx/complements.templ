@@ -130,10 +130,10 @@ templ fuelAccountBalance(b *mx.FuelAccountBalance) {
         .mx-fuel-account-balance {
 			break-inside: avoid;
             font-size: 7pt;
-			line-height: 1.6em;
+			line-height: 1.0em;
         }
         .mx-fuel-account-balance h2 {
-            font-size: 9pt;
+            font-size: 8pt;
             padding-bottom: 6px;
         }
         .mx-fuel-account-balance table {
@@ -143,7 +143,7 @@ templ fuelAccountBalance(b *mx.FuelAccountBalance) {
         .mx-fuel-account-balance td {
             text-align: left;
 			border-bottom: 0.5px solid #E5E7EB;
-			padding: 1.5mm 2mm;
+			padding: 1.5mm 1mm;
 			margin: 0px;
         }
         .mx-fuel-account-balance thead th {
@@ -156,6 +156,11 @@ templ fuelAccountBalance(b *mx.FuelAccountBalance) {
             border-bottom: 0px;
         }
         .mx-fuel-account-balance .amount, 
+        .mx-fuel-account-balance .quantity, 
+        .mx-fuel-account-balance .item-price,
+        .mx-fuel-account-balance .sum,
+        .mx-fuel-account-balance .tax-vat,
+        .mx-fuel-account-balance .tax-ieps,
         .mx-fuel-account-balance .total {
             text-align: right;
         }
@@ -174,7 +179,7 @@ templ fuelAccountBalance(b *mx.FuelAccountBalance) {
 					<th class="purchase-code">FolioOp</th>
 					<th class="quantity">Litros</th>
 					<th class="item-price">Precio</th>
-					<th class="item-name">Combustible</th>
+					<th class="item-name">C.</th>
 					<th class="sum">Suma</th>
 					<th class="tax-vat">IVA</th>
 					<th class="tax-ieps">IEPS</th>
@@ -200,11 +205,11 @@ templ fuelAccountBalance(b *mx.FuelAccountBalance) {
 							{ line.PurchaseCode.String() }
 						</td>
 						<td class="quantity">
-							@t.L(line.Quantity)
+							@t.L(line.Quantity.RescaleDown(3))
 						</td>
 						if line.Item != nil {
 							<td class="item-price">
-								@t.LM(line.Item.Price)
+								@t.LM(line.Item.Price.RescaleDown(3))
 								if u := string(line.Item.Unit); u != "" {
 									/{ string(line.Item.Unit) }
 								}
