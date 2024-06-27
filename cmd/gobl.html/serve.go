@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"path"
 	"path/filepath"
 	"strings"
 	"time"
@@ -130,7 +131,7 @@ func (s *serveOpts) generate(c echo.Context) error {
 	if err := c.Bind(req); err != nil {
 		return fmt.Errorf("binding options: %w", err)
 	}
-	fn := filepath.Base(req.Filename)
+	fn := filepath.Base(path.Clean(req.Filename))
 	ext := filepath.Ext(fn)
 	fn = strings.TrimSuffix(fn, ext) + ".json"
 
