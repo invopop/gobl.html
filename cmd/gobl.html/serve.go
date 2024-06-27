@@ -130,11 +130,11 @@ func (s *serveOpts) generate(c echo.Context) error {
 	if err := c.Bind(req); err != nil {
 		return fmt.Errorf("binding options: %w", err)
 	}
+	fn := filepath.Base(req.Filename)
+	ext := filepath.Ext(fn)
+	fn = strings.TrimSuffix(fn, ext) + ".json"
 
-	ext := filepath.Ext(req.Filename)
-	req.Filename = strings.TrimSuffix(req.Filename, ext) + ".json"
-
-	ed, err := os.ReadFile(filepath.Join("./examples", req.Filename))
+	ed, err := os.ReadFile(filepath.Join("./examples", fn))
 	if err != nil {
 		return fmt.Errorf("loading file: %w", err)
 	}
