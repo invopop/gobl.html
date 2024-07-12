@@ -1,0 +1,124 @@
+{
+    "$schema": "https://gobl.org/draft-0/envelope",
+    "head": {
+        "uuid": "0190a168-3bb2-71de-989e-1afa884e838c",
+        "dig": {
+            "alg": "sha256",
+            "val": "1ddeefa5fa9f4b909179c751c6269d5f36b1628b1d1ec7df27a3ab4f283fd420"
+        },
+        "stamps": [
+            {
+                "prv": "iapr-qr",
+                "val": "https://test.vs.gr/iv/invoice/10cc0a7d90a1c9470190a634ec19073e"
+            },
+            {
+                "prv": "iapr-hash",
+                "val": "792F62ADE1B5E4CCBC8FFA787258CC68E90B817B"
+            },
+            {
+                "prv": "iapr-mark",
+                "val": "400001929816893"
+            },
+            {
+                "prv": "iapr-provider",
+                "val": "ΙΛΥΔΑ ΠΛΗΡΟΦΟΡΙΚΗ Α.Ε. — https://test.vs.gr"
+            },
+            {
+                "prv": "iapr-uid",
+                "val": "EB1CF2137764B0D534885F361365C39A32C0205A"
+            }
+        ]
+    },
+    "doc": {
+        "$schema": "https://gobl.org/draft-0/bill/invoice",
+        "uuid": "0190a15e-c559-7000-837c-822e43253969",
+        "type": "standard",
+        "series": "GRT",
+        "code": "082",
+        "issue_date": "2024-07-12",
+        "currency": "EUR",
+        "supplier": {
+            "name": "Ελληνικά Τρόφιμα Α.Ε.",
+            "tax_id": {
+                "country": "GR",
+                "code": "177472438"
+            },
+            "addresses": [
+                {
+                    "locality": "Θεσσαλονίκη",
+                    "code": "54625"
+                }
+            ]
+        },
+        "customer": {
+            "name": "Αιγαίο Λιανική Α.Ε.",
+            "tax_id": {
+                "country": "GR",
+                "code": "841442160"
+            },
+            "addresses": [
+                {
+                    "locality": "Θεσσαλονίκη",
+                    "code": "54625"
+                }
+            ]
+        },
+        "lines": [
+            {
+                "i": 1,
+                "quantity": "1",
+                "item": {
+                    "name": "Υπηρεσίες Ανάπτυξης",
+                    "price": "90.00"
+                },
+                "sum": "90.00",
+                "taxes": [
+                    {
+                        "cat": "VAT",
+                        "rate": "standard",
+                        "percent": "24%",
+                        "ext": {
+                            "gr-iapr-vat-cat": "1"
+                        }
+                    }
+                ],
+                "total": "90.00"
+            }
+        ],
+        "payment": {
+            "instructions": {
+                "key": "card"
+            }
+        },
+        "totals": {
+            "sum": "90.00",
+            "total": "90.00",
+            "taxes": {
+                "categories": [
+                    {
+                        "code": "VAT",
+                        "rates": [
+                            {
+                                "key": "standard",
+                                "ext": {
+                                    "gr-iapr-vat-cat": "1"
+                                },
+                                "base": "90.00",
+                                "percent": "24%",
+                                "amount": "21.60"
+                            }
+                        ],
+                        "amount": "21.60"
+                    }
+                ],
+                "sum": "21.60"
+            },
+            "tax": "21.60",
+            "total_with_tax": "111.60",
+            "payable": "111.60"
+        }
+    },
+    "sigs": [
+        "eyJhbGciOiJFUzI1NiIsImtpZCI6IjViN2FmMTBhLTNjYWEtNDE1NS04MDRhLThhOTA3NDk5YjI4YyJ9.eyJ1dWlkIjoiMDE5MGExNjgtM2JiMi03MWRlLTk4OWUtMWFmYTg4NGU4MzhjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjFkZGVlZmE1ZmE5ZjRiOTA5MTc5Yzc1MWM2MjY5ZDVmMzZiMTYyOGIxZDFlYzdkZjI3YTNhYjRmMjgzZmQ0MjAifX0.NgeE6HgrrGSMr-oV2MRPj1XC8vrzsm-Y4WqDENPUyjb2ZBsmyQcWCk6r2e8Va1ZHRf1QUlknybs2gM5GETVpOA"
+    ]
+}
