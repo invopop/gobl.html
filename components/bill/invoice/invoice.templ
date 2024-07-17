@@ -14,6 +14,7 @@ import (
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/components/regimes/pl"
 	"github.com/invopop/gobl.html/components/regimes/pt"
+	"github.com/invopop/gobl.html/components/regimes/gr"
 )
 
 // Invoice renders a complete GOBL bill.Invoice object.
@@ -46,6 +47,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 			@mx.CFDI(env, inv)
 			@pl.KSeFQR(env)
 			@pt.ATQR(env)
+			@gr.IAPR(env)
 		</div>
 	</article>
 }

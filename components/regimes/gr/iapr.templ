@@ -1,0 +1,70 @@
+package gr
+
+import (
+	"github.com/invopop/gobl"
+  "github.com/invopop/gobl/regimes/gr"
+  "github.com/invopop/gobl.html/components/images"
+)
+
+templ IAPR(env *gobl.Envelope) {
+	if hasStamps(env) {
+		<style type="text/css">
+			.iapr {
+				break-inside: avoid;
+				font-size: 7pt;
+				line-height: 1.6em;
+				display: flex;
+				align-items: top;
+			}
+			.iapr .image {
+				margin-right: 6mm;
+			}
+			.iapr img {
+				width: 30mm;
+				height: 30mm;
+			}
+			.iapr .value {
+				font-family: monospace;
+			}
+		</style>
+		<section class="iapr">
+			if st := env.Head.GetStamp(gr.StampIAPRQR); st != nil {
+				<div class="image">
+					<a href={ templ.URL(st.Value) }>
+						@images.QR(st.Value)
+					</a>
+				</div>
+			}
+			<div class="text">
+				if st := env.Head.GetStamp(gr.StampIAPRHash); st != nil {
+					<div>
+						<b>Σήμανση:</b>
+						<span class="value">{ st.Value }</span>
+					</div>
+				}
+				if st := env.Head.GetStamp(gr.StampIAPRUID); st != nil {
+					<div>
+						<b>UNIQUE ID:</b>
+						<span class="value">{ st.Value }</span>
+					</div>
+				}
+				if st := env.Head.GetStamp(gr.StampIAPRMark); st != nil {
+					<div>
+						<b>ΜΑΡΚ:</b>
+						<span class="value">{ st.Value }</span>
+					</div>
+				}
+				if st := env.Head.GetStamp(gr.StampIAPRProvider); st != nil {
+					<div>
+						<b>Υ.ΠΑ.Η.Ε.Σ:</b>
+						<span>{ st.Value }</span>
+					</div>
+				}
+			</div>
+		</section>
+	}
+}
+
+func hasStamps(env *gobl.Envelope) bool {
+	return env.Head.GetStamp(gr.StampIAPRQR) != nil
+}

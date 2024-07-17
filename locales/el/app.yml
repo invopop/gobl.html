@@ -1,4 +1,4 @@
-gr:
+el:
   page: "Σελίδα %{page} από %{count}"
 
   billing:
@@ -80,6 +80,7 @@ gr:
           iban: "IBAN: %{iban}"
           account_number: "Αριθμός λογαριασμού: %{num}"
           bic: "BIC: %{bic}"
+          online: "Διαδικτυακά"
           methods:
             card: "Κάρτα τραπέζης"
             credit_transfer: "Τραπεζική μεταφορά"
@@ -115,6 +116,8 @@ gr:
           entry: "Καταχώρηση %{id}"
 
       regimes:
+        pl:
+          ksef-id: "ID: %{id}"
         co:
           cufe: "CUFE: %{cufe}"
           cude: "CUDE: %{cude}"
@@ -129,6 +132,8 @@ gr:
         one: "Email: %{addr}"
         other: "Emails: %{addr}"
       email_label: "%{addr} (%{label})"
+      website: "Web: %{url}"
+      website_label: "%{label}: %{url}"
       identity: "%{label}: %{code}"
       identity_code: "Κωδικός Ταυτότητας"
       po_box: "Τ.Θ. %{po_box}"
