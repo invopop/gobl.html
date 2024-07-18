@@ -73,7 +73,7 @@ func AddressWithLabel(addr *org.Address) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = t.T("organizing.address.label", i18n.M{"label": addr.Label}).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = t.T("org.address.label", i18n.M{"label": addr.Label}).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -128,7 +128,7 @@ func addressLines(addr *org.Address) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		if addr.Country != "" {
-			templ_7745c5c3_Err = t.T("organizing.address.country", i18n.M{"country": i18n.T(ctx, "country_names."+addr.Country.String())}).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = t.T("org.address.country", i18n.M{"country": i18n.T(ctx, "country_names."+addr.Country.String())}).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

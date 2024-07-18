@@ -123,7 +123,7 @@ en:
           cude: "CUDE: %{cude}"
           preceding_cufe: "CUFE Previous invoice: %{cufe}"
 
-  organizing:
+  org:
     party:
       tax_id: "%{label}: (%{country}) %{code}"
       tel: "Tel: %{num}"
@@ -134,11 +134,13 @@ en:
       email_label: "%{addr} (%{label})"
       website: "Web: %{url}"
       website_label: "%{label}: %{url}"
-      identity: "%{label}: %{code}"
-      identity_code: "Identity code"
       po_box: "P.O. Box %{po_box}"
       labels:
         default: "Tax Code"
+      identity: "%{label}: %{code}"
+      identity_code: "Identity code"
+      identity_labels:
+        it-fiscal-code: "Codice Fiscale"
       ext: "%{label}: %{value}"
       ext_map:
         co-dian-municipality: "Municipality"

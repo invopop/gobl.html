@@ -2,6 +2,7 @@ package org
 
 import (
 	"cmp"
+	"fmt"
 	"slices"
 	"strings"
 
@@ -16,7 +17,7 @@ import (
 
 templ Party(party *org.Party) {
 	<div class="org-party">
-		@t.Scope("organizing.party") {
+		@t.Scope("org.party") {
 			<div class="name">{ party.Name }</div>
 			if party.Alias != "" {
 				<div class="alias">{ party.Alias }</div>
@@ -119,6 +120,12 @@ func identityLabel(ctx context.Context, ident *org.Identity) string {
 	}
 	if ident.Type != "" {
 		return ident.Type.String()
+	}
+	if ident.Key != "" {
+		label := i18n.T(ctx, fmt.Sprintf(".identity_labels.%s", ident.Key))
+		if !strings.HasPrefix(label, "!") {
+			return label
+		}
 	}
 	return i18n.T(ctx, ".identity_code")
 }
