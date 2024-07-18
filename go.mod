@@ -6,7 +6,7 @@ require (
 	github.com/a-h/templ v0.2.731
 	github.com/go-resty/resty/v2 v2.12.0
 	github.com/invopop/ctxi18n v0.6.0
-	github.com/invopop/gobl v0.80.0
+	github.com/invopop/gobl v0.81.0
 	github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a
 	github.com/labstack/echo/v4 v4.11.4
 	github.com/piglig/go-qr v0.2.4

@@ -107,7 +107,7 @@ it:
           cufe: "CUFE: %{cufe}"
           cude: "CUDE: %{cude}"
           preceding_cufe: "CUFE Fattura precedente: %{cufe}"
-  organizing:
+  org:
     party:
       tax_id: "%{label}: (%{country}) %{code}"
       tel: "Tel: %{num}"

@@ -26,8 +26,8 @@ github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2
 github.com/inconshreveable/mousetrap v1.1.0/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLfsEA9PFc4w1p2J65bw=
 github.com/invopop/ctxi18n v0.6.0 h1:Qm3ZL/kK4EKvmLI3U2ETN2rWrtSTaxXrcA6ZUY9aVGE=
 github.com/invopop/ctxi18n v0.6.0/go.mod h1:1Osw+JGYA+anHt0Z4reF36r5FtGHYjGQ+m1X7keIhPc=
-github.com/invopop/gobl v0.80.0 h1:Gm7hZP6WW+LhrAWw1p9bOHrO6VHx7THDo6HXZXx24eI=
-github.com/invopop/gobl v0.80.0/go.mod h1:3ixShxX1jlOKo5Rw22HVQh3jXnK9AZa7Twcw7L92qn0=
+github.com/invopop/gobl v0.81.0 h1:bFzXkiNCdjXZcTrggsM8bzeddPDwAk/sUxinK7jaSlQ=
+github.com/invopop/gobl v0.81.0/go.mod h1:3ixShxX1jlOKo5Rw22HVQh3jXnK9AZa7Twcw7L92qn0=
 github.com/invopop/jsonschema v0.12.0 h1:6ovsNSuvn9wEQVOyc72aycBMVQFKz7cPdMJn10CvzRI=
 github.com/invopop/jsonschema v0.12.0/go.mod h1:ffZ5Km5SWWRAIN6wbDXItl95euhFz2uON45H2qjYt+0=
 github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a h1:xt18LlIfizLkFgLi+vK/m2SWOsAbQwVwQgbkzxKY0eU=

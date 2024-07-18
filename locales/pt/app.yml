@@ -113,7 +113,7 @@ pt:
           page: "Página %{id}"
           entry: "Entrada %{id}"
 
-  organizing:
+  org:
     party:
       tax_id: "%{label}: (%{country}) %{code}"
       tel: "Tel: %{num}"

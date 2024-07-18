@@ -19,7 +19,7 @@ templ AddressWithLabel(addr *org.Address) {
 	<div class="org-address">
 		if addr.Label != "" {
 			<span class="label">
-				@t.T("organizing.address.label", i18n.M{"label": addr.Label})
+				@t.T("org.address.label", i18n.M{"label": addr.Label})
 				&nbsp;
 			</span>
 		}
@@ -31,7 +31,7 @@ templ addressLines(addr *org.Address) {
 	<span>
 		{ strings.Join(buildAddressLines(addr), ", ") }
 		if addr.Country != "" {
-			@t.T("organizing.address.country", i18n.M{"country": i18n.T(ctx, "country_names."+addr.Country.String())})
+			@t.T("org.address.country", i18n.M{"country": i18n.T(ctx, "country_names."+addr.Country.String())})
 		}
 	</span>
 }
