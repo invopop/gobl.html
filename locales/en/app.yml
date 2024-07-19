@@ -141,6 +141,7 @@ en:
       identity_code: "Identity code"
       identity_labels:
         it-fiscal-code: "Codice Fiscale"
+        de-tax-number: "St. -Nr."
       ext: "%{label}: %{value}"
       ext_map:
         co-dian-municipality: "Municipality"

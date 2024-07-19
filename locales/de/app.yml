@@ -5,7 +5,7 @@ de:
     invoice:
       title:
         standard: "Rechnung"
-        standard-simplified: "Vereinfachte Rechnung"
+        standard-simplified: "Kleinbetragsrechnung"
         proforma: "Proforma-Rechnung"
         corrective: "Korrekturrechnung"
         credit-note: "Gutschrift"
