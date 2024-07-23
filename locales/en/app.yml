@@ -126,6 +126,8 @@ en:
   org:
     party:
       tax_id: "%{label}: (%{country}) %{code}"
+      person: "%{name}"
+      person_label: "%{label}: %{name}"
       tel: "Tel: %{num}"
       tel_label: "Tel: %{num} (%{label})"
       email:

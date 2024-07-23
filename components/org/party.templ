@@ -22,6 +22,9 @@ templ Party(party *org.Party) {
 			if party.Alias != "" {
 				<div class="alias">{ party.Alias }</div>
 			}
+			if len(party.People) > 0 {
+				@people(party.People)
+			}
 			for _, a := range party.Addresses {
 				@AddressWithLabel(a)
 			}
@@ -49,6 +52,20 @@ templ taxID(party *org.Party) {
 	<div class="tax-id">
 		@t.T(".tax_id", i18n.M{"label": taxIDLabel(ctx, party), "country": party.TaxID.Country.String(), "code": taxIDCode(party)})
 	</div>
+}
+
+templ people(people []*org.Person) {
+	for _, p := range people {
+		if n := personName(p); n != "" {
+			<div class="person">
+				if p.Label != "" {
+					@t.T(".person_label", i18n.M{"label": p.Label, "name": n})
+				} else {
+					@t.T(".person", i18n.M{"name": n})
+				}
+			</div>
+		}
+	}
 }
 
 templ telephones(tels []*org.Telephone) {
@@ -97,6 +114,22 @@ templ partyExtensions(party *org.Party) {
 			</div>
 		}
 	}
+}
+
+func personName(p *org.Person) string {
+	n := p.Name
+	nom := []string{
+		n.Prefix,
+		n.Given,
+		n.Middle,
+		n.Surname,
+		n.Surname2,
+		n.Suffix,
+	}
+	nom = slices.DeleteFunc(nom, func(s string) bool {
+		return s == ""
+	})
+	return strings.Join(nom, " ")
 }
 
 func emailAddresses(ctx context.Context, emails []*org.Email) string {
