@@ -18,40 +18,30 @@ import (
 templ Party(party *org.Party) {
 	<div class="org-party">
 		@t.Scope("org.party") {
-			<div class="name">{ party.Name }</div>
+			if party.Name != "" {
+				<div class="name">{ party.Name }</div>
+			}
 			if party.Alias != "" {
 				<div class="alias">{ party.Alias }</div>
 			}
-			if len(party.People) > 0 {
-				@people(party.People)
-			}
-			for _, a := range party.Addresses {
-				@AddressWithLabel(a)
-			}
-			if len(party.Telephones) > 0 {
-				@telephones(party.Telephones)
-			}
-			if len(party.Emails) > 0 {
-				@emails(party.Emails)
-			}
-			if len(party.Websites) > 0 {
-				@websites(party.Websites)
-			}
-			if showTaxID(party) {
-				@taxID(party)
-			}
+			@people(party.People)
+			@addresses(party.Addresses)
+			@telephones(party.Telephones)
+			@emails(party.Emails)
+			@websites(party.Websites)
+			@taxID(party)
 			@partyExtensions(party)
-			if len(party.Identities) > 0 {
-				@identities(party.Identities)
-			}
+			@identities(party.Identities)
 		}
 	</div>
 }
 
 templ taxID(party *org.Party) {
-	<div class="tax-id">
-		@t.T(".tax_id", i18n.M{"label": taxIDLabel(ctx, party), "country": party.TaxID.Country.String(), "code": taxIDCode(party)})
-	</div>
+	if showTaxID(party) {
+		<div class="tax-id">
+			@t.T(".tax_id", i18n.M{"label": taxIDLabel(ctx, party), "country": party.TaxID.Country.String(), "code": taxIDCode(party)})
+		</div>
+	}
 }
 
 templ people(people []*org.Person) {
@@ -68,6 +58,12 @@ templ people(people []*org.Person) {
 	}
 }
 
+templ addresses(addrs []*org.Address) {
+	for _, a := range addrs {
+		@AddressWithLabel(a)
+	}
+}
+
 templ telephones(tels []*org.Telephone) {
 	for _, tel := range tels {
 		<div class="telephone">
@@ -81,9 +77,11 @@ templ telephones(tels []*org.Telephone) {
 }
 
 templ emails(emails []*org.Email) {
-	<div class="emails">
-		@t.N(".email", len(emails), i18n.M{"addr": emailAddresses(ctx, emails)})
-	</div>
+	if len(emails) > 0 {
+		<div class="emails">
+			@t.N(".email", len(emails), i18n.M{"addr": emailAddresses(ctx, emails)})
+		</div>
+	}
 }
 
 templ websites(websites []*org.Website) {
@@ -180,6 +178,8 @@ func taxIDLabel(ctx context.Context, party *org.Party) string {
 		return "TVA"
 	case l10n.PT:
 		return "NIF"
+	case l10n.IT:
+		return "P.IVA"
 	default:
 		return i18n.T(ctx, ".labels.default")
 	}

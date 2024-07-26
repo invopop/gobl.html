@@ -138,7 +138,7 @@ en:
       website_label: "%{label}: %{url}"
       po_box: "P.O. Box %{po_box}"
       labels:
-        default: "Tax Code"
+        default: "TIN"
       identity: "%{label}: %{code}"
       identity_code: "Identity code"
       identity_labels:

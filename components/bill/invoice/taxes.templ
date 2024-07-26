@@ -62,8 +62,10 @@ templ taxRateRow(inv *bill.Invoice, cat *tax.CategoryTotal, rate *tax.RateTotal,
 				} else {
 					@t.L(*rate.Percent)
 				}
-			} else if txt := taxExemptionCode(rate.Ext); txt != "" {
-				{ txt }
+			} else if code := taxExemptionCode(rate.Ext); code != "" {
+				<code>
+					{ code }
+				</code>
 			} else {
 				&mdash;
 			}

@@ -345,8 +345,12 @@ func noteRegSummary(reg *org.Registration) templ.Component {
 }
 
 func renderNote(note *cbc.Note) string {
+	txt := note.Text
+	if note.Code != "" {
+		txt = fmt.Sprintf("`%s` &middot; %s", note.Code, txt)
+	}
 	buf := new(bytes.Buffer)
-	if err := markdown.Convert([]byte(note.Text), buf); err != nil {
+	if err := markdown.Convert([]byte(txt), buf); err != nil {
 		return fmt.Sprintf("!(ERR %v)", err.Error())
 	}
 	return buf.String()

@@ -120,7 +120,7 @@ it:
       identity_code: "Codice Identità"
       po_box: "C.P. %{po_box}"
       labels:
-        default: "Codice Fiscale"
+        default: "Identità Fiscale"
       ext: "%{label}: %{value}"
       ext_map:
         # Assicurarsi che questa lista sia aggiornata in tutte le lingue!
