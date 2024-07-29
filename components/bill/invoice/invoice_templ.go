@@ -252,7 +252,7 @@ func title(inv *bill.Invoice) templ.Component {
 
 func i18nTitleTag(inv *bill.Invoice) string {
 	typ := string(inv.Type)
-	if inv.Tax.ContainsTag(tax.TagSimplified) {
+	if inv.Tax.ContainsTag(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard {
 		typ = typ + "-simplified"
 	}
 	return typ

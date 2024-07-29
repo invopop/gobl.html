@@ -252,12 +252,12 @@ section.payment .due-dates span.percent:after {
 }
 section.notes {
     padding-top: 6mm;
-    padding-bottom: 3mm;
+    padding-bottom: 6mm;
     border-bottom: 0.5px solid #E5E7EB;
     break-inside: avoid;
 }
 section.notes .note {
-    margin-bottom: 3mm;
+    margin-bottom: 0mm;
 }
 .extensions section {
     break-inside: avoid;

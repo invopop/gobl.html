@@ -126,6 +126,8 @@ en:
   org:
     party:
       tax_id: "%{label}: (%{country}) %{code}"
+      person: "%{name}"
+      person_label: "%{label}: %{name}"
       tel: "Tel: %{num}"
       tel_label: "Tel: %{num} (%{label})"
       email:
@@ -136,7 +138,7 @@ en:
       website_label: "%{label}: %{url}"
       po_box: "P.O. Box %{po_box}"
       labels:
-        default: "Tax Code"
+        default: "TIN"
       identity: "%{label}: %{code}"
       identity_code: "Identity code"
       identity_labels:

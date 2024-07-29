@@ -54,6 +54,15 @@
 		"customer": {
 			"name": "Sample Consumer Inc.",
 			"label": "Client",
+			"people": [
+				{
+					"label": "Contact",
+					"name": {
+						"given": "John",
+						"surname": "Doe"
+					}
+				}
+			],
 			"tax_id": {
 				"country": "US"
 			}

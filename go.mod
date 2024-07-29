@@ -6,12 +6,12 @@ require (
 	github.com/a-h/templ v0.2.731
 	github.com/go-resty/resty/v2 v2.12.0
 	github.com/invopop/ctxi18n v0.6.0
-	github.com/invopop/gobl v0.81.0
+	github.com/invopop/gobl v0.111.2-0.20240726150224-d3afe15e02fe
 	github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a
-	github.com/labstack/echo/v4 v4.11.4
+	github.com/labstack/echo/v4 v4.12.0
 	github.com/piglig/go-qr v0.2.4
 	github.com/pmezard/go-difflib v1.0.0
-	github.com/spf13/cobra v1.8.0
+	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.9.0
 	github.com/yosssi/gohtml v0.0.0-20201013000340-ee4748c638f4
 	github.com/yuin/goldmark v1.4.13

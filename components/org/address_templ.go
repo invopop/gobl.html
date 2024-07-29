@@ -110,32 +110,34 @@ func addressLines(addr *org.Address) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var4 string
-		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(strings.Join(buildAddressLines(addr), ", "))
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/address.templ`, Line: 32, Col: 47}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" ")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		if addr.Country != "" {
-			templ_7745c5c3_Err = t.T("org.address.country", i18n.M{"country": i18n.T(ctx, "country_names."+addr.Country.String())}).Render(ctx, templ_7745c5c3_Buffer)
+		if txt := strings.Join(buildAddressLines(addr), ", "); txt != "" {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</span>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
+			var templ_7745c5c3_Var4 string
+			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(txt)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/address.templ`, Line: 33, Col: 8}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" ")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			if addr.Country != "" {
+				templ_7745c5c3_Err = t.T("org.address.country", i18n.M{"country": i18n.T(ctx, "country_names."+addr.Country.String())}).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 		}
 		if !templ_7745c5c3_IsBuffer {
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteTo(templ_7745c5c3_W)
@@ -152,7 +154,9 @@ func buildAddressLines(addr *org.Address) []string {
 	if addr.StreetExtra != "" {
 		lines = append(lines, addr.StreetExtra)
 	}
-	lines = append(lines, addr.Locality)
+	if addr.Locality != "" {
+		lines = append(lines, addr.Locality)
+	}
 	if addr.Region != "" {
 		lines = append(lines, addr.Region)
 	}

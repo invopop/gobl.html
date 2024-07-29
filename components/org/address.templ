@@ -28,12 +28,14 @@ templ AddressWithLabel(addr *org.Address) {
 }
 
 templ addressLines(addr *org.Address) {
-	<span>
-		{ strings.Join(buildAddressLines(addr), ", ") }
-		if addr.Country != "" {
-			@t.T("org.address.country", i18n.M{"country": i18n.T(ctx, "country_names."+addr.Country.String())})
-		}
-	</span>
+	if txt := strings.Join(buildAddressLines(addr), ", "); txt != "" {
+		<span>
+			{ txt }
+			if addr.Country != "" {
+				@t.T("org.address.country", i18n.M{"country": i18n.T(ctx, "country_names."+addr.Country.String())})
+			}
+		</span>
+	}
 }
 
 func buildAddressLines(addr *org.Address) []string {
@@ -44,7 +46,9 @@ func buildAddressLines(addr *org.Address) []string {
 	if addr.StreetExtra != "" {
 		lines = append(lines, addr.StreetExtra)
 	}
-	lines = append(lines, addr.Locality)
+	if addr.Locality != "" {
+		lines = append(lines, addr.Locality)
+	}
 	if addr.Region != "" {
 		lines = append(lines, addr.Region)
 	}

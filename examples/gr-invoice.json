@@ -40,7 +40,7 @@
         "supplier": {
             "name": "Ελληνικά Τρόφιμα Α.Ε.",
             "tax_id": {
-                "country": "GR",
+                "country": "EL",
                 "code": "177472438"
             },
             "addresses": [
@@ -53,7 +53,7 @@
         "customer": {
             "name": "Αιγαίο Λιανική Α.Ε.",
             "tax_id": {
-                "country": "GR",
+                "country": "EL",
                 "code": "841442160"
             },
             "addresses": [
