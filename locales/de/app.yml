@@ -40,7 +40,7 @@ de:
         price: "Preis"
         discount: "Rabatt"
         charges: "Gebühren"
-        total: "Gesamt"
+        total: "Netto Betrag"
 
       totals:
         sum: "Summe"
@@ -131,7 +131,7 @@ de:
       identity_code: "Identitätscode"
       po_box: "Postfach %{po_box}"
       labels:
-        default: "Steuercode"
+        default: "Umsatzsteuer"
       ext: "%{label}: %{value}"
       ext_map:
         # Stellen Sie sicher, dass diese Liste in allen Sprachen auf dem neuesten Stand ist!
