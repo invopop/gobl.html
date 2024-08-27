@@ -9,6 +9,7 @@ fr:
         corrective: "Facture Rectificative"
         credit-note: "Note de Crédit"
         debit-note: "Note de Débit"
+        paid: "Payé"
       summary:
         title: "Résumé"
         issue_date: "Date d'émission"

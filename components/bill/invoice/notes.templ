@@ -1,13 +1,15 @@
 package invoice
 
 import (
+	"bytes"
+	"context"
 	"fmt"
 
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
-	"github.com/invopop/gobl.html/components/t"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/renderer/html"

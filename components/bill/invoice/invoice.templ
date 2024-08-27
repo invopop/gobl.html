@@ -1,20 +1,21 @@
 package invoice
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/components/regimes/co"
+	"github.com/invopop/gobl.html/components/regimes/es"
+	"github.com/invopop/gobl.html/components/regimes/gr"
+	"github.com/invopop/gobl.html/components/regimes/mx"
+	"github.com/invopop/gobl.html/components/regimes/pl"
+	"github.com/invopop/gobl.html/components/regimes/pt"
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
-	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl.html/components/regimes/es"
-	"github.com/invopop/gobl.html/components/regimes/co"
-	"github.com/invopop/gobl.html/components/regimes/mx"
-	"github.com/invopop/gobl.html/internal"
-	"github.com/invopop/gobl.html/components/regimes/pl"
-	"github.com/invopop/gobl.html/components/regimes/pt"
-	"github.com/invopop/gobl.html/components/regimes/gr"
 )
 
 // Invoice renders a complete GOBL bill.Invoice object.
@@ -53,23 +54,30 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 }
 
 templ title(inv *bill.Invoice) {
-	<section class="title">
-		<div class="hero">
-			if img := supplierLogo(ctx, inv); img != nil {
-				<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
-			} else {
-				<div class="alias">
-					{ supplierAlias(inv) }
-				</div>
-			}
-		</div>
-		<h1 class="type">
-			@t.T("billing.invoice.title." + i18nTitleTag(inv))
-		</h1>
-		<h2 class="code">
-			{ code(inv.Series, inv.Code) }
-		</h2>
-	</section>
+	@t.Scope("billing.invoice.title") {
+		<section class="title">
+			<div class="hero">
+				if img := supplierLogo(ctx, inv); img != nil {
+					<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
+				} else {
+					<div class="alias">
+						{ supplierAlias(inv) }
+					</div>
+				}
+			</div>
+			<h1 class="type">
+				@t.T("." + i18nTitleTag(inv))
+			</h1>
+			<h2 class="code">
+				{ code(inv.Series, inv.Code) }
+				if paid(inv) {
+					<span class="paid">
+						@t.T(".paid")
+					</span>
+				}
+			</h2>
+		</section>
+	}
 }
 
 func i18nTitleTag(inv *bill.Invoice) string {

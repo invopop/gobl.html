@@ -10,6 +10,7 @@ en:
         corrective: "Corrective Invoice"
         credit-note: "Credit Note"
         debit-note: "Debit Note"
+        paid: "Paid"
 
       summary:
         title: "Summary"

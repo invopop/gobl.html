@@ -1,15 +1,15 @@
 package invoice
 
 import (
-	"strings"
-
+	"context"
+	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cal"
 	"github.com/invopop/gobl/cbc"
-	"github.com/invopop/gobl/tax"
-	"github.com/invopop/ctxi18n/i18n"
-	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/currency"
+	"github.com/invopop/gobl/tax"
+	"strings"
 )
 
 templ summary(inv *bill.Invoice) {
