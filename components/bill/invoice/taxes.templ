@@ -1,11 +1,11 @@
 package invoice
 
 import (
+	"context"
 	"fmt"
-
+	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/tax"
-	"github.com/invopop/gobl.html/components/t"
 )
 
 templ taxes(inv *bill.Invoice, taxes *tax.Total) {

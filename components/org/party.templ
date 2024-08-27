@@ -2,17 +2,18 @@ package org
 
 import (
 	"cmp"
+	"context"
 	"fmt"
 	"slices"
 	"strings"
 
+	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/components/regimes/co"
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/l10n"
 	"github.com/invopop/gobl/org"
-	"github.com/invopop/ctxi18n/i18n"
-	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl/tax"
-	"github.com/invopop/gobl/cbc"
 )
 
 templ Party(party *org.Party) {

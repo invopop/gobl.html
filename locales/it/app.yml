@@ -9,6 +9,7 @@ it:
         corrective: "Fattura Correttiva"
         credit-note: "Nota di Credito"
         debit-note: "Nota di Debito"
+        paid: "Pagata"
       summary:
         title: "Riepilogo"
         issue_date: "Data Emissione"
