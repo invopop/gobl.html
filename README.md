@@ -21,7 +21,7 @@ During development, it can help massive to have hot reload to be able to make ch
 Air is a great tool to auto reload potentially any project, but works great with Go. Install with:
 
 ```bash
-go install github.com/cosmtrek/air@latest
+go install github.com/air-verse/air@latest
 ```
 
 The `.toml` is already configured and ready in this repository, so simply run:
