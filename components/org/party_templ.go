@@ -19,7 +19,6 @@ import (
 	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/cbc"
-	"github.com/invopop/gobl/l10n"
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
 )
@@ -66,7 +65,7 @@ func Party(party *org.Party) templ.Component {
 				var templ_7745c5c3_Var3 string
 				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(party.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 23, Col: 34}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 22, Col: 34}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 				if templ_7745c5c3_Err != nil {
@@ -89,7 +88,7 @@ func Party(party *org.Party) templ.Component {
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(party.Alias)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 26, Col: 36}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 25, Col: 36}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
@@ -472,7 +471,7 @@ func partyExtensions(party *org.Party) templ.Component {
 				var templ_7745c5c3_Var13 string
 				templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(txt)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 112, Col: 9}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 111, Col: 9}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 				if templ_7745c5c3_Err != nil {
@@ -542,17 +541,17 @@ func showTaxID(party *org.Party) bool {
 func taxIDLabel(ctx context.Context, party *org.Party) string {
 	tID := party.TaxID
 	switch tID.Country {
-	case l10n.ES:
+	case "ES":
 		return "NIF"
-	case l10n.CO:
+	case "CO":
 		return "NIT"
-	case l10n.MX:
+	case "MX":
 		return "RFC"
-	case l10n.FR:
+	case "FR":
 		return "TVA"
-	case l10n.PT:
+	case "PT":
 		return "NIF"
-	case l10n.IT:
+	case "IT":
 		return "P.IVA"
 	default:
 		return i18n.T(ctx, ".labels.default")
@@ -563,7 +562,7 @@ func taxIDCode(party *org.Party) string {
 	tID := party.TaxID
 	code := tID.Code.String()
 	switch tID.Country {
-	case l10n.CO:
+	case "CO":
 		return co.FormatTaxIDCode(code)
 	default:
 		return tID.Code.String()

@@ -6,7 +6,7 @@ require (
 	github.com/a-h/templ v0.2.747
 	github.com/go-resty/resty/v2 v2.12.0
 	github.com/invopop/ctxi18n v0.6.0
-	github.com/invopop/gobl v0.112.0
+	github.com/invopop/gobl v0.115.0
 	github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/piglig/go-qr v0.2.4
@@ -28,7 +28,7 @@ require (
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/invopop/jsonschema v0.12.0 // indirect
-	github.com/invopop/validation v0.3.0 // indirect
+	github.com/invopop/validation v0.7.0 // indirect
 	github.com/invopop/yaml v0.3.1 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/labstack/gommon v0.4.2 // indirect

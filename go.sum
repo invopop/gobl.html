@@ -28,12 +28,16 @@ github.com/invopop/ctxi18n v0.6.0 h1:Qm3ZL/kK4EKvmLI3U2ETN2rWrtSTaxXrcA6ZUY9aVGE
 github.com/invopop/ctxi18n v0.6.0/go.mod h1:1Osw+JGYA+anHt0Z4reF36r5FtGHYjGQ+m1X7keIhPc=
 github.com/invopop/gobl v0.112.0 h1:nUzwrzogzjXhxBx5dZxq0dXkQhgTlMcGO7QQc++cLtA=
 github.com/invopop/gobl v0.112.0/go.mod h1:SNuHEQJ0UEYVW9jd27MzlUiOWPviJnBygZ9/q5G5B5c=
+github.com/invopop/gobl v0.115.0 h1:pLQZiCrlPQ904nV09xY32YPQPY3e2zXA4EMOAJVDSoA=
+github.com/invopop/gobl v0.115.0/go.mod h1:lnlUK1cwjla/EPdxH1O7hKSSBv58DNWLV4/lOCv1vlQ=
 github.com/invopop/jsonschema v0.12.0 h1:6ovsNSuvn9wEQVOyc72aycBMVQFKz7cPdMJn10CvzRI=
 github.com/invopop/jsonschema v0.12.0/go.mod h1:ffZ5Km5SWWRAIN6wbDXItl95euhFz2uON45H2qjYt+0=
 github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a h1:xt18LlIfizLkFgLi+vK/m2SWOsAbQwVwQgbkzxKY0eU=
 github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a/go.mod h1:iYAJLConbhJ67An65H7Ei/o/ZGDvIQfyLA5JhxMQ1qY=
 github.com/invopop/validation v0.3.0 h1:o260kbjXzoBO/ypXDSSrCLL7SxEFUXBsX09YTE9AxZw=
 github.com/invopop/validation v0.3.0/go.mod h1:qIBG6APYLp2Wu3/96p3idYjP8ffTKVmQBfKiZbw0Hts=
+github.com/invopop/validation v0.7.0 h1:NBPLqvYGmLZLQuk5jh0PbaBBetJW7f2VEk/BTWJkGBU=
+github.com/invopop/validation v0.7.0/go.mod h1:nLLeXYPGwUNfdCdJo7/q3yaHO62LSx/3ri7JvgKR9vg=
 github.com/invopop/yaml v0.3.1 h1:f0+ZpmhfBSS4MhG+4HYseMdJhoeeopbSKbq5Rpeelso=
 github.com/invopop/yaml v0.3.1/go.mod h1:PMOp3nn4/12yEZUFfmOuNHJsZToEEOwoWsT+D81KkeA=
 github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=

@@ -11,7 +11,6 @@ import (
 	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/cbc"
-	"github.com/invopop/gobl/l10n"
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
 )
@@ -169,17 +168,17 @@ func showTaxID(party *org.Party) bool {
 func taxIDLabel(ctx context.Context, party *org.Party) string {
 	tID := party.TaxID
 	switch tID.Country {
-	case l10n.ES:
+	case "ES":
 		return "NIF"
-	case l10n.CO:
+	case "CO":
 		return "NIT"
-	case l10n.MX:
+	case "MX":
 		return "RFC"
-	case l10n.FR:
+	case "FR":
 		return "TVA"
-	case l10n.PT:
+	case "PT":
 		return "NIF"
-	case l10n.IT:
+	case "IT":
 		return "P.IVA"
 	default:
 		return i18n.T(ctx, ".labels.default")
@@ -190,7 +189,7 @@ func taxIDCode(party *org.Party) string {
 	tID := party.TaxID
 	code := tID.Code.String()
 	switch tID.Country {
-	case l10n.CO:
+	case "CO":
 		return co.FormatTaxIDCode(code)
 	default:
 		return tID.Code.String()
