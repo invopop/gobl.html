@@ -71,6 +71,7 @@ it:
           iban: "IBAN: %{iban}"
           account_number: "Numero di conto: %{num}"
           bic: "BIC: %{bic}"
+          online: "Link di pagamento"
           methods:
             card: "Carta di credito"
             credit_transfer: "Bonifico bancario"

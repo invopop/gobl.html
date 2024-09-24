@@ -71,6 +71,7 @@ fr:
           iban: "IBAN: %{iban}"
           account_number: "Numéro de compte: %{num}"
           bic: "BIC: %{bic}"
+          online: "Lien de paiement"
           methods:
             card: "Carte bancaire"
             credit_transfer: "Virement bancaire"

@@ -78,6 +78,7 @@ pl:
           iban: "IBAN: %{iban}"
           account_number: "Numer konta: %{num}"
           bic: "BIC: %{bic}"
+          online: "Link do płatności"
           methods:
             card: "Karta bankowa"
             credit_transfer: "Przelew bankowy"
