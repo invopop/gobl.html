@@ -81,7 +81,7 @@ en:
           iban: "IBAN: %{iban}"
           account_number: "Account number: %{num}"
           bic: "BIC: %{bic}"
-          online: "Online"
+          online: "Payment Link"
           methods:
             card: "Bank card"
             credit_transfer: "Bank transfer"

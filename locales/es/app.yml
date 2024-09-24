@@ -81,6 +81,7 @@ es:
           iban: "IBAN: %{iban}"
           account_number: "Número de cuenta: %{num}"
           bic: "BIC: %{bic}"
+          online: "Link de pago"
           methods:
             card: "Tarjeta bancaria"
             credit_transfer: "Transferencia bancaria"

@@ -80,7 +80,7 @@ el:
           iban: "IBAN: %{iban}"
           account_number: "Αριθμός λογαριασμού: %{num}"
           bic: "BIC: %{bic}"
-          online: "Διαδικτυακά"
+          online: "Σύνδεσμος πληρωμής"
           methods:
             card: "Κάρτα τραπέζης"
             credit_transfer: "Τραπεζική μεταφορά"
