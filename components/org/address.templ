@@ -4,7 +4,6 @@ import (
 	"strings"
 
 	"github.com/invopop/ctxi18n/i18n"
-	"github.com/invopop/gobl/l10n"
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl.html/components/t"
 )
@@ -73,7 +72,7 @@ func buildStreetWithNumbers(addr *org.Address) string {
 func addrNumberFirst(addr *org.Address) bool {
 	// TODO: add more countries here!
 	switch addr.Country {
-	case l10n.GB, l10n.US, l10n.CA, l10n.FR:
+	case "GB", "US", "CA", "FR":
 		return true
 	default:
 		return false

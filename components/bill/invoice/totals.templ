@@ -174,8 +174,11 @@ func totalPricesIncludeTax(ctx context.Context, inv *bill.Invoice) string {
 	if inv.Tax == nil || inv.Tax.PricesInclude == "" {
 		return ""
 	}
-	r := inv.TaxRegime()
-	category := r.Category(inv.Tax.PricesInclude)
+	r := inv.RegimeDef()
+	category := r.CategoryDef(inv.Tax.PricesInclude)
+	if category == nil {
+		return inv.Tax.PricesInclude.String()
+	}
 	return category.Name.In(t.Lang(ctx))
 }
 

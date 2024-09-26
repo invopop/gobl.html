@@ -12,6 +12,7 @@ import (
 	"fmt"
 
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/addons/mx/cfdi"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/currency"
@@ -40,12 +41,12 @@ func complements(inv *bill.Invoice) templ.Component {
 		ctx = templ.ClearChildren(ctx)
 		for _, c := range inv.Complements {
 			switch obj := c.Instance().(type) {
-			case *mx.FoodVouchers:
+			case *cfdi.FoodVouchers:
 				templ_7745c5c3_Err = foodVouchers(obj).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-			case *mx.FuelAccountBalance:
+			case *cfdi.FuelAccountBalance:
 				templ_7745c5c3_Err = fuelAccountBalance(obj).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -56,7 +57,7 @@ func complements(inv *bill.Invoice) templ.Component {
 	})
 }
 
-func foodVouchers(fv *mx.FoodVouchers) templ.Component {
+func foodVouchers(fv *cfdi.FoodVouchers) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -86,7 +87,7 @@ func foodVouchers(fv *mx.FoodVouchers) templ.Component {
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprint(i + 1))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 82, Col: 24}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 83, Col: 24}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -99,7 +100,7 @@ func foodVouchers(fv *mx.FoodVouchers) templ.Component {
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(line.EWalletID.String())
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 85, Col: 32}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 86, Col: 32}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -125,7 +126,7 @@ func foodVouchers(fv *mx.FoodVouchers) templ.Component {
 				var templ_7745c5c3_Var5 string
 				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(line.Employee.TaxCode.String())
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 92, Col: 40}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 93, Col: 40}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 				if templ_7745c5c3_Err != nil {
@@ -138,7 +139,7 @@ func foodVouchers(fv *mx.FoodVouchers) templ.Component {
 				var templ_7745c5c3_Var6 string
 				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(line.Employee.CURP.String())
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 95, Col: 37}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 96, Col: 37}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 				if templ_7745c5c3_Err != nil {
@@ -151,7 +152,7 @@ func foodVouchers(fv *mx.FoodVouchers) templ.Component {
 				var templ_7745c5c3_Var7 string
 				templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(line.Employee.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 98, Col: 28}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 99, Col: 28}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 				if templ_7745c5c3_Err != nil {
@@ -164,7 +165,7 @@ func foodVouchers(fv *mx.FoodVouchers) templ.Component {
 				var templ_7745c5c3_Var8 string
 				templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(line.Employee.SocialSecurity.String())
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 101, Col: 47}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 102, Col: 47}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 				if templ_7745c5c3_Err != nil {
@@ -209,7 +210,7 @@ func foodVouchers(fv *mx.FoodVouchers) templ.Component {
 	})
 }
 
-func fuelAccountBalance(b *mx.FuelAccountBalance) templ.Component {
+func fuelAccountBalance(b *cfdi.FuelAccountBalance) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -239,7 +240,7 @@ func fuelAccountBalance(b *mx.FuelAccountBalance) templ.Component {
 			var templ_7745c5c3_Var10 string
 			templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(line.EWalletID.String())
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 193, Col: 32}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 194, Col: 32}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 			if templ_7745c5c3_Err != nil {
@@ -260,7 +261,7 @@ func fuelAccountBalance(b *mx.FuelAccountBalance) templ.Component {
 			var templ_7745c5c3_Var11 string
 			templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(line.VendorTaxCode.String())
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 199, Col: 36}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 200, Col: 36}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 			if templ_7745c5c3_Err != nil {
@@ -273,7 +274,7 @@ func fuelAccountBalance(b *mx.FuelAccountBalance) templ.Component {
 			var templ_7745c5c3_Var12 string
 			templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(line.ServiceStationCode.String())
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 202, Col: 41}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 203, Col: 41}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 			if templ_7745c5c3_Err != nil {
@@ -286,7 +287,7 @@ func fuelAccountBalance(b *mx.FuelAccountBalance) templ.Component {
 			var templ_7745c5c3_Var13 string
 			templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(line.PurchaseCode.String())
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 205, Col: 35}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 206, Col: 35}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 			if templ_7745c5c3_Err != nil {
@@ -321,7 +322,7 @@ func fuelAccountBalance(b *mx.FuelAccountBalance) templ.Component {
 					var templ_7745c5c3_Var14 string
 					templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(string(line.Item.Unit))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 214, Col: 34}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 215, Col: 34}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 					if templ_7745c5c3_Err != nil {
@@ -335,7 +336,7 @@ func fuelAccountBalance(b *mx.FuelAccountBalance) templ.Component {
 				var templ_7745c5c3_Var15 string
 				templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(line.Item.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 218, Col: 24}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/complements.templ`, Line: 219, Col: 24}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 				if templ_7745c5c3_Err != nil {
@@ -432,7 +433,7 @@ func fuelAccountBalance(b *mx.FuelAccountBalance) templ.Component {
 	})
 }
 
-func fuelAccountTaxTotal(b *mx.FuelAccountBalance, code cbc.Code) num.Amount {
+func fuelAccountTaxTotal(b *cfdi.FuelAccountBalance, code cbc.Code) num.Amount {
 	sum := currency.MXN.Def().Zero()
 	for _, line := range b.Lines {
 		if a := fuelAccountTax(line.Taxes, code); a != nil {
@@ -442,7 +443,7 @@ func fuelAccountTaxTotal(b *mx.FuelAccountBalance, code cbc.Code) num.Amount {
 	return sum
 }
 
-func fuelAccountTotal(line *mx.FuelAccountLine) num.Amount {
+func fuelAccountTotal(line *cfdi.FuelAccountLine) num.Amount {
 	sum := line.Total
 	for _, t := range line.Taxes {
 		sum = sum.Add(t.Amount)
@@ -450,7 +451,7 @@ func fuelAccountTotal(line *mx.FuelAccountLine) num.Amount {
 	return sum
 }
 
-func fuelAccountTax(taxes []*mx.FuelAccountTax, code cbc.Code) *num.Amount {
+func fuelAccountTax(taxes []*cfdi.FuelAccountTax, code cbc.Code) *num.Amount {
 	for _, row := range taxes {
 		if row.Category == code {
 			return &row.Amount

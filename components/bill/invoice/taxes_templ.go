@@ -266,8 +266,11 @@ func taxCategoryRowSpan(ct *tax.CategoryTotal, row int) int {
 }
 
 func taxCategoryTotalName(ctx context.Context, inv *bill.Invoice, cat *tax.CategoryTotal) string {
-	r := inv.TaxRegime()
-	category := r.Category(cat.Code)
+	r := inv.RegimeDef()
+	category := r.CategoryDef(cat.Code)
+	if category == nil {
+		return cat.Code.String()
+	}
 	return category.Name.In(t.Lang(ctx))
 }
 

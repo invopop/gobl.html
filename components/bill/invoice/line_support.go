@@ -6,7 +6,7 @@ import (
 )
 
 type lineSupport struct {
-	categories []*tax.Category
+	categories []*tax.CategoryDef
 	discounts  bool
 	charges    bool
 	refs       bool
@@ -17,9 +17,9 @@ type lineSupport struct {
 // some of the columns that will need to be shown
 func prepareLineSupport(inv *bill.Invoice) *lineSupport {
 	ls := new(lineSupport)
-	r := inv.TaxRegime()
+	r := inv.RegimeDef()
 
-	cats := make([]*tax.Category, 0)
+	cats := make([]*tax.CategoryDef, 0)
 	for _, l := range inv.Lines {
 		if len(l.Discounts) > 0 {
 			ls.discounts = true
@@ -34,7 +34,7 @@ func prepareLineSupport(inv *bill.Invoice) *lineSupport {
 			ls.units = true
 		}
 		for _, combo := range l.Taxes {
-			cat := r.Category(combo.Category)
+			cat := r.CategoryDef(combo.Category)
 			if cat != nil {
 				cats = addCategory(cats, cat)
 			}
@@ -57,7 +57,7 @@ func prepareLineSupport(inv *bill.Invoice) *lineSupport {
 }
 
 // addCategory if not there already
-func addCategory(cats []*tax.Category, cat *tax.Category) []*tax.Category {
+func addCategory(cats []*tax.CategoryDef, cat *tax.CategoryDef) []*tax.CategoryDef {
 	for _, c := range cats {
 		if c.Code == cat.Code {
 			return cats

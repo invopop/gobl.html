@@ -2,6 +2,7 @@ package mx
 
 import (
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl/addons/mx/cfdi"
 	"github.com/invopop/gobl/head"
 	"github.com/invopop/gobl/regimes/mx"
 	"github.com/invopop/gobl.html/components/images"
@@ -61,10 +62,10 @@ templ signatures(h *head.Header) {
 					<span class="value">{ st.Value }</span>
 				</div>
 			}
-			if st := h.GetStamp(mx.StampCFDISignature); st != nil {
+			if st := h.GetStamp(cfdi.StampSignature); st != nil {
 				<div>
 					<b>Sello digital del CFDI</b>
-					if st := h.GetStamp(mx.StampCFDISerial); st != nil {
+					if st := h.GetStamp(cfdi.StampSerial); st != nil {
 						<span class="series">Serie: <span class="value">{ st.Value }</span></span>
 					}
 					<span class="signature">{ st.Value }</span>

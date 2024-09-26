@@ -13,7 +13,6 @@ import (
 
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl/l10n"
 	"github.com/invopop/gobl/org"
 )
 
@@ -125,7 +124,7 @@ func addressLines(addr *org.Address) templ.Component {
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(txt)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/address.templ`, Line: 33, Col: 8}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/address.templ`, Line: 32, Col: 8}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -185,7 +184,7 @@ func buildStreetWithNumbers(addr *org.Address) string {
 func addrNumberFirst(addr *org.Address) bool {
 	// TODO: add more countries here!
 	switch addr.Country {
-	case l10n.GB, l10n.US, l10n.CA, l10n.FR:
+	case "GB", "US", "CA", "FR":
 		return true
 	default:
 		return false

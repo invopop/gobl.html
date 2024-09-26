@@ -9,8 +9,8 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
+	"github.com/invopop/gobl/addons/mx/cfdi"
 	"github.com/invopop/gobl/bill"
-	"github.com/invopop/gobl/regimes/mx"
 )
 
 // LineExtensions will add extra information to the line for Mexico.
@@ -32,15 +32,15 @@ func LineExtensions(line *bill.Line) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if line.Item.Ext.Has(mx.ExtKeyCFDIProdServ) {
+		if line.Item.Ext.Has(cfdi.ExtKeyProdServ) {
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span class=\"extensions\"><span class=\"label\">Clave SAT:</span> <span class=\"value\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var2 string
-			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(line.Item.Ext[mx.ExtKeyCFDIProdServ].String())
+			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(line.Item.Ext[cfdi.ExtKeyProdServ].String())
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/line.templ`, Line: 14, Col: 51}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/mx/line.templ`, Line: 14, Col: 49}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 			if templ_7745c5c3_Err != nil {
