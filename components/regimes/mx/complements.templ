@@ -3,6 +3,7 @@ package mx
 import (
 	"fmt"
 
+	"github.com/invopop/gobl/addons/mx/cfdi"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/num"
@@ -15,15 +16,15 @@ import (
 templ complements(inv *bill.Invoice) {
 	for _, c := range inv.Complements {
 		switch obj := c.Instance().(type) {
-			case *mx.FoodVouchers:
+			case *cfdi.FoodVouchers:
 				@foodVouchers(obj)
-			case *mx.FuelAccountBalance:
+			case *cfdi.FuelAccountBalance:
 				@fuelAccountBalance(obj)
 		}
 	}
 }
 
-templ foodVouchers(fv *mx.FoodVouchers) {
+templ foodVouchers(fv *cfdi.FoodVouchers) {
 	<style type="text/css">
         .mx-food-vouchers {
 			break-inside: avoid;
@@ -125,7 +126,7 @@ templ foodVouchers(fv *mx.FoodVouchers) {
 	</section>
 }
 
-templ fuelAccountBalance(b *mx.FuelAccountBalance) {
+templ fuelAccountBalance(b *cfdi.FuelAccountBalance) {
 	<style type="text/css">
         .mx-fuel-account-balance {
 			break-inside: avoid;
@@ -264,7 +265,7 @@ templ fuelAccountBalance(b *mx.FuelAccountBalance) {
 	</section>
 }
 
-func fuelAccountTaxTotal(b *mx.FuelAccountBalance, code cbc.Code) num.Amount {
+func fuelAccountTaxTotal(b *cfdi.FuelAccountBalance, code cbc.Code) num.Amount {
 	sum := currency.MXN.Def().Zero()
 	for _, line := range b.Lines {
 		if a := fuelAccountTax(line.Taxes, code); a != nil {
@@ -274,7 +275,7 @@ func fuelAccountTaxTotal(b *mx.FuelAccountBalance, code cbc.Code) num.Amount {
 	return sum
 }
 
-func fuelAccountTotal(line *mx.FuelAccountLine) num.Amount {
+func fuelAccountTotal(line *cfdi.FuelAccountLine) num.Amount {
 	sum := line.Total
 	for _, t := range line.Taxes {
 		sum = sum.Add(t.Amount)
@@ -282,7 +283,7 @@ func fuelAccountTotal(line *mx.FuelAccountLine) num.Amount {
 	return sum
 }
 
-func fuelAccountTax(taxes []*mx.FuelAccountTax, code cbc.Code) *num.Amount {
+func fuelAccountTax(taxes []*cfdi.FuelAccountTax, code cbc.Code) *num.Amount {
 	for _, row := range taxes {
 		if row.Category == code {
 			return &row.Amount

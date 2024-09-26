@@ -1,17 +1,17 @@
 package mx
 
 import (
+	"github.com/invopop/gobl/addons/mx/cfdi"
 	"github.com/invopop/gobl/bill"
-	"github.com/invopop/gobl/regimes/mx"
 )
 
 // LineExtensions will add extra information to the line for Mexico.
 templ LineExtensions(line *bill.Line) {
-	if line.Item.Ext.Has(mx.ExtKeyCFDIProdServ) {
+	if line.Item.Ext.Has(cfdi.ExtKeyProdServ) {
 		<span class="extensions">
 			<span class="label">Clave SAT:</span>
 			<span class="value">
-				{ line.Item.Ext[mx.ExtKeyCFDIProdServ].String() }
+				{ line.Item.Ext[cfdi.ExtKeyProdServ].String() }
 			</span>
 		</span>
 	}

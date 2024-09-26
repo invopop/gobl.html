@@ -14,6 +14,7 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
 )
@@ -82,7 +83,7 @@ templ title(inv *bill.Invoice) {
 
 func i18nTitleTag(inv *bill.Invoice) string {
 	typ := string(inv.Type)
-	if inv.Tax.ContainsTag(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard {
+	if inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard {
 		typ = typ + "-simplified"
 	}
 	return typ
@@ -113,9 +114,9 @@ func logoHeight(img *org.Image) string {
 	return "40" // pixels
 }
 
-func code(series, code string) string {
+func code(series, code cbc.Code) string {
 	if series == "" {
-		return code
+		return code.String()
 	}
 	return fmt.Sprintf("%s-%s", series, code)
 }

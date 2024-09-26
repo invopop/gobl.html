@@ -104,7 +104,7 @@ templ summaryOrderingRows(inv *bill.Invoice) {
 				@t.T(".order")
 			</span>
 			<span class="value">
-				{ inv.Ordering.Code }
+				{ inv.Ordering.Code.String() }
 			</span>
 		</li>
 	}

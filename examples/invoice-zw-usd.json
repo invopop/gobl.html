@@ -1,0 +1,106 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
+		"dig": {
+			"alg": "sha256",
+			"val": "34e69f1a4b65de1e61887b32d16908f28e170549834f4ffb3ba345d7b1a6ca40"
+		},
+		"draft": true
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"uuid": "3aea7b56-59d8-4beb-90bd-f8f280d852a0",
+		"type": "standard",
+		"series": "LOCAL",
+		"code": "001",
+		"issue_date": "2024-09-10",
+		"currency": "USD",
+		"supplier": {
+			"name": "Provide One",
+			"tax_id": {
+				"country": "ZW",
+				"code": "123123123"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Main Street",
+					"region": "Zimbabwe",
+					"code": "1234",
+					"country": "ZW"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"customer": {
+			"label": "Client",
+			"name": "Sample Consumer Inc.",
+			"tax_id": {
+				"country": "US"
+			},
+			"people": [
+				{
+					"label": "Contact",
+					"name": {
+						"given": "John",
+						"surname": "Doe"
+					}
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Development services from Zimbabwe",
+					"price": "100.00",
+					"unit": "h"
+				},
+				"sum": "2000.00",
+				"discounts": [
+					{
+						"percent": "10%",
+						"amount": "200.00",
+						"reason": "Special discount"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"percent": "16.0%"
+					}
+				],
+				"total": "1800.00"
+			}
+		],
+		"totals": {
+			"sum": "1800.00",
+			"total": "1800.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"base": "1800.00",
+								"percent": "16.0%",
+								"amount": "288.00"
+							}
+						],
+						"amount": "288.00"
+					}
+				],
+				"sum": "288.00"
+			},
+			"tax": "288.00",
+			"total_with_tax": "2088.00",
+			"payable": "2088.00"
+		}
+	}
+}

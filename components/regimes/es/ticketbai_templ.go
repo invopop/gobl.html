@@ -11,7 +11,7 @@ import templruntime "github.com/a-h/templ/runtime"
 import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
-	"github.com/invopop/gobl/regimes/es"
+	"github.com/invopop/gobl/addons/es/tbai"
 )
 
 // TicketBAIQR generates a QR code area for the TicketBAI code in the given envelope.
@@ -104,7 +104,7 @@ func generateTicketBAIQR(code, qr string) templ.Component {
 func ticketbaiCode(env *gobl.Envelope) string {
 	for _, stamp := range env.Head.Stamps {
 		switch stamp.Provider {
-		case es.StampProviderTBAICode:
+		case tbai.StampCode:
 			return stamp.Value
 		}
 	}
@@ -114,7 +114,7 @@ func ticketbaiCode(env *gobl.Envelope) string {
 func ticketbaiQR(env *gobl.Envelope) string {
 	for _, stamp := range env.Head.Stamps {
 		switch stamp.Provider {
-		case es.StampProviderTBAIQR:
+		case tbai.StampQR:
 			return stamp.Value
 		}
 	}
