@@ -41,7 +41,7 @@ de:
         price: "Preis"
         discount: "Rabatt"
         charges: "Gebühren"
-        total: "Netto Betrag"
+        total: "Gesamt"
 
       totals:
         sum: "Summe"
