@@ -19,7 +19,7 @@ import (
 	"github.com/invopop/gobl.html/pkg/pdf"
 	"github.com/invopop/gobl/org"
 	"github.com/labstack/echo/v4"
-	"github.com/sevenNt/echo-pprof"
+	echopprof "github.com/sevenNt/echo-pprof"
 	"github.com/spf13/cobra"
 )
 
