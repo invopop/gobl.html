@@ -76,7 +76,7 @@ templ totalsBaseRows(inv *bill.Invoice, totals *bill.Totals) {
 			</td>
 		</tr>
 	}
-	if totals.TaxIncluded == nil || !totals.TaxIncluded.Equals(totals.Tax) {
+	if totals.Taxes != nil && len(totals.Taxes.Categories) > 0 && (totals.TaxIncluded == nil || !totals.TaxIncluded.Equals(totals.Tax)) {
 		<tr class="tax">
 			<th>
 				@t.T(".taxes")

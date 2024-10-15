@@ -220,7 +220,7 @@ func totalsBaseRows(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		if totals.TaxIncluded == nil || !totals.TaxIncluded.Equals(totals.Tax) {
+		if totals.Taxes != nil && len(totals.Taxes.Categories) > 0 && (totals.TaxIncluded == nil || !totals.TaxIncluded.Equals(totals.Tax)) {
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<tr class=\"tax\"><th>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
