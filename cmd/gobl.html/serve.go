@@ -19,6 +19,7 @@ import (
 	"github.com/invopop/gobl.html/pkg/pdf"
 	"github.com/invopop/gobl/org"
 	"github.com/labstack/echo/v4"
+	"github.com/sevenNt/echo-pprof"
 	"github.com/spf13/cobra"
 )
 
@@ -67,6 +68,8 @@ func (s *serveOpts) runE(cmd *cobra.Command, _ []string) error {
 
 	e.StaticFS("/styles", echo.MustSubFS(assets.Content, "styles"))
 	e.GET("/:filename", s.generate)
+
+	echopprof.Wrap(e)
 
 	var startErr error
 	go func() {

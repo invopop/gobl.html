@@ -11,6 +11,7 @@ require (
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/piglig/go-qr v0.2.4
 	github.com/pmezard/go-difflib v1.0.0
+	github.com/sevenNt/echo-pprof v0.1.1-0.20230131020615-4dd36891e14b
 	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.9.0
 	github.com/yosssi/gohtml v0.0.0-20201013000340-ee4748c638f4
