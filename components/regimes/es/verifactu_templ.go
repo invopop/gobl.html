@@ -11,11 +11,16 @@ import templruntime "github.com/a-h/templ/runtime"
 import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
-	"github.com/invopop/gobl/addons/es/tbai"
+	"github.com/invopop/gobl/cbc"
 )
 
-// TicketBAIQR generates a QR code area for the TicketBAI code in the given envelope.
-func TicketBAIQR(env *gobl.Envelope) templ.Component {
+const (
+	verifactuStampCode cbc.Key = "verifactu-code"
+	verifactuStampQR   cbc.Key = "verifactu-qr"
+)
+
+// VerifactuQR generates a QR code area for the Verifactu code in the given envelope.
+func VerifactuQR(env *gobl.Envelope) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -33,8 +38,8 @@ func TicketBAIQR(env *gobl.Envelope) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if result, code, qr := HasTicketBAIQR(env); result {
-			templ_7745c5c3_Err = generateTicketBAIQR(code, qr).Render(ctx, templ_7745c5c3_Buffer)
+		if result, code, qr := HasVerifactuQR(env); result {
+			templ_7745c5c3_Err = generateVerifactuQR(code, qr).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -43,10 +48,10 @@ func TicketBAIQR(env *gobl.Envelope) templ.Component {
 	})
 }
 
-// HasTicketBAIQR returns a boolean indicating whether the envelope has a TicketBAI QR or not.
-func HasTicketBAIQR(env *gobl.Envelope) (bool, string, string) {
-	if code := ticketbaiCode(env); code != "" {
-		if qr := ticketbaiQR(env); qr != "" {
+// HasVerifactuQR returns a boolean indicating whether the envelope has a Verifactu QR or not.
+func HasVerifactuQR(env *gobl.Envelope) (bool, string, string) {
+	if code := verifactuCode(env); code != "" {
+		if qr := verifactuQR(env); qr != "" {
 			return true, code, qr
 		}
 	}
@@ -54,7 +59,7 @@ func HasTicketBAIQR(env *gobl.Envelope) (bool, string, string) {
 	return false, "", ""
 }
 
-func generateTicketBAIQR(code, qr string) templ.Component {
+func generateVerifactuQR(code, qr string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -72,25 +77,12 @@ func generateTicketBAIQR(code, qr string) templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<style type=\"text/css\">\n\t\t.ticketbai {\n\t\t\tbreak-inside: avoid;\n\t\t\ttext-align: center;\n\t\t\tpadding: 3mm;\n\t\t\tborder: 1px solid #E5E7EB;\n\t\t\twidth: 6cm;\n\t\t}\n\t\t.ticketbai .label {\n\t\t\tfont-family: monospace;\n\t\t\tfont-size: 7pt;\n\t\t\ttext-align: center; \n\t\t\tmargin-bottom: 2mm;\n\t\t}\n\t\t.ticketbai img {\n\t\t\twidth: 25mm;\n\t\t\theight: 25mm;\n\t\t}\n\t</style><section class=\"qr\"><div class=\"ticketbai\"><div class=\"label\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<style type=\"text/css\">\n\t\t.verifactu {\n\t\t\tbreak-inside: avoid;\n\t\t\ttext-align: center;\n\t\t}\n\t\t.verifactu p {\n\t\t\tcolor: #030712;\n\t\t\ttext-align: center;\n\t\t\tfont-family: Inter;\n\t\t\tfont-size: 9px;\n\t\t\tfont-weight: 600;\n\t\t\tline-height: 12px;\n\t\t\tmargin-bottom: 8px;\n\t\t}\n\t\t.verifactu .label {\n\t\t\tcolor: #4B5563;\n\t\t\tfont-family: monospace;\n\t\t\tfont-size:9px;\n\t\t\ttext-align: center; \n\t\t\tmargin-top: 8px;\n\t\t}\n\t\t.verifactu img {\n\t\t\twidth: 35mm;\n\t\t\theight: 35mm;\n\t\t}\n\t</style><section class=\"qr\"><div class=\"verifactu\"><p>QR tributario:</p><div class=\"qr\"><a href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var3 string
-		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(code)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/es/ticketbai.templ`, Line: 50, Col: 10}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"qr\"><a href=\"")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var4 templ.SafeURL = templ.URL(qr)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var4)))
+		var templ_7745c5c3_Var3 templ.SafeURL = templ.URL(qr)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var3)))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -102,7 +94,20 @@ func generateTicketBAIQR(code, qr string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</a></div></div></section>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</a></div><div class=\"label\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var4 string
+		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(code)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/es/verifactu.templ`, Line: 70, Col: 10}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -110,20 +115,20 @@ func generateTicketBAIQR(code, qr string) templ.Component {
 	})
 }
 
-func ticketbaiCode(env *gobl.Envelope) string {
+func verifactuCode(env *gobl.Envelope) string {
 	for _, stamp := range env.Head.Stamps {
 		switch stamp.Provider {
-		case tbai.StampCode:
+		case verifactuStampCode:
 			return stamp.Value
 		}
 	}
 	return ""
 }
 
-func ticketbaiQR(env *gobl.Envelope) string {
+func verifactuQR(env *gobl.Envelope) string {
 	for _, stamp := range env.Head.Stamps {
 		switch stamp.Provider {
-		case tbai.StampQR:
+		case verifactuStampQR:
 			return stamp.Value
 		}
 	}

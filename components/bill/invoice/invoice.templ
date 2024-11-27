@@ -23,11 +23,14 @@ import (
 templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 	// Footer needs to be at the top to show on all pages
 	<article class="invoice">
-		<header>
+		<header class={ templ.KV("qr", HasHeaderQR(env)), templ.KV("not-qr", !HasHeaderQR(env)) }>
 			<div class="details">
 				@title(inv)
 				@summary(inv)
 			</div>
+			// Spanish QRs
+			@es.VerifactuQR(env)
+			@es.TicketBAIQR(env)
 			<div class="contacts">
 				@supplier(inv)
 				if inv.Customer != nil {
@@ -44,7 +47,6 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 		@notes(inv)
 		<div class="extensions">
 			// Region specific information
-			@es.TicketBAIQR(env)
 			@co.DIANQR(env, inv)
 			@mx.CFDI(env, inv)
 			@pl.KSeFQR(env)

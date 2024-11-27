@@ -2,17 +2,26 @@ package es
 
 import (
 	"github.com/invopop/gobl"
-	"github.com/invopop/gobl/addons/es/tbai"
 	"github.com/invopop/gobl.html/components/images"
+	"github.com/invopop/gobl/addons/es/tbai"
 )
 
 // TicketBAIQR generates a QR code area for the TicketBAI code in the given envelope.
 templ TicketBAIQR(env *gobl.Envelope) {
+	if result, code, qr := HasTicketBAIQR(env); result {
+		@generateTicketBAIQR(code, qr)
+	}
+}
+
+// HasTicketBAIQR returns a boolean indicating whether the envelope has a TicketBAI QR or not.
+func HasTicketBAIQR(env *gobl.Envelope) (bool, string, string) {
 	if code := ticketbaiCode(env); code != "" {
 		if qr := ticketbaiQR(env); qr != "" {
-			@generateTicketBAIQR(code, qr)
+			return true, code, qr
 		}
 	}
+
+	return false, "", ""
 }
 
 templ generateTicketBAIQR(code, qr string) {
@@ -35,7 +44,7 @@ templ generateTicketBAIQR(code, qr string) {
 			height: 25mm;
 		}
 	</style>
-	<section>
+	<section class="qr">
 		<div class="ticketbai">
 			<div class="label">
 				{ code }
