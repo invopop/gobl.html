@@ -41,6 +41,7 @@ header.qr section.supplier {
   padding-bottom: 6mm;
 }
 header.qr section.customer {
+  padding-left: 6mm;
   padding-top: 6mm;
   padding-bottom: 6mm;
 }
