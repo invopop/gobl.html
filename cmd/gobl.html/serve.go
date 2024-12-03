@@ -108,6 +108,9 @@ func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opt
 	if req.Notes != "" {
 		opts = append(opts, goblhtml.WithNotes(req.Notes))
 	}
+	if req.DIN5008 {
+		opts = append(opts, goblhtml.WithDIN5008())
+	}
 
 	out, err := goblhtml.Render(ctx, env, opts...)
 	if err != nil {
@@ -124,6 +127,7 @@ type options struct {
 	LogoURL    string    `query:"logo_url"`
 	LogoHeight int32     `query:"logo_height"`
 	Notes      string    `query:"notes"`
+	DIN5008    bool      `query:"din_5008"`
 }
 
 func (s *serveOpts) generate(c echo.Context) error {
