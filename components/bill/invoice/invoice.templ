@@ -22,21 +22,13 @@ import (
 // Invoice renders a complete GOBL bill.Invoice object.
 templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 	// Footer needs to be at the top to show on all pages
-	<article class="invoice">
+	<article class={ templ.KV("invoice", true), templ.KV("din5008", applyDIN5008(ctx)) }>
 		<header class={ templ.KV("qr", HasHeaderQR(env)), templ.KV("not-qr", !HasHeaderQR(env)) }>
-			<div class="details">
-				@title(inv)
-				@summary(inv)
-			</div>
-			// Spanish QRs
-			@es.VerifactuQR(env)
-			@es.TicketBAIQR(env)
-			<div class="contacts">
-				@supplier(inv)
-				if inv.Customer != nil {
-					@customer(inv)
-				}
-			</div>
+			if applyDIN5008(ctx) {
+				@din5008Header(inv)
+			} else {
+				@defaultHeader(env, inv)
+			}
 		</header>
 		@lines(inv)
 		<div class="totals">
@@ -83,6 +75,35 @@ templ title(inv *bill.Invoice) {
 	}
 }
 
+templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
+	<div class="details">
+		@title(inv)
+		@summary(inv)
+	</div>
+	// Spanish QRs
+	@es.VerifactuQR(env)
+	@es.TicketBAIQR(env)
+	<div class="contacts">
+		@supplier(inv)
+		if inv.Customer != nil {
+			@customer(inv)
+		}
+	</div>
+}
+
+templ din5008Header(inv *bill.Invoice) {
+	<div>
+		@title(inv)
+		if inv.Customer != nil {
+			@customer(inv)
+		}
+	</div>
+	<div>
+		@summary(inv)
+		@supplier(inv)
+	</div>
+}
+
 func i18nTitleTag(inv *bill.Invoice) string {
 	typ := string(inv.Type)
 	if inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard {
@@ -121,4 +142,10 @@ func code(series, code cbc.Code) string {
 		return code.String()
 	}
 	return fmt.Sprintf("%s-%s", series, code)
+}
+
+func applyDIN5008(ctx context.Context) bool {
+	opts := internal.Options(ctx)
+
+	return opts.DIN5008
 }

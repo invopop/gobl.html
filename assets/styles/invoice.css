@@ -4,6 +4,28 @@ header {
   flex-flow: row wrap;
   border-bottom: 0.5px solid #e5e7eb;
 }
+.invoice.din5008 section.title {
+  min-height: 30mm; // +10mm from envelop marging +5mm from printer margins = 45mm
+  max-height: 30mm;
+}
+.invoice.din5008 section.summary {
+  padding-left: 6mm;
+}
+.invoice.din5008 > header {
+  flex-flow: row wrap;
+}
+.invoice.din5008 > header > div {
+  flex-basis: 50%;
+}
+
+.invoice.din5008 > header section.customer {
+  min-height: 45mm;
+  padding-top: 2mm !important;
+  padding-left: 10mm !important;
+  max-width: 85mm;
+  border-top: 0 !important;
+}
+
 header.not-qr div.details {
   flex: 1;
   border-right: 0.5px solid #e5e7eb;
@@ -24,7 +46,7 @@ header.qr > section.qr {
   justify-content: center;
   align-items: center;
   flex-basis: 50%;
-  padding-bottom: 24px;
+  padding-bottom: 6mm;
 }
 header.qr > div.details {
   flex-basis: 50%;
