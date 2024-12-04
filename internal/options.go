@@ -36,9 +36,6 @@ type Opts struct {
 	// are contained inside the HTML output. This is useful for PDF
 	// output or to avoid additional requests.
 	EmbedStylesheets bool
-	// DIN5008 indicates the use of the german DIN 5008 specs
-	// TODO: Make this option an Enum with different formatters,
-	DIN5008 bool
 }
 
 // WithOptions prepares the context with the options to use.

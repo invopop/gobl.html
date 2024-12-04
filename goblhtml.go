@@ -92,14 +92,6 @@ func WithEmbeddedStylesheets() Option {
 	}
 }
 
-// WithDIN5008 indicates that the document header should be placed
-// acording to the german DIN 5008 specs.
-func WithDIN5008() Option {
-	return func(o *internal.Opts) {
-		o.DIN5008 = true
-	}
-}
-
 // Render takes the GOBL envelope and attempts to render an HTML document
 // from it.
 func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, error) {
