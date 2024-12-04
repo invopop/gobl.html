@@ -84,10 +84,11 @@ es:
           online: "Link de pago"
           methods:
             card: "Tarjeta bancaria"
-            credit_transfer: "Transferencia bancaria"
+            credit-transfer: "Transferencia bancaria"
             cash: "Efectivo"
-            direct_debit: "Domiciliación bancaria"
+            direct-debit: "Domiciliación bancaria"
             online: "En línea"
+            cheque: "Cheque"
         terms:
           key: "Términos de Pago"
           notes: "Notas de Términos de Pago"

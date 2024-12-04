@@ -2,6 +2,7 @@ package invoice
 
 import (
 	"context"
+	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
@@ -211,20 +212,11 @@ func paymentInstrMethodName(ctx context.Context, inst *pay.Instructions) string 
 	if inst.Detail != "" {
 		return inst.Detail
 	}
-	ctx = i18n.WithScope(ctx, ".methods")
-	switch inst.Key {
-	case pay.MeansKeyCard:
-		return i18n.T(ctx, ".card")
-	case pay.MeansKeyCreditTransfer:
-		return i18n.T(ctx, ".credit_transfer")
-	case pay.MeansKeyCash:
-		return i18n.T(ctx, ".cash")
-	case pay.MeansKeyDirectDebit:
-		return i18n.T(ctx, ".direct_debit")
-	case pay.MeansKeyOnline:
-		return i18n.T(ctx, ".online")
+	key := fmt.Sprintf(".methods.%s", inst.Key)
+	if !i18n.Has(ctx, key) {
+		return ""
 	}
-	return ""
+	return i18n.T(ctx, key)
 }
 
 func paymentTermsKeyName(ctx context.Context, terms *pay.Terms) string {
