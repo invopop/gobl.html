@@ -82,9 +82,9 @@ pt:
           online: "Link de pagamento"
           methods:
             card: "Cartão bancário"
-            credit_transfer: "Transferência bancária"
+            credit-transfer: "Transferência bancária"
             cash: "Dinheiro"
-            direct_debit: "Débito direto"
+            direct-debit: "Débito direto"
             online: "Online"
         terms:
           key: "Condições de Pagamento"

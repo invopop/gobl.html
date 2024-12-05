@@ -83,9 +83,9 @@ el:
           online: "Σύνδεσμος πληρωμής"
           methods:
             card: "Κάρτα τραπέζης"
-            credit_transfer: "Τραπεζική μεταφορά"
+            credit-transfer: "Τραπεζική μεταφορά"
             cash: "Μετρητά"
-            direct_debit: "Άμεση πίστωση"
+            direct-debit: "Άμεση πίστωση"
             online: "Διαδικτυακά"
         terms:
           key: "Όροι πληρωμής"

@@ -84,10 +84,11 @@ en:
           online: "Payment Link"
           methods:
             card: "Bank card"
-            credit_transfer: "Bank transfer"
+            credit-transfer: "Bank transfer"
             cash: "Cash"
-            direct_debit: "Direct debit"
+            direct-debit: "Direct debit"
             online: "Online"
+            cheque: "Cheque"
         terms:
           key: "Payment Terms"
           notes: "Payment Terms Notes"
