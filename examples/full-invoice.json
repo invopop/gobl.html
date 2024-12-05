@@ -198,7 +198,8 @@
             "label": "Paypal",
             "url": "https://www.paypal.com/pay?ref=PAY1234"
           }
-        ]
+        ],
+        "notes": "**Please** pay within _30 days_"
       }
     },
     "totals": {
