@@ -1,6 +1,7 @@
 package invoice
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
@@ -97,12 +98,20 @@ templ paymentInstructions(inst *pay.Instructions) {
 						@t.T(".observations")
 					</span>
 					<span class="value">
-						{ inst.Notes }
+						@templ.Raw(renderPaymentNotes(inst.Notes))
 					</span>
 				</li>
 			}
 		</ul>
 	}
+}
+
+func renderPaymentNotes(txt string) string {
+	buf := new(bytes.Buffer)
+	if err := markdown.Convert([]byte(txt), buf); err != nil {
+		return fmt.Sprintf("!(ERR %v)", err.Error())
+	}
+	return buf.String()
 }
 
 templ paymentCreditTransferRow(ct *pay.CreditTransfer) {
