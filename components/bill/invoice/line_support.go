@@ -41,12 +41,12 @@ func prepareLineSupport(inv *bill.Invoice) *lineSupport {
 		}
 	}
 	for _, row := range inv.Discounts {
-		if row.Ref != "" {
+		if row.Code != "" {
 			ls.refs = true
 		}
 	}
 	for _, row := range inv.Charges {
-		if row.Ref != "" {
+		if row.Code != "" {
 			ls.refs = true
 		}
 	}

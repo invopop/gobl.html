@@ -8,10 +8,6 @@
     },
     "stamps": [
       {
-        "prv": "verifactu-code",
-        "val": "VERI*FACTU"
-      },
-      {
         "prv": "verifactu-qr",
         "val": "https://batuz.eus/QRTBAI/?id=TBAI-B98602642-010222-LrNMp23wKPLjx-112\u0026s=SAMPLE\u0026nf=001\u0026i=2323.20\u0026cr=027"
       }

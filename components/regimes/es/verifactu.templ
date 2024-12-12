@@ -3,33 +3,26 @@ package es
 import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
-	"github.com/invopop/gobl/cbc"
-)
-
-const (
-	verifactuStampCode cbc.Key = "verifactu-code"
-	verifactuStampQR   cbc.Key = "verifactu-qr"
+	"github.com/invopop/gobl/addons/es/verifactu"
 )
 
 // VerifactuQR generates a QR code area for the Verifactu code in the given envelope.
 templ VerifactuQR(env *gobl.Envelope) {
-	if result, code, qr := HasVerifactuQR(env); result {
-		@generateVerifactuQR(code, qr)
+	if result, qr := HasVerifactuQR(env); result {
+		@generateVerifactuQR(qr)
 	}
 }
 
 // HasVerifactuQR returns a boolean indicating whether the envelope has a Verifactu QR or not.
-func HasVerifactuQR(env *gobl.Envelope) (bool, string, string) {
-	if code := verifactuCode(env); code != "" {
-		if qr := verifactuQR(env); qr != "" {
-			return true, code, qr
-		}
+func HasVerifactuQR(env *gobl.Envelope) (bool, string) {
+	if qr := verifactuQR(env); qr != "" {
+		return true, qr
 	}
 
-	return false, "", ""
+	return false, ""
 }
 
-templ generateVerifactuQR(code, qr string) {
+templ generateVerifactuQR(qr string) {
 	<style type="text/css">
 		.verifactu {
 			break-inside: avoid;
@@ -67,26 +60,16 @@ templ generateVerifactuQR(code, qr string) {
 				</a>
 			</div>
 			<div class="label">
-				{ code }
+				VERI*FACTU
 			</div>
 		</div>
 	</section>
 }
 
-func verifactuCode(env *gobl.Envelope) string {
-	for _, stamp := range env.Head.Stamps {
-		switch stamp.Provider {
-		case verifactuStampCode:
-			return stamp.Value
-		}
-	}
-	return ""
-}
-
 func verifactuQR(env *gobl.Envelope) string {
 	for _, stamp := range env.Head.Stamps {
 		switch stamp.Provider {
-		case verifactuStampQR:
+		case verifactu.StampQR:
 			return stamp.Value
 		}
 	}

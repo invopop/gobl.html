@@ -9,14 +9,13 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
-	"regexp"
-
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/addons/co/dian"
 	"github.com/invopop/gobl/bill"
-	"github.com/invopop/gobl/regimes/co"
+	"regexp"
 )
 
 var dianQRHTTPRegexp = regexp.MustCompile(`https.+`)
@@ -140,7 +139,7 @@ func dianURL(qr string) string {
 func dianCUDE(env *gobl.Envelope) string {
 	for _, stamp := range env.Head.Stamps {
 		switch stamp.Provider {
-		case co.StampProviderDIANCUDE:
+		case dian.StampCUDE:
 			return stamp.Value
 		}
 	}
@@ -153,7 +152,7 @@ func dianPrecedingCUDE(inv *bill.Invoice) string {
 	}
 	for _, stamp := range inv.Preceding[0].Stamps {
 		switch stamp.Provider {
-		case co.StampProviderDIANCUDE:
+		case dian.StampCUDE:
 			return stamp.Value
 		}
 	}
@@ -163,7 +162,7 @@ func dianPrecedingCUDE(inv *bill.Invoice) string {
 func dianQR(env *gobl.Envelope) string {
 	for _, stamp := range env.Head.Stamps {
 		switch stamp.Provider {
-		case co.StampProviderDIANQR:
+		case dian.StampQR:
 			return stamp.Value
 		}
 	}

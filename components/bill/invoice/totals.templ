@@ -99,18 +99,6 @@ templ totalsBaseRows(inv *bill.Invoice, totals *bill.Totals) {
 }
 
 templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
-	if totals.Outlays != nil {
-		for _, o := range inv.Outlays {
-			<tr class="outlay">
-				<th>
-					@t.T(".outlay", i18n.M{"i": o.Index, "txt": outlayText(o)})
-				</th>
-				<td>
-					@t.LM(o.Amount)
-				</td>
-			</tr>
-		}
-	}
 	<tr class="payable strong">
 		<th>
 			if inv.Type.In(bill.InvoiceTypeCreditNote) {
@@ -203,15 +191,4 @@ func advanceMap(adv *pay.Advance) i18n.M {
 		date = adv.Date.String()
 	}
 	return i18n.M{"date": date, "txt": txt}
-}
-
-func outlayText(outlay *bill.Outlay) string {
-	txt := outlay.Description
-	if outlay.Code != "" {
-		txt = outlay.Code + " " + txt
-	}
-	if outlay.Date != nil {
-		txt += " " + outlay.Date.String()
-	}
-	return txt
 }

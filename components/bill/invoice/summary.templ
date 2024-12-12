@@ -8,7 +8,6 @@ import (
 	"github.com/invopop/gobl/cal"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/currency"
-	"github.com/invopop/gobl/tax"
 	"strings"
 )
 
@@ -150,7 +149,7 @@ func currencyName(ctx context.Context, cur currency.Code) string {
 	return i18n.T(ctx, "billing.invoice.summary.currency_value", i18n.M{"desc": name, "code": cur})
 }
 
-func mapTaxExtension(ctx context.Context, k cbc.Key, v tax.ExtValue) string {
+func mapTaxExtension(ctx context.Context, k cbc.Key, v cbc.Code) string {
 	// find the key translation
 	label := i18n.T(ctx, ".ext_map."+k.String())
 	if strings.HasPrefix(label, "!") { // if match found
