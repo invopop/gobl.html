@@ -4,22 +4,22 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/gobl/addons/es/verifactu"
+	"github.com/invopop/gobl/head"
 )
 
 // VerifactuQR generates a QR code area for the Verifactu code in the given envelope.
 templ VerifactuQR(env *gobl.Envelope) {
-	if result, qr := HasVerifactuQR(env); result {
+	if qr := verifactuQR(env); qr != "" {
 		@generateVerifactuQR(qr)
 	}
 }
 
 // HasVerifactuQR returns a boolean indicating whether the envelope has a Verifactu QR or not.
-func HasVerifactuQR(env *gobl.Envelope) (bool, string) {
+func HasVerifactuQR(env *gobl.Envelope) bool {
 	if qr := verifactuQR(env); qr != "" {
-		return true, qr
+		return true
 	}
-
-	return false, ""
+	return false
 }
 
 templ generateVerifactuQR(qr string) {
@@ -67,11 +67,9 @@ templ generateVerifactuQR(qr string) {
 }
 
 func verifactuQR(env *gobl.Envelope) string {
-	for _, stamp := range env.Head.Stamps {
-		switch stamp.Provider {
-		case verifactu.StampQR:
-			return stamp.Value
-		}
+	stamp := head.GetStamp(env.Head.Stamps, verifactu.StampQR)
+	if stamp != nil {
+		return stamp.Value
 	}
 	return ""
 }

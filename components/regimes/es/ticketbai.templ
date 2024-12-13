@@ -8,20 +8,22 @@ import (
 
 // TicketBAIQR generates a QR code area for the TicketBAI code in the given envelope.
 templ TicketBAIQR(env *gobl.Envelope) {
-	if result, code, qr := HasTicketBAIQR(env); result {
-		@generateTicketBAIQR(code, qr)
+	if code := ticketbaiCode(env); code != "" {
+		if qr := ticketbaiQR(env); qr != "" {
+			@generateTicketBAIQR(code, qr)
+		}
 	}
 }
 
 // HasTicketBAIQR returns a boolean indicating whether the envelope has a TicketBAI QR or not.
-func HasTicketBAIQR(env *gobl.Envelope) (bool, string, string) {
+func HasTicketBAIQR(env *gobl.Envelope) bool {
 	if code := ticketbaiCode(env); code != "" {
 		if qr := ticketbaiQR(env); qr != "" {
-			return true, code, qr
+			return true
 		}
 	}
 
-	return false, "", ""
+	return false
 }
 
 templ generateTicketBAIQR(code, qr string) {

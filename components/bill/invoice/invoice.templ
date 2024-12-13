@@ -23,7 +23,7 @@ import (
 templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 	// Footer needs to be at the top to show on all pages
 	<article class="invoice">
-		<header class={ templ.KV("qr", HasHeaderQR(env)), templ.KV("not-qr", !HasHeaderQR(env)) }>
+		<header class={ headerClass(env) }>
 			<div class="details">
 				@title(inv)
 				@summary(inv)
@@ -121,4 +121,16 @@ func code(series, code cbc.Code) string {
 		return code.String()
 	}
 	return fmt.Sprintf("%s-%s", series, code)
+}
+
+func hasHeaderQR(env *gobl.Envelope) bool {
+	return es.HasVerifactuQR(env) || es.HasTicketBAIQR(env)
+}
+
+func headerClass(env *gobl.Envelope) string {
+	if hasHeaderQR(env) {
+		return "with-qr"
+	}
+
+	return "regular"
 }

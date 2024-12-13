@@ -33,10 +33,12 @@ func TicketBAIQR(env *gobl.Envelope) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if result, code, qr := HasTicketBAIQR(env); result {
-			templ_7745c5c3_Err = generateTicketBAIQR(code, qr).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
+		if code := ticketbaiCode(env); code != "" {
+			if qr := ticketbaiQR(env); qr != "" {
+				templ_7745c5c3_Err = generateTicketBAIQR(code, qr).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
 			}
 		}
 		return templ_7745c5c3_Err
@@ -44,14 +46,14 @@ func TicketBAIQR(env *gobl.Envelope) templ.Component {
 }
 
 // HasTicketBAIQR returns a boolean indicating whether the envelope has a TicketBAI QR or not.
-func HasTicketBAIQR(env *gobl.Envelope) (bool, string, string) {
+func HasTicketBAIQR(env *gobl.Envelope) bool {
 	if code := ticketbaiCode(env); code != "" {
 		if qr := ticketbaiQR(env); qr != "" {
-			return true, code, qr
+			return true
 		}
 	}
 
-	return false, "", ""
+	return false
 }
 
 func generateTicketBAIQR(code, qr string) templ.Component {
@@ -79,7 +81,7 @@ func generateTicketBAIQR(code, qr string) templ.Component {
 		var templ_7745c5c3_Var3 string
 		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(code)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/es/ticketbai.templ`, Line: 50, Col: 10}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/es/ticketbai.templ`, Line: 52, Col: 10}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {

@@ -50,7 +50,7 @@ func Invoice(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var2 = []any{templ.KV("qr", HasHeaderQR(env)), templ.KV("not-qr", !HasHeaderQR(env))}
+		var templ_7745c5c3_Var2 = []any{headerClass(env)}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var2...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -358,4 +358,16 @@ func code(series, code cbc.Code) string {
 		return code.String()
 	}
 	return fmt.Sprintf("%s-%s", series, code)
+}
+
+func hasHeaderQR(env *gobl.Envelope) bool {
+	return es.HasVerifactuQR(env) || es.HasTicketBAIQR(env)
+}
+
+func headerClass(env *gobl.Envelope) string {
+	if hasHeaderQR(env) {
+		return "with-qr"
+	}
+
+	return "regular"
 }
