@@ -3,9 +3,9 @@ module github.com/invopop/gobl.html
 go 1.22.1
 
 require (
-	github.com/a-h/templ v0.2.747
+	github.com/a-h/templ v0.2.793
 	github.com/go-resty/resty/v2 v2.12.0
-	github.com/invopop/ctxi18n v0.6.0
+	github.com/invopop/ctxi18n v0.9.0
 	github.com/invopop/gobl v0.207.0
 	github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a
 	github.com/labstack/echo/v4 v4.12.0

@@ -1,7 +1,9 @@
 package invoice
 
 import (
+	"bytes"
 	"context"
+	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
@@ -96,12 +98,20 @@ templ paymentInstructions(inst *pay.Instructions) {
 						@t.T(".observations")
 					</span>
 					<span class="value">
-						{ inst.Notes }
+						@templ.Raw(renderPaymentNotes(inst.Notes))
 					</span>
 				</li>
 			}
 		</ul>
 	}
+}
+
+func renderPaymentNotes(txt string) string {
+	buf := new(bytes.Buffer)
+	if err := markdown.Convert([]byte(txt), buf); err != nil {
+		return fmt.Sprintf("!(ERR %v)", err.Error())
+	}
+	return buf.String()
 }
 
 templ paymentCreditTransferRow(ct *pay.CreditTransfer) {
@@ -211,20 +221,11 @@ func paymentInstrMethodName(ctx context.Context, inst *pay.Instructions) string 
 	if inst.Detail != "" {
 		return inst.Detail
 	}
-	ctx = i18n.WithScope(ctx, ".methods")
-	switch inst.Key {
-	case pay.MeansKeyCard:
-		return i18n.T(ctx, ".card")
-	case pay.MeansKeyCreditTransfer:
-		return i18n.T(ctx, ".credit_transfer")
-	case pay.MeansKeyCash:
-		return i18n.T(ctx, ".cash")
-	case pay.MeansKeyDirectDebit:
-		return i18n.T(ctx, ".direct_debit")
-	case pay.MeansKeyOnline:
-		return i18n.T(ctx, ".online")
+	key := fmt.Sprintf(".methods.%s", inst.Key)
+	if !i18n.Has(ctx, key) {
+		return ""
 	}
-	return ""
+	return i18n.T(ctx, key)
 }
 
 func paymentTermsKeyName(ctx context.Context, terms *pay.Terms) string {

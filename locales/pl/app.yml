@@ -81,9 +81,9 @@ pl:
           online: "Link do płatności"
           methods:
             card: "Karta bankowa"
-            credit_transfer: "Przelew bankowy"
+            credit-transfer: "Przelew bankowy"
             cash: "Gotówka"
-            direct_debit: "Polecenie zapłaty"
+            direct-debit: "Polecenie zapłaty"
             online: "Online"
         terms:
           key: "Warunki płatności"

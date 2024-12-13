@@ -74,10 +74,11 @@ fr:
           online: "Lien de paiement"
           methods:
             card: "Carte bancaire"
-            credit_transfer: "Virement bancaire"
+            credit-transfer: "Virement bancaire"
             cash: "Espèces"
-            direct_debit: "Prélèvement automatique"
+            direct-debit: "Prélèvement automatique"
             online: "En ligne"
+            cheque: "Cheque"
         terms:
           key: "Conditions de paiement"
           notes: "Notes sur les conditions de paiement"

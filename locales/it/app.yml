@@ -74,9 +74,9 @@ it:
           online: "Link di pagamento"
           methods:
             card: "Carta di credito"
-            credit_transfer: "Bonifico bancario"
+            credit-transfer: "Bonifico bancario"
             cash: "Contanti"
-            direct_debit: "Addebito diretto"
+            direct-debit: "Addebito diretto"
             online: "Online"
         terms:
           key: "Termini di pagamento"
