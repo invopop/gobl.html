@@ -2,10 +2,9 @@ package invoice
 
 import (
 	"fmt"
-
-	"github.com/invopop/gobl/bill"
-	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/regimes/mx"
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/bill"
 )
 
 templ lines(inv *bill.Invoice) {
@@ -191,8 +190,8 @@ templ discountRow(row *bill.Discount, ls *lineSupport) {
 		</td>
 		if ls.refs {
 			<td class="ref">
-				if row.Ref != "" {
-					{ row.Ref }
+				if row.Code != "" {
+					{ row.Code.String() }
 				} else {
 					<!-- empty -->
 				}
@@ -262,8 +261,8 @@ templ chargeRow(row *bill.Charge, ls *lineSupport) {
 		</td>
 		if ls.refs {
 			<td class="ref">
-				if row.Ref != "" {
-					{ row.Ref }
+				if row.Code != "" {
+					{ row.Code.String() }
 				} else {
 					<!-- empty -->
 				}

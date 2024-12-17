@@ -196,7 +196,7 @@ func taxIDCode(party *org.Party) string {
 	}
 }
 
-func mapPartyExtension(ctx context.Context, k cbc.Key, v tax.ExtValue) string {
+func mapPartyExtension(ctx context.Context, k cbc.Key, v cbc.Code) string {
 	// find the key translation
 	label := i18n.T(ctx, ".ext_map."+k.String())
 	if !strings.HasPrefix(label, "!") { // if match found

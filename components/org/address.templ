@@ -1,11 +1,10 @@
 package org
 
 import (
-	"strings"
-
 	"github.com/invopop/ctxi18n/i18n"
-	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/org"
+	"strings"
 )
 
 templ Address(addr *org.Address) {
@@ -52,7 +51,7 @@ func buildAddressLines(addr *org.Address) []string {
 		lines = append(lines, addr.Region)
 	}
 	if addr.Code != "" {
-		lines = append(lines, addr.Code)
+		lines = append(lines, addr.Code.String())
 	}
 	return lines
 }

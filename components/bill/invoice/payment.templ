@@ -47,7 +47,7 @@ templ paymentInstructions(inst *pay.Instructions) {
 						@t.T(".ref")
 					</span>
 					<span class="value">
-						{ inst.Ref }
+						{ inst.Ref.String() }
 					</span>
 				</li>
 			}
