@@ -88,7 +88,17 @@
         "item": {
           "name": "Development Day Rate",
           "description": "Development services for the month of February 2022",
-          "price": "200.00"
+          "price": "200.00",
+          "identities": [
+            {
+              "label": "Product Code",
+              "code": "5294-3433"
+            },
+            {
+              "type": "EAN",
+              "code": "0799439112766"
+            }
+          ]
         },
         "sum": "4000.00",
         "discounts": [
@@ -129,6 +139,12 @@
         "quantity": "5",
         "item": {
           "name": "Additional random services",
+          "identities": [
+            {
+              "type": "EAN",
+              "code": "0799439112766"
+            }
+          ],
           "price": "34.50"
         },
         "sum": "172.50",
