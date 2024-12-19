@@ -127,6 +127,7 @@ section.lines td {
   border-bottom: 0.5px solid #e5e7eb;
   padding: 1.5mm 2mm;
   margin: 0px;
+  vertical-align: top;
 }
 section.lines th {
   font-weight: 600;
@@ -153,11 +154,17 @@ section.lines .reason {
 section.lines .label {
   font-weight: 500;
 }
-section.lines .description .extensions {
+section.lines .description .extensions,
+section.lines .description .identity {
   display: block;
+  font-size: 10px;
 }
-section.lines .description .extensions .label {
-  font-weight: 500;
+section.lines .description .extensions .label,
+section.lines .description .identity .label {
+  font-weight: 400;
+}
+section.lines .description .identity .label:after {
+  content: ": "
 }
 section.lines .alt-price {
   display: block;
