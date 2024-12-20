@@ -158,5 +158,6 @@ func loadXMP() []byte {
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println(string(data))
 	return data
 }
