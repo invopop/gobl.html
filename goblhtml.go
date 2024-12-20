@@ -92,6 +92,13 @@ func WithEmbeddedStylesheets() Option {
 	}
 }
 
+// WithZugferd adds the Zugferd XMP metadata to the HTML document.
+func WithZugferd() Option {
+	return func(o *internal.Opts) {
+		o.Zugferd = true
+	}
+}
+
 // Render takes the GOBL envelope and attempts to render an HTML document
 // from it.
 func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, error) {

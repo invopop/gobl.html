@@ -36,6 +36,8 @@ type Opts struct {
 	// are contained inside the HTML output. This is useful for PDF
 	// output or to avoid additional requests.
 	EmbedStylesheets bool
+	// Zugferd when true, adds the Zugferd XMP metadata to the PDF.
+	Zugferd bool
 }
 
 // WithOptions prepares the context with the options to use.
