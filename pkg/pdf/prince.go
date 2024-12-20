@@ -68,6 +68,7 @@ func (pc *princeConvertor) HTML(_ context.Context, data []byte, opts ...Option) 
 		if j.PDF == nil {
 			j.PDF = new(princepdf.PDF)
 		}
+		j.PDF.PDFXMP = xmpFilename
 		j.PDF.Attach = append(j.PDF.Attach, &princepdf.Attachment{
 			URL:         xmpFilename,
 			Filename:    xmpFilename,

@@ -12,6 +12,7 @@ import (
 
 type convertOpts struct {
 	*rootOpts
+	Zugferd bool
 }
 
 func convert(o *rootOpts) *convertOpts {
@@ -24,6 +25,7 @@ func (c *convertOpts) cmd() *cobra.Command {
 		Short: "Convert a GOBL JSON into an HTML file",
 		RunE:  c.runE,
 	}
+	cmd.Flags().BoolVar(&c.Zugferd, "zugferd", false, "Add Zugferd XMP metadata to the PDF")
 	return cmd
 }
 

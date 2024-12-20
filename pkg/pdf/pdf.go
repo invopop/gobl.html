@@ -112,8 +112,8 @@ func WithAttachment(a *Attachment) Option {
 	}
 }
 
-// WithXMPMetadata adds the XMP metadata to the conversion request.
-func WithXMPMetadata() Option {
+// WithZugferd adds the Zugferd XMP metadata to the conversion request.
+func WithZugferd() Option {
 	return func(o *options) {
 		o.xmpMetadata = &XMPMetadata{
 			Data:     loadXMP(),
