@@ -6,6 +6,7 @@ import (
 	"context"
 	"fmt"
 	"io/fs"
+	"os"
 	"path/filepath"
 )
 
@@ -24,6 +25,7 @@ type options struct {
 	metadata    *Metadata
 	styles      []*Stylesheet
 	attachments []*Attachment
+	xmpMetadata *XMPMetadata
 }
 
 // Metadata contains additional information to add to the PDF
@@ -47,6 +49,12 @@ type Attachment struct {
 	Data        []byte
 	Filename    string
 	Description string
+}
+
+// XMPMetadata is used to add XMP metadata to the PDF.
+type XMPMetadata struct {
+	Data     []byte
+	Filename string
 }
 
 // WithURL sets the URL to use for the connection to a remote server if needed.
@@ -104,6 +112,16 @@ func WithAttachment(a *Attachment) Option {
 	}
 }
 
+// WithXMPMetadata adds the XMP metadata to the conversion request.
+func WithXMPMetadata() Option {
+	return func(o *options) {
+		o.xmpMetadata = &XMPMetadata{
+			Data:     loadXMP(),
+			Filename: "zugferd.xmp",
+		}
+	}
+}
+
 // Convertor defines the interface expected to be able to convert sources into PDF
 type Convertor interface {
 	// HTML is the default implementation that takes a raw HTML file and converts it
@@ -133,4 +151,12 @@ func prepareOptions(opts []Option) *options {
 		opt(o)
 	}
 	return o
+}
+
+func loadXMP() []byte {
+	data, err := os.ReadFile("assets/zugferd.xmp")
+	if err != nil {
+		panic(err)
+	}
+	return data
 }
