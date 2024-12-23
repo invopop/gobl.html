@@ -4,9 +4,9 @@ package pdf
 
 import (
 	"context"
+	_ "embed"
 	"fmt"
 	"io/fs"
-	"os"
 	"path/filepath"
 )
 
@@ -56,6 +56,9 @@ type XMPMetadata struct {
 	Data     []byte
 	Filename string
 }
+
+//go:embed assets/zugferd.xmp
+var zugferdXMPData []byte
 
 // WithURL sets the URL to use for the connection to a remote server if needed.
 func WithURL(url string) Config {
@@ -154,10 +157,5 @@ func prepareOptions(opts []Option) *options {
 }
 
 func loadXMP() []byte {
-	data, err := os.ReadFile("assets/zugferd.xmp")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(string(data))
-	return data
+	return zugferdXMPData
 }

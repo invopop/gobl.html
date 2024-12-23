@@ -69,11 +69,11 @@ func (pc *princeConvertor) HTML(_ context.Context, data []byte, opts ...Option) 
 			j.PDF = new(princepdf.PDF)
 		}
 		j.PDF.PDFXMP = xmpFilename
-		j.PDF.Attach = append(j.PDF.Attach, &princepdf.Attachment{
-			URL:         xmpFilename,
-			Filename:    xmpFilename,
-			Description: "XMP Metadata File",
-		})
+		// j.PDF.Attach = append(j.PDF.Attach, &princepdf.Attachment{
+		// 	URL:         xmpFilename,
+		// 	Filename:    xmpFilename,
+		// 	Description: "XMP Metadata File",
+		// })
 	}
 
 	return pc.client.Run(j)
