@@ -2,6 +2,7 @@ package pdf
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/invopop/princepdf"
 )
@@ -63,6 +64,8 @@ func (pc *princeConvertor) HTML(_ context.Context, data []byte, opts ...Option) 
 	}
 
 	if o.xmpMetadata != nil {
+		fmt.Printf("adding XMP metadata to PDF: %d bytes\n", len(o.xmpMetadata.Data))
+
 		xmpFilename := "metadata.xmp"
 		j.Files[xmpFilename] = o.xmpMetadata.Data
 		if j.PDF == nil {

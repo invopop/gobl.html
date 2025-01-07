@@ -157,5 +157,6 @@ func prepareOptions(opts []Option) *options {
 }
 
 func loadXMP() []byte {
+	fmt.Printf("loading XMP metadata: %d bytes\n", len(zugferdXMPData))
 	return zugferdXMPData
 }
