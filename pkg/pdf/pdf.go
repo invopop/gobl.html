@@ -8,6 +8,8 @@ import (
 	"fmt"
 	"io/fs"
 	"path/filepath"
+
+	"github.com/rs/zerolog/log"
 )
 
 // Config defines options used to configure the PDF convertor.
@@ -157,6 +159,6 @@ func prepareOptions(opts []Option) *options {
 }
 
 func loadXMP() []byte {
-	fmt.Printf("loading XMP metadata: %d bytes\n", len(zugferdXMPData))
+	log.Info().Msg("loading XMP metadata loadxmp()")
 	return zugferdXMPData
 }
