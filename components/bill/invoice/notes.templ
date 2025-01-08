@@ -8,7 +8,6 @@ import (
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
-	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
@@ -107,7 +106,7 @@ templ noteRegSummary(reg *org.Registration) {
 	</div>
 }
 
-func renderNote(note *cbc.Note) string {
+func renderNote(note *org.Note) string {
 	txt := note.Text
 	if note.Code != "" {
 		txt = fmt.Sprintf("`%s` &middot; %s", note.Code, txt)
