@@ -38,11 +38,9 @@ func ZugferdMetadata(env *gobl.Envelope) templ.Component {
 		ctx = templ.ClearChildren(ctx)
 		if inv, ok := env.Extract().(*bill.Invoice); ok {
 			if inv.Regime.Country == l10n.DE.Tax() {
-				if xmp := getXMP(); xmp != "" {
-					templ_7745c5c3_Err = generateXMPMetadata(xmp).Render(ctx, templ_7745c5c3_Buffer)
-					if templ_7745c5c3_Err != nil {
-						return templ_7745c5c3_Err
-					}
+				templ_7745c5c3_Err = generateXMPMetadata().Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
 				}
 			}
 		}
@@ -50,7 +48,7 @@ func ZugferdMetadata(env *gobl.Envelope) templ.Component {
 	})
 }
 
-func generateXMPMetadata(xmp string) templ.Component {
+func generateXMPMetadata() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -77,67 +75,6 @@ func generateXMPMetadata(xmp string) templ.Component {
 		}
 		return templ_7745c5c3_Err
 	})
-}
-
-func getXMP() string {
-	// Load the XMP metadata template from the assets file
-	return `<?xpacket begin=""?>
-<x:xmpmeta xmlns:x="adobe:ns:meta/"
-           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:RDF>
-    <rdf:Description xmlns:pdfaExtension="http://www.aiim.org/pdfa/ns/extension/"
-                     xmlns:pdfaField="http://www.aiim.org/pdfa/ns/field#"
-                     xmlns:pdfaProperty="http://www.aiim.org/pdfa/ns/property#"
-                     xmlns:pdfaSchema="http://www.aiim.org/pdfa/ns/schema#"
-                     xmlns:pdfaType="http://www.aiim.org/pdfa/ns/type#"
-                     rdf:about="">
-      <pdfaExtension:schemas>
-        <rdf:Bag>
-          <rdf:li rdf:parseType="Resource">
-            <pdfaSchema:schema>ZUGFeRD PDFA Extension Schema</pdfaSchema:schema>
-            <pdfaSchema:namespaceURI>urn:zugferd:pdfa:CrossIndustryDocument:invoice:2p0#</pdfaSchema:namespaceURI>
-            <pdfaSchema:prefix>fx</pdfaSchema:prefix>
-            <pdfaSchema:property>
-              <rdf:Seq>
-                <rdf:li rdf:parseType="Resource">
-                  <pdfaProperty:name>DocumentFileName</pdfaProperty:name>
-                  <pdfaProperty:valueType>Text</pdfaProperty:valueType>
-                  <pdfaProperty:category>external</pdfaProperty:category>
-                  <pdfaProperty:description>name of the embedded XML invoice file</pdfaProperty:description>
-                </rdf:li>
-                <rdf:li rdf:parseType="Resource">
-                  <pdfaProperty:name>DocumentType</pdfaProperty:name>
-                  <pdfaProperty:valueType>Text</pdfaProperty:valueType>
-                  <pdfaProperty:category>external</pdfaProperty:category>
-                  <pdfaProperty:description>INVOICE</pdfaProperty:description>
-                </rdf:li>
-                <rdf:li rdf:parseType="Resource">
-                  <pdfaProperty:name>Version</pdfaProperty:name>
-                  <pdfaProperty:valueType>Text</pdfaProperty:valueType>
-                  <pdfaProperty:category>external</pdfaProperty:category>
-                  <pdfaProperty:description>The actual version of the ZUGFeRD data</pdfaProperty:description>
-                </rdf:li>
-                <rdf:li rdf:parseType="Resource">
-                  <pdfaProperty:name>ConformanceLevel</pdfaProperty:name>
-                  <pdfaProperty:valueType>Text</pdfaProperty:valueType>
-                  <pdfaProperty:category>external</pdfaProperty:category>
-                  <pdfaProperty:description>The conformance level of the ZUGFeRD data</pdfaProperty:description>
-                </rdf:li>
-              </rdf:Seq>
-            </pdfaSchema:property>
-          </rdf:li>
-        </rdf:Bag>
-      </pdfaExtension:schemas>
-    </rdf:Description>
-    <rdf:Description xmlns:fx="urn:zugferd:pdfa:CrossIndustryDocument:invoice:2p0#"
-                     fx:ConformanceLevel="EN 16931"
-                     fx:DocumentFileName="zugferd-invoice.xml"
-                     fx:DocumentType="INVOICE"
-                     fx:Version="1p0"
-                     rdf:about=""/>
-  </rdf:RDF>
-</x:xmpmeta>
-<?xpacket end="w"?>`
 }
 
 var _ = templruntime.GeneratedTemplate

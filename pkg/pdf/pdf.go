@@ -4,7 +4,7 @@ package pdf
 
 import (
 	"context"
-	_ "embed"
+	// _ "embed"
 	"fmt"
 	"io/fs"
 
