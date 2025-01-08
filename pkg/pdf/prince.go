@@ -2,8 +2,8 @@ package pdf
 
 import (
 	"context"
-	"fmt"
-	"os"
+	// "fmt"
+	// "os"
 
 	"github.com/invopop/princepdf"
 )
@@ -64,24 +64,24 @@ func (pc *princeConvertor) HTML(_ context.Context, data []byte, opts ...Option) 
 		}
 	}
 
-	if o.xmpMetadata {
-		fmt.Fprintf(os.Stderr, "adding XMP metadata to PDF\n")
-		j.Input.Javascript = true
+	// if o.xmpMetadata {
+	// 	fmt.Fprintf(os.Stderr, "adding XMP metadata to PDF\n")
+	// 	j.Input.Javascript = true
 
-		// xmpFilename := "metadata.xmp"
-		// j.Files[xmpFilename] = o.xmpMetadata.Data
-		// if j.PDF == nil {
-		// 	j.PDF = new(princepdf.PDF)
-		// }
-		// j.PDF.PDFXMP = xmpFilename
+	// 	// xmpFilename := "metadata.xmp"
+	// 	// j.Files[xmpFilename] = o.xmpMetadata.Data
+	// 	// if j.PDF == nil {
+	// 	// 	j.PDF = new(princepdf.PDF)
+	// 	// }
+	// 	// j.PDF.PDFXMP = xmpFilename
 
-		// Add visible marker in metadata
-		if j.Metadata == nil {
-			j.Metadata = &princepdf.Metadata{}
-		}
-		j.Metadata.Creator = "GOBL with ZUGFeRD/Factur-X"
-		j.Metadata.Keywords = "ZUGFeRD enabled, XMP metadata added"
-	}
+	// 	// Add visible marker in metadata
+	// 	if j.Metadata == nil {
+	// 		j.Metadata = &princepdf.Metadata{}
+	// 	}
+	// 	j.Metadata.Creator = "GOBL with ZUGFeRD/Factur-X"
+	// 	j.Metadata.Keywords = "ZUGFeRD enabled, XMP metadata added"
+	// }
 
 	return pc.client.Run(j)
 }

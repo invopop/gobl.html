@@ -28,7 +28,7 @@ type options struct {
 	metadata    *Metadata
 	styles      []*Stylesheet
 	attachments []*Attachment
-	xmpMetadata bool
+	// xmpMetadata bool
 }
 
 // Metadata contains additional information to add to the PDF
@@ -118,11 +118,11 @@ func WithAttachment(a *Attachment) Option {
 }
 
 // WithZugferd adds the Zugferd XMP metadata to the conversion request.
-func WithZugferd() Option {
-	return func(o *options) {
-		o.xmpMetadata = true
-	}
-}
+// func WithZugferd() Option {
+// 	return func(o *options) {
+// 		o.xmpMetadata = true
+// 	}
+// }
 
 // Convertor defines the interface expected to be able to convert sources into PDF
 type Convertor interface {

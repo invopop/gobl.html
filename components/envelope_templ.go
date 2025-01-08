@@ -18,11 +18,11 @@ import (
 	"github.com/invopop/gobl.html/components/bill/invoice"
 	"github.com/invopop/gobl.html/components/notes"
 	"github.com/invopop/gobl.html/components/org"
-	"github.com/invopop/gobl.html/components/regimes/de"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/note"
 	gorg "github.com/invopop/gobl/org"
+	// "github.com/invopop/gobl.html/components/regimes/de"
 )
 
 func Envelope(env *gobl.Envelope) templ.Component {
@@ -51,10 +51,6 @@ func Envelope(env *gobl.Envelope) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		templ_7745c5c3_Err = stylesheets().Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = de.ZugferdMetadata(env).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

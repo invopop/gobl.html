@@ -12,7 +12,7 @@ import (
 
 type convertOpts struct {
 	*rootOpts
-	Zugferd bool
+	// Zugferd bool
 }
 
 func convert(o *rootOpts) *convertOpts {
@@ -25,7 +25,7 @@ func (c *convertOpts) cmd() *cobra.Command {
 		Short: "Convert a GOBL JSON into an HTML file",
 		RunE:  c.runE,
 	}
-	cmd.Flags().BoolVar(&c.Zugferd, "zugferd", false, "Add Zugferd XMP metadata to the PDF")
+	// cmd.Flags().BoolVar(&c.Zugferd, "zugferd", false, "Add Zugferd XMP metadata to the PDF")
 	return cmd
 }
 
@@ -52,7 +52,7 @@ func (c *convertOpts) runE(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	data, err := goblhtml.Render(cmd.Context(), env, goblhtml.WithZugferd())
+	data, err := goblhtml.Render(cmd.Context(), env) //, goblhtml.WithZugferd())
 	if err != nil {
 		return fmt.Errorf("generating html: %w", err)
 	}
