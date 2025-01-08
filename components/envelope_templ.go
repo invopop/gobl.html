@@ -18,6 +18,7 @@ import (
 	"github.com/invopop/gobl.html/components/bill/invoice"
 	"github.com/invopop/gobl.html/components/notes"
 	"github.com/invopop/gobl.html/components/org"
+	"github.com/invopop/gobl.html/components/regimes/de"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/note"
@@ -50,6 +51,10 @@ func Envelope(env *gobl.Envelope) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		templ_7745c5c3_Err = stylesheets().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = de.ZugferdMetadata(env).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -133,7 +138,7 @@ func stylesheets() templ.Component {
 					var templ_7745c5c3_Var3 string
 					templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(ss)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/envelope.templ`, Line: 58, Col: 36}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/envelope.templ`, Line: 60, Col: 36}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 					if templ_7745c5c3_Err != nil {

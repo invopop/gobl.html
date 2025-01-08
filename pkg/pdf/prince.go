@@ -2,9 +2,10 @@ package pdf
 
 import (
 	"context"
+	"fmt"
+	"os"
 
 	"github.com/invopop/princepdf"
-	"github.com/rs/zerolog/log"
 )
 
 // The princeConvertor is by far the best option for converting HTML to PDF for GOBL documents.
@@ -63,20 +64,23 @@ func (pc *princeConvertor) HTML(_ context.Context, data []byte, opts ...Option) 
 		}
 	}
 
-	if o.xmpMetadata != nil {
-		log.Info().Msg("adding XMP metadata to PDF")
+	if o.xmpMetadata {
+		fmt.Fprintf(os.Stderr, "adding XMP metadata to PDF\n")
+		j.Input.Javascript = true
 
-		xmpFilename := "metadata.xmp"
-		j.Files[xmpFilename] = o.xmpMetadata.Data
-		if j.PDF == nil {
-			j.PDF = new(princepdf.PDF)
+		// xmpFilename := "metadata.xmp"
+		// j.Files[xmpFilename] = o.xmpMetadata.Data
+		// if j.PDF == nil {
+		// 	j.PDF = new(princepdf.PDF)
+		// }
+		// j.PDF.PDFXMP = xmpFilename
+
+		// Add visible marker in metadata
+		if j.Metadata == nil {
+			j.Metadata = &princepdf.Metadata{}
 		}
-		j.PDF.PDFXMP = xmpFilename
-		// j.PDF.Attach = append(j.PDF.Attach, &princepdf.Attachment{
-		// 	URL:         xmpFilename,
-		// 	Filename:    xmpFilename,
-		// 	Description: "XMP Metadata File",
-		// })
+		j.Metadata.Creator = "GOBL with ZUGFeRD/Factur-X"
+		j.Metadata.Keywords = "ZUGFeRD enabled, XMP metadata added"
 	}
 
 	return pc.client.Run(j)

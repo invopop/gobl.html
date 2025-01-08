@@ -7,9 +7,10 @@ import (
 	_ "embed"
 	"fmt"
 	"io/fs"
-	"path/filepath"
 
-	"github.com/rs/zerolog/log"
+	// "os"
+	"path/filepath"
+	// "github.com/rs/zerolog/log"
 )
 
 // Config defines options used to configure the PDF convertor.
@@ -27,7 +28,7 @@ type options struct {
 	metadata    *Metadata
 	styles      []*Stylesheet
 	attachments []*Attachment
-	xmpMetadata *XMPMetadata
+	xmpMetadata bool
 }
 
 // Metadata contains additional information to add to the PDF
@@ -54,13 +55,12 @@ type Attachment struct {
 }
 
 // XMPMetadata is used to add XMP metadata to the PDF.
-type XMPMetadata struct {
-	Data     []byte
-	Filename string
-}
+// type XMPMetadata struct {
+// 	Data []byte
+// }
 
-//go:embed assets/zugferd.xmp
-var zugferdXMPData []byte
+// //go:embed assets/zugferd.xmp
+// var zugferdXMPData []byte
 
 // WithURL sets the URL to use for the connection to a remote server if needed.
 func WithURL(url string) Config {
@@ -120,10 +120,7 @@ func WithAttachment(a *Attachment) Option {
 // WithZugferd adds the Zugferd XMP metadata to the conversion request.
 func WithZugferd() Option {
 	return func(o *options) {
-		o.xmpMetadata = &XMPMetadata{
-			Data:     loadXMP(),
-			Filename: "zugferd.xmp",
-		}
+		o.xmpMetadata = true
 	}
 }
 
@@ -158,7 +155,8 @@ func prepareOptions(opts []Option) *options {
 	return o
 }
 
-func loadXMP() []byte {
-	log.Info().Msg("loading XMP metadata loadxmp()")
-	return zugferdXMPData
-}
+// func loadXMP() []byte {
+// 	log.Info().Msg("loading XMP metadata loadxmp()")
+// 	fmt.Fprintf(os.Stderr, "loading XMP()")
+// 	return zugferdXMPData
+// }
