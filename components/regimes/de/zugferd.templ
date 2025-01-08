@@ -11,6 +11,7 @@ templ ZugferdMetadata(env *gobl.Envelope) {
     if inv, ok := env.Extract().(*bill.Invoice); ok {
         if inv.Regime.Country == l10n.DE.Tax() {
             @generateXMPMetadata()
+            <meta name="x-gobl-zugferd" content="true"/>
         }
     }
 }
