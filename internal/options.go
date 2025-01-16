@@ -6,34 +6,16 @@ import (
 	"time"
 
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/internal/layout"
 	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/org"
 )
 
 type optionsKey string
 
-// Layout is a ENUM representing the possible layouts.
-type Layout string
-
 const (
 	optsKey optionsKey = "opts"
 )
-
-const (
-	A4      Layout = "A4"
-	Letter  Layout = "Letter"
-	DIN5008 Layout = "DIN5008"
-)
-
-// IsValid checks if a given Layout is valid.
-func (l Layout) IsValid() bool {
-	switch l {
-	case A4, Letter, DIN5008:
-		return true
-	default:
-		return false
-	}
-}
 
 // Opts defines configuration options used internally with
 // the current document. Putting this amount of information inside a
@@ -56,7 +38,7 @@ type Opts struct {
 	// output or to avoid additional requests.
 	EmbedStylesheets bool
 	// Layout indicates the Layout used in te document
-	Layout Layout
+	Layout layout.Code
 }
 
 // WithOptions prepares the context with the options to use.

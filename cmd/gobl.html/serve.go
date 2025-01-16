@@ -16,7 +16,7 @@ import (
 	"github.com/invopop/gobl"
 	goblhtml "github.com/invopop/gobl.html"
 	"github.com/invopop/gobl.html/assets"
-	"github.com/invopop/gobl.html/internal"
+	"github.com/invopop/gobl.html/internal/layout"
 	"github.com/invopop/gobl.html/pkg/pdf"
 	"github.com/invopop/gobl/org"
 	"github.com/labstack/echo/v4"
@@ -112,7 +112,7 @@ func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opt
 	if req.Layout.IsValid() {
 		opts = append(opts, goblhtml.WithLayout(req.Layout))
 	} else {
-		opts = append(opts, goblhtml.WithLayout(internal.A4))
+		opts = append(opts, goblhtml.WithLayout(layout.A4))
 	}
 
 	out, err := goblhtml.Render(ctx, env, opts...)
@@ -124,13 +124,13 @@ func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opt
 }
 
 type options struct {
-	Filename   string          `param:"filename"`
-	Locale     i18n.Code       `query:"locale"`
-	DateFormat string          `query:"date_format"`
-	LogoURL    string          `query:"logo_url"`
-	LogoHeight int32           `query:"logo_height"`
-	Notes      string          `query:"notes"`
-	Layout     internal.Layout `query:"layout"`
+	Filename   string      `param:"filename"`
+	Locale     i18n.Code   `query:"locale"`
+	DateFormat string      `query:"date_format"`
+	LogoURL    string      `query:"logo_url"`
+	LogoHeight int32       `query:"logo_height"`
+	Notes      string      `query:"notes"`
+	Layout     layout.Code `query:"layout"`
 }
 
 func (s *serveOpts) generate(c echo.Context) error {

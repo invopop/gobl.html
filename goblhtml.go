@@ -11,6 +11,7 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components"
 	"github.com/invopop/gobl.html/internal"
+	"github.com/invopop/gobl.html/internal/layout"
 	srclocales "github.com/invopop/gobl.html/locales"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/currency"
@@ -94,7 +95,7 @@ func WithEmbeddedStylesheets() Option {
 
 // WithLayout indicates that the document should be rendered
 // acording to the given Layout.
-func WithLayout(l internal.Layout) Option {
+func WithLayout(l layout.Code) Option {
 	return func(o *internal.Opts) {
 		o.Layout = l
 	}
