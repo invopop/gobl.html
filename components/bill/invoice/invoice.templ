@@ -13,6 +13,7 @@ import (
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal"
+	"github.com/invopop/gobl.html/internal/layout"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
@@ -147,5 +148,5 @@ func code(series, code cbc.Code) string {
 func applyDIN5008(ctx context.Context) bool {
 	opts := internal.Options(ctx)
 
-	return opts.Layout == internal.DIN5008
+	return opts.Layout == layout.DIN5008
 }
