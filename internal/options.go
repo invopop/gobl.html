@@ -12,9 +12,28 @@ import (
 
 type optionsKey string
 
+// Layout is a ENUM representing the possible layouts.
+type Layout string
+
 const (
 	optsKey optionsKey = "opts"
 )
+
+const (
+	A4      Layout = "A4"
+	Letter  Layout = "Letter"
+	DIN5008 Layout = "DIN5008"
+)
+
+// IsValid checks if a given Layout is valid.
+func (l Layout) IsValid() bool {
+	switch l {
+	case A4, Letter, DIN5008:
+		return true
+	default:
+		return false
+	}
+}
 
 // Opts defines configuration options used internally with
 // the current document. Putting this amount of information inside a
@@ -36,9 +55,8 @@ type Opts struct {
 	// are contained inside the HTML output. This is useful for PDF
 	// output or to avoid additional requests.
 	EmbedStylesheets bool
-	// DIN5008 indicates the use of the german DIN 5008 specs
-	// TODO: Make this option an Enum with different formatters,
-	DIN5008 bool
+	// Layout indicates the Layout used in te document
+	Layout Layout
 }
 
 // WithOptions prepares the context with the options to use.

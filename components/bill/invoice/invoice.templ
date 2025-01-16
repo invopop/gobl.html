@@ -22,7 +22,7 @@ import (
 // Invoice renders a complete GOBL bill.Invoice object.
 templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 	// Footer needs to be at the top to show on all pages
-	<article class={ templ.KV("invoice", true), templ.KV("din5008", applyDIN5008(ctx)) }>
+	<article class={ "invoice", templ.KV("din5008", applyDIN5008(ctx)) }>
 		<header class={ templ.KV("qr", HasHeaderQR(env)), templ.KV("not-qr", !HasHeaderQR(env)) }>
 			if applyDIN5008(ctx) {
 				@din5008Header(inv)
@@ -147,5 +147,5 @@ func code(series, code cbc.Code) string {
 func applyDIN5008(ctx context.Context) bool {
 	opts := internal.Options(ctx)
 
-	return opts.DIN5008
+	return opts.Layout == internal.DIN5008
 }

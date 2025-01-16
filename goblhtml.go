@@ -92,11 +92,11 @@ func WithEmbeddedStylesheets() Option {
 	}
 }
 
-// WithDIN5008 indicates that the document header should be placed
-// acording to the german DIN 5008 specs.
-func WithDIN5008() Option {
+// WithLayout indicates that the document should be rendered
+// acording to the given Layout.
+func WithLayout(l internal.Layout) Option {
 	return func(o *internal.Opts) {
-		o.DIN5008 = true
+		o.Layout = l
 	}
 }
 

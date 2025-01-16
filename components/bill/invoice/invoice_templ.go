@@ -46,7 +46,7 @@ func Invoice(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		var templ_7745c5c3_Var2 = []any{templ.KV("invoice", true), templ.KV("din5008", applyDIN5008(ctx))}
+		var templ_7745c5c3_Var2 = []any{"invoice", templ.KV("din5008", applyDIN5008(ctx))}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var2...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -474,5 +474,5 @@ func code(series, code cbc.Code) string {
 func applyDIN5008(ctx context.Context) bool {
 	opts := internal.Options(ctx)
 
-	return opts.DIN5008
+	return opts.Layout == internal.DIN5008
 }
