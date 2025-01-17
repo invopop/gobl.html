@@ -6,7 +6,11 @@
     counter-increment: page;
     font-size: 9pt;
     line-height: 1.5em;
-    color: #4B5563;
+    color: #4b5563;
+}
+@page Letter {
+    size: letter portrait;
+    margin: 1in;
 }
 body {
     font-family: "Inter", sans-serif;
@@ -16,12 +20,15 @@ body {
     margin-bottom: 0mm;
     /* color: #030712; */
     /* color: #6B7280; */
-    color: #4B5563;
+    color: #4b5563;
+}
+body.letter {
+    page: Letter;
 }
 @media screen {
     body {
         margin: 10mm;
-    }	
+    }
     footer.screen {
         display: block;
     }
@@ -32,22 +39,37 @@ body {
 article.envelope {
     min-height: 100%;
 }
-article, section, header, div, h1, h2, h3, h4, table, th, td, p {
+article,
+section,
+header,
+div,
+h1,
+h2,
+h3,
+h4,
+table,
+th,
+td,
+p {
     font-size: 1em;
     margin: 0;
 }
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-weight: 500;
     /* color: #030712; */
 }
 a {
-    color: #4B5563;
+    color: #4b5563;
 }
 table {
     border-spacing: 0;
     border-collapse: collapse;
 }
-th, td {
+th,
+td {
     text-align: left;
 }
 section.footer span.page-number:before {
