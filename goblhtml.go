@@ -11,7 +11,7 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components"
 	"github.com/invopop/gobl.html/internal"
-	"github.com/invopop/gobl.html/internal/layout"
+	"github.com/invopop/gobl.html/layout"
 	srclocales "github.com/invopop/gobl.html/locales"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/currency"

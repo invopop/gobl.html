@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/invopop/ctxi18n/i18n"
-	"github.com/invopop/gobl.html/internal/layout"
+	"github.com/invopop/gobl.html/layout"
 	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/org"
 )
