@@ -16,7 +16,7 @@ import (
 	"github.com/invopop/gobl"
 	goblhtml "github.com/invopop/gobl.html"
 	"github.com/invopop/gobl.html/assets"
-	"github.com/invopop/gobl.html/internal/layout"
+	"github.com/invopop/gobl.html/layout"
 	"github.com/invopop/gobl.html/pkg/pdf"
 	"github.com/invopop/gobl/org"
 	"github.com/labstack/echo/v4"
