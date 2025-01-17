@@ -69,7 +69,7 @@ func Invoice(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var4 = []any{templ.KV("qr", HasHeaderQR(env)), templ.KV("not-qr", !HasHeaderQR(env))}
+		var templ_7745c5c3_Var4 = []any{templ.KV("with-qr", hasHeaderQR(env)), templ.KV("regular", !hasHeaderQR(env))}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var4...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -476,4 +476,8 @@ func applyDIN5008(ctx context.Context) bool {
 	opts := internal.Options(ctx)
 
 	return opts.Layout == layout.DIN5008
+}
+
+func hasHeaderQR(env *gobl.Envelope) bool {
+	return es.HasVerifactuQR(env) || es.HasTicketBAIQR(env)
 }

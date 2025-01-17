@@ -82,9 +82,9 @@ de:
           online: "Zahlungslink"
           methods:
             card: "Bankkarte"
-            credit_transfer: "Banküberweisung"
+            credit-transfer: "Banküberweisung"
             cash: "Bargeld"
-            direct_debit: "Lastschrift"
+            direct-debit: "Lastschrift"
             online: "Online"
         terms:
           key: "Zahlungsbedingungen"

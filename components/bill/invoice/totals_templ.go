@@ -286,30 +286,6 @@ func totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 			templ_7745c5c3_Var4 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if totals.Outlays != nil {
-			for _, o := range inv.Outlays {
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<tr class=\"outlay\"><th>")
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-				templ_7745c5c3_Err = t.T(".outlay", i18n.M{"i": o.Index, "txt": outlayText(o)}).Render(ctx, templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</th><td>")
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-				templ_7745c5c3_Err = t.LM(o.Amount).Render(ctx, templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</td></tr>")
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-			}
-		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<tr class=\"payable strong\"><th>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -492,15 +468,4 @@ func advanceMap(adv *pay.Advance) i18n.M {
 		date = adv.Date.String()
 	}
 	return i18n.M{"date": date, "txt": txt}
-}
-
-func outlayText(outlay *bill.Outlay) string {
-	txt := outlay.Description
-	if outlay.Code != "" {
-		txt = outlay.Code + " " + txt
-	}
-	if outlay.Date != nil {
-		txt += " " + outlay.Date.String()
-	}
-	return txt
 }

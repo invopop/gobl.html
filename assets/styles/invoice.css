@@ -26,43 +26,43 @@ header {
     border-top: 0 !important;
 }
 
-header.not-qr div.details {
+header.regular div.details {
     flex: 1;
     border-right: 0.5px solid #e5e7eb;
 }
-header.not-qr > div.contacts {
+header.regular > div.contacts {
     flex: 1;
 }
-header.not-qr section.supplier {
+header.regular section.supplier {
     padding: 6mm;
     padding-top: 0mm;
 }
-header.not-qr section.customer {
+header.regular section.customer {
     padding: 6mm;
     border-top: 0.5px solid #e5e7eb;
 }
-header.qr > section.qr {
+header.with-qr > section.qr {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-basis: 50%;
-    padding-bottom: 6mm;
+    padding-bottom: 24px;
 }
-header.qr > div.details {
+header.with-qr > div.details {
     flex-basis: 50%;
     box-sizing: border-box;
     border-right: 0.5px solid #e5e7eb;
 }
-header.qr div.contacts {
+header.with-qr div.contacts {
     flex-basis: 100%;
     display: flex;
     border-top: 0.5px solid #e5e7eb;
 }
-header.qr section.supplier {
+header.with-qr section.supplier {
     padding-top: 6mm;
     padding-bottom: 6mm;
 }
-header.qr section.customer {
+header.with-qr section.customer {
     padding-left: 6mm;
     padding-top: 6mm;
     padding-bottom: 6mm;
@@ -149,6 +149,7 @@ section.lines td {
     border-bottom: 0.5px solid #e5e7eb;
     padding: 1.5mm 2mm;
     margin: 0px;
+    vertical-align: top;
 }
 section.lines th {
     font-weight: 600;
@@ -175,11 +176,17 @@ section.lines .reason {
 section.lines .label {
     font-weight: 500;
 }
-section.lines .description .extensions {
+section.lines .description .extensions,
+section.lines .description .identity {
     display: block;
+    font-size: 10px;
 }
-section.lines .description .extensions .label {
-    font-weight: 500;
+section.lines .description .extensions .label,
+section.lines .description .identity .label {
+    font-weight: 400;
+}
+section.lines .description .identity .label:after {
+    content: ": ";
 }
 section.lines .alt-price {
     display: block;

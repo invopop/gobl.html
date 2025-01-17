@@ -16,7 +16,6 @@ import (
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
-	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
@@ -198,7 +197,7 @@ func noteRegSummary(reg *org.Registration) templ.Component {
 				var templ_7745c5c3_Var5 string
 				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(reg.Office)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/notes.templ`, Line: 68, Col: 17}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/notes.templ`, Line: 67, Col: 17}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 				if templ_7745c5c3_Err != nil {
@@ -329,7 +328,7 @@ func noteRegSummary(reg *org.Registration) templ.Component {
 				var templ_7745c5c3_Var6 string
 				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(reg.Other)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/notes.templ`, Line: 103, Col: 16}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice/notes.templ`, Line: 102, Col: 16}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 				if templ_7745c5c3_Err != nil {
@@ -354,7 +353,7 @@ func noteRegSummary(reg *org.Registration) templ.Component {
 	})
 }
 
-func renderNote(note *cbc.Note) string {
+func renderNote(note *org.Note) string {
 	txt := note.Text
 	if note.Code != "" {
 		txt = fmt.Sprintf("`%s` &middot; %s", note.Code, txt)

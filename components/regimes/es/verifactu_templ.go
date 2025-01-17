@@ -11,12 +11,8 @@ import templruntime "github.com/a-h/templ/runtime"
 import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
-	"github.com/invopop/gobl/cbc"
-)
-
-const (
-	verifactuStampCode cbc.Key = "verifactu-code"
-	verifactuStampQR   cbc.Key = "verifactu-qr"
+	"github.com/invopop/gobl/addons/es/verifactu"
+	"github.com/invopop/gobl/head"
 )
 
 // VerifactuQR generates a QR code area for the Verifactu code in the given envelope.
@@ -38,8 +34,8 @@ func VerifactuQR(env *gobl.Envelope) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if result, code, qr := HasVerifactuQR(env); result {
-			templ_7745c5c3_Err = generateVerifactuQR(code, qr).Render(ctx, templ_7745c5c3_Buffer)
+		if qr := verifactuQR(env); qr != "" {
+			templ_7745c5c3_Err = generateVerifactuQR(qr).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -49,17 +45,14 @@ func VerifactuQR(env *gobl.Envelope) templ.Component {
 }
 
 // HasVerifactuQR returns a boolean indicating whether the envelope has a Verifactu QR or not.
-func HasVerifactuQR(env *gobl.Envelope) (bool, string, string) {
-	if code := verifactuCode(env); code != "" {
-		if qr := verifactuQR(env); qr != "" {
-			return true, code, qr
-		}
+func HasVerifactuQR(env *gobl.Envelope) bool {
+	if qr := verifactuQR(env); qr != "" {
+		return true
 	}
-
-	return false, "", ""
+	return false
 }
 
-func generateVerifactuQR(code, qr string) templ.Component {
+func generateVerifactuQR(qr string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -94,20 +87,7 @@ func generateVerifactuQR(code, qr string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</a></div><div class=\"label\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var4 string
-		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(code)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/es/verifactu.templ`, Line: 70, Col: 10}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div></section>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</a></div><div class=\"label\">VERI*FACTU</div></div></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -115,22 +95,10 @@ func generateVerifactuQR(code, qr string) templ.Component {
 	})
 }
 
-func verifactuCode(env *gobl.Envelope) string {
-	for _, stamp := range env.Head.Stamps {
-		switch stamp.Provider {
-		case verifactuStampCode:
-			return stamp.Value
-		}
-	}
-	return ""
-}
-
 func verifactuQR(env *gobl.Envelope) string {
-	for _, stamp := range env.Head.Stamps {
-		switch stamp.Provider {
-		case verifactuStampQR:
-			return stamp.Value
-		}
+	stamp := head.GetStamp(env.Head.Stamps, verifactu.StampQR)
+	if stamp != nil {
+		return stamp.Value
 	}
 	return ""
 }

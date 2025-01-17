@@ -2,10 +2,10 @@ package invoice
 
 import (
 	"fmt"
-
-	"github.com/invopop/gobl/bill"
-	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/regimes/mx"
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/org"
 )
 
 templ lines(inv *bill.Invoice) {
@@ -99,6 +99,7 @@ templ line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) {
 				<br/>
 				<small>{ l.Item.Description }</small>
 			}
+			@identities(l.Item.Identities)
 			@mx.LineExtensions(l)
 		</td>
 		<td class="quantity">
@@ -146,6 +147,25 @@ templ line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) {
 	</tr>
 }
 
+templ identities(idents []*org.Identity) {
+	if idents = presentableIdentities(idents); len(idents) > 0 {
+		for _, ident := range idents {
+			<span class="identity">
+				<span class="label">
+					if ident.Label != "" {
+						{ ident.Label }
+					} else {
+						{ ident.Type.String() }
+					}
+				</span>
+				<code>
+					{ ident.Code.String() }
+				</code>
+			</span>
+		}
+	}
+}
+
 templ lineItemAltPrices(l *bill.Line) {
 	for _, a := range l.Item.AltPrices {
 		<span class="alt-price">
@@ -191,8 +211,8 @@ templ discountRow(row *bill.Discount, ls *lineSupport) {
 		</td>
 		if ls.refs {
 			<td class="ref">
-				if row.Ref != "" {
-					{ row.Ref }
+				if row.Code != "" {
+					{ row.Code.String() }
 				} else {
 					<!-- empty -->
 				}
@@ -262,8 +282,8 @@ templ chargeRow(row *bill.Charge, ls *lineSupport) {
 		</td>
 		if ls.refs {
 			<td class="ref">
-				if row.Ref != "" {
-					{ row.Ref }
+				if row.Code != "" {
+					{ row.Code.String() }
 				} else {
 					<!-- empty -->
 				}

@@ -24,7 +24,7 @@ import (
 templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 	// Footer needs to be at the top to show on all pages
 	<article class={ "invoice", templ.KV("din5008", applyDIN5008(ctx)) }>
-		<header class={ templ.KV("qr", HasHeaderQR(env)), templ.KV("not-qr", !HasHeaderQR(env)) }>
+		<header class={ templ.KV("with-qr", hasHeaderQR(env)), templ.KV("regular", !hasHeaderQR(env)) }>
 			if applyDIN5008(ctx) {
 				@din5008Header(inv)
 			} else {
@@ -149,4 +149,8 @@ func applyDIN5008(ctx context.Context) bool {
 	opts := internal.Options(ctx)
 
 	return opts.Layout == layout.DIN5008
+}
+
+func hasHeaderQR(env *gobl.Envelope) bool {
+	return es.HasVerifactuQR(env) || es.HasTicketBAIQR(env)
 }

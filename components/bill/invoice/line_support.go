@@ -2,6 +2,8 @@ package invoice
 
 import (
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
 )
 
@@ -41,12 +43,12 @@ func prepareLineSupport(inv *bill.Invoice) *lineSupport {
 		}
 	}
 	for _, row := range inv.Discounts {
-		if row.Ref != "" {
+		if row.Code != "" {
 			ls.refs = true
 		}
 	}
 	for _, row := range inv.Charges {
-		if row.Ref != "" {
+		if row.Code != "" {
 			ls.refs = true
 		}
 	}
@@ -64,4 +66,17 @@ func addCategory(cats []*tax.CategoryDef, cat *tax.CategoryDef) []*tax.CategoryD
 		}
 	}
 	return append(cats, cat)
+}
+
+// presentableIdentities will filter the list of identities so that
+// the result only includes those that can be presented in the description
+// area.
+func presentableIdentities(idents []*org.Identity) []*org.Identity {
+	nis := make([]*org.Identity, 0)
+	for _, ident := range idents {
+		if ident.Label != "" || ident.Type != cbc.CodeEmpty {
+			nis = append(nis, ident)
+		}
+	}
+	return nis
 }
