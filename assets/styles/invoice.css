@@ -25,6 +25,10 @@ header {
     max-width: 85mm;
     border-top: 0 !important;
 }
+.invoice.din5008 > header > div:first-child {
+    box-sizing: border-box;
+    border-right: 0.5px solid #e5e7eb;
+}
 
 header.regular div.details {
     flex: 1;
