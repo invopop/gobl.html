@@ -21,9 +21,17 @@ header {
 .invoice.din5008 > header section.customer {
     min-height: 45mm;
     padding-top: 2mm !important;
-    padding-left: 10mm !important;
+    padding-left: 0 !important;
     max-width: 85mm;
     border-top: 0 !important;
+}
+.invoice.din5008 > header section.customer > div {
+    padding-left: 10mm;
+    border-left: 0.5px solid #e5e7eb;
+}
+.invoice.din5008 > header section.supplier {
+    padding-top: 6mm;
+    border-top: 0.5px solid #e5e7eb;
 }
 .invoice.din5008 > header > div:first-child {
     box-sizing: border-box;
