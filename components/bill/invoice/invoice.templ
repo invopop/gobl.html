@@ -13,6 +13,7 @@ import (
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal"
+	"github.com/invopop/gobl.html/layout"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
@@ -22,21 +23,13 @@ import (
 // Invoice renders a complete GOBL bill.Invoice object.
 templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 	// Footer needs to be at the top to show on all pages
-	<article class="invoice">
-		<header class={ headerClass(env) }>
-			<div class="details">
-				@title(inv)
-				@summary(inv)
-			</div>
-			// Spanish QRs
-			@es.VerifactuQR(env)
-			@es.TicketBAIQR(env)
-			<div class="contacts">
-				@supplier(inv)
-				if inv.Customer != nil {
-					@customer(inv)
-				}
-			</div>
+	<article class={ "invoice", templ.KV("din5008", applyDIN5008(ctx)) }>
+		<header class={ templ.KV("with-qr", hasHeaderQR(env)), templ.KV("regular", !hasHeaderQR(env)) }>
+			if applyDIN5008(ctx) {
+				@din5008Header(inv)
+			} else {
+				@defaultHeader(env, inv)
+			}
 		</header>
 		@lines(inv)
 		<div class="totals">
@@ -83,6 +76,35 @@ templ title(inv *bill.Invoice) {
 	}
 }
 
+templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
+	<div class="details">
+		@title(inv)
+		@summary(inv)
+	</div>
+	// Spanish QRs
+	@es.VerifactuQR(env)
+	@es.TicketBAIQR(env)
+	<div class="contacts">
+		@supplier(inv)
+		if inv.Customer != nil {
+			@customer(inv)
+		}
+	</div>
+}
+
+templ din5008Header(inv *bill.Invoice) {
+	<div>
+		@title(inv)
+		if inv.Customer != nil {
+			@customer(inv)
+		}
+	</div>
+	<div>
+		@summary(inv)
+		@supplier(inv)
+	</div>
+}
+
 func i18nTitleTag(inv *bill.Invoice) string {
 	typ := string(inv.Type)
 	if inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard {
@@ -123,14 +145,12 @@ func code(series, code cbc.Code) string {
 	return fmt.Sprintf("%s-%s", series, code)
 }
 
-func hasHeaderQR(env *gobl.Envelope) bool {
-	return es.HasVerifactuQR(env) || es.HasTicketBAIQR(env)
+func applyDIN5008(ctx context.Context) bool {
+	opts := internal.Options(ctx)
+
+	return opts.Layout == layout.DIN5008
 }
 
-func headerClass(env *gobl.Envelope) string {
-	if hasHeaderQR(env) {
-		return "with-qr"
-	}
-
-	return "regular"
+func hasHeaderQR(env *gobl.Envelope) bool {
+	return es.HasVerifactuQR(env) || es.HasTicketBAIQR(env)
 }

@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/layout"
 	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/org"
 )
@@ -36,6 +37,8 @@ type Opts struct {
 	// are contained inside the HTML output. This is useful for PDF
 	// output or to avoid additional requests.
 	EmbedStylesheets bool
+	// Layout indicates the Layout used in te document
+	Layout layout.Code
 }
 
 // WithOptions prepares the context with the options to use.
