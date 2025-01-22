@@ -8,7 +8,7 @@ import (
 
 templ customer(inv *bill.Invoice) {
 	<section class="customer">
-		<div>
+		<div class="customer-border">
 			<h2>
 				if inv.Customer != nil && inv.Customer.Label != "" {
 					{ inv.Customer.Label }

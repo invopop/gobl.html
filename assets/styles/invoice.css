@@ -25,7 +25,7 @@ header {
     max-width: 85mm;
     border-top: 0 !important;
 }
-.invoice.din5008 > header section.customer > div {
+.invoice.din5008 > header section.customer > .customer-border {
     padding-left: 10mm;
     border-left: 0.5px solid #e5e7eb;
 }
