@@ -1,20 +1,22 @@
 package invoice
 
 import (
-	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/bill"
 )
 
 templ customer(inv *bill.Invoice) {
 	<section class="customer">
-		<h2>
-			if inv.Customer != nil && inv.Customer.Label != "" {
-				{ inv.Customer.Label }
-			} else {
-				@t.T("billing.invoice.customer.title")
-			}
-		</h2>
-		@org.Party(inv.Customer)
+		<div class="customer-border">
+			<h2>
+				if inv.Customer != nil && inv.Customer.Label != "" {
+					{ inv.Customer.Label }
+				} else {
+					@t.T("billing.invoice.customer.title")
+				}
+			</h2>
+			@org.Party(inv.Customer)
+		</div>
 	</section>
 }
