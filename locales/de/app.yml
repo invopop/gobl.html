@@ -86,6 +86,7 @@ de:
             cash: "Bargeld"
             direct-debit: "Lastschrift"
             online: "Online"
+            cheque: "Scheck"
         terms:
           key: "Zahlungsbedingungen"
           notes: "Zahlungsbedingungen Hinweise"
