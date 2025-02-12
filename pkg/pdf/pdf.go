@@ -122,6 +122,8 @@ func New(provider string, conf ...Config) (Convertor, error) {
 		return newGotenbergConvertor(conf...)
 	case "weasyprint":
 		return newWeasyprintConvertor(conf...)
+	case "chromedp":
+		return newChromedpConverter()
 	default:
 		return nil, nil
 	}
