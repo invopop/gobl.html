@@ -16,12 +16,12 @@ import (
 
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/assets"
-	"github.com/invopop/gobl.html/components/bill/invoice"
+	"github.com/invopop/gobl.html/components/bill"
 	"github.com/invopop/gobl.html/components/notes"
 	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/layout"
-	"github.com/invopop/gobl/bill"
+	gbill "github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/note"
 	gorg "github.com/invopop/gobl/org"
 )
@@ -74,8 +74,8 @@ func Envelope(env *gobl.Envelope) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		switch doc := env.Extract().(type) {
-		case *bill.Invoice:
-			templ_7745c5c3_Err = invoice.Invoice(env, doc).Render(ctx, templ_7745c5c3_Buffer)
+		case *gbill.Invoice:
+			templ_7745c5c3_Err = bill.Invoice(env, doc).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
