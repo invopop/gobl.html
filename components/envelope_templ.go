@@ -17,12 +17,12 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/assets"
 	"github.com/invopop/gobl.html/components/bill"
-	"github.com/invopop/gobl.html/components/notes"
+	"github.com/invopop/gobl.html/components/note"
 	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/layout"
 	gbill "github.com/invopop/gobl/bill"
-	"github.com/invopop/gobl/note"
+	gnote "github.com/invopop/gobl/note"
 	gorg "github.com/invopop/gobl/org"
 )
 
@@ -79,8 +79,8 @@ func Envelope(env *gobl.Envelope) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-		case *note.Message:
-			templ_7745c5c3_Err = notes.Message(doc).Render(ctx, templ_7745c5c3_Buffer)
+		case *gnote.Message:
+			templ_7745c5c3_Err = note.Message(doc).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
