@@ -1,22 +1,22 @@
 package bill
 
 import (
+	gorg "github.com/invopop/gobl/org"
 	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl/bill"
 )
 
-templ customer(inv *bill.Invoice) {
+templ customer(cus *gorg.Party) {
 	<section class="customer">
 		<div class="customer-border">
 			<h2>
-				if inv.Customer != nil && inv.Customer.Label != "" {
-					{ inv.Customer.Label }
+				if cus != nil && cus.Label != "" {
+					{ cus.Label }
 				} else {
 					@t.T("billing.invoice.customer.title")
 				}
 			</h2>
-			@org.Party(inv.Customer)
+			@org.Party(cus)
 		</div>
 	</section>
 }

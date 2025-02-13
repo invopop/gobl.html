@@ -60,7 +60,7 @@ it:
         amount: "Importo"
       payment:
         title: "Pagamento"
-        instructions:
+        instructions: &payment_instructions
           method: "Metodo di pagamento"
           ref: "Riferimento"
           bank_data: "Istruzioni per bonifico bancario"
@@ -109,6 +109,36 @@ it:
           cufe: "CUFE: %{cufe}"
           cude: "CUDE: %{cude}"
           preceding_cufe: "CUFE Fattura precedente: %{cufe}"
+    receipt:
+      title:
+        payment: "Ricevuta di Pagamento"
+        remittance: "Avviso di Pagamento"
+        paid: "Pagato"
+
+      summary:
+        title: "Riepilogo"
+        issue_date: "Data Emissione"
+        value_date: "Data Valuta"
+        currency: "Valuta"
+        order: "Ordine"
+        order_period: "Periodo"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} a %{end}"
+
+      lines:
+        title: "Righe"
+        i: "#"
+        document: "Documento"
+        total: "Totale"
+
+      totals:
+        title: "Totali"
+        taxes: "Tassa"
+        total: "Totale"
+
+      method:
+        title: "Dettagli del Pagamento"
+        instructions: *payment_instructions
   org:
     party:
       tax_id: "%{label}: (%{country}) %{code}"

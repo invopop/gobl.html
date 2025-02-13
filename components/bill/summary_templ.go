@@ -214,14 +214,14 @@ func summary(inv *bill.Invoice) templ.Component {
 				}
 			}
 			if inv.Ordering != nil {
-				templ_7745c5c3_Err = summaryOrderingRows(inv).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = summaryOrderingRows(inv.Ordering).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			}
 			if inv.Tax != nil {
 				for k, v := range inv.Tax.Ext {
-					if label := mapTaxExtension(ctx, k, v); label != "" {
+					if label := mapTaxExtension(ctx, k); label != "" {
 						templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "<li class=\"tax-ext\"><span class=\"label\">")
 						if templ_7745c5c3_Err != nil {
 							return templ_7745c5c3_Err
@@ -273,7 +273,7 @@ func summary(inv *bill.Invoice) templ.Component {
 	})
 }
 
-func summaryOrderingRows(inv *bill.Invoice) templ.Component {
+func summaryOrderingRows(ord *bill.Ordering) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -294,7 +294,7 @@ func summaryOrderingRows(inv *bill.Invoice) templ.Component {
 			templ_7745c5c3_Var8 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if inv.Ordering.Code != "" {
+		if ord.Code != "" {
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "<li class=\"ordering-code\"><span class=\"label\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -308,9 +308,9 @@ func summaryOrderingRows(inv *bill.Invoice) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var9 string
-			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(inv.Ordering.Code.String())
+			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(ord.Code.String())
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 106, Col: 32}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 106, Col: 23}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 			if templ_7745c5c3_Err != nil {
@@ -321,13 +321,13 @@ func summaryOrderingRows(inv *bill.Invoice) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		if inv.Ordering.Period != nil {
-			templ_7745c5c3_Err = summaryOrderPeriodRows(inv.Ordering.Period).Render(ctx, templ_7745c5c3_Buffer)
+		if ord.Period != nil {
+			templ_7745c5c3_Err = summaryOrderPeriodRows(ord.Period).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		for _, ident := range inv.Ordering.Identities {
+		for _, ident := range ord.Identities {
 			if ident.Label != "" {
 				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "<li class=\"ordering-ident\"><span class=\"label\">")
 				if templ_7745c5c3_Err != nil {
@@ -427,7 +427,7 @@ func currencyName(ctx context.Context, cur currency.Code) string {
 	return i18n.T(ctx, "billing.invoice.summary.currency_value", i18n.M{"desc": name, "code": cur})
 }
 
-func mapTaxExtension(ctx context.Context, k cbc.Key, v cbc.Code) string {
+func mapTaxExtension(ctx context.Context, k cbc.Key) string {
 	// find the key translation
 	label := i18n.T(ctx, ".ext_map."+k.String())
 	if strings.HasPrefix(label, "!") { // if match found

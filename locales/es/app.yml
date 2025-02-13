@@ -70,7 +70,7 @@ es:
 
       payment:
         title: "Pago"
-        instructions:
+        instructions: &payment_instructions
           method: "Método de pago"
           ref: "Referencia"
           bank_data: "Instrucciones de transferencia bancaria"
@@ -122,6 +122,37 @@ es:
           cufe: "CUFE: %{cufe}"
           cude: "CUDE: %{cude}"
           preceding_cufe: "CUFE Factura anterior: %{cufe}"
+
+    receipt:
+      title:
+        payment: "Recibo de Pago"
+        remittance: "Aviso de Pago"
+        paid: "Pagado"
+
+      summary:
+        title: "Resumen"
+        issue_date: "Fecha de Emisión"
+        value_date: "Fecha de Valor"
+        currency: "Moneda"
+        order: "Orden"
+        order_period: "Período"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} a %{end}"
+
+      lines:
+        title: "Líneas"
+        i: "#"
+        document: "Documento"
+        total: "Total"
+
+      totals:
+        title: "Totales"
+        taxes: "Impuesto"
+        total: "Total"
+
+      method:
+        title: "Detalles de Pago"
+        instructions: *payment_instructions
 
   org:
     party:

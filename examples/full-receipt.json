@@ -1,0 +1,220 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "0194da65-8e80-77d0-9843-944211a0eb1a",
+		"dig": {
+			"alg": "sha256",
+			"val": "6de6b94f23bf851a2e8b970d5271fb8c4a293de3f4994ea14864da811a2c7b11"
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJ4252T-4"
+			},
+			{
+				"prv": "at-hash",
+				"val": "BGXN"
+			},
+			{
+				"prv": "at-hash-full",
+				"val": "B4nBO925enGmaoF6KedzXv0CxNiOdDNSiWuBLdmM7W/1/Ct9EvrCGh6HBV/x+kGz9UMM8dka5S2z/BrM1B3XXk3+RxgkHLAxFrpUAmiA4kF7ZUc780W/siBYmg+heE4/D+Vblvdb+920YbDkTUbEiOZOnTuX2HYGiE1zDFnyO8w="
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:770013813*B:514329874*C:PT*D:RG*E:N*F:20241223*G:RG DEV-05/4*H:AAJFJ4252T-4*I1:PT*I7:50.00*I8:11.50*N:11.50*O:61.50*Q:BGXN*R:0"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "0"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/receipt",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"uuid": "0194d10a-9314-760b-a68c-a3044d45cf9e",
+		"type": "payment",
+		"method": {
+			"key": "cash",
+			"detail": "Full settlement made in cash",
+			"ext": {
+				"pt-saft-payment-means": "NU"
+			}
+		},
+		"series": "RG DEV-05",
+		"code": "4",
+		"issue_date": "2024-12-23",
+		"currency": "EUR",
+		"ext": {
+			"pt-saft-receipt-type": "RG"
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "770013813"
+			},
+			"addresses": [
+				{
+					"street": "Rua das Flores 200 3º Esquerdo",
+					"locality": "Porto",
+					"code": "4050-265",
+					"country": "PT"
+				}
+			]
+		},
+		"customer": {
+			"name": "Gusto Unipessoal Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Avenida da Liberdade 152 2º Direito",
+					"locality": "Lisboa",
+					"code": "1250-146",
+					"country": "PT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "gusto@example.com"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://gusto.example.com"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+351912345678"
+				}
+			]
+		},
+		"ordering": {
+			"code": "111-9244735-1237858",
+			"identities": [
+				{
+					"label": "Provider Ref.",
+					"code": "PROV1234"
+				}
+			],
+			"period": {
+				"label": "Service period",
+				"start": "2022-02-01",
+				"end": "2022-02-28"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "123",
+					"description": "Invoice 1 of 1"
+				},
+				"debit": "61.50",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"ext": {
+										"pt-region": "PT",
+										"pt-saft-tax-rate": "NOR"
+									},
+									"base": "50.00",
+									"percent": "23.0%",
+									"amount": "11.50"
+								}
+							],
+							"amount": "11.50"
+						}
+					],
+					"sum": "11.50"
+				},
+				"total": "61.50"
+			},
+			{
+				"i": 2,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "130",
+					"description": "Invoice 1 of 2"
+				},
+				"debit": "106.00",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "reduced",
+									"ext": {
+										"pt-region": "PT",
+										"pt-saft-tax-rate": "NOR"
+									},
+									"base": "100.00",
+									"percent": "6.0%",
+									"amount": "6.00"
+								}
+							],
+							"amount": "6.00"
+						}
+					],
+					"sum": "6.00"
+				},
+				"total": "106.00"
+			}
+		],
+		"tax": {
+			"categories": [
+				{
+					"code": "VAT",
+					"rates": [
+						{
+							"key": "standard",
+							"ext": {
+								"pt-region": "PT",
+								"pt-saft-tax-rate": "NOR"
+							},
+							"base": "50.00",
+							"percent": "23.0%",
+							"amount": "11.50"
+						},
+						{
+							"key": "reduced",
+							"ext": {
+								"pt-region": "PT",
+								"pt-saft-tax-rate": "NOR"
+							},
+							"base": "100.00",
+							"percent": "6.0%",
+							"amount": "6.00"
+						}
+					],
+					"amount": "17.50"
+				}
+			],
+			"sum": "17.50"
+		},
+		"total": "167.50",
+		"notes": [
+			{
+				"text": "Thank you for you business!"
+			}
+		]
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjU2ZDIwN2E5LTc5ZDMtNDRjYy05OTQwLTYwNjczM2JhN2MxMyJ9.eyJ1dWlkIjoiMDE5NGRhNjUtOGU4MC03N2QwLTk4NDMtOTQ0MjExYTBlYjFhIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImFiODQxYTViYzAyNTNiZWM1OTg3Y2Q1ZDY5ODE5ZDk2OTAzZDM3MDc5MDRkZDJmYjE2YjczNzg4OGNlOGZmOGQifX0.VglMwc1bYRGKaxgmkAIRpaq0OX-hhmSJkcbkCXp3rDfDyoNi_KpvsFdsVF8KFA9p2OiiRAC9bNNUsvOKVNwE4Q"
+	]
+}

@@ -121,7 +121,7 @@ func Invoice(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = taxes(inv, inv.Totals.Taxes).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = taxes(inv.RegimeDef(), inv.Totals.Taxes).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -133,7 +133,7 @@ func Invoice(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = notes(inv).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = notes(inv.Notes, inv.Supplier).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -206,7 +206,7 @@ func title(inv *bill.Invoice) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			if img := supplierLogo(ctx, inv); img != nil {
+			if img := supplierLogo(ctx, inv.Supplier); img != nil {
 				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "<img src=\"")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -256,9 +256,9 @@ func title(inv *bill.Invoice) templ.Component {
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var11 string
-				templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(supplierAlias(inv))
+				templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(supplierAlias(inv.Supplier))
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 60, Col: 26}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 60, Col: 35}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 				if templ_7745c5c3_Err != nil {
@@ -371,12 +371,12 @@ func defaultHeader(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = supplier(inv).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = supplier(inv.Supplier).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		if inv.Customer != nil {
-			templ_7745c5c3_Err = customer(inv).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = customer(inv.Customer).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -419,7 +419,7 @@ func din5008Header(inv *bill.Invoice) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		if inv.Customer != nil {
-			templ_7745c5c3_Err = customer(inv).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = customer(inv.Customer).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -432,7 +432,7 @@ func din5008Header(inv *bill.Invoice) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = supplier(inv).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = supplier(inv.Supplier).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -452,20 +452,20 @@ func i18nTitleTag(inv *bill.Invoice) string {
 	return typ
 }
 
-func supplierAlias(inv *bill.Invoice) string {
-	if inv.Supplier.Alias != "" {
-		return inv.Supplier.Alias
+func supplierAlias(sup *org.Party) string {
+	if sup.Alias != "" {
+		return sup.Alias
 	}
-	return inv.Supplier.Name
+	return sup.Name
 }
 
-func supplierLogo(ctx context.Context, inv *bill.Invoice) *org.Image {
+func supplierLogo(ctx context.Context, sup *org.Party) *org.Image {
 	opts := internal.Options(ctx)
 	if opts.Logo != nil {
 		return opts.Logo
 	}
-	if len(inv.Supplier.Logos) > 0 {
-		return inv.Supplier.Logos[0]
+	if len(sup.Logos) > 0 {
+		return sup.Logos[0]
 	}
 	return nil
 }

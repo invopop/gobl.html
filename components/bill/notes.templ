@@ -7,7 +7,6 @@ import (
 
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/org"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
@@ -29,20 +28,20 @@ func init() {
 	)
 }
 
-templ notes(inv *bill.Invoice) {
-	if len(inv.Notes) > 0 || inv.Supplier.Registration != nil {
+templ notes(notes []*org.Note, sup *org.Party) {
+	if len(notes) > 0 || sup.Registration != nil {
 		<section class="notes">
 			@t.Scope("billing.invoice.notes") {
 				<h2>
 					@t.T(".title")
 				</h2>
-				for _, note := range inv.Notes {
+				for _, note := range notes {
 					<div class="note">
 						@templ.Raw(renderNote(note))
 					</div>
 				}
-				if inv.Supplier.Registration != nil {
-					@noteRegSummary(inv.Supplier.Registration)
+				if sup.Registration != nil {
+					@noteRegSummary(sup.Registration)
 				}
 			}
 		</section>

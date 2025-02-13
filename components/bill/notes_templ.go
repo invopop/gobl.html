@@ -15,7 +15,6 @@ import (
 
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/org"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
@@ -37,7 +36,7 @@ func init() {
 	)
 }
 
-func notes(inv *bill.Invoice) templ.Component {
+func notes(notes []*org.Note, sup *org.Party) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -58,7 +57,7 @@ func notes(inv *bill.Invoice) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if len(inv.Notes) > 0 || inv.Supplier.Registration != nil {
+		if len(notes) > 0 || sup.Registration != nil {
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"notes\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -87,7 +86,7 @@ func notes(inv *bill.Invoice) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				for _, note := range inv.Notes {
+				for _, note := range notes {
 					templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div class=\"note\">")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
@@ -105,8 +104,8 @@ func notes(inv *bill.Invoice) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				if inv.Supplier.Registration != nil {
-					templ_7745c5c3_Err = noteRegSummary(inv.Supplier.Registration).Render(ctx, templ_7745c5c3_Buffer)
+				if sup.Registration != nil {
+					templ_7745c5c3_Err = noteRegSummary(sup.Registration).Render(ctx, templ_7745c5c3_Buffer)
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
@@ -203,7 +202,7 @@ func noteRegSummary(reg *org.Registration) templ.Component {
 				var templ_7745c5c3_Var5 string
 				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(reg.Office)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/notes.templ`, Line: 67, Col: 17}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/notes.templ`, Line: 66, Col: 17}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 				if templ_7745c5c3_Err != nil {
@@ -334,7 +333,7 @@ func noteRegSummary(reg *org.Registration) templ.Component {
 				var templ_7745c5c3_Var6 string
 				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(reg.Other)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/notes.templ`, Line: 102, Col: 16}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/notes.templ`, Line: 101, Col: 16}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 				if templ_7745c5c3_Err != nil {

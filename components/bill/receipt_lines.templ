@@ -1,0 +1,73 @@
+package bill
+
+import (
+	"fmt"
+
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/bill"
+)
+
+templ receiptLines(rct *bill.Receipt) {
+	@t.Scope("billing.receipt.lines") {
+		<section class="lines">
+			<h2>
+				@t.T(".title")
+			</h2>
+			<table>
+				<thead>
+					<tr>
+						<th class="ref">
+							@t.T(".i")
+						</th>
+						<th class="document">
+							@t.T(".document")
+						</th>
+						if r := rct.RegimeDef(); r != nil && rct.Tax != nil {
+							for _, cat := range rct.Tax.Categories {
+								<th class="tax">
+									{ r.CategoryDef(cat.Code).Name.In(t.Lang(ctx)) }
+								</th>
+							}
+						}
+						<th class="total">
+							@t.T(".total")
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					for _, l := range rct.Lines {
+						@receiptLine(l, rct)
+					}
+				</tbody>
+			</table>
+		</section>
+	}
+}
+
+templ receiptLine(l *bill.ReceiptLine, rct *bill.Receipt) {
+	<tr>
+		<td class="ref">
+			{ fmt.Sprint(l.Index) }
+		</td>
+		<td class="document">
+			<span>{ code(l.Document.Series, l.Document.Code) }</span>
+			if l.Document.Description != "" {
+				<br />
+				<small>{ l.Document.Description }</small>
+			}
+		</td>
+		if rct.Tax != nil {
+			for _, cat := range rct.Tax.Categories {
+				<td class="tax">
+					if cat := l.Tax.Category(cat.Code); cat != nil {
+						@t.LM(cat.Amount)
+					}
+				</td>
+			}
+		}
+		<td class="total">
+			@t.LM(l.Total)
+		</td>
+	</tr>
+}
+

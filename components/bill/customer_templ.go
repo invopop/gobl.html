@@ -11,10 +11,10 @@ import templruntime "github.com/a-h/templ/runtime"
 import (
 	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl/bill"
+	gorg "github.com/invopop/gobl/org"
 )
 
-func customer(inv *bill.Invoice) templ.Component {
+func customer(cus *gorg.Party) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -39,11 +39,11 @@ func customer(inv *bill.Invoice) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		if inv.Customer != nil && inv.Customer.Label != "" {
+		if cus != nil && cus.Label != "" {
 			var templ_7745c5c3_Var2 string
-			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(inv.Customer.Label)
+			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(cus.Label)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/customer.templ`, Line: 14, Col: 25}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/customer.templ`, Line: 14, Col: 16}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 			if templ_7745c5c3_Err != nil {
@@ -59,7 +59,7 @@ func customer(inv *bill.Invoice) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = org.Party(inv.Customer).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = org.Party(cus).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

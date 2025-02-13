@@ -67,7 +67,7 @@ pl:
 
       payment:
         title: "Płatność"
-        instructions:
+        instructions: &payment_instructions
           method: "Metoda płatności"
           ref: "Referencja"
           bank_data: "Instrukcje przelewu bankowego"
@@ -118,6 +118,37 @@ pl:
           cufe: "CUFE: %{cufe}"
           cude: "CUDE: %{cude}"
           preceding_cufe: "Poprzedni CUFE faktury: %{cufe}"
+
+    receipt:
+      title:
+        payment: "Potwierdzenie płatności"
+        remittance: "Powiadomienie o płatności"
+        paid: "Opłacone"
+
+      summary:
+        title: "Podsumowanie"
+        issue_date: "Data wystawienia"
+        value_date: "Data wartości"
+        currency: "Waluta"
+        order: "Zamówienie"
+        order_period: "Okres"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} do %{end}"
+
+      lines:
+        title: "Linie"
+        i: "#"
+        document: "Dokument"
+        total: "Suma"
+
+      totals:
+        title: "Podsumowanie"
+        taxes: "Podatek"
+        total: "Suma"
+
+      method:
+        title: "Szczegóły płatności"
+        instructions: *payment_instructions
 
   org:
     party:

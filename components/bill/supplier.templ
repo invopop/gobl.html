@@ -1,20 +1,20 @@
 package bill
 
 import (
-	"github.com/invopop/gobl/bill"
+	gorg "github.com/invopop/gobl/org"
 	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/components/t"
 )
 
-templ supplier(inv *bill.Invoice) {
+templ supplier(sup *gorg.Party) {
 	<section class="supplier">
 		<h2>
-			if inv.Supplier != nil && inv.Supplier.Label != "" {
-				{ inv.Supplier.Label }
+			if sup != nil && sup.Label != "" {
+				{ sup.Label }
 			} else {
 				@t.T("billing.invoice.supplier.title")
 			}
 		</h2>
-		@org.Party(inv.Supplier)
+		@org.Party(sup)
 	</section>
 }

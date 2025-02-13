@@ -40,6 +40,8 @@ templ Envelope(env *gobl.Envelope) {
 				switch doc := env.Extract().(type) {
 					case *gbill.Invoice:
 						@bill.Invoice(env, doc)
+					case *gbill.Receipt:
+						@bill.Receipt(env, doc)
 					case *gnote.Message:
 						@note.Message(doc)
 					case *gorg.Party:

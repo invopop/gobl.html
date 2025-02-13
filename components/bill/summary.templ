@@ -75,11 +75,11 @@ templ summary(inv *bill.Invoice) {
 					</li>
 				}
 				if inv.Ordering != nil {
-					@summaryOrderingRows(inv)
+					@summaryOrderingRows(inv.Ordering)
 				}
 				if inv.Tax != nil {
 					for k, v := range inv.Tax.Ext {
-						if label := mapTaxExtension(ctx, k, v); label != "" {
+						if label := mapTaxExtension(ctx, k); label != "" {
 							<li class="tax-ext">
 								<span class="label">
 									{ label }
@@ -96,21 +96,21 @@ templ summary(inv *bill.Invoice) {
 	</section>
 }
 
-templ summaryOrderingRows(inv *bill.Invoice) {
-	if inv.Ordering.Code != "" {
+templ summaryOrderingRows(ord *bill.Ordering) {
+	if ord.Code != "" {
 		<li class="ordering-code">
 			<span class="label">
 				@t.T(".order")
 			</span>
 			<span class="value">
-				{ inv.Ordering.Code.String() }
+				{ ord.Code.String() }
 			</span>
 		</li>
 	}
-	if inv.Ordering.Period != nil {
-		@summaryOrderPeriodRows(inv.Ordering.Period)
+	if ord.Period != nil {
+		@summaryOrderPeriodRows(ord.Period)
 	}
-	for _, ident := range inv.Ordering.Identities {
+	for _, ident := range ord.Identities {
 		if ident.Label != "" {
 			<li class="ordering-ident">
 				<span class="label">
@@ -149,7 +149,7 @@ func currencyName(ctx context.Context, cur currency.Code) string {
 	return i18n.T(ctx, "billing.invoice.summary.currency_value", i18n.M{"desc": name, "code": cur})
 }
 
-func mapTaxExtension(ctx context.Context, k cbc.Key, v cbc.Code) string {
+func mapTaxExtension(ctx context.Context, k cbc.Key) string {
 	// find the key translation
 	label := i18n.T(ctx, ".ext_map."+k.String())
 	if strings.HasPrefix(label, "!") { // if match found
