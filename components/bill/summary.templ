@@ -60,7 +60,7 @@ templ summary(inv *bill.Invoice) {
 							@t.T(".preceding_invoice")
 						</span>
 						<span class="value">
-							{ code(pre.Series, pre.Code) }
+							{ code(pre.Series, pre.Code, inv.Regime) }
 						</span>
 						if pre.IssueDate != nil {
 							<span class="value">

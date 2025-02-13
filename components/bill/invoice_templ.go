@@ -282,9 +282,9 @@ func title(inv *bill.Invoice) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var12 string
-			templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(code(inv.Series, inv.Code))
+			templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(code(inv.Series, inv.Code, inv.Regime))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 68, Col: 32}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 68, Col: 44}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 			if templ_7745c5c3_Err != nil {
@@ -477,11 +477,11 @@ func logoHeight(img *org.Image) string {
 	return "40" // pixels
 }
 
-func code(series, code cbc.Code) string {
-	if series == "" {
-		return code.String()
+func code(series, code cbc.Code, reg tax.Regime) string {
+	if reg.Country == "PT" {
+		return series.JoinWith("/", code).String()
 	}
-	return fmt.Sprintf("%s-%s", series, code)
+	return series.Join(code).String()
 }
 
 func applyDIN5008(ctx context.Context) bool {

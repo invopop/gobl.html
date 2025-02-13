@@ -65,7 +65,7 @@ templ title(inv *bill.Invoice) {
 				@t.T("." + i18nTitleTag(inv))
 			</h1>
 			<h2 class="code">
-				{ code(inv.Series, inv.Code) }
+				{ code(inv.Series, inv.Code, inv.Regime) }
 				if paid(inv) {
 					<span class="paid">
 						@t.T(".paid")
@@ -138,11 +138,11 @@ func logoHeight(img *org.Image) string {
 	return "40" // pixels
 }
 
-func code(series, code cbc.Code) string {
-	if series == "" {
-		return code.String()
+func code(series, code cbc.Code, reg tax.Regime) string {
+	if reg.Country == "PT" {
+		return series.JoinWith("/", code).String()
 	}
-	return fmt.Sprintf("%s-%s", series, code)
+	return series.Join(code).String()
 }
 
 func applyDIN5008(ctx context.Context) bool {

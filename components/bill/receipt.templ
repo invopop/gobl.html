@@ -56,7 +56,7 @@ templ receiptTitle(rct *bill.Receipt) {
 				@t.T("." + string(rct.Type))
 			</h1>
 			<h2 class="code">
-				{ code(rct.Series, rct.Code) }
+				{ code(rct.Series, rct.Code, rct.Regime) }
 				<span class="paid">
 					@t.T(".paid")
 				</span>

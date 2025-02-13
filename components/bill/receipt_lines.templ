@@ -50,7 +50,7 @@ templ receiptLine(l *bill.ReceiptLine, rct *bill.Receipt) {
 			{ fmt.Sprint(l.Index) }
 		</td>
 		<td class="document">
-			<span>{ code(l.Document.Series, l.Document.Code) }</span>
+			<span>{ code(l.Document.Series, l.Document.Code, rct.Regime) }</span>
 			if l.Document.Description != "" {
 				<br />
 				<small>{ l.Document.Description }</small>
