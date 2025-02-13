@@ -1,0 +1,61 @@
+package bill
+
+import (
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/bill"
+)
+
+templ receiptSummary(rct *bill.Receipt) {
+	<section class="summary">
+		@t.Scope("billing.receipt.summary") {
+		<h2 class="title">
+			@t.T(".title")
+		</h2>
+		<ul>
+			<li class="issue-date">
+				<span class="label">
+					@t.T(".issue_date")
+				</span>
+				<span class="value">
+					@t.L(rct.IssueDate)
+				</span>
+			</li>
+			<li class="currency">
+				<span class="label">
+					@t.T(".currency")
+				</span>
+				<span class="value">
+					{ currencyName(ctx, rct.Currency) }
+				</span>
+			</li>
+			if rct.ValueDate != nil {
+			<li class="value-date">
+				<span class="label">
+					@t.T(".value_date")
+				</span>
+				<span class="value">
+					@t.L(rct.ValueDate)
+				</span>
+			</li>
+			}
+			if rct.Ordering != nil {
+				@summaryOrderingRows(rct.Ordering)
+			}
+			if rct.Tax != nil {
+				for k, v := range rct.Ext {
+					if label := mapTaxExtension(ctx, k); label != "" {
+					<li class="tax-ext">
+						<span class="label">
+							{ label }
+						</span>
+						<span class="value">
+							{ v.String() }
+						</span>
+					</li>
+					}
+				}
+			}
+		</ul>
+		}
+	</section>
+}

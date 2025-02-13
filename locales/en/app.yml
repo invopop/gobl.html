@@ -70,7 +70,7 @@ en:
 
       payment:
         title: "Payment"
-        instructions:
+        instructions: &payment_instructions
           method: "Method of payment"
           ref: "Reference"
           bank_data: "Bank transfer instructions"
@@ -124,6 +124,37 @@ en:
           cufe: "CUFE: %{cufe}"
           cude: "CUDE: %{cude}"
           preceding_cufe: "CUFE Previous invoice: %{cufe}"
+
+    receipt:
+      title:
+        payment: "Payment Receipt"
+        remittance: "Remittance Advice"
+        paid: "Paid"
+
+      summary:
+        title: "Summary"
+        issue_date: "Issue Date"
+        value_date: "Value Date"
+        currency: "Currency"
+        order: "Order"
+        order_period: "Period"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} to %{end}"
+
+      lines:
+        title: "Lines"
+        i: "#"
+        document: "Document"
+        total: "Total"
+
+      totals:
+        title: "Totals"
+        taxes: "Tax"
+        total: "Total"
+
+      method:
+        title: "Payment Details"
+        instructions: *payment_instructions
 
   org:
     party:

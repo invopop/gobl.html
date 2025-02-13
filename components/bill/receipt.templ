@@ -1,0 +1,109 @@
+package bill
+
+import (
+	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/components/regimes/pt"
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/bill"
+)
+
+// Receip renders a complete GOBL bill.Receipt object.
+templ Receipt(env *gobl.Envelope, rct *bill.Receipt) {
+	<article class="receipt">
+		<header class="regular">
+			@receiptHeader(rct)
+		</header>
+		@receiptLines(rct)
+		<div class="totals">
+			@receiptTotals(rct)
+			@taxes(rct.RegimeDef(), rct.Tax)
+		</div>
+		@method(rct)
+		@notes(rct.Notes, rct.Supplier)
+		<div class="extensions">
+			// Region specific information
+			@pt.ATQR(env)
+		</div>
+	</article>
+}
+
+templ receiptHeader(rct *bill.Receipt) {
+	<div class="details">
+		@receiptTitle(rct)
+		@receiptSummary(rct)
+	</div>
+	<div class="contacts">
+		@supplier(rct.Supplier)
+		if rct.Customer != nil {
+			@customer(rct.Customer)
+		}
+	</div>
+}
+
+templ receiptTitle(rct *bill.Receipt) {
+	@t.Scope("billing.receipt.title") {
+		<section class="title">
+			<div class="hero">
+				if img := supplierLogo(ctx, rct.Supplier); img != nil {
+				<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) } />
+				} else {
+				<div class="alias">
+					{ supplierAlias(rct.Supplier) }
+				</div>
+				}
+			</div>
+			<h1 class="type">
+				@t.T("." + string(rct.Type))
+			</h1>
+			<h2 class="code">
+				{ code(rct.Series, rct.Code, rct.Regime) }
+				<span class="paid">
+					@t.T(".paid")
+				</span>
+			</h2>
+		</section>
+	}
+}
+
+templ receiptTotals(rct *bill.Receipt) {
+	<section class="totals">
+		@t.Scope("billing.receipt.totals") {
+		<h2>
+			@t.T(".title")
+		</h2>
+		<table>
+			<tbody>
+				if rct.Tax != nil {
+				<tr class="tax">
+					<th>
+						@t.T(".taxes")
+					</th>
+					<td>
+						@t.LM(rct.Tax.Sum)
+					</td>
+				</tr>
+				}
+				<tr class="total strong">
+					<th>
+						@t.T(".total")
+					</th>
+					<td>
+						@t.LM(rct.Total)
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		}
+	</section>
+}
+
+templ method(rct *bill.Receipt) {
+	@t.Scope("billing.receipt.method") {
+		<section class="payment">
+			<h2 class="title">
+				@t.T(".title")
+			</h2>
+			@paymentInstructions(rct.Method)
+		</section>
+	}
+}

@@ -5,7 +5,7 @@ header {
     border-bottom: 0.5px solid #e5e7eb;
 }
 .invoice.din5008 section.title {
-    min-height: 30mm; // +10mm from envelop marging +5mm from printer margins = 45mm
+    min-height: 30mm; /* +10mm from envelop marging +5mm from printer margins = 45mm */
     max-height: 30mm;
 }
 .invoice.din5008 section.summary {
@@ -240,16 +240,16 @@ section.totals table {
 }
 section.totals th {
     text-align: right;
-    border-bottom: 0.5px solid #e5e7eb;
+    border-top: 0.5px solid #e5e7eb;
     font-weight: normal;
 }
 section.totals td {
     text-align: right;
-    border-bottom: 0.5px solid #e5e7eb;
+    border-top: 0.5px solid #e5e7eb;
 }
-section.totals tr:last-child th,
-section.totals tr:last-child td {
-    border-bottom: 0;
+section.totals tr:first-child th,
+section.totals tr:first-child td {
+    border-top: 0;
 }
 section.totals tr.strong th,
 section.totals tr.strong td {
@@ -281,10 +281,10 @@ section.taxes th {
     font-weight: 600;
 }
 section.taxes td {
-    border-bottom: 0.5px solid #e5e7eb;
+    border-top: 0.5px solid #e5e7eb;
 }
-section.taxes tr:last-child td {
-    border-bottom: 0;
+section.taxes tr:first-child td {
+    border-top: 0;
 }
 section.taxes th.category,
 section.taxes td.category {

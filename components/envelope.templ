@@ -8,13 +8,13 @@ import (
 
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/assets"
-	"github.com/invopop/gobl.html/components/bill/invoice"
-	"github.com/invopop/gobl.html/components/notes"
+	"github.com/invopop/gobl.html/components/bill"
+	"github.com/invopop/gobl.html/components/note"
 	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/layout"
-	"github.com/invopop/gobl/bill"
-	"github.com/invopop/gobl/note"
+	gbill "github.com/invopop/gobl/bill"
+	gnote "github.com/invopop/gobl/note"
 	gorg "github.com/invopop/gobl/org"
 )
 
@@ -38,10 +38,12 @@ templ Envelope(env *gobl.Envelope) {
 				// footer required at start to appear on all pages
 				@footerPrint(env)
 				switch doc := env.Extract().(type) {
-					case *bill.Invoice:
-						@invoice.Invoice(env, doc)
-					case *note.Message:
-						@notes.Message(doc)
+					case *gbill.Invoice:
+						@bill.Invoice(env, doc)
+					case *gbill.Receipt:
+						@bill.Receipt(env, doc)
+					case *gnote.Message:
+						@note.Message(doc)
 					case *gorg.Party:
 						@org.Party(doc)
 					default:
