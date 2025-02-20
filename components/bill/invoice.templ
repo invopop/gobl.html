@@ -1,4 +1,4 @@
-package invoice
+package bill
 
 import (
 	"context"
@@ -34,10 +34,10 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 		@lines(inv)
 		<div class="totals">
 			@totals(inv, inv.Totals)
-			@taxes(inv, inv.Totals.Taxes)
+			@taxes(inv.RegimeDef(), inv.Totals.Taxes)
 		</div>
 		@payment(inv)
-		@notes(inv)
+		@notes(inv.Notes, inv.Supplier)
 		<div class="extensions">
 			// Region specific information
 			@co.DIANQR(env, inv)
@@ -53,11 +53,11 @@ templ title(inv *bill.Invoice) {
 	@t.Scope("billing.invoice.title") {
 		<section class="title">
 			<div class="hero">
-				if img := supplierLogo(ctx, inv); img != nil {
+				if img := supplierLogo(ctx, inv.Supplier); img != nil {
 					<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
 				} else {
 					<div class="alias">
-						{ supplierAlias(inv) }
+						{ supplierAlias(inv.Supplier) }
 					</div>
 				}
 			</div>
@@ -65,7 +65,7 @@ templ title(inv *bill.Invoice) {
 				@t.T("." + i18nTitleTag(inv))
 			</h1>
 			<h2 class="code">
-				{ code(inv.Series, inv.Code) }
+				{ code(inv.Series, inv.Code, inv.Regime) }
 				if paid(inv) {
 					<span class="paid">
 						@t.T(".paid")
@@ -85,9 +85,9 @@ templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
 	@es.VerifactuQR(env)
 	@es.TicketBAIQR(env)
 	<div class="contacts">
-		@supplier(inv)
+		@supplier(inv.Supplier)
 		if inv.Customer != nil {
-			@customer(inv)
+			@customer(inv.Customer)
 		}
 	</div>
 }
@@ -96,12 +96,12 @@ templ din5008Header(inv *bill.Invoice) {
 	<div>
 		@title(inv)
 		if inv.Customer != nil {
-			@customer(inv)
+			@customer(inv.Customer)
 		}
 	</div>
 	<div>
 		@summary(inv)
-		@supplier(inv)
+		@supplier(inv.Supplier)
 	</div>
 }
 
@@ -113,20 +113,20 @@ func i18nTitleTag(inv *bill.Invoice) string {
 	return typ
 }
 
-func supplierAlias(inv *bill.Invoice) string {
-	if inv.Supplier.Alias != "" {
-		return inv.Supplier.Alias
+func supplierAlias(sup *org.Party) string {
+	if sup.Alias != "" {
+		return sup.Alias
 	}
-	return inv.Supplier.Name
+	return sup.Name
 }
 
-func supplierLogo(ctx context.Context, inv *bill.Invoice) *org.Image {
+func supplierLogo(ctx context.Context, sup *org.Party) *org.Image {
 	opts := internal.Options(ctx)
 	if opts.Logo != nil {
 		return opts.Logo
 	}
-	if len(inv.Supplier.Logos) > 0 {
-		return inv.Supplier.Logos[0]
+	if len(sup.Logos) > 0 {
+		return sup.Logos[0]
 	}
 	return nil
 }
@@ -138,11 +138,11 @@ func logoHeight(img *org.Image) string {
 	return "40" // pixels
 }
 
-func code(series, code cbc.Code) string {
-	if series == "" {
-		return code.String()
+func code(series, code cbc.Code, reg tax.Regime) string {
+	if reg.Country == "PT" {
+		return series.JoinWith("/", code).String()
 	}
-	return fmt.Sprintf("%s-%s", series, code)
+	return series.Join(code).String()
 }
 
 func applyDIN5008(ctx context.Context) bool {

@@ -10,6 +10,7 @@ el:
         corrective: "Διορθωτικό Τιμολόγιο"
         credit-note: "Πιστωτικό Σημείωμα"
         debit-note: "Χρεωστικό Σημείωμα"
+        paid: "Πληρώθηκε"
 
       summary:
         title: "Περίληψη"
@@ -69,7 +70,7 @@ el:
 
       payment:
         title: "Πληρωμή"
-        instructions:
+        instructions: &payment_instructions
           method: "Μέθοδος πληρωμής"
           ref: "Αναφορά"
           bank_data: "Οδηγίες τραπεζικής μεταφοράς"
@@ -122,6 +123,37 @@ el:
           cufe: "CUFE: %{cufe}"
           cude: "CUDE: %{cude}"
           preceding_cufe: "CUFE Προηγούμενου τιμολογίου: %{cufe}"
+
+    receipt:
+      title:
+        payment: "Απόδειξη πληρωμής"
+        remmittance: "Ειδοποίηση πληρωμής"
+        paid: "Πληρώθηκε"
+
+      summary:
+        title: "Περίληψη"
+        issue_date: "Ημερομηνία Έκδοσης"
+        value_date: "Ημερομηνία Αξίας"
+        currency: "Νόμισμα"
+        order: "Παραγγελία"
+        order_period: "Περίοδος"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} έως %{end}"
+
+      lines:
+        title: "Γραμμές"
+        i: "#"
+        document: "Έγγραφο"
+        total: "Σύνολο"
+
+      totals:
+        title: "Σύνολα"
+        taxes: "Φόρος"
+        total: "Σύνολο"
+
+      method:
+        title: "Λεπτομέρειες Πληρωμής"
+        instructions: *payment_instructions
 
   org:
     party:

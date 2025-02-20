@@ -68,7 +68,7 @@ de:
 
       payment:
         title: "Zahlung"
-        instructions:
+        instructions: &payment_instructions
           method: "Zahlungsmethode"
           ref: "Referenz"
           bank_data: "Banküberweisungsanweisungen"
@@ -120,6 +120,37 @@ de:
           cufe: "CUFE: %{cufe}"
           cude: "CUDE: %{cude}"
           preceding_cufe: "CUFE Vorherige Rechnung: %{cufe}"
+
+    receipt:
+      title:
+        payment: "Zahlungseingang"
+        remittance: "Zahlungsavis"
+        paid: "Bezahlt"
+
+      summary:
+        title: "Zusammenfassung"
+        issue_date: "Ausstellungsdatum"
+        value_date: "Wertstellungsdatum"
+        currency: "Währung"
+        order: "Bestellung"
+        order_period: "Zeitraum"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} bis %{end}"
+
+      lines:
+        title: "Positionen"
+        i: "#"
+        document: "Dokument"
+        total: "Gesamt"
+
+      totals:
+        title: "Summen"
+        taxes: "Steuern"
+        total: "Gesamt"
+
+      method:
+        title: "Zahlungsdetails"
+        instructions: *payment_instructions
 
   org:
     party:

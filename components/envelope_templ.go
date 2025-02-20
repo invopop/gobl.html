@@ -16,13 +16,13 @@ import (
 
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/assets"
-	"github.com/invopop/gobl.html/components/bill/invoice"
-	"github.com/invopop/gobl.html/components/notes"
+	"github.com/invopop/gobl.html/components/bill"
+	"github.com/invopop/gobl.html/components/note"
 	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/layout"
-	"github.com/invopop/gobl/bill"
-	"github.com/invopop/gobl/note"
+	gbill "github.com/invopop/gobl/bill"
+	gnote "github.com/invopop/gobl/note"
 	gorg "github.com/invopop/gobl/org"
 )
 
@@ -74,13 +74,18 @@ func Envelope(env *gobl.Envelope) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		switch doc := env.Extract().(type) {
-		case *bill.Invoice:
-			templ_7745c5c3_Err = invoice.Invoice(env, doc).Render(ctx, templ_7745c5c3_Buffer)
+		case *gbill.Invoice:
+			templ_7745c5c3_Err = bill.Invoice(env, doc).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-		case *note.Message:
-			templ_7745c5c3_Err = notes.Message(doc).Render(ctx, templ_7745c5c3_Buffer)
+		case *gbill.Receipt:
+			templ_7745c5c3_Err = bill.Receipt(env, doc).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		case *gnote.Message:
+			templ_7745c5c3_Err = note.Message(doc).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -145,7 +150,7 @@ func stylesheets() templ.Component {
 					var templ_7745c5c3_Var3 string
 					templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(ss)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/envelope.templ`, Line: 64, Col: 36}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/envelope.templ`, Line: 66, Col: 36}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 					if templ_7745c5c3_Err != nil {

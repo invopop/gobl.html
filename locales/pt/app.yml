@@ -68,7 +68,7 @@ pt:
 
       payment:
         title: "Pagamento"
-        instructions:
+        instructions: &payment_instructions
           method: "Método de pagamento"
           ref: "Referência"
           bank_data: "Instruções de transferência bancária"
@@ -114,6 +114,36 @@ pt:
           page: "Página %{id}"
           entry: "Entrada %{id}"
 
+    receipt:
+      title:
+        payment: "Recibo de Pagamento"
+        remittance: "Aviso de Pagamento"
+        paid: "Pago"
+
+      summary:
+        title: "Resumo"
+        issue_date: "Data de Emissão"
+        value_date: "Data de Valor"
+        currency: "Moeda"
+        order: "Ordem"
+        order_period: "Período"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} a %{end}"
+
+      lines:
+        title: "Linhas"
+        i: "#"
+        document: "Documento"
+        total: "Total"
+
+      totals:
+        title: "Totais"
+        taxes: "Imposto"
+        total: "Total"
+
+      method:
+        title: "Detalhes do Pagamento"
+        instructions: *payment_instructions
   org:
     party:
       tax_id: "%{label}: (%{country}) %{code}"

@@ -1,14 +1,13 @@
-package invoice
+package bill
 
 import (
 	"context"
 	"fmt"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/tax"
 )
 
-templ taxes(inv *bill.Invoice, taxes *tax.Total) {
+templ taxes(r *tax.RegimeDef, taxes *tax.Total) {
 	if taxes != nil && len(taxes.Categories) > 0 {
 		<section class="taxes">
 			@t.Scope("billing.invoice.taxes") {
@@ -35,7 +34,7 @@ templ taxes(inv *bill.Invoice, taxes *tax.Total) {
 					<tbody>
 						for _, cat := range taxes.Categories {
 							for i, rate := range cat.Rates {
-								@taxRateRow(inv, cat, rate, taxCategoryRowSpan(cat, i))
+								@taxRateRow(r, cat, rate, taxCategoryRowSpan(cat, i))
 							}
 						}
 					</tbody>
@@ -45,11 +44,11 @@ templ taxes(inv *bill.Invoice, taxes *tax.Total) {
 	}
 }
 
-templ taxRateRow(inv *bill.Invoice, cat *tax.CategoryTotal, rate *tax.RateTotal, span int) {
+templ taxRateRow(r *tax.RegimeDef, cat *tax.CategoryTotal, rate *tax.RateTotal, span int) {
 	<tr>
 		if span > 0 {
 			<td rowspan={ fmt.Sprint(span) } class="category">
-				{ taxCategoryTotalName(ctx, inv, cat) }
+				{ taxCategoryTotalName(ctx, r, cat) }
 			</td>
 		}
 		<td class="base">
@@ -95,8 +94,7 @@ func taxCategoryRowSpan(ct *tax.CategoryTotal, row int) int {
 	return 0
 }
 
-func taxCategoryTotalName(ctx context.Context, inv *bill.Invoice, cat *tax.CategoryTotal) string {
-	r := inv.RegimeDef()
+func taxCategoryTotalName(ctx context.Context, r *tax.RegimeDef, cat *tax.CategoryTotal) string {
 	category := r.CategoryDef(cat.Code)
 	if category == nil {
 		return cat.Code.String()
