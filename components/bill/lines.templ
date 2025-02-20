@@ -87,7 +87,7 @@ templ line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) {
 		if ls.refs {
 			<td class="ref">
 				if l.Item.Ref != "" {
-					{ l.Item.Ref }
+					{ l.Item.Ref.String() }
 				} else {
 					<!-- empty -->
 				}
