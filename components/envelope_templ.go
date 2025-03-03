@@ -79,8 +79,8 @@ func Envelope(env *gobl.Envelope) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-		case *gbill.Receipt:
-			templ_7745c5c3_Err = bill.Receipt(env, doc).Render(ctx, templ_7745c5c3_Buffer)
+		case *gbill.Payment:
+			templ_7745c5c3_Err = bill.Payment(env, doc).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

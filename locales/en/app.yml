@@ -125,10 +125,10 @@ en:
           cude: "CUDE: %{cude}"
           preceding_cufe: "CUFE Previous invoice: %{cufe}"
 
-    receipt:
+    payment:
       title:
-        payment: "Payment Receipt"
-        remittance: "Remittance Advice"
+        receipt: "Payment Receipt"
+        advice: "Remittance Advice"
         paid: "Paid"
 
       summary:

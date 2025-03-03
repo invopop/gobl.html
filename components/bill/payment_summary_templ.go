@@ -13,7 +13,7 @@ import (
 	"github.com/invopop/gobl/bill"
 )
 
-func receiptSummary(rct *bill.Receipt) templ.Component {
+func paymentSummary(pmt *bill.Payment) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -70,7 +70,7 @@ func receiptSummary(rct *bill.Receipt) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = t.L(rct.IssueDate).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = t.L(pmt.IssueDate).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -87,9 +87,9 @@ func receiptSummary(rct *bill.Receipt) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var3 string
-			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(currencyName(ctx, rct.Currency))
+			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(currencyName(ctx, pmt.Currency))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/receipt_summary.templ`, Line: 28, Col: 38}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment_summary.templ`, Line: 28, Col: 38}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -99,7 +99,7 @@ func receiptSummary(rct *bill.Receipt) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			if rct.ValueDate != nil {
+			if pmt.ValueDate != nil {
 				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "<li class=\"value-date\"><span class=\"label\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -112,7 +112,7 @@ func receiptSummary(rct *bill.Receipt) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = t.L(rct.ValueDate).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = t.L(pmt.ValueDate).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -121,14 +121,14 @@ func receiptSummary(rct *bill.Receipt) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			if rct.Ordering != nil {
-				templ_7745c5c3_Err = summaryOrderingRows(rct.Ordering).Render(ctx, templ_7745c5c3_Buffer)
+			if pmt.Ordering != nil {
+				templ_7745c5c3_Err = summaryOrderingRows(pmt.Ordering).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			}
-			if rct.Tax != nil {
-				for k, v := range rct.Ext {
+			if pmt.Tax != nil {
+				for k, v := range pmt.Ext {
 					if label := mapTaxExtension(ctx, k); label != "" {
 						templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "<li class=\"tax-ext\"><span class=\"label\">")
 						if templ_7745c5c3_Err != nil {
@@ -137,7 +137,7 @@ func receiptSummary(rct *bill.Receipt) templ.Component {
 						var templ_7745c5c3_Var4 string
 						templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(label)
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/receipt_summary.templ`, Line: 49, Col: 14}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment_summary.templ`, Line: 49, Col: 14}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 						if templ_7745c5c3_Err != nil {
@@ -150,7 +150,7 @@ func receiptSummary(rct *bill.Receipt) templ.Component {
 						var templ_7745c5c3_Var5 string
 						templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(v.String())
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/receipt_summary.templ`, Line: 52, Col: 19}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment_summary.templ`, Line: 52, Col: 19}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 						if templ_7745c5c3_Err != nil {
@@ -169,7 +169,7 @@ func receiptSummary(rct *bill.Receipt) templ.Component {
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = t.Scope("billing.receipt.summary").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = t.Scope("billing.payment.summary").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

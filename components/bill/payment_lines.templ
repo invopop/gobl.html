@@ -1,0 +1,75 @@
+package bill
+
+import (
+	"fmt"
+
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/bill"
+)
+
+templ paymentLines(pmt *bill.Payment) {
+	@t.Scope("billing.payment.lines") {
+		<section class="lines">
+			<h2>
+				@t.T(".title")
+			</h2>
+			<table>
+				<thead>
+					<tr>
+						<th class="ref">
+							@t.T(".i")
+						</th>
+						<th class="document">
+							@t.T(".document")
+						</th>
+						if r := pmt.RegimeDef(); r != nil && pmt.Tax != nil {
+							for _, cat := range pmt.Tax.Categories {
+								<th class="tax">
+									{ r.CategoryDef(cat.Code).Name.In(t.Lang(ctx)) }
+								</th>
+							}
+						}
+						<th class="total">
+							@t.T(".total")
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					for _, l := range pmt.Lines {
+						@paymentLine(l, pmt)
+					}
+				</tbody>
+			</table>
+		</section>
+	}
+}
+
+templ paymentLine(l *bill.PaymentLine, pmt *bill.Payment) {
+	<tr>
+		<td class="ref">
+			{ fmt.Sprint(l.Index) }
+		</td>
+		if l.Document != nil {
+			<td class="document">
+				<span>{ code(l.Document.Series, l.Document.Code, pmt.Regime) }</span>
+				if l.Document.Description != "" {
+					<br />
+					<small>{ l.Document.Description }</small>
+				}
+			</td>
+			if pmt.Tax != nil && l.Document.Tax != nil {
+				for _, cat := range pmt.Tax.Categories {
+					<td class="tax">
+						if cat := l.Document.Tax.Category(cat.Code); cat != nil {
+							@t.LM(cat.Amount)
+						}
+					</td>
+				}
+			}
+		}
+		<td class="total">
+			@t.LM(l.Total)
+		</td>
+	</tr>
+}
+

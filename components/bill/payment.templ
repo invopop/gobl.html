@@ -1,255 +1,109 @@
 package bill
 
 import (
-	"bytes"
-	"context"
-	"fmt"
-	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
-	"github.com/invopop/gobl/pay"
 )
 
-templ payment(inv *bill.Invoice) {
-	@t.Scope("billing.invoice.payment") {
-		if showPayments(inv) {
-			<section class="payment">
-				<h2 class="title">
-					@t.T(".title")
-				</h2>
-				if inv.Payment.Instructions != nil {
-					@paymentInstructions(inv.Payment.Instructions)
+// Payment renders a complete GOBL bill.Payment object.
+templ Payment(env *gobl.Envelope, pmt *bill.Payment) {
+	<article class="payment">
+		<header class="regular">
+			@paymentHeader(pmt)
+		</header>
+		@paymentLines(pmt)
+		<div class="totals">
+			@paymentTotals(pmt)
+			@taxes(pmt.RegimeDef(), pmt.Tax)
+		</div>
+		@method(pmt)
+		@notes(pmt.Notes, pmt.Supplier)
+		<div class="extensions">
+			// Region specific information
+			@pt.ATQR(env)
+		</div>
+	</article>
+}
+
+templ paymentHeader(pmt *bill.Payment) {
+	<div class="details">
+		@paymentTitle(pmt)
+		@paymentSummary(pmt)
+	</div>
+	<div class="contacts">
+		@supplier(pmt.Supplier)
+		if pmt.Customer != nil {
+			@customer(pmt.Customer)
+		}
+	</div>
+}
+
+templ paymentTitle(pmt *bill.Payment) {
+	@t.Scope("billing.payment.title") {
+		<section class="title">
+			<div class="hero">
+				if img := supplierLogo(ctx, pmt.Supplier); img != nil {
+				<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) } />
+				} else {
+				<div class="alias">
+					{ supplierAlias(pmt.Supplier) }
+				</div>
 				}
-				if inv.Payment.Terms != nil {
-					@paymentTerms(inv.Payment.Terms)
-				}
-			</section>
-		}
+			</div>
+			<h1 class="type">
+				@t.T("." + string(pmt.Type))
+			</h1>
+			<h2 class="code">
+				{ code(pmt.Series, pmt.Code, pmt.Regime) }
+				<span class="paid">
+					@t.T(".paid")
+				</span>
+			</h2>
+		</section>
 	}
 }
 
-templ paymentInstructions(inst *pay.Instructions) {
-	@t.Scope(".instructions") {
-		<ul class="instructions">
-			if pm := paymentInstrMethodName(ctx, inst); pm != "" {
-				<li class="method-name">
-					<span class="label">
-						@t.T(".method")
-					</span>
-					<span class="value">
-						{ pm }
-					</span>
-				</li>
-			}
-			if inst.Ref != "" {
-				<li class="ref">
-					<span class="label">
-						@t.T(".ref")
-					</span>
-					<span class="value">
-						{ inst.Ref.String() }
-					</span>
-				</li>
-			}
-			if len(inst.CreditTransfer) > 0 {
-				<li class="bank-data">
-					<span class="label">
-						@t.T(".bank_data")
-					</span>
-					for _, ct := range inst.CreditTransfer {
-						<span class="value">
-							@paymentCreditTransferRow(ct)
-						</span>
-					}
-				</li>
-			}
-			if inst.Card != nil {
-				<li class="card">
-					<span class="label">
-						@t.T(".card")
-					</span>
-					<span class="value">
-						@t.T(".card_detail", i18n.M{"last4": inst.Card.Last4, "holder": inst.Card.Holder})
-					</span>
-				</li>
-			}
-			// TODO: Direct Debit
-			if len(inst.Online) > 0 {
-				<li class="online">
-					<span class="label">
-						@t.T(".online")
-					</span>
-					for _, ol := range inst.Online {
-						<span class="value">
-							<a href={ templ.SafeURL(ol.URL) }>
-								if ol.Label != "" {
-									{ ol.Label }
-								} else {
-									{ ol.URL }
-								}
-							</a>
-						</span>
-					}
-				</li>
-			}
-			if inst.Notes != "" {
-				<li class="notes">
-					<span class="label">
-						@t.T(".observations")
-					</span>
-					<span class="value">
-						@templ.Raw(renderPaymentNotes(inst.Notes))
-					</span>
-				</li>
-			}
-		</ul>
-	}
-}
-
-func renderPaymentNotes(txt string) string {
-	buf := new(bytes.Buffer)
-	if err := markdown.Convert([]byte(txt), buf); err != nil {
-		return fmt.Sprintf("!(ERR %v)", err.Error())
-	}
-	return buf.String()
-}
-
-templ paymentCreditTransferRow(ct *pay.CreditTransfer) {
-	<span class="credit-transfer">
-		if ct.Name != "" {
-			<span class="bank-name">
-				@t.T(".bank_name", i18n.M{"name": ct.Name})
-			</span>
-		}
-		if ct.IBAN != "" {
-			<span class="iban">
-				@t.T(".iban", i18n.M{"iban": ct.IBAN})
-			</span>
-		}
-		if ct.Number != "" {
-			<span class="account-number">
-				@t.T(".account_number", i18n.M{"num": ct.Number})
-			</span>
-		}
-		if ct.BIC != "" {
-			<span class="bic">
-				@t.T(".bic", i18n.M{"bic": ct.BIC})
-			</span>
-		}
-	</span>
-}
-
-templ paymentTerms(terms *pay.Terms) {
-	@t.Scope(".terms") {
-		<ul class="terms">
-			if terms.Key != "" {
-				<li class="terms-key">
-					<span class="label">
-						@t.T(".key")
-					</span>
-					<span class="value">
-						{ paymentTermsKeyName(ctx, terms) }
-					</span>
-				</li>
-			}
-			if terms.Notes != "" {
-				<li class="terms-notes">
-					<span class="label">
-						@t.T(".notes")
-					</span>
-					<span class="value">
-						{ terms.Notes }
-					</span>
-				</li>
-			}
-			if len(terms.DueDates) > 0 {
-				<li class="due-dates">
-					<span class="label">
-						@t.T(".due_dates")
-					</span>
-					<span class="value">
-						@paymentDueDates(terms)
-					</span>
-				</li>
-			}
-		</ul>
-	}
-}
-
-templ paymentDueDates(terms *pay.Terms) {
-	<table class="due-dates">
-		<tbody>
-			for _, dd := range terms.DueDates {
-				<tr>
-					<td class="date">
-						if dd.Date != nil {
-							@t.L(*dd.Date)
-						}
-					</td>
-					<td class="notes">
-						{ dd.Notes }
-						if dd.Percent != nil {
-							<span class="percent">
-								@t.L(*dd.Percent)
-							</span>
-						}
-					</td>
-					<td class="amount">
-						@t.LM(dd.Amount)
+templ paymentTotals(pmt *bill.Payment) {
+	<section class="totals">
+		@t.Scope("billing.payment.totals") {
+		<h2>
+			@t.T(".title")
+		</h2>
+		<table>
+			<tbody>
+				if pmt.Tax != nil {
+				<tr class="tax">
+					<th>
+						@t.T(".taxes")
+					</th>
+					<td>
+						@t.LM(pmt.Tax.Sum)
 					</td>
 				</tr>
-			}
-		</tbody>
-	</table>
+				}
+				<tr class="total strong">
+					<th>
+						@t.T(".total")
+					</th>
+					<td>
+						@t.LM(pmt.Total)
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		}
+	</section>
 }
 
-func showPayments(inv *bill.Invoice) bool {
-	if inv.Payment == nil {
-		return false
-	}
-	if inv.Payment.Instructions == nil && inv.Payment.Terms == nil {
-		return false
-	}
-	return true
-}
-
-func paid(inv *bill.Invoice) bool {
-	return inv.Totals.Due != nil && inv.Totals.Due.IsZero()
-}
-
-func paymentInstrMethodName(ctx context.Context, inst *pay.Instructions) string {
-	if inst.Detail != "" {
-		return inst.Detail
-	}
-	key := fmt.Sprintf(".methods.%s", inst.Key)
-	if !i18n.Has(ctx, key) {
-		return ""
-	}
-	return i18n.T(ctx, key)
-}
-
-func paymentTermsKeyName(ctx context.Context, terms *pay.Terms) string {
-	ctx = i18n.WithScope(ctx, ".keys")
-	switch terms.Key {
-	case pay.TermKeyEndOfMonth:
-		return i18n.T(ctx, ".end_of_month")
-	case pay.TermKeyDueDate:
-		return i18n.T(ctx, ".due_date")
-	case pay.TermKeyDeferred:
-		return i18n.T(ctx, ".deferred")
-	case pay.TermKeyProximo:
-		return i18n.T(ctx, ".proximo")
-	case pay.TermKeyInstant:
-		return i18n.T(ctx, ".instant")
-	case pay.TermKeyElective:
-		return i18n.T(ctx, ".elective")
-	case pay.TermKeyPending:
-		return i18n.T(ctx, ".pending")
-	case pay.TermKeyAdvanced:
-		return i18n.T(ctx, ".advanced")
-	case pay.TermKeyDelivery:
-		return i18n.T(ctx, ".delivery")
-	default:
-		return i18n.T(ctx, ".na")
+templ method(pmt *bill.Payment) {
+	@t.Scope("billing.payment.method") {
+		<section class="payment">
+			<h2 class="title">
+				@t.T(".title")
+			</h2>
+			@paymentInstructions(pmt.Method)
+		</section>
 	}
 }
