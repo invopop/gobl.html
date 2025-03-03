@@ -5,9 +5,9 @@ import (
 	"github.com/invopop/gobl/bill"
 )
 
-templ receiptSummary(rct *bill.Receipt) {
+templ paymentSummary(pmt *bill.Payment) {
 	<section class="summary">
-		@t.Scope("billing.receipt.summary") {
+		@t.Scope("billing.payment.summary") {
 		<h2 class="title">
 			@t.T(".title")
 		</h2>
@@ -17,7 +17,7 @@ templ receiptSummary(rct *bill.Receipt) {
 					@t.T(".issue_date")
 				</span>
 				<span class="value">
-					@t.L(rct.IssueDate)
+					@t.L(pmt.IssueDate)
 				</span>
 			</li>
 			<li class="currency">
@@ -25,24 +25,24 @@ templ receiptSummary(rct *bill.Receipt) {
 					@t.T(".currency")
 				</span>
 				<span class="value">
-					{ currencyName(ctx, rct.Currency) }
+					{ currencyName(ctx, pmt.Currency) }
 				</span>
 			</li>
-			if rct.ValueDate != nil {
+			if pmt.ValueDate != nil {
 			<li class="value-date">
 				<span class="label">
 					@t.T(".value_date")
 				</span>
 				<span class="value">
-					@t.L(rct.ValueDate)
+					@t.L(pmt.ValueDate)
 				</span>
 			</li>
 			}
-			if rct.Ordering != nil {
-				@summaryOrderingRows(rct.Ordering)
+			if pmt.Ordering != nil {
+				@summaryOrderingRows(pmt.Ordering)
 			}
-			if rct.Tax != nil {
-				for k, v := range rct.Ext {
+			if pmt.Tax != nil {
+				for k, v := range pmt.Ext {
 					if label := mapTaxExtension(ctx, k); label != "" {
 					<li class="tax-ext">
 						<span class="label">

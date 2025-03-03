@@ -124,9 +124,9 @@ el:
           cude: "CUDE: %{cude}"
           preceding_cufe: "CUFE Προηγούμενου τιμολογίου: %{cufe}"
 
-    receipt:
+    payment:
       title:
-        payment: "Απόδειξη πληρωμής"
+        receipt: "Απόδειξη πληρωμής"
         remmittance: "Ειδοποίηση πληρωμής"
         paid: "Πληρώθηκε"
 

@@ -115,7 +115,7 @@ templ line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) {
 			</td>
 		}
 		<td class="price">
-			@t.LM(l.Item.Price)
+			@t.LM(amountOrZero(l.Item.Price))
 			@lineItemAltPrices(l)
 		</td>
 		for _, cat := range ls.categories {
@@ -142,7 +142,7 @@ templ line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) {
 			</td>
 		}
 		<td class="total">
-			@t.LM(l.Total)
+			@t.LM(amountOrZero(l.Total))
 		</td>
 	</tr>
 }

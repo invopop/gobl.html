@@ -123,10 +123,10 @@ es:
           cude: "CUDE: %{cude}"
           preceding_cufe: "CUFE Factura anterior: %{cufe}"
 
-    receipt:
+    payment:
       title:
-        payment: "Recibo de Pago"
-        remittance: "Aviso de Pago"
+        receipt: "Recibo de Pago"
+        advice: "Aviso de Pago"
         paid: "Pagado"
 
       summary:

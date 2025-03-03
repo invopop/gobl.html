@@ -121,10 +121,10 @@ de:
           cude: "CUDE: %{cude}"
           preceding_cufe: "CUFE Vorherige Rechnung: %{cufe}"
 
-    receipt:
+    payment:
       title:
-        payment: "Zahlungseingang"
-        remittance: "Zahlungsavis"
+        receipt: "Zahlungseingang"
+        advice: "Zahlungsavis"
         paid: "Bezahlt"
 
       summary:
