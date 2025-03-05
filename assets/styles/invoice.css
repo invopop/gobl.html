@@ -45,11 +45,11 @@ header.regular div.details {
 header.regular > div.contacts {
     flex: 1;
 }
-header.regular section.supplier {
+header.regular > div.contacts > section:first-of-type {
     padding: 6mm;
     padding-top: 0mm;
 }
-header.regular section.customer {
+header.regular > div.contacts > section:not(:first-of-type) {
     padding: 6mm;
     border-top: 0.5px solid #e5e7eb;
 }
@@ -172,6 +172,7 @@ section.lines .ref {
     width: fit-content;
 }
 section.lines .price,
+section.lines .percent,
 section.lines .quantity,
 section.lines .tax,
 section.lines .discount,
@@ -330,6 +331,54 @@ section.payment .due-dates span.percent:before {
 }
 section.payment .due-dates span.percent:after {
     content: ")";
+}
+section.payment {
+    border-bottom: 0.5px solid #e5e7eb;
+    padding: 6mm 0mm;
+    order: 10;
+    display: flex;
+    flex-flow: row;
+    break-inside: avoid;
+}
+section.payment h2.title {
+    display: none;
+}
+section.payment ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+section.tracking {
+    border-bottom: 0.5px solid #e5e7eb;
+    padding: 6mm 0mm;
+    order: 10;
+    display: flex;
+    flex-flow: row;
+    break-inside: avoid;
+}
+section.tracking h2.title {
+    display: none;
+}
+section.tracking ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+section.tracking li {
+    margin-bottom: 3mm;
+}
+
+section.tracking li:last-child {
+    margin-bottom: 0;
+}
+
+section.tracking span.label {
+    display: block;
+    font-weight: 500;
+}
+
+section.tracking span.value {
+    display: block;
 }
 section.notes {
     padding-top: 6mm;

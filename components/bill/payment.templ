@@ -53,7 +53,11 @@ templ paymentTitle(pmt *bill.Payment) {
 				}
 			</div>
 			<h1 class="type">
-				@t.T("." + string(pmt.Type))
+				if k := pt.PaymentTitleKey(pmt); k != "" {
+					@t.T(k)
+				} else {
+					@t.T(titleKey(pmt.Type))
+				}
 			</h1>
 			<h2 class="code">
 				{ code(pmt.Series, pmt.Code, pmt.Regime) }

@@ -125,6 +125,10 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 		switch doc := env.Extract().(type) {
 		case *bill.Invoice:
 			cur = doc.Currency
+		case *bill.Payment:
+			cur = doc.Currency
+		case *bill.Delivery:
+			cur = doc.Currency
 		}
 		nf := cur.Def().Formatter()
 		o.NumFormatter = &nf

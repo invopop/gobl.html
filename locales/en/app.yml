@@ -12,14 +12,14 @@ en:
         debit-note: "Debit Note"
         paid: "Paid"
 
-      summary:
+      summary: &summary
         title: "Summary"
         issue_date: "Issue Date"
         value_date: "Value Date"
         operation_date: "Operation Date"
         currency: "Currency"
         currency_value: "%{desc} (%{code})"
-        preceding_invoice: "Previous Invoice"
+        preceding_document: "Previous Invoice"
         order: "Order"
         order_period: "Period"
         order_period_label: "%{label}"
@@ -33,7 +33,7 @@ en:
       customer:
         title: "Customer"
 
-      lines:
+      lines: &lines
         title: "Lines"
         i: "#"
         ref: "Ref."
@@ -45,7 +45,7 @@ en:
         charges: "Chgs."
         total: "Total"
 
-      totals:
+      totals: &totals
         sum: "Sum"
         discount: "Discount"
         charge: "Charge"
@@ -117,14 +117,6 @@ en:
           page: "Page %{id}"
           entry: "Entry %{id}"
 
-      regimes:
-        pl:
-          ksef-id: "ID: %{id}"
-        co:
-          cufe: "CUFE: %{cufe}"
-          cude: "CUDE: %{cude}"
-          preceding_cufe: "CUFE Previous invoice: %{cufe}"
-
     payment:
       title:
         receipt: "Payment Receipt"
@@ -156,6 +148,37 @@ en:
         title: "Payment Details"
         instructions: *payment_instructions
 
+    delivery:
+      title:
+        advice: "Delivery Advice"
+        note: "Delivery Note"
+        waybill: "Waybill"
+        receipt: "Delivery Receipt"
+
+      summary:
+        <<: *summary
+        despatch_date: "Despatch Date"
+        receive_date: "Receive Date"
+        preceding_document: "Previous Document"
+
+      despatcher:
+        title: "Despatcher"
+
+      receiver:
+        title: "Receiver"
+
+      courier:
+        title: "Courier"
+
+      tracking:
+        title: "Tracking Information"
+        code: "Tracking Code"
+        website: "Tracking Link"
+
+      lines: *lines
+
+      totals: *totals
+
   org:
     party:
       tax_id: "%{label}: (%{country}) %{code}"
@@ -186,3 +209,37 @@ en:
     address:
       label: "%{label}:"
       country: "(%{country})"
+
+  regimes:
+    pl:
+      ksef-id: "ID: %{id}"
+    co:
+      cufe: "CUFE: %{cufe}"
+      cude: "CUDE: %{cude}"
+      preceding_cufe: "CUFE Previous invoice: %{cufe}"
+    pt:
+      title:
+        FT: "Invoice"
+        FS: "Simplified Invoice"
+        FR: "Invoice-Receipt"
+        ND: "Debit Note"
+        NC: "Credit Note"
+        RC: "Cash Receipt"
+        RG: "Receipt"
+        CM: "Table Order"
+        CC: "Consignment Credit"
+        FC: "Consignment Invoice"
+        FO: "Work Order"
+        NE: "Purchase Order"
+        OU: "Other Document"
+        OR: "Quotation"
+        PF: "Proforma Invoice"
+        DC: "Delivery Document"
+        GR: "Delivery Note"
+        GT: "Waybill"
+        GA: "Fixed Assets"
+        GC: "Consignment"
+        GD: "Return"
+
+
+

@@ -6,15 +6,17 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/org"
+	"github.com/invopop/gobl/tax"
 )
 
 templ lines(inv *bill.Invoice) {
 	@t.Scope("billing.invoice.lines") {
-		@linesWithSupport(inv, prepareLineSupport(inv))
+		@linesWithSupport(inv.RegimeDef(), inv.Lines, inv.Discounts, inv.Charges)
 	}
 }
 
-templ linesWithSupport(inv *bill.Invoice, ls *lineSupport) {
+templ linesWithSupport(reg *tax.RegimeDef, lines []*bill.Line, dss []*bill.Discount, chs []*bill.Charge) {
+	{{ ls := prepareLineSupport(reg, lines, dss, chs)}}
 	<section class="lines">
 		<h2>
 			@t.T(".title")
@@ -41,9 +43,11 @@ templ linesWithSupport(inv *bill.Invoice, ls *lineSupport) {
 							@t.T(".unit")
 						</th>
 					}
-					<th class="price">
-						@t.T(".price")
-					</th>
+					if ls.prices {
+						<th class="price">
+							@t.T(".price")
+						</th>
+					}
 					for _, cat := range ls.categories {
 						<th class="tax">
 							{ cat.Name.In(t.Lang(ctx)) }
@@ -59,27 +63,29 @@ templ linesWithSupport(inv *bill.Invoice, ls *lineSupport) {
 							@t.T(".charges")
 						</th>
 					}
-					<th class="total">
-						@t.T(".total")
-					</th>
+					if ls.totals {
+						<th class="total">
+							@t.T(".total")
+						</th>
+					}
 				</tr>
 			</thead>
-			@linesBody(inv, ls)
-			@discountsBody(inv, ls)
-			@chargesBody(inv, ls)
+			@linesBody(lines, ls)
+			@discountsBody(dss, ls)
+			@chargesBody(chs, ls)
 		</table>
 	</section>
 }
 
-templ linesBody(inv *bill.Invoice, ls *lineSupport) {
+templ linesBody(lines []*bill.Line, ls *lineSupport) {
 	<tbody>
-		for _, l := range inv.Lines {
-			@line(inv, l, ls)
+		for _, l := range lines {
+			@line(l, ls)
 		}
 	</tbody>
 }
 
-templ line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) {
+templ line(l *bill.Line, ls *lineSupport) {
 	<tr>
 		<td class="ref">
 			{ fmt.Sprint(l.Index) }
@@ -114,10 +120,12 @@ templ line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) {
 				}
 			</td>
 		}
-		<td class="price">
-			@t.LM(amountOrZero(l.Item.Price))
-			@lineItemAltPrices(l)
-		</td>
+		if ls.prices {
+			<td class="price">
+				@t.LM(amountOrZero(l.Item.Price))
+				@lineItemAltPrices(l)
+			</td>
+		}
 		for _, cat := range ls.categories {
 			<td class="tax">
 				if combo := l.Taxes.Get(cat.Code); combo != nil {
@@ -141,9 +149,11 @@ templ line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) {
 				@lineGroupCharges(l)
 			</td>
 		}
-		<td class="total">
-			@t.LM(amountOrZero(l.Total))
-		</td>
+		if ls.totals {
+			<td class="total">
+				@t.LM(amountOrZero(l.Total))
+			</td>
+		}
 	</tr>
 }
 
@@ -194,10 +204,10 @@ templ lineGroupCharges(l *bill.Line) {
 	}
 }
 
-templ discountsBody(inv *bill.Invoice, ls *lineSupport) {
-	if len(inv.Discounts) > 0 {
+templ discountsBody(dis []*bill.Discount, ls *lineSupport) {
+	if len(dis) > 0 {
 		<tbody class="discounts">
-			for _, row := range inv.Discounts {
+			for _, row := range dis {
 				@discountRow(row, ls)
 			}
 		</tbody>
@@ -229,13 +239,15 @@ templ discountRow(row *bill.Discount, ls *lineSupport) {
 				<!-- empty -->
 			</td>
 		}
-		<td class="percent">
-			if row.Percent != nil {
-				@t.L(*row.Percent)
+		if ls.prices {
+			<td class="percent">
+				if row.Percent != nil {
+					@t.L(*row.Percent)
 			} else {
 				<!-- empty -->
-			}
-		</td>
+				}
+			</td>
+		}
 		for _, cat := range ls.categories {
 			<td class="tax">
 				if combo := row.Taxes.Get(cat.Code); combo != nil {
@@ -259,16 +271,18 @@ templ discountRow(row *bill.Discount, ls *lineSupport) {
 				<!-- empty -->
 			</td>
 		}
-		<td class="total">
-			@t.LM(row.Amount.Invert())
-		</td>
+		if ls.totals {
+			<td class="total">
+				@t.LM(row.Amount.Invert())
+			</td>
+		}
 	</tr>
 }
 
-templ chargesBody(inv *bill.Invoice, ls *lineSupport) {
-	if len(inv.Charges) > 0 {
+templ chargesBody(chs []*bill.Charge, ls *lineSupport) {
+	if len(chs) > 0 {
 		<tbody class="charges">
-			for _, row := range inv.Charges {
+			for _, row := range chs {
 				@chargeRow(row, ls)
 			}
 		</tbody>
@@ -300,13 +314,15 @@ templ chargeRow(row *bill.Charge, ls *lineSupport) {
 				<!-- empty -->
 			</td>
 		}
-		<td class="percent">
-			if row.Percent != nil {
-				@t.L(*row.Percent)
-			} else {
-				<!-- empty -->
-			}
-		</td>
+		if ls.prices {
+			<td class="percent">
+				if row.Percent != nil {
+					@t.L(*row.Percent)
+				} else {
+					<!-- empty -->
+				}
+			</td>
+		}
 		for _, cat := range ls.categories {
 			<td class="tax">
 				if combo := row.Taxes.Get(cat.Code); combo != nil {
@@ -330,8 +346,10 @@ templ chargeRow(row *bill.Charge, ls *lineSupport) {
 				<!-- empty -->
 			</td>
 		}
-		<td class="total">
-			@t.LM(row.Amount)
-		</td>
+		if ls.totals {
+			<td class="total">
+				@t.LM(row.Amount)
+			</td>
+		}
 	</tr>
 }

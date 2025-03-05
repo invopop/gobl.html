@@ -273,9 +273,16 @@ func title(inv *bill.Invoice) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = t.T("."+i18nTitleTag(inv)).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
+			if k := pt.InvoiceTitleKey(inv); k != "" {
+				templ_7745c5c3_Err = t.T(k).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			} else {
+				templ_7745c5c3_Err = t.T(invoiceTitleKey(inv)).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
 			}
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "</h1><h2 class=\"code\">")
 			if templ_7745c5c3_Err != nil {
@@ -284,7 +291,7 @@ func title(inv *bill.Invoice) templ.Component {
 			var templ_7745c5c3_Var12 string
 			templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(code(inv.Series, inv.Code, inv.Regime))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 68, Col: 44}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 72, Col: 44}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 			if templ_7745c5c3_Err != nil {
@@ -444,12 +451,16 @@ func din5008Header(inv *bill.Invoice) templ.Component {
 	})
 }
 
-func i18nTitleTag(inv *bill.Invoice) string {
-	typ := string(inv.Type)
+func invoiceTitleKey(inv *bill.Invoice) string {
+	typ := titleKey(inv.Type)
 	if inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard {
 		typ = typ + "-simplified"
 	}
 	return typ
+}
+
+func titleKey(typ cbc.Key) string {
+	return "." + string(typ)
 }
 
 func supplierAlias(sup *org.Party) string {

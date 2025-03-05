@@ -1,0 +1,249 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "0194020a-1f2e-7000-9ede-4ad7c0a9810f",
+		"dig": {
+			"alg": "sha256",
+			"val": "a25d3e653813c98c9e87cc677952027816e99af22e08b526449d66ef0f4d4bbb"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/delivery",
+		"$regime": "PT",
+		"uuid": "0193f36f-9fda-7000-9aff-4f4e28043a66",
+		"type": "note",
+		"series": "GR SERIES-A",
+		"code": "1",
+		"issue_date": "2024-12-23",
+		"value_date": "2024-12-24",
+		"currency": "EUR",
+		"exchange_rates": [
+			{
+				"from": "EUR",
+				"to": "USD",
+				"amount": "1.09"
+			}
+		],
+		"ordering": {
+			"code": "ORD-2024-123",
+			"identities": [
+				{
+					"key": "internal-ref",
+					"code": "REF-2024-456"
+				}
+			],
+			"period": {
+				"start": "2024-12-01",
+				"end": "2024-12-31"
+			},
+			"purchases": [
+				{
+					"type": "order",
+					"issue_date": "2024-12-15",
+					"code": "PO-2024-001",
+					"description": "Purchase order for office electronics and supplies"
+				}
+			],
+			"sales": [
+				{
+					"type": "order",
+					"issue_date": "2024-12-16",
+					"code": "SO-2024-789",
+					"description": "Sales order confirmation"
+				}
+			]
+		},
+		"preceding": [
+			{
+				"type": "advice",
+				"issue_date": "2024-12-20",
+				"code": "ADV-2024-001",
+				"description": "Delivery advice notification"
+			}
+		],
+		"tracking": {
+			"code": "TRACK-123456789",
+			"website": {
+				"label": "Delivery Tracking Portal",
+				"url": "https://tracking.innovatech.pt/TRACK-123456789"
+			}
+		},
+		"despatch_date": "2024-12-23",
+		"receive_date": "2024-12-25",
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "770013813"
+			},
+			"addresses": [
+				{
+					"street": "Rua das Flores 200 3º Esquerdo",
+					"locality": "Porto",
+					"code": "4050-265",
+					"country": "PT"
+				}
+			]
+		},
+		"customer": {
+			"name": "Gusto Unipessoal Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Avenida da Liberdade 152 2º Direito",
+					"locality": "Lisboa",
+					"code": "1250-146",
+					"country": "PT"
+				}
+			]
+		},
+		"despatcher": {
+			"name": "Innovatech Logistics",
+			"tax_id": {
+				"country": "PT",
+				"code": "590895184"
+			},
+			"addresses": [
+				{
+					"street": "Rua da Indústria 45",
+					"locality": "Porto",
+					"code": "4050-300",
+					"country": "PT"
+				}
+			]
+		},
+		"receiver": {
+			"name": "Gusto Armazém",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Zona Industrial, Lote 23",
+					"locality": "Lisboa",
+					"code": "1300-300",
+					"country": "PT"
+				}
+			]
+		},
+		"courier": {
+			"name": "Express Delivery Services",
+			"tax_id": {
+				"country": "PT",
+				"code": "507783298"
+			},
+			"addresses": [
+				{
+					"street": "Avenida do Transporte 78",
+					"locality": "Porto",
+					"code": "4100-100",
+					"country": "PT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"order": "PO-2024-001",
+				"item": {
+					"name": "LCD Monitor 24-inch",
+					"price": "650.00",
+					"unit": "unit"
+				},
+				"sum": "650.00",
+				"discounts": [
+					{
+						"percent": "15.0%",
+						"amount": "97.50"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "552.50"
+			},
+			{
+				"i": 2,
+				"quantity": "2",
+				"item": {
+					"name": "Paperclips",
+					"price": "5.00",
+					"unit": "box"
+				},
+				"sum": "10.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "10.00"
+			}
+		],
+		"discounts": [
+			{
+				"i": 1,
+				"reason": "Loyalty discount",
+				"percent": "2.0%",
+				"amount": "11.25"
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"reason": "Express delivery fee",
+				"amount": "10.00"
+			}
+		],
+		"totals": {
+			"sum": "562.50",
+			"discount": "11.25",
+			"charge": "10.00",
+			"total": "561.25",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT"
+								},
+								"base": "562.50",
+								"percent": "23.0%",
+								"amount": "129.38"
+							}
+						],
+						"amount": "129.38"
+					}
+				],
+				"sum": "129.38"
+			},
+			"tax": "129.38",
+			"total_with_tax": "690.63",
+			"payable": "690.63"
+		},
+		"notes": [
+			{
+				"text": "Delivery of ordered products as per contract agreement."
+			}
+		]
+	}
+}
