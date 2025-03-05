@@ -4,12 +4,16 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "f769b2b747055f1416f330ceca4367006f83454b7ebc618039f38a2d601b2b5a"
-		},
-		"draft": true
+			"val": "81077ee2c73d2b75f906f2c3c0b25e970fb61b39f8a6476c3365d13aba85ff71"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-tbai-v1"
+		],
+		"uuid": "019565cf-ecdc-7246-a02f-8f4d88c9f4c7",
 		"type": "credit-note",
 		"series": "FR",
 		"code": "012",
@@ -18,18 +22,18 @@
 		"preceding": [
 			{
 				"type": "standard",
+				"issue_date": "2022-01-10",
 				"series": "SAMPLE",
 				"code": "085",
-				"issue_date": "2022-01-10",
 				"ext": {
 					"es-tbai-correction": "R2"
 				}
 			}
 		],
 		"tax": {
-			"tags": [
-				"ticketbai"
-			]
+			"ext": {
+				"es-tbai-region": "BI"
+			}
 		},
 		"supplier": {
 			"name": "Provide One S.L.",
@@ -82,14 +86,17 @@
 				"item": {
 					"name": "Development services",
 					"price": "90.00",
-					"unit": "h"
+					"unit": "h",
+					"ext": {
+						"es-tbai-product": "services"
+					}
 				},
 				"sum": "1800.00",
 				"discounts": [
 					{
+						"reason": "Special discount",
 						"percent": "10%",
-						"amount": "180.00",
-						"reason": "Special discount"
+						"amount": "180.00"
 					}
 				],
 				"taxes": [
@@ -106,7 +113,10 @@
 				"quantity": "1",
 				"item": {
 					"name": "Financial service",
-					"price": "10.00"
+					"price": "10.00",
+					"ext": {
+						"es-tbai-product": "services"
+					}
 				},
 				"sum": "10.00",
 				"taxes": [

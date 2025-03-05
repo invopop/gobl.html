@@ -4,7 +4,7 @@
 		"uuid": "0194da65-8e80-77d0-9843-944211a0eb1a",
 		"dig": {
 			"alg": "sha256",
-			"val": "6de6b94f23bf851a2e8b970d5271fb8c4a293de3f4994ea14864da811a2c7b11"
+			"val": "f9f9391594fedd4faae095e2b1b6f025c4b74dd896e8b9b32beb0525da3dd196"
 		},
 		"stamps": [
 			{
@@ -96,20 +96,6 @@
 				}
 			]
 		},
-		"ordering": {
-			"code": "111-9244735-1237858",
-			"identities": [
-				{
-					"label": "Provider Ref.",
-					"code": "PROV1234"
-				}
-			],
-			"period": {
-				"label": "Service period",
-				"start": "2022-02-01",
-				"end": "2022-02-28"
-			}
-		},
 		"lines": [
 			{
 				"i": 1,
@@ -176,6 +162,20 @@
 				"total": "106.00"
 			}
 		],
+		"ordering": {
+			"code": "111-9244735-1237858",
+			"identities": [
+				{
+					"label": "Provider Ref.",
+					"code": "PROV1234"
+				}
+			],
+			"period": {
+				"label": "Service period",
+				"start": "2022-02-01",
+				"end": "2022-02-28"
+			}
+		},
 		"tax": {
 			"categories": [
 				{
