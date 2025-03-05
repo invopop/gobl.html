@@ -8,18 +8,18 @@ import (
 )
 
 // Payment renders a complete GOBL bill.Payment object.
-templ Payment(env *gobl.Envelope, rct *bill.Payment) {
+templ Payment(env *gobl.Envelope, pmt *bill.Payment) {
 	<article class="payment">
 		<header class="regular">
-			@paymentHeader(rct)
+			@paymentHeader(pmt)
 		</header>
-		@paymentLines(rct)
+		@paymentLines(pmt)
 		<div class="totals">
-			@paymentTotals(rct)
-			@taxes(rct.RegimeDef(), rct.Tax)
+			@paymentTotals(pmt)
+			@taxes(pmt.RegimeDef(), pmt.Tax)
 		</div>
-		@method(rct)
-		@notes(rct.Notes, rct.Supplier)
+		@method(pmt)
+		@notes(pmt.Notes, pmt.Supplier)
 		<div class="extensions">
 			// Region specific information
 			@pt.ATQR(env)
@@ -27,36 +27,40 @@ templ Payment(env *gobl.Envelope, rct *bill.Payment) {
 	</article>
 }
 
-templ paymentHeader(rct *bill.Payment) {
+templ paymentHeader(pmt *bill.Payment) {
 	<div class="details">
-		@paymentTitle(rct)
-		@paymentSummary(rct)
+		@paymentTitle(pmt)
+		@paymentSummary(pmt)
 	</div>
 	<div class="contacts">
-		@supplier(rct.Supplier)
-		if rct.Customer != nil {
-			@customer(rct.Customer)
+		@supplier(pmt.Supplier)
+		if pmt.Customer != nil {
+			@customer(pmt.Customer)
 		}
 	</div>
 }
 
-templ paymentTitle(rct *bill.Payment) {
+templ paymentTitle(pmt *bill.Payment) {
 	@t.Scope("billing.payment.title") {
 		<section class="title">
 			<div class="hero">
-				if img := supplierLogo(ctx, rct.Supplier); img != nil {
+				if img := supplierLogo(ctx, pmt.Supplier); img != nil {
 					<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
 				} else {
 					<div class="alias">
-						{ supplierAlias(rct.Supplier) }
+						{ supplierAlias(pmt.Supplier) }
 					</div>
 				}
 			</div>
 			<h1 class="type">
-				@t.T("." + string(rct.Type))
+				if k := pt.PaymentTitleKey(pmt); k != "" {
+					@t.T(k)
+				} else {
+					@t.T(titleKey(pmt.Type))
+				}
 			</h1>
 			<h2 class="code">
-				{ code(rct.Series, rct.Code, rct.Regime) }
+				{ code(pmt.Series, pmt.Code, pmt.Regime) }
 				<span class="paid">
 					@t.T(".paid")
 				</span>
@@ -65,7 +69,7 @@ templ paymentTitle(rct *bill.Payment) {
 	}
 }
 
-templ paymentTotals(rct *bill.Payment) {
+templ paymentTotals(pmt *bill.Payment) {
 	<section class="totals">
 		@t.Scope("billing.payment.totals") {
 			<h2>
@@ -73,13 +77,13 @@ templ paymentTotals(rct *bill.Payment) {
 			</h2>
 			<table>
 				<tbody>
-					if rct.Tax != nil {
+					if pmt.Tax != nil {
 						<tr class="tax">
 							<th>
 								@t.T(".taxes")
 							</th>
 							<td>
-								@t.LM(rct.Tax.Sum)
+								@t.LM(pmt.Tax.Sum)
 							</td>
 						</tr>
 					}
@@ -88,7 +92,7 @@ templ paymentTotals(rct *bill.Payment) {
 							@t.T(".total")
 						</th>
 						<td>
-							@t.LM(rct.Total)
+							@t.LM(pmt.Total)
 						</td>
 					</tr>
 				</tbody>
@@ -97,13 +101,13 @@ templ paymentTotals(rct *bill.Payment) {
 	</section>
 }
 
-templ method(rct *bill.Payment) {
+templ method(pmt *bill.Payment) {
 	@t.Scope("billing.payment.method") {
 		<section class="payment">
 			<h2 class="title">
 				@t.T(".title")
 			</h2>
-			@paymentInstructions(rct.Method)
+			@paymentInstructions(pmt.Method)
 		</section>
 	}
 }

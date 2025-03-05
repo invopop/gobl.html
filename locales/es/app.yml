@@ -12,14 +12,14 @@ es:
         debit-note: "Nota de Débito"
         paid: "Pagada"
 
-      summary:
+      summary: &summary
         title: "Resumen"
         issue_date: "Fecha de Emisión"
         value_date: "Fecha de Valor"
         operation_date: "Fecha de Operación"
         currency: "Moneda"
         currency_value: "%{desc} (%{code})"
-        preceding_invoice: "Factura Anterior"
+        preceding_document: "Factura Anterior"
         order: "Orden"
         order_period: "Período"
         order_period_label: "%{label}"
@@ -33,7 +33,7 @@ es:
       customer:
         title: "Cliente"
 
-      lines:
+      lines: &lines
         title: "Líneas"
         i: "#"
         ref: "Ref."
@@ -45,7 +45,7 @@ es:
         charges: "Cargos"
         total: "Total"
 
-      totals:
+      totals: &totals
         sum: "Suma"
         discount: "Descuento"
         charge: "Cargo"
@@ -117,12 +117,6 @@ es:
           page: "Página %{id}"
           entry: "Entrada %{id}"
 
-      regimes:
-        co:
-          cufe: "CUFE: %{cufe}"
-          cude: "CUDE: %{cude}"
-          preceding_cufe: "CUFE Factura anterior: %{cufe}"
-
     payment:
       title:
         request: "Solicitud de Pago"
@@ -155,6 +149,37 @@ es:
         title: "Detalles de Pago"
         instructions: *payment_instructions
 
+    delivery:
+      title:
+        advice: "Aviso de Entrega"
+        note: "Albarán de Entrega"
+        waybill: "Carta de Porte"
+        receipt: "Recibo de Entrega"
+
+      summary:
+        <<: *summary
+        despatch_date: "Fecha de Envío"
+        receive_date: "Fecha de Recepción"
+        preceding_document: "Documento Anterior"
+
+      despatcher:
+        title: "Remitente"
+
+      receiver:
+        title: "Destinatario"
+
+      courier:
+        title: "Transportista"
+
+      tracking:
+        title: "Información de Seguimiento"
+        code: "Código de Seguimiento"
+        website: "Enlace de Seguimiento"
+
+      lines: *lines
+
+      totals: *totals
+
   org:
     party:
       tax_id: "%{label}: (%{country}) %{code}"
@@ -175,3 +200,9 @@ es:
     address:
       label: "%{label}:"
       country: "(%{country})"
+
+  regimes:
+    co:
+      cufe: "CUFE: %{cufe}"
+      cude: "CUDE: %{cude}"
+      preceding_cufe: "CUFE Factura anterior: %{cufe}"

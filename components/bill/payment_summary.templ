@@ -41,20 +41,7 @@ templ paymentSummary(pmt *bill.Payment) {
 				if pmt.Ordering != nil {
 					@summaryOrderingRows(pmt.Ordering)
 				}
-				if pmt.Tax != nil {
-					for k, v := range pmt.Ext {
-						if label := mapTaxExtension(ctx, k); label != "" {
-							<li class="tax-ext">
-								<span class="label">
-									{ label }
-								</span>
-								<span class="value">
-									{ v.String() }
-								</span>
-							</li>
-						}
-					}
-				}
+				@summaryTaxExtRows(pmt.Ext)
 			</ul>
 		}
 	</section>

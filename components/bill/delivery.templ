@@ -1,0 +1,279 @@
+package bill
+
+import (
+	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/components/org"
+	"github.com/invopop/gobl.html/components/regimes/pt"
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/bill"
+	gorg "github.com/invopop/gobl/org"
+)
+
+// Delivery renders a complete GOBL bill.Delivery object.
+templ Delivery(env *gobl.Envelope, dlv *bill.Delivery) {
+	<article class="delivery">
+		<header class="regular">
+			@deliveryHeader(env, dlv)
+		</header>
+		@deliveryLines(dlv)
+		if dlv.Totals != nil {
+		<div class="totals">
+				@deliveryTotals(dlv, dlv.Totals)
+				@taxes(dlv.RegimeDef(), dlv.Totals.Taxes)
+		</div>
+		}
+		@deliveryTracking(dlv)
+		@notes(dlv.Notes, dlv.Supplier)
+		<div class="extensions">
+			// Region specific information
+			@pt.ATQR(env)
+		</div>
+	</article>
+}
+
+templ deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) {
+	<div class="details">
+		@deliveryTitle(dlv)
+		@deliverySummary(dlv)
+	</div>
+	<div class="contacts">
+		@supplier(dlv.Supplier)
+		if dlv.Customer != nil {
+			@customer(dlv.Customer)
+		}
+		if dlv.Despatcher != nil {
+			@deliveryParty(dlv.Despatcher, "despatcher")
+		}
+		if dlv.Receiver != nil {
+			@deliveryParty(dlv.Receiver, "receiver")
+		}
+		if dlv.Courier != nil {
+			@deliveryParty(dlv.Courier, "courier")
+		}
+	</div>
+}
+
+templ deliveryTitle(dlv *bill.Delivery) {
+	@t.Scope("billing.delivery.title") {
+		<section class="title">
+			<div class="hero">
+				if img := supplierLogo(ctx, dlv.Supplier); img != nil {
+					<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
+				} else {
+					<div class="alias">
+						{ supplierAlias(dlv.Supplier) }
+					</div>
+				}
+			</div>
+			<h1 class="type">
+				if k := pt.DeliveryTitleKey(dlv); k != "" {
+					@t.T(k)
+				} else {
+					@t.T(titleKey(dlv.Type))
+				}
+			</h1>
+			<h2 class="code">
+				{ code(dlv.Series, dlv.Code, dlv.Regime) }
+			</h2>
+		</section>
+	}
+}
+
+templ deliverySummary(dlv *bill.Delivery) {
+	<section class="summary">
+		@t.Scope("billing.delivery.summary") {
+			<h2 class="title">
+				@t.T(".title")
+			</h2>
+			<ul>
+				<li class="issue-date">
+					<span class="label">
+						@t.T(".issue_date")
+					</span>
+					<span class="value">
+						@t.L(dlv.IssueDate)
+					</span>
+				</li>
+				<li class="currency">
+					<span class="label">
+						@t.T(".currency")
+					</span>
+					<span class="value">
+						{ currencyName(ctx, dlv.Currency) }
+					</span>
+				</li>
+				if dlv.DespatchDate != nil {
+					<li class="despatch-date">
+						<span class="label">
+							@t.T(".despatch_date")
+						</span>
+						<span class="value">
+							@t.L(*dlv.DespatchDate)
+						</span>
+					</li>
+				}
+				if dlv.ReceiveDate != nil {
+					<li class="receive-date">
+						<span class="label">
+							@t.T(".receive_date")
+						</span>
+						<span class="value">
+							@t.L(*dlv.ReceiveDate)
+						</span>
+					</li>
+				}
+				if dlv.ValueDate != nil {
+					<li class="value-date">
+						<span class="label">
+							@t.T(".value_date")
+						</span>
+						<span class="value">
+							@t.L(dlv.ValueDate)
+						</span>
+					</li>
+				}
+				if len(dlv.Preceding) > 0 {
+					@summaryPrecedingRows(dlv.Preceding, dlv.Regime)
+				}
+				if dlv.Ordering != nil {
+					@summaryOrderingRows(dlv.Ordering)
+				}
+				if dlv.Tax != nil {
+					@summaryTaxExtRows(dlv.Tax.Ext)
+				}
+			</ul>
+		}
+	</section>
+}
+
+// deliveryParty renders a party section for delivery-specific parties like despatcher, receiver, and courier
+templ deliveryParty(party *gorg.Party, partyType string) {
+	<section class={ partyType }>
+		<h2>
+			if party != nil && party.Label != "" {
+				{ party.Label }
+			} else {
+				@t.T("billing.delivery." + partyType + ".title")
+			}
+		</h2>
+		@org.Party(party)
+	</section>
+}
+
+templ deliveryTracking(dlv *bill.Delivery) {
+	if dlv.Tracking != nil && (dlv.Tracking.Code != "" || dlv.Tracking.Website != nil) {
+		@t.Scope("billing.delivery.tracking") {
+			<section class="tracking">
+				<h2 class="title">
+					@t.T(".title")
+				</h2>
+				<ul>
+					if dlv.Tracking.Code != "" {
+						<li class="tracking-code">
+							<span class="label">
+								@t.T(".code")
+							</span>
+							<span class="value">
+								{ dlv.Tracking.Code.String() }
+							</span>
+						</li>
+					}
+					if dlv.Tracking.Website != nil {
+						<li class="tracking-website">
+							<span class="label">
+								@t.T(".website")
+							</span>
+							<span class="value">
+								<a href={ templ.SafeURL(dlv.Tracking.Website.URL) } target="_blank">
+									if dlv.Tracking.Website.Label != "" {
+										{ dlv.Tracking.Website.Label }
+									} else {
+										{ dlv.Tracking.Website.URL }
+									}
+								</a>
+							</span>
+						</li>
+					}
+				</ul>
+			</section>
+		}
+	}
+}
+
+// deliveryLines renders the lines of a delivery document
+templ deliveryLines(dlv *bill.Delivery) {
+	@t.Scope("billing.delivery.lines") {
+		@linesWithSupport(dlv.RegimeDef(), dlv.Lines, dlv.Discounts, dlv.Charges)
+	}
+}
+
+// deliveryTotals renders the totals of a delivery document
+templ deliveryTotals(dlv *bill.Delivery, totals *bill.Totals) {
+	<section class="totals">
+		@t.Scope("billing.delivery.totals") {
+			<h2>
+				@t.T(".title")
+			</h2>
+			<table>
+				<tbody>
+					<tr class="sum strong">
+						<th>
+							@t.T(".sum")
+						</th>
+						<td>
+							@t.LM(totals.Sum)
+						</td>
+					</tr>
+					if totals.Discount != nil {
+						<tr class="discount">
+							<th>
+								@t.T(".discount")
+							</th>
+							<td>
+								@t.LM(totals.Discount.Invert())
+							</td>
+						</tr>
+					}
+					if totals.Charge != nil {
+						<tr class="charges">
+							<th>
+								@t.T(".charge")
+							</th>
+							<td>
+								@t.LM(*totals.Charge)
+							</td>
+						</tr>
+					}
+					if !totals.Total.Equals(totals.Sum) {
+						<tr class="total">
+							<th>
+								@t.T(".total")
+							</th>
+							<td>
+								@t.LM(totals.Total)
+							</td>
+						</tr>
+					}
+					if totals.Taxes != nil && len(totals.Taxes.Categories) > 0 {
+						<tr class="tax">
+							<th>
+								@t.T(".taxes")
+							</th>
+							<td>
+								@t.LM(totals.Tax)
+							</td>
+						</tr>
+					}
+					<tr class="total-with-tax strong">
+						<th>
+							@t.T(".total_with_tax")
+						</th>
+						<td>
+							@t.LM(totals.TotalWithTax)
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		}
+	</section>
+}

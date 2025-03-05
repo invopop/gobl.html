@@ -42,6 +42,8 @@ templ Envelope(env *gobl.Envelope) {
 						@bill.Invoice(env, doc)
 					case *gbill.Payment:
 						@bill.Payment(env, doc)
+					case *gbill.Delivery:
+						@bill.Delivery(env, doc)
 					case *gnote.Message:
 						@note.Message(doc)
 					case *gorg.Party:

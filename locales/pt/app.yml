@@ -12,14 +12,14 @@ pt:
         debit-note: "Nota de Débito"
         paid: "Pago"
 
-      summary:
+      summary: &summary
         title: "Resumo"
         issue_date: "Data de Emissão"
         value_date: "Data de Valor"
         operation_date: "Data de Operação"
         currency: "Moeda"
         currency_value: "%{desc} (%{code})"
-        preceding_invoice: "Fatura Anterior"
+        preceding_document: "Fatura Anterior"
         order: "Ordem"
         order_period: "Período"
         order_period_label: "%{label}"
@@ -31,7 +31,7 @@ pt:
       customer:
         title: "Cliente"
 
-      lines:
+      lines: &lines
         title: "Linhas"
         i: "#"
         ref: "Ref."
@@ -43,7 +43,7 @@ pt:
         charges: "Encargos"
         total: "Total"
 
-      totals:
+      totals: &totals
         sum: "Soma"
         discount: "Desconto"
         charge: "Encargo"
@@ -145,6 +145,38 @@ pt:
       method:
         title: "Detalhes do Pagamento"
         instructions: *payment_instructions
+
+    delivery:
+      title:
+        advice: "Aviso de Entrega"
+        note: "Guia de Remessa"
+        waybill: "Guia de Transporte"
+        receipt: "Recibo de Entrega"
+
+      summary:
+        <<: *summary
+        despatch_date: "Data de Expedição"
+        receive_date: "Data de Recepção"
+        preceding_document: "Documento Anterior"
+
+      despatcher:
+        title: "Remetente"
+
+      receiver:
+        title: "Destinatário"
+
+      courier:
+        title: "Transportador"
+
+      tracking:
+        title: "Informações de Rastreamento"
+        code: "Código de Rastreamento"
+        website: "Link de Rastreamento"
+
+      lines: *lines
+
+      totals: *totals
+
   org:
     party:
       tax_id: "%{label}: (%{country}) %{code}"
@@ -164,3 +196,28 @@ pt:
     address:
       label: "%{label}:"
       country: "(%{country})"
+
+  regimes:
+    pt:
+      title:
+        FT: "Fatura"
+        FS: "Fatura Simplificada"
+        FR: "Fatura-Recibo"
+        ND: "Nota de Débito"
+        NC: "Nota de Crédito"
+        RC: "Recibo de Caixa"
+        RG: "Recibo"
+        CM: "Consulta de Mesa"
+        CC: "Crédito de Consignação"
+        FC: "Fatura de Consignação"
+        FO: "Folha de Obra"
+        NE: "Nota de Encomenda"
+        OU: "Outro Documento"
+        OR: "Orçamento"
+        PF: "Fatura Pró-forma"
+        DC: "Documento de Entrega"
+        GR: "Guia de Remessa"
+        GT: "Guia de Transporte"
+        GA: "Ativos Fixos"
+        GC: "Guia de Consignação"
+        GD: "Guia de Devolução"

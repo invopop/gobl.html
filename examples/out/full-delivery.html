@@ -30,7 +30,7 @@
           </a>
         </div>
       </footer>
-      <article class="payment">
+      <article class="delivery">
         <header class="regular">
           <div class="details">
             <section class="title">
@@ -40,13 +40,10 @@
                 </div>
               </div>
               <h1 class="type">
-                Receipt
+                Delivery Note
               </h1>
               <h2 class="code">
-                RG DEV-05/4
-                <span class="paid">
-                  Paid
-                </span>
+                GR SERIES-A/1
               </h2>
             </section>
             <section class="summary">
@@ -70,28 +67,55 @@
                     Euro (EUR)
                   </span>
                 </li>
+                <li class="despatch-date">
+                  <span class="label">
+                    Despatch Date
+                  </span>
+                  <span class="value">
+                    2024-12-23
+                  </span>
+                </li>
+                <li class="receive-date">
+                  <span class="label">
+                    Receive Date
+                  </span>
+                  <span class="value">
+                    2024-12-25
+                  </span>
+                </li>
+                <li class="value-date">
+                  <span class="label">
+                    Value Date
+                  </span>
+                  <span class="value">
+                    2024-12-24
+                  </span>
+                </li>
+                <li class="preceding">
+                  <span class="label">
+                    Previous Document
+                  </span>
+                  <span class="value">
+                    ADV-2024-001
+                  </span>
+                  <span class="value">
+                    2024-12-20
+                  </span>
+                </li>
                 <li class="ordering-code">
                   <span class="label">
                     Order
                   </span>
                   <span class="value">
-                    111-9244735-1237858
+                    ORD-2024-123
                   </span>
                 </li>
                 <li class="ordering-period">
                   <span class="label">
-                    Service period
+                    Period
                   </span>
                   <span class="value">
-                    2022-02-01 to 2022-02-28
-                  </span>
-                </li>
-                <li class="ordering-ident">
-                  <span class="label">
-                    Provider Ref.
-                  </span>
-                  <span class="value">
-                    PROV1234
+                    2024-12-01 to 2024-12-31
                   </span>
                 </li>
               </ul>
@@ -130,18 +154,63 @@
                       Avenida da Liberdade 152 2º Direito, Lisboa, 1250-146 (Portugal)
                     </span>
                   </div>
-                  <div class="telephone">
-                    Tel: +351912345678
-                  </div>
-                  <div class="emails">
-                    Email: gusto@example.com
-                  </div>
-                  <div class="website">
-                    Web: https://gusto.example.com
-                  </div>
                   <div class="tax-id">
                     NIF: (PT) 514329874
                   </div>
+                </div>
+              </div>
+            </section>
+            <section class="despatcher">
+              <h2>
+                Despatcher
+              </h2>
+              <div class="org-party">
+                <div class="name">
+                  Innovatech Logistics
+                </div>
+                <div class="org-address">
+                  <span>
+                    Rua da Indústria 45, Porto, 4050-300 (Portugal)
+                  </span>
+                </div>
+                <div class="tax-id">
+                  NIF: (PT) 590895184
+                </div>
+              </div>
+            </section>
+            <section class="receiver">
+              <h2>
+                Receiver
+              </h2>
+              <div class="org-party">
+                <div class="name">
+                  Gusto Armazém
+                </div>
+                <div class="org-address">
+                  <span>
+                    Zona Industrial, Lote 23, Lisboa, 1300-300 (Portugal)
+                  </span>
+                </div>
+                <div class="tax-id">
+                  NIF: (PT) 514329874
+                </div>
+              </div>
+            </section>
+            <section class="courier">
+              <h2>
+                Courier
+              </h2>
+              <div class="org-party">
+                <div class="name">
+                  Express Delivery Services
+                </div>
+                <div class="org-address">
+                  <span>
+                    Avenida do Transporte 78, Porto, 4100-100 (Portugal)
+                  </span>
+                </div>
+                <div class="tax-id">
+                  NIF: (PT) 507783298
                 </div>
               </div>
             </section>
@@ -157,8 +226,20 @@
                 <th class="ref">
                   #
                 </th>
-                <th class="document">
-                  Document
+                <th class="description">
+                  Description
+                </th>
+                <th class="quantity">
+                  Qty.
+                </th>
+                <th class="unit">
+                  Unit
+                </th>
+                <th class="price">
+                  Price
+                </th>
+                <th class="discount">
+                  Disc.
                 </th>
                 <th class="tax">
                   VAT
@@ -173,40 +254,112 @@
                 <td class="ref">
                   1
                 </td>
-                <td class="document">
+                <td class="description">
                   <span>
-                    FT SERIES-A/123
+                    LCD Monitor 24-inch
                   </span>
-                  <br>
-                  <small>
-                    Invoice 1 of 1
-                  </small>
+                </td>
+                <td class="quantity">
+                  1
+                </td>
+                <td class="unit">
+                  unit
+                </td>
+                <td class="price">
+                  €650,00
+                </td>
+                <td class="discount">
+                  <span class="discount-content">
+                    15,0%
+                  </span>
                 </td>
                 <td class="tax">
-                  €11,50
+                  23,0%
                 </td>
                 <td class="total">
-                  €61,50
+                  €552,50
                 </td>
               </tr>
               <tr>
                 <td class="ref">
                   2
                 </td>
-                <td class="document">
+                <td class="description">
                   <span>
-                    FT SERIES-A/130
+                    Paperclips
                   </span>
-                  <br>
-                  <small>
-                    Invoice 1 of 2
-                  </small>
                 </td>
+                <td class="quantity">
+                  2
+                </td>
+                <td class="unit">
+                  box
+                </td>
+                <td class="price">
+                  €5,00
+                </td>
+                <td class="discount"></td>
                 <td class="tax">
-                  €6,00
+                  23,0%
                 </td>
                 <td class="total">
-                  €106,00
+                  €10,00
+                </td>
+              </tr>
+            </tbody>
+            <tbody class="discounts">
+              <tr>
+                <td class="i">
+                  D1
+                </td>
+                <td class="reason">
+                  Loyalty discount
+                </td>
+                <td class="quantity">
+                  <!-- no quantity -->
+                </td>
+                <td>
+                  <!-- empty -->
+                </td>
+                <td class="percent">
+                  2,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td>
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €-11,25
+                </td>
+              </tr>
+            </tbody>
+            <tbody class="charges">
+              <tr>
+                <td class="ref">
+                  C1
+                </td>
+                <td class="reason">
+                  Express delivery fee
+                </td>
+                <td class="quantity">
+                  <!-- no quantity -->
+                </td>
+                <td>
+                  <!-- empty -->
+                </td>
+                <td class="percent">
+                  <!-- empty -->
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td>
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €10,00
                 </td>
               </tr>
             </tbody>
@@ -219,20 +372,52 @@
             </h2>
             <table>
               <tbody>
+                <tr class="sum strong">
+                  <th>
+                    Sum
+                  </th>
+                  <td>
+                    €562,50
+                  </td>
+                </tr>
+                <tr class="discount">
+                  <th>
+                    Discount
+                  </th>
+                  <td>
+                    €-11,25
+                  </td>
+                </tr>
+                <tr class="charges">
+                  <th>
+                    Charge
+                  </th>
+                  <td>
+                    €10,00
+                  </td>
+                </tr>
+                <tr class="total">
+                  <th>
+                    Total
+                  </th>
+                  <td>
+                    €561,25
+                  </td>
+                </tr>
                 <tr class="tax">
                   <th>
                     Tax
                   </th>
                   <td>
-                    €17,50
+                    €129,38
                   </td>
                 </tr>
-                <tr class="total strong">
+                <tr class="total-with-tax strong">
                   <th>
-                    Total
+                    Total with tax
                   </th>
                   <td>
-                    €167,50
+                    €690,63
                   </td>
                 </tr>
               </tbody>
@@ -261,45 +446,44 @@
               </thead>
               <tbody>
                 <tr>
-                  <td rowspan="2" class="category">
+                  <td rowspan="1" class="category">
                     VAT
                   </td>
                   <td class="base">
-                    €50,00
+                    €562,50
                   </td>
                   <td class="rate">
                     23,0%
                   </td>
                   <td class="amount">
-                    €11,50
-                  </td>
-                </tr>
-                <tr>
-                  <td class="base">
-                    €100,00
-                  </td>
-                  <td class="rate">
-                    6,0%
-                  </td>
-                  <td class="amount">
-                    €6,00
+                    €129,38
                   </td>
                 </tr>
               </tbody>
             </table>
           </section>
         </div>
-        <section class="payment">
+        <section class="tracking">
           <h2 class="title">
-            Payment Details
+            Tracking Information
           </h2>
-          <ul class="instructions">
-            <li class="method-name">
+          <ul>
+            <li class="tracking-code">
               <span class="label">
-                Method of payment
+                Tracking Code
               </span>
               <span class="value">
-                Full settlement made in cash
+                TRACK-123456789
+              </span>
+            </li>
+            <li class="tracking-website">
+              <span class="label">
+                Tracking Link
+              </span>
+              <span class="value">
+                <a href="https://tracking.innovatech.pt/TRACK-123456789" target="_blank">
+                  Delivery Tracking Portal
+                </a>
               </span>
             </li>
           </ul>
@@ -310,7 +494,7 @@
           </h2>
           <div class="note">
             <p>
-              Thank you for you business!
+              Delivery of ordered products as per contract agreement.
             </p>
           </div>
         </section>

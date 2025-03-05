@@ -62,7 +62,11 @@ templ title(inv *bill.Invoice) {
 				}
 			</div>
 			<h1 class="type">
-				@t.T("." + i18nTitleTag(inv))
+				if k := pt.InvoiceTitleKey(inv); k != "" {
+					@t.T(k)
+				} else {
+					@t.T(invoiceTitleKey(inv))
+				}
 			</h1>
 			<h2 class="code">
 				{ code(inv.Series, inv.Code, inv.Regime) }
@@ -105,12 +109,16 @@ templ din5008Header(inv *bill.Invoice) {
 	</div>
 }
 
-func i18nTitleTag(inv *bill.Invoice) string {
-	typ := string(inv.Type)
+func invoiceTitleKey(inv *bill.Invoice) string {
+	typ := titleKey(inv.Type)
 	if inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard {
 		typ = typ + "-simplified"
 	}
 	return typ
+}
+
+func titleKey(typ cbc.Key) string {
+	return "." + string(typ)
 }
 
 func supplierAlias(sup *org.Party) string {

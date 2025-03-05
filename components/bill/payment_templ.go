@@ -16,7 +16,7 @@ import (
 )
 
 // Payment renders a complete GOBL bill.Payment object.
-func Payment(env *gobl.Envelope, rct *bill.Payment) templ.Component {
+func Payment(env *gobl.Envelope, pmt *bill.Payment) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -41,7 +41,7 @@ func Payment(env *gobl.Envelope, rct *bill.Payment) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = paymentHeader(rct).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = paymentHeader(pmt).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -49,7 +49,7 @@ func Payment(env *gobl.Envelope, rct *bill.Payment) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = paymentLines(rct).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = paymentLines(pmt).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -57,11 +57,11 @@ func Payment(env *gobl.Envelope, rct *bill.Payment) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = paymentTotals(rct).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = paymentTotals(pmt).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = taxes(rct.RegimeDef(), rct.Tax).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = taxes(pmt.RegimeDef(), pmt.Tax).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -69,11 +69,11 @@ func Payment(env *gobl.Envelope, rct *bill.Payment) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = method(rct).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = method(pmt).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = notes(rct.Notes, rct.Supplier).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = notes(pmt.Notes, pmt.Supplier).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -93,7 +93,7 @@ func Payment(env *gobl.Envelope, rct *bill.Payment) templ.Component {
 	})
 }
 
-func paymentHeader(rct *bill.Payment) templ.Component {
+func paymentHeader(pmt *bill.Payment) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -118,11 +118,11 @@ func paymentHeader(rct *bill.Payment) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = paymentTitle(rct).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = paymentTitle(pmt).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = paymentSummary(rct).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = paymentSummary(pmt).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -130,12 +130,12 @@ func paymentHeader(rct *bill.Payment) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = supplier(rct.Supplier).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = supplier(pmt.Supplier).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		if rct.Customer != nil {
-			templ_7745c5c3_Err = customer(rct.Customer).Render(ctx, templ_7745c5c3_Buffer)
+		if pmt.Customer != nil {
+			templ_7745c5c3_Err = customer(pmt.Customer).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -148,7 +148,7 @@ func paymentHeader(rct *bill.Payment) templ.Component {
 	})
 }
 
-func paymentTitle(rct *bill.Payment) templ.Component {
+func paymentTitle(pmt *bill.Payment) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -185,7 +185,7 @@ func paymentTitle(rct *bill.Payment) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			if img := supplierLogo(ctx, rct.Supplier); img != nil {
+			if img := supplierLogo(ctx, pmt.Supplier); img != nil {
 				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "<img src=\"")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -235,7 +235,7 @@ func paymentTitle(rct *bill.Payment) templ.Component {
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var8 string
-				templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(supplierAlias(rct.Supplier))
+				templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(supplierAlias(pmt.Supplier))
 				if templ_7745c5c3_Err != nil {
 					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment.templ`, Line: 51, Col: 35}
 				}
@@ -252,18 +252,25 @@ func paymentTitle(rct *bill.Payment) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = t.T("."+string(rct.Type)).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
+			if k := pt.PaymentTitleKey(pmt); k != "" {
+				templ_7745c5c3_Err = t.T(k).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			} else {
+				templ_7745c5c3_Err = t.T(titleKey(pmt.Type)).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
 			}
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "</h1><h2 class=\"code\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var9 string
-			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(code(rct.Series, rct.Code, rct.Regime))
+			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(code(pmt.Series, pmt.Code, pmt.Regime))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment.templ`, Line: 59, Col: 44}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment.templ`, Line: 63, Col: 44}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 			if templ_7745c5c3_Err != nil {
@@ -291,7 +298,7 @@ func paymentTitle(rct *bill.Payment) templ.Component {
 	})
 }
 
-func paymentTotals(rct *bill.Payment) templ.Component {
+func paymentTotals(pmt *bill.Payment) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -340,7 +347,7 @@ func paymentTotals(rct *bill.Payment) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			if rct.Tax != nil {
+			if pmt.Tax != nil {
 				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "<tr class=\"tax\"><th>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -353,7 +360,7 @@ func paymentTotals(rct *bill.Payment) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = t.LM(rct.Tax.Sum).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = t.LM(pmt.Tax.Sum).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -374,7 +381,7 @@ func paymentTotals(rct *bill.Payment) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = t.LM(rct.Total).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = t.LM(pmt.Total).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -396,7 +403,7 @@ func paymentTotals(rct *bill.Payment) templ.Component {
 	})
 }
 
-func method(rct *bill.Payment) templ.Component {
+func method(pmt *bill.Payment) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -441,7 +448,7 @@ func method(rct *bill.Payment) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = paymentInstructions(rct.Method).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = paymentInstructions(pmt.Method).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
