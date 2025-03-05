@@ -4,11 +4,12 @@
 		"uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
 		"dig": {
 			"alg": "sha256",
-			"val": "ac1ea2ef0d248f7f7a9bfdcb608f864571bdb746d55ce6ebbf6e803c07ca787f"
+			"val": "84bb8ee367c8f9eff224425e370adebc126d8a38a4767e0596a0762c7ba8a39a"
 		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "US",
 		"uuid": "018f57cc-cc50-7289-a654-a2507af6c889",
 		"type": "standard",
 		"series": "FAKE",
@@ -83,9 +84,9 @@
 				"sum": "4000.00",
 				"discounts": [
 					{
+						"reason": "Just because",
 						"percent": "5%",
-						"amount": "200.00",
-						"reason": "Just because"
+						"amount": "200.00"
 					}
 				],
 				"total": "3800.00"
@@ -104,9 +105,6 @@
 		"totals": {
 			"sum": "4800.00",
 			"total": "4800.00",
-			"taxes": {
-				"sum": "0.00"
-			},
 			"tax": "0.00",
 			"total_with_tax": "4800.00",
 			"payable": "4800.00"

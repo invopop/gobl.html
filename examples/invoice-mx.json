@@ -1,208 +1,213 @@
 {
-  "$schema": "https://gobl.org/draft-0/envelope",
-  "head": {
-    "uuid": "66c60bf0-0310-11ef-b734-ffb5249031a5",
-    "dig": {
-      "alg": "sha256",
-      "val": "af841193c49d68b81bde32cbb74361c5a36d4a586f6e26b57c455c3ba899eb3a"
-    },
-    "stamps": [
-      {
-        "prv": "sat-uuid",
-        "val": "187501fc-3e99-4034-bcb1-7429ee841bb1"
-      },
-      {
-        "prv": "cfdi-sig",
-        "val": "eMreWl4lUV+D3r1bQnQf4oOAlpJIDBHf5f4vwE/JsrE8orTIeJnaMWmh8nGWRHRXMnsrGpbPmYWpUL2yym2YEWz8by+BWt2B5wKkKWuwt3mhdxeyhUPY22x7AtIF9GFmfvRX5rpQkmhKCxojjkxsv+3JoW1ppN2Db88ZgJIV1UxcHguObSQ01mw9zhaRx4Uoxhri9wPHxRvbQX7jSuFhSs6uiOyH4z5L+MB9WgrilJQOInHXFIIisnRQ99U5O+UMZoJrXWS16iFgo2ccOCteS61whEOZIgNAZYJ/CkKQeDLuZDcCFihMX9tPYL/3nLiaqDFSS9fvrbjhLdp1+hv+oQ=="
-      },
-      {
-        "prv": "cfdi-serial",
-        "val": "30001000000500003416"
-      },
-      {
-        "prv": "sat-sig",
-        "val": "YrFWG5lHOTvdrPjlL2AG6SDu0CSkd3lst3NR6ROCsRqTX3j6jVr7hBOyJXev5JkeWbEuLgGmVv+pNuHRoeaoQaQsfFaYM39Zfar5ow/iGIcLfOrUei60l7aicsK2Yx87IWY8CNr5ZZmlQ8Nr/HWp6I7CThWx+6H14+qnSX7PYIK/gkSWr5ZoOVUZvkukZoOgSzaah0DFNa4w6s6RjXjwCwkWavdf4QFg/VSZzs6RquJkFgkVBo1hDyXIlKRpGa03674RujuKtTAsoSZBPDERDj0Lc1hqh11cK0Hlm2TVLHA63P4zwKDvA3XLRUEXr6upbwDv3CxiDL0JXRurmkowEg=="
-      },
-      {
-        "prv": "sat-serial",
-        "val": "30001000000500003456"
-      },
-      {
-        "prv": "sat-timestamp",
-        "val": "2024-04-25T09:19:41"
-      },
-      {
-        "prv": "sat-chain",
-        "val": "||1.1|187501fc-3e99-4034-bcb1-7429ee841bb1|2024-04-25T09:19:41|SPR190613I52|eMreWl4lUV+D3r1bQnQf4oOAlpJIDBHf5f4vwE/JsrE8orTIeJnaMWmh8nGWRHRXMnsrGpbPmYWpUL2yym2YEWz8by+BWt2B5wKkKWuwt3mhdxeyhUPY22x7AtIF9GFmfvRX5rpQkmhKCxojjkxsv+3JoW1ppN2Db88ZgJIV1UxcHguObSQ01mw9zhaRx4Uoxhri9wPHxRvbQX7jSuFhSs6uiOyH4z5L+MB9WgrilJQOInHXFIIisnRQ99U5O+UMZoJrXWS16iFgo2ccOCteS61whEOZIgNAZYJ/CkKQeDLuZDcCFihMX9tPYL/3nLiaqDFSS9fvrbjhLdp1+hv+oQ==|30001000000500003456||"
-      },
-      {
-        "prv": "sat-url",
-        "val": "https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?fe=mkowEg%3D%3D&id=187501fc-3e99-4034-bcb1-7429ee841bb1&re=EKU9003173C9&rr=EKU9003173C9&tt=201.36"
-      }
-    ]
-  },
-  "doc": {
-    "$schema": "https://gobl.org/draft-0/bill/invoice",
-    "uuid": "018f15aa-7b12-742a-8526-4ca463c4bb7e",
-    "type": "standard",
-    "series": "LMC",
-    "code": "0010",
-    "issue_date": "2024-04-25",
-    "currency": "MXN",
-    "tax": {
-      "ext": {
-        "mx-cfdi-issue-place": "26015"
-      }
-    },
-    "supplier": {
-      "name": "ESCUELA KEMPER URGATE",
-      "tax_id": {
-        "country": "MX",
-        "code": "EKU9003173C9"
-      },
-      "ext": {
-        "mx-cfdi-fiscal-regime": "601"
-      }
-    },
-    "customer": {
-      "name": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
-      "tax_id": {
-        "country": "MX",
-        "code": "URE180429TM6"
-      },
-      "ext": {
-        "mx-cfdi-fiscal-regime": "601",
-        "mx-cfdi-post-code": "86991",
-        "mx-cfdi-use": "G01"
-      }
-    },
-    "lines": [
-      {
-        "i": 1,
-        "quantity": "2",
-        "item": {
-          "name": "Cigarros",
-          "price": "200.2020",
-          "unit": "piece",
-          "ext": {
-            "mx-cfdi-prod-serv": "50211502"
-          }
-        },
-        "sum": "400.4040",
-        "discounts": [
-          {
-            "percent": "25.0%",
-            "amount": "100.1010"
-          }
-        ],
-        "taxes": [
-          {
-            "cat": "VAT",
-            "rate": "standard",
-            "percent": "16.0%"
-          },
-          {
-            "cat": "RVAT",
-            "percent": "10.6667%"
-          },
-          {
-            "cat": "ISR",
-            "percent": "10%"
-          }
-        ],
-        "total": "200.2020"
-      },
-      {
-        "i": 2,
-        "quantity": "1",
-        "item": {
-          "name": "Cerveza",
-          "price": "10.50",
-          "unit": "piece",
-          "ext": {
-            "mx-cfdi-prod-serv": "50211502"
-          }
-        },
-        "sum": "10.50",
-        "taxes": [
-          {
-            "cat": "VAT",
-            "rate": "exempt"
-          }
-        ],
-        "total": "10.50"
-      }
-    ],
-    "payment": {
-      "terms": {
-        "notes": "Pago a 30 días."
-      },
-      "advances": [
-        {
-          "key": "credit-transfer",
-          "description": "Top-up payment",
-          "percent": "100%",
-          "amount": "201.36"
-        }
-      ]
-    },
-    "totals": {
-      "sum": "210.70",
-      "total": "210.70",
-      "taxes": {
-        "categories": [
-          {
-            "code": "VAT",
-            "rates": [
-              {
-                "key": "standard",
-                "base": "200.20",
-                "percent": "16.0%",
-                "amount": "32.03"
-              },
-              {
-                "key": "exempt",
-                "base": "10.50",
-                "amount": "0.00"
-              }
-            ],
-            "amount": "32.03"
-          },
-          {
-            "code": "RVAT",
-            "retained": true,
-            "rates": [
-              {
-                "base": "200.20",
-                "percent": "10.6667%",
-                "amount": "21.35"
-              }
-            ],
-            "amount": "21.35"
-          },
-          {
-            "code": "ISR",
-            "retained": true,
-            "rates": [
-              {
-                "base": "200.20",
-                "percent": "10%",
-                "amount": "20.02"
-              }
-            ],
-            "amount": "20.02"
-          }
-        ],
-        "sum": "-9.34"
-      },
-      "tax": "-9.34",
-      "total_with_tax": "201.36",
-      "payable": "201.36",
-      "advance": "201.36",
-      "due": "0.00"
-    }
-  },
-  "sigs": [
-    "eyJhbGciOiJFUzI1NiIsImtpZCI6ImRmNTBiNjkzLWUxODMtNDQxZS1iODk2LWM3MmFkZTczZjNiMSJ9.eyJ1dWlkIjoiNjZjNjBiZjAtMDMxMC0xMWVmLWI3MzQtZmZiNTI0OTAzMWE1IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImFmODQxMTkzYzQ5ZDY4YjgxYmRlMzJjYmI3NDM2MWM1YTM2ZDRhNTg2ZjZlMjZiNTdjNDU1YzNiYTg5OWViM2EifSwic3RhbXBzIjpbeyJwcnYiOiJzYXQtdXVpZCIsInZhbCI6IjE4NzUwMWZjLTNlOTktNDAzNC1iY2IxLTc0MjllZTg0MWJiMSJ9LHsicHJ2IjoiY2ZkaS1zaWciLCJ2YWwiOiJlTXJlV2w0bFVWK0QzcjFiUW5RZjRvT0FscEpJREJIZjVmNHZ3RS9Kc3JFOG9yVEllSm5hTVdtaDhuR1dSSFJYTW5zckdwYlBtWVdwVUwyeXltMllFV3o4YnkrQld0MkI1d0trS1d1d3QzbWhkeGV5aFVQWTIyeDdBdElGOUdGbWZ2Ulg1cnBRa21oS0N4b2pqa3hzdiszSm9XMXBwTjJEYjg4WmdKSVYxVXhjSGd1T2JTUTAxbXc5emhhUng0VW94aHJpOXdQSHhSdmJRWDdqU3VGaFNzNnVpT3lINHo1TCtNQjlXZ3JpbEpRT0luSFhGSUlpc25SUTk5VTVPK1VNWm9KclhXUzE2aUZnbzJjY09DdGVTNjF3aEVPWklnTkFaWUovQ2tLUWVETHVaRGNDRmloTVg5dFBZTC8zbkxpYXFERlNTOWZ2cmJqaExkcDEraHYrb1E9PSJ9LHsicHJ2IjoiY2ZkaS1zZXJpYWwiLCJ2YWwiOiIzMDAwMTAwMDAwMDUwMDAwMzQxNiJ9LHsicHJ2Ijoic2F0LXNpZyIsInZhbCI6IllyRldHNWxIT1R2ZHJQamxMMkFHNlNEdTBDU2tkM2xzdDNOUjZST0NzUnFUWDNqNmpWcjdoQk95SlhldjVKa2VXYkV1TGdHbVZ2K3BOdUhSb2Vhb1FhUXNmRmFZTTM5WmZhcjVvdy9pR0ljTGZPclVlaTYwbDdhaWNzSzJZeDg3SVdZOENOcjVaWm1sUThOci9IV3A2STdDVGhXeCs2SDE0K3FuU1g3UFlJSy9na1NXcjVab09WVVp2a3VrWm9PZ1N6YWFoMERGTmE0dzZzNlJqWGp3Q3drV2F2ZGY0UUZnL1ZTWnpzNlJxdUprRmdrVkJvMWhEeVhJbEtScEdhMDM2NzRSdWp1S3RUQXNvU1pCUERFUkRqMExjMWhxaDExY0swSGxtMlRWTEhBNjNQNHp3S0R2QTNYTFJVRVhyNnVwYndEdjNDeGlETDBKWFJ1cm1rb3dFZz09In0seyJwcnYiOiJzYXQtc2VyaWFsIiwidmFsIjoiMzAwMDEwMDAwMDA1MDAwMDM0NTYifSx7InBydiI6InNhdC10aW1lc3RhbXAiLCJ2YWwiOiIyMDI0LTA0LTI1VDA5OjE5OjQxIn0seyJwcnYiOiJzYXQtY2hhaW4iLCJ2YWwiOiJ8fDEuMXwxODc1MDFmYy0zZTk5LTQwMzQtYmNiMS03NDI5ZWU4NDFiYjF8MjAyNC0wNC0yNVQwOToxOTo0MXxTUFIxOTA2MTNJNTJ8ZU1yZVdsNGxVVitEM3IxYlFuUWY0b09BbHBKSURCSGY1ZjR2d0UvSnNyRThvclRJZUpuYU1XbWg4bkdXUkhSWE1uc3JHcGJQbVlXcFVMMnl5bTJZRVd6OGJ5K0JXdDJCNXdLa0tXdXd0M21oZHhleWhVUFkyMng3QXRJRjlHRm1mdlJYNXJwUWttaEtDeG9qamt4c3YrM0pvVzFwcE4yRGI4OFpnSklWMVV4Y0hndU9iU1EwMW13OXpoYVJ4NFVveGhyaTl3UEh4UnZiUVg3alN1RmhTczZ1aU95SDR6NUwrTUI5V2dyaWxKUU9JbkhYRklJaXNuUlE5OVU1TytVTVpvSnJYV1MxNmlGZ28yY2NPQ3RlUzYxd2hFT1pJZ05BWllKL0NrS1FlREx1WkRjQ0ZpaE1YOXRQWUwvM25MaWFxREZTUzlmdnJiamhMZHAxK2h2K29RPT18MzAwMDEwMDAwMDA1MDAwMDM0NTZ8fCJ9LHsicHJ2Ijoic2F0LXVybCIsInZhbCI6Imh0dHBzOi8vdmVyaWZpY2FjZmRpLmZhY3R1cmFlbGVjdHJvbmljYS5zYXQuZ29iLm14L2RlZmF1bHQuYXNweD9mZT1ta293RWclM0QlM0RcdTAwMjZpZD0xODc1MDFmYy0zZTk5LTQwMzQtYmNiMS03NDI5ZWU4NDFiYjFcdTAwMjZyZT1FS1U5MDAzMTczQzlcdTAwMjZycj1FS1U5MDAzMTczQzlcdTAwMjZ0dD0yMDEuMzYifV19.wq88xyl_XoxwAqxqp3xz4-T-XmPE-ye2eTJ_lC7nWcsE2iRXfMFTMNJwiijag-vjDSOFsToVlZonW1BnBOu_RA"
-  ]
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "66c60bf0-0310-11ef-b734-ffb5249031a5",
+		"dig": {
+			"alg": "sha256",
+			"val": "994f48cf57b04968e2dfebe3a7a95258abe8afa0485c736a6c7af1cb841a2f20"
+		},
+		"stamps": [
+			{
+				"prv": "sat-uuid",
+				"val": "187501fc-3e99-4034-bcb1-7429ee841bb1"
+			},
+			{
+				"prv": "cfdi-sig",
+				"val": "eMreWl4lUV+D3r1bQnQf4oOAlpJIDBHf5f4vwE/JsrE8orTIeJnaMWmh8nGWRHRXMnsrGpbPmYWpUL2yym2YEWz8by+BWt2B5wKkKWuwt3mhdxeyhUPY22x7AtIF9GFmfvRX5rpQkmhKCxojjkxsv+3JoW1ppN2Db88ZgJIV1UxcHguObSQ01mw9zhaRx4Uoxhri9wPHxRvbQX7jSuFhSs6uiOyH4z5L+MB9WgrilJQOInHXFIIisnRQ99U5O+UMZoJrXWS16iFgo2ccOCteS61whEOZIgNAZYJ/CkKQeDLuZDcCFihMX9tPYL/3nLiaqDFSS9fvrbjhLdp1+hv+oQ=="
+			},
+			{
+				"prv": "cfdi-serial",
+				"val": "30001000000500003416"
+			},
+			{
+				"prv": "sat-sig",
+				"val": "YrFWG5lHOTvdrPjlL2AG6SDu0CSkd3lst3NR6ROCsRqTX3j6jVr7hBOyJXev5JkeWbEuLgGmVv+pNuHRoeaoQaQsfFaYM39Zfar5ow/iGIcLfOrUei60l7aicsK2Yx87IWY8CNr5ZZmlQ8Nr/HWp6I7CThWx+6H14+qnSX7PYIK/gkSWr5ZoOVUZvkukZoOgSzaah0DFNa4w6s6RjXjwCwkWavdf4QFg/VSZzs6RquJkFgkVBo1hDyXIlKRpGa03674RujuKtTAsoSZBPDERDj0Lc1hqh11cK0Hlm2TVLHA63P4zwKDvA3XLRUEXr6upbwDv3CxiDL0JXRurmkowEg=="
+			},
+			{
+				"prv": "sat-serial",
+				"val": "30001000000500003456"
+			},
+			{
+				"prv": "sat-timestamp",
+				"val": "2024-04-25T09:19:41"
+			},
+			{
+				"prv": "sat-chain",
+				"val": "||1.1|187501fc-3e99-4034-bcb1-7429ee841bb1|2024-04-25T09:19:41|SPR190613I52|eMreWl4lUV+D3r1bQnQf4oOAlpJIDBHf5f4vwE/JsrE8orTIeJnaMWmh8nGWRHRXMnsrGpbPmYWpUL2yym2YEWz8by+BWt2B5wKkKWuwt3mhdxeyhUPY22x7AtIF9GFmfvRX5rpQkmhKCxojjkxsv+3JoW1ppN2Db88ZgJIV1UxcHguObSQ01mw9zhaRx4Uoxhri9wPHxRvbQX7jSuFhSs6uiOyH4z5L+MB9WgrilJQOInHXFIIisnRQ99U5O+UMZoJrXWS16iFgo2ccOCteS61whEOZIgNAZYJ/CkKQeDLuZDcCFihMX9tPYL/3nLiaqDFSS9fvrbjhLdp1+hv+oQ==|30001000000500003456||"
+			},
+			{
+				"prv": "sat-url",
+				"val": "https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?fe=mkowEg%3D%3D\u0026id=187501fc-3e99-4034-bcb1-7429ee841bb1\u0026re=EKU9003173C9\u0026rr=EKU9003173C9\u0026tt=201.36"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "MX",
+		"uuid": "018f15aa-7b12-742a-8526-4ca463c4bb7e",
+		"type": "standard",
+		"series": "LMC",
+		"code": "0010",
+		"issue_date": "2024-04-25",
+		"currency": "MXN",
+		"tax": {
+			"ext": {
+				"mx-cfdi-issue-place": "26015"
+			}
+		},
+		"supplier": {
+			"name": "ESCUELA KEMPER URGATE",
+			"tax_id": {
+				"country": "MX",
+				"code": "EKU9003173C9"
+			},
+			"ext": {
+				"mx-cfdi-fiscal-regime": "601"
+			}
+		},
+		"customer": {
+			"name": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+			"tax_id": {
+				"country": "MX",
+				"code": "URE180429TM6"
+			},
+			"addresses": [
+				{
+					"code": "86991"
+				}
+			],
+			"ext": {
+				"mx-cfdi-fiscal-regime": "601",
+				"mx-cfdi-use": "G01"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Cigarros",
+					"price": "200.2020",
+					"unit": "piece",
+					"ext": {
+						"mx-cfdi-prod-serv": "50211502"
+					}
+				},
+				"sum": "400.4040",
+				"discounts": [
+					{
+						"percent": "25.0%",
+						"amount": "100.1010"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "16.0%"
+					},
+					{
+						"cat": "RVAT",
+						"percent": "10.6667%"
+					},
+					{
+						"cat": "ISR",
+						"percent": "10%"
+					}
+				],
+				"total": "300.3030"
+			},
+			{
+				"i": 2,
+				"quantity": "1",
+				"item": {
+					"name": "Cerveza",
+					"price": "10.50",
+					"unit": "piece",
+					"ext": {
+						"mx-cfdi-prod-serv": "50211502"
+					}
+				},
+				"sum": "10.50",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "exempt"
+					}
+				],
+				"total": "10.50"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Pago a 30 días."
+			},
+			"advances": [
+				{
+					"key": "credit-transfer",
+					"description": "Top-up payment",
+					"percent": "100%",
+					"amount": "296.79"
+				}
+			]
+		},
+		"totals": {
+			"sum": "310.80",
+			"total": "310.80",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "300.30",
+								"percent": "16.0%",
+								"amount": "48.05"
+							},
+							{
+								"key": "exempt",
+								"base": "10.50",
+								"amount": "0.00"
+							}
+						],
+						"amount": "48.05"
+					},
+					{
+						"code": "RVAT",
+						"retained": true,
+						"rates": [
+							{
+								"base": "300.30",
+								"percent": "10.6667%",
+								"amount": "32.03"
+							}
+						],
+						"amount": "32.03"
+					},
+					{
+						"code": "ISR",
+						"retained": true,
+						"rates": [
+							{
+								"base": "300.30",
+								"percent": "10%",
+								"amount": "30.03"
+							}
+						],
+						"amount": "30.03"
+					}
+				],
+				"sum": "-14.01"
+			},
+			"tax": "-14.01",
+			"total_with_tax": "296.79",
+			"payable": "296.79",
+			"advance": "296.79",
+			"due": "0.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6ImRmNTBiNjkzLWUxODMtNDQxZS1iODk2LWM3MmFkZTczZjNiMSJ9.eyJ1dWlkIjoiNjZjNjBiZjAtMDMxMC0xMWVmLWI3MzQtZmZiNTI0OTAzMWE1IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImFmODQxMTkzYzQ5ZDY4YjgxYmRlMzJjYmI3NDM2MWM1YTM2ZDRhNTg2ZjZlMjZiNTdjNDU1YzNiYTg5OWViM2EifSwic3RhbXBzIjpbeyJwcnYiOiJzYXQtdXVpZCIsInZhbCI6IjE4NzUwMWZjLTNlOTktNDAzNC1iY2IxLTc0MjllZTg0MWJiMSJ9LHsicHJ2IjoiY2ZkaS1zaWciLCJ2YWwiOiJlTXJlV2w0bFVWK0QzcjFiUW5RZjRvT0FscEpJREJIZjVmNHZ3RS9Kc3JFOG9yVEllSm5hTVdtaDhuR1dSSFJYTW5zckdwYlBtWVdwVUwyeXltMllFV3o4YnkrQld0MkI1d0trS1d1d3QzbWhkeGV5aFVQWTIyeDdBdElGOUdGbWZ2Ulg1cnBRa21oS0N4b2pqa3hzdiszSm9XMXBwTjJEYjg4WmdKSVYxVXhjSGd1T2JTUTAxbXc5emhhUng0VW94aHJpOXdQSHhSdmJRWDdqU3VGaFNzNnVpT3lINHo1TCtNQjlXZ3JpbEpRT0luSFhGSUlpc25SUTk5VTVPK1VNWm9KclhXUzE2aUZnbzJjY09DdGVTNjF3aEVPWklnTkFaWUovQ2tLUWVETHVaRGNDRmloTVg5dFBZTC8zbkxpYXFERlNTOWZ2cmJqaExkcDEraHYrb1E9PSJ9LHsicHJ2IjoiY2ZkaS1zZXJpYWwiLCJ2YWwiOiIzMDAwMTAwMDAwMDUwMDAwMzQxNiJ9LHsicHJ2Ijoic2F0LXNpZyIsInZhbCI6IllyRldHNWxIT1R2ZHJQamxMMkFHNlNEdTBDU2tkM2xzdDNOUjZST0NzUnFUWDNqNmpWcjdoQk95SlhldjVKa2VXYkV1TGdHbVZ2K3BOdUhSb2Vhb1FhUXNmRmFZTTM5WmZhcjVvdy9pR0ljTGZPclVlaTYwbDdhaWNzSzJZeDg3SVdZOENOcjVaWm1sUThOci9IV3A2STdDVGhXeCs2SDE0K3FuU1g3UFlJSy9na1NXcjVab09WVVp2a3VrWm9PZ1N6YWFoMERGTmE0dzZzNlJqWGp3Q3drV2F2ZGY0UUZnL1ZTWnpzNlJxdUprRmdrVkJvMWhEeVhJbEtScEdhMDM2NzRSdWp1S3RUQXNvU1pCUERFUkRqMExjMWhxaDExY0swSGxtMlRWTEhBNjNQNHp3S0R2QTNYTFJVRVhyNnVwYndEdjNDeGlETDBKWFJ1cm1rb3dFZz09In0seyJwcnYiOiJzYXQtc2VyaWFsIiwidmFsIjoiMzAwMDEwMDAwMDA1MDAwMDM0NTYifSx7InBydiI6InNhdC10aW1lc3RhbXAiLCJ2YWwiOiIyMDI0LTA0LTI1VDA5OjE5OjQxIn0seyJwcnYiOiJzYXQtY2hhaW4iLCJ2YWwiOiJ8fDEuMXwxODc1MDFmYy0zZTk5LTQwMzQtYmNiMS03NDI5ZWU4NDFiYjF8MjAyNC0wNC0yNVQwOToxOTo0MXxTUFIxOTA2MTNJNTJ8ZU1yZVdsNGxVVitEM3IxYlFuUWY0b09BbHBKSURCSGY1ZjR2d0UvSnNyRThvclRJZUpuYU1XbWg4bkdXUkhSWE1uc3JHcGJQbVlXcFVMMnl5bTJZRVd6OGJ5K0JXdDJCNXdLa0tXdXd0M21oZHhleWhVUFkyMng3QXRJRjlHRm1mdlJYNXJwUWttaEtDeG9qamt4c3YrM0pvVzFwcE4yRGI4OFpnSklWMVV4Y0hndU9iU1EwMW13OXpoYVJ4NFVveGhyaTl3UEh4UnZiUVg3alN1RmhTczZ1aU95SDR6NUwrTUI5V2dyaWxKUU9JbkhYRklJaXNuUlE5OVU1TytVTVpvSnJYV1MxNmlGZ28yY2NPQ3RlUzYxd2hFT1pJZ05BWllKL0NrS1FlREx1WkRjQ0ZpaE1YOXRQWUwvM25MaWFxREZTUzlmdnJiamhMZHAxK2h2K29RPT18MzAwMDEwMDAwMDA1MDAwMDM0NTZ8fCJ9LHsicHJ2Ijoic2F0LXVybCIsInZhbCI6Imh0dHBzOi8vdmVyaWZpY2FjZmRpLmZhY3R1cmFlbGVjdHJvbmljYS5zYXQuZ29iLm14L2RlZmF1bHQuYXNweD9mZT1ta293RWclM0QlM0RcdTAwMjZpZD0xODc1MDFmYy0zZTk5LTQwMzQtYmNiMS03NDI5ZWU4NDFiYjFcdTAwMjZyZT1FS1U5MDAzMTczQzlcdTAwMjZycj1FS1U5MDAzMTczQzlcdTAwMjZ0dD0yMDEuMzYifV19.wq88xyl_XoxwAqxqp3xz4-T-XmPE-ye2eTJ_lC7nWcsE2iRXfMFTMNJwiijag-vjDSOFsToVlZonW1BnBOu_RA"
+	]
 }
