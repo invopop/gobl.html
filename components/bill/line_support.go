@@ -17,12 +17,11 @@ type lineSupport struct {
 
 // prepareLineSupport goes through the invoice lines and determines
 // some of the columns that will need to be shown
-func prepareLineSupport(inv *bill.Invoice) *lineSupport {
+func prepareLineSupport(reg *tax.RegimeDef, lines []*bill.Line, dss []*bill.Discount, chs []*bill.Charge) *lineSupport {
 	ls := new(lineSupport)
-	r := inv.RegimeDef()
 
 	cats := make([]*tax.CategoryDef, 0)
-	for _, l := range inv.Lines {
+	for _, l := range lines {
 		if len(l.Discounts) > 0 {
 			ls.discounts = true
 		}
@@ -36,18 +35,18 @@ func prepareLineSupport(inv *bill.Invoice) *lineSupport {
 			ls.units = true
 		}
 		for _, combo := range l.Taxes {
-			cat := r.CategoryDef(combo.Category)
+			cat := reg.CategoryDef(combo.Category)
 			if cat != nil {
 				cats = addCategory(cats, cat)
 			}
 		}
 	}
-	for _, row := range inv.Discounts {
+	for _, row := range dss {
 		if row.Code != "" {
 			ls.refs = true
 		}
 	}
-	for _, row := range inv.Charges {
+	for _, row := range chs {
 		if row.Code != "" {
 			ls.refs = true
 		}

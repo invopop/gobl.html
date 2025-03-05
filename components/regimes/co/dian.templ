@@ -48,14 +48,14 @@ templ generateQR(inv *bill.Invoice, code, qr string) {
 		<div class="text">
 			if pcude := dianPrecedingCUDE(inv); pcude != "" {
 				<div class="cude">
-					@t.T("billing.invoice.regimes.co.cude", i18n.M{"cude": code})
+					@t.T("regimes.co.cude", i18n.M{"cude": code})
 				</div>
 				<div class="cufe">
-					@t.T("billing.invoice.regimes.co.preceding_cufe", i18n.M{"cufe": pcude})
+					@t.T("regimes.co.preceding_cufe", i18n.M{"cufe": pcude})
 				</div>
 			} else {
 				<div class="cufe">
-					@t.T("billing.invoice.regimes.co.cufe", i18n.M{"cufe": code})
+					@t.T("regimes.co.cufe", i18n.M{"cufe": code})
 				</div>
 			}
 		</div>

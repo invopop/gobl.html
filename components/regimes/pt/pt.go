@@ -7,6 +7,7 @@ import (
 	"fmt"
 
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl/addons/pt/saft"
 	"github.com/invopop/gobl/regimes/pt"
 	go_qr "github.com/piglig/go-qr"
 )
@@ -29,6 +30,15 @@ func FooterNotes(env *gobl.Envelope) string {
 		}
 	}
 	return ""
+}
+
+// TitleKey returns the i18n key for the title of the document type.
+func TitleKey(doc any) string {
+	typ, _ := saft.DocType(doc)
+	if typ == "" {
+		return ""
+	}
+	return "regimes.pt.title." + string(typ)
 }
 
 // generateQR implements a custom QR code generator that complies with the AT spec.

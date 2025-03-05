@@ -14,6 +14,7 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/org"
+	"github.com/invopop/gobl/tax"
 )
 
 func lines(inv *bill.Invoice) templ.Component {
@@ -49,7 +50,7 @@ func lines(inv *bill.Invoice) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = linesWithSupport(inv, prepareLineSupport(inv)).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = linesWithSupport(inv.RegimeDef(), inv.Lines, inv.Discounts, inv.Charges).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -63,7 +64,7 @@ func lines(inv *bill.Invoice) templ.Component {
 	})
 }
 
-func linesWithSupport(inv *bill.Invoice, ls *lineSupport) templ.Component {
+func linesWithSupport(reg *tax.RegimeDef, lines []*bill.Line, dss []*bill.Discount, chs []*bill.Charge) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -84,6 +85,7 @@ func linesWithSupport(inv *bill.Invoice, ls *lineSupport) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
+		ls := prepareLineSupport(reg, lines, dss, chs)
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"lines\"><h2>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -172,7 +174,7 @@ func linesWithSupport(inv *bill.Invoice, ls *lineSupport) templ.Component {
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(cat.Name.In(t.Lang(ctx)))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 49, Col: 33}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 51, Col: 33}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -223,15 +225,15 @@ func linesWithSupport(inv *bill.Invoice, ls *lineSupport) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = linesBody(inv, ls).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = linesBody(lines, ls).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = discountsBody(inv, ls).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = discountsBody(dss, ls).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = chargesBody(inv, ls).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = chargesBody(chs, ls).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -243,7 +245,7 @@ func linesWithSupport(inv *bill.Invoice, ls *lineSupport) templ.Component {
 	})
 }
 
-func linesBody(inv *bill.Invoice, ls *lineSupport) templ.Component {
+func linesBody(lines []*bill.Line, ls *lineSupport) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -268,8 +270,8 @@ func linesBody(inv *bill.Invoice, ls *lineSupport) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		for _, l := range inv.Lines {
-			templ_7745c5c3_Err = line(inv, l, ls).Render(ctx, templ_7745c5c3_Buffer)
+		for _, l := range lines {
+			templ_7745c5c3_Err = line(l, ls).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -282,7 +284,7 @@ func linesBody(inv *bill.Invoice, ls *lineSupport) templ.Component {
 	})
 }
 
-func line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) templ.Component {
+func line(l *bill.Line, ls *lineSupport) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -310,7 +312,7 @@ func line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) templ.Component {
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprint(l.Index))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 85, Col: 24}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 87, Col: 24}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -329,7 +331,7 @@ func line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) templ.Component {
 				var templ_7745c5c3_Var8 string
 				templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(l.Item.Ref.String())
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 90, Col: 26}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 92, Col: 26}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 				if templ_7745c5c3_Err != nil {
@@ -353,7 +355,7 @@ func line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) templ.Component {
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(l.Item.Name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 97, Col: 22}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 99, Col: 22}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
@@ -371,7 +373,7 @@ func line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) templ.Component {
 			var templ_7745c5c3_Var10 string
 			templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(l.Item.Description)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 100, Col: 31}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 102, Col: 31}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 			if templ_7745c5c3_Err != nil {
@@ -411,7 +413,7 @@ func line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) templ.Component {
 				var templ_7745c5c3_Var11 string
 				templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(string(l.Item.Unit))
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 111, Col: 26}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 113, Col: 26}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 				if templ_7745c5c3_Err != nil {
@@ -547,7 +549,7 @@ func identities(idents []*org.Identity) templ.Component {
 					var templ_7745c5c3_Var13 string
 					templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(ident.Label)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 156, Col: 19}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 158, Col: 19}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 					if templ_7745c5c3_Err != nil {
@@ -557,7 +559,7 @@ func identities(idents []*org.Identity) templ.Component {
 					var templ_7745c5c3_Var14 string
 					templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(ident.Type.String())
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 158, Col: 27}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 160, Col: 27}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 					if templ_7745c5c3_Err != nil {
@@ -571,7 +573,7 @@ func identities(idents []*org.Identity) templ.Component {
 				var templ_7745c5c3_Var15 string
 				templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(ident.Code.String())
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 162, Col: 26}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 164, Col: 26}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 				if templ_7745c5c3_Err != nil {
@@ -702,7 +704,7 @@ func lineGroupCharges(l *bill.Line) templ.Component {
 	})
 }
 
-func discountsBody(inv *bill.Invoice, ls *lineSupport) templ.Component {
+func discountsBody(dis []*bill.Discount, ls *lineSupport) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -723,12 +725,12 @@ func discountsBody(inv *bill.Invoice, ls *lineSupport) templ.Component {
 			templ_7745c5c3_Var19 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if len(inv.Discounts) > 0 {
+		if len(dis) > 0 {
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 55, "<tbody class=\"discounts\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			for _, row := range inv.Discounts {
+			for _, row := range dis {
 				templ_7745c5c3_Err = discountRow(row, ls).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -771,7 +773,7 @@ func discountRow(row *bill.Discount, ls *lineSupport) templ.Component {
 		var templ_7745c5c3_Var21 string
 		templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("D%d", row.Index))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 210, Col: 34}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 212, Col: 34}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
 		if templ_7745c5c3_Err != nil {
@@ -790,7 +792,7 @@ func discountRow(row *bill.Discount, ls *lineSupport) templ.Component {
 				var templ_7745c5c3_Var22 string
 				templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.JoinStringErrs(row.Code.String())
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 215, Col: 24}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 217, Col: 24}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var22))
 				if templ_7745c5c3_Err != nil {
@@ -814,7 +816,7 @@ func discountRow(row *bill.Discount, ls *lineSupport) templ.Component {
 		var templ_7745c5c3_Var23 string
 		templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinStringErrs(row.Reason)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 222, Col: 15}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 224, Col: 15}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var23))
 		if templ_7745c5c3_Err != nil {
@@ -905,7 +907,7 @@ func discountRow(row *bill.Discount, ls *lineSupport) templ.Component {
 	})
 }
 
-func chargesBody(inv *bill.Invoice, ls *lineSupport) templ.Component {
+func chargesBody(chs []*bill.Charge, ls *lineSupport) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -926,12 +928,12 @@ func chargesBody(inv *bill.Invoice, ls *lineSupport) templ.Component {
 			templ_7745c5c3_Var24 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if len(inv.Charges) > 0 {
+		if len(chs) > 0 {
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 76, "<tbody class=\"charges\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			for _, row := range inv.Charges {
+			for _, row := range chs {
 				templ_7745c5c3_Err = chargeRow(row, ls).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -974,7 +976,7 @@ func chargeRow(row *bill.Charge, ls *lineSupport) templ.Component {
 		var templ_7745c5c3_Var26 string
 		templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("C%d", row.Index))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 281, Col: 34}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 283, Col: 34}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var26))
 		if templ_7745c5c3_Err != nil {
@@ -993,7 +995,7 @@ func chargeRow(row *bill.Charge, ls *lineSupport) templ.Component {
 				var templ_7745c5c3_Var27 string
 				templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.JoinStringErrs(row.Code.String())
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 286, Col: 24}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 288, Col: 24}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var27))
 				if templ_7745c5c3_Err != nil {
@@ -1017,7 +1019,7 @@ func chargeRow(row *bill.Charge, ls *lineSupport) templ.Component {
 		var templ_7745c5c3_Var28 string
 		templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(row.Reason)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 293, Col: 15}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/lines.templ`, Line: 295, Col: 15}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var28))
 		if templ_7745c5c3_Err != nil {

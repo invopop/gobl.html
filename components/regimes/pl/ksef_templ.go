@@ -95,7 +95,7 @@ func generateQR(id, qr string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = t.T("billing.invoice.regimes.pl.ksef-id", i18n.M{"id": id}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = t.T("regimes.pl.ksef-id", i18n.M{"id": id}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
