@@ -5,6 +5,7 @@ import (
 	"bytes"
 	"encoding/base64"
 	"fmt"
+	"strings"
 
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl/addons/pt/saft"
@@ -39,6 +40,12 @@ func TitleKey(doc any) string {
 		return ""
 	}
 	return "regimes.pt.title." + string(typ)
+}
+
+// Canceled returns true if the document is canceled.
+func Canceled(env *gobl.Envelope) bool {
+	qr := env.Head.GetStamp(pt.StampProviderATQR)
+	return qr != nil && strings.Contains(qr.Value, "*E:A*")
 }
 
 // generateQR implements a custom QR code generator that complies with the AT spec.

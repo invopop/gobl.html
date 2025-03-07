@@ -220,3 +220,4 @@ pt:
         GA: "Ativos Fixos"
         GC: "Guia de Consignação"
         GD: "Guia de Devolução"
+        canceled: "Anulado"

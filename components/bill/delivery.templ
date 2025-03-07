@@ -16,10 +16,12 @@ templ Delivery(env *gobl.Envelope, dlv *bill.Delivery) {
 			@deliveryHeader(env, dlv)
 		</header>
 		@deliveryLines(dlv)
+		if dlv.Totals != nil {
 		<div class="totals">
-			@deliveryTotals(dlv, dlv.Totals)
-			@taxes(dlv.RegimeDef(), dlv.Totals.Taxes)
+				@deliveryTotals(dlv, dlv.Totals)
+				@taxes(dlv.RegimeDef(), dlv.Totals.Taxes)
 		</div>
+		}
 		@deliveryTracking(dlv)
 		@notes(dlv.Notes, dlv.Supplier)
 		<div class="extensions">
