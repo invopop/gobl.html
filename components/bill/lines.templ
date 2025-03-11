@@ -44,11 +44,6 @@ templ linesWithSupport(inv *bill.Invoice, ls *lineSupport) {
 					<th class="price">
 						@t.T(".price")
 					</th>
-					for _, cat := range ls.categories {
-						<th class="tax">
-							{ cat.Name.In(t.Lang(ctx)) }
-						</th>
-					}
 					if ls.discounts {
 						<th class="discount">
 							@t.T(".discount")
@@ -57,6 +52,11 @@ templ linesWithSupport(inv *bill.Invoice, ls *lineSupport) {
 					if ls.charges {
 						<th class="charge">
 							@t.T(".charges")
+						</th>
+					}
+					for _, cat := range ls.categories {
+						<th class="tax">
+							{ cat.Name.In(t.Lang(ctx)) }
 						</th>
 					}
 					<th class="total">
@@ -115,9 +115,21 @@ templ line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) {
 			</td>
 		}
 		<td class="price">
-			@t.LM(l.Item.Price)
-			@lineItemAltPrices(l)
+			if l.Item.Price != nil {
+				@t.LM(*l.Item.Price)
+				@lineItemAltPrices(l)
+			}
 		</td>
+		if ls.discounts {
+			<td class="discount">
+				@lineGroupDiscounts(l)
+			</td>
+		}
+		if ls.charges {
+			<td class="charge">
+				@lineGroupCharges(l)
+			</td>
+		}
 		for _, cat := range ls.categories {
 			<td class="tax">
 				if combo := l.Taxes.Get(cat.Code); combo != nil {
@@ -131,18 +143,10 @@ templ line(_ *bill.Invoice, l *bill.Line, ls *lineSupport) {
 				}
 			</td>
 		}
-		if ls.discounts {
-			<td class="discount">
-				@lineGroupDiscounts(l)
-			</td>
-		}
-		if ls.charges {
-			<td class="charge">
-				@lineGroupCharges(l)
-			</td>
-		}
 		<td class="total">
-			@t.LM(l.Total)
+			if l.Total != nil {
+				@t.LM(*l.Total)
+			}
 		</td>
 	</tr>
 }
@@ -176,21 +180,30 @@ templ lineItemAltPrices(l *bill.Line) {
 
 templ lineGroupDiscounts(l *bill.Line) {
 	for _, d := range l.Discounts {
-		if d.Percent != nil {
-			@t.L(*d.Percent)
-		} else {
-			@t.LM(d.Amount.Invert())
-		}
+		<span class="discount-content">
+			if d.Percent != nil {
+				@t.L(*d.Percent)
+			} else {
+				@t.LM(d.Amount.Invert())
+			}
+		</span>
 	}
 }
 
 templ lineGroupCharges(l *bill.Line) {
 	for _, c := range l.Charges {
-		if c.Percent != nil {
-			@t.L(*c.Percent)
-		} else {
-			@t.LM(c.Amount)
-		}
+		<span class="charge-content">
+			if c.Code != "" {
+				<span class="code">
+					{ c.Code.String() }
+				</span>
+			}
+			if c.Percent != nil {
+				@t.L(*c.Percent)
+			} else {
+				@t.LM(c.Amount)
+			}
+		</span>
 	}
 }
 

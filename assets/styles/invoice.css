@@ -200,6 +200,15 @@ section.lines .description .identity .label {
 section.lines .description .identity .label:after {
     content: ": ";
 }
+section.lines .discount-content {
+    display: block;
+}
+section.lines .charge-content {
+    display: block;
+}
+section.lines .charge-content .code:after {
+    content: ": ";
+}
 section.lines .alt-price {
     display: block;
     font-style: italic;

@@ -111,10 +111,11 @@ fr:
           cude: "CUDE: %{cude}"
           preceding_cufe: "CUFE Facture précédente: %{cufe}"
 
-    receipt:
+    payment:
       title:
-        payment: "Reçu de paiement"
-        remittance: "Avis de paiement"
+        request: "Demande de paiement"
+        advice: "Avis de paiement"
+        receipt: "Reçu de paiement"
         paid: "Payé"
 
       summary:

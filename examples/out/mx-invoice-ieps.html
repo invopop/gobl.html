@@ -36,14 +36,14 @@
             <section class="title">
               <div class="hero">
                 <div class="alias">
-                  Provide One S.L.
+                  ESCUELA KEMPER URGATE
                 </div>
               </div>
               <h1 class="type">
-                Credit Note
+                Invoice
               </h1>
               <h2 class="code">
-                FR-012
+                TEST-00001
               </h2>
             </section>
             <section class="summary">
@@ -56,7 +56,7 @@
                     Issue Date
                   </span>
                   <span class="value">
-                    2022-02-01
+                    2023-07-10
                   </span>
                 </li>
                 <li class="currency">
@@ -64,18 +64,15 @@
                     Currency
                   </span>
                   <span class="value">
-                    Euro (EUR)
+                    Mexican Peso (MXN)
                   </span>
                 </li>
-                <li class="preceding">
+                <li class="tax-ext">
                   <span class="label">
-                    Previous Invoice
+                    Place of Issue
                   </span>
                   <span class="value">
-                    SAMPLE-085
-                  </span>
-                  <span class="value">
-                    2022-01-10
+                    21000
                   </span>
                 </li>
               </ul>
@@ -88,18 +85,13 @@
               </h2>
               <div class="org-party">
                 <div class="name">
-                  Provide One S.L.
-                </div>
-                <div class="org-address">
-                  <span>
-                    San Frantzisko 42, Bilbo, Bizkaia, 48003 (Spain)
-                  </span>
-                </div>
-                <div class="emails">
-                  Email: billing@example.com
+                  ESCUELA KEMPER URGATE
                 </div>
                 <div class="tax-id">
-                  NIF: (ES) B98602642
+                  RFC: (MX) EKU9003173C9
+                </div>
+                <div class="party-extension">
+                  Régimen Fiscal: 601
                 </div>
               </div>
             </section>
@@ -110,18 +102,21 @@
                 </h2>
                 <div class="org-party">
                   <div class="name">
-                    Sample Customer
+                    UNIVERSIDAD ROBOTICA ESPAÑOLA
                   </div>
                   <div class="org-address">
                     <span>
-                      Calle del Barro 13, Alcañiz, Teruel, 44600 (Spain)
+                      86991
                     </span>
                   </div>
-                  <div class="emails">
-                    Email: customer@example.com
-                  </div>
                   <div class="tax-id">
-                    NIF: (ES) 54387763P
+                    RFC: (MX) URE180429TM6
+                  </div>
+                  <div class="party-extension">
+                    Régimen Fiscal: 601
+                  </div>
+                  <div class="party-extension">
+                    Uso CFDI: G01
                   </div>
                 </div>
               </div>
@@ -144,14 +139,11 @@
                 <th class="quantity">
                   Qty.
                 </th>
-                <th class="unit">
-                  Unit
-                </th>
                 <th class="price">
                   Price
                 </th>
-                <th class="discount">
-                  Disc.
+                <th class="charge">
+                  Chgs.
                 </th>
                 <th class="tax">
                   VAT
@@ -168,54 +160,42 @@
                 </td>
                 <td class="description">
                   <span>
-                    Development services
+                    Redbull with lots of sugar
                   </span>
-                </td>
-                <td class="quantity">
-                  20
-                </td>
-                <td class="unit">
-                  h
-                </td>
-                <td class="price">
-                  €90,00
-                </td>
-                <td class="discount">
-                  <span class="discount-content">
-                    10%
-                  </span>
-                </td>
-                <td class="tax">
-                  21,0%
-                </td>
-                <td class="total">
-                  €1.620,00
-                </td>
-              </tr>
-              <tr>
-                <td class="ref">
-                  2
-                </td>
-                <td class="description">
-                  <span>
-                    Financial service
+                  <span class="extensions">
+                    <span class="label">
+                      Clave SAT:
+                    </span>
+                    <span class="value">
+                      90101500
+                    </span>
                   </span>
                 </td>
                 <td class="quantity">
                   1
                 </td>
-                <td class="unit">
-                  <!-- empty -->
-                </td>
                 <td class="price">
-                  €10,00
+                  $30.00
                 </td>
-                <td class="discount"></td>
+                <td class="charge">
+                  <span class="charge-content">
+                    <span class="code">
+                      IEPS
+                    </span>
+                    25%
+                  </span>
+                  <span class="charge-content">
+                    <span class="code">
+                      IEPS
+                    </span>
+                    $0.40
+                  </span>
+                </td>
                 <td class="tax">
-                  0,0%
+                  16.0%
                 </td>
                 <td class="total">
-                  €10,00
+                  $37.90
                 </td>
               </tr>
             </tbody>
@@ -233,7 +213,7 @@
                     Sum
                   </th>
                   <td>
-                    €1.630,00
+                    $37.90
                   </td>
                 </tr>
                 <tr class="tax">
@@ -241,15 +221,15 @@
                     Tax
                   </th>
                   <td>
-                    €340,20
+                    $6.06
                   </td>
                 </tr>
                 <tr class="payable strong">
                   <th>
-                    Total
+                    Total to pay
                   </th>
                   <td>
-                    €1.970,20
+                    $43.96
                   </td>
                 </tr>
               </tbody>
@@ -278,43 +258,37 @@
               </thead>
               <tbody>
                 <tr>
-                  <td rowspan="2" class="category">
+                  <td rowspan="1" class="category">
                     VAT
                   </td>
                   <td class="base">
-                    €1.620,00
+                    $37.90
                   </td>
                   <td class="rate">
-                    21,0%
+                    16.0%
                   </td>
                   <td class="amount">
-                    €340,20
-                  </td>
-                </tr>
-                <tr>
-                  <td class="base">
-                    €10,00
-                  </td>
-                  <td class="rate">
-                    0,0%
-                  </td>
-                  <td class="amount">
-                    €0,00
+                    $6.06
                   </td>
                 </tr>
               </tbody>
             </table>
           </section>
         </div>
-        <section class="notes">
-          <h2>
-            Notes
+        <section class="payment">
+          <h2 class="title">
+            Payment
           </h2>
-          <div class="note">
-            <p>
-              Some random description
-            </p>
-          </div>
+          <ul class="terms">
+            <li class="terms-notes">
+              <span class="label">
+                Payment Terms Notes
+              </span>
+              <span class="value">
+                Condiciones de pago
+              </span>
+            </li>
+          </ul>
         </section>
         <div class="extensions"></div>
       </article>

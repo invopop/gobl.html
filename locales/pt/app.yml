@@ -114,10 +114,11 @@ pt:
           page: "Página %{id}"
           entry: "Entrada %{id}"
 
-    receipt:
+    payment:
       title:
-        payment: "Recibo de Pagamento"
-        remittance: "Aviso de Pagamento"
+        request: "Pedido de Pagamento"
+        advice: "Aviso de Pagamento"
+        receipt: "Recibo de Pagamento"
         paid: "Pago"
 
       summary:

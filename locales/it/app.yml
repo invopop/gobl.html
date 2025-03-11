@@ -109,10 +109,12 @@ it:
           cufe: "CUFE: %{cufe}"
           cude: "CUDE: %{cude}"
           preceding_cufe: "CUFE Fattura precedente: %{cufe}"
-    receipt:
+
+    payment:
       title:
-        payment: "Ricevuta di Pagamento"
-        remittance: "Avviso di Pagamento"
+        request: "Richiesta di Pagamento"
+        advice: "Avviso di Pagamento"
+        receipt: "Ricevuta di Pagamento"
         paid: "Pagato"
 
       summary:

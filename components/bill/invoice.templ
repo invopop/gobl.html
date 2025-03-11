@@ -36,7 +36,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 			@totals(inv, inv.Totals)
 			@taxes(inv.RegimeDef(), inv.Totals.Taxes)
 		</div>
-		@payment(inv)
+		@paymentDetails(inv)
 		@notes(inv.Notes, inv.Supplier)
 		<div class="extensions">
 			// Region specific information

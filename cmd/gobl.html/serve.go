@@ -20,7 +20,11 @@ import (
 	"github.com/invopop/gobl.html/pkg/pdf"
 	"github.com/invopop/gobl/org"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
 	"github.com/spf13/cobra"
+	"github.com/ziflex/lecho/v3"
 )
 
 type serveOpts struct {
@@ -64,8 +68,7 @@ func (s *serveOpts) runE(cmd *cobra.Command, _ []string) error {
 		return fmt.Errorf("preparing PDF convertor: %w", err)
 	}
 
-	e := echo.New()
-
+	e := prepareEcho()
 	e.StaticFS("/styles", echo.MustSubFS(assets.Content, "styles"))
 	e.GET("/:filename", s.generate)
 
@@ -86,6 +89,27 @@ func (s *serveOpts) runE(cmd *cobra.Command, _ []string) error {
 		return err
 	}
 	return startErr
+}
+
+func prepareEcho() *echo.Echo {
+	e := echo.New()
+	zl := log.Output(zerolog.ConsoleWriter{
+		Out:        os.Stderr,
+		TimeFormat: "15:04:05",
+	})
+	b := zl.With().Timestamp()
+	log.Logger = b.Logger()
+	lvl, _ := lecho.MatchZeroLevel(zerolog.DebugLevel)
+	logger := lecho.From(
+		log.Logger,
+		lecho.WithLevel(lvl),
+		lecho.WithTimestamp(),
+		// lecho.WithCaller(), // useful for debugging
+	)
+	e.Logger = logger
+	e.Use(lecho.Middleware(lecho.Config{Logger: logger}))
+	e.Use(middleware.Recover())
+	return e
 }
 
 func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opts []goblhtml.Option) ([]byte, error) {

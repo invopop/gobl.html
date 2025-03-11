@@ -119,10 +119,11 @@ pl:
           cude: "CUDE: %{cude}"
           preceding_cufe: "Poprzedni CUFE faktury: %{cufe}"
 
-    receipt:
+    payment:
       title:
-        payment: "Potwierdzenie płatności"
-        remittance: "Powiadomienie o płatności"
+        request: "Prośba o płatność"
+        advice: "Powiadomienie o płatności"
+        receipt: "Potwierdzenie płatności"
         paid: "Opłacone"
 
       summary:
