@@ -8,15 +8,17 @@ require (
 	github.com/a-h/templ v0.3.833
 	github.com/go-resty/resty/v2 v2.12.0
 	github.com/invopop/ctxi18n v0.9.0
-	github.com/invopop/gobl v0.210.0
+	github.com/invopop/gobl v0.212.1
 	github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/piglig/go-qr v0.2.4
 	github.com/pmezard/go-difflib v1.0.0
+	github.com/rs/zerolog v1.33.0
 	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.9.0
 	github.com/yosssi/gohtml v0.0.0-20201013000340-ee4748c638f4
 	github.com/yuin/goldmark v1.4.13
+	github.com/ziflex/lecho/v3 v3.7.0
 	gitlab.com/flimzy/testy v0.14.0
 )
 
@@ -27,6 +29,7 @@ require (
 	github.com/bahlo/generic-list-go v0.2.0 // indirect
 	github.com/buger/jsonparser v1.1.1 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/invopop/jsonschema v0.13.0 // indirect
@@ -49,6 +52,7 @@ require (
 	golang.org/x/net v0.34.0 // indirect
 	golang.org/x/sys v0.30.0 // indirect
 	golang.org/x/text v0.22.0 // indirect
+	golang.org/x/time v0.9.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 

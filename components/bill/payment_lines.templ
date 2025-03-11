@@ -7,8 +7,8 @@ import (
 	"github.com/invopop/gobl/bill"
 )
 
-templ receiptLines(rct *bill.Receipt) {
-	@t.Scope("billing.receipt.lines") {
+templ paymentLines(pmt *bill.Payment) {
+	@t.Scope("billing.payment.lines") {
 		<section class="lines">
 			<h2>
 				@t.T(".title")
@@ -22,8 +22,8 @@ templ receiptLines(rct *bill.Receipt) {
 						<th class="document">
 							@t.T(".document")
 						</th>
-						if r := rct.RegimeDef(); r != nil && rct.Tax != nil {
-							for _, cat := range rct.Tax.Categories {
+						if r := pmt.RegimeDef(); r != nil && pmt.Tax != nil {
+							for _, cat := range pmt.Tax.Categories {
 								<th class="tax">
 									{ r.CategoryDef(cat.Code).Name.In(t.Lang(ctx)) }
 								</th>
@@ -35,8 +35,8 @@ templ receiptLines(rct *bill.Receipt) {
 					</tr>
 				</thead>
 				<tbody>
-					for _, l := range rct.Lines {
-						@receiptLine(l, rct)
+					for _, l := range pmt.Lines {
+						@paymentLine(l, pmt)
 					}
 				</tbody>
 			</table>
@@ -44,23 +44,25 @@ templ receiptLines(rct *bill.Receipt) {
 	}
 }
 
-templ receiptLine(l *bill.ReceiptLine, rct *bill.Receipt) {
+templ paymentLine(l *bill.PaymentLine, pmt *bill.Payment) {
 	<tr>
 		<td class="ref">
 			{ fmt.Sprint(l.Index) }
 		</td>
 		<td class="document">
-			<span>{ code(l.Document.Series, l.Document.Code, rct.Regime) }</span>
+			<span>{ code(l.Document.Series, l.Document.Code, pmt.Regime) }</span>
 			if l.Document.Description != "" {
-				<br />
+				<br/>
 				<small>{ l.Document.Description }</small>
 			}
 		</td>
-		if rct.Tax != nil {
-			for _, cat := range rct.Tax.Categories {
+		if pmt.Tax != nil {
+			for _, cat := range pmt.Tax.Categories {
 				<td class="tax">
-					if cat := l.Tax.Category(cat.Code); cat != nil {
-						@t.LM(cat.Amount)
+					if l.Document != nil && l.Document.Tax != nil {
+						if cat := l.Document.Tax.Category(cat.Code); cat != nil {
+							@t.LM(cat.Amount)
+						}
 					}
 				</td>
 			}
@@ -70,4 +72,3 @@ templ receiptLine(l *bill.ReceiptLine, rct *bill.Receipt) {
 		</td>
 	</tr>
 }
-
