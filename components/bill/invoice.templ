@@ -26,7 +26,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 	<article class={ "invoice", templ.KV("din5008", applyDIN5008(ctx)) }>
 		<header class={ templ.KV("with-qr", hasHeaderQR(env)), templ.KV("regular", !hasHeaderQR(env)) }>
 			if applyDIN5008(ctx) {
-				@din5008Header(inv)
+				@din5008Header(env, inv)
 			} else {
 				@defaultHeader(env, inv)
 			}
@@ -49,7 +49,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 	</article>
 }
 
-templ title(inv *bill.Invoice) {
+templ title(env *gobl.Envelope, inv *bill.Invoice) {
 	@t.Scope("billing.invoice.title") {
 		<section class="title">
 			<div class="hero">
@@ -70,19 +70,27 @@ templ title(inv *bill.Invoice) {
 			</h1>
 			<h2 class="code">
 				{ code(inv.Series, inv.Code, inv.Regime) }
-				if paid(inv) {
-					<span class="paid">
-						@t.T(".paid")
-					</span>
-				}
+				@badges(env, inv)
 			</h2>
 		</section>
 	}
 }
 
+templ badges(env *gobl.Envelope, doc any) {
+	if pt.Canceled(env) {
+		<span class="canceled">
+			@t.T("regimes.pt.title.canceled")
+		</span>
+	} else if paid(doc) {
+		<span class="paid">
+			@t.T(".paid")
+		</span>
+	}
+}
+
 templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
 	<div class="details">
-		@title(inv)
+		@title(env, inv)
 		@summary(inv)
 	</div>
 	// Spanish QRs
@@ -96,9 +104,9 @@ templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
 	</div>
 }
 
-templ din5008Header(inv *bill.Invoice) {
+templ din5008Header(env *gobl.Envelope, inv *bill.Invoice) {
 	<div>
-		@title(inv)
+		@title(env, inv)
 		if inv.Customer != nil {
 			@customer(inv.Customer)
 		}

@@ -33,7 +33,7 @@ templ Delivery(env *gobl.Envelope, dlv *bill.Delivery) {
 
 templ deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) {
 	<div class="details">
-		@deliveryTitle(dlv)
+		@deliveryTitle(env, dlv)
 		@deliverySummary(dlv)
 	</div>
 	<div class="contacts">
@@ -53,7 +53,7 @@ templ deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) {
 	</div>
 }
 
-templ deliveryTitle(dlv *bill.Delivery) {
+templ deliveryTitle(env *gobl.Envelope, dlv *bill.Delivery) {
 	@t.Scope("billing.delivery.title") {
 		<section class="title">
 			<div class="hero">
@@ -74,6 +74,7 @@ templ deliveryTitle(dlv *bill.Delivery) {
 			</h1>
 			<h2 class="code">
 				{ code(dlv.Series, dlv.Code, dlv.Regime) }
+				@badges(env, dlv)
 			</h2>
 		</section>
 	}

@@ -240,6 +240,7 @@ en:
         GA: "Fixed Assets"
         GC: "Consignment"
         GD: "Return"
+        canceled: "Canceled"
 
 
 

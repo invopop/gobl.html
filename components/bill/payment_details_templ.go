@@ -652,8 +652,15 @@ func showPayments(inv *bill.Invoice) bool {
 	return true
 }
 
-func paid(inv *bill.Invoice) bool {
-	return inv.Totals.Due != nil && inv.Totals.Due.IsZero()
+func paid(doc any) bool {
+	switch d := doc.(type) {
+	case *bill.Invoice:
+		return d.Totals.Due != nil && d.Totals.Due.IsZero()
+	case *bill.Payment:
+		return true
+	default:
+		return false
+	}
 }
 
 func paymentInstrMethodName(ctx context.Context, inst *pay.Instructions) string {
