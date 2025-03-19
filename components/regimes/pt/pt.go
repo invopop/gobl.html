@@ -5,6 +5,7 @@ import (
 	"bytes"
 	"encoding/base64"
 	"fmt"
+	"strings"
 
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl/addons/pt/saft"
@@ -59,6 +60,12 @@ func PaymentTitleKey(pmt *bill.Payment) string {
 	}
 	typ := pmt.Ext.Get(saft.ExtKeyPaymentType)
 	return titleKey(typ)
+}
+
+func Canceled(env *gobl.Envelope) bool {
+	qr := env.Head.GetStamp(pt.StampProviderATQR)
+	// TODO: Find a less hacky way to check if the document is canceled
+	return qr != nil && strings.Contains(qr.Value, "*E:A*")
 }
 
 func titleKey(key cbc.Code) string {

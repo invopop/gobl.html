@@ -100,17 +100,25 @@ section.title .hero img {
     max-width: 100%;
     /* max-height: 10mm; */
 }
-section.title span.paid {
+section.title span.paid,
+section.title span.canceled {
     font-size: 9pt;
     font-weight: 400;
     vertical-align: text-bottom;
     padding: 0.5mm 1.5mm;
     border-radius: 1mm;
+    margin-left: 2mm;
+    text-wrap: nowrap;
+}
+section.title span.paid {
     background-color: #0290621a;
     border: 1px solid #02906233;
     color: #008852;
-    margin-left: 2mm;
-    text-wrap: nowrap;
+}
+section.title span.canceled {
+    background-color: #D32F2F1A;
+    border: 1px solid #D32F2F33;
+    color: #A32020;
 }
 section.title h2.code {
     font-size: 12pt;

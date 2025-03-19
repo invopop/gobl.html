@@ -122,7 +122,7 @@ func deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = deliveryTitle(dlv).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = deliveryTitle(env, dlv).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -170,7 +170,7 @@ func deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) templ.Component {
 	})
 }
 
-func deliveryTitle(dlv *bill.Delivery) templ.Component {
+func deliveryTitle(env *gobl.Envelope, dlv *bill.Delivery) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -298,6 +298,10 @@ func deliveryTitle(dlv *bill.Delivery) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
+			templ_7745c5c3_Err = badges(env, dlv).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "</h2></section>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -388,7 +392,7 @@ func deliverySummary(dlv *bill.Delivery) templ.Component {
 			var templ_7745c5c3_Var12 string
 			templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(currencyName(ctx, dlv.Currency))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/delivery.templ`, Line: 102, Col: 39}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/delivery.templ`, Line: 103, Col: 39}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 			if templ_7745c5c3_Err != nil {
@@ -548,7 +552,7 @@ func deliveryParty(party *gorg.Party, partyType string) templ.Component {
 			var templ_7745c5c3_Var16 string
 			templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(party.Label)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/delivery.templ`, Line: 154, Col: 17}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/delivery.templ`, Line: 155, Col: 17}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 			if templ_7745c5c3_Err != nil {
@@ -638,7 +642,7 @@ func deliveryTracking(dlv *bill.Delivery) templ.Component {
 					var templ_7745c5c3_Var19 string
 					templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs(dlv.Tracking.Code.String())
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/delivery.templ`, Line: 177, Col: 36}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/delivery.templ`, Line: 178, Col: 36}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var19))
 					if templ_7745c5c3_Err != nil {
@@ -675,7 +679,7 @@ func deliveryTracking(dlv *bill.Delivery) templ.Component {
 						var templ_7745c5c3_Var21 string
 						templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(dlv.Tracking.Website.Label)
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/delivery.templ`, Line: 189, Col: 38}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/delivery.templ`, Line: 190, Col: 38}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
 						if templ_7745c5c3_Err != nil {
@@ -685,7 +689,7 @@ func deliveryTracking(dlv *bill.Delivery) templ.Component {
 						var templ_7745c5c3_Var22 string
 						templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.JoinStringErrs(dlv.Tracking.Website.URL)
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/delivery.templ`, Line: 191, Col: 36}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/delivery.templ`, Line: 192, Col: 36}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var22))
 						if templ_7745c5c3_Err != nil {

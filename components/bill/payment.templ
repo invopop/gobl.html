@@ -11,7 +11,7 @@ import (
 templ Payment(env *gobl.Envelope, pmt *bill.Payment) {
 	<article class="payment">
 		<header class="regular">
-			@paymentHeader(pmt)
+			@paymentHeader(env, pmt)
 		</header>
 		@paymentLines(pmt)
 		<div class="totals">
@@ -27,9 +27,9 @@ templ Payment(env *gobl.Envelope, pmt *bill.Payment) {
 	</article>
 }
 
-templ paymentHeader(pmt *bill.Payment) {
+templ paymentHeader(env *gobl.Envelope, pmt *bill.Payment) {
 	<div class="details">
-		@paymentTitle(pmt)
+		@paymentTitle(env, pmt)
 		@paymentSummary(pmt)
 	</div>
 	<div class="contacts">
@@ -40,7 +40,7 @@ templ paymentHeader(pmt *bill.Payment) {
 	</div>
 }
 
-templ paymentTitle(pmt *bill.Payment) {
+templ paymentTitle(env *gobl.Envelope, pmt *bill.Payment) {
 	@t.Scope("billing.payment.title") {
 		<section class="title">
 			<div class="hero">
@@ -61,9 +61,7 @@ templ paymentTitle(pmt *bill.Payment) {
 			</h1>
 			<h2 class="code">
 				{ code(pmt.Series, pmt.Code, pmt.Regime) }
-				<span class="paid">
-					@t.T(".paid")
-				</span>
+				@badges(env, pmt)
 			</h2>
 		</section>
 	}
