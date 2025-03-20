@@ -240,6 +240,11 @@ en:
         GA: "Fixed Assets"
         GC: "Consignment"
         GD: "Return"
+        RP: "Premium Receipt"
+        RE: "Chargeback Receipt"
+        CS: "Co-insurer Allocation"
+        LD: "Lead Co-insurer Allocation"
+        RA: "Accepted Reinsurance"
         canceled: "Canceled"
 
 
