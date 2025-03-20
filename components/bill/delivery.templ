@@ -56,28 +56,24 @@ templ deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) {
 templ deliveryTitle(env *gobl.Envelope, dlv *bill.Delivery) {
 	@t.Scope("billing.delivery.title") {
 		<section class="title">
-			<div class="hero">
-				if img := supplierLogo(ctx, dlv.Supplier); img != nil {
-					<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
-				} else {
-					<div class="alias">
-						{ supplierAlias(dlv.Supplier) }
-					</div>
-				}
-			</div>
-			<h1 class="type">
-				if k := pt.DeliveryTitleKey(dlv); k != "" {
-					@t.T(k)
-				} else {
-					@t.T(titleKey(dlv.Type))
-				}
-			</h1>
+			@titleHero(dlv.Supplier)
+			@deliveryTitleType(dlv)
 			<h2 class="code">
-				{ code(dlv.Series, dlv.Code, dlv.Regime) }
-				@badges(env, dlv)
+				@titleCode(dlv.Series, dlv.Code, dlv.Regime)
+				@titleBadges(env, dlv)
 			</h2>
 		</section>
 	}
+}
+
+templ deliveryTitleType(dlv *bill.Delivery) {
+	<h1 class="type">
+		if k := pt.DeliveryTitleKey(dlv); k != "" {
+			@t.T(k)
+		} else {
+			@t.T(titleKey(dlv.Type))
+		}
+	</h1>
 }
 
 templ deliverySummary(dlv *bill.Delivery) {

@@ -68,7 +68,7 @@ el:
         rate: "Ποσοστό"
         amount: "Ποσό"
 
-      payment:
+      payment: &payment
         title: "Πληρωμή"
         instructions: &payment_instructions
           method: "Μέθοδος πληρωμής"
@@ -178,6 +178,30 @@ el:
       lines: *lines
 
       totals: *totals
+
+    order:
+      title:
+        purchase: "Εντολή Αγοράς"
+        sale: "Εντολή Πώλησης"
+        quote: "Προσφορά"
+
+      summary:
+        <<: *summary
+        preceding_document: "Προηγούμενο Έγγραφο"
+        contract: "Συμβόλαιο"
+        period: "Περίοδος"
+
+      buyer:
+        title: "Αγοραστής"
+
+      seller:
+        title: "Πωλητής"
+
+      lines: *lines
+
+      totals: *totals
+
+      payment: *payment
 
   org:
     party:

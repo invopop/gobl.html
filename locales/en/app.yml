@@ -68,7 +68,7 @@ en:
         rate: "Rate"
         amount: "Amount"
 
-      payment:
+      payment: &payment
         title: "Payment"
         instructions: &payment_instructions
           method: "Method of payment"
@@ -179,6 +179,30 @@ en:
       lines: *lines
 
       totals: *totals
+
+    order:
+      title:
+        purchase: "Purchase Order"
+        sale: "Sales Order"
+        quote: "Quote"
+
+      summary:
+        <<: *summary
+        preceding_document: "Previous Document"
+        contract: "Contract"
+        period: "Period"
+
+      buyer:
+        title: "Buyer"
+
+      seller:
+        title: "Seller"
+
+      lines: *lines
+
+      totals: *totals
+
+      payment: *payment
 
   org:
     party:

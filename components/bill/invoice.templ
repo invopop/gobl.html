@@ -52,31 +52,47 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 templ title(env *gobl.Envelope, inv *bill.Invoice) {
 	@t.Scope("billing.invoice.title") {
 		<section class="title">
-			<div class="hero">
-				if img := supplierLogo(ctx, inv.Supplier); img != nil {
-					<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
-				} else {
-					<div class="alias">
-						{ supplierAlias(inv.Supplier) }
-					</div>
-				}
-			</div>
-			<h1 class="type">
-				if k := pt.InvoiceTitleKey(inv); k != "" {
-					@t.T(k)
-				} else {
-					@t.T(invoiceTitleKey(inv))
-				}
-			</h1>
+			@titleHero(inv.Supplier)
+			@invoiceTitleType(inv)
 			<h2 class="code">
-				{ code(inv.Series, inv.Code, inv.Regime) }
-				@badges(env, inv)
+				@titleCode(inv.Series, inv.Code, inv.Regime)
+				@titleBadges(env, inv)
 			</h2>
 		</section>
 	}
 }
 
-templ badges(env *gobl.Envelope, doc any) {
+templ titleHero(sup *org.Party) {
+	<div class="hero">
+			if img := supplierLogo(ctx, sup); img != nil {
+				<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
+			} else {
+				<div class="alias">
+					{ supplierAlias(sup) }
+				</div>
+			}
+	</div>
+}
+
+templ titleCode(series, code cbc.Code, reg tax.Regime) {
+	if reg.Country == "PT" {
+		{ series.JoinWith("/", code).String() }
+	} else {
+		{ series.Join(code).String() }
+	}
+}
+
+templ invoiceTitleType(inv *bill.Invoice) {
+	<h1 class="type">
+		if k := pt.InvoiceTitleKey(inv); k != "" {
+			@t.T(k)
+		} else {
+			@t.T(invoiceTitleKey(inv))
+		}
+	</h1>
+}
+
+templ titleBadges(env *gobl.Envelope, doc any) {
 	if pt.Canceled(env) {
 		<span class="canceled">
 			@t.T("regimes.pt.title.canceled")
@@ -152,13 +168,6 @@ func logoHeight(img *org.Image) string {
 		return fmt.Sprint(img.Height)
 	}
 	return "40" // pixels
-}
-
-func code(series, code cbc.Code, reg tax.Regime) string {
-	if reg.Country == "PT" {
-		return series.JoinWith("/", code).String()
-	}
-	return series.Join(code).String()
 }
 
 func applyDIN5008(ctx context.Context) bool {

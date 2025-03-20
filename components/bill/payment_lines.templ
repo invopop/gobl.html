@@ -50,7 +50,9 @@ templ paymentLine(l *bill.PaymentLine, pmt *bill.Payment) {
 			{ fmt.Sprint(l.Index) }
 		</td>
 		<td class="document">
-			<span>{ code(l.Document.Series, l.Document.Code, pmt.Regime) }</span>
+			<span>
+				@titleCode(l.Document.Series, l.Document.Code, pmt.Regime)
+			</span>
 			if l.Document.Description != "" {
 				<br/>
 				<small>{ l.Document.Description }</small>

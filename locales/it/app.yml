@@ -58,7 +58,7 @@ it:
         base: "Base"
         rate: "Aliquota"
         amount: "Importo"
-      payment:
+      payment: &payment
         title: "Pagamento"
         instructions: &payment_instructions
           method: "Metodo di pagamento"
@@ -167,6 +167,30 @@ it:
       lines: *lines
 
       totals: *totals
+
+    order:
+      title:
+        purchase: "Ordine di Acquisto"
+        sale: "Ordine di Vendita"
+        quote: "Preventivo"
+
+      summary:
+        <<: *summary
+        preceding_document: "Documento Precedente"
+        contract: "Contratto"
+        period: "Periodo"
+
+      buyer:
+        title: "Acquirente"
+
+      seller:
+        title: "Venditore"
+
+      lines: *lines
+
+      totals: *totals
+
+      payment: *payment
 
   org:
     party:

@@ -68,7 +68,7 @@ es:
         rate: "Tasa"
         amount: "Monto"
 
-      payment:
+      payment: &payment
         title: "Pago"
         instructions: &payment_instructions
           method: "Método de pago"
@@ -179,6 +179,32 @@ es:
       lines: *lines
 
       totals: *totals
+
+      payment: *payment
+
+    order:
+      title:
+        purchase: "Orden de Compra"
+        sale: "Orden de Venta"
+        quote: "Presupuesto"
+
+      summary:
+        <<: *summary
+        preceding_document: "Documento Anterior"
+        contract: "Contrato"
+        period: "Período"
+
+      buyer:
+        title: "Comprador"
+
+      seller:
+        title: "Vendedor"
+
+      lines: *lines
+
+      totals: *totals
+
+      payment: *payment
 
   org:
     party:

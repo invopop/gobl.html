@@ -44,12 +44,14 @@ templ Envelope(env *gobl.Envelope) {
 						@bill.Payment(env, doc)
 					case *gbill.Delivery:
 						@bill.Delivery(env, doc)
+					case *gbill.Order:
+						@bill.Order(env, doc)
 					case *gnote.Message:
 						@note.Message(doc)
 					case *gorg.Party:
 						@org.Party(doc)
 					default:
-						<p>Unkown document type</p>
+						<p>Unknown document type</p>
 				}
 				@footerScreen(env)
 			</article>

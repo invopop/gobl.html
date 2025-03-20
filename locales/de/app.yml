@@ -66,7 +66,7 @@ de:
         rate: "Satz"
         amount: "Betrag"
 
-      payment:
+      payment: &payment
         title: "Zahlung"
         instructions: &payment_instructions
           method: "Zahlungsmethode"
@@ -177,6 +177,30 @@ de:
       lines: *lines
 
       totals: *totals
+
+    order:
+      title:
+        purchase: "Bestellung"
+        sale: "Verkaufsauftrag"
+        quote: "Angebot"
+
+      summary:
+        <<: *summary
+        preceding_document: "Vorheriges Dokument"
+        contract: "Vertrag"
+        period: "Zeitraum"
+
+      buyer:
+        title: "Käufer"
+
+      seller:
+        title: "Verkäufer"
+
+      lines: *lines
+
+      totals: *totals
+
+      payment: *payment
 
   org:
     party:

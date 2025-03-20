@@ -65,7 +65,7 @@ pl:
         rate: "Stawka"
         amount: "Kwota"
 
-      payment:
+      payment: &payment
         title: "Płatność"
         instructions: &payment_instructions
           method: "Metoda płatności"
@@ -175,6 +175,32 @@ pl:
       lines: *lines
 
       totals: *totals
+
+      payment: *payment
+
+    order:
+      title:
+        purchase: "Zamówienie zakupu"
+        sale: "Zamówienie sprzedaży"
+        quote: "Oferta"
+
+      summary:
+        <<: *summary
+        preceding_document: "Poprzedni dokument"
+        contract: "Umowa"
+        period: "Okres"
+
+      buyer:
+        title: "Kupujący"
+
+      seller:
+        title: "Sprzedawca"
+
+      lines: *lines
+
+      totals: *totals
+
+      payment: *payment
 
   org:
     party:
