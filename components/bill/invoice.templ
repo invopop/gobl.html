@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/invopop/gobl"
+
 	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/regimes/es"
 	"github.com/invopop/gobl.html/components/regimes/gr"
@@ -115,9 +116,9 @@ templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
 	@es.VerifactuQR(env)
 	@es.TicketBAIQR(env)
 	<div class="contacts">
-		@supplier(inv.Supplier)
+		@party(inv.Supplier, "supplier")
 		if inv.Customer != nil {
-			@customer(inv.Customer)
+			@party(inv.Customer, "customer")
 		}
 	</div>
 }
@@ -126,12 +127,12 @@ templ din5008Header(env *gobl.Envelope, inv *bill.Invoice) {
 	<div>
 		@title(env, inv)
 		if inv.Customer != nil {
-			@customer(inv.Customer)
+			@party(inv.Customer, "customer")
 		}
 	</div>
 	<div>
 		@summary(inv)
-		@supplier(inv.Supplier)
+		@party(inv.Supplier, "supplier")
 	</div>
 }
 

@@ -2,7 +2,6 @@ package bill
 
 import (
 	"github.com/invopop/gobl"
-	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
@@ -38,15 +37,15 @@ templ orderHeader(env *gobl.Envelope, ord *bill.Order) {
 		@orderSummary(ord)
 	</div>
 	<div class="contacts">
-		@supplier(ord.Supplier)
+		@party(ord.Supplier, "supplier")
 		if ord.Customer != nil {
-			@customer(ord.Customer)
+			@party(ord.Customer, "customer")
 		}
 		if ord.Buyer != nil {
-			@orderParty(ord.Buyer, "buyer")
+			@party(ord.Buyer, "buyer")
 		}
 		if ord.Seller != nil {
-			@orderParty(ord.Seller, "seller")
+			@party(ord.Seller, "seller")
 		}
 	</div>
 }
@@ -131,20 +130,6 @@ templ orderSummary(ord *bill.Order) {
 				}
 			</ul>
 		}
-	</section>
-}
-
-// orderParty renders a party section for order-specific parties like buyer and seller
-templ orderParty(party *gorg.Party, partyType string) {
-	<section class={ partyType }>
-		<h2>
-			if party != nil && party.Label != "" {
-				{ party.Label }
-			} else {
-				@t.T("." + partyType + ".title")
-			}
-		</h2>
-		@org.Party(party)
 	</section>
 }
 

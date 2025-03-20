@@ -148,12 +148,12 @@ func paymentHeader(env *gobl.Envelope, pmt *bill.Payment) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = supplier(pmt.Supplier).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = party(pmt.Supplier, "supplier").Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		if pmt.Customer != nil {
-			templ_7745c5c3_Err = customer(pmt.Customer).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = party(pmt.Customer, "customer").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

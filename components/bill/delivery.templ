@@ -2,11 +2,9 @@ package bill
 
 import (
 	"github.com/invopop/gobl"
-	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
-	gorg "github.com/invopop/gobl/org"
 )
 
 // Delivery renders a complete GOBL bill.Delivery object.
@@ -39,18 +37,18 @@ templ deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) {
 		@deliverySummary(dlv)
 	</div>
 	<div class="contacts">
-		@supplier(dlv.Supplier)
+		@party(dlv.Supplier, "supplier")
 		if dlv.Customer != nil {
-			@customer(dlv.Customer)
+			@party(dlv.Customer, "customer")
 		}
 		if dlv.Despatcher != nil {
-			@deliveryParty(dlv.Despatcher, "despatcher")
+			@party(dlv.Despatcher, "despatcher")
 		}
 		if dlv.Receiver != nil {
-			@deliveryParty(dlv.Receiver, "receiver")
+			@party(dlv.Receiver, "receiver")
 		}
 		if dlv.Courier != nil {
-			@deliveryParty(dlv.Courier, "courier")
+			@party(dlv.Courier, "courier")
 		}
 	</div>
 }
@@ -142,20 +140,6 @@ templ deliverySummary(dlv *bill.Delivery) {
 				}
 			</ul>
 		}
-	</section>
-}
-
-// deliveryParty renders a party section for delivery-specific parties like despatcher, receiver, and courier
-templ deliveryParty(party *gorg.Party, partyType string) {
-	<section class={ partyType }>
-		<h2>
-			if party != nil && party.Label != "" {
-				{ party.Label }
-			} else {
-				@t.T("." + partyType + ".title")
-			}
-		</h2>
-		@org.Party(party)
 	</section>
 }
 

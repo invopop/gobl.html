@@ -6,17 +6,17 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 )
 
-templ customer(cus *gorg.Party) {
-	<section class="customer">
-		<div class="customer-border">
+templ party(par *gorg.Party, key string) {
+	<section class={ key }>
+		<div class="party-border">
 			<h2>
-				if cus != nil && cus.Label != "" {
-					{ cus.Label }
+				if par != nil && par.Label != "" {
+					{ par.Label }
 				} else {
-					@t.T(".customer.title")
+					@t.T("." + key + ".title")
 				}
 			</h2>
-			@org.Party(cus)
+			@org.Party(par)
 		</div>
 	</section>
 }
