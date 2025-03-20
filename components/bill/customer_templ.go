@@ -50,7 +50,7 @@ func customer(cus *gorg.Party) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		} else {
-			templ_7745c5c3_Err = t.T("billing.invoice.customer.title").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = t.T(".customer.title").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

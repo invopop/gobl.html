@@ -31,7 +31,7 @@ func init() {
 templ notes(notes []*org.Note, sup *org.Party) {
 	if len(notes) > 0 || sup.Registration != nil {
 		<section class="notes">
-			@t.Scope("billing.invoice.notes") {
+			@t.Scope(".notes") {
 				<h2>
 					@t.T(".title")
 				</h2>

@@ -13,7 +13,7 @@ templ customer(cus *gorg.Party) {
 				if cus != nil && cus.Label != "" {
 					{ cus.Label }
 				} else {
-					@t.T("billing.invoice.customer.title")
+					@t.T(".customer.title")
 				}
 			</h2>
 			@org.Party(cus)

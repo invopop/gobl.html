@@ -12,22 +12,24 @@ import (
 
 // Order renders a complete GOBL bill.Order object.
 templ Order(env *gobl.Envelope, ord *bill.Order) {
-	<article class="order">
-		<header class="regular">
-			@orderHeader(env, ord)
-		</header>
-		@orderLines(ord)
-		<div class="totals">
-			@orderTotals(ord, ord.Totals)
-			@taxes(ord.RegimeDef(), ord.Totals.Taxes)
-		</div>
-		@orderPaymentDetails(ord)
-		@notes(ord.Notes, ord.Supplier)
-		<div class="extensions">
-			// Region specific information
-			@pt.ATQR(env)
-		</div>
-	</article>
+	@t.Scope("billing.order") {
+		<article class="order">
+			<header class="regular">
+				@orderHeader(env, ord)
+			</header>
+			@orderLines(ord)
+			<div class="totals">
+				@orderTotals(ord, ord.Totals)
+				@taxes(ord.RegimeDef(), ord.Totals.Taxes)
+			</div>
+			@orderPaymentDetails(ord)
+			@notes(ord.Notes, ord.Supplier)
+			<div class="extensions">
+				// Region specific information
+				@pt.ATQR(env)
+			</div>
+		</article>
+	}
 }
 
 templ orderHeader(env *gobl.Envelope, ord *bill.Order) {
@@ -50,7 +52,7 @@ templ orderHeader(env *gobl.Envelope, ord *bill.Order) {
 }
 
 templ orderTitle(env *gobl.Envelope, ord *bill.Order) {
-	@t.Scope("billing.order.title") {
+	@t.Scope(".title") {
 		<section class="title">
 			@titleHero(ord.Supplier)
 			@orderTitleType(ord)
@@ -74,7 +76,7 @@ templ orderTitleType(ord *bill.Order) {
 
 templ orderSummary(ord *bill.Order) {
 	<section class="summary">
-		@t.Scope("billing.order.summary") {
+		@t.Scope(".summary") {
 			<h2 class="title">
 				@t.T(".title")
 			</h2>
@@ -139,7 +141,7 @@ templ orderParty(party *gorg.Party, partyType string) {
 			if party != nil && party.Label != "" {
 				{ party.Label }
 			} else {
-				@t.T("billing.order." + partyType + ".title")
+				@t.T("." + partyType + ".title")
 			}
 		</h2>
 		@org.Party(party)
@@ -172,7 +174,7 @@ templ summaryContractRows(contracts []*gorg.DocumentRef, reg tax.Regime) {
 
 // orderLines renders the lines of an order document
 templ orderLines(ord *bill.Order) {
-	@t.Scope("billing.order.lines") {
+	@t.Scope(".lines") {
 		@linesWithSupport(ord.RegimeDef(), ord.Lines, ord.Discounts, ord.Charges)
 	}
 }
@@ -180,7 +182,7 @@ templ orderLines(ord *bill.Order) {
 // orderTotals renders the totals of an order document
 templ orderTotals(ord *bill.Order, totals *bill.Totals) {
 	<section class="totals">
-		@t.Scope("billing.order.totals") {
+		@t.Scope(".totals") {
 			<h2>
 				@t.T(".title")
 			</h2>
@@ -259,7 +261,7 @@ templ orderTotals(ord *bill.Order, totals *bill.Totals) {
 // orderPaymentDetails renders the payment details component for orders
 templ orderPaymentDetails(ord *bill.Order) {
 	if ord.Payment != nil {
-		@t.Scope("billing.order.payment") {
+		@t.Scope(".payment") {
 			<section class="payment">
 				<h2 class="title">
 					@t.T(".title")

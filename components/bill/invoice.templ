@@ -22,35 +22,37 @@ import (
 
 // Invoice renders a complete GOBL bill.Invoice object.
 templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
-	// Footer needs to be at the top to show on all pages
-	<article class={ "invoice", templ.KV("din5008", applyDIN5008(ctx)) }>
-		<header class={ templ.KV("with-qr", hasHeaderQR(env)), templ.KV("regular", !hasHeaderQR(env)) }>
-			if applyDIN5008(ctx) {
-				@din5008Header(env, inv)
-			} else {
-				@defaultHeader(env, inv)
-			}
-		</header>
-		@lines(inv)
-		<div class="totals">
-			@totals(inv, inv.Totals)
-			@taxes(inv.RegimeDef(), inv.Totals.Taxes)
-		</div>
-		@paymentDetails(inv)
-		@notes(inv.Notes, inv.Supplier)
-		<div class="extensions">
-			// Region specific information
-			@co.DIANQR(env, inv)
-			@mx.CFDI(env, inv)
-			@pl.KSeFQR(env)
-			@pt.ATQR(env)
-			@gr.IAPR(env)
-		</div>
-	</article>
+	@t.Scope("billing.invoice") {
+		// Footer needs to be at the top to show on all pages
+		<article class={ "invoice", templ.KV("din5008", applyDIN5008(ctx)) }>
+			<header class={ templ.KV("with-qr", hasHeaderQR(env)), templ.KV("regular", !hasHeaderQR(env)) }>
+				if applyDIN5008(ctx) {
+					@din5008Header(env, inv)
+				} else {
+					@defaultHeader(env, inv)
+				}
+			</header>
+			@lines(inv)
+			<div class="totals">
+				@totals(inv, inv.Totals)
+				@taxes(inv.RegimeDef(), inv.Totals.Taxes)
+			</div>
+			@paymentDetails(inv)
+			@notes(inv.Notes, inv.Supplier)
+			<div class="extensions">
+				// Region specific information
+				@co.DIANQR(env, inv)
+				@mx.CFDI(env, inv)
+				@pl.KSeFQR(env)
+				@pt.ATQR(env)
+				@gr.IAPR(env)
+			</div>
+		</article>
+	}
 }
 
 templ title(env *gobl.Envelope, inv *bill.Invoice) {
-	@t.Scope("billing.invoice.title") {
+	@t.Scope(".title") {
 		<section class="title">
 			@titleHero(inv.Supplier)
 			@invoiceTitleType(inv)

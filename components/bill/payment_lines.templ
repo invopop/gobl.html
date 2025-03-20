@@ -8,7 +8,7 @@ import (
 )
 
 templ paymentLines(pmt *bill.Payment) {
-	@t.Scope("billing.payment.lines") {
+	@t.Scope(".lines") {
 		<section class="lines">
 			<h2>
 				@t.T(".title")

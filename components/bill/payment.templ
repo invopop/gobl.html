@@ -9,22 +9,24 @@ import (
 
 // Payment renders a complete GOBL bill.Payment object.
 templ Payment(env *gobl.Envelope, pmt *bill.Payment) {
-	<article class="payment">
-		<header class="regular">
-			@paymentHeader(env, pmt)
-		</header>
-		@paymentLines(pmt)
-		<div class="totals">
-			@paymentTotals(pmt)
-			@taxes(pmt.RegimeDef(), pmt.Tax)
-		</div>
-		@method(pmt)
-		@notes(pmt.Notes, pmt.Supplier)
-		<div class="extensions">
-			// Region specific information
-			@pt.ATQR(env)
-		</div>
-	</article>
+	@t.Scope("billing.payment") {
+		<article class="payment">
+			<header class="regular">
+				@paymentHeader(env, pmt)
+			</header>
+			@paymentLines(pmt)
+			<div class="totals">
+				@paymentTotals(pmt)
+				@taxes(pmt.RegimeDef(), pmt.Tax)
+			</div>
+			@method(pmt)
+			@notes(pmt.Notes, pmt.Supplier)
+			<div class="extensions">
+				// Region specific information
+				@pt.ATQR(env)
+			</div>
+		</article>
+	}
 }
 
 templ paymentHeader(env *gobl.Envelope, pmt *bill.Payment) {
@@ -41,7 +43,7 @@ templ paymentHeader(env *gobl.Envelope, pmt *bill.Payment) {
 }
 
 templ paymentTitle(env *gobl.Envelope, pmt *bill.Payment) {
-	@t.Scope("billing.payment.title") {
+	@t.Scope(".title") {
 		<section class="title">
 			@titleHero(pmt.Supplier)
 			@paymentTitleType(pmt)
@@ -65,7 +67,7 @@ templ paymentTitleType(pmt *bill.Payment) {
 
 templ paymentTotals(pmt *bill.Payment) {
 	<section class="totals">
-		@t.Scope("billing.payment.totals") {
+		@t.Scope(".totals") {
 		<h2>
 			@t.T(".title")
 		</h2>
@@ -96,7 +98,7 @@ templ paymentTotals(pmt *bill.Payment) {
 }
 
 templ method(pmt *bill.Payment) {
-	@t.Scope("billing.payment.method") {
+	@t.Scope(".method") {
 		<section class="payment">
 			<h2 class="title">
 				@t.T(".title")

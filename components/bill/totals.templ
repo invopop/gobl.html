@@ -12,7 +12,7 @@ import (
 
 templ totals(inv *bill.Invoice, totals *bill.Totals) {
 	<section class="totals">
-		@t.Scope("billing.invoice.totals") {
+		@t.Scope(".totals") {
 			<h2>
 				@t.T(".title")
 			</h2>

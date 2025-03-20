@@ -12,7 +12,7 @@ templ supplier(sup *gorg.Party) {
 			if sup != nil && sup.Label != "" {
 				{ sup.Label }
 			} else {
-				@t.T("billing.invoice.supplier.title")
+				@t.T(".supplier.title")
 			}
 		</h2>
 		@org.Party(sup)
