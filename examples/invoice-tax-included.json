@@ -4,11 +4,13 @@
 		"uuid": "8873ceba-0431-11ed-80ae-b24117999d50",
 		"dig": {
 			"alg": "sha256",
-			"val": "16e17333b1f307ed27fb8c75f11fef3afb85fb1cb3083feec51c220d39484da5"
+			"val": "b80e83099fde7e8ea92e24bba8d5ac4ea09a36bf3ac55ace835a926f49320e53"
 		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"uuid": "019565ce-911a-76ba-be82-749d362858d9",
 		"type": "standard",
 		"code": "FAKE20220001",
 		"issue_date": "2022-02-01",
@@ -78,9 +80,9 @@
 				"sum": "4000.00",
 				"discounts": [
 					{
+						"reason": "Just because",
 						"percent": "5%",
-						"amount": "200.00",
-						"reason": "Just because"
+						"amount": "200.00"
 					}
 				],
 				"taxes": [

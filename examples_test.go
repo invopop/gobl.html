@@ -103,5 +103,23 @@ func loadExample(name string) (*gobl.Envelope, error) {
 		return nil, err
 	}
 
+	if err := env.Calculate(); err != nil {
+		return nil, err
+	}
+
+	if err := env.Validate(); err != nil {
+		return nil, err
+	}
+
+	if *updateOut {
+		data, err := json.MarshalIndent(env, "", "\t")
+		if err != nil {
+			return nil, err
+		}
+		if err := os.WriteFile(filepath.Join(examplesPath, name), data, 0644); err != nil {
+			return nil, err
+		}
+	}
+
 	return env, nil
 }
