@@ -43,28 +43,24 @@ templ paymentHeader(env *gobl.Envelope, pmt *bill.Payment) {
 templ paymentTitle(env *gobl.Envelope, pmt *bill.Payment) {
 	@t.Scope("billing.payment.title") {
 		<section class="title">
-			<div class="hero">
-				if img := supplierLogo(ctx, pmt.Supplier); img != nil {
-				<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) } />
-				} else {
-				<div class="alias">
-					{ supplierAlias(pmt.Supplier) }
-				</div>
-				}
-			</div>
-			<h1 class="type">
-				if k := pt.PaymentTitleKey(pmt); k != "" {
-					@t.T(k)
-				} else {
-					@t.T(titleKey(pmt.Type))
-				}
-			</h1>
+			@titleHero(pmt.Supplier)
+			@paymentTitleType(pmt)
 			<h2 class="code">
-				{ code(pmt.Series, pmt.Code, pmt.Regime) }
-				@badges(env, pmt)
+				@titleCode(pmt.Series, pmt.Code, pmt.Regime)
+				@titleBadges(env, pmt)
 			</h2>
 		</section>
 	}
+}
+
+templ paymentTitleType(pmt *bill.Payment) {
+	<h1 class="type">
+		if k := pt.PaymentTitleKey(pmt); k != "" {
+			@t.T(k)
+		} else {
+			@t.T(titleKey(pmt.Type))
+		}
+	</h1>
 }
 
 templ paymentTotals(pmt *bill.Payment) {

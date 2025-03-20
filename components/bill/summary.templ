@@ -77,7 +77,7 @@ templ summaryPrecedingRows(prec []*org.DocumentRef, reg tax.Regime) {
 				@t.T(".preceding_document")
 			</span>
 			<span class="value">
-				{ code(pre.Series, pre.Code, reg) }
+				@titleCode(pre.Series, pre.Code, reg)
 			</span>
 			if pre.IssueDate != nil {
 				<span class="value">

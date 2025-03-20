@@ -58,7 +58,7 @@ fr:
         base: "Base"
         rate: "Taux"
         amount: "Montant"
-      payment:
+      payment: &payment
         title: "Paiement"
         instructions: &payment_instructions
           method: "Méthode de paiement"
@@ -167,6 +167,32 @@ fr:
       lines: *lines
 
       totals: *totals
+
+      payment: *payment
+
+    order:
+      title:
+        purchase: "Bon de Commande"
+        sale: "Bon de Vente"
+        quote: "Devis"
+
+      summary:
+        <<: *summary
+        preceding_document: "Document précédent"
+        contract: "Contrat"
+        period: "Période"
+
+      buyer:
+        title: "Acheteur"
+
+      seller:
+        title: "Vendeur"
+
+      lines: *lines
+
+      totals: *totals
+
+      payment: *payment
 
   org:
     party:

@@ -62,6 +62,14 @@ func PaymentTitleKey(pmt *bill.Payment) string {
 	return titleKey(typ)
 }
 
+func OrderTitleKey(ord *bill.Order) string {
+	if ord == nil || ord.Tax == nil {
+		return ""
+	}
+	typ := ord.Tax.Ext.Get(saft.ExtKeyWorkType)
+	return titleKey(typ)
+}
+
 func Canceled(env *gobl.Envelope) bool {
 	qr := env.Head.GetStamp(pt.StampProviderATQR)
 	// TODO: Find a less hacky way to check if the document is canceled

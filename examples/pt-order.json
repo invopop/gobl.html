@@ -1,0 +1,164 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "0194020a-1f2e-7000-9ede-4ad7c0a9810f",
+		"dig": {
+			"alg": "sha256",
+			"val": "ee4d6f01941edce9ebb05cd417f43128d1218f569ed62fd774f9f050a9f962b5"
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJHNC82-1"
+			},
+			{
+				"prv": "at-hash",
+				"val": "FV3o"
+			},
+			{
+				"prv": "at-hash-full",
+				"val": "FCIPv7kRXeVbUVVqcnxO3uZFFFIQLCotZlOBGFZlPJwAWgRnZVFidZlbXhR3/nxoMqqEFBTHH9EHU7t5jnKkjQ+XlSJxQoEvphSaI/Ps3y1V9r5eoOAXM5OUusASQKmWzwKc1T2tXXadN+0b2dXF5Y/koSSS91zmZ8r/8J9qWWk="
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:770013813*B:514329874*C:PT*D:NE*E:N*F:20241223*G:NE SERIES-A/1*H:AAJFJHNC82-1*I1:PT*I7:42.50*I8:9.78*N:9.78*O:52.28*Q:FV3o*R:123"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "123"
+			},
+			{
+				"prv": "at-ts",
+				"val": "2025-01-01T00:00:00"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/order",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"uuid": "0193f36f-9fda-7000-9aff-4f4e28043a66",
+		"type": "purchase",
+		"series": "NE SERIES-A",
+		"code": "1",
+		"issue_date": "2024-12-23",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"pt-saft-work-type": "NE"
+			}
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "770013813"
+			},
+			"addresses": [
+				{
+					"street": "Rua das Flores 200 3º Esquerdo",
+					"locality": "Porto",
+					"code": "4050-265",
+					"country": "PT"
+				}
+			]
+		},
+		"customer": {
+			"name": "Gusto Unipessoal Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Avenida da Liberdade 152 2º Direito",
+					"locality": "Lisboa",
+					"code": "1250-146",
+					"country": "PT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "gusto@example.com"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://gusto.example.com"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+351912345678"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"order": "PO-2024-001",
+				"item": {
+					"name": "Development services",
+					"price": "50.00",
+					"unit": "one",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "50.00",
+				"discounts": [
+					{
+						"percent": "15.0%",
+						"amount": "7.50"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "42.50"
+			}
+		],
+		"totals": {
+			"sum": "42.50",
+			"total": "42.50",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "NOR"
+								},
+								"base": "42.50",
+								"percent": "23.0%",
+								"amount": "9.78"
+							}
+						],
+						"amount": "9.78"
+					}
+				],
+				"sum": "9.78"
+			},
+			"tax": "9.78",
+			"total_with_tax": "52.28",
+			"payable": "52.28"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6ImU3M2EyNGNiLTNlNDgtNGY0NC1iOTM4LTE0NjlhYjgyMThkZCJ9.eyJ1dWlkIjoiMDE5NDAyMGEtMWYyZS03MDAwLTllZGUtNGFkN2MwYTk4MTBmIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImNhMmZiMDY4OWRkYzc4ZjkyM2E1MjJiYmUwZTMzNDg0YTExNDA0NGM3NzQwNGYyMmFiM2FkMDM4M2I5NWNiOTEifX0.P35n367iv2zjsLK28iwWprZ03Z3kfH7Q4iZytdXLO8g_QeycYadqQ6VUQB74QtFEvNyfzK2M8759DSEcks0TsQ"
+	]
+}
