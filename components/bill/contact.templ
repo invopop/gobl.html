@@ -1,0 +1,24 @@
+package bill
+
+import (
+	gorg "github.com/invopop/gobl/org"
+	"github.com/invopop/gobl.html/components/org"
+	"github.com/invopop/gobl.html/components/t"
+)
+
+templ contact(par *gorg.Party, key string) {
+	if par != nil {
+		<section class={ key }>
+			<div class="party-border">
+				<h2>
+					if par != nil && par.Label != "" {
+						{ par.Label }
+					} else {
+						@t.T("." + key + ".title")
+					}
+				</h2>
+				@org.Party(par)
+			</div>
+		</section>
+	}
+}

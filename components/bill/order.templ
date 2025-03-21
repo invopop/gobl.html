@@ -37,16 +37,10 @@ templ orderHeader(env *gobl.Envelope, ord *bill.Order) {
 		@orderSummary(ord)
 	</div>
 	<div class="contacts">
-		@party(ord.Supplier, "supplier")
-		if ord.Customer != nil {
-			@party(ord.Customer, "customer")
-		}
-		if ord.Buyer != nil {
-			@party(ord.Buyer, "buyer")
-		}
-		if ord.Seller != nil {
-			@party(ord.Seller, "seller")
-		}
+		@contact(ord.Supplier, "supplier")
+		@contact(ord.Customer, "customer")
+		@contact(ord.Buyer, "buyer")
+		@contact(ord.Seller, "seller")
 	</div>
 }
 

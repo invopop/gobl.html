@@ -116,23 +116,19 @@ templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
 	@es.VerifactuQR(env)
 	@es.TicketBAIQR(env)
 	<div class="contacts">
-		@party(inv.Supplier, "supplier")
-		if inv.Customer != nil {
-			@party(inv.Customer, "customer")
-		}
+		@contact(inv.Supplier, "supplier")
+		@contact(inv.Customer, "customer")
 	</div>
 }
 
 templ din5008Header(env *gobl.Envelope, inv *bill.Invoice) {
 	<div>
 		@title(env, inv)
-		if inv.Customer != nil {
-			@party(inv.Customer, "customer")
-		}
+		@contact(inv.Customer, "customer")
 	</div>
 	<div>
 		@summary(inv)
-		@party(inv.Supplier, "supplier")
+		@contact(inv.Supplier, "supplier")
 	</div>
 }
 

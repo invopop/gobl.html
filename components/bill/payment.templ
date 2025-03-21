@@ -35,10 +35,8 @@ templ paymentHeader(env *gobl.Envelope, pmt *bill.Payment) {
 		@paymentSummary(pmt)
 	</div>
 	<div class="contacts">
-		@party(pmt.Supplier, "supplier")
-		if pmt.Customer != nil {
-			@party(pmt.Customer, "customer")
-		}
+		@contact(pmt.Supplier, "supplier")
+		@contact(pmt.Customer, "customer")
 	</div>
 }
 

@@ -16,10 +16,10 @@ templ Delivery(env *gobl.Envelope, dlv *bill.Delivery) {
 			</header>
 			@deliveryLines(dlv)
 			if dlv.Totals != nil {
-			<div class="totals">
-					@deliveryTotals(dlv, dlv.Totals)
-					@taxes(dlv.RegimeDef(), dlv.Totals.Taxes)
-			</div>
+				<div class="totals">
+						@deliveryTotals(dlv, dlv.Totals)
+						@taxes(dlv.RegimeDef(), dlv.Totals.Taxes)
+				</div>
 			}
 			@deliveryTracking(dlv)
 			@notes(dlv.Notes, dlv.Supplier)
@@ -37,19 +37,11 @@ templ deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) {
 		@deliverySummary(dlv)
 	</div>
 	<div class="contacts">
-		@party(dlv.Supplier, "supplier")
-		if dlv.Customer != nil {
-			@party(dlv.Customer, "customer")
-		}
-		if dlv.Despatcher != nil {
-			@party(dlv.Despatcher, "despatcher")
-		}
-		if dlv.Receiver != nil {
-			@party(dlv.Receiver, "receiver")
-		}
-		if dlv.Courier != nil {
-			@party(dlv.Courier, "courier")
-		}
+		@contact(dlv.Supplier, "supplier")
+		@contact(dlv.Customer, "customer")
+		@contact(dlv.Despatcher, "despatcher")
+		@contact(dlv.Receiver, "receiver")
+		@contact(dlv.Courier, "courier")
 	</div>
 }
 

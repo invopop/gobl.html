@@ -150,27 +150,21 @@ func orderHeader(env *gobl.Envelope, ord *bill.Order) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = party(ord.Supplier, "supplier").Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = contact(ord.Supplier, "supplier").Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		if ord.Customer != nil {
-			templ_7745c5c3_Err = party(ord.Customer, "customer").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
+		templ_7745c5c3_Err = contact(ord.Customer, "customer").Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
 		}
-		if ord.Buyer != nil {
-			templ_7745c5c3_Err = party(ord.Buyer, "buyer").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
+		templ_7745c5c3_Err = contact(ord.Buyer, "buyer").Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
 		}
-		if ord.Seller != nil {
-			templ_7745c5c3_Err = party(ord.Seller, "seller").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
+		templ_7745c5c3_Err = contact(ord.Seller, "seller").Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
 		}
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</div>")
 		if templ_7745c5c3_Err != nil {
@@ -371,7 +365,7 @@ func orderSummary(ord *bill.Order) templ.Component {
 			var templ_7745c5c3_Var9 string
 			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(currencyName(ctx, ord.Currency))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/order.templ`, Line: 96, Col: 39}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/order.templ`, Line: 90, Col: 39}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 			if templ_7745c5c3_Err != nil {
@@ -532,7 +526,7 @@ func summaryContractRows(contracts []*gorg.DocumentRef, reg tax.Regime) templ.Co
 				var templ_7745c5c3_Var11 string
 				templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(contract.Reason)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/order.templ`, Line: 153, Col: 22}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/order.templ`, Line: 147, Col: 22}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 				if templ_7745c5c3_Err != nil {
