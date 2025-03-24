@@ -10,7 +10,7 @@ import (
 )
 
 templ lines(inv *bill.Invoice) {
-	@t.Scope("billing.invoice.lines") {
+	@t.Scope(".lines") {
 		@linesWithSupport(inv.RegimeDef(), inv.Lines, inv.Discounts, inv.Charges)
 	}
 }

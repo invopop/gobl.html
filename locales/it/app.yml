@@ -1,7 +1,7 @@
 it:
   page: "Pagina %{page} di %{count}"
   billing:
-    invoice:
+    invoice: &invoice
       title:
         standard: "Fattura"
         standard-simplified: "Fattura Semplificata"
@@ -106,38 +106,23 @@ it:
           entry: "Voce %{id}"
 
     payment:
+      <<: *invoice
       title:
         request: "Richiesta di Pagamento"
         advice: "Avviso di Pagamento"
         receipt: "Ricevuta di Pagamento"
         paid: "Pagato"
 
-      summary:
-        title: "Riepilogo"
-        issue_date: "Data Emissione"
-        value_date: "Data Valuta"
-        currency: "Valuta"
-        order: "Ordine"
-        order_period: "Periodo"
-        order_period_label: "%{label}"
-        order_period_range: "%{start} a %{end}"
-
       lines:
-        title: "Righe"
-        i: "#"
+        <<: *lines
         document: "Documento"
-        total: "Totale"
-
-      totals:
-        title: "Totali"
-        taxes: "Tassa"
-        total: "Totale"
 
       method:
         title: "Dettagli del Pagamento"
         instructions: *payment_instructions
 
     delivery:
+      <<: *invoice
       title:
         advice: "Avviso di Consegna"
         note: "Documento di Trasporto"
@@ -164,11 +149,8 @@ it:
         code: "Codice di Tracciamento"
         website: "Link di Tracciamento"
 
-      lines: *lines
-
-      totals: *totals
-
     order:
+      <<: *invoice
       title:
         purchase: "Ordine di Acquisto"
         sale: "Ordine di Vendita"
@@ -185,12 +167,6 @@ it:
 
       seller:
         title: "Venditore"
-
-      lines: *lines
-
-      totals: *totals
-
-      payment: *payment
 
   org:
     party:

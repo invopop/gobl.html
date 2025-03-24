@@ -2,7 +2,7 @@ pl:
   page: "Strona %{page} z %{count}"
 
   billing:
-    invoice:
+    invoice: &invoice
       title:
         standard: "Faktura"
         standard-simplified: "Uproszczona faktura"
@@ -114,38 +114,23 @@ pl:
           entry: "Wpis %{id}"
 
     payment:
+      <<: *invoice
       title:
         request: "Prośba o płatność"
         advice: "Powiadomienie o płatności"
         receipt: "Potwierdzenie płatności"
         paid: "Opłacone"
 
-      summary:
-        title: "Podsumowanie"
-        issue_date: "Data wystawienia"
-        value_date: "Data wartości"
-        currency: "Waluta"
-        order: "Zamówienie"
-        order_period: "Okres"
-        order_period_label: "%{label}"
-        order_period_range: "%{start} do %{end}"
-
       lines:
-        title: "Linie"
-        i: "#"
+        <<: *lines
         document: "Dokument"
-        total: "Suma"
-
-      totals:
-        title: "Podsumowanie"
-        taxes: "Podatek"
-        total: "Suma"
 
       method:
         title: "Szczegóły płatności"
         instructions: *payment_instructions
 
     delivery:
+      <<: *invoice
       title:
         advice: "Awizo dostawy"
         note: "List przewozowy"
@@ -172,13 +157,8 @@ pl:
         code: "Kod śledzenia"
         website: "Link do śledzenia"
 
-      lines: *lines
-
-      totals: *totals
-
-      payment: *payment
-
     order:
+      <<: *invoice
       title:
         purchase: "Zamówienie zakupu"
         sale: "Zamówienie sprzedaży"
@@ -195,12 +175,6 @@ pl:
 
       seller:
         title: "Sprzedawca"
-
-      lines: *lines
-
-      totals: *totals
-
-      payment: *payment
 
   org:
     party:

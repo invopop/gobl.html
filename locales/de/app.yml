@@ -2,7 +2,7 @@ de:
   page: "Seite %{page} von %{count}"
 
   billing:
-    invoice:
+    invoice: &invoice
       title:
         standard: "Rechnung"
         standard-simplified: "Kleinbetragsrechnung"
@@ -116,38 +116,23 @@ de:
           entry: "Eintrag %{id}"
 
     payment:
+      <<: *invoice
       title:
         request: "Zahlungsaufforderung"
         advice: "Zahlungsavis"
         receipt: "Zahlungseingang"
         paid: "Bezahlt"
 
-      summary:
-        title: "Zusammenfassung"
-        issue_date: "Ausstellungsdatum"
-        value_date: "Wertstellungsdatum"
-        currency: "Währung"
-        order: "Bestellung"
-        order_period: "Zeitraum"
-        order_period_label: "%{label}"
-        order_period_range: "%{start} bis %{end}"
-
       lines:
-        title: "Positionen"
-        i: "#"
+        <<: *lines
         document: "Dokument"
-        total: "Gesamt"
-
-      totals:
-        title: "Summen"
-        taxes: "Steuern"
-        total: "Gesamt"
 
       method:
         title: "Zahlungsdetails"
         instructions: *payment_instructions
 
     delivery:
+      <<: *invoice
       title:
         advice: "Lieferavis"
         note: "Lieferschein"
@@ -174,11 +159,8 @@ de:
         code: "Tracking-Code"
         website: "Tracking-Link"
 
-      lines: *lines
-
-      totals: *totals
-
     order:
+      <<: *invoice
       title:
         purchase: "Bestellung"
         sale: "Verkaufsauftrag"
@@ -195,12 +177,6 @@ de:
 
       seller:
         title: "Verkäufer"
-
-      lines: *lines
-
-      totals: *totals
-
-      payment: *payment
 
   org:
     party:

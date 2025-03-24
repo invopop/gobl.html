@@ -11,7 +11,7 @@ import (
 )
 
 templ paymentDetails(inv *bill.Invoice) {
-	@t.Scope("billing.invoice.payment") {
+	@t.Scope(".payment") {
 		if showPayments(inv) {
 			<section class="payment">
 				<h2 class="title">

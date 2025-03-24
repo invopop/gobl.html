@@ -175,7 +175,7 @@ func summary(inv *bill.Invoice) templ.Component {
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = t.Scope("billing.invoice.summary").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = t.Scope(".summary").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -481,7 +481,7 @@ func currencyName(ctx context.Context, cur currency.Code) string {
 	}
 	// does a translation for the currency name exist?
 	name := i18n.T(ctx, "currencies."+string(cur), i18n.Default(def.Name))
-	return i18n.T(ctx, "billing.invoice.summary.currency_value", i18n.M{"desc": name, "code": cur})
+	return i18n.T(ctx, ".currency_value", i18n.M{"desc": name, "code": cur})
 }
 
 func mapTaxExtension(ctx context.Context, k cbc.Key) string {

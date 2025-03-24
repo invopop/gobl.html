@@ -2,33 +2,34 @@ package bill
 
 import (
 	"github.com/invopop/gobl"
-	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl/bill"
-	gorg "github.com/invopop/gobl/org"
 )
 
 // Delivery renders a complete GOBL bill.Delivery object.
 templ Delivery(env *gobl.Envelope, dlv *bill.Delivery) {
-	<article class="delivery">
-		<header class="regular">
-			@deliveryHeader(env, dlv)
-		</header>
-		@deliveryLines(dlv)
-		if dlv.Totals != nil {
-		<div class="totals">
-				@deliveryTotals(dlv, dlv.Totals)
-				@taxes(dlv.RegimeDef(), dlv.Totals.Taxes)
-		</div>
-		}
-		@deliveryTracking(dlv)
-		@notes(dlv.Notes, dlv.Supplier)
-		<div class="extensions">
-			// Region specific information
-			@pt.ATQR(env)
-		</div>
-	</article>
+	@t.Scope("billing.delivery") {
+		<article class="delivery">
+			<header class="regular">
+				@deliveryHeader(env, dlv)
+			</header>
+			@deliveryLines(dlv)
+			if dlv.Totals != nil {
+				<div class="totals">
+						@deliveryTotals(dlv, dlv.Totals)
+						@taxes(dlv.RegimeDef(), dlv.Totals.Taxes)
+				</div>
+			}
+			@deliveryTracking(dlv)
+			@notes(dlv.Notes, dlv.Supplier)
+			<div class="extensions">
+				// Region specific information
+				@pt.ATQR(env)
+			</div>
+		</article>
+	}
 }
 
 templ deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) {
@@ -37,24 +38,16 @@ templ deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) {
 		@deliverySummary(dlv)
 	</div>
 	<div class="contacts">
-		@supplier(dlv.Supplier)
-		if dlv.Customer != nil {
-			@customer(dlv.Customer)
-		}
-		if dlv.Despatcher != nil {
-			@deliveryParty(dlv.Despatcher, "despatcher")
-		}
-		if dlv.Receiver != nil {
-			@deliveryParty(dlv.Receiver, "receiver")
-		}
-		if dlv.Courier != nil {
-			@deliveryParty(dlv.Courier, "courier")
-		}
+		@contact(dlv.Supplier, "supplier")
+		@contact(dlv.Customer, "customer")
+		@contact(dlv.Despatcher, "despatcher")
+		@contact(dlv.Receiver, "receiver")
+		@contact(dlv.Courier, "courier")
 	</div>
 }
 
 templ deliveryTitle(env *gobl.Envelope, dlv *bill.Delivery) {
-	@t.Scope("billing.delivery.title") {
+	@t.Scope(".title") {
 		<section class="title">
 			@titleHero(dlv.Supplier)
 			@deliveryTitleType(dlv)
@@ -68,17 +61,16 @@ templ deliveryTitle(env *gobl.Envelope, dlv *bill.Delivery) {
 
 templ deliveryTitleType(dlv *bill.Delivery) {
 	<h1 class="type">
-		if k := pt.DeliveryTitleKey(dlv); k != "" {
-			@t.T(k)
-		} else {
-			@t.T(titleKey(dlv.Type))
-		}
+		@utils.Coalesce(
+			pt.DeliveryTitleType(dlv),
+			defaultTitleType(dlv.Type),
+		)
 	</h1>
 }
 
 templ deliverySummary(dlv *bill.Delivery) {
 	<section class="summary">
-		@t.Scope("billing.delivery.summary") {
+		@t.Scope(".summary") {
 			<h2 class="title">
 				@t.T(".title")
 			</h2>
@@ -143,23 +135,9 @@ templ deliverySummary(dlv *bill.Delivery) {
 	</section>
 }
 
-// deliveryParty renders a party section for delivery-specific parties like despatcher, receiver, and courier
-templ deliveryParty(party *gorg.Party, partyType string) {
-	<section class={ partyType }>
-		<h2>
-			if party != nil && party.Label != "" {
-				{ party.Label }
-			} else {
-				@t.T("billing.delivery." + partyType + ".title")
-			}
-		</h2>
-		@org.Party(party)
-	</section>
-}
-
 templ deliveryTracking(dlv *bill.Delivery) {
 	if dlv.Tracking != nil && (dlv.Tracking.Code != "" || dlv.Tracking.Website != nil) {
-		@t.Scope("billing.delivery.tracking") {
+		@t.Scope(".tracking") {
 			<section class="tracking">
 				<h2 class="title">
 					@t.T(".title")
@@ -199,7 +177,7 @@ templ deliveryTracking(dlv *bill.Delivery) {
 
 // deliveryLines renders the lines of a delivery document
 templ deliveryLines(dlv *bill.Delivery) {
-	@t.Scope("billing.delivery.lines") {
+	@t.Scope(".lines") {
 		@linesWithSupport(dlv.RegimeDef(), dlv.Lines, dlv.Discounts, dlv.Charges)
 	}
 }
@@ -207,7 +185,7 @@ templ deliveryLines(dlv *bill.Delivery) {
 // deliveryTotals renders the totals of a delivery document
 templ deliveryTotals(dlv *bill.Delivery, totals *bill.Totals) {
 	<section class="totals">
-		@t.Scope("billing.delivery.totals") {
+		@t.Scope(".totals") {
 			<h2>
 				@t.T(".title")
 			</h2>

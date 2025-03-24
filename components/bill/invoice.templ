@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/invopop/gobl"
+
 	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/regimes/es"
 	"github.com/invopop/gobl.html/components/regimes/gr"
@@ -12,6 +13,7 @@ import (
 	"github.com/invopop/gobl.html/components/regimes/pl"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/layout"
 	"github.com/invopop/gobl/bill"
@@ -22,35 +24,37 @@ import (
 
 // Invoice renders a complete GOBL bill.Invoice object.
 templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
-	// Footer needs to be at the top to show on all pages
-	<article class={ "invoice", templ.KV("din5008", applyDIN5008(ctx)) }>
-		<header class={ templ.KV("with-qr", hasHeaderQR(env)), templ.KV("regular", !hasHeaderQR(env)) }>
-			if applyDIN5008(ctx) {
-				@din5008Header(env, inv)
-			} else {
-				@defaultHeader(env, inv)
-			}
-		</header>
-		@lines(inv)
-		<div class="totals">
-			@totals(inv, inv.Totals)
-			@taxes(inv.RegimeDef(), inv.Totals.Taxes)
-		</div>
-		@paymentDetails(inv)
-		@notes(inv.Notes, inv.Supplier)
-		<div class="extensions">
-			// Region specific information
-			@co.DIANQR(env, inv)
-			@mx.CFDI(env, inv)
-			@pl.KSeFQR(env)
-			@pt.ATQR(env)
-			@gr.IAPR(env)
-		</div>
-	</article>
+	@t.Scope("billing.invoice") {
+		// Footer needs to be at the top to show on all pages
+		<article class={ "invoice", templ.KV("din5008", applyDIN5008(ctx)) }>
+			<header class={ templ.KV("with-qr", hasHeaderQR(env)), templ.KV("regular", !hasHeaderQR(env)) }>
+				if applyDIN5008(ctx) {
+					@din5008Header(env, inv)
+				} else {
+					@defaultHeader(env, inv)
+				}
+			</header>
+			@lines(inv)
+			<div class="totals">
+				@totals(inv, inv.Totals)
+				@taxes(inv.RegimeDef(), inv.Totals.Taxes)
+			</div>
+			@paymentDetails(inv)
+			@notes(inv.Notes, inv.Supplier)
+			<div class="extensions">
+				// Region specific information
+				@co.DIANQR(env, inv)
+				@mx.CFDI(env, inv)
+				@pl.KSeFQR(env)
+				@pt.ATQR(env)
+				@gr.IAPR(env)
+			</div>
+		</article>
+	}
 }
 
 templ title(env *gobl.Envelope, inv *bill.Invoice) {
-	@t.Scope("billing.invoice.title") {
+	@t.Scope(".title") {
 		<section class="title">
 			@titleHero(inv.Supplier)
 			@invoiceTitleType(inv)
@@ -75,29 +79,46 @@ templ titleHero(sup *org.Party) {
 }
 
 templ titleCode(series, code cbc.Code, reg tax.Regime) {
-	if reg.Country == "PT" {
-		{ series.JoinWith("/", code).String() }
-	} else {
-		{ series.Join(code).String() }
-	}
+	@utils.Coalesce(
+		pt.TitleCode(series, code, reg),
+		defaultTitleCode(series, code),
+	)
+}
+
+templ defaultTitleCode(series, code cbc.Code) {
+	{ series.Join(code).String() }
 }
 
 templ invoiceTitleType(inv *bill.Invoice) {
 	<h1 class="type">
-		if k := pt.InvoiceTitleKey(inv); k != "" {
-			@t.T(k)
-		} else {
-			@t.T(invoiceTitleKey(inv))
-		}
+		@utils.Coalesce(
+			pt.InvoiceTitleType(inv),
+			invoiceDefaultTitleType(inv),
+		)
 	</h1>
 }
 
+templ invoiceDefaultTitleType(inv *bill.Invoice) {
+	if inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard {
+		@t.T(".standard-simplified")
+	} else {
+		@defaultTitleType(inv.Type)
+	}
+}
+
+templ defaultTitleType(key cbc.Key) {
+	@t.T("." + string(key))
+}
+
 templ titleBadges(env *gobl.Envelope, doc any) {
-	if pt.Canceled(env) {
-		<span class="canceled">
-			@t.T("regimes.pt.title.canceled")
-		</span>
-	} else if paid(doc) {
+	@utils.Coalesce(
+		pt.TitleBadges(env),
+		defaultTitleBadges(doc),
+	)
+}
+
+templ defaultTitleBadges(doc any) {
+	if paid(doc) {
 		<span class="paid">
 			@t.T(".paid")
 		</span>
@@ -113,36 +134,20 @@ templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
 	@es.VerifactuQR(env)
 	@es.TicketBAIQR(env)
 	<div class="contacts">
-		@supplier(inv.Supplier)
-		if inv.Customer != nil {
-			@customer(inv.Customer)
-		}
+		@contact(inv.Supplier, "supplier")
+		@contact(inv.Customer, "customer")
 	</div>
 }
 
 templ din5008Header(env *gobl.Envelope, inv *bill.Invoice) {
 	<div>
 		@title(env, inv)
-		if inv.Customer != nil {
-			@customer(inv.Customer)
-		}
+		@contact(inv.Customer, "customer")
 	</div>
 	<div>
 		@summary(inv)
-		@supplier(inv.Supplier)
+		@contact(inv.Supplier, "supplier")
 	</div>
-}
-
-func invoiceTitleKey(inv *bill.Invoice) string {
-	typ := titleKey(inv.Type)
-	if inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard {
-		typ = typ + "-simplified"
-	}
-	return typ
-}
-
-func titleKey(typ cbc.Key) string {
-	return "." + string(typ)
 }
 
 func supplierAlias(sup *org.Party) string {

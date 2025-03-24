@@ -8,12 +8,13 @@ import (
 	"strings"
 
 	"github.com/invopop/gobl"
-	"github.com/invopop/gobl/addons/pt/saft"
-	"github.com/invopop/gobl/bill"
-	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/l10n"
 	"github.com/invopop/gobl/regimes/pt"
 	go_qr "github.com/piglig/go-qr"
 )
+
+// Country to check for regime-specific components
+var country = l10n.PT.Tax()
 
 // Parameters required by the AT for the QR code generator
 const (
@@ -35,52 +36,10 @@ func FooterNotes(env *gobl.Envelope) string {
 	return ""
 }
 
-func InvoiceTitleKey(inv *bill.Invoice) string {
-	if inv == nil || inv.Tax == nil {
-		return ""
-	}
-	typ := inv.Tax.Ext.Get(saft.ExtKeyInvoiceType)
-	if typ == cbc.CodeEmpty {
-		typ = inv.Tax.Ext.Get(saft.ExtKeyWorkType)
-	}
-	return titleKey(typ)
-}
-
-func DeliveryTitleKey(dlv *bill.Delivery) string {
-	if dlv == nil || dlv.Tax == nil {
-		return ""
-	}
-	typ := dlv.Tax.Ext.Get(saft.ExtKeyMovementType)
-	return titleKey(typ)
-}
-
-func PaymentTitleKey(pmt *bill.Payment) string {
-	if pmt == nil {
-		return ""
-	}
-	typ := pmt.Ext.Get(saft.ExtKeyPaymentType)
-	return titleKey(typ)
-}
-
-func OrderTitleKey(ord *bill.Order) string {
-	if ord == nil || ord.Tax == nil {
-		return ""
-	}
-	typ := ord.Tax.Ext.Get(saft.ExtKeyWorkType)
-	return titleKey(typ)
-}
-
-func Canceled(env *gobl.Envelope) bool {
+func isCanceled(env *gobl.Envelope) bool {
 	qr := env.Head.GetStamp(pt.StampProviderATQR)
 	// TODO: Find a less hacky way to check if the document is canceled
 	return qr != nil && strings.Contains(qr.Value, "*E:A*")
-}
-
-func titleKey(key cbc.Code) string {
-	if key == cbc.CodeEmpty {
-		return ""
-	}
-	return "regimes.pt.title." + string(key)
 }
 
 // generateQR implements a custom QR code generator that complies with the AT spec.

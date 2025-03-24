@@ -1,7 +1,7 @@
 fr:
   page: "Page %{page} sur %{count}"
   billing:
-    invoice:
+    invoice: &invoice
       title:
         standard: "Facture"
         standard-simplified: "Facture Simplifiée"
@@ -107,38 +107,23 @@ fr:
           entry: "Entrée %{id}"
 
     payment:
+      <<: *invoice
       title:
         request: "Demande de paiement"
         advice: "Avis de paiement"
         receipt: "Reçu de paiement"
         paid: "Payé"
 
-      summary:
-        title: "Résumé"
-        issue_date: "Date d'émission"
-        value_date: "Date de valeur"
-        currency: "Devise"
-        order: "Commande"
-        order_period: "Période"
-        order_period_label: "%{label}"
-        order_period_range: "%{start} au %{end}"
-
       lines:
-        title: "Lignes"
-        i: "#"
+        <<: *lines
         document: "Document"
-        total: "Total"
-
-      totals:
-        title: "Totaux"
-        taxes: "Taxe"
-        total: "Total"
 
       method:
         title: "Détails de paiement"
         instructions: *payment_instructions
 
     delivery:
+      <<: *invoice
       title:
         advice: "Avis de Livraison"
         note: "Bon de Livraison"
@@ -165,13 +150,8 @@ fr:
         code: "Code de suivi"
         website: "Lien de suivi"
 
-      lines: *lines
-
-      totals: *totals
-
-      payment: *payment
-
     order:
+      <<: *invoice
       title:
         purchase: "Bon de Commande"
         sale: "Bon de Vente"
@@ -188,12 +168,6 @@ fr:
 
       seller:
         title: "Vendeur"
-
-      lines: *lines
-
-      totals: *totals
-
-      payment: *payment
 
   org:
     party:

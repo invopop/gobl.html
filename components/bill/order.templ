@@ -2,9 +2,9 @@ package bill
 
 import (
 	"github.com/invopop/gobl"
-	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl/bill"
 	gorg "github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
@@ -12,22 +12,24 @@ import (
 
 // Order renders a complete GOBL bill.Order object.
 templ Order(env *gobl.Envelope, ord *bill.Order) {
-	<article class="order">
-		<header class="regular">
-			@orderHeader(env, ord)
-		</header>
-		@orderLines(ord)
-		<div class="totals">
-			@orderTotals(ord, ord.Totals)
-			@taxes(ord.RegimeDef(), ord.Totals.Taxes)
-		</div>
-		@orderPaymentDetails(ord)
-		@notes(ord.Notes, ord.Supplier)
-		<div class="extensions">
-			// Region specific information
-			@pt.ATQR(env)
-		</div>
-	</article>
+	@t.Scope("billing.order") {
+		<article class="order">
+			<header class="regular">
+				@orderHeader(env, ord)
+			</header>
+			@orderLines(ord)
+			<div class="totals">
+				@orderTotals(ord, ord.Totals)
+				@taxes(ord.RegimeDef(), ord.Totals.Taxes)
+			</div>
+			@orderPaymentDetails(ord)
+			@notes(ord.Notes, ord.Supplier)
+			<div class="extensions">
+				// Region specific information
+				@pt.ATQR(env)
+			</div>
+		</article>
+	}
 }
 
 templ orderHeader(env *gobl.Envelope, ord *bill.Order) {
@@ -36,21 +38,15 @@ templ orderHeader(env *gobl.Envelope, ord *bill.Order) {
 		@orderSummary(ord)
 	</div>
 	<div class="contacts">
-		@supplier(ord.Supplier)
-		if ord.Customer != nil {
-			@customer(ord.Customer)
-		}
-		if ord.Buyer != nil {
-			@orderParty(ord.Buyer, "buyer")
-		}
-		if ord.Seller != nil {
-			@orderParty(ord.Seller, "seller")
-		}
+		@contact(ord.Supplier, "supplier")
+		@contact(ord.Customer, "customer")
+		@contact(ord.Buyer, "buyer")
+		@contact(ord.Seller, "seller")
 	</div>
 }
 
 templ orderTitle(env *gobl.Envelope, ord *bill.Order) {
-	@t.Scope("billing.order.title") {
+	@t.Scope(".title") {
 		<section class="title">
 			@titleHero(ord.Supplier)
 			@orderTitleType(ord)
@@ -64,17 +60,16 @@ templ orderTitle(env *gobl.Envelope, ord *bill.Order) {
 
 templ orderTitleType(ord *bill.Order) {
 	<h1 class="type">
-		if k := pt.OrderTitleKey(ord); k != "" {
-			@t.T(k)
-		} else {
-			@t.T(titleKey(ord.Type))
-		}
+		@utils.Coalesce(
+			pt.OrderTitleType(ord),
+			defaultTitleType(ord.Type),
+		)
 	</h1>
 }
 
 templ orderSummary(ord *bill.Order) {
 	<section class="summary">
-		@t.Scope("billing.order.summary") {
+		@t.Scope(".summary") {
 			<h2 class="title">
 				@t.T(".title")
 			</h2>
@@ -132,20 +127,6 @@ templ orderSummary(ord *bill.Order) {
 	</section>
 }
 
-// orderParty renders a party section for order-specific parties like buyer and seller
-templ orderParty(party *gorg.Party, partyType string) {
-	<section class={ partyType }>
-		<h2>
-			if party != nil && party.Label != "" {
-				{ party.Label }
-			} else {
-				@t.T("billing.order." + partyType + ".title")
-			}
-		</h2>
-		@org.Party(party)
-	</section>
-}
-
 // summaryContractRows renders contract information in the summary section
 templ summaryContractRows(contracts []*gorg.DocumentRef, reg tax.Regime) {
 	for _, contract := range contracts {
@@ -172,7 +153,7 @@ templ summaryContractRows(contracts []*gorg.DocumentRef, reg tax.Regime) {
 
 // orderLines renders the lines of an order document
 templ orderLines(ord *bill.Order) {
-	@t.Scope("billing.order.lines") {
+	@t.Scope(".lines") {
 		@linesWithSupport(ord.RegimeDef(), ord.Lines, ord.Discounts, ord.Charges)
 	}
 }
@@ -180,7 +161,7 @@ templ orderLines(ord *bill.Order) {
 // orderTotals renders the totals of an order document
 templ orderTotals(ord *bill.Order, totals *bill.Totals) {
 	<section class="totals">
-		@t.Scope("billing.order.totals") {
+		@t.Scope(".totals") {
 			<h2>
 				@t.T(".title")
 			</h2>
@@ -259,7 +240,7 @@ templ orderTotals(ord *bill.Order, totals *bill.Totals) {
 // orderPaymentDetails renders the payment details component for orders
 templ orderPaymentDetails(ord *bill.Order) {
 	if ord.Payment != nil {
-		@t.Scope("billing.order.payment") {
+		@t.Scope(".payment") {
 			<section class="payment">
 				<h2 class="title">
 					@t.T(".title")

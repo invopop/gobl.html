@@ -2,7 +2,7 @@ pt:
   page: "Página %{page} de %{count}"
 
   billing:
-    invoice:
+    invoice: &invoice
       title:
         standard: "Fatura"
         standard-simplified: "Fatura Simplificada"
@@ -115,38 +115,23 @@ pt:
           entry: "Entrada %{id}"
 
     payment:
+      <<: *invoice
       title:
         request: "Pedido de Pagamento"
         advice: "Aviso de Pagamento"
         receipt: "Recibo de Pagamento"
         paid: "Pago"
 
-      summary:
-        title: "Resumo"
-        issue_date: "Data de Emissão"
-        value_date: "Data de Valor"
-        currency: "Moeda"
-        order: "Ordem"
-        order_period: "Período"
-        order_period_label: "%{label}"
-        order_period_range: "%{start} a %{end}"
-
       lines:
-        title: "Linhas"
-        i: "#"
+        <<: *lines
         document: "Documento"
-        total: "Total"
-
-      totals:
-        title: "Totais"
-        taxes: "Imposto"
-        total: "Total"
 
       method:
         title: "Detalhes do Pagamento"
         instructions: *payment_instructions
 
     delivery:
+      <<: *invoice
       title:
         advice: "Aviso de Entrega"
         note: "Guia de Remessa"
@@ -173,13 +158,8 @@ pt:
         code: "Código de Rastreamento"
         website: "Link de Rastreamento"
 
-      lines: *lines
-
-      totals: *totals
-
-      payment: *payment
-
     order:
+      <<: *invoice
       title:
         purchase: "Ordem de Compra"
         sale: "Ordem de Venda"
@@ -196,12 +176,6 @@ pt:
 
       seller:
         title: "Vendedor"
-
-      lines: *lines
-
-      totals: *totals
-
-      payment: *payment
 
   org:
     party:

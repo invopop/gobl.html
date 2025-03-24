@@ -2,7 +2,7 @@ el:
   page: "Σελίδα %{page} από %{count}"
 
   billing:
-    invoice:
+    invoice: &invoice
       title:
         standard: "Τιμολόγιο"
         standard-simplified: "Απλοποιημένο Τιμολόγιο"
@@ -117,38 +117,23 @@ el:
           entry: "Καταχώρηση %{id}"
 
     payment:
+      <<: *invoice
       title:
         request: "Αίτημα Πληρωμής"
         advice: "Ειδοποίηση πληρωμής"
         receipt: "Απόδειξη πληρωμής"
         paid: "Πληρώθηκε"
 
-      summary:
-        title: "Περίληψη"
-        issue_date: "Ημερομηνία Έκδοσης"
-        value_date: "Ημερομηνία Αξίας"
-        currency: "Νόμισμα"
-        order: "Παραγγελία"
-        order_period: "Περίοδος"
-        order_period_label: "%{label}"
-        order_period_range: "%{start} έως %{end}"
-
       lines:
-        title: "Γραμμές"
-        i: "#"
+        <<: *lines
         document: "Έγγραφο"
-        total: "Σύνολο"
-
-      totals:
-        title: "Σύνολα"
-        taxes: "Φόρος"
-        total: "Σύνολο"
 
       method:
         title: "Λεπτομέρειες Πληρωμής"
         instructions: *payment_instructions
 
     delivery:
+      <<: *invoice
       title:
         advice: "Ειδοποίηση Παράδοσης"
         note: "Δελτίο Αποστολής"
@@ -175,11 +160,8 @@ el:
         code: "Κωδικός Παρακολούθησης"
         website: "Σύνδεσμος Παρακολούθησης"
 
-      lines: *lines
-
-      totals: *totals
-
     order:
+      <<: *invoice
       title:
         purchase: "Εντολή Αγοράς"
         sale: "Εντολή Πώλησης"
@@ -196,12 +178,6 @@ el:
 
       seller:
         title: "Πωλητής"
-
-      lines: *lines
-
-      totals: *totals
-
-      payment: *payment
 
   org:
     party:

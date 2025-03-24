@@ -2,7 +2,7 @@ en:
   page: "Page %{page} of %{count}"
 
   billing:
-    invoice:
+    invoice: &invoice
       title:
         standard: "Invoice"
         standard-simplified: "Simplified Invoice"
@@ -118,38 +118,23 @@ en:
           entry: "Entry %{id}"
 
     payment:
+      <<: *invoice
       title:
         request: "Payment Request"
         advice: "Remittance Advice"
         receipt: "Payment Receipt"
         paid: "Paid"
 
-      summary:
-        title: "Summary"
-        issue_date: "Issue Date"
-        value_date: "Value Date"
-        currency: "Currency"
-        order: "Order"
-        order_period: "Period"
-        order_period_label: "%{label}"
-        order_period_range: "%{start} to %{end}"
-
       lines:
-        title: "Lines"
-        i: "#"
+        <<: *lines
         document: "Document"
-        total: "Total"
-
-      totals:
-        title: "Totals"
-        taxes: "Tax"
-        total: "Total"
 
       method:
         title: "Payment Details"
         instructions: *payment_instructions
 
     delivery:
+      <<: *invoice
       title:
         advice: "Delivery Advice"
         note: "Delivery Note"
@@ -176,11 +161,8 @@ en:
         code: "Tracking Code"
         website: "Tracking Link"
 
-      lines: *lines
-
-      totals: *totals
-
     order:
+      <<: *invoice
       title:
         purchase: "Purchase Order"
         sale: "Sales Order"
@@ -197,12 +179,6 @@ en:
 
       seller:
         title: "Seller"
-
-      lines: *lines
-
-      totals: *totals
-
-      payment: *payment
 
   org:
     party:
