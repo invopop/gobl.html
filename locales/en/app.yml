@@ -2,7 +2,7 @@ en:
   page: "Page %{page} of %{count}"
 
   billing:
-    invoice:
+    invoice: &invoice
       title:
         standard: "Invoice"
         standard-simplified: "Simplified Invoice"
@@ -12,14 +12,14 @@ en:
         debit-note: "Debit Note"
         paid: "Paid"
 
-      summary:
+      summary: &summary
         title: "Summary"
         issue_date: "Issue Date"
         value_date: "Value Date"
         operation_date: "Operation Date"
         currency: "Currency"
         currency_value: "%{desc} (%{code})"
-        preceding_invoice: "Previous Invoice"
+        preceding_document: "Previous Invoice"
         order: "Order"
         order_period: "Period"
         order_period_label: "%{label}"
@@ -33,7 +33,7 @@ en:
       customer:
         title: "Customer"
 
-      lines:
+      lines: &lines
         title: "Lines"
         i: "#"
         ref: "Ref."
@@ -45,7 +45,7 @@ en:
         charges: "Chgs."
         total: "Total"
 
-      totals:
+      totals: &totals
         sum: "Sum"
         discount: "Discount"
         charge: "Charge"
@@ -68,7 +68,7 @@ en:
         rate: "Rate"
         amount: "Amount"
 
-      payment:
+      payment: &payment
         title: "Payment"
         instructions: &payment_instructions
           method: "Method of payment"
@@ -117,45 +117,68 @@ en:
           page: "Page %{id}"
           entry: "Entry %{id}"
 
-      regimes:
-        pl:
-          ksef-id: "ID: %{id}"
-        co:
-          cufe: "CUFE: %{cufe}"
-          cude: "CUDE: %{cude}"
-          preceding_cufe: "CUFE Previous invoice: %{cufe}"
-
     payment:
+      <<: *invoice
       title:
         request: "Payment Request"
         advice: "Remittance Advice"
         receipt: "Payment Receipt"
         paid: "Paid"
 
-      summary:
-        title: "Summary"
-        issue_date: "Issue Date"
-        value_date: "Value Date"
-        currency: "Currency"
-        order: "Order"
-        order_period: "Period"
-        order_period_label: "%{label}"
-        order_period_range: "%{start} to %{end}"
-
       lines:
-        title: "Lines"
-        i: "#"
+        <<: *lines
         document: "Document"
-        total: "Total"
-
-      totals:
-        title: "Totals"
-        taxes: "Tax"
-        total: "Total"
 
       method:
         title: "Payment Details"
         instructions: *payment_instructions
+
+    delivery:
+      <<: *invoice
+      title:
+        advice: "Delivery Advice"
+        note: "Delivery Note"
+        waybill: "Waybill"
+        receipt: "Delivery Receipt"
+
+      summary:
+        <<: *summary
+        despatch_date: "Despatch Date"
+        receive_date: "Receive Date"
+        preceding_document: "Previous Document"
+
+      despatcher:
+        title: "Despatcher"
+
+      receiver:
+        title: "Receiver"
+
+      courier:
+        title: "Courier"
+
+      tracking:
+        title: "Tracking Information"
+        code: "Tracking Code"
+        website: "Tracking Link"
+
+    order:
+      <<: *invoice
+      title:
+        purchase: "Purchase Order"
+        sale: "Sales Order"
+        quote: "Quote"
+
+      summary:
+        <<: *summary
+        preceding_document: "Previous Document"
+        contract: "Contract"
+        period: "Period"
+
+      buyer:
+        title: "Buyer"
+
+      seller:
+        title: "Seller"
 
   org:
     party:
@@ -187,3 +210,43 @@ en:
     address:
       label: "%{label}:"
       country: "(%{country})"
+
+  regimes:
+    pl:
+      ksef-id: "ID: %{id}"
+    co:
+      cufe: "CUFE: %{cufe}"
+      cude: "CUDE: %{cude}"
+      preceding_cufe: "CUFE Previous invoice: %{cufe}"
+    pt:
+      title:
+        FT: "Invoice"
+        FS: "Simplified Invoice"
+        FR: "Invoice-Receipt"
+        ND: "Debit Note"
+        NC: "Credit Note"
+        RC: "Cash Receipt"
+        RG: "Receipt"
+        CM: "Table Order"
+        CC: "Consignment Credit"
+        FC: "Consignment Invoice"
+        FO: "Work Order"
+        NE: "Purchase Order"
+        OU: "Other Document"
+        OR: "Quotation"
+        PF: "Proforma Invoice"
+        DC: "Delivery Document"
+        GR: "Delivery Note"
+        GT: "Waybill"
+        GA: "Fixed Assets"
+        GC: "Consignment"
+        GD: "Return"
+        RP: "Premium Receipt"
+        RE: "Chargeback Receipt"
+        CS: "Co-insurer Allocation"
+        LD: "Lead Co-insurer Allocation"
+        RA: "Accepted Reinsurance"
+        canceled: "Canceled"
+
+
+

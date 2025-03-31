@@ -2,7 +2,7 @@ pl:
   page: "Strona %{page} z %{count}"
 
   billing:
-    invoice:
+    invoice: &invoice
       title:
         standard: "Faktura"
         standard-simplified: "Uproszczona faktura"
@@ -11,14 +11,14 @@ pl:
         credit-note: "Nota kredytowa"
         debit-note: "Nota debetowa"
 
-      summary:
+      summary: &summary
         title: "Podsumowanie"
         issue_date: "Data wystawienia"
         value_date: "Data wartości"
         operation_date: "Data operacji"
         currency: "Waluta"
         currency_value: "%{desc} (%{code})"
-        preceding_invoice: "Poprzednia faktura"
+        preceding_document: "Poprzednia faktura"
         order: "Zamówienie"
         order_period: "Okres"
         order_period_label: "%{label}"
@@ -30,7 +30,7 @@ pl:
       customer:
         title: "Klient"
 
-      lines:
+      lines: &lines
         title: "Linie"
         i: "#"
         ref: "Ref."
@@ -42,7 +42,7 @@ pl:
         charges: "Opłaty"
         total: "Suma"
 
-      totals:
+      totals: &totals
         sum: "Suma"
         discount: "Rabat"
         charge: "Opłata"
@@ -65,7 +65,7 @@ pl:
         rate: "Stawka"
         amount: "Kwota"
 
-      payment:
+      payment: &payment
         title: "Płatność"
         instructions: &payment_instructions
           method: "Metoda płatności"
@@ -113,43 +113,68 @@ pl:
           page: "Strona %{id}"
           entry: "Wpis %{id}"
 
-      regimes:
-        co:
-          cufe: "CUFE: %{cufe}"
-          cude: "CUDE: %{cude}"
-          preceding_cufe: "Poprzedni CUFE faktury: %{cufe}"
-
     payment:
+      <<: *invoice
       title:
         request: "Prośba o płatność"
         advice: "Powiadomienie o płatności"
         receipt: "Potwierdzenie płatności"
         paid: "Opłacone"
 
-      summary:
-        title: "Podsumowanie"
-        issue_date: "Data wystawienia"
-        value_date: "Data wartości"
-        currency: "Waluta"
-        order: "Zamówienie"
-        order_period: "Okres"
-        order_period_label: "%{label}"
-        order_period_range: "%{start} do %{end}"
-
       lines:
-        title: "Linie"
-        i: "#"
+        <<: *lines
         document: "Dokument"
-        total: "Suma"
-
-      totals:
-        title: "Podsumowanie"
-        taxes: "Podatek"
-        total: "Suma"
 
       method:
         title: "Szczegóły płatności"
         instructions: *payment_instructions
+
+    delivery:
+      <<: *invoice
+      title:
+        advice: "Awizo dostawy"
+        note: "List przewozowy"
+        waybill: "List przewozowy"
+        receipt: "Potwierdzenie dostawy"
+
+      summary:
+        <<: *summary
+        despatch_date: "Data wysyłki"
+        receive_date: "Data odbioru"
+        preceding_document: "Poprzedni dokument"
+
+      despatcher:
+        title: "Nadawca"
+
+      receiver:
+        title: "Odbiorca"
+
+      courier:
+        title: "Kurier"
+
+      tracking:
+        title: "Informacje o śledzeniu"
+        code: "Kod śledzenia"
+        website: "Link do śledzenia"
+
+    order:
+      <<: *invoice
+      title:
+        purchase: "Zamówienie zakupu"
+        sale: "Zamówienie sprzedaży"
+        quote: "Oferta"
+
+      summary:
+        <<: *summary
+        preceding_document: "Poprzedni dokument"
+        contract: "Umowa"
+        period: "Okres"
+
+      buyer:
+        title: "Kupujący"
+
+      seller:
+        title: "Sprzedawca"
 
   org:
     party:
@@ -170,3 +195,9 @@ pl:
     address:
       label: "%{label}:"
       country: "(%{country})"
+
+  regimes:
+    co:
+      cufe: "CUFE: %{cufe}"
+      cude: "CUDE: %{cude}"
+      preceding_cufe: "Poprzedni CUFE faktury: %{cufe}"

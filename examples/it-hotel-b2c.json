@@ -4,12 +4,12 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "277eb3247d67ce9de6feef8bec4d710e1a1f10feae546ab9da138e62dd6b1cc1"
-		},
-		"draft": true
+			"val": "307a81816f180937489ff497225749d220f3a3045852b455679fbc98246bb440"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
 		"uuid": "3aea7b56-59d8-4beb-90bd-f8f280d852a0",
 		"type": "standard",
 		"series": "SAMPLE",
@@ -84,7 +84,7 @@
 						"cat": "VAT",
 						"rate": "exempt",
 						"ext": {
-							"it-sdi-nature": "N4"
+							"it-sdi-exempt": "N4"
 						}
 					}
 				],
@@ -120,7 +120,7 @@
 							{
 								"key": "exempt",
 								"ext": {
-									"it-sdi-nature": "N4"
+									"it-sdi-exempt": "N4"
 								},
 								"base": "1.00",
 								"amount": "0.00"

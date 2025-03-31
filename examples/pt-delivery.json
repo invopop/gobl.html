@@ -1,0 +1,178 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01956624-10f2-734a-be9f-d68b2a011cac",
+		"dig": {
+			"alg": "sha256",
+			"val": "be0208b5b6e9757a349e3b4880bdfc3a855e328ab0da95d18b11cdd6bf8894cf"
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJR2KW4-2"
+			},
+			{
+				"prv": "at-hash",
+				"val": "0vot"
+			},
+			{
+				"prv": "at-hash-full",
+				"val": "0WMEHADswWv5aavY+2VboOclMpPyoQtl7neqfA/7PPvhayQR1OQMok5fFr8N4vi6TGm8ymmHSpfX4QG28jeDJqNuO92v5TbRH78/4lPbcryEmVIgG0x9jXtYPX6RehwYYuUZg1q1XSEYrEGg+zQoPN8VZetI5PxGRWqrkIe8G5w="
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:770013813*B:514329874*C:PT*D:GR*E:N*F:20241223*G:GR DEV-10/2*H:AAJFJR2KW4-2*I1:PT*I7:42.50*I8:9.78*N:9.78*O:52.28*Q:0vot*R:0"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "0"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/delivery",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"uuid": "01956624-10f2-7352-a021-3dd4ae2cf8ff",
+		"type": "note",
+		"series": "GR DEV-10",
+		"code": "2",
+		"issue_date": "2024-12-23",
+		"value_date": "2024-12-24",
+		"currency": "EUR",
+		"despatch_date": "2024-12-23",
+		"receive_date": "2024-12-25",
+		"tax": {
+			"ext": {
+				"pt-saft-movement-type": "GR"
+			}
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "770013813"
+			},
+			"addresses": [
+				{
+					"street": "Rua das Flores 200 3º Esquerdo",
+					"locality": "Porto",
+					"code": "4050-265",
+					"country": "PT"
+				}
+			]
+		},
+		"customer": {
+			"name": "Gusto Unipessoal Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Avenida da Liberdade 152 2º Direito",
+					"locality": "Lisboa",
+					"code": "1250-146",
+					"country": "PT"
+				}
+			]
+		},
+		"despatcher": {
+			"name": "Innovatech Logistics",
+			"tax_id": {
+				"country": "PT",
+				"code": "590895184"
+			},
+			"addresses": [
+				{
+					"street": "Rua da Indústria 45",
+					"locality": "Porto",
+					"code": "4050-300",
+					"country": "PT"
+				}
+			]
+		},
+		"receiver": {
+			"name": "Gusto Armazém",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Zona Industrial, Lote 23",
+					"locality": "Lisboa",
+					"code": "1300-300",
+					"country": "PT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"order": "PO-2024-001",
+				"item": {
+					"name": "LCD Monitor 24-inch",
+					"price": "650.00",
+					"unit": "one",
+					"ext": {
+						"pt-saft-product-type": "P"
+					}
+				},
+				"sum": "650.00",
+				"discounts": [
+					{
+						"percent": "15.0%",
+						"amount": "97.50"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "552.50"
+			}
+		],
+		"totals": {
+			"sum": "552.50",
+			"total": "552.50",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "NOR"
+								},
+								"base": "552.50",
+								"percent": "23.0%",
+								"amount": "127.08"
+							}
+						],
+						"amount": "127.08"
+					}
+				],
+				"sum": "127.08"
+			},
+			"tax": "127.08",
+			"total_with_tax": "679.58",
+			"payable": "679.58"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjdiNzFmZTgwLTZkMjUtNGI3My05MWQzLWRhNjMzYzY5Mzc3NSJ9.eyJ1dWlkIjoiMDE5NTY2MjQtMTBmMi03MzRhLWJlOWYtZDY4YjJhMDExY2FjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImY0MzY2NWRhZDMxMDdlYjFiNzUyNDhhZTBjYmJkNWJiNzA3NjI2YjBmNjE3MzE1MTgyZjEyZTM1ZTg4ZDE2NTIifX0.NH6VqdHt8k-A5syW2pIMTMVICUXad8MsS0DDhz49UMV3O511EfpyW_yBsVih_QloPhZYEwusFe8WcHs1OEPmrA"
+	]
+}

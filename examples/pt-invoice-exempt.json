@@ -4,7 +4,7 @@
 		"uuid": "01902adc-05c8-7000-8703-60c8dcf87bd6",
 		"dig": {
 			"alg": "sha256",
-			"val": "0f085b3f62aff6c1366c42ddc191d774b47a728d572b45fd9e3adddd60c2c5bf"
+			"val": "8eebf58eb8b59da04cfefd185dd92a95ae678bbe9b63150951a3084d49e64f6c"
 		},
 		"stamps": [
 			{
@@ -27,6 +27,7 @@
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "PT",
 		"uuid": "01902adc-055a-7000-88ea-0dc88769ee3c",
 		"type": "standard",
 		"code": "FT IXTEST-01/27",
@@ -81,7 +82,8 @@
 						"cat": "VAT",
 						"rate": "exempt",
 						"ext": {
-							"pt-exemption-code": "M41"
+							"pt-region": "PT",
+							"pt-saft-exemption": "M41"
 						}
 					}
 				],
@@ -100,7 +102,8 @@
 						"cat": "VAT",
 						"rate": "exempt",
 						"ext": {
-							"pt-exemption-code": "M42"
+							"pt-region": "PT",
+							"pt-saft-exemption": "M42"
 						}
 					}
 				],
@@ -118,7 +121,8 @@
 							{
 								"key": "exempt",
 								"ext": {
-									"pt-exemption-code": "M41"
+									"pt-region": "PT",
+									"pt-saft-exemption": "M41"
 								},
 								"base": "100.00",
 								"amount": "0.00"
@@ -126,7 +130,8 @@
 							{
 								"key": "exempt",
 								"ext": {
-									"pt-exemption-code": "M42"
+									"pt-region": "PT",
+									"pt-saft-exemption": "M42"
 								},
 								"base": "50.00",
 								"amount": "0.00"
@@ -155,5 +160,8 @@
 				"text": "Reverse charge / Autoliquidação - Decreto-Lei n.º 21/2007, de 29 de janeiro"
 			}
 		]
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6ImUzNzFjMzBiLTNiMzMtNGNiMC04NzM5LThiOTUzMWM1NWM2NiJ9.eyJ1dWlkIjoiMDE5MDJhZGMtMDVjOC03MDAwLTg3MDMtNjBjOGRjZjg3YmQ2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjhlZWJmNThlYjhiNTlkYTA0Y2ZlZmQxODVkZDkyYTk1YWU2NzhiYmU5YjYzMTUwOTUxYTMwODRkNDllNjRmNmMifSwic3RhbXBzIjpbeyJwcnYiOiJhdC1hdGN1ZCIsInZhbCI6IkFBSkZKM0pZRFAtMjcifSx7InBydiI6ImF0LXFyIiwidmFsIjoiQTo1MDgwMjUzMzgqQjo5OTk5OTk5OTAqQzpQVCpEOkZUKkU6TipGOjIwMjQwNjE4Kkc6RlQgSVhURVNULTAxLzI3Kkg6QUFKRkozSllEUC0yNypJMTpQVCpJMjoxMDAuMDAqTjowLjAwKk86MTAwLjAwKlE6dlZXaipSOjE5MiJ9LHsicHJ2IjoiYXQtaGFzaCIsInZhbCI6InZWV2oifSx7InBydiI6ImF0LWFwcC1pZCIsInZhbCI6IjE5MiJ9XX0.CTWcw5_36Y3LrwXbX1KpNUqgRWzu2-HNDDJXubCBeiODJ55TsU5oQ1gq_azpImfn3c0CPzPo1k1X-n84TgG5Og"
+	]
 }

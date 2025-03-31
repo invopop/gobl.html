@@ -1,7 +1,7 @@
 fr:
   page: "Page %{page} sur %{count}"
   billing:
-    invoice:
+    invoice: &invoice
       title:
         standard: "Facture"
         standard-simplified: "Facture Simplifiée"
@@ -10,14 +10,14 @@ fr:
         credit-note: "Note de Crédit"
         debit-note: "Note de Débit"
         paid: "Payé"
-      summary:
+      summary: &summary
         title: "Résumé"
         issue_date: "Date d'émission"
         value_date: "Date de valeur"
         operation_date: "Date d'opération"
         currency: "Devise"
         currency_value: "%{desc} (%{code})"
-        preceding_invoice: "Facture antérieure"
+        preceding_document: "Facture antérieure"
         order: "Commande"
         order_period: "Période"
         order_period_label: "%{label}"
@@ -26,7 +26,7 @@ fr:
         title: "Fournisseur"
       customer:
         title: "Client"
-      lines:
+      lines: &lines
         title: "Lignes"
         i: "#"
         ref: "Réf."
@@ -37,7 +37,7 @@ fr:
         discount: "Remise"
         charges: "Frais"
         total: "Total"
-      totals:
+      totals: &totals
         sum: "Somme"
         discount: "Remise"
         charge: "Frais"
@@ -58,7 +58,7 @@ fr:
         base: "Base"
         rate: "Taux"
         amount: "Montant"
-      payment:
+      payment: &payment
         title: "Paiement"
         instructions: &payment_instructions
           method: "Méthode de paiement"
@@ -105,43 +105,70 @@ fr:
           section: "Section %{id}"
           page: "Page %{id}"
           entry: "Entrée %{id}"
-      regimes:
-        co:
-          cufe: "CUFE: %{cufe}"
-          cude: "CUDE: %{cude}"
-          preceding_cufe: "CUFE Facture précédente: %{cufe}"
 
     payment:
+      <<: *invoice
       title:
         request: "Demande de paiement"
         advice: "Avis de paiement"
         receipt: "Reçu de paiement"
         paid: "Payé"
 
-      summary:
-        title: "Résumé"
-        issue_date: "Date d'émission"
-        value_date: "Date de valeur"
-        currency: "Devise"
-        order: "Commande"
-        order_period: "Période"
-        order_period_label: "%{label}"
-        order_period_range: "%{start} au %{end}"
-
       lines:
-        title: "Lignes"
-        i: "#"
+        <<: *lines
         document: "Document"
-        total: "Total"
-
-      totals:
-        title: "Totaux"
-        taxes: "Taxe"
-        total: "Total"
 
       method:
         title: "Détails de paiement"
         instructions: *payment_instructions
+
+    delivery:
+      <<: *invoice
+      title:
+        advice: "Avis de Livraison"
+        note: "Bon de Livraison"
+        waybill: "Lettre de Voiture"
+        receipt: "Récépissé de Livraison"
+
+      summary:
+        <<: *summary
+        despatch_date: "Date d'expédition"
+        receive_date: "Date de réception"
+        preceding_document: "Document précédent"
+
+      despatcher:
+        title: "Expéditeur"
+
+      receiver:
+        title: "Destinataire"
+
+      courier:
+        title: "Transporteur"
+
+      tracking:
+        title: "Informations de suivi"
+        code: "Code de suivi"
+        website: "Lien de suivi"
+
+    order:
+      <<: *invoice
+      title:
+        purchase: "Bon de Commande"
+        sale: "Bon de Vente"
+        quote: "Devis"
+
+      summary:
+        <<: *summary
+        preceding_document: "Document précédent"
+        contract: "Contrat"
+        period: "Période"
+
+      buyer:
+        title: "Acheteur"
+
+      seller:
+        title: "Vendeur"
+
   org:
     party:
       tax_id: "%{label}: (%{country}) %{code}"
@@ -163,3 +190,9 @@ fr:
     address:
       label: "%{label}"
       country: "(%{country})"
+
+  regimes:
+    co:
+      cufe: "CUFE: %{cufe}"
+      cude: "CUDE: %{cude}"
+      preceding_cufe: "CUFE Facture précédente: %{cufe}"

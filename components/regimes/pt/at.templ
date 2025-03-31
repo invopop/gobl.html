@@ -2,6 +2,11 @@ package pt
 
 import (
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/addons/pt/saft"
+	"github.com/invopop/gobl/tax"
+	"github.com/invopop/gobl.html/components/t"
 )
 
 templ ATQR(env *gobl.Envelope) {
@@ -9,6 +14,44 @@ templ ATQR(env *gobl.Envelope) {
 		if qr := atQR(env); qr != "" {
 			@generateATQR(atcud, qr)
 		}
+	}
+}
+
+templ InvoiceTitleType(inv *bill.Invoice) {
+	if inv != nil && inv.Regime.Country == country && inv.Tax != nil {
+		@titleType(inv.Tax.Ext)
+	}
+}
+
+templ DeliveryTitleType(dlv *bill.Delivery) {
+	if dlv != nil && dlv.Regime.Country == country && dlv.Tax != nil {
+		@titleType(dlv.Tax.Ext)
+	}
+}
+
+templ OrderTitleType(ord *bill.Order) {
+	if ord != nil && ord.Regime.Country == country && ord.Tax != nil {
+		@titleType(ord.Tax.Ext)
+	}
+}
+
+templ PaymentTitleType(pmt *bill.Payment) {
+	if pmt != nil && pmt.Regime.Country == country && pmt.Tax != nil {
+		@titleType(pmt.Ext)
+	}
+}
+
+templ TitleCode(series, code cbc.Code, reg tax.Regime) {
+	if reg.Country == country {
+		{ series.JoinWith("/", code).String() }
+	}
+}
+
+templ TitleBadges(env *gobl.Envelope) {
+	if isCanceled(env) {
+		<span class="canceled">
+			@t.T("regimes.pt.title.canceled")
+		</span>
 	}
 }
 
@@ -40,4 +83,25 @@ templ generateATQR(atcud, qr string) {
 			</div>
 		</div>
 	</section>
+}
+
+templ titleType(ext tax.Extensions) {
+	if typ := docType(ext); typ != cbc.CodeEmpty {
+		@t.T("regimes.pt.title." + string(typ))
+	}
+}
+
+func docType(ext tax.Extensions) cbc.Code {
+	switch {
+	case ext.Has(saft.ExtKeyInvoiceType):
+		return ext.Get(saft.ExtKeyInvoiceType)
+	case ext.Has(saft.ExtKeyWorkType):
+		return ext.Get(saft.ExtKeyWorkType)
+	case ext.Has(saft.ExtKeyMovementType):
+		return ext.Get(saft.ExtKeyMovementType)
+	case ext.Has(saft.ExtKeyPaymentType):
+		return ext.Get(saft.ExtKeyPaymentType)
+	default:
+		return cbc.CodeEmpty
+	}
 }

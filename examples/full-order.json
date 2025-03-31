@@ -1,0 +1,194 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
+		"dig": {
+			"alg": "sha256",
+			"val": "15d6365826adaeda3ecb9bc3f3919ed4d0397dedce8baeae333c002d9a60e31d"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/order",
+		"$regime": "PT",
+		"uuid": "21cc05ec-04b6-11f0-9bbd-325096b39f47",
+		"type": "purchase",
+		"series": "NE SERIES-A",
+		"code": "123",
+		"issue_date": "2023-01-30",
+		"op_date": "2023-02-01",
+		"value_date": "2023-01-31",
+		"currency": "EUR",
+		"exchange_rates": [
+			{
+				"from": "EUR",
+				"to": "USD",
+				"amount": "1.09"
+			}
+		],
+		"contracts": [
+			{
+				"issue_date": "2023-01-15",
+				"code": "CON-123456789"
+			}
+		],
+		"preceding": [
+			{
+				"issue_date": "2023-01-29",
+				"series": "NE SERIES-A",
+				"code": "122"
+			}
+		],
+		"period": {
+			"start": "2023-01-30",
+			"end": "2023-06-30"
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "770013813"
+			},
+			"addresses": [
+				{
+					"street": "Rua das Flores 200 3º Esquerdo",
+					"locality": "Porto",
+					"code": "4050-265",
+					"country": "PT"
+				}
+			]
+		},
+		"customer": {
+			"name": "Gusto Unipessoal Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Avenida da Liberdade 152 2º Direito",
+					"locality": "Lisboa",
+					"code": "1250-146",
+					"country": "PT"
+				}
+			]
+		},
+		"buyer": {
+			"name": "Gusto Purchasing Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			}
+		},
+		"seller": {
+			"name": "Innovatech Sales Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "770013813"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Noite em quarto duplo",
+					"price": "100.00",
+					"unit": "one"
+				},
+				"sum": "100.00",
+				"discounts": [
+					{
+						"percent": "10.0%",
+						"amount": "10.00"
+					}
+				],
+				"charges": [
+					{
+						"percent": "25.0%",
+						"amount": "25.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "115.00"
+			}
+		],
+		"discounts": [
+			{
+				"i": 1,
+				"amount": "5.25"
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"percent": "12.0%",
+				"amount": "13.80"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Payment in 30 days"
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "ES31 0240 4036 4573 9340 5564",
+						"name": "RANDOM"
+					}
+				],
+				"online": [
+					{
+						"key": "paypal",
+						"label": "Paypal",
+						"url": "https://www.paypal.com/pay?ref=PAY1234"
+					}
+				],
+				"notes": "**Please** pay within _30 days_"
+			}
+		},
+		"totals": {
+			"sum": "115.00",
+			"discount": "5.25",
+			"charge": "13.80",
+			"total": "123.55",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT"
+								},
+								"base": "115.00",
+								"percent": "23.0%",
+								"amount": "26.45"
+							}
+						],
+						"amount": "26.45"
+					}
+				],
+				"sum": "26.45"
+			},
+			"tax": "26.45",
+			"total_with_tax": "150.00",
+			"payable": "150.00"
+		},
+		"notes": [
+			{
+				"text": "This is a confidential document"
+			}
+		]
+	}
+}

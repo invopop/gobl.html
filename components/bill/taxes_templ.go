@@ -11,6 +11,8 @@ import templruntime "github.com/a-h/templ/runtime"
 import (
 	"context"
 	"fmt"
+	"strings"
+
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/tax"
 )
@@ -111,7 +113,7 @@ func taxes(r *tax.RegimeDef, taxes *tax.Total) templ.Component {
 				}
 				return nil
 			})
-			templ_7745c5c3_Err = t.Scope("billing.invoice.taxes").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = t.Scope(".taxes").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -157,7 +159,7 @@ func taxRateRow(r *tax.RegimeDef, cat *tax.CategoryTotal, rate *tax.RateTotal, s
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprint(span))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/taxes.templ`, Line: 50, Col: 33}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/taxes.templ`, Line: 52, Col: 33}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -170,7 +172,7 @@ func taxRateRow(r *tax.RegimeDef, cat *tax.CategoryTotal, rate *tax.RateTotal, s
 			var templ_7745c5c3_Var5 string
 			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(taxCategoryTotalName(ctx, r, cat))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/taxes.templ`, Line: 51, Col: 39}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/taxes.templ`, Line: 53, Col: 39}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 			if templ_7745c5c3_Err != nil {
@@ -213,7 +215,7 @@ func taxRateRow(r *tax.RegimeDef, cat *tax.CategoryTotal, rate *tax.RateTotal, s
 			var templ_7745c5c3_Var6 string
 			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(code)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/taxes.templ`, Line: 66, Col: 11}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/taxes.templ`, Line: 68, Col: 11}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 			if templ_7745c5c3_Err != nil {
@@ -278,14 +280,21 @@ func taxCategoryTotalName(ctx context.Context, r *tax.RegimeDef, cat *tax.Catego
 	return category.Name.In(t.Lang(ctx))
 }
 
-// taxExemptionCode looks at the exemption reasons and tries to extract the
-// first code. We'll see if this is a good idea or not.
+// taxExemptionCode looks at the extension and tries to extract the
+// exemption code.
 func taxExemptionCode(ext tax.Extensions) string {
-	if len(ext) > 0 {
-		for _, v := range ext {
+	// First try a code with the word `exempt` in the key
+	for k, v := range ext {
+		if strings.Contains(k.String(), "exempt") {
 			return fmt.Sprintf("(%s)", v.String())
 		}
 	}
+
+	// Next return the first code found
+	for _, v := range ext {
+		return fmt.Sprintf("(%s)", v.String())
+	}
+
 	return ""
 }
 

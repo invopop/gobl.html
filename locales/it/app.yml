@@ -1,7 +1,7 @@
 it:
   page: "Pagina %{page} di %{count}"
   billing:
-    invoice:
+    invoice: &invoice
       title:
         standard: "Fattura"
         standard-simplified: "Fattura Semplificata"
@@ -10,14 +10,14 @@ it:
         credit-note: "Nota di Credito"
         debit-note: "Nota di Debito"
         paid: "Pagata"
-      summary:
+      summary: &summary
         title: "Riepilogo"
         issue_date: "Data Emissione"
         value_date: "Data Valuta"
         operation_date: "Data Operazione"
         currency: "Valuta"
         currency_value: "%{desc} (%{code})"
-        preceding_invoice: "Fattura Precedente"
+        preceding_document: "Fattura Precedente"
         order: "Ordine"
         order_period: "Periodo"
         order_period_label: "%{label}"
@@ -26,7 +26,7 @@ it:
         title: "Fornitore"
       customer:
         title: "Cliente"
-      lines:
+      lines: &lines
         title: "Righe"
         i: "#"
         ref: "Rif."
@@ -37,7 +37,7 @@ it:
         discount: "Sconto"
         charges: "Oneri"
         total: "Totale"
-      totals:
+      totals: &totals
         sum: "Somma"
         discount: "Sconto"
         charge: "Oneri"
@@ -58,7 +58,7 @@ it:
         base: "Base"
         rate: "Aliquota"
         amount: "Importo"
-      payment:
+      payment: &payment
         title: "Pagamento"
         instructions: &payment_instructions
           method: "Metodo di pagamento"
@@ -104,43 +104,70 @@ it:
           section: "Sezione %{id}"
           page: "Pagina %{id}"
           entry: "Voce %{id}"
-      regimes:
-        co:
-          cufe: "CUFE: %{cufe}"
-          cude: "CUDE: %{cude}"
-          preceding_cufe: "CUFE Fattura precedente: %{cufe}"
 
     payment:
+      <<: *invoice
       title:
         request: "Richiesta di Pagamento"
         advice: "Avviso di Pagamento"
         receipt: "Ricevuta di Pagamento"
         paid: "Pagato"
 
-      summary:
-        title: "Riepilogo"
-        issue_date: "Data Emissione"
-        value_date: "Data Valuta"
-        currency: "Valuta"
-        order: "Ordine"
-        order_period: "Periodo"
-        order_period_label: "%{label}"
-        order_period_range: "%{start} a %{end}"
-
       lines:
-        title: "Righe"
-        i: "#"
+        <<: *lines
         document: "Documento"
-        total: "Totale"
-
-      totals:
-        title: "Totali"
-        taxes: "Tassa"
-        total: "Totale"
 
       method:
         title: "Dettagli del Pagamento"
         instructions: *payment_instructions
+
+    delivery:
+      <<: *invoice
+      title:
+        advice: "Avviso di Consegna"
+        note: "Documento di Trasporto"
+        waybill: "Lettera di Vettura"
+        receipt: "Ricevuta di Consegna"
+
+      summary:
+        <<: *summary
+        despatch_date: "Data di Spedizione"
+        receive_date: "Data di Ricezione"
+        preceding_document: "Documento Precedente"
+
+      despatcher:
+        title: "Mittente"
+
+      receiver:
+        title: "Destinatario"
+
+      courier:
+        title: "Corriere"
+
+      tracking:
+        title: "Informazioni di Tracciamento"
+        code: "Codice di Tracciamento"
+        website: "Link di Tracciamento"
+
+    order:
+      <<: *invoice
+      title:
+        purchase: "Ordine di Acquisto"
+        sale: "Ordine di Vendita"
+        quote: "Preventivo"
+
+      summary:
+        <<: *summary
+        preceding_document: "Documento Precedente"
+        contract: "Contratto"
+        period: "Periodo"
+
+      buyer:
+        title: "Acquirente"
+
+      seller:
+        title: "Venditore"
+
   org:
     party:
       tax_id: "%{label}: (%{country}) %{code}"
@@ -162,3 +189,9 @@ it:
     address:
       label: "%{label}:"
       country: "(%{country})"
+
+  regimes:
+    co:
+      cufe: "CUFE: %{cufe}"
+      cude: "CUDE: %{cude}"
+      preceding_cufe: "CUFE Fattura precedente: %{cufe}"

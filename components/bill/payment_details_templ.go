@@ -83,7 +83,7 @@ func paymentDetails(inv *bill.Invoice) templ.Component {
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = t.Scope("billing.invoice.payment").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = t.Scope(".payment").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -652,8 +652,15 @@ func showPayments(inv *bill.Invoice) bool {
 	return true
 }
 
-func paid(inv *bill.Invoice) bool {
-	return inv.Totals.Due != nil && inv.Totals.Due.IsZero()
+func paid(doc any) bool {
+	switch d := doc.(type) {
+	case *bill.Invoice:
+		return d.Totals.Due != nil && d.Totals.Due.IsZero()
+	case *bill.Payment:
+		return true
+	default:
+		return false
+	}
 }
 
 func paymentInstrMethodName(ctx context.Context, inst *pay.Instructions) string {

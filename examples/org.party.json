@@ -1,50 +1,49 @@
 {
-    "$schema": "https://gobl.org/draft-0/envelope",
-    "head": {
-        "uuid": "018f73cb-34b4-7000-aaa1-17f9d9604da0",
-        "dig": {
-            "alg": "sha256",
-            "val": "c198db6985c94bbc7798e5d60ed95b3434c3eef911623e2b38e465e03f590904"
-        },
-        "draft": true
-    },
-    "doc": {
-        "$schema": "https://gobl.org/draft-0/org/party",
-        "uuid": "018f73cb-34b3-7000-80f6-4e452c9df78c",
-        "name": "Biz España S.L.",
-        "tax_id": {
-            "country": "ES",
-            "code": "B28774008"
-        },
-        "identities": [
-            {
-                "type": "LEI",
-                "code": "1010101010"
-            },
-            {
-                "code": "ABC1234"
-            }
-        ],
-        "addresses": [
-            {
-                "num": "42",
-                "street": "Calle Pradillo",
-                "locality": "Madrid",
-                "region": "Madrid",
-                "code": "28002",
-                "country": "ES"
-            }
-        ],
-        "emails": [
-            {
-                "addr": "billing@bizspain.es"
-            }
-        ],
-        "logos": [
-            {
-                "label": "Invopop",
-                "url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
-            }
-        ]
-    }
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "018f73cb-34b4-7000-aaa1-17f9d9604da0",
+		"dig": {
+			"alg": "sha256",
+			"val": "c198db6985c94bbc7798e5d60ed95b3434c3eef911623e2b38e465e03f590904"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/org/party",
+		"uuid": "018f73cb-34b3-7000-80f6-4e452c9df78c",
+		"name": "Biz España S.L.",
+		"tax_id": {
+			"country": "ES",
+			"code": "B28774008"
+		},
+		"identities": [
+			{
+				"type": "LEI",
+				"code": "1010101010"
+			},
+			{
+				"code": "ABC1234"
+			}
+		],
+		"addresses": [
+			{
+				"num": "42",
+				"street": "Calle Pradillo",
+				"locality": "Madrid",
+				"region": "Madrid",
+				"code": "28002",
+				"country": "ES"
+			}
+		],
+		"emails": [
+			{
+				"addr": "billing@bizspain.es"
+			}
+		],
+		"logos": [
+			{
+				"label": "Invopop",
+				"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+			}
+		]
+	}
 }

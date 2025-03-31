@@ -2,7 +2,7 @@ el:
   page: "Σελίδα %{page} από %{count}"
 
   billing:
-    invoice:
+    invoice: &invoice
       title:
         standard: "Τιμολόγιο"
         standard-simplified: "Απλοποιημένο Τιμολόγιο"
@@ -12,14 +12,14 @@ el:
         debit-note: "Χρεωστικό Σημείωμα"
         paid: "Πληρώθηκε"
 
-      summary:
+      summary: &summary
         title: "Περίληψη"
         issue_date: "Ημερομηνία Έκδοσης"
         value_date: "Ημερομηνία Αξίας"
         operation_date: "Ημερομηνία Ενέργειας"
         currency: "Νόμισμα"
         currency_value: "%{desc} (%{code})"
-        preceding_invoice: "Προηγούμενο Τιμολόγιο"
+        preceding_document: "Προηγούμενο Τιμολόγιο"
         order: "Παραγγελία"
         order_period: "Περίοδος"
         order_period_label: "%{label}"
@@ -33,7 +33,7 @@ el:
       customer:
         title: "Πελάτης"
 
-      lines:
+      lines: &lines
         title: "Γραμμές"
         i: "#"
         ref: "Αναφ."
@@ -45,7 +45,7 @@ el:
         charges: "Χρεώσεις"
         total: "Σύνολο"
 
-      totals:
+      totals: &totals
         sum: "Άθροισμα"
         discount: "Έκπτωση"
         charge: "Χρέωση"
@@ -68,7 +68,7 @@ el:
         rate: "Ποσοστό"
         amount: "Ποσό"
 
-      payment:
+      payment: &payment
         title: "Πληρωμή"
         instructions: &payment_instructions
           method: "Μέθοδος πληρωμής"
@@ -116,45 +116,68 @@ el:
           page: "Σελίδα %{id}"
           entry: "Καταχώρηση %{id}"
 
-      regimes:
-        pl:
-          ksef-id: "ID: %{id}"
-        co:
-          cufe: "CUFE: %{cufe}"
-          cude: "CUDE: %{cude}"
-          preceding_cufe: "CUFE Προηγούμενου τιμολογίου: %{cufe}"
-
     payment:
+      <<: *invoice
       title:
         request: "Αίτημα Πληρωμής"
         advice: "Ειδοποίηση πληρωμής"
         receipt: "Απόδειξη πληρωμής"
         paid: "Πληρώθηκε"
 
-      summary:
-        title: "Περίληψη"
-        issue_date: "Ημερομηνία Έκδοσης"
-        value_date: "Ημερομηνία Αξίας"
-        currency: "Νόμισμα"
-        order: "Παραγγελία"
-        order_period: "Περίοδος"
-        order_period_label: "%{label}"
-        order_period_range: "%{start} έως %{end}"
-
       lines:
-        title: "Γραμμές"
-        i: "#"
+        <<: *lines
         document: "Έγγραφο"
-        total: "Σύνολο"
-
-      totals:
-        title: "Σύνολα"
-        taxes: "Φόρος"
-        total: "Σύνολο"
 
       method:
         title: "Λεπτομέρειες Πληρωμής"
         instructions: *payment_instructions
+
+    delivery:
+      <<: *invoice
+      title:
+        advice: "Ειδοποίηση Παράδοσης"
+        note: "Δελτίο Αποστολής"
+        waybill: "Φορτωτική"
+        receipt: "Απόδειξη Παραλαβής"
+
+      summary:
+        <<: *summary
+        despatch_date: "Ημερομηνία Αποστολής"
+        receive_date: "Ημερομηνία Παραλαβής"
+        preceding_document: "Προηγούμενο Έγγραφο"
+
+      despatcher:
+        title: "Αποστολέας"
+
+      receiver:
+        title: "Παραλήπτης"
+
+      courier:
+        title: "Μεταφορέας"
+
+      tracking:
+        title: "Πληροφορίες Παρακολούθησης"
+        code: "Κωδικός Παρακολούθησης"
+        website: "Σύνδεσμος Παρακολούθησης"
+
+    order:
+      <<: *invoice
+      title:
+        purchase: "Εντολή Αγοράς"
+        sale: "Εντολή Πώλησης"
+        quote: "Προσφορά"
+
+      summary:
+        <<: *summary
+        preceding_document: "Προηγούμενο Έγγραφο"
+        contract: "Συμβόλαιο"
+        period: "Περίοδος"
+
+      buyer:
+        title: "Αγοραστής"
+
+      seller:
+        title: "Πωλητής"
 
   org:
     party:
@@ -181,3 +204,11 @@ el:
     address:
       label: "%{label}:"
       country: "(%{country})"
+
+  regimes:
+    pl:
+      ksef-id: "ID: %{id}"
+    co:
+      cufe: "CUFE: %{cufe}"
+      cude: "CUDE: %{cude}"
+      preceding_cufe: "CUFE Προηγούμενου τιμολογίου: %{cufe}"

@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/invopop/gobl"
+
 	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/regimes/es"
 	"github.com/invopop/gobl.html/components/regimes/gr"
@@ -12,6 +13,7 @@ import (
 	"github.com/invopop/gobl.html/components/regimes/pl"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/layout"
 	"github.com/invopop/gobl/bill"
@@ -22,95 +24,130 @@ import (
 
 // Invoice renders a complete GOBL bill.Invoice object.
 templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
-	// Footer needs to be at the top to show on all pages
-	<article class={ "invoice", templ.KV("din5008", applyDIN5008(ctx)) }>
-		<header class={ templ.KV("with-qr", hasHeaderQR(env)), templ.KV("regular", !hasHeaderQR(env)) }>
-			if applyDIN5008(ctx) {
-				@din5008Header(inv)
-			} else {
-				@defaultHeader(env, inv)
-			}
-		</header>
-		@lines(inv)
-		<div class="totals">
-			@totals(inv, inv.Totals)
-			@taxes(inv.RegimeDef(), inv.Totals.Taxes)
-		</div>
-		@paymentDetails(inv)
-		@notes(inv.Notes, inv.Supplier)
-		<div class="extensions">
-			// Region specific information
-			@co.DIANQR(env, inv)
-			@mx.CFDI(env, inv)
-			@pl.KSeFQR(env)
-			@pt.ATQR(env)
-			@gr.IAPR(env)
-		</div>
-	</article>
+	@t.Scope("billing.invoice") {
+		// Footer needs to be at the top to show on all pages
+		<article class={ "invoice", templ.KV("din5008", applyDIN5008(ctx)) }>
+			<header class={ templ.KV("with-qr", hasHeaderQR(env)), templ.KV("regular", !hasHeaderQR(env)) }>
+				if applyDIN5008(ctx) {
+					@din5008Header(env, inv)
+				} else {
+					@defaultHeader(env, inv)
+				}
+			</header>
+			@lines(inv)
+			<div class="totals">
+				@totals(inv, inv.Totals)
+				@taxes(inv.RegimeDef(), inv.Totals.Taxes)
+			</div>
+			@paymentDetails(inv)
+			@notes(inv.Notes, inv.Supplier)
+			<div class="extensions">
+				// Region specific information
+				@co.DIANQR(env, inv)
+				@mx.CFDI(env, inv)
+				@pl.KSeFQR(env)
+				@pt.ATQR(env)
+				@gr.IAPR(env)
+			</div>
+		</article>
+	}
 }
 
-templ title(inv *bill.Invoice) {
-	@t.Scope("billing.invoice.title") {
+templ title(env *gobl.Envelope, inv *bill.Invoice) {
+	@t.Scope(".title") {
 		<section class="title">
-			<div class="hero">
-				if img := supplierLogo(ctx, inv.Supplier); img != nil {
-					<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
-				} else {
-					<div class="alias">
-						{ supplierAlias(inv.Supplier) }
-					</div>
-				}
-			</div>
-			<h1 class="type">
-				@t.T("." + i18nTitleTag(inv))
-			</h1>
+			@titleHero(inv.Supplier)
+			@invoiceTitleType(inv)
 			<h2 class="code">
-				{ code(inv.Series, inv.Code, inv.Regime) }
-				if paid(inv) {
-					<span class="paid">
-						@t.T(".paid")
-					</span>
-				}
+				@titleCode(inv.Series, inv.Code, inv.Regime)
+				@titleBadges(env, inv)
 			</h2>
 		</section>
 	}
 }
 
+templ titleHero(sup *org.Party) {
+	<div class="hero">
+			if img := supplierLogo(ctx, sup); img != nil {
+				<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
+			} else {
+				<div class="alias">
+					{ supplierAlias(sup) }
+				</div>
+			}
+	</div>
+}
+
+templ titleCode(series, code cbc.Code, reg tax.Regime) {
+	@utils.Coalesce(
+		pt.TitleCode(series, code, reg),
+		defaultTitleCode(series, code),
+	)
+}
+
+templ defaultTitleCode(series, code cbc.Code) {
+	{ series.Join(code).String() }
+}
+
+templ invoiceTitleType(inv *bill.Invoice) {
+	<h1 class="type">
+		@utils.Coalesce(
+			pt.InvoiceTitleType(inv),
+			invoiceDefaultTitleType(inv),
+		)
+	</h1>
+}
+
+templ invoiceDefaultTitleType(inv *bill.Invoice) {
+	if inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard {
+		@t.T(".standard-simplified")
+	} else {
+		@defaultTitleType(inv.Type)
+	}
+}
+
+templ defaultTitleType(key cbc.Key) {
+	@t.T("." + string(key))
+}
+
+templ titleBadges(env *gobl.Envelope, doc any) {
+	@utils.Coalesce(
+		pt.TitleBadges(env),
+		defaultTitleBadges(doc),
+	)
+}
+
+templ defaultTitleBadges(doc any) {
+	if paid(doc) {
+		<span class="paid">
+			@t.T(".paid")
+		</span>
+	}
+}
+
 templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
 	<div class="details">
-		@title(inv)
+		@title(env, inv)
 		@summary(inv)
 	</div>
 	// Spanish QRs
 	@es.VerifactuQR(env)
 	@es.TicketBAIQR(env)
 	<div class="contacts">
-		@supplier(inv.Supplier)
-		if inv.Customer != nil {
-			@customer(inv.Customer)
-		}
+		@contact(inv.Supplier, "supplier")
+		@contact(inv.Customer, "customer")
 	</div>
 }
 
-templ din5008Header(inv *bill.Invoice) {
+templ din5008Header(env *gobl.Envelope, inv *bill.Invoice) {
 	<div>
-		@title(inv)
-		if inv.Customer != nil {
-			@customer(inv.Customer)
-		}
+		@title(env, inv)
+		@contact(inv.Customer, "customer")
 	</div>
 	<div>
 		@summary(inv)
-		@supplier(inv.Supplier)
+		@contact(inv.Supplier, "supplier")
 	</div>
-}
-
-func i18nTitleTag(inv *bill.Invoice) string {
-	typ := string(inv.Type)
-	if inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard {
-		typ = typ + "-simplified"
-	}
-	return typ
 }
 
 func supplierAlias(sup *org.Party) string {
@@ -136,13 +173,6 @@ func logoHeight(img *org.Image) string {
 		return fmt.Sprint(img.Height)
 	}
 	return "40" // pixels
-}
-
-func code(series, code cbc.Code, reg tax.Regime) string {
-	if reg.Country == "PT" {
-		return series.JoinWith("/", code).String()
-	}
-	return series.Join(code).String()
 }
 
 func applyDIN5008(ctx context.Context) bool {

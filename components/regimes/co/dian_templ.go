@@ -100,7 +100,7 @@ func generateQR(inv *bill.Invoice, code, qr string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = t.T("billing.invoice.regimes.co.cude", i18n.M{"cude": code}).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = t.T("regimes.co.cude", i18n.M{"cude": code}).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -108,7 +108,7 @@ func generateQR(inv *bill.Invoice, code, qr string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = t.T("billing.invoice.regimes.co.preceding_cufe", i18n.M{"cufe": pcude}).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = t.T("regimes.co.preceding_cufe", i18n.M{"cufe": pcude}).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -121,7 +121,7 @@ func generateQR(inv *bill.Invoice, code, qr string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = t.T("billing.invoice.regimes.co.cufe", i18n.M{"cufe": code}).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = t.T("regimes.co.cufe", i18n.M{"cufe": code}).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

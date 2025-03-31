@@ -5,8 +5,7 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "34e69f1a4b65de1e61887b32d16908f28e170549834f4ffb3ba345d7b1a6ca40"
-		},
-		"draft": true
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -65,9 +64,9 @@
 				"sum": "2000.00",
 				"discounts": [
 					{
+						"reason": "Special discount",
 						"percent": "10%",
-						"amount": "200.00",
-						"reason": "Special discount"
+						"amount": "200.00"
 					}
 				],
 				"taxes": [

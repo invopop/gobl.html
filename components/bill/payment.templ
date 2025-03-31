@@ -4,82 +4,80 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl/bill"
 )
 
 // Payment renders a complete GOBL bill.Payment object.
-templ Payment(env *gobl.Envelope, rct *bill.Payment) {
-	<article class="payment">
-		<header class="regular">
-			@paymentHeader(rct)
-		</header>
-		@paymentLines(rct)
-		<div class="totals">
-			@paymentTotals(rct)
-			@taxes(rct.RegimeDef(), rct.Tax)
-		</div>
-		@method(rct)
-		@notes(rct.Notes, rct.Supplier)
-		<div class="extensions">
-			// Region specific information
-			@pt.ATQR(env)
-		</div>
-	</article>
+templ Payment(env *gobl.Envelope, pmt *bill.Payment) {
+	@t.Scope("billing.payment") {
+		<article class="payment">
+			<header class="regular">
+				@paymentHeader(env, pmt)
+			</header>
+			@paymentLines(pmt)
+			<div class="totals">
+				@paymentTotals(pmt)
+				@taxes(pmt.RegimeDef(), pmt.Tax)
+			</div>
+			@method(pmt)
+			@notes(pmt.Notes, pmt.Supplier)
+			<div class="extensions">
+				// Region specific information
+				@pt.ATQR(env)
+			</div>
+		</article>
+	}
 }
 
-templ paymentHeader(rct *bill.Payment) {
+templ paymentHeader(env *gobl.Envelope, pmt *bill.Payment) {
 	<div class="details">
-		@paymentTitle(rct)
-		@paymentSummary(rct)
+		@paymentTitle(env, pmt)
+		@paymentSummary(pmt)
 	</div>
 	<div class="contacts">
-		@supplier(rct.Supplier)
-		if rct.Customer != nil {
-			@customer(rct.Customer)
-		}
+		@contact(pmt.Supplier, "supplier")
+		@contact(pmt.Customer, "customer")
 	</div>
 }
 
-templ paymentTitle(rct *bill.Payment) {
-	@t.Scope("billing.payment.title") {
+templ paymentTitle(env *gobl.Envelope, pmt *bill.Payment) {
+	@t.Scope(".title") {
 		<section class="title">
-			<div class="hero">
-				if img := supplierLogo(ctx, rct.Supplier); img != nil {
-					<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
-				} else {
-					<div class="alias">
-						{ supplierAlias(rct.Supplier) }
-					</div>
-				}
-			</div>
-			<h1 class="type">
-				@t.T("." + string(rct.Type))
-			</h1>
+			@titleHero(pmt.Supplier)
+			@paymentTitleType(pmt)
 			<h2 class="code">
-				{ code(rct.Series, rct.Code, rct.Regime) }
-				<span class="paid">
-					@t.T(".paid")
-				</span>
+				@titleCode(pmt.Series, pmt.Code, pmt.Regime)
+				@titleBadges(env, pmt)
 			</h2>
 		</section>
 	}
 }
 
-templ paymentTotals(rct *bill.Payment) {
+templ paymentTitleType(pmt *bill.Payment) {
+	<h1 class="type">
+		@utils.Coalesce(
+			pt.PaymentTitleType(pmt),
+			defaultTitleType(pmt.Type),
+		)
+	</h1>
+}
+
+templ paymentTotals(pmt *bill.Payment) {
 	<section class="totals">
-		@t.Scope("billing.payment.totals") {
+		@t.Scope(".totals") {
 			<h2>
 				@t.T(".title")
 			</h2>
 			<table>
 				<tbody>
-					if rct.Tax != nil {
+					if pmt.Tax != nil {
 						<tr class="tax">
 							<th>
 								@t.T(".taxes")
 							</th>
 							<td>
-								@t.LM(rct.Tax.Sum)
+								@t.LM(pmt.Tax.Sum)
 							</td>
 						</tr>
 					}
@@ -88,7 +86,7 @@ templ paymentTotals(rct *bill.Payment) {
 							@t.T(".total")
 						</th>
 						<td>
-							@t.LM(rct.Total)
+							@t.LM(pmt.Total)
 						</td>
 					</tr>
 				</tbody>
@@ -97,13 +95,13 @@ templ paymentTotals(rct *bill.Payment) {
 	</section>
 }
 
-templ method(rct *bill.Payment) {
-	@t.Scope("billing.payment.method") {
+templ method(pmt *bill.Payment) {
+	@t.Scope(".method") {
 		<section class="payment">
 			<h2 class="title">
 				@t.T(".title")
 			</h2>
-			@paymentInstructions(rct.Method)
+			@paymentInstructions(pmt.Method)
 		</section>
 	}
 }

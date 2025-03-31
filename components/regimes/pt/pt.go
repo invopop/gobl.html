@@ -5,11 +5,16 @@ import (
 	"bytes"
 	"encoding/base64"
 	"fmt"
+	"strings"
 
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl/l10n"
 	"github.com/invopop/gobl/regimes/pt"
 	go_qr "github.com/piglig/go-qr"
 )
+
+// Country to check for regime-specific components
+var country = l10n.PT.Tax()
 
 // Parameters required by the AT for the QR code generator
 const (
@@ -29,6 +34,12 @@ func FooterNotes(env *gobl.Envelope) string {
 		}
 	}
 	return ""
+}
+
+func isCanceled(env *gobl.Envelope) bool {
+	qr := env.Head.GetStamp(pt.StampProviderATQR)
+	// TODO: Find a less hacky way to check if the document is canceled
+	return qr != nil && strings.Contains(qr.Value, "*E:A*")
 }
 
 // generateQR implements a custom QR code generator that complies with the AT spec.

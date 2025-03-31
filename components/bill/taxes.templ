@@ -3,6 +3,8 @@ package bill
 import (
 	"context"
 	"fmt"
+	"strings"
+
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/tax"
 )
@@ -10,7 +12,7 @@ import (
 templ taxes(r *tax.RegimeDef, taxes *tax.Total) {
 	if taxes != nil && len(taxes.Categories) > 0 {
 		<section class="taxes">
-			@t.Scope("billing.invoice.taxes") {
+			@t.Scope(".taxes") {
 				<h2>
 					@t.T(".title")
 				</h2>
@@ -102,13 +104,20 @@ func taxCategoryTotalName(ctx context.Context, r *tax.RegimeDef, cat *tax.Catego
 	return category.Name.In(t.Lang(ctx))
 }
 
-// taxExemptionCode looks at the exemption reasons and tries to extract the
-// first code. We'll see if this is a good idea or not.
+// taxExemptionCode looks at the extension and tries to extract the
+// exemption code.
 func taxExemptionCode(ext tax.Extensions) string {
-	if len(ext) > 0 {
-		for _, v := range ext {
+	// First try a code with the word `exempt` in the key
+	for k, v := range ext {
+		if strings.Contains(k.String(), "exempt") {
 			return fmt.Sprintf("(%s)", v.String())
 		}
 	}
+
+	// Next return the first code found
+	for _, v := range ext {
+		return fmt.Sprintf("(%s)", v.String())
+	}
+
 	return ""
 }

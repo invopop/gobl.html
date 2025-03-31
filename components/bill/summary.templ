@@ -9,11 +9,13 @@ import (
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/currency"
 	"strings"
+	"github.com/invopop/gobl/org"
+	"github.com/invopop/gobl/tax"
 )
 
 templ summary(inv *bill.Invoice) {
 	<section class="summary">
-		@t.Scope("billing.invoice.summary") {
+		@t.Scope(".summary") {
 			<h2 class="title">
 				@t.T(".title")
 			</h2>
@@ -54,46 +56,41 @@ templ summary(inv *bill.Invoice) {
 						</span>
 					</li>
 				}
-				for _, pre := range inv.Preceding {
-					<li class="preceding">
-						<span class="label">
-							@t.T(".preceding_invoice")
-						</span>
-						<span class="value">
-							{ code(pre.Series, pre.Code, inv.Regime) }
-						</span>
-						if pre.IssueDate != nil {
-							<span class="value">
-								@t.L(pre.IssueDate)
-							</span>
-						}
-						if pre.Reason != "" {
-							<span class="value">
-								{ pre.Reason }
-							</span>
-						}
-					</li>
+				if len(inv.Preceding) > 0 {
+					@summaryPrecedingRows(inv.Preceding, inv.Regime)
 				}
 				if inv.Ordering != nil {
 					@summaryOrderingRows(inv.Ordering)
 				}
 				if inv.Tax != nil {
-					for k, v := range inv.Tax.Ext {
-						if label := mapTaxExtension(ctx, k); label != "" {
-							<li class="tax-ext">
-								<span class="label">
-									{ label }
-								</span>
-								<span class="value">
-									{ v.String() }
-								</span>
-							</li>
-						}
-					}
+					@summaryTaxExtRows(inv.Tax.Ext)
 				}
 			</ul>
 		}
 	</section>
+}
+
+templ summaryPrecedingRows(prec []*org.DocumentRef, reg tax.Regime) {
+	for _, pre := range prec {
+		<li class="preceding">
+			<span class="label">
+				@t.T(".preceding_document")
+			</span>
+			<span class="value">
+				@titleCode(pre.Series, pre.Code, reg)
+			</span>
+			if pre.IssueDate != nil {
+				<span class="value">
+					@t.L(pre.IssueDate)
+				</span>
+			}
+			if pre.Reason != "" {
+				<span class="value">
+					{ pre.Reason }
+				</span>
+			}
+		</li>
+	}
 }
 
 templ summaryOrderingRows(ord *bill.Ordering) {
@@ -124,6 +121,21 @@ templ summaryOrderingRows(ord *bill.Ordering) {
 	}
 }
 
+templ summaryTaxExtRows(ext tax.Extensions) {
+	for k, v := range ext {
+		if label := mapTaxExtension(ctx, k); label != "" {
+			<li class="tax-ext">
+				<span class="label">
+					{ label }
+				</span>
+				<span class="value">
+					{ v.String() }
+				</span>
+			</li>
+		}
+	}
+}
+
 templ summaryOrderPeriodRows(p *cal.Period) {
 	<li class="ordering-period">
 		<span class="label">
@@ -146,7 +158,7 @@ func currencyName(ctx context.Context, cur currency.Code) string {
 	}
 	// does a translation for the currency name exist?
 	name := i18n.T(ctx, "currencies."+string(cur), i18n.Default(def.Name))
-	return i18n.T(ctx, "billing.invoice.summary.currency_value", i18n.M{"desc": name, "code": cur})
+	return i18n.T(ctx, ".currency_value", i18n.M{"desc": name, "code": cur})
 }
 
 func mapTaxExtension(ctx context.Context, k cbc.Key) string {
