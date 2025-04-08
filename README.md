@@ -14,7 +14,7 @@ GOBL HTML uses [templ](https://templ.guide/) to define a set of components in Go
 templ generate
 ```
 
-During development, it can help massive to have hot reload to be able to make changes and see them quickly. There are two mechanisms we're currently using:
+Hot reload is very convenient to make changes and preview them quickly. There are two mechanisms we're currently using:
 
 #### Air
 
@@ -34,7 +34,7 @@ Air is a bit more reliable at detecting file changes, especially for stylesheets
 
 #### Templ Watcher
 
-Templ comes with a watch flag that can also be useful. It has the disadvantage however that it uses `.txt` files for comparisons and the generated code should not be uploaded to git directly. Start the process with:
+Templ comes with a watch flag that can also be useful. However, it has the disadvantage of using `.txt` files for comparisons and the generated code should not be uploaded to git directly. Start the process with:
 
 ```bash
 templ generate --watch --cmd="go run ./cmd/gobl.html serve --pdf prince"
@@ -44,7 +44,7 @@ Before uploading changes to git, be sure to re-run the regular `templ generate` 
 
 ### Testing
 
-Tests are currently pretty limited. To ensure the basics are covered, the contents of the `examples` directory are converted to HTML, pretty printed, and output to the `examples/out` directory. The tests will ensure the output is as expected. To update the output test data run:
+Tests are currently pretty limited. To ensure the basics are covered, the contents of the `examples` directory are converted to HTML, pretty printed, and output to the `examples/out` directory. The tests will ensure the output matches what's expected. To update the output test data run:
 
 ```bash
 go test ./... --update
