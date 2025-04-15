@@ -15,8 +15,10 @@ import (
 	srclocales "github.com/invopop/gobl.html/locales"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/currency"
+	"github.com/invopop/gobl/l10n"
 	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/org"
+	"github.com/invopop/gobl/tax"
 )
 
 const (
@@ -122,15 +124,28 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 	// Extract the currency to use for formatting
 	if o.NumFormatter == nil {
 		cur := currency.EUR
+		var reg tax.Regime
 		switch doc := env.Extract().(type) {
 		case *bill.Invoice:
 			cur = doc.Currency
+			reg = doc.Regime
 		case *bill.Payment:
 			cur = doc.Currency
+			reg = doc.Regime
 		case *bill.Delivery:
 			cur = doc.Currency
+			reg = doc.Regime
 		}
+
 		nf := cur.Def().Formatter()
+
+		if reg.Country == l10n.PT.Tax() {
+			// As required by the Portuguese tax law
+			nf.ThousandsSeparator = " "
+			nf.DecimalMark = ","
+			nf.Template = "%n %u"
+		}
+
 		o.NumFormatter = &nf
 	}
 
