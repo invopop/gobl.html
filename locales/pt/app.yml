@@ -218,7 +218,7 @@ pt:
         DC: "Documento de Entrega"
         GR: "Guia de Remessa"
         GT: "Guia de Transporte"
-        GA: "Ativos Fixos"
+        GA: "Guia de movimentação de ativos fixos próprios"
         GC: "Guia de Consignação"
         GD: "Guia de Devolução"
         RP: "Recibo de prémio"
