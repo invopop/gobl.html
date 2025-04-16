@@ -11,6 +11,7 @@ pt:
         credit-note: "Nota de Crédito"
         debit-note: "Nota de Débito"
         paid: "Pago"
+        void: "Anulado"
 
       summary: &summary
         title: "Resumo"
@@ -226,4 +227,3 @@ pt:
         CS: "Imputação a co-seguradora"
         LD: "Imputação a co-seguradora líder"
         RA: "Resseguro aceite"
-        canceled: "Anulado"

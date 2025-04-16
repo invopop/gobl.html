@@ -10,7 +10,8 @@ es:
         corrective: "Factura Correctiva"
         credit-note: "Nota de Crédito"
         debit-note: "Nota de Débito"
-        paid: "Pagada"
+        paid: "Pagado"
+        void: "Anulado"
 
       summary: &summary
         title: "Resumen"

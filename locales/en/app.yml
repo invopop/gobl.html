@@ -11,6 +11,7 @@ en:
         credit-note: "Credit Note"
         debit-note: "Debit Note"
         paid: "Paid"
+        void: "Void"
 
       summary: &summary
         title: "Summary"
@@ -246,7 +247,6 @@ en:
         CS: "Co-insurer Allocation"
         LD: "Lead Co-insurer Allocation"
         RA: "Accepted Reinsurance"
-        canceled: "Canceled"
 
 
 

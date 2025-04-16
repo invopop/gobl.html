@@ -86,8 +86,11 @@ func convertExample(name string) ([]byte, error) {
 		return nil, err
 	}
 
+	// Extract the state from the name
+	state := strings.TrimSuffix(strings.Split(name, ".")[1], ".json")
+
 	ctx := context.Background()
-	return goblhtml.Render(ctx, env)
+	return goblhtml.Render(ctx, env, state)
 }
 
 func loadExample(name string) (*gobl.Envelope, error) {

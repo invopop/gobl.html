@@ -105,7 +105,7 @@ func WithLayout(l layout.Code) Option {
 
 // Render takes the GOBL envelope and attempts to render an HTML document
 // from it.
-func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, error) {
+func Render(ctx context.Context, env *gobl.Envelope, state string, opts ...Option) ([]byte, error) {
 	o := new(internal.Opts)
 	for _, opt := range opts {
 		opt(o)
@@ -155,7 +155,7 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 
 	ctx = internal.WithOptions(ctx, o)
 
-	out := components.Envelope(env)
+	out := components.Envelope(env, state)
 	buf := new(bytes.Buffer)
 	if err := out.Render(ctx, buf); err != nil {
 		return nil, err

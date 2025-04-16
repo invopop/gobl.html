@@ -11,11 +11,11 @@ import (
 )
 
 // Order renders a complete GOBL bill.Order object.
-templ Order(env *gobl.Envelope, ord *bill.Order) {
+templ Order(env *gobl.Envelope, ord *bill.Order, state string) {
 	@t.Scope("billing.order") {
 		<article class="order">
 			<header class="regular">
-				@orderHeader(env, ord)
+				@orderHeader(env, ord, state)
 			</header>
 			@orderLines(ord)
 			<div class="totals">
@@ -32,9 +32,9 @@ templ Order(env *gobl.Envelope, ord *bill.Order) {
 	}
 }
 
-templ orderHeader(env *gobl.Envelope, ord *bill.Order) {
+templ orderHeader(env *gobl.Envelope, ord *bill.Order, state string) {
 	<div class="details">
-		@orderTitle(env, ord)
+		@orderTitle(env, ord, state)
 		@orderSummary(ord)
 	</div>
 	<div class="contacts">
@@ -45,14 +45,14 @@ templ orderHeader(env *gobl.Envelope, ord *bill.Order) {
 	</div>
 }
 
-templ orderTitle(env *gobl.Envelope, ord *bill.Order) {
+templ orderTitle(env *gobl.Envelope, ord *bill.Order, state string) {
 	@t.Scope(".title") {
 		<section class="title">
 			@titleHero(ord.Supplier)
 			@orderTitleType(ord)
 			<h2 class="code">
 				@titleCode(ord.Series, ord.Code, ord.Regime)
-				@titleBadges(env, ord)
+				@titleBadges(env, ord, state)
 			</h2>
 		</section>
 	}

@@ -101,7 +101,7 @@ section.title .hero img {
     /* max-height: 10mm; */
 }
 section.title span.paid,
-section.title span.canceled {
+section.title span.void {
     font-size: 9pt;
     font-weight: 400;
     vertical-align: text-bottom;
@@ -115,7 +115,7 @@ section.title span.paid {
     border: 1px solid #02906233;
     color: #008852;
 }
-section.title span.canceled {
+section.title span.void {
     background-color: #D32F2F1A;
     border: 1px solid #D32F2F33;
     color: #A32020;

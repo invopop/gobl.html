@@ -9,11 +9,11 @@ import (
 )
 
 // Payment renders a complete GOBL bill.Payment object.
-templ Payment(env *gobl.Envelope, pmt *bill.Payment) {
+templ Payment(env *gobl.Envelope, pmt *bill.Payment, state string) {
 	@t.Scope("billing.payment") {
 		<article class="payment">
 			<header class="regular">
-				@paymentHeader(env, pmt)
+				@paymentHeader(env, pmt, state)
 			</header>
 			@paymentLines(pmt)
 			<div class="totals">
@@ -30,9 +30,9 @@ templ Payment(env *gobl.Envelope, pmt *bill.Payment) {
 	}
 }
 
-templ paymentHeader(env *gobl.Envelope, pmt *bill.Payment) {
+templ paymentHeader(env *gobl.Envelope, pmt *bill.Payment, state string) {
 	<div class="details">
-		@paymentTitle(env, pmt)
+		@paymentTitle(env, pmt, state)
 		@paymentSummary(pmt)
 	</div>
 	<div class="contacts">
@@ -41,14 +41,14 @@ templ paymentHeader(env *gobl.Envelope, pmt *bill.Payment) {
 	</div>
 }
 
-templ paymentTitle(env *gobl.Envelope, pmt *bill.Payment) {
+templ paymentTitle(env *gobl.Envelope, pmt *bill.Payment, state string) {
 	@t.Scope(".title") {
 		<section class="title">
 			@titleHero(pmt.Supplier)
 			@paymentTitleType(pmt)
 			<h2 class="code">
 				@titleCode(pmt.Series, pmt.Code, pmt.Regime)
-				@titleBadges(env, pmt)
+				@titleBadges(env, pmt, state)
 			</h2>
 		</section>
 	}

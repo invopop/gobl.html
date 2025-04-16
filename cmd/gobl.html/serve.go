@@ -112,7 +112,7 @@ func prepareEcho() *echo.Echo {
 	return e
 }
 
-func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opts []goblhtml.Option) ([]byte, error) {
+func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opts []goblhtml.Option, state string) ([]byte, error) {
 	ctx := c.Request().Context()
 	var err error
 
@@ -139,7 +139,7 @@ func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opt
 		opts = append(opts, goblhtml.WithLayout(layout.A4))
 	}
 
-	out, err := goblhtml.Render(ctx, env, opts...)
+	out, err := goblhtml.Render(ctx, env, state, opts...)
 	if err != nil {
 		return nil, fmt.Errorf("generating html: %w", err)
 	}
@@ -165,6 +165,7 @@ func (s *serveOpts) generate(c echo.Context) error {
 	fn := filepath.Base(path.Clean(req.Filename))
 	ext := filepath.Ext(fn)
 	fn = strings.TrimSuffix(fn, ext) + ".json"
+	state := strings.TrimSuffix(strings.Split(fn, ".")[1], ".json")
 
 	ed, err := os.ReadFile(filepath.Join("./examples", fn))
 	if err != nil {
@@ -180,7 +181,7 @@ func (s *serveOpts) generate(c echo.Context) error {
 	if ext == ".pdf" {
 		opts = append(opts, goblhtml.WithEmbeddedStylesheets())
 	}
-	data, err := s.render(c, req, env, opts)
+	data, err := s.render(c, req, env, opts, state)
 	if err != nil {
 		return err
 	}

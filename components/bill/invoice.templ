@@ -23,15 +23,15 @@ import (
 )
 
 // Invoice renders a complete GOBL bill.Invoice object.
-templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
+templ Invoice(env *gobl.Envelope, inv *bill.Invoice, state string) {
 	@t.Scope("billing.invoice") {
 		// Footer needs to be at the top to show on all pages
 		<article class={ "invoice", templ.KV("din5008", applyDIN5008(ctx)) }>
 			<header class={ templ.KV("with-qr", hasHeaderQR(env)), templ.KV("regular", !hasHeaderQR(env)) }>
 				if applyDIN5008(ctx) {
-					@din5008Header(env, inv)
+					@din5008Header(env, inv, state)
 				} else {
-					@defaultHeader(env, inv)
+					@defaultHeader(env, inv, state)
 				}
 			</header>
 			@lines(inv)
@@ -53,14 +53,14 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 	}
 }
 
-templ title(env *gobl.Envelope, inv *bill.Invoice) {
+templ title(env *gobl.Envelope, inv *bill.Invoice, state string) {
 	@t.Scope(".title") {
 		<section class="title">
 			@titleHero(inv.Supplier)
 			@invoiceTitleType(inv)
 			<h2 class="code">
 				@titleCode(inv.Series, inv.Code, inv.Regime)
-				@titleBadges(env, inv)
+				@titleBadges(env, inv, state)
 			</h2>
 		</section>
 	}
@@ -110,24 +110,21 @@ templ defaultTitleType(key cbc.Key) {
 	@t.T("." + string(key))
 }
 
-templ titleBadges(env *gobl.Envelope, doc any) {
-	@utils.Coalesce(
-		pt.TitleBadges(env),
-		defaultTitleBadges(doc),
-	)
-}
-
-templ defaultTitleBadges(doc any) {
-	if paid(doc) {
+templ titleBadges(env *gobl.Envelope, doc any, state string) {
+	if state == "void" {
+		<span class="void">
+			@t.T(".void")
+		</span>
+	} else if paid(doc) {
 		<span class="paid">
 			@t.T(".paid")
 		</span>
 	}
 }
 
-templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
+templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice, state string) {
 	<div class="details">
-		@title(env, inv)
+		@title(env, inv, state)
 		@summary(inv)
 	</div>
 	// Spanish QRs
@@ -139,9 +136,9 @@ templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
 	</div>
 }
 
-templ din5008Header(env *gobl.Envelope, inv *bill.Invoice) {
+templ din5008Header(env *gobl.Envelope, inv *bill.Invoice, state string) {
 	<div>
-		@title(env, inv)
+		@title(env, inv, state)
 		@contact(inv.Customer, "customer")
 	</div>
 	<div>

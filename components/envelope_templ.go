@@ -26,7 +26,7 @@ import (
 	gorg "github.com/invopop/gobl/org"
 )
 
-func Envelope(env *gobl.Envelope) templ.Component {
+func Envelope(env *gobl.Envelope, state string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -75,22 +75,22 @@ func Envelope(env *gobl.Envelope) templ.Component {
 		}
 		switch doc := env.Extract().(type) {
 		case *gbill.Invoice:
-			templ_7745c5c3_Err = bill.Invoice(env, doc).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = bill.Invoice(env, doc, state).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		case *gbill.Payment:
-			templ_7745c5c3_Err = bill.Payment(env, doc).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = bill.Payment(env, doc, state).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		case *gbill.Delivery:
-			templ_7745c5c3_Err = bill.Delivery(env, doc).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = bill.Delivery(env, doc, state).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		case *gbill.Order:
-			templ_7745c5c3_Err = bill.Order(env, doc).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = bill.Order(env, doc, state).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
