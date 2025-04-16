@@ -265,6 +265,10 @@ section.totals td {
     text-align: right;
     border-top: 0.5px solid #e5e7eb;
 }
+section.totals td:last-child {
+    white-space: nowrap;
+    width: 1%;
+}
 section.totals tr:first-child th,
 section.totals tr:first-child td {
     border-top: 0;
