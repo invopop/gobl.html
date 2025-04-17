@@ -10,6 +10,7 @@ fr:
         credit-note: "Note de Crédit"
         debit-note: "Note de Débit"
         paid: "Payé"
+        void: "Annulé"
       summary: &summary
         title: "Résumé"
         issue_date: "Date d'émission"

@@ -50,7 +50,7 @@ func (c *convertOpts) runE(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	data, err := goblhtml.Render(cmd.Context(), env)
+	data, err := goblhtml.Render(cmd.Context(), env, "")
 	if err != nil {
 		return fmt.Errorf("generating html: %w", err)
 	}

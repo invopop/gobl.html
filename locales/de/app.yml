@@ -11,6 +11,7 @@ de:
         credit-note: "Gutschrift"
         debit-note: "Belastungsanzeige"
         paid: "Bezahlt"
+        void: "Ungültig"
 
       summary: &summary
         title: "Zusammenfassung"

@@ -11,6 +11,7 @@ en:
         credit-note: "Credit Note"
         debit-note: "Debit Note"
         paid: "Paid"
+        void: "Void"
 
       summary: &summary
         title: "Summary"
@@ -238,15 +239,14 @@ en:
         DC: "Delivery Document"
         GR: "Delivery Note"
         GT: "Waybill"
-        GA: "Fixed Assets"
-        GC: "Consignment"
+        GA: "Fixed Assets Delivery"
+        GC: "Consignment Delivery"
         GD: "Return"
         RP: "Premium Receipt"
         RE: "Chargeback Receipt"
         CS: "Co-insurer Allocation"
         LD: "Lead Co-insurer Allocation"
         RA: "Accepted Reinsurance"
-        canceled: "Canceled"
 
 
 
