@@ -103,9 +103,17 @@ func WithLayout(l layout.Code) Option {
 	}
 }
 
+// WithState indicates that the document is in a specific state
+// and should be rendered accordingly.
+func WithState(state string) Option {
+	return func(o *internal.Opts) {
+		o.State = state
+	}
+}
+
 // Render takes the GOBL envelope and attempts to render an HTML document
 // from it.
-func Render(ctx context.Context, env *gobl.Envelope, state string, opts ...Option) ([]byte, error) {
+func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, error) {
 	o := new(internal.Opts)
 	for _, opt := range opts {
 		opt(o)
@@ -155,7 +163,7 @@ func Render(ctx context.Context, env *gobl.Envelope, state string, opts ...Optio
 
 	ctx = internal.WithOptions(ctx, o)
 
-	out := components.Envelope(env, state)
+	out := components.Envelope(env)
 	buf := new(bytes.Buffer)
 	if err := out.Render(ctx, buf); err != nil {
 		return nil, err

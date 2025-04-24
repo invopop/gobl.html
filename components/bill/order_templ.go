@@ -19,7 +19,7 @@ import (
 )
 
 // Order renders a complete GOBL bill.Order object.
-func Order(env *gobl.Envelope, ord *bill.Order, state string) templ.Component {
+func Order(env *gobl.Envelope, ord *bill.Order) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -56,7 +56,7 @@ func Order(env *gobl.Envelope, ord *bill.Order, state string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = orderHeader(env, ord, state).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = orderHeader(env, ord).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -114,7 +114,7 @@ func Order(env *gobl.Envelope, ord *bill.Order, state string) templ.Component {
 	})
 }
 
-func orderHeader(env *gobl.Envelope, ord *bill.Order, state string) templ.Component {
+func orderHeader(env *gobl.Envelope, ord *bill.Order) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -139,7 +139,7 @@ func orderHeader(env *gobl.Envelope, ord *bill.Order, state string) templ.Compon
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = orderTitle(env, ord, state).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = orderTitle(env, ord).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -175,7 +175,7 @@ func orderHeader(env *gobl.Envelope, ord *bill.Order, state string) templ.Compon
 	})
 }
 
-func orderTitle(env *gobl.Envelope, ord *bill.Order, state string) templ.Component {
+func orderTitle(env *gobl.Envelope, ord *bill.Order) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -228,7 +228,7 @@ func orderTitle(env *gobl.Envelope, ord *bill.Order, state string) templ.Compone
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = titleBadges(env, ord, state).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = titleBadges(env, ord).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

@@ -139,7 +139,7 @@ func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opt
 		opts = append(opts, goblhtml.WithLayout(layout.A4))
 	}
 
-	out, err := goblhtml.Render(ctx, env, state, opts...)
+	out, err := goblhtml.Render(ctx, env, opts...)
 	if err != nil {
 		return nil, fmt.Errorf("generating html: %w", err)
 	}
