@@ -165,7 +165,6 @@ func (s *serveOpts) generate(c echo.Context) error {
 	fn := filepath.Base(path.Clean(req.Filename))
 	ext := filepath.Ext(fn)
 	fn = strings.TrimSuffix(fn, ext) + ".json"
-	state := strings.TrimSuffix(strings.Split(fn, ".")[1], ".json")
 
 	ed, err := os.ReadFile(filepath.Join("./examples", fn))
 	if err != nil {
@@ -181,8 +180,8 @@ func (s *serveOpts) generate(c echo.Context) error {
 	if ext == ".pdf" {
 		opts = append(opts, goblhtml.WithEmbeddedStylesheets())
 	}
-	if state != "" {
-		opts = append(opts, goblhtml.WithState(state))
+	if strings.HasSuffix(fn, ".void.json") {
+		opts = append(opts, goblhtml.WithVoid(true))
 	}
 	data, err := s.render(c, req, env, opts)
 	if err != nil {

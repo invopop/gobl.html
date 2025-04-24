@@ -17,11 +17,6 @@ const (
 	optsKey optionsKey = "opts"
 )
 
-// State keys relevant for rendering
-const (
-	StateKeyVoid = "void"
-)
-
 // Opts defines configuration options used internally with
 // the current document. Putting this amount of information inside a
 // context is normally an anti-pattern in Go, but saves a huge amount
@@ -44,8 +39,8 @@ type Opts struct {
 	EmbedStylesheets bool
 	// Layout indicates the Layout used in te document
 	Layout layout.Code
-	// State indicates the state of the document
-	State string
+	// Void indicates if the document should be rendered as void
+	Void bool
 }
 
 // WithOptions prepares the context with the options to use.

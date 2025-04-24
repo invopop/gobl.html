@@ -739,7 +739,7 @@ func hasHeaderQR(env *gobl.Envelope) bool {
 func voided(ctx context.Context) bool {
 	opts := internal.Options(ctx)
 
-	return opts.State == internal.StateKeyVoid
+	return opts.Void
 }
 
 var _ = templruntime.GeneratedTemplate

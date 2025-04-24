@@ -103,11 +103,11 @@ func WithLayout(l layout.Code) Option {
 	}
 }
 
-// WithState indicates that the document is in a specific state
+// WithVoid indicates that the document is marked as void
 // and should be rendered accordingly.
-func WithState(state string) Option {
+func WithVoid(void bool) Option {
 	return func(o *internal.Opts) {
-		o.State = state
+		o.Void = void
 	}
 }
 
