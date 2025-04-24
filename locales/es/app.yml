@@ -5,28 +5,28 @@ es:
     invoice: &invoice
       title:
         standard: "Factura"
-        standard-simplified: "Factura Simplificada"
-        proforma: "Factura Proforma"
-        corrective: "Factura Correctiva"
-        credit-note: "Nota de Crédito"
-        debit-note: "Nota de Débito"
+        standard-simplified: "Factura simplificada"
+        proforma: "Factura proforma"
+        corrective: "Factura correctiva"
+        credit-note: "Nota de crédito"
+        debit-note: "Nota de débito"
         paid: "Pagado"
         void: "Anulado"
 
       summary: &summary
         title: "Resumen"
-        issue_date: "Fecha de Emisión"
-        value_date: "Fecha de Valor"
-        operation_date: "Fecha de Operación"
+        issue_date: "Fecha de emisión"
+        value_date: "Fecha de valor"
+        operation_date: "Fecha de operación"
         currency: "Moneda"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Factura Anterior"
+        preceding_document: "Factura anterior"
         order: "Orden"
         order_period: "Período"
         order_period_label: "%{label}"
         order_period_range: "%{start} a %{end}"
         ext_map:
-          mx-cfdi-issue-place: "Lugar de Expedición"
+          mx-cfdi-issue-place: "Lugar de expedición"
 
       supplier:
         title: "Proveedor"
@@ -54,11 +54,12 @@ es:
         prices_include: "%{tax} incluido"
         total: "Total"
         taxes: "Impuesto"
-        total_with_tax: "Total con impuesto"
+        total_with_tax: "Total con impuestos"
+        retained_tax: "Impuestos retenidos"
+        rounding: "Redondeo"
         total_to_pay: "Total a pagar"
-        outlay: "Suplido %{i}: %{txt}"
         advance: "Anticipo: %{date} %{txt}"
-        advance_sum: "Suma Anticipos"
+        advance_sum: "Suma anticipos"
         due_sum: "Total adeudado"
         exchange_rate: "Cambio a %{to} (%{amount})"
 
@@ -75,9 +76,9 @@ es:
           method: "Método de pago"
           ref: "Referencia"
           bank_data: "Instrucciones de transferencia bancaria"
-          card: "Pago con Tarjeta"
+          card: "Pago con tarjeta"
           card_detail: "Pago realizado con tarjeta terminada en %{last4} perteneciente a %{holder}"
-          observations: "Notas de Pago"
+          observations: "Notas de pago"
           bank_name: "Banco: %{name}"
           iban: "IBAN: %{iban}"
           account_number: "Número de cuenta: %{num}"
@@ -91,8 +92,8 @@ es:
             online: "En línea"
             cheque: "Cheque"
         terms:
-          key: "Términos de Pago"
-          notes: "Notas de Términos de Pago"
+          key: "Términos de pago"
+          notes: "Notas de términos de pago"
           due_dates: "Fechas de vencimiento"
           keys:
             na: "No especificado"
@@ -109,7 +110,7 @@ es:
       notes:
         title: "Notas"
         reg:
-          capital: "Capital Social %{amount}"
+          capital: "Capital social %{amount}"
           registration: "Registro:"
           book: "Libro %{id}"
           volume: "Volumen %{id}"
@@ -121,9 +122,9 @@ es:
     payment:
       <<: *invoice
       title:
-        request: "Solicitud de Pago"
-        advice: "Aviso de Pago"
-        receipt: "Recibo de Pago"
+        request: "Solicitud de pago"
+        advice: "Aviso de pago"
+        receipt: "Recibo de pago"
         paid: "Pagado"
 
       lines:
@@ -131,22 +132,22 @@ es:
         document: "Documento"
 
       method:
-        title: "Detalles de Pago"
+        title: "Detalles de pago"
         instructions: *payment_instructions
 
     delivery:
       <<: *invoice
       title:
-        advice: "Aviso de Entrega"
-        note: "Albarán de Entrega"
-        waybill: "Carta de Porte"
-        receipt: "Recibo de Entrega"
+        advice: "Aviso de entrega"
+        note: "Albarán de entrega"
+        waybill: "Carta de porte"
+        receipt: "Recibo de entrega"
 
       summary:
         <<: *summary
-        despatch_date: "Fecha de Envío"
-        receive_date: "Fecha de Recepción"
-        preceding_document: "Documento Anterior"
+        despatch_date: "Fecha de envío"
+        receive_date: "Fecha de recepción"
+        preceding_document: "Documento anterior"
 
       despatcher:
         title: "Remitente"
@@ -158,20 +159,20 @@ es:
         title: "Transportista"
 
       tracking:
-        title: "Información de Seguimiento"
-        code: "Código de Seguimiento"
-        website: "Enlace de Seguimiento"
+        title: "Información de seguimiento"
+        code: "Código de seguimiento"
+        website: "Enlace de seguimiento"
 
     order:
       <<: *invoice
       title:
-        purchase: "Orden de Compra"
-        sale: "Orden de Venta"
+        purchase: "Orden de compra"
+        sale: "Orden de venta"
         quote: "Presupuesto"
 
       summary:
         <<: *summary
-        preceding_document: "Documento Anterior"
+        preceding_document: "Documento anterior"
         contract: "Contrato"
         period: "Período"
 
@@ -191,10 +192,10 @@ es:
         other: "Emails: %{addr}"
       email_label: "%{addr} (%{label})"
       identity: "%{label}: %{code}"
-      identity_code: "Código de Identidad"
-      po_box: "Apartado Postal %{po_box}"
+      identity_code: "Código de identidad"
+      po_box: "Apartado postal %{po_box}"
       labels:
-        default: "Código Fiscal"
+        default: "Código fiscal"
       ext: "%{label}: %{value}"
       ext_map:
         co-dian-municipality: "Municipio"
@@ -206,4 +207,4 @@ es:
     co:
       cufe: "CUFE: %{cufe}"
       cude: "CUDE: %{cude}"
-      preceding_cufe: "CUFE Factura anterior: %{cufe}"
+      preceding_cufe: "CUFE factura anterior: %{cufe}"

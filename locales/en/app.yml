@@ -1,3 +1,4 @@
+# Use "Sentence case" for all labels, as opposed to "Title Case".
 en:
   page: "Page %{page} of %{count}"
 
@@ -5,28 +6,28 @@ en:
     invoice: &invoice
       title:
         standard: "Invoice"
-        standard-simplified: "Simplified Invoice"
-        proforma: "Proforma Invoice"
-        corrective: "Corrective Invoice"
-        credit-note: "Credit Note"
-        debit-note: "Debit Note"
+        standard-simplified: "Simplified invoice"
+        proforma: "Proforma invoice"
+        corrective: "Corrective invoice"
+        credit-note: "Credit note"
+        debit-note: "Debit note"
         paid: "Paid"
         void: "Void"
 
       summary: &summary
         title: "Summary"
-        issue_date: "Issue Date"
-        value_date: "Value Date"
-        operation_date: "Operation Date"
+        issue_date: "Issue date"
+        value_date: "Value date"
+        operation_date: "Operation date"
         currency: "Currency"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Previous Invoice"
+        preceding_document: "Previous invoice"
         order: "Order"
         order_period: "Period"
         order_period_label: "%{label}"
         order_period_range: "%{start} to %{end}"
         ext_map:
-          mx-cfdi-issue-place: "Place of Issue"
+          mx-cfdi-issue-place: "Place of issue"
 
       supplier:
         title: "Supplier"
@@ -55,8 +56,9 @@ en:
         total: "Total"
         taxes: "Tax"
         total_with_tax: "Total with tax"
+        retained_tax: "Tax withheld"
+        rounding: "Rounding"
         total_to_pay: "Total to pay"
-        outlay: "Outlay %{i}: %{txt}"
         advance: "Advance: %{date} %{txt}"
         advance_sum: "Sum advances"
         due_sum: "Total due"
@@ -75,14 +77,14 @@ en:
           method: "Method of payment"
           ref: "Reference"
           bank_data: "Bank transfer instructions"
-          card: "Card Payment"
+          card: "Card payment"
           card_detail: "Payment made to card ending %{last4} belonging to %{holder}"
-          observations: "Payment Notes"
+          observations: "Payment notes"
           bank_name: "Bank: %{name}"
           iban: "IBAN: %{iban}"
           account_number: "Account number: %{num}"
           bic: "BIC: %{bic}"
-          online: "Payment Link"
+          online: "Payment link"
           methods:
             card: "Bank card"
             credit-transfer: "Bank transfer"
@@ -91,8 +93,8 @@ en:
             online: "Online"
             cheque: "Cheque"
         terms:
-          key: "Payment Terms"
-          notes: "Payment Terms Notes"
+          key: "Payment terms"
+          notes: "Payment terms notes"
           due_dates: "Due dates"
           keys:
             na: "Not specified"
@@ -109,7 +111,7 @@ en:
       notes:
         title: "Notes"
         reg:
-          capital: "Social Capital %{amount}"
+          capital: "Social capital %{amount}"
           registration: "Registration:"
           book: "Book %{id}"
           volume: "Volume %{id}"
@@ -121,9 +123,9 @@ en:
     payment:
       <<: *invoice
       title:
-        request: "Payment Request"
-        advice: "Remittance Advice"
-        receipt: "Payment Receipt"
+        request: "Payment request"
+        advice: "Remittance advice"
+        receipt: "Payment receipt"
         paid: "Paid"
 
       lines:
@@ -131,22 +133,22 @@ en:
         document: "Document"
 
       method:
-        title: "Payment Details"
+        title: "Payment details"
         instructions: *payment_instructions
 
     delivery:
       <<: *invoice
       title:
-        advice: "Delivery Advice"
-        note: "Delivery Note"
+        advice: "Delivery advice"
+        note: "Delivery note"
         waybill: "Waybill"
-        receipt: "Delivery Receipt"
+        receipt: "Delivery receipt"
 
       summary:
         <<: *summary
-        despatch_date: "Despatch Date"
-        receive_date: "Receive Date"
-        preceding_document: "Previous Document"
+        despatch_date: "Despatch date"
+        receive_date: "Receive date"
+        preceding_document: "Previous document"
 
       despatcher:
         title: "Despatcher"
@@ -158,20 +160,20 @@ en:
         title: "Courier"
 
       tracking:
-        title: "Tracking Information"
-        code: "Tracking Code"
-        website: "Tracking Link"
+        title: "Tracking information"
+        code: "Tracking code"
+        website: "Tracking link"
 
     order:
       <<: *invoice
       title:
-        purchase: "Purchase Order"
-        sale: "Sales Order"
+        purchase: "Purchase order"
+        sale: "Sales order"
         quote: "Quote"
 
       summary:
         <<: *summary
-        preceding_document: "Previous Document"
+        preceding_document: "Previous document"
         contract: "Contract"
         period: "Period"
 
@@ -194,18 +196,18 @@ en:
       email_label: "%{addr} (%{label})"
       website: "Web: %{url}"
       website_label: "%{label}: %{url}"
-      po_box: "P.O. Box %{po_box}"
+      po_box: "P.O. box %{po_box}"
       labels:
         default: "TIN"
       identity: "%{label}: %{code}"
       identity_code: "Identity code"
       identity_labels:
-        it-fiscal-code: "Codice Fiscale"
+        it-fiscal-code: "Codice fiscale"
         de-tax-number: "St. -Nr."
       ext: "%{label}: %{value}"
       ext_map:
         co-dian-municipality: "Municipality"
-        mx-cfdi-fiscal-regime: "Régimen Fiscal"
+        mx-cfdi-fiscal-regime: "Régimen fiscal"
         mx-cfdi-post-code: "Lugar"
         mx-cfdi-use: "Uso CFDI"
     address:
@@ -218,35 +220,32 @@ en:
     co:
       cufe: "CUFE: %{cufe}"
       cude: "CUDE: %{cude}"
-      preceding_cufe: "CUFE Previous invoice: %{cufe}"
+      preceding_cufe: "CUFE previous invoice: %{cufe}"
     pt:
       title:
         FT: "Invoice"
-        FS: "Simplified Invoice"
-        FR: "Invoice-Receipt"
-        ND: "Debit Note"
-        NC: "Credit Note"
-        RC: "Cash Receipt"
+        FS: "Simplified invoice"
+        FR: "Invoice-receipt"
+        ND: "Debit note"
+        NC: "Credit note"
+        RC: "Cash receipt"
         RG: "Receipt"
-        CM: "Table Order"
-        CC: "Consignment Credit"
-        FC: "Consignment Invoice"
-        FO: "Work Order"
-        NE: "Purchase Order"
-        OU: "Other Document"
+        CM: "Table order"
+        CC: "Consignment credit"
+        FC: "Consignment invoice"
+        FO: "Work order"
+        NE: "Purchase order"
+        OU: "Other document"
         OR: "Quotation"
-        PF: "Proforma Invoice"
-        DC: "Delivery Document"
-        GR: "Delivery Note"
+        PF: "Proforma invoice"
+        DC: "Delivery document"
+        GR: "Delivery note"
         GT: "Waybill"
-        GA: "Fixed Assets Delivery"
-        GC: "Consignment Delivery"
+        GA: "Fixed assets delivery"
+        GC: "Consignment delivery"
         GD: "Return"
-        RP: "Premium Receipt"
-        RE: "Chargeback Receipt"
-        CS: "Co-insurer Allocation"
-        LD: "Lead Co-insurer Allocation"
-        RA: "Accepted Reinsurance"
-
-
-
+        RP: "Premium receipt"
+        RE: "Chargeback receipt"
+        CS: "Co-insurer allocation"
+        LD: "Lead co-insurer allocation"
+        RA: "Accepted reinsurance"

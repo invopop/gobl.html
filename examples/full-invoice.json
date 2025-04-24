@@ -4,7 +4,7 @@
 		"uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
 		"dig": {
 			"alg": "sha256",
-			"val": "31d94d20b9a42538d3ed13ca3444560a454634bda73e237f2fad3e39f157ebf4"
+			"val": "40449478be4be2a6c05bc700481fe226de0e6db92acb7fd03c3c0f07a345b47f"
 		}
 	},
 	"doc": {
@@ -192,7 +192,7 @@
 					"ref": "PAY1234",
 					"description": "Prepayment with Paypal",
 					"percent": "30%",
-					"amount": "1796.06"
+					"amount": "1803.83"
 				}
 			],
 			"instructions": {
@@ -250,13 +250,15 @@
 						"amount": "25.88"
 					}
 				],
-				"sum": "999.38"
+				"sum": "1025.25",
+				"retained": "25.88"
 			},
-			"tax": "999.38",
-			"total_with_tax": "5986.88",
-			"payable": "5986.88",
-			"advance": "1796.06",
-			"due": "4190.81"
+			"tax": "1025.25",
+			"total_with_tax": "6012.75",
+			"retained_tax": "25.88",
+			"payable": "5986.87",
+			"advance": "1803.83",
+			"due": "4183.05"
 		},
 		"notes": [
 			{
