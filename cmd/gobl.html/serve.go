@@ -112,7 +112,7 @@ func prepareEcho() *echo.Echo {
 	return e
 }
 
-func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opts []goblhtml.Option, state string) ([]byte, error) {
+func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opts []goblhtml.Option) ([]byte, error) {
 	ctx := c.Request().Context()
 	var err error
 
@@ -181,7 +181,10 @@ func (s *serveOpts) generate(c echo.Context) error {
 	if ext == ".pdf" {
 		opts = append(opts, goblhtml.WithEmbeddedStylesheets())
 	}
-	data, err := s.render(c, req, env, opts, state)
+	if state != "" {
+		opts = append(opts, goblhtml.WithState(state))
+	}
+	data, err := s.render(c, req, env, opts)
 	if err != nil {
 		return err
 	}
