@@ -4,7 +4,7 @@
 		"uuid": "66c60bf0-0310-11ef-b734-ffb5249031a5",
 		"dig": {
 			"alg": "sha256",
-			"val": "b666c4b132181ee49b05f9ecda22e0d799fb6940781f25a43d7ebb6fabcb4e24"
+			"val": "e8d8657d1bf2889bfd715957f801ec725808c61131e86dffc59cf70ca66f78d1"
 		},
 		"stamps": [
 			{
@@ -147,7 +147,7 @@
 					"key": "credit-transfer",
 					"description": "Top-up payment",
 					"percent": "100%",
-					"amount": "358.85"
+					"amount": "296.79"
 				}
 			]
 		},
@@ -205,8 +205,8 @@
 			"total_with_tax": "358.85",
 			"retained_tax": "62.06",
 			"payable": "296.79",
-			"advance": "358.85",
-			"due": "-62.06"
+			"advance": "296.79",
+			"due": "0.00"
 		}
 	},
 	"sigs": [
