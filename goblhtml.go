@@ -103,9 +103,17 @@ func WithLayout(l layout.Code) Option {
 	}
 }
 
+// WithVoid indicates that the document is marked as void
+// and should be rendered accordingly.
+func WithVoid(void bool) Option {
+	return func(o *internal.Opts) {
+		o.Void = void
+	}
+}
+
 // Render takes the GOBL envelope and attempts to render an HTML document
 // from it.
-func Render(ctx context.Context, env *gobl.Envelope, state string, opts ...Option) ([]byte, error) {
+func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, error) {
 	o := new(internal.Opts)
 	for _, opt := range opts {
 		opt(o)
@@ -155,7 +163,7 @@ func Render(ctx context.Context, env *gobl.Envelope, state string, opts ...Optio
 
 	ctx = internal.WithOptions(ctx, o)
 
-	out := components.Envelope(env, state)
+	out := components.Envelope(env)
 	buf := new(bytes.Buffer)
 	if err := out.Render(ctx, buf); err != nil {
 		return nil, err

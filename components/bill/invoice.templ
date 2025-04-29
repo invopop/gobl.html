@@ -23,15 +23,15 @@ import (
 )
 
 // Invoice renders a complete GOBL bill.Invoice object.
-templ Invoice(env *gobl.Envelope, inv *bill.Invoice, state string) {
+templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 	@t.Scope("billing.invoice") {
 		// Footer needs to be at the top to show on all pages
 		<article class={ "invoice", templ.KV("din5008", applyDIN5008(ctx)) }>
 			<header class={ templ.KV("with-qr", hasHeaderQR(env)), templ.KV("regular", !hasHeaderQR(env)) }>
 				if applyDIN5008(ctx) {
-					@din5008Header(env, inv, state)
+					@din5008Header(env, inv)
 				} else {
-					@defaultHeader(env, inv, state)
+					@defaultHeader(env, inv)
 				}
 			</header>
 			@lines(inv)
@@ -53,14 +53,14 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice, state string) {
 	}
 }
 
-templ title(env *gobl.Envelope, inv *bill.Invoice, state string) {
+templ title(env *gobl.Envelope, inv *bill.Invoice) {
 	@t.Scope(".title") {
 		<section class="title">
 			@titleHero(inv.Supplier)
 			@invoiceTitleType(inv)
 			<h2 class="code">
 				@titleCode(inv.Series, inv.Code, inv.Regime)
-				@titleBadges(env, inv, state)
+				@titleBadges(env, inv)
 			</h2>
 		</section>
 	}
@@ -110,8 +110,8 @@ templ defaultTitleType(key cbc.Key) {
 	@t.T("." + string(key))
 }
 
-templ titleBadges(env *gobl.Envelope, doc any, state string) {
-	if state == "void" {
+templ titleBadges(env *gobl.Envelope, doc any) {
+	if voided(ctx) {
 		<span class="void">
 			@t.T(".void")
 		</span>
@@ -122,9 +122,9 @@ templ titleBadges(env *gobl.Envelope, doc any, state string) {
 	}
 }
 
-templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice, state string) {
+templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
 	<div class="details">
-		@title(env, inv, state)
+		@title(env, inv)
 		@summary(inv)
 	</div>
 	// Spanish QRs
@@ -136,9 +136,9 @@ templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice, state string) {
 	</div>
 }
 
-templ din5008Header(env *gobl.Envelope, inv *bill.Invoice, state string) {
+templ din5008Header(env *gobl.Envelope, inv *bill.Invoice) {
 	<div>
-		@title(env, inv, state)
+		@title(env, inv)
 		@contact(inv.Customer, "customer")
 	</div>
 	<div>
@@ -180,4 +180,10 @@ func applyDIN5008(ctx context.Context) bool {
 
 func hasHeaderQR(env *gobl.Envelope) bool {
 	return es.HasVerifactuQR(env) || es.HasTicketBAIQR(env)
+}
+
+func voided(ctx context.Context) bool {
+	opts := internal.Options(ctx)
+
+	return opts.Void
 }

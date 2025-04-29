@@ -31,7 +31,7 @@ import (
 )
 
 // Invoice renders a complete GOBL bill.Invoice object.
-func Invoice(env *gobl.Envelope, inv *bill.Invoice, state string) templ.Component {
+func Invoice(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -113,12 +113,12 @@ func Invoice(env *gobl.Envelope, inv *bill.Invoice, state string) templ.Componen
 				return templ_7745c5c3_Err
 			}
 			if applyDIN5008(ctx) {
-				templ_7745c5c3_Err = din5008Header(env, inv, state).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = din5008Header(env, inv).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			} else {
-				templ_7745c5c3_Err = defaultHeader(env, inv, state).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = defaultHeader(env, inv).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -193,7 +193,7 @@ func Invoice(env *gobl.Envelope, inv *bill.Invoice, state string) templ.Componen
 	})
 }
 
-func title(env *gobl.Envelope, inv *bill.Invoice, state string) templ.Component {
+func title(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -246,7 +246,7 @@ func title(env *gobl.Envelope, inv *bill.Invoice, state string) templ.Component 
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = titleBadges(env, inv, state).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = titleBadges(env, inv).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -531,7 +531,7 @@ func defaultTitleType(key cbc.Key) templ.Component {
 	})
 }
 
-func titleBadges(env *gobl.Envelope, doc any, state string) templ.Component {
+func titleBadges(env *gobl.Envelope, doc any) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -552,7 +552,7 @@ func titleBadges(env *gobl.Envelope, doc any, state string) templ.Component {
 			templ_7745c5c3_Var20 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if state == "void" {
+		if voided(ctx) {
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "<span class=\"void\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -583,7 +583,7 @@ func titleBadges(env *gobl.Envelope, doc any, state string) templ.Component {
 	})
 }
 
-func defaultHeader(env *gobl.Envelope, inv *bill.Invoice, state string) templ.Component {
+func defaultHeader(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -608,7 +608,7 @@ func defaultHeader(env *gobl.Envelope, inv *bill.Invoice, state string) templ.Co
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = title(env, inv, state).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = title(env, inv).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -648,7 +648,7 @@ func defaultHeader(env *gobl.Envelope, inv *bill.Invoice, state string) templ.Co
 	})
 }
 
-func din5008Header(env *gobl.Envelope, inv *bill.Invoice, state string) templ.Component {
+func din5008Header(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -673,7 +673,7 @@ func din5008Header(env *gobl.Envelope, inv *bill.Invoice, state string) templ.Co
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = title(env, inv, state).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = title(env, inv).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -734,6 +734,12 @@ func applyDIN5008(ctx context.Context) bool {
 
 func hasHeaderQR(env *gobl.Envelope) bool {
 	return es.HasVerifactuQR(env) || es.HasTicketBAIQR(env)
+}
+
+func voided(ctx context.Context) bool {
+	opts := internal.Options(ctx)
+
+	return opts.Void
 }
 
 var _ = templruntime.GeneratedTemplate

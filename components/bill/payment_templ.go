@@ -17,7 +17,7 @@ import (
 )
 
 // Payment renders a complete GOBL bill.Payment object.
-func Payment(env *gobl.Envelope, pmt *bill.Payment, state string) templ.Component {
+func Payment(env *gobl.Envelope, pmt *bill.Payment) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -54,7 +54,7 @@ func Payment(env *gobl.Envelope, pmt *bill.Payment, state string) templ.Componen
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = paymentHeader(env, pmt, state).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = paymentHeader(env, pmt).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -112,7 +112,7 @@ func Payment(env *gobl.Envelope, pmt *bill.Payment, state string) templ.Componen
 	})
 }
 
-func paymentHeader(env *gobl.Envelope, pmt *bill.Payment, state string) templ.Component {
+func paymentHeader(env *gobl.Envelope, pmt *bill.Payment) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -137,7 +137,7 @@ func paymentHeader(env *gobl.Envelope, pmt *bill.Payment, state string) templ.Co
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = paymentTitle(env, pmt, state).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = paymentTitle(env, pmt).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -165,7 +165,7 @@ func paymentHeader(env *gobl.Envelope, pmt *bill.Payment, state string) templ.Co
 	})
 }
 
-func paymentTitle(env *gobl.Envelope, pmt *bill.Payment, state string) templ.Component {
+func paymentTitle(env *gobl.Envelope, pmt *bill.Payment) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -218,7 +218,7 @@ func paymentTitle(env *gobl.Envelope, pmt *bill.Payment, state string) templ.Com
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = titleBadges(env, pmt, state).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = titleBadges(env, pmt).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

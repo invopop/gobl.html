@@ -18,7 +18,7 @@ import (
 	gorg "github.com/invopop/gobl/org"
 )
 
-templ Envelope(env *gobl.Envelope, state string) {
+templ Envelope(env *gobl.Envelope) {
 	<html data-theme="light">
 		<head>
 			<title>GOBL HTML Generator</title>
@@ -39,13 +39,13 @@ templ Envelope(env *gobl.Envelope, state string) {
 				@footerPrint(env)
 				switch doc := env.Extract().(type) {
 					case *gbill.Invoice:
-						@bill.Invoice(env, doc, state)
+						@bill.Invoice(env, doc)
 					case *gbill.Payment:
-						@bill.Payment(env, doc, state)
+						@bill.Payment(env, doc)
 					case *gbill.Delivery:
-						@bill.Delivery(env, doc, state)
+						@bill.Delivery(env, doc)
 					case *gbill.Order:
-						@bill.Order(env, doc, state)
+						@bill.Order(env, doc)
 					case *gnote.Message:
 						@note.Message(doc)
 					case *gorg.Party:

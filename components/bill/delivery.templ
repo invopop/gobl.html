@@ -9,11 +9,11 @@ import (
 )
 
 // Delivery renders a complete GOBL bill.Delivery object.
-templ Delivery(env *gobl.Envelope, dlv *bill.Delivery, state string) {
+templ Delivery(env *gobl.Envelope, dlv *bill.Delivery) {
 	@t.Scope("billing.delivery") {
 		<article class="delivery">
 			<header class="regular">
-				@deliveryHeader(env, dlv, state)
+				@deliveryHeader(env, dlv)
 			</header>
 			@deliveryLines(dlv)
 			if dlv.Totals != nil {
@@ -32,9 +32,9 @@ templ Delivery(env *gobl.Envelope, dlv *bill.Delivery, state string) {
 	}
 }
 
-templ deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery, state string) {
+templ deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) {
 	<div class="details">
-		@deliveryTitle(env, dlv, state)
+		@deliveryTitle(env, dlv)
 		@deliverySummary(dlv)
 	</div>
 	<div class="contacts">
@@ -46,14 +46,14 @@ templ deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery, state string) {
 	</div>
 }
 
-templ deliveryTitle(env *gobl.Envelope, dlv *bill.Delivery, state string) {
+templ deliveryTitle(env *gobl.Envelope, dlv *bill.Delivery) {
 	@t.Scope(".title") {
 		<section class="title">
 			@titleHero(dlv.Supplier)
 			@deliveryTitleType(dlv)
 			<h2 class="code">
 				@titleCode(dlv.Series, dlv.Code, dlv.Regime)
-				@titleBadges(env, dlv, state)
+				@titleBadges(env, dlv)
 			</h2>
 		</section>
 	}

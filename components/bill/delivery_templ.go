@@ -17,7 +17,7 @@ import (
 )
 
 // Delivery renders a complete GOBL bill.Delivery object.
-func Delivery(env *gobl.Envelope, dlv *bill.Delivery, state string) templ.Component {
+func Delivery(env *gobl.Envelope, dlv *bill.Delivery) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -54,7 +54,7 @@ func Delivery(env *gobl.Envelope, dlv *bill.Delivery, state string) templ.Compon
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = deliveryHeader(env, dlv, state).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = deliveryHeader(env, dlv).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -114,7 +114,7 @@ func Delivery(env *gobl.Envelope, dlv *bill.Delivery, state string) templ.Compon
 	})
 }
 
-func deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery, state string) templ.Component {
+func deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -139,7 +139,7 @@ func deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery, state string) templ.
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = deliveryTitle(env, dlv, state).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = deliveryTitle(env, dlv).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -179,7 +179,7 @@ func deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery, state string) templ.
 	})
 }
 
-func deliveryTitle(env *gobl.Envelope, dlv *bill.Delivery, state string) templ.Component {
+func deliveryTitle(env *gobl.Envelope, dlv *bill.Delivery) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -232,7 +232,7 @@ func deliveryTitle(env *gobl.Envelope, dlv *bill.Delivery, state string) templ.C
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = titleBadges(env, dlv, state).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = titleBadges(env, dlv).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

@@ -87,10 +87,13 @@ func convertExample(name string) ([]byte, error) {
 	}
 
 	// Extract the state from the name
-	state := strings.TrimSuffix(strings.Split(name, ".")[1], ".json")
+	var opts []goblhtml.Option
+	if strings.HasSuffix(name, ".void.json") {
+		opts = append(opts, goblhtml.WithVoid(true))
+	}
 
 	ctx := context.Background()
-	return goblhtml.Render(ctx, env, state)
+	return goblhtml.Render(ctx, env, opts...)
 }
 
 func loadExample(name string) (*gobl.Envelope, error) {
