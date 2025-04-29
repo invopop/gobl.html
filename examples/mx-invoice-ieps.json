@@ -4,7 +4,7 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "6cc5f630ba8d603a49162f681cd0536a3c010ffc835702780f8b2455c72d3822"
+			"val": "9d4deb5bbdf41016de8b9fbb7f0fbe549814e5fe38a54e9f63e199d80392d53b"
 		}
 	},
 	"doc": {
@@ -17,7 +17,8 @@
 		"type": "standard",
 		"series": "TEST",
 		"code": "00001",
-		"issue_date": "2023-07-10",
+		"issue_date": "2025-04-24",
+		"issue_time": "04:57:46",
 		"currency": "MXN",
 		"tax": {
 			"ext": {

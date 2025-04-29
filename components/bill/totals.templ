@@ -99,6 +99,26 @@ templ totalsBaseRows(inv *bill.Invoice, totals *bill.Totals) {
 }
 
 templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
+	if totals.RetainedTax != nil {
+		<tr class="retained-tax">
+			<th>
+				@t.T(".retained_tax")
+			</th>
+			<td>
+				@t.LM(totals.RetainedTax.Negate())
+			</td>
+		</tr>
+	}
+	if totals.Rounding != nil {
+		<tr class="rounding">
+			<th>
+				@t.T(".rounding")
+			</th>
+			<td>
+				@t.LM(*totals.Rounding)
+			</td>
+		</tr>
+	}
 	<tr class="payable strong">
 		<th>
 			if inv.Type.In(bill.InvoiceTypeCreditNote) {
