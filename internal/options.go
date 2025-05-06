@@ -39,6 +39,8 @@ type Opts struct {
 	EmbedStylesheets bool
 	// Layout indicates the Layout used in te document
 	Layout layout.Code
+	// Void indicates if the document should be rendered as void
+	Void bool
 }
 
 // WithOptions prepares the context with the options to use.

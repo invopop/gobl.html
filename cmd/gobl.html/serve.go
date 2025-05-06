@@ -180,6 +180,9 @@ func (s *serveOpts) generate(c echo.Context) error {
 	if ext == ".pdf" {
 		opts = append(opts, goblhtml.WithEmbeddedStylesheets())
 	}
+	if strings.HasSuffix(fn, ".void.json") {
+		opts = append(opts, goblhtml.WithVoid(true))
+	}
 	data, err := s.render(c, req, env, opts)
 	if err != nil {
 		return err

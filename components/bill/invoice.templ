@@ -111,14 +111,11 @@ templ defaultTitleType(key cbc.Key) {
 }
 
 templ titleBadges(env *gobl.Envelope, doc any) {
-	@utils.Coalesce(
-		pt.TitleBadges(env),
-		defaultTitleBadges(doc),
-	)
-}
-
-templ defaultTitleBadges(doc any) {
-	if paid(doc) {
+	if voided(ctx) {
+		<span class="void">
+			@t.T(".void")
+		</span>
+	} else if paid(doc) {
 		<span class="paid">
 			@t.T(".paid")
 		</span>
@@ -183,4 +180,10 @@ func applyDIN5008(ctx context.Context) bool {
 
 func hasHeaderQR(env *gobl.Envelope) bool {
 	return es.HasVerifactuQR(env) || es.HasTicketBAIQR(env)
+}
+
+func voided(ctx context.Context) bool {
+	opts := internal.Options(ctx)
+
+	return opts.Void
 }

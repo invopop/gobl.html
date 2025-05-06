@@ -10,6 +10,7 @@ fr:
         credit-note: "Note de Crédit"
         debit-note: "Note de Débit"
         paid: "Payé"
+        void: "Annulé"
       summary: &summary
         title: "Résumé"
         issue_date: "Date d'émission"
@@ -46,8 +47,9 @@ fr:
         total: "Total"
         taxes: "Taxe"
         total_with_tax: "Total avec taxe"
+        retained_tax: "Taxe retenue"
+        rounding: "Rounding"
         total_to_pay: "Total à payer"
-        outlay: "Débours %{i}: %{txt}"
         advance: "Avance: %{date} %{txt}"
         advance_sum: "Somme des avances"
         due_sum: "Total dû"

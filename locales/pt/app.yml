@@ -11,6 +11,7 @@ pt:
         credit-note: "Nota de Crédito"
         debit-note: "Nota de Débito"
         paid: "Pago"
+        void: "Anulado"
 
       summary: &summary
         title: "Resumo"
@@ -52,8 +53,9 @@ pt:
         total: "Total"
         taxes: "Imposto"
         total_with_tax: "Total com imposto"
+        retained_tax: "Impostos retidos"
+        rounding: "Arredondamento"
         total_to_pay: "Total a pagar"
-        outlay: "Despesa %{i}: %{txt}"
         advance: "Adiantamento: %{date} %{txt}"
         advance_sum: "Soma dos adiantamentos"
         due_sum: "Total devido"
@@ -218,7 +220,7 @@ pt:
         DC: "Documento de Entrega"
         GR: "Guia de Remessa"
         GT: "Guia de Transporte"
-        GA: "Ativos Fixos"
+        GA: "Guia de movimentação de ativos fixos próprios"
         GC: "Guia de Consignação"
         GD: "Guia de Devolução"
         RP: "Recibo de prémio"
@@ -226,4 +228,3 @@ pt:
         CS: "Imputação a co-seguradora"
         LD: "Imputação a co-seguradora líder"
         RA: "Resseguro aceite"
-        canceled: "Anulado"

@@ -4,7 +4,7 @@
 		"uuid": "01902adc-05c8-7000-8703-60c8dcf87bd6",
 		"dig": {
 			"alg": "sha256",
-			"val": "8eebf58eb8b59da04cfefd185dd92a95ae678bbe9b63150951a3084d49e64f6c"
+			"val": "ac894b4a58725012cab8e5da9aa1bbcb96dab8018401517c57a3bbf1d63cf174"
 		},
 		"stamps": [
 			{
@@ -74,9 +74,9 @@
 				"quantity": "1",
 				"item": {
 					"name": "Noite em quarto duplo",
-					"price": "100.00"
+					"price": "1000.00"
 				},
-				"sum": "100.00",
+				"sum": "1000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -87,7 +87,7 @@
 						}
 					}
 				],
-				"total": "100.00"
+				"total": "1000.00"
 			},
 			{
 				"i": 2,
@@ -111,8 +111,8 @@
 			}
 		],
 		"totals": {
-			"sum": "150.00",
-			"total": "150.00",
+			"sum": "1050.00",
+			"total": "1050.00",
 			"taxes": {
 				"categories": [
 					{
@@ -124,7 +124,7 @@
 									"pt-region": "PT",
 									"pt-saft-exemption": "M41"
 								},
-								"base": "100.00",
+								"base": "1000.00",
 								"amount": "0.00"
 							},
 							{
@@ -143,8 +143,8 @@
 				"sum": "0.00"
 			},
 			"tax": "0.00",
-			"total_with_tax": "150.00",
-			"payable": "150.00"
+			"total_with_tax": "1050.00",
+			"payable": "1050.00"
 		},
 		"notes": [
 			{

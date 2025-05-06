@@ -103,7 +103,7 @@ section.title .hero img {
     max-height: 16mm;
 }
 section.title span.paid,
-section.title span.canceled {
+section.title span.void {
     font-size: 9pt;
     font-weight: 400;
     vertical-align: text-bottom;
@@ -117,10 +117,10 @@ section.title span.paid {
     border: 1px solid #02906233;
     color: #008852;
 }
-section.title span.canceled {
-    background-color: #d32f2f1a;
-    border: 1px solid #d32f2f33;
-    color: #a32020;
+section.title span.void {
+    background-color: #D32F2F1A;
+    border: 1px solid #D32F2F33;
+    color: #A32020;
 }
 section.title h2.code {
     font-size: 12pt;
@@ -266,6 +266,10 @@ section.totals th {
 section.totals td {
     text-align: right;
     border-top: 0.5px solid #e5e7eb;
+}
+section.totals td:last-child {
+    white-space: nowrap;
+    width: 1%;
 }
 section.totals tr:first-child th,
 section.totals tr:first-child td {

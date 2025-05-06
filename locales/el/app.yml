@@ -11,6 +11,7 @@ el:
         credit-note: "Πιστωτικό Σημείωμα"
         debit-note: "Χρεωστικό Σημείωμα"
         paid: "Πληρώθηκε"
+        void: "Ακυρωμένο"
 
       summary: &summary
         title: "Περίληψη"
@@ -54,8 +55,9 @@ el:
         total: "Σύνολο"
         taxes: "Φόρος"
         total_with_tax: "Σύνολο με φόρο"
+        retained_tax: "Φόρος παρακράτησης"
+        rounding: "Στρογγυλοποίηση"
         total_to_pay: "Σύνολο προς πληρωμή"
-        outlay: "Έξοδος %{i}: %{txt}"
         advance: "Προκαταβολή: %{date} %{txt}"
         advance_sum: "Άθροισμα προκαταβολών"
         due_sum: "Σύνολο οφειλόμενου"
