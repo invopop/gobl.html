@@ -60,6 +60,8 @@ de:
         advance_sum: "Summe der Vorauszahlungen"
         due_sum: "Gesamtbetrag fällig"
         exchange_rate: "Umtausch in %{to} (%{amount})"
+        carried_fwd: "Übertrag"
+        brought_fwd: "Vortrag"
 
       taxes:
         title: "Steuern"

@@ -35,8 +35,9 @@ templ paymentLines(pmt *bill.Payment) {
 					</tr>
 				</thead>
 				<tbody>
+					{{ st := newSubtotal() }}
 					for _, l := range pmt.Lines {
-						@paymentLine(l, pmt)
+						@paymentLine(l, pmt, st)
 					}
 				</tbody>
 			</table>
@@ -44,8 +45,8 @@ templ paymentLines(pmt *bill.Payment) {
 	}
 }
 
-templ paymentLine(l *bill.PaymentLine, pmt *bill.Payment) {
-	<tr>
+templ paymentLine(l *bill.PaymentLine, pmt *bill.Payment, st *subtotal) {
+	<tr data-subtotal={ t.LocalizeMoney(ctx, st.Add(&l.Total)) }>
 		<td class="ref">
 			{ fmt.Sprint(l.Index) }
 		</td>

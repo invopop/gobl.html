@@ -30,7 +30,7 @@ const (
 func FooterNotes(env *gobl.Envelope) string {
 	if appID := atAppID(env); appID != "" {
 		if hash := atHash(env); hash != "" {
-			return fmt.Sprintf("<b>%s</b> &middot; Processado por programa certificado %s/AT", hash, appID)
+			return fmt.Sprintf("<b>%s</b>-Processado por programa certificado n.º %s/AT", hash, appID)
 		}
 	}
 	return ""

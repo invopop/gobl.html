@@ -26,7 +26,8 @@ func (pc *princeConvertor) HTML(_ context.Context, data []byte, opts ...Option) 
 	o := prepareOptions(opts)
 	j := new(princepdf.Job)
 	j.Input = &princepdf.Input{
-		Src: "data.html",
+		Src:        "data.html",
+		Javascript: true,
 	}
 	j.Files = map[string][]byte{
 		"data.html": data,
@@ -35,6 +36,12 @@ func (pc *princeConvertor) HTML(_ context.Context, data []byte, opts ...Option) 
 	if len(o.styles) > 0 {
 		for _, ss := range o.styles {
 			j.Input.Styles = append(j.Input.Styles, ss.Filename)
+			j.Files[ss.Filename] = ss.Data
+		}
+	}
+	if len(o.scripts) > 0 {
+		for _, ss := range o.scripts {
+			j.Input.Scripts = append(j.Input.Scripts, ss.Filename)
 			j.Files[ss.Filename] = ss.Data
 		}
 	}

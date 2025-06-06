@@ -63,6 +63,8 @@ en:
         advance_sum: "Sum advances"
         due_sum: "Total due"
         exchange_rate: "Exchange to %{to} (%{amount})"
+        carried_fwd: "Carried forward"
+        brought_fwd: "Brought forward"
 
       taxes:
         title: "Taxes"

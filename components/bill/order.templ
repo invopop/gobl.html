@@ -2,9 +2,9 @@ package bill
 
 import (
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/components/doc"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl/bill"
 	gorg "github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
@@ -18,23 +18,26 @@ templ Order(env *gobl.Envelope, ord *bill.Order) {
 				@orderHeader(env, ord)
 			</header>
 			@orderLines(ord)
-			<div class="totals">
-				@orderTotals(ord, ord.Totals)
-				@taxes(ord.RegimeDef(), ord.Totals.Taxes)
-			</div>
-			@orderPaymentDetails(ord)
-			@notes(ord.Notes, ord.Supplier)
-			<div class="extensions">
-				// Region specific information
-				@pt.ATQR(env)
+			<div class="tail"> <!-- `tail` contains everything that should be printed on the last page -->
+				<div class="totals">
+					@orderTotals(ord, ord.Totals)
+					@taxes(ord.RegimeDef(), ord.Totals.Taxes)
+				</div>
+				@orderPaymentDetails(ord)
+				@notes(ord.Notes, ord.Supplier)
+				<div class="extensions">
+					// Region specific information
+					@pt.ATQR(env)
+				</div>
 			</div>
 		</article>
+		@multipage(env, doc.For(ord))
 	}
 }
 
 templ orderHeader(env *gobl.Envelope, ord *bill.Order) {
 	<div class="details">
-		@orderTitle(env, ord)
+		@title(env, doc.For(ord))
 		@orderSummary(ord)
 	</div>
 	<div class="contacts">
@@ -43,28 +46,6 @@ templ orderHeader(env *gobl.Envelope, ord *bill.Order) {
 		@contact(ord.Buyer, "buyer")
 		@contact(ord.Seller, "seller")
 	</div>
-}
-
-templ orderTitle(env *gobl.Envelope, ord *bill.Order) {
-	@t.Scope(".title") {
-		<section class="title">
-			@titleHero(ord.Supplier)
-			@orderTitleType(ord)
-			<h2 class="code">
-				@titleCode(ord.Series, ord.Code, ord.Regime)
-				@titleBadges(env, ord)
-			</h2>
-		</section>
-	}
-}
-
-templ orderTitleType(ord *bill.Order) {
-	<h1 class="type">
-		@utils.Coalesce(
-			pt.OrderTitleType(ord),
-			defaultTitleType(ord.Type),
-		)
-	</h1>
 }
 
 templ orderSummary(ord *bill.Order) {

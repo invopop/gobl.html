@@ -151,7 +151,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr data-subtotal="€1.620,00">
                 <td class="ref">
                   1
                 </td>
@@ -187,152 +187,205 @@
             </tbody>
           </table>
         </section>
+        <div class="tail">
+          <!-- `tail` contains everything that should be printed on the last page -->
+          <div class="totals">
+            <section class="totals">
+              <h2>
+                Totals
+              </h2>
+              <table>
+                <tbody>
+                  <tr class="sum strong">
+                    <th>
+                      Sum
+                    </th>
+                    <td>
+                      €1.620,00
+                    </td>
+                  </tr>
+                  <tr class="tax">
+                    <th>
+                      Tax
+                    </th>
+                    <td>
+                      €340,20
+                    </td>
+                  </tr>
+                  <tr class="total-with-tax strong">
+                    <th>
+                      Total with tax
+                    </th>
+                    <td>
+                      €1.960,20
+                    </td>
+                  </tr>
+                  <tr class="retained-tax">
+                    <th>
+                      Tax withheld
+                    </th>
+                    <td>
+                      €-243,00
+                    </td>
+                  </tr>
+                  <tr class="payable strong">
+                    <th>
+                      Total to pay
+                    </th>
+                    <td>
+                      €1.717,20
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <section class="taxes">
+              <h2>
+                Taxes
+              </h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th class="category">
+                      Tax
+                    </th>
+                    <th class="base">
+                      Base
+                    </th>
+                    <th class="rate">
+                      Rate
+                    </th>
+                    <th class="amount">
+                      Amount
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="1" class="category">
+                      VAT
+                    </td>
+                    <td class="base">
+                      €1.620,00
+                    </td>
+                    <td class="rate">
+                      21,0%
+                    </td>
+                    <td class="amount">
+                      €340,20
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="1" class="category">
+                      IRPF
+                    </td>
+                    <td class="base">
+                      €1.620,00
+                    </td>
+                    <td class="rate">
+                      -15,0%
+                    </td>
+                    <td class="amount">
+                      €-243,00
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+          <section class="payment">
+            <h2 class="title">
+              Payment
+            </h2>
+            <ul class="instructions">
+              <li class="method-name">
+                <span class="label">
+                  Method of payment
+                </span>
+                <span class="value">
+                  Bank transfer
+                </span>
+              </li>
+              <li class="bank-data">
+                <span class="label">
+                  Bank transfer instructions
+                </span>
+                <span class="value">
+                  <span class="credit-transfer">
+                    <span class="bank-name">
+                      Bank: Bankinter
+                    </span>
+                    <span class="iban">
+                      IBAN: ES06 0128 0011 3901 0008 1391
+                    </span>
+                  </span>
+                </span>
+              </li>
+            </ul>
+            <ul class="terms">
+              <li class="terms-key">
+                <span class="label">
+                  Payment terms
+                </span>
+                <span class="value">
+                  On invoice delivery
+                </span>
+              </li>
+            </ul>
+          </section>
+          <div class="extensions"></div>
+        </div>
+      </article>
+      <div id="mp-header-templ" class="mp-header">
         <div class="totals">
           <section class="totals">
-            <h2>
-              Totals
-            </h2>
             <table>
               <tbody>
-                <tr class="sum strong">
+                <tr class="strong">
                   <th>
-                    Sum
+                    Brought forward
                   </th>
-                  <td>
-                    €1.620,00
-                  </td>
-                </tr>
-                <tr class="tax">
-                  <th>
-                    Tax
-                  </th>
-                  <td>
-                    €340,20
-                  </td>
-                </tr>
-                <tr class="total-with-tax strong">
-                  <th>
-                    Total with tax
-                  </th>
-                  <td>
-                    €1.960,20
-                  </td>
-                </tr>
-                <tr class="retained-tax">
-                  <th>
-                    Tax withheld
-                  </th>
-                  <td>
-                    €-243,00
-                  </td>
-                </tr>
-                <tr class="payable strong">
-                  <th>
-                    Total to pay
-                  </th>
-                  <td>
-                    €1.717,20
+                  <td class="amount">
+                    €0,00
                   </td>
                 </tr>
               </tbody>
             </table>
           </section>
-          <section class="taxes">
-            <h2>
-              Taxes
+          <section class="title">
+            <div class="hero">
+              <div class="alias">
+                MªF. Services
+              </div>
+            </div>
+            <h1 class="type">
+              Invoice
+            </h1>
+            <h2 class="code">
+              SAMPLE-001
             </h2>
+          </section>
+        </div>
+      </div>
+      <div id="mp-footer-templ" class="mp-footer">
+        <div class="totals">
+          <section class="totals">
             <table>
-              <thead>
-                <tr>
-                  <th class="category">
-                    Tax
-                  </th>
-                  <th class="base">
-                    Base
-                  </th>
-                  <th class="rate">
-                    Rate
-                  </th>
-                  <th class="amount">
-                    Amount
-                  </th>
-                </tr>
-              </thead>
               <tbody>
-                <tr>
-                  <td rowspan="1" class="category">
-                    VAT
-                  </td>
-                  <td class="base">
-                    €1.620,00
-                  </td>
-                  <td class="rate">
-                    21,0%
-                  </td>
+                <tr class="strong">
+                  <th>
+                    Carried forward
+                  </th>
                   <td class="amount">
-                    €340,20
-                  </td>
-                </tr>
-                <tr>
-                  <td rowspan="1" class="category">
-                    IRPF
-                  </td>
-                  <td class="base">
-                    €1.620,00
-                  </td>
-                  <td class="rate">
-                    -15,0%
-                  </td>
-                  <td class="amount">
-                    €-243,00
+                    €0,00
                   </td>
                 </tr>
               </tbody>
             </table>
           </section>
         </div>
-        <section class="payment">
-          <h2 class="title">
-            Payment
-          </h2>
-          <ul class="instructions">
-            <li class="method-name">
-              <span class="label">
-                Method of payment
-              </span>
-              <span class="value">
-                Bank transfer
-              </span>
-            </li>
-            <li class="bank-data">
-              <span class="label">
-                Bank transfer instructions
-              </span>
-              <span class="value">
-                <span class="credit-transfer">
-                  <span class="bank-name">
-                    Bank: Bankinter
-                  </span>
-                  <span class="iban">
-                    IBAN: ES06 0128 0011 3901 0008 1391
-                  </span>
-                </span>
-              </span>
-            </li>
-          </ul>
-          <ul class="terms">
-            <li class="terms-key">
-              <span class="label">
-                Payment terms
-              </span>
-              <span class="value">
-                On invoice delivery
-              </span>
-            </li>
-          </ul>
-        </section>
-        <div class="extensions"></div>
-      </article>
+      </div>
+      <script src="scripts/multipage.js"></script>
       <footer class="screen">
         <div class="gobl-logo">
           <a href="https://gobl.org">

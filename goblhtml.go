@@ -87,11 +87,11 @@ func WithNumFormatter(nf num.Formatter) Option {
 	}
 }
 
-// WithEmbeddedStylesheets indicates that the stylesheets should be embedded
-// inside the HTML document as opposed to links.
-func WithEmbeddedStylesheets() Option {
+// WithEmbeddedAssets indicates that the stylesheets and scripts should be
+// embedded inside the HTML document as opposed to links.
+func WithEmbeddedAssets() Option {
 	return func(o *internal.Opts) {
-		o.EmbedStylesheets = true
+		o.EmbedAssets = true
 	}
 }
 

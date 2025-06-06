@@ -1,0 +1,33 @@
+// Package assets provides components to render assets
+package assets
+
+import (
+	"path/filepath"
+
+	"github.com/invopop/gobl.html/assets"
+	"github.com/invopop/gobl.html/internal"
+)
+
+// Stylesheet renders a stylesheet link or inline style based on the options
+templ Stylesheet(path string) {
+  {{ path = filepath.Join("styles", path) }}
+	if opts := internal.Options(ctx); opts != nil {
+		if opts.EmbedAssets {
+			@templ.Raw(`<style type="text/css">` + assets.ReadData(path) + `</style>`)
+		} else {
+			<link rel="stylesheet" href={ path }/>
+		}
+	}
+}
+
+// Script renders a script tag or inline script based on the options
+templ Script(path string) {
+  {{ path = filepath.Join("scripts", path) }}
+	if opts := internal.Options(ctx); opts != nil {
+		if opts.EmbedAssets {
+			@templ.Raw(`<script type="text/javascript">` + assets.ReadData(path) + `</script>`)
+		} else {
+			<script src={ path }/>
+		}
+	}
+}
