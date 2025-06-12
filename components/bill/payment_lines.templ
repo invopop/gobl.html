@@ -51,19 +51,29 @@ templ paymentLine(l *bill.PaymentLine, pmt *bill.Payment, tt *tax.Total) {
 			{ fmt.Sprint(l.Index) }
 		</td>
 		<td class="document">
-			<span>
-				@titleCode(l.Document.Series, l.Document.Code, pmt.Regime)
-			</span>
-			if l.Document.Description != "" {
-				<br/>
-				<small>{ l.Document.Description }</small>
+			if l.Document != nil {
+				<span>
+					@titleCode(l.Document.Series, l.Document.Code, pmt.Regime)
+				</span>
+				if l.Document.Description != "" {
+					<br/>
+					<small>{ l.Document.Description }</small>
+				}
+				if l.Description != "" {
+					<br/>
+					<small>{ l.Description }</small>
+				}
+			} else if l.Description != "" {
+				<span>
+					{ l.Description }
+				</span>
 			}
 		</td>
 		if tt != nil {
 			for _, cat := range tt.Categories {
 				<td class="tax">
-					if l.Document != nil && l.Document.Tax != nil {
-						if cat := l.Document.Tax.Category(cat.Code); cat != nil {
+					if l.Tax != nil {
+						if cat := l.Tax.Category(cat.Code); cat != nil {
 							@t.LM(cat.Amount)
 						}
 					}
