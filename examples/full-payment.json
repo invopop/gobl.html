@@ -4,7 +4,7 @@
 		"uuid": "0194da65-8e80-77d0-9843-944211a0eb1a",
 		"dig": {
 			"alg": "sha256",
-			"val": "5503a19ffa82896a073a7df2016beba5685ff89113c9ed559264bf7958092a15"
+			"val": "160757d9530327ba609a88acd97a857d1292d01ff85c8125d4f3ed4199dc803d"
 		}
 	},
 	"doc": {
@@ -74,56 +74,54 @@
 				"document": {
 					"issue_date": "2024-12-23",
 					"series": "FT SERIES-A",
-					"code": "123",
-					"description": "Invoice 1 of 1",
-					"tax": {
-						"categories": [
-							{
-								"code": "VAT",
-								"rates": [
-									{
-										"key": "standard",
-										"base": "50.00",
-										"percent": "23.0%",
-										"amount": "11.50"
-									}
-								],
-								"amount": "11.50"
-							}
-						],
-						"sum": "11.50"
-					}
+					"code": "123"
 				},
-				"debit": "61.50",
-				"total": "61.50"
+				"description": "Invoice 1 of 1",
+				"amount": "61.50",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"base": "50.00",
+									"percent": "23.0%",
+									"amount": "11.50"
+								}
+							],
+							"amount": "11.50"
+						}
+					],
+					"sum": "11.50"
+				}
 			},
 			{
 				"i": 2,
 				"document": {
 					"issue_date": "2024-12-23",
 					"series": "FT SERIES-A",
-					"code": "130",
-					"description": "Invoice 1 of 2",
-					"tax": {
-						"categories": [
-							{
-								"code": "VAT",
-								"rates": [
-									{
-										"key": "reduced",
-										"base": "100.00",
-										"percent": "6.0%",
-										"amount": "6.00"
-									}
-								],
-								"amount": "6.00"
-							}
-						],
-						"sum": "6.00"
-					}
+					"code": "130"
 				},
-				"debit": "106.00",
-				"total": "106.00"
+				"description": "Invoice 1 of 2",
+				"amount": "106.00",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "reduced",
+									"base": "100.00",
+									"percent": "6.0%",
+									"amount": "6.00"
+								}
+							],
+							"amount": "6.00"
+						}
+					],
+					"sum": "6.00"
+				}
 			}
 		],
 		"ordering": {
@@ -139,29 +137,6 @@
 				"start": "2022-02-01",
 				"end": "2022-02-28"
 			}
-		},
-		"tax": {
-			"categories": [
-				{
-					"code": "VAT",
-					"rates": [
-						{
-							"key": "standard",
-							"base": "50.00",
-							"percent": "23.0%",
-							"amount": "11.50"
-						},
-						{
-							"key": "reduced",
-							"base": "100.00",
-							"percent": "6.0%",
-							"amount": "6.00"
-						}
-					],
-					"amount": "17.50"
-				}
-			],
-			"sum": "17.50"
 		},
 		"total": "167.50",
 		"notes": [

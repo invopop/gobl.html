@@ -4,7 +4,7 @@
 		"uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
 		"dig": {
 			"alg": "sha256",
-			"val": "0f917eff41ac946cc005d1bd753d8b24beca0e5be67cf8fc90671a7732e91a49"
+			"val": "7aa74c20536a863a2baeafba272842f2c9eac3ba4bd9859d27b7e31a7ef7d871"
 		}
 	},
 	"doc": {
@@ -256,9 +256,9 @@
 			"tax": "1025.25",
 			"total_with_tax": "6012.75",
 			"retained_tax": "25.88",
-			"payable": "5986.87",
+			"payable": "5986.88",
 			"advance": "1796.06",
-			"due": "4190.81"
+			"due": "4190.82"
 		},
 		"notes": [
 			{

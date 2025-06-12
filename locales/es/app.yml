@@ -27,6 +27,7 @@ es:
         order_period_range: "%{start} a %{end}"
         ext_map:
           mx-cfdi-issue-place: "Lugar de expedición"
+          mx-cfdi-payment-method: "Método de pago"
 
       supplier:
         title: "Proveedor"
