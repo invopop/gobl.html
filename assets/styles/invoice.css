@@ -425,3 +425,30 @@ section.notes .note {
     line-height: 20pt;
     color: #030712;
 }
+.tail {
+    break-inside: avoid;
+}
+.mp-header {
+    float: top;
+    display: none;
+    margin: 0;
+}
+.mp-footer {
+    float: bottom;
+    display: none;
+}
+.mp-header div,
+.mp-footer div,
+.mp-header section,
+.mp-footer section {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.mp-header section.title {
+    order: 1;
+    flex: 1;
+}
+.mp-header .hero {
+    display: none;
+}

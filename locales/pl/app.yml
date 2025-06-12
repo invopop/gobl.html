@@ -60,6 +60,8 @@ pl:
         advance_sum: "Suma zaliczek"
         due_sum: "Suma należności"
         exchange_rate: "Kurs wymiany na %{to} (%{amount})"
+        carried_fwd: "Do przeniesienia"
+        brought_fwd: "Przeniesione saldo"
 
       taxes:
         title: "Podatki"

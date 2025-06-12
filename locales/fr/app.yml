@@ -54,6 +54,8 @@ fr:
         advance_sum: "Somme des avances"
         due_sum: "Total dû"
         exchange_rate: "Échange en %{to} (%{amount})"
+        carried_fwd: "À reporter"
+        brought_fwd: "Reporté"
       taxes:
         title: "Taxes"
         category: "Taxe"

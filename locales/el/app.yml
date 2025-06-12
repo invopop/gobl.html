@@ -62,6 +62,8 @@ el:
         advance_sum: "Άθροισμα προκαταβολών"
         due_sum: "Σύνολο οφειλόμενου"
         exchange_rate: "Ισοτιμία προς %{to} (%{amount})"
+        carried_fwd: "Προς μεταφορά"
+        brought_fwd: "Μεταφερθέν υπόλοιπο"
 
       taxes:
         title: "Φόροι"

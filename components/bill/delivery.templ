@@ -2,9 +2,9 @@ package bill
 
 import (
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl/bill"
 )
 
@@ -16,25 +16,28 @@ templ Delivery(env *gobl.Envelope, dlv *bill.Delivery) {
 				@deliveryHeader(env, dlv)
 			</header>
 			@deliveryLines(dlv)
-			if dlv.Totals != nil {
-				<div class="totals">
-						@deliveryTotals(dlv, dlv.Totals)
-						@taxes(dlv.RegimeDef(), dlv.Totals.Taxes)
+			<div class="tail"> <!-- `tail` contains everything that should be printed on the last page -->
+				if dlv.Totals != nil {
+					<div class="totals">
+							@deliveryTotals(dlv, dlv.Totals)
+							@taxes(dlv.RegimeDef(), dlv.Totals.Taxes)
+					</div>
+				}
+				@deliveryTracking(dlv)
+				@notes(dlv.Notes, dlv.Supplier)
+				<div class="extensions">
+					// Region specific information
+					@pt.ATQR(env)
 				</div>
-			}
-			@deliveryTracking(dlv)
-			@notes(dlv.Notes, dlv.Supplier)
-			<div class="extensions">
-				// Region specific information
-				@pt.ATQR(env)
 			</div>
 		</article>
+		@multipage(env, doc.For(dlv))
 	}
 }
 
 templ deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) {
 	<div class="details">
-		@deliveryTitle(env, dlv)
+		@title(env, doc.For(dlv))
 		@deliverySummary(dlv)
 	</div>
 	<div class="contacts">
@@ -44,28 +47,6 @@ templ deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) {
 		@contact(dlv.Receiver, "receiver")
 		@contact(dlv.Courier, "courier")
 	</div>
-}
-
-templ deliveryTitle(env *gobl.Envelope, dlv *bill.Delivery) {
-	@t.Scope(".title") {
-		<section class="title">
-			@titleHero(dlv.Supplier)
-			@deliveryTitleType(dlv)
-			<h2 class="code">
-				@titleCode(dlv.Series, dlv.Code, dlv.Regime)
-				@titleBadges(env, dlv)
-			</h2>
-		</section>
-	}
-}
-
-templ deliveryTitleType(dlv *bill.Delivery) {
-	<h1 class="type">
-		@utils.Coalesce(
-			pt.DeliveryTitleType(dlv),
-			defaultTitleType(dlv.Type),
-		)
-	</h1>
 }
 
 templ deliverySummary(dlv *bill.Delivery) {

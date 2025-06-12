@@ -141,7 +141,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr data-subtotal="€1,00">
                 <td class="ref">
                   1
                 </td>
@@ -163,7 +163,7 @@
                   €1,00
                 </td>
               </tr>
-              <tr>
+              <tr data-subtotal="€126,00">
                 <td class="ref">
                   2
                 </td>
@@ -188,122 +188,175 @@
             </tbody>
           </table>
         </section>
+        <div class="tail">
+          <!-- `tail` contains everything that should be printed on the last page -->
+          <div class="totals">
+            <section class="totals">
+              <h2>
+                Totals
+              </h2>
+              <table>
+                <tbody>
+                  <tr class="sum strong">
+                    <th>
+                      Sum
+                    </th>
+                    <td>
+                      €126,00
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      Included VAT
+                    </th>
+                    <td>
+                      €11,36
+                    </td>
+                  </tr>
+                  <tr class="total">
+                    <th>
+                      Total
+                    </th>
+                    <td>
+                      €114,64
+                    </td>
+                  </tr>
+                  <tr class="payable strong">
+                    <th>
+                      Total to pay
+                    </th>
+                    <td>
+                      €126,00
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <section class="taxes">
+              <h2>
+                Taxes
+              </h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th class="category">
+                      Tax
+                    </th>
+                    <th class="base">
+                      Base
+                    </th>
+                    <th class="rate">
+                      Rate
+                    </th>
+                    <th class="amount">
+                      Amount
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="2" class="category">
+                      VAT
+                    </td>
+                    <td class="base">
+                      €1,00
+                    </td>
+                    <td class="rate">
+                      <code>
+                        (N4)
+                      </code>
+                    </td>
+                    <td class="amount">
+                      €0,00
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="base">
+                      €113,64
+                    </td>
+                    <td class="rate">
+                      10,0%
+                    </td>
+                    <td class="amount">
+                      €11,36
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+          <section class="notes">
+            <h2>
+              Notes
+            </h2>
+            <div class="note registration">
+              <span class="title">
+                Registration:
+              </span>
+              <span class="capital">
+                Social capital €50.000,00
+              </span>
+              <span class="office">
+                RM
+              </span>
+              <span class="entry">
+                Entry 123456
+              </span>
+            </div>
+          </section>
+          <div class="extensions"></div>
+        </div>
+      </article>
+      <div id="mp-header-templ" class="mp-header">
         <div class="totals">
           <section class="totals">
-            <h2>
-              Totals
-            </h2>
             <table>
               <tbody>
-                <tr class="sum strong">
+                <tr class="strong">
                   <th>
-                    Sum
+                    Brought forward
                   </th>
-                  <td>
-                    €126,00
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                    Included VAT
-                  </th>
-                  <td>
-                    €11,36
-                  </td>
-                </tr>
-                <tr class="total">
-                  <th>
-                    Total
-                  </th>
-                  <td>
-                    €114,64
-                  </td>
-                </tr>
-                <tr class="payable strong">
-                  <th>
-                    Total to pay
-                  </th>
-                  <td>
-                    €126,00
+                  <td class="amount">
+                    €0,00
                   </td>
                 </tr>
               </tbody>
             </table>
           </section>
-          <section class="taxes">
-            <h2>
-              Taxes
+          <section class="title">
+            <div class="hero">
+              <div class="alias">
+                Hotel California
+              </div>
+            </div>
+            <h1 class="type">
+              Invoice
+            </h1>
+            <h2 class="code">
+              SAMPLE-002
             </h2>
+          </section>
+        </div>
+      </div>
+      <div id="mp-footer-templ" class="mp-footer">
+        <div class="totals">
+          <section class="totals">
             <table>
-              <thead>
-                <tr>
-                  <th class="category">
-                    Tax
-                  </th>
-                  <th class="base">
-                    Base
-                  </th>
-                  <th class="rate">
-                    Rate
-                  </th>
-                  <th class="amount">
-                    Amount
-                  </th>
-                </tr>
-              </thead>
               <tbody>
-                <tr>
-                  <td rowspan="2" class="category">
-                    VAT
-                  </td>
-                  <td class="base">
-                    €1,00
-                  </td>
-                  <td class="rate">
-                    <code>
-                      (N4)
-                    </code>
-                  </td>
+                <tr class="strong">
+                  <th>
+                    Carried forward
+                  </th>
                   <td class="amount">
                     €0,00
-                  </td>
-                </tr>
-                <tr>
-                  <td class="base">
-                    €113,64
-                  </td>
-                  <td class="rate">
-                    10,0%
-                  </td>
-                  <td class="amount">
-                    €11,36
                   </td>
                 </tr>
               </tbody>
             </table>
           </section>
         </div>
-        <section class="notes">
-          <h2>
-            Notes
-          </h2>
-          <div class="note registration">
-            <span class="title">
-              Registration:
-            </span>
-            <span class="capital">
-              Social capital €50.000,00
-            </span>
-            <span class="office">
-              RM
-            </span>
-            <span class="entry">
-              Entry 123456
-            </span>
-          </div>
-        </section>
-        <div class="extensions"></div>
-      </article>
+      </div>
+      <script src="scripts/multipage.js"></script>
       <footer class="screen">
         <div class="gobl-logo">
           <a href="https://gobl.org">

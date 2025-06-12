@@ -2,12 +2,9 @@ package components
 
 import (
 	"context"
-	"fmt"
-	"io/fs"
-	"path/filepath"
 
 	"github.com/invopop/gobl"
-	"github.com/invopop/gobl.html/assets"
+	"github.com/invopop/gobl.html/components/assets"
 	"github.com/invopop/gobl.html/components/bill"
 	"github.com/invopop/gobl.html/components/note"
 	"github.com/invopop/gobl.html/components/org"
@@ -27,7 +24,8 @@ templ Envelope(env *gobl.Envelope) {
 			<link rel="preconnect" href="https://fonts.googleapis.com"/>
 			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
-			@stylesheets()
+			@assets.Stylesheet("envelope.css")
+			@assets.Stylesheet("invoice.css")
 		</head>
 		<body
 			if applyLetterLayout(ctx) {
@@ -57,56 +55,6 @@ templ Envelope(env *gobl.Envelope) {
 			</article>
 		</body>
 	</html>
-}
-
-templ stylesheets() {
-	if opts := internal.Options(ctx); opts != nil {
-		if opts.EmbedStylesheets {
-			for _, data := range stylesheetData() {
-				@templ.Raw(`<style type="text/css">` + data + `</style>`)
-			}
-		} else {
-			for _, ss := range stylesheetFilenames() {
-				<link rel="stylesheet" href={ ss }/>
-			}
-		}
-	}
-}
-
-// stylesheetFilenames just provides the filenames of all the styles
-func stylesheetFilenames() []string {
-	list := []string{}
-	err := fs.WalkDir(assets.Content, "styles", func(path string, _ fs.DirEntry, _ error) error {
-		if filepath.Ext(path) != ".css" {
-			return nil
-		}
-		list = append(list, path)
-		return nil
-	})
-	if err != nil {
-		panic(err)
-	}
-	return list
-}
-
-// stylesheetData provides a list of data objects of all the stylesheets
-func stylesheetData() []string {
-	list := make([]string, 0)
-	err := fs.WalkDir(assets.Content, "styles", func(path string, _ fs.DirEntry, _ error) error {
-		if filepath.Ext(path) != ".css" {
-			return nil
-		}
-		data, err := fs.ReadFile(assets.Content, path)
-		if err != nil {
-			return fmt.Errorf("reading file: %w", err)
-		}
-		list = append(list, string(data))
-		return nil
-	})
-	if err != nil {
-		panic(err)
-	}
-	return list
 }
 
 // applyLetterLayout returns true if the options Layout is set to Letter

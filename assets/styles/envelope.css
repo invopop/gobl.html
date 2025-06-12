@@ -71,6 +71,7 @@ table {
 th,
 td {
     text-align: left;
+    break-inside: avoid;
 }
 section.footer span.page-number:before {
     content: counter(page);
@@ -84,7 +85,7 @@ section.footer span.page-number:before {
     }
 }
 @page {
-    @bottom {
+    @bottom-center {
         content: element(footer);
     }
 }

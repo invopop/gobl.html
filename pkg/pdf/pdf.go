@@ -22,7 +22,8 @@ type Option func(*options)
 
 type options struct {
 	metadata    *Metadata
-	styles      []*Stylesheet
+	styles      []*Asset
+	scripts     []*Asset
 	attachments []*Attachment
 }
 
@@ -35,8 +36,8 @@ type Metadata struct {
 	Creator  string
 }
 
-// Stylesheet descriptions a document to upload with the HTML for styles.
-type Stylesheet struct {
+// Asset descriptions a document to upload with the HTML for styles.
+type Asset struct {
 	Data     []byte
 	Filename string
 }
@@ -78,7 +79,31 @@ func WithStylesheets(src fs.FS) Option {
 			if err != nil {
 				return fmt.Errorf("reading file: %w", err)
 			}
-			o.styles = append(o.styles, &Stylesheet{
+			o.styles = append(o.styles, &Asset{
+				Filename: path,
+				Data:     data,
+			})
+			return nil
+		})
+		if err != nil {
+			panic(err)
+		}
+	}
+}
+
+// WithScripts prepares the scripts to be included in the PDF generation
+// request.
+func WithScripts(src fs.FS) Option {
+	return func(o *options) {
+		err := fs.WalkDir(src, "scripts", func(path string, _ fs.DirEntry, _ error) error {
+			if filepath.Ext(path) != ".js" {
+				return nil
+			}
+			data, err := fs.ReadFile(src, path)
+			if err != nil {
+				return fmt.Errorf("reading file: %w", err)
+			}
+			o.scripts = append(o.scripts, &Asset{
 				Filename: path,
 				Data:     data,
 			})

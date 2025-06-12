@@ -70,23 +70,24 @@ templ linesWithSupport(reg *tax.RegimeDef, lines []*bill.Line, dss []*bill.Disco
 					}
 				</tr>
 			</thead>
-			@linesBody(lines, ls)
-			@discountsBody(dss, ls)
-			@chargesBody(chs, ls)
+			{{ st := newSubtotal() }}
+			@linesBody(lines, ls, st)
+			@discountsBody(dss, ls, st)
+			@chargesBody(chs, ls, st)
 		</table>
 	</section>
 }
 
-templ linesBody(lines []*bill.Line, ls *lineSupport) {
+templ linesBody(lines []*bill.Line, ls *lineSupport, st *subtotal) {
 	<tbody>
-		for _, l := range lines {
-			@line(l, ls)
+	  for _, l := range lines {
+			@line(l, ls, st)
 		}
 	</tbody>
 }
 
-templ line(l *bill.Line, ls *lineSupport) {
-	<tr>
+templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
+	<tr data-subtotal={ t.LocalizeMoney(ctx, st.Add(l.Total)) }>
 		<td class="ref">
 			{ fmt.Sprint(l.Index) }
 		</td>
@@ -217,18 +218,18 @@ templ lineGroupCharges(l *bill.Line) {
 	}
 }
 
-templ discountsBody(dis []*bill.Discount, ls *lineSupport) {
+templ discountsBody(dis []*bill.Discount, ls *lineSupport, st *subtotal) {
 	if len(dis) > 0 {
 		<tbody class="discounts">
 			for _, row := range dis {
-				@discountRow(row, ls)
+				@discountRow(row, ls, st)
 			}
 		</tbody>
 	}
 }
 
-templ discountRow(row *bill.Discount, ls *lineSupport) {
-	<tr>
+templ discountRow(row *bill.Discount, ls *lineSupport, st *subtotal) {
+	<tr data-subtotal={ t.LocalizeMoney(ctx, st.Substract(&row.Amount)) }>
 		<td class="i">
 			{ fmt.Sprintf("D%d", row.Index) }
 		</td>
@@ -292,18 +293,18 @@ templ discountRow(row *bill.Discount, ls *lineSupport) {
 	</tr>
 }
 
-templ chargesBody(chs []*bill.Charge, ls *lineSupport) {
+templ chargesBody(chs []*bill.Charge, ls *lineSupport, st *subtotal) {
 	if len(chs) > 0 {
 		<tbody class="charges">
 			for _, row := range chs {
-				@chargeRow(row, ls)
+				@chargeRow(row, ls, st)
 			}
 		</tbody>
 	}
 }
 
-templ chargeRow(row *bill.Charge, ls *lineSupport) {
-	<tr>
+templ chargeRow(row *bill.Charge, ls *lineSupport, st *subtotal) {
+	<tr data-subtotal={ t.LocalizeMoney(ctx, st.Add(&row.Amount)) }>
 		<td class="ref">
 			{ fmt.Sprintf("C%d", row.Index) }
 		</td>

@@ -150,7 +150,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr data-subtotal="€3.800,00">
                 <td class="ref">
                   1
                 </td>
@@ -177,7 +177,7 @@
                   €3.800,00
                 </td>
               </tr>
-              <tr>
+              <tr data-subtotal="€4.800,00">
                 <td class="ref">
                   2
                 </td>
@@ -200,7 +200,7 @@
                   €1.000,00
                 </td>
               </tr>
-              <tr>
+              <tr data-subtotal="€4.972,50">
                 <td class="ref">
                   3
                 </td>
@@ -226,164 +226,217 @@
             </tbody>
           </table>
         </section>
+        <div class="tail">
+          <!-- `tail` contains everything that should be printed on the last page -->
+          <div class="totals">
+            <section class="totals">
+              <h2>
+                Totals
+              </h2>
+              <table>
+                <tbody>
+                  <tr class="sum strong">
+                    <th>
+                      Sum
+                    </th>
+                    <td>
+                      €4.972,50
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      Included VAT
+                    </th>
+                    <td>
+                      €848,74
+                    </td>
+                  </tr>
+                  <tr class="total">
+                    <th>
+                      Total
+                    </th>
+                    <td>
+                      €4.123,76
+                    </td>
+                  </tr>
+                  <tr class="payable strong">
+                    <th>
+                      Total to pay
+                    </th>
+                    <td>
+                      €4.972,50
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <section class="taxes">
+              <h2>
+                Taxes
+              </h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th class="category">
+                      Tax
+                    </th>
+                    <th class="base">
+                      Base
+                    </th>
+                    <th class="rate">
+                      Rate
+                    </th>
+                    <th class="amount">
+                      Amount
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="2" class="category">
+                      VAT
+                    </td>
+                    <td class="base">
+                      €3.966,94
+                    </td>
+                    <td class="rate">
+                      21,0%
+                    </td>
+                    <td class="amount">
+                      €833,06
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="base">
+                      €156,82
+                    </td>
+                    <td class="rate">
+                      10,0%
+                    </td>
+                    <td class="amount">
+                      €15,68
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+          <section class="payment">
+            <h2 class="title">
+              Payment
+            </h2>
+            <ul class="instructions">
+              <li class="method-name">
+                <span class="label">
+                  Method of payment
+                </span>
+                <span class="value">
+                  Bank transfer
+                </span>
+              </li>
+              <li class="bank-data">
+                <span class="label">
+                  Bank transfer instructions
+                </span>
+                <span class="value">
+                  <span class="credit-transfer">
+                    <span class="bank-name">
+                      Bank: RANDOM
+                    </span>
+                    <span class="iban">
+                      IBAN: ES31 0240 4036 4573 9340 5564
+                    </span>
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </section>
+          <section class="notes">
+            <h2>
+              Notes
+            </h2>
+            <div class="note">
+              <p>
+                <code>
+                  gratitude
+                </code>
+                · Thank you for your custom! If you require assistance with this invoice please get in touch.
+              </p>
+            </div>
+            <div class="note registration">
+              <span class="title">
+                Registration:
+              </span>
+              <span class="office">
+                Registro Mercantil de Madrid
+              </span>
+              <span class="volume">
+                Volume 27590
+              </span>
+              <span class="sheet">
+                Sheet 129
+              </span>
+              <span class="page">
+                Page M-497191
+              </span>
+              <span class="entry">
+                Entry 1
+              </span>
+            </div>
+          </section>
+          <div class="extensions"></div>
+        </div>
+      </article>
+      <div id="mp-header-templ" class="mp-header">
         <div class="totals">
           <section class="totals">
-            <h2>
-              Totals
-            </h2>
             <table>
               <tbody>
-                <tr class="sum strong">
+                <tr class="strong">
                   <th>
-                    Sum
+                    Brought forward
                   </th>
-                  <td>
-                    €4.972,50
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                    Included VAT
-                  </th>
-                  <td>
-                    €848,74
-                  </td>
-                </tr>
-                <tr class="total">
-                  <th>
-                    Total
-                  </th>
-                  <td>
-                    €4.123,76
-                  </td>
-                </tr>
-                <tr class="payable strong">
-                  <th>
-                    Total to pay
-                  </th>
-                  <td>
-                    €4.972,50
+                  <td class="amount">
+                    €0,00
                   </td>
                 </tr>
               </tbody>
             </table>
           </section>
-          <section class="taxes">
-            <h2>
-              Taxes
+          <section class="title">
+            <div class="hero">
+              <div class="alias">
+                Biz España S.L.
+              </div>
+            </div>
+            <h1 class="type">
+              Invoice
+            </h1>
+            <h2 class="code">
+              FAKE20220001
             </h2>
+          </section>
+        </div>
+      </div>
+      <div id="mp-footer-templ" class="mp-footer">
+        <div class="totals">
+          <section class="totals">
             <table>
-              <thead>
-                <tr>
-                  <th class="category">
-                    Tax
-                  </th>
-                  <th class="base">
-                    Base
-                  </th>
-                  <th class="rate">
-                    Rate
-                  </th>
-                  <th class="amount">
-                    Amount
-                  </th>
-                </tr>
-              </thead>
               <tbody>
-                <tr>
-                  <td rowspan="2" class="category">
-                    VAT
-                  </td>
-                  <td class="base">
-                    €3.966,94
-                  </td>
-                  <td class="rate">
-                    21,0%
-                  </td>
+                <tr class="strong">
+                  <th>
+                    Carried forward
+                  </th>
                   <td class="amount">
-                    €833,06
-                  </td>
-                </tr>
-                <tr>
-                  <td class="base">
-                    €156,82
-                  </td>
-                  <td class="rate">
-                    10,0%
-                  </td>
-                  <td class="amount">
-                    €15,68
+                    €0,00
                   </td>
                 </tr>
               </tbody>
             </table>
           </section>
         </div>
-        <section class="payment">
-          <h2 class="title">
-            Payment
-          </h2>
-          <ul class="instructions">
-            <li class="method-name">
-              <span class="label">
-                Method of payment
-              </span>
-              <span class="value">
-                Bank transfer
-              </span>
-            </li>
-            <li class="bank-data">
-              <span class="label">
-                Bank transfer instructions
-              </span>
-              <span class="value">
-                <span class="credit-transfer">
-                  <span class="bank-name">
-                    Bank: RANDOM
-                  </span>
-                  <span class="iban">
-                    IBAN: ES31 0240 4036 4573 9340 5564
-                  </span>
-                </span>
-              </span>
-            </li>
-          </ul>
-        </section>
-        <section class="notes">
-          <h2>
-            Notes
-          </h2>
-          <div class="note">
-            <p>
-              <code>
-                gratitude
-              </code>
-              · Thank you for your custom! If you require assistance with this invoice please get in touch.
-            </p>
-          </div>
-          <div class="note registration">
-            <span class="title">
-              Registration:
-            </span>
-            <span class="office">
-              Registro Mercantil de Madrid
-            </span>
-            <span class="volume">
-              Volume 27590
-            </span>
-            <span class="sheet">
-              Sheet 129
-            </span>
-            <span class="page">
-              Page M-497191
-            </span>
-            <span class="entry">
-              Entry 1
-            </span>
-          </div>
-        </section>
-        <div class="extensions"></div>
-      </article>
+      </div>
+      <script src="scripts/multipage.js"></script>
       <footer class="screen">
         <div class="gobl-logo">
           <a href="https://gobl.org">

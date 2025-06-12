@@ -4,7 +4,7 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "15d6365826adaeda3ecb9bc3f3919ed4d0397dedce8baeae333c002d9a60e31d"
+			"val": "668e712699b8c51b2fa77c0f74eb16811cddb23af332ef142f9f3aad2d1ce7c3"
 		}
 	},
 	"doc": {
@@ -119,6 +119,510 @@
 					}
 				],
 				"total": "115.00"
+			},
+			{
+				"i": 2,
+				"quantity": "2",
+				"item": {
+					"name": "Café da manhã",
+					"price": "15.00",
+					"unit": "one"
+				},
+				"sum": "30.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "30.00"
+			},
+			{
+				"i": 3,
+				"quantity": "1",
+				"item": {
+					"name": "Estacionamento",
+					"price": "20.00",
+					"unit": "day"
+				},
+				"sum": "20.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "20.00"
+			},
+			{
+				"i": 4,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de quarto",
+					"price": "25.00",
+					"unit": "service"
+				},
+				"sum": "25.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "25.00"
+			},
+			{
+				"i": 5,
+				"quantity": "2",
+				"item": {
+					"name": "Jantar no restaurante",
+					"price": "45.00",
+					"unit": "one"
+				},
+				"sum": "90.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "90.00"
+			},
+			{
+				"i": 6,
+				"quantity": "1",
+				"item": {
+					"name": "Massagem",
+					"price": "80.00",
+					"unit": "service"
+				},
+				"sum": "80.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "80.00"
+			},
+			{
+				"i": 7,
+				"quantity": "1",
+				"item": {
+					"name": "Acesso à piscina",
+					"price": "15.00",
+					"unit": "day"
+				},
+				"sum": "15.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "15.00"
+			},
+			{
+				"i": 8,
+				"quantity": "1",
+				"item": {
+					"name": "Acesso ao spa",
+					"price": "50.00",
+					"unit": "day"
+				},
+				"sum": "50.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "50.00"
+			},
+			{
+				"i": 9,
+				"quantity": "2",
+				"item": {
+					"name": "Almoço executivo",
+					"price": "25.00",
+					"unit": "one"
+				},
+				"sum": "50.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "50.00"
+			},
+			{
+				"i": 10,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de lavanderia",
+					"price": "30.00",
+					"unit": "service"
+				},
+				"sum": "30.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "30.00"
+			},
+			{
+				"i": 11,
+				"quantity": "1",
+				"item": {
+					"name": "Acesso à academia",
+					"price": "20.00",
+					"unit": "day"
+				},
+				"sum": "20.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "20.00"
+			},
+			{
+				"i": 12,
+				"quantity": "2",
+				"item": {
+					"name": "Drinks no bar",
+					"price": "12.00",
+					"unit": "item"
+				},
+				"sum": "24.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "24.00"
+			},
+			{
+				"i": 13,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de concierge",
+					"price": "40.00",
+					"unit": "service"
+				},
+				"sum": "40.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "40.00"
+			},
+			{
+				"i": 14,
+				"quantity": "1",
+				"item": {
+					"name": "Tour guiado",
+					"price": "35.00",
+					"unit": "service"
+				},
+				"sum": "35.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "35.00"
+			},
+			{
+				"i": 15,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de babysitter",
+					"price": "60.00",
+					"unit": "service"
+				},
+				"sum": "60.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "60.00"
+			},
+			{
+				"i": 16,
+				"quantity": "2",
+				"item": {
+					"name": "Acesso ao sauna",
+					"price": "25.00",
+					"unit": "one"
+				},
+				"sum": "50.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "50.00"
+			},
+			{
+				"i": 17,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de transfer",
+					"price": "45.00",
+					"unit": "service"
+				},
+				"sum": "45.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "45.00"
+			},
+			{
+				"i": 18,
+				"quantity": "2",
+				"item": {
+					"name": "Acesso ao jacuzzi",
+					"price": "30.00",
+					"unit": "one"
+				},
+				"sum": "60.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "60.00"
+			},
+			{
+				"i": 19,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de limpeza extra",
+					"price": "35.00",
+					"unit": "service"
+				},
+				"sum": "35.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "35.00"
+			},
+			{
+				"i": 20,
+				"quantity": "2",
+				"item": {
+					"name": "Acesso ao cinema",
+					"price": "15.00",
+					"unit": "one"
+				},
+				"sum": "30.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "30.00"
+			},
+			{
+				"i": 21,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de valet",
+					"price": "25.00",
+					"unit": "service"
+				},
+				"sum": "25.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "25.00"
+			},
+			{
+				"i": 22,
+				"quantity": "2",
+				"item": {
+					"name": "Acesso ao salão de jogos",
+					"price": "20.00",
+					"unit": "one"
+				},
+				"sum": "40.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "40.00"
+			},
+			{
+				"i": 23,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de fotografia",
+					"price": "55.00",
+					"unit": "service"
+				},
+				"sum": "55.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "55.00"
+			},
+			{
+				"i": 24,
+				"quantity": "2",
+				"item": {
+					"name": "Acesso ao jardim",
+					"price": "10.00",
+					"unit": "one"
+				},
+				"sum": "20.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "20.00"
+			},
+			{
+				"i": 25,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de tradução",
+					"price": "70.00",
+					"unit": "service"
+				},
+				"sum": "70.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "70.00"
 			}
 		],
 		"discounts": [
@@ -131,7 +635,7 @@
 			{
 				"i": 1,
 				"percent": "12.0%",
-				"amount": "13.80"
+				"amount": "133.68"
 			}
 		],
 		"payment": {
@@ -157,10 +661,10 @@
 			}
 		},
 		"totals": {
-			"sum": "115.00",
+			"sum": "1114.00",
 			"discount": "5.25",
-			"charge": "13.80",
-			"total": "123.55",
+			"charge": "133.68",
+			"total": "1242.43",
 			"taxes": {
 				"categories": [
 					{
@@ -171,19 +675,28 @@
 								"ext": {
 									"pt-region": "PT"
 								},
-								"base": "115.00",
+								"base": "859.00",
 								"percent": "23.0%",
-								"amount": "26.45"
+								"amount": "197.57"
+							},
+							{
+								"key": "reduced",
+								"ext": {
+									"pt-region": "PT"
+								},
+								"base": "255.00",
+								"percent": "6.0%",
+								"amount": "15.30"
 							}
 						],
-						"amount": "26.45"
+						"amount": "212.87"
 					}
 				],
-				"sum": "26.45"
+				"sum": "212.87"
 			},
-			"tax": "26.45",
-			"total_with_tax": "150.00",
-			"payable": "150.00"
+			"tax": "212.87",
+			"total_with_tax": "1455.30",
+			"payable": "1455.30"
 		},
 		"notes": [
 			{

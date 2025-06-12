@@ -4,7 +4,7 @@
 		"uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
 		"dig": {
 			"alg": "sha256",
-			"val": "0f917eff41ac946cc005d1bd753d8b24beca0e5be67cf8fc90671a7732e91a49"
+			"val": "99cb8c5de3d72548faa27ba7673b2898b9d649f93425307f435b2eb55dd868ff"
 		}
 	},
 	"doc": {
@@ -162,6 +162,380 @@
 					}
 				],
 				"total": "172.50"
+			},
+			{
+				"i": 4,
+				"quantity": "2",
+				"item": {
+					"name": "Office Supplies Bundle",
+					"price": "75.00"
+				},
+				"sum": "150.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "150.00"
+			},
+			{
+				"i": 5,
+				"quantity": "1",
+				"item": {
+					"name": "Software License - Annual",
+					"price": "1200.00"
+				},
+				"sum": "1200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "1200.00"
+			},
+			{
+				"i": 6,
+				"quantity": "3",
+				"item": {
+					"name": "Cloud Storage - Monthly",
+					"price": "50.00"
+				},
+				"sum": "150.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "150.00"
+			},
+			{
+				"i": 7,
+				"quantity": "1",
+				"item": {
+					"name": "Technical Support - Premium",
+					"price": "500.00"
+				},
+				"sum": "500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "500.00"
+			},
+			{
+				"i": 8,
+				"quantity": "4",
+				"item": {
+					"name": "Training Session",
+					"price": "200.00"
+				},
+				"sum": "800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "800.00"
+			},
+			{
+				"i": 9,
+				"quantity": "2",
+				"item": {
+					"name": "Data Backup Service",
+					"price": "150.00"
+				},
+				"sum": "300.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "300.00"
+			},
+			{
+				"i": 10,
+				"quantity": "1",
+				"item": {
+					"name": "System Integration",
+					"price": "2500.00"
+				},
+				"sum": "2500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "2500.00"
+			},
+			{
+				"i": 11,
+				"quantity": "5",
+				"item": {
+					"name": "API Access - Monthly",
+					"price": "100.00"
+				},
+				"sum": "500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "500.00"
+			},
+			{
+				"i": 12,
+				"quantity": "1",
+				"item": {
+					"name": "Security Audit",
+					"price": "3000.00"
+				},
+				"sum": "3000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "3000.00"
+			},
+			{
+				"i": 13,
+				"quantity": "3",
+				"item": {
+					"name": "Consulting Hours",
+					"price": "150.00"
+				},
+				"sum": "450.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "450.00"
+			},
+			{
+				"i": 14,
+				"quantity": "1",
+				"item": {
+					"name": "Custom Development",
+					"price": "5000.00"
+				},
+				"sum": "5000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "5000.00"
+			},
+			{
+				"i": 15,
+				"quantity": "2",
+				"item": {
+					"name": "Server Maintenance",
+					"price": "400.00"
+				},
+				"sum": "800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "800.00"
+			},
+			{
+				"i": 16,
+				"quantity": "1",
+				"item": {
+					"name": "Network Setup",
+					"price": "1200.00"
+				},
+				"sum": "1200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "1200.00"
+			},
+			{
+				"i": 17,
+				"quantity": "4",
+				"item": {
+					"name": "User Training",
+					"price": "75.00"
+				},
+				"sum": "300.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "300.00"
+			},
+			{
+				"i": 18,
+				"quantity": "1",
+				"item": {
+					"name": "System Upgrade",
+					"price": "2500.00"
+				},
+				"sum": "2500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "2500.00"
+			},
+			{
+				"i": 19,
+				"quantity": "3",
+				"item": {
+					"name": "Data Migration",
+					"price": "800.00"
+				},
+				"sum": "2400.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "2400.00"
+			},
+			{
+				"i": 20,
+				"quantity": "1",
+				"item": {
+					"name": "Performance Optimization",
+					"price": "1800.00"
+				},
+				"sum": "1800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "1800.00"
+			},
+			{
+				"i": 21,
+				"quantity": "2",
+				"item": {
+					"name": "Security Training",
+					"price": "600.00"
+				},
+				"sum": "1200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "1200.00"
+			},
+			{
+				"i": 22,
+				"quantity": "1",
+				"item": {
+					"name": "Disaster Recovery Setup",
+					"price": "3500.00"
+				},
+				"sum": "3500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "3500.00"
+			},
+			{
+				"i": 23,
+				"quantity": "4",
+				"item": {
+					"name": "API Development",
+					"price": "450.00"
+				},
+				"sum": "1800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "1800.00"
+			},
+			{
+				"i": 24,
+				"quantity": "1",
+				"item": {
+					"name": "System Documentation",
+					"price": "900.00"
+				},
+				"sum": "900.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "900.00"
+			},
+			{
+				"i": 25,
+				"quantity": "2",
+				"item": {
+					"name": "Quality Assurance Testing",
+					"price": "700.00"
+				},
+				"sum": "1400.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "21.0%"
+					}
+				],
+				"total": "1400.00"
 			}
 		],
 		"charges": [
@@ -192,7 +566,7 @@
 					"ref": "PAY1234",
 					"description": "Prepayment with Paypal",
 					"percent": "30%",
-					"amount": "1796.06"
+					"amount": "13539.11"
 				}
 			],
 			"instructions": {
@@ -214,9 +588,9 @@
 			}
 		},
 		"totals": {
-			"sum": "4972.50",
+			"sum": "37322.50",
 			"charge": "15.00",
-			"total": "4987.50",
+			"total": "37337.50",
 			"taxes": {
 				"categories": [
 					{
@@ -224,9 +598,9 @@
 						"rates": [
 							{
 								"key": "standard",
-								"base": "4800.00",
+								"base": "37150.00",
 								"percent": "21.0%",
-								"amount": "1008.00"
+								"amount": "7801.50"
 							},
 							{
 								"key": "reduced",
@@ -235,7 +609,7 @@
 								"amount": "17.25"
 							}
 						],
-						"amount": "1025.25"
+						"amount": "7818.75"
 					},
 					{
 						"code": "IRPF",
@@ -250,15 +624,15 @@
 						"amount": "25.88"
 					}
 				],
-				"sum": "1025.25",
+				"sum": "7818.75",
 				"retained": "25.88"
 			},
-			"tax": "1025.25",
-			"total_with_tax": "6012.75",
+			"tax": "7818.75",
+			"total_with_tax": "45156.25",
 			"retained_tax": "25.88",
-			"payable": "5986.87",
-			"advance": "1796.06",
-			"due": "4190.81"
+			"payable": "45130.37",
+			"advance": "13539.11",
+			"due": "31591.26"
 		},
 		"notes": [
 			{

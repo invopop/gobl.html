@@ -70,6 +70,7 @@ func (s *serveOpts) runE(cmd *cobra.Command, _ []string) error {
 
 	e := prepareEcho()
 	e.StaticFS("/styles", echo.MustSubFS(assets.Content, "styles"))
+	e.StaticFS("/scripts", echo.MustSubFS(assets.Content, "scripts"))
 	e.GET("/:filename", s.generate)
 
 	var startErr error
@@ -178,7 +179,7 @@ func (s *serveOpts) generate(c echo.Context) error {
 
 	opts := make([]goblhtml.Option, 0)
 	if ext == ".pdf" {
-		opts = append(opts, goblhtml.WithEmbeddedStylesheets())
+		opts = append(opts, goblhtml.WithEmbeddedAssets())
 	}
 	if strings.HasSuffix(fn, ".void.json") {
 		opts = append(opts, goblhtml.WithVoid(true))

@@ -1,0 +1,953 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01902adc-05c8-7000-8703-60c8dcf87bd6",
+		"dig": {
+			"alg": "sha256",
+			"val": "42ea3dfeaa6e3ca21cbb3af3cee1232f84926aa9cd563cc560eba90b715cab14"
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJ3JYDP-27"
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:508025338*B:999999990*C:PT*D:FT*E:N*F:20240618*G:FT IXTEST-01/27*H:AAJFJ3JYDP-27*I1:PT*I2:100.00*N:0.00*O:100.00*Q:vVWj*R:192"
+			},
+			{
+				"prv": "at-hash",
+				"val": "vVWj"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "192"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"uuid": "01902adc-055a-7000-88ea-0dc88769ee3c",
+		"type": "standard",
+		"code": "FT IXTEST-01/27",
+		"issue_date": "2024-06-18",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"pt-saft-invoice-type": "FT"
+			}
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "770013813"
+			},
+			"addresses": [
+				{
+					"street": "Rua das Flores 200 3º Esquerdo",
+					"locality": "Porto",
+					"code": "4050-265",
+					"country": "PT"
+				}
+			]
+		},
+		"customer": {
+			"name": "Gusto Unipessoal Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Avenida da Liberdade 152 2º Direito",
+					"locality": "Lisboa",
+					"code": "1250-146",
+					"country": "PT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Suite Executiva - 2 noites",
+					"price": "250.00",
+					"unit": "day",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "500.00"
+			},
+			{
+				"i": 2,
+				"quantity": "1",
+				"item": {
+					"name": "Quarto Duplo Standard",
+					"price": "120.00",
+					"unit": "day",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "120.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "120.00"
+			},
+			{
+				"i": 3,
+				"quantity": "4",
+				"item": {
+					"name": "Jantar no Restaurante Panorâmico",
+					"price": "45.00",
+					"unit": "piece",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "180.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "RED"
+						}
+					}
+				],
+				"total": "180.00"
+			},
+			{
+				"i": 4,
+				"quantity": "2",
+				"item": {
+					"name": "Tratamento de Spa - Massagem Relaxante",
+					"price": "80.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "160.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "RED"
+						}
+					}
+				],
+				"total": "160.00"
+			},
+			{
+				"i": 5,
+				"quantity": "1",
+				"item": {
+					"name": "Estacionamento - 3 dias",
+					"price": "15.00",
+					"unit": "day",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "15.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "RED"
+						}
+					}
+				],
+				"total": "15.00"
+			},
+			{
+				"i": 6,
+				"quantity": "1",
+				"item": {
+					"name": "Minibar - Consumo",
+					"price": "35.50",
+					"unit": "piece",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "35.50",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "35.50"
+			},
+			{
+				"i": 7,
+				"quantity": "1",
+				"item": {
+					"name": "Quarto Individual Deluxe",
+					"price": "150.00",
+					"unit": "day",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "150.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "150.00"
+			},
+			{
+				"i": 8,
+				"quantity": "2",
+				"item": {
+					"name": "Pequeno-almoço Buffet",
+					"price": "25.00",
+					"unit": "piece",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "50.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "RED"
+						}
+					}
+				],
+				"total": "50.00"
+			},
+			{
+				"i": 9,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de Lavandaria",
+					"price": "45.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "45.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "45.00"
+			},
+			{
+				"i": 10,
+				"quantity": "1",
+				"item": {
+					"name": "Suite Presidencial - 1 noite",
+					"price": "350.00",
+					"unit": "day",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "350.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "350.00"
+			},
+			{
+				"i": 11,
+				"quantity": "1",
+				"item": {
+					"name": "Tratamento Facial Premium",
+					"price": "95.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "95.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "RED"
+						}
+					}
+				],
+				"total": "95.00"
+			},
+			{
+				"i": 12,
+				"quantity": "2",
+				"item": {
+					"name": "Almoço Executivo",
+					"price": "35.00",
+					"unit": "piece",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "70.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "RED"
+						}
+					}
+				],
+				"total": "70.00"
+			},
+			{
+				"i": 13,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de Room Service",
+					"price": "55.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "55.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "RED"
+						}
+					}
+				],
+				"total": "55.00"
+			},
+			{
+				"i": 14,
+				"quantity": "1",
+				"item": {
+					"name": "Quarto Familiar",
+					"price": "180.00",
+					"unit": "day",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "180.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "180.00"
+			},
+			{
+				"i": 15,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de Babysitting",
+					"price": "40.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "40.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "40.00"
+			},
+			{
+				"i": 16,
+				"quantity": "1",
+				"item": {
+					"name": "Tratamento Corporal",
+					"price": "120.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "120.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "RED"
+						}
+					}
+				],
+				"total": "120.00"
+			},
+			{
+				"i": 17,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de Limpeza Extra",
+					"price": "30.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "30.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "30.00"
+			},
+			{
+				"i": 18,
+				"quantity": "2",
+				"item": {
+					"name": "Jantar Romântico",
+					"price": "85.00",
+					"unit": "piece",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "170.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "RED"
+						}
+					}
+				],
+				"total": "170.00"
+			},
+			{
+				"i": 19,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de Transfer Aeroporto",
+					"price": "75.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "75.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "75.00"
+			},
+			{
+				"i": 20,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de Concierge Premium",
+					"price": "50.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "50.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "50.00"
+			},
+			{
+				"i": 21,
+				"quantity": "1",
+				"item": {
+					"name": "Suite Honeymoon - 2 noites",
+					"price": "400.00",
+					"unit": "day",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "400.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "400.00"
+			},
+			{
+				"i": 22,
+				"quantity": "1",
+				"item": {
+					"name": "Pacote de Golfe - 18 buracos",
+					"price": "120.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "120.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "RED"
+						}
+					}
+				],
+				"total": "120.00"
+			},
+			{
+				"i": 23,
+				"quantity": "2",
+				"item": {
+					"name": "Degustação de Vinhos",
+					"price": "65.00",
+					"unit": "piece",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "130.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "RED"
+						}
+					}
+				],
+				"total": "130.00"
+			},
+			{
+				"i": 24,
+				"quantity": "1",
+				"item": {
+					"name": "Quarto Executivo - 1 noite",
+					"price": "200.00",
+					"unit": "day",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "200.00"
+			},
+			{
+				"i": 25,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de Personal Trainer",
+					"price": "90.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "90.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "90.00"
+			},
+			{
+				"i": 26,
+				"quantity": "1",
+				"item": {
+					"name": "Pacote de Fotografia Profissional",
+					"price": "250.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "250.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "250.00"
+			},
+			{
+				"i": 27,
+				"quantity": "1",
+				"item": {
+					"name": "Quarto Vista Mar - 2 noites",
+					"price": "180.00",
+					"unit": "day",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "180.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "180.00"
+			},
+			{
+				"i": 28,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de Limusine",
+					"price": "150.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "150.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "150.00"
+			},
+			{
+				"i": 29,
+				"quantity": "1",
+				"item": {
+					"name": "Pacote de Mergulho",
+					"price": "180.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "180.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "RED"
+						}
+					}
+				],
+				"total": "180.00"
+			},
+			{
+				"i": 30,
+				"quantity": "1",
+				"item": {
+					"name": "Quarto Suite - 1 noite",
+					"price": "300.00",
+					"unit": "day",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "300.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "300.00"
+			},
+			{
+				"i": 31,
+				"quantity": "1",
+				"item": {
+					"name": "Jantar de Gala com Show",
+					"price": "150.00",
+					"unit": "piece",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "150.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "intermediate",
+						"percent": "13.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "INT"
+						}
+					}
+				],
+				"total": "150.00"
+			},
+			{
+				"i": 32,
+				"quantity": "2",
+				"item": {
+					"name": "Pacote de Teatro + Jantar",
+					"price": "85.00",
+					"unit": "piece",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "170.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "intermediate",
+						"percent": "13.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "INT"
+						}
+					}
+				],
+				"total": "170.00"
+			},
+			{
+				"i": 33,
+				"quantity": "1",
+				"item": {
+					"name": "Pacote de Concerto + Cocktail",
+					"price": "120.00",
+					"unit": "piece",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "120.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "intermediate",
+						"percent": "13.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "INT"
+						}
+					}
+				],
+				"total": "120.00"
+			}
+		],
+		"totals": {
+			"sum": "4930.50",
+			"total": "4930.50",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "NOR"
+								},
+								"base": "3145.50",
+								"percent": "23.0%",
+								"amount": "723.47"
+							},
+							{
+								"key": "reduced",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "RED"
+								},
+								"base": "1345.00",
+								"percent": "6.0%",
+								"amount": "80.70"
+							},
+							{
+								"key": "intermediate",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "INT"
+								},
+								"base": "440.00",
+								"percent": "13.0%",
+								"amount": "57.20"
+							}
+						],
+						"amount": "861.37"
+					}
+				],
+				"sum": "861.37"
+			},
+			"tax": "861.37",
+			"total_with_tax": "5791.87",
+			"payable": "5791.87"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6ImUzNzFjMzBiLTNiMzMtNGNiMC04NzM5LThiOTUzMWM1NWM2NiJ9.eyJ1dWlkIjoiMDE5MDJhZGMtMDVjOC03MDAwLTg3MDMtNjBjOGRjZjg3YmQ2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjhlZWJmNThlYjhiNTlkYTA0Y2ZlZmQxODVkZDkyYTk1YWU2NzhiYmU5YjYzMTUwOTUxYTMwODRkNDllNjRmNmMifSwic3RhbXBzIjpbeyJwcnYiOiJhdC1hdGN1ZCIsInZhbCI6IkFBSkZKM0pZRFAtMjcifSx7InBydiI6ImF0LXFyIiwidmFsIjoiQTo1MDgwMjUzMzgqQjo5OTk5OTk5OTAqQzpQVCpEOkZUKkU6TipGOjIwMjQwNjE4Kkc6RlQgSVhURVNULTAxLzI3Kkg6QUFKRkozSllEUC0yNypJMTpQVCpJMjoxMDAuMDAqTjowLjAwKk86MTAwLjAwKlE6dlZXaipSOjE5MiJ9LHsicHJ2IjoiYXQtaGFzaCIsInZhbCI6InZWV2oifSx7InBydiI6ImF0LWFwcC1pZCIsInZhbCI6IjE5MiJ9XX0.CTWcw5_36Y3LrwXbX1KpNUqgRWzu2-HNDDJXubCBeiODJ55TsU5oQ1gq_azpImfn3c0CPzPo1k1X-n84TgG5Og"
+	]
+}

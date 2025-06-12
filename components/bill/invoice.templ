@@ -6,6 +6,7 @@ import (
 
 	"github.com/invopop/gobl"
 
+	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/regimes/es"
 	"github.com/invopop/gobl.html/components/regimes/gr"
@@ -25,7 +26,6 @@ import (
 // Invoice renders a complete GOBL bill.Invoice object.
 templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 	@t.Scope("billing.invoice") {
-		// Footer needs to be at the top to show on all pages
 		<article class={ "invoice", templ.KV("din5008", applyDIN5008(ctx)) }>
 			<header class={ templ.KV("with-qr", hasHeaderQR(env)), templ.KV("regular", !hasHeaderQR(env)) }>
 				if applyDIN5008(ctx) {
@@ -35,32 +35,35 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 				}
 			</header>
 			@lines(inv)
-			<div class="totals">
-				@totals(inv, inv.Totals)
-				@taxes(inv.RegimeDef(), inv.Totals.Taxes)
-			</div>
-			@paymentDetails(inv)
-			@notes(inv.Notes, inv.Supplier)
-			<div class="extensions">
-				// Region specific information
-				@co.DIANQR(env, inv)
-				@mx.CFDI(env, inv)
-				@pl.KSeFQR(env)
-				@pt.ATQR(env)
-				@gr.IAPR(env)
+			<div class="tail"> <!-- `tail` contains everything that should be printed on the last page -->
+				<div class="totals">
+					@totals(inv, inv.Totals)
+					@taxes(inv.RegimeDef(), inv.Totals.Taxes)
+				</div>
+				@paymentDetails(inv)
+				@notes(inv.Notes, inv.Supplier)
+				<div class="extensions">
+					// Region specific information
+					@co.DIANQR(env, inv)
+					@mx.CFDI(env, inv)
+					@pl.KSeFQR(env)
+					@pt.ATQR(env)
+					@gr.IAPR(env)
+				</div>
 			</div>
 		</article>
+		@multipage(env, doc.For(inv))
 	}
 }
 
-templ title(env *gobl.Envelope, inv *bill.Invoice) {
+templ title(env *gobl.Envelope, doc doc.Document) {
 	@t.Scope(".title") {
 		<section class="title">
-			@titleHero(inv.Supplier)
-			@invoiceTitleType(inv)
+			@titleHero(doc.GetSupplier())
+			@titleType(doc)
 			<h2 class="code">
-				@titleCode(inv.Series, inv.Code, inv.Regime)
-				@titleBadges(env, inv)
+				@titleCode(doc.GetSeries(), doc.GetCode(), doc.GetRegime())
+				@titleBadges(env, doc)
 			</h2>
 		</section>
 	}
@@ -89,28 +92,24 @@ templ defaultTitleCode(series, code cbc.Code) {
 	{ series.Join(code).String() }
 }
 
-templ invoiceTitleType(inv *bill.Invoice) {
+templ titleType(doc doc.Document) {
 	<h1 class="type">
 		@utils.Coalesce(
-			pt.InvoiceTitleType(inv),
-			invoiceDefaultTitleType(inv),
+			pt.TitleType(doc),
+			defaultTitleType(doc),
 		)
 	</h1>
 }
 
-templ invoiceDefaultTitleType(inv *bill.Invoice) {
-	if inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard {
+templ defaultTitleType(doc doc.Document) {
+	if isSimplifiedInvoice(doc) {
 		@t.T(".standard-simplified")
 	} else {
-		@defaultTitleType(inv.Type)
+		@t.T("." + string(doc.GetType()))
 	}
 }
 
-templ defaultTitleType(key cbc.Key) {
-	@t.T("." + string(key))
-}
-
-templ titleBadges(env *gobl.Envelope, doc any) {
+templ titleBadges(env *gobl.Envelope, doc doc.Document) {
 	if voided(ctx) {
 		<span class="void">
 			@t.T(".void")
@@ -124,7 +123,7 @@ templ titleBadges(env *gobl.Envelope, doc any) {
 
 templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
 	<div class="details">
-		@title(env, inv)
+		@title(env, doc.For(inv))
 		@summary(inv)
 	</div>
 	// Spanish QRs
@@ -138,7 +137,7 @@ templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
 
 templ din5008Header(env *gobl.Envelope, inv *bill.Invoice) {
 	<div>
-		@title(env, inv)
+		@title(env, doc.For(inv))
 		@contact(inv.Customer, "customer")
 	</div>
 	<div>
@@ -186,4 +185,11 @@ func voided(ctx context.Context) bool {
 	opts := internal.Options(ctx)
 
 	return opts.Void
+}
+
+func isSimplifiedInvoice(doc doc.Document) bool {
+	if inv, ok := doc.Extract().(*bill.Invoice); ok {
+		return inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard
+	}
+	return false
 }

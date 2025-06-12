@@ -33,10 +33,10 @@ type Opts struct {
 	NumFormatter *num.Formatter
 	// CalFormatter is used to format calendar dates and times.
 	CalFormatter *CalFormatter
-	// EmbedStylesheets when try ensures that all the stylesheet files
-	// are contained inside the HTML output. This is useful for PDF
-	// output or to avoid additional requests.
-	EmbedStylesheets bool
+	// EmbedAssets when try ensures that all the stylesheet or script files
+	// are contained inside the HTML output. This is useful for PDF output
+	// or to avoid additional requests.
+	EmbedAssets bool
 	// Layout indicates the Layout used in te document
 	Layout layout.Code
 	// Void indicates if the document should be rendered as void
