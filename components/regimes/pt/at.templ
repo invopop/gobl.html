@@ -2,11 +2,11 @@ package pt
 
 import (
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/addons/pt/saft"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
-	"github.com/invopop/gobl/addons/pt/saft"
 	"github.com/invopop/gobl/tax"
-	"github.com/invopop/gobl.html/components/t"
 )
 
 templ ATQR(env *gobl.Envelope) {
@@ -36,7 +36,7 @@ templ OrderTitleType(ord *bill.Order) {
 }
 
 templ PaymentTitleType(pmt *bill.Payment) {
-	if pmt != nil && pmt.Regime.Country == country && pmt.Tax != nil {
+	if pmt != nil && pmt.Regime.Country == country {
 		@titleType(pmt.Ext)
 	}
 }

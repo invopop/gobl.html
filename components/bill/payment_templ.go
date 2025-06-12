@@ -14,6 +14,7 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/tax"
 )
 
 // Payment renders a complete GOBL bill.Payment object.
@@ -38,6 +39,7 @@ func Payment(env *gobl.Envelope, pmt *bill.Payment) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
+		tt := mergePaymentTaxTotals(pmt)
 		templ_7745c5c3_Var2 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -62,7 +64,7 @@ func Payment(env *gobl.Envelope, pmt *bill.Payment) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = paymentLines(pmt).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = paymentLines(pmt, tt).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -70,11 +72,11 @@ func Payment(env *gobl.Envelope, pmt *bill.Payment) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = paymentTotals(pmt).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = paymentTotals(pmt, tt).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = taxes(pmt.RegimeDef(), pmt.Tax).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = taxes(pmt.RegimeDef(), tt).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -276,7 +278,7 @@ func paymentTitleType(pmt *bill.Payment) templ.Component {
 	})
 }
 
-func paymentTotals(pmt *bill.Payment) templ.Component {
+func paymentTotals(pmt *bill.Payment, tt *tax.Total) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -325,7 +327,7 @@ func paymentTotals(pmt *bill.Payment) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			if pmt.Tax != nil {
+			if tt != nil {
 				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "<tr class=\"tax\"><th>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -338,7 +340,7 @@ func paymentTotals(pmt *bill.Payment) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = t.LM(pmt.Tax.Sum).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = t.LM(tt.Sum).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -442,6 +444,21 @@ func method(pmt *bill.Payment) templ.Component {
 		}
 		return nil
 	})
+}
+
+func mergePaymentTaxTotals(pmt *bill.Payment) *tax.Total {
+	var tt *tax.Total
+	for _, pl := range pmt.Lines {
+		if pl.Tax == nil {
+			continue
+		}
+		if tt == nil {
+			tt = pl.Tax
+		} else {
+			tt = tt.Merge(pl.Tax)
+		}
+	}
+	return tt
 }
 
 var _ = templruntime.GeneratedTemplate

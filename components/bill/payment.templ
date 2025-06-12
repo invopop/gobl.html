@@ -6,19 +6,21 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/tax"
 )
 
 // Payment renders a complete GOBL bill.Payment object.
 templ Payment(env *gobl.Envelope, pmt *bill.Payment) {
+	{{ tt := mergePaymentTaxTotals(pmt) }}
 	@t.Scope("billing.payment") {
 		<article class="payment">
 			<header class="regular">
 				@paymentHeader(env, pmt)
 			</header>
-			@paymentLines(pmt)
+			@paymentLines(pmt, tt)
 			<div class="totals">
-				@paymentTotals(pmt)
-				@taxes(pmt.RegimeDef(), pmt.Tax)
+				@paymentTotals(pmt, tt)
+				@taxes(pmt.RegimeDef(), tt)
 			</div>
 			@method(pmt)
 			@notes(pmt.Notes, pmt.Supplier)
@@ -63,7 +65,7 @@ templ paymentTitleType(pmt *bill.Payment) {
 	</h1>
 }
 
-templ paymentTotals(pmt *bill.Payment) {
+templ paymentTotals(pmt *bill.Payment, tt *tax.Total) {
 	<section class="totals">
 		@t.Scope(".totals") {
 			<h2>
@@ -71,13 +73,13 @@ templ paymentTotals(pmt *bill.Payment) {
 			</h2>
 			<table>
 				<tbody>
-					if pmt.Tax != nil {
+					if tt != nil {
 						<tr class="tax">
 							<th>
 								@t.T(".taxes")
 							</th>
 							<td>
-								@t.LM(pmt.Tax.Sum)
+								@t.LM(tt.Sum)
 							</td>
 						</tr>
 					}
@@ -104,4 +106,19 @@ templ method(pmt *bill.Payment) {
 			@paymentInstructions(pmt.Method)
 		</section>
 	}
+}
+
+func mergePaymentTaxTotals(pmt *bill.Payment) *tax.Total {
+	var tt *tax.Total
+	for _, pl := range pmt.Lines {
+		if pl.Tax == nil {
+			continue
+		}
+		if tt == nil {
+			tt = pl.Tax
+		} else {
+			tt = tt.Merge(pl.Tax)
+		}
+	}
+	return tt
 }
