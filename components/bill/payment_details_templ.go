@@ -13,8 +13,8 @@ import (
 	"context"
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
-	"github.com/invopop/gobl.html/components/doc"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/pay"
 )

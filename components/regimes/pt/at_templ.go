@@ -10,8 +10,8 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import (
 	"github.com/invopop/gobl"
-	"github.com/invopop/gobl.html/components/doc"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl/addons/pt/saft"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/tax"

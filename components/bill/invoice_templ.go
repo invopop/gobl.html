@@ -14,7 +14,6 @@ import (
 
 	"github.com/invopop/gobl"
 
-	"github.com/invopop/gobl.html/components/doc"
 	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/regimes/es"
 	"github.com/invopop/gobl.html/components/regimes/gr"
@@ -24,6 +23,7 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl.html/internal"
+	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl.html/layout"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"

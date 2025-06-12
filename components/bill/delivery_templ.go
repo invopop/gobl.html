@@ -10,9 +10,9 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import (
 	"github.com/invopop/gobl"
-	"github.com/invopop/gobl.html/components/doc"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl/bill"
 )
 
