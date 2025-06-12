@@ -2,6 +2,7 @@
 package doc
 
 import (
+	"github.com/invopop/gobl"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cal"
 	"github.com/invopop/gobl/cbc"
@@ -37,6 +38,11 @@ func For(doc any) Document {
 	default:
 		return nil
 	}
+}
+
+// Extract returns a Document interface for the given envelope.
+func Extract(env *gobl.Envelope) Document {
+	return For(env.Extract())
 }
 
 // Alias types to implement the Document interface.
