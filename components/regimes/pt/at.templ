@@ -3,8 +3,8 @@ package pt
 import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl/addons/pt/saft"
-	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/tax"
 )
@@ -17,27 +17,9 @@ templ ATQR(env *gobl.Envelope) {
 	}
 }
 
-templ InvoiceTitleType(inv *bill.Invoice) {
-	if inv != nil && inv.Regime.Country == country && inv.Tax != nil {
-		@titleType(inv.Tax.Ext)
-	}
-}
-
-templ DeliveryTitleType(dlv *bill.Delivery) {
-	if dlv != nil && dlv.Regime.Country == country && dlv.Tax != nil {
-		@titleType(dlv.Tax.Ext)
-	}
-}
-
-templ OrderTitleType(ord *bill.Order) {
-	if ord != nil && ord.Regime.Country == country && ord.Tax != nil {
-		@titleType(ord.Tax.Ext)
-	}
-}
-
-templ PaymentTitleType(pmt *bill.Payment) {
-	if pmt != nil && pmt.Regime.Country == country {
-		@titleType(pmt.Ext)
+templ TitleType(doc doc.Document) {
+	if doc != nil && doc.GetRegime().Country == country && doc.GetExt() != nil {
+		@titleType(doc.GetExt())
 	}
 }
 
@@ -71,6 +53,13 @@ templ generateATQR(atcud, qr string) {
 		.at img {
 			width: 30mm;
 			height: 30mm;
+		}
+		.mp-footer .at .qr {
+			display: none;
+		}
+		.mp-footer .at{
+			margin-top: 5mm;
+			margin-bottom: -5mm;
 		}
 	</style>
 	<section class="pt">

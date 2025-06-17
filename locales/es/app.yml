@@ -63,6 +63,8 @@ es:
         advance_sum: "Suma anticipos"
         due_sum: "Total adeudado"
         exchange_rate: "Cambio a %{to} (%{amount})"
+        carried_fwd: "A transportar"
+        brought_fwd: "Saldo transportado"
 
       taxes:
         title: "Impuestos"

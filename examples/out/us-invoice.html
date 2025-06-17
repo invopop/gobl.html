@@ -145,7 +145,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr data-subtotal="$3,800.00">
                 <td class="ref">
                   1
                 </td>
@@ -173,7 +173,7 @@
                   $3,800.00
                 </td>
               </tr>
-              <tr>
+              <tr data-subtotal="$4,800.00">
                 <td class="ref">
                   2
                 </td>
@@ -196,50 +196,101 @@
             </tbody>
           </table>
         </section>
+        <div class="tail">
+          <!-- `tail` contains everything that should be printed on the last page -->
+          <div class="totals">
+            <section class="totals">
+              <h2>
+                Totals
+              </h2>
+              <table>
+                <tbody>
+                  <tr class="sum strong">
+                    <th>
+                      Sum
+                    </th>
+                    <td>
+                      $4,800.00
+                    </td>
+                  </tr>
+                  <tr class="payable strong">
+                    <th>
+                      Total to pay
+                    </th>
+                    <td>
+                      $4,800.00
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+          <section class="notes">
+            <h2>
+              Notes
+            </h2>
+            <div class="note">
+              <p>
+                Thank you for you business!
+              </p>
+            </div>
+            <div class="note">
+              <p>
+                Please pay within 30 days according to some random law in the country we sell from that you should comply with because we want to be paid sooner.
+              </p>
+            </div>
+          </section>
+          <div class="extensions"></div>
+        </div>
+      </article>
+      <div id="mp-header-templ" class="mp-header">
         <div class="totals">
           <section class="totals">
-            <h2>
-              Totals
-            </h2>
             <table>
               <tbody>
-                <tr class="sum strong">
+                <tr class="strong">
                   <th>
-                    Sum
+                    Brought forward
                   </th>
-                  <td>
-                    $4,800.00
+                  <td class="amount">
+                    $0.00
                   </td>
                 </tr>
-                <tr class="payable strong">
+              </tbody>
+            </table>
+          </section>
+          <section class="title">
+            <div class="hero">
+              <img src="https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0" alt="Invopop" height="40">
+            </div>
+            <h1 class="type">
+              Invoice
+            </h1>
+            <h2 class="code">
+              FAKE-0001
+            </h2>
+          </section>
+        </div>
+      </div>
+      <div id="mp-footer-templ" class="mp-footer">
+        <div class="totals">
+          <section class="totals">
+            <table>
+              <tbody>
+                <tr class="strong">
                   <th>
-                    Total to pay
+                    Carried forward
                   </th>
-                  <td>
-                    $4,800.00
+                  <td class="amount">
+                    $0.00
                   </td>
                 </tr>
               </tbody>
             </table>
           </section>
         </div>
-        <section class="notes">
-          <h2>
-            Notes
-          </h2>
-          <div class="note">
-            <p>
-              Thank you for you business!
-            </p>
-          </div>
-          <div class="note">
-            <p>
-              Please pay within 30 days according to some random law in the country we sell from that you should comply with because we want to be paid sooner.
-            </p>
-          </div>
-        </section>
-        <div class="extensions"></div>
-      </article>
+      </div>
+      <script src="scripts/multipage.js"></script>
       <footer class="screen">
         <div class="gobl-logo">
           <a href="https://gobl.org">

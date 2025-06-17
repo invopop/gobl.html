@@ -1,0 +1,59 @@
+package bill
+
+import (
+	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/components/assets"
+	"github.com/invopop/gobl.html/internal/doc"
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/regimes/pt"
+)
+
+templ multipage(env *gobl.Envelope, doc doc.Document) {
+	{{ zero := doc.GetCurrency().Def().Zero() }}
+
+	<div id="mp-header-templ" class="mp-header">
+		<div class="totals">
+			<section class="totals">
+				@t.Scope(".totals") {
+					<table>
+						<tbody>
+							<tr class="strong">
+								<th>
+									@t.T(".brought_fwd")
+								</th>
+								<td class="amount">
+									@t.LM(zero)
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				}
+			</section>
+			@title(env, doc)
+		</div>
+	</div>
+
+	<div id="mp-footer-templ" class="mp-footer">
+		<div class="totals">
+			<section class="totals">
+				@t.Scope(".totals") {
+					<table>
+						<tbody>
+							<tr class="strong">
+								<th>
+									@t.T(".carried_fwd")
+								</th>
+								<td class="amount">
+									@t.LM(zero)
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				}
+			</section>
+		</div>
+		@pt.ATQR(env)
+	</div>
+
+	@assets.Script("multipage.js")
+}

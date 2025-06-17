@@ -4,7 +4,7 @@
 		"uuid": "0194da65-8e80-77d0-9843-944211a0eb1a",
 		"dig": {
 			"alg": "sha256",
-			"val": "160757d9530327ba609a88acd97a857d1292d01ff85c8125d4f3ed4199dc803d"
+			"val": "d866bb71aefdccf5e8d7d718aabbc3e4174c9c716b3f38dbea6ba8625b1e0dd5"
 		}
 	},
 	"doc": {
@@ -76,7 +76,7 @@
 					"series": "FT SERIES-A",
 					"code": "123"
 				},
-				"description": "Invoice 1 of 1",
+				"description": "Invoice 1 of 25",
 				"amount": "61.50",
 				"tax": {
 					"categories": [
@@ -103,7 +103,7 @@
 					"series": "FT SERIES-A",
 					"code": "130"
 				},
-				"description": "Invoice 1 of 2",
+				"description": "Invoice 2 of 25",
 				"amount": "106.00",
 				"tax": {
 					"categories": [
@@ -111,16 +111,637 @@
 							"code": "VAT",
 							"rates": [
 								{
-									"key": "reduced",
-									"base": "100.00",
-									"percent": "6.0%",
-									"amount": "6.00"
+									"key": "standard",
+									"base": "86.18",
+									"percent": "23.0%",
+									"amount": "19.82"
 								}
 							],
-							"amount": "6.00"
+							"amount": "19.82"
 						}
 					],
-					"sum": "6.00"
+					"sum": "19.82"
+				}
+			},
+			{
+				"i": 3,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "131"
+				},
+				"description": "Invoice 3 of 25",
+				"amount": "92.25",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"base": "75.00",
+									"percent": "23.0%",
+									"amount": "17.25"
+								}
+							],
+							"amount": "17.25"
+						}
+					],
+					"sum": "17.25"
+				}
+			},
+			{
+				"i": 4,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "132"
+				},
+				"description": "Invoice 4 of 25",
+				"amount": "159.00",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "reduced",
+									"base": "150.00",
+									"percent": "6.0%",
+									"amount": "9.00"
+								}
+							],
+							"amount": "9.00"
+						}
+					],
+					"sum": "9.00"
+				}
+			},
+			{
+				"i": 5,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "133"
+				},
+				"description": "Invoice 5 of 25",
+				"amount": "246.00",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"base": "200.00",
+									"percent": "23.0%",
+									"amount": "46.00"
+								}
+							],
+							"amount": "46.00"
+						}
+					],
+					"sum": "46.00"
+				}
+			},
+			{
+				"i": 6,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "134"
+				},
+				"description": "Invoice 6 of 25",
+				"amount": "84.80",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "reduced",
+									"base": "80.00",
+									"percent": "6.0%",
+									"amount": "4.80"
+								}
+							],
+							"amount": "4.80"
+						}
+					],
+					"sum": "4.80"
+				}
+			},
+			{
+				"i": 7,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "135"
+				},
+				"description": "Invoice 7 of 25",
+				"amount": "147.60",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"base": "120.00",
+									"percent": "23.0%",
+									"amount": "27.60"
+								}
+							],
+							"amount": "27.60"
+						}
+					],
+					"sum": "27.60"
+				}
+			},
+			{
+				"i": 8,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "136"
+				},
+				"description": "Invoice 8 of 25",
+				"amount": "95.40",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "reduced",
+									"base": "90.00",
+									"percent": "6.0%",
+									"amount": "5.40"
+								}
+							],
+							"amount": "5.40"
+						}
+					],
+					"sum": "5.40"
+				}
+			},
+			{
+				"i": 9,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "137"
+				},
+				"description": "Invoice 9 of 25",
+				"amount": "221.40",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"base": "180.00",
+									"percent": "23.0%",
+									"amount": "41.40"
+								}
+							],
+							"amount": "41.40"
+						}
+					],
+					"sum": "41.40"
+				}
+			},
+			{
+				"i": 10,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "138"
+				},
+				"description": "Invoice 10 of 25",
+				"amount": "74.20",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "reduced",
+									"base": "70.00",
+									"percent": "6.0%",
+									"amount": "4.20"
+								}
+							],
+							"amount": "4.20"
+						}
+					],
+					"sum": "4.20"
+				}
+			},
+			{
+				"i": 11,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "139"
+				},
+				"description": "Invoice 11 of 25",
+				"amount": "196.80",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"base": "160.00",
+									"percent": "23.0%",
+									"amount": "36.80"
+								}
+							],
+							"amount": "36.80"
+						}
+					],
+					"sum": "36.80"
+				}
+			},
+			{
+				"i": 12,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "140"
+				},
+				"description": "Invoice 12 of 25",
+				"amount": "116.60",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "reduced",
+									"base": "110.00",
+									"percent": "6.0%",
+									"amount": "6.60"
+								}
+							],
+							"amount": "6.60"
+						}
+					],
+					"sum": "6.60"
+				}
+			},
+			{
+				"i": 13,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "141"
+				},
+				"description": "Invoice 13 of 25",
+				"amount": "172.20",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"base": "140.00",
+									"percent": "23.0%",
+									"amount": "32.20"
+								}
+							],
+							"amount": "32.20"
+						}
+					],
+					"sum": "32.20"
+				}
+			},
+			{
+				"i": 14,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "142"
+				},
+				"description": "Invoice 14 of 25",
+				"amount": "100.70",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "reduced",
+									"base": "95.00",
+									"percent": "6.0%",
+									"amount": "5.70"
+								}
+							],
+							"amount": "5.70"
+						}
+					],
+					"sum": "5.70"
+				}
+			},
+			{
+				"i": 15,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "143"
+				},
+				"description": "Invoice 15 of 25",
+				"amount": "159.90",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"base": "130.00",
+									"percent": "23.0%",
+									"amount": "29.90"
+								}
+							],
+							"amount": "29.90"
+						}
+					],
+					"sum": "29.90"
+				}
+			},
+			{
+				"i": 16,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "144"
+				},
+				"description": "Invoice 16 of 25",
+				"amount": "90.10",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "reduced",
+									"base": "85.00",
+									"percent": "6.0%",
+									"amount": "5.10"
+								}
+							],
+							"amount": "5.10"
+						}
+					],
+					"sum": "5.10"
+				}
+			},
+			{
+				"i": 17,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "145"
+				},
+				"description": "Invoice 17 of 25",
+				"amount": "209.10",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"base": "170.00",
+									"percent": "23.0%",
+									"amount": "39.10"
+								}
+							],
+							"amount": "39.10"
+						}
+					],
+					"sum": "39.10"
+				}
+			},
+			{
+				"i": 18,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "146"
+				},
+				"description": "Invoice 18 of 25",
+				"amount": "111.30",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "reduced",
+									"base": "105.00",
+									"percent": "6.0%",
+									"amount": "6.30"
+								}
+							],
+							"amount": "6.30"
+						}
+					],
+					"sum": "6.30"
+				}
+			},
+			{
+				"i": 19,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "147"
+				},
+				"description": "Invoice 19 of 25",
+				"amount": "233.70",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"base": "190.00",
+									"percent": "23.0%",
+									"amount": "43.70"
+								}
+							],
+							"amount": "43.70"
+						}
+					],
+					"sum": "43.70"
+				}
+			},
+			{
+				"i": 20,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "148"
+				},
+				"description": "Invoice 20 of 25",
+				"amount": "121.90",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "reduced",
+									"base": "115.00",
+									"percent": "6.0%",
+									"amount": "6.90"
+								}
+							],
+							"amount": "6.90"
+						}
+					],
+					"sum": "6.90"
+				}
+			},
+			{
+				"i": 21,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "149"
+				},
+				"description": "Invoice 21 of 25",
+				"amount": "258.30",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"base": "210.00",
+									"percent": "23.0%",
+									"amount": "48.30"
+								}
+							],
+							"amount": "48.30"
+						}
+					],
+					"sum": "48.30"
+				}
+			},
+			{
+				"i": 22,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "150"
+				},
+				"description": "Invoice 22 of 25",
+				"amount": "132.50",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "reduced",
+									"base": "125.00",
+									"percent": "6.0%",
+									"amount": "7.50"
+								}
+							],
+							"amount": "7.50"
+						}
+					],
+					"sum": "7.50"
+				}
+			},
+			{
+				"i": 23,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "151"
+				},
+				"description": "Invoice 23 of 25",
+				"amount": "282.90",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"base": "230.00",
+									"percent": "23.0%",
+									"amount": "52.90"
+								}
+							],
+							"amount": "52.90"
+						}
+					],
+					"sum": "52.90"
+				}
+			},
+			{
+				"i": 24,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "152"
+				},
+				"description": "Invoice 24 of 25",
+				"amount": "143.10",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "reduced",
+									"base": "135.00",
+									"percent": "6.0%",
+									"amount": "8.10"
+								}
+							],
+							"amount": "8.10"
+						}
+					],
+					"sum": "8.10"
+				}
+			},
+			{
+				"i": 25,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "153"
+				},
+				"description": "Invoice 25 of 25",
+				"amount": "307.50",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"base": "250.00",
+									"percent": "23.0%",
+									"amount": "57.50"
+								}
+							],
+							"amount": "57.50"
+						}
+					],
+					"sum": "57.50"
 				}
 			}
 		],
@@ -138,7 +759,7 @@
 				"end": "2022-02-28"
 			}
 		},
-		"total": "167.50",
+		"total": "3924.75",
 		"notes": [
 			{
 				"text": "Thank you for you business!"

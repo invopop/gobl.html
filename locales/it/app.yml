@@ -54,6 +54,8 @@ it:
         advance_sum: "Somma anticipi"
         due_sum: "Totale dovuto"
         exchange_rate: "Cambio in %{to} (%{amount})"
+        carried_fwd: "Da riportare"
+        brought_fwd: "Riporto"
       taxes:
         title: "Tasse"
         category: "Tassa"

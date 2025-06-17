@@ -5,7 +5,29 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "64c9da3b65a01437226a5fd24b7769c0b88ea0b2a3301a7efe10b2cdaa87757b"
-		}
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJ4252T-4"
+			},
+			{
+				"prv": "at-hash",
+				"val": "BGXN"
+			},
+			{
+				"prv": "at-hash-full",
+				"val": "B4nBO925enGmaoF6KedzXv0CxNiOdDNSiWuBLdmM7W/1/Ct9EvrCGh6HBV/x+kGz9UMM8dka5S2z/BrM1B3XXk3+RxgkHLAxFrpUAmiA4kF7ZUc780W/siBYmg+heE4/D+Vblvdb+920YbDkTUbEiOZOnTuX2HYGiE1zDFnyO8w="
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:770013813*B:514329874*C:PT*D:RG*E:N*F:20241223*G:RG DEV-05/4*H:AAJFJ4252T-4*I1:PT*I7:50.00*I8:11.50*N:11.50*O:61.50*Q:BGXN*R:0"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "0"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/payment",
@@ -116,5 +138,8 @@
 			}
 		],
 		"total": "50.00"
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjU2ZDIwN2E5LTc5ZDMtNDRjYy05OTQwLTYwNjczM2JhN2MxMyJ9.eyJ1dWlkIjoiMDE5NGRhNjUtOGU4MC03N2QwLTk4NDMtOTQ0MjExYTBlYjFhIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImFiODQxYTViYzAyNTNiZWM1OTg3Y2Q1ZDY5ODE5ZDk2OTAzZDM3MDc5MDRkZDJmYjE2YjczNzg4OGNlOGZmOGQifX0.VglMwc1bYRGKaxgmkAIRpaq0OX-hhmSJkcbkCXp3rDfDyoNi_KpvsFdsVF8KFA9p2OiiRAC9bNNUsvOKVNwE4Q"
+	]
 }

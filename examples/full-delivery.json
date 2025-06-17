@@ -4,7 +4,7 @@
 		"uuid": "0194020a-1f2e-7000-9ede-4ad7c0a9810f",
 		"dig": {
 			"alg": "sha256",
-			"val": "a25d3e653813c98c9e87cc677952027816e99af22e08b526449d66ef0f4d4bbb"
+			"val": "9c3c66c37daa241909df5a5331c72e831fa1dfb734b1c4c51d01109ffe42cdc6"
 		}
 	},
 	"doc": {
@@ -194,6 +194,741 @@
 					}
 				],
 				"total": "10.00"
+			},
+			{
+				"i": 3,
+				"quantity": "3",
+				"item": {
+					"name": "Notebooks",
+					"price": "8.00",
+					"unit": "unit"
+				},
+				"sum": "24.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "24.00"
+			},
+			{
+				"i": 4,
+				"quantity": "1",
+				"item": {
+					"name": "Desk Chair",
+					"price": "200.00",
+					"unit": "item"
+				},
+				"sum": "200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "200.00"
+			},
+			{
+				"i": 5,
+				"quantity": "4",
+				"item": {
+					"name": "Pens",
+					"price": "2.50",
+					"unit": "item"
+				},
+				"sum": "10.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "10.00"
+			},
+			{
+				"i": 6,
+				"quantity": "2",
+				"item": {
+					"name": "Desk Lamp",
+					"price": "45.00",
+					"unit": "item"
+				},
+				"sum": "90.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "90.00"
+			},
+			{
+				"i": 7,
+				"quantity": "5",
+				"item": {
+					"name": "Staples",
+					"price": "3.00",
+					"unit": "box"
+				},
+				"sum": "15.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "15.00"
+			},
+			{
+				"i": 8,
+				"quantity": "1",
+				"item": {
+					"name": "Filing Cabinet",
+					"price": "180.00",
+					"unit": "unit"
+				},
+				"sum": "180.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "180.00"
+			},
+			{
+				"i": 9,
+				"quantity": "3",
+				"item": {
+					"name": "Mouse Pad",
+					"price": "12.00",
+					"unit": "unit"
+				},
+				"sum": "36.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "36.00"
+			},
+			{
+				"i": 10,
+				"quantity": "2",
+				"item": {
+					"name": "Keyboard",
+					"price": "85.00",
+					"unit": "unit"
+				},
+				"sum": "170.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "170.00"
+			},
+			{
+				"i": 11,
+				"quantity": "2",
+				"item": {
+					"name": "Keyboard",
+					"price": "85.00",
+					"unit": "unit"
+				},
+				"sum": "170.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "170.00"
+			},
+			{
+				"i": 12,
+				"quantity": "2",
+				"item": {
+					"name": "Keyboard",
+					"price": "85.00",
+					"unit": "unit"
+				},
+				"sum": "170.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "170.00"
+			},
+			{
+				"i": 13,
+				"quantity": "2",
+				"item": {
+					"name": "Keyboard",
+					"price": "85.00",
+					"unit": "unit"
+				},
+				"sum": "170.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "170.00"
+			},
+			{
+				"i": 14,
+				"quantity": "2",
+				"item": {
+					"name": "Keyboard",
+					"price": "85.00",
+					"unit": "unit"
+				},
+				"sum": "170.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "170.00"
+			},
+			{
+				"i": 15,
+				"quantity": "2",
+				"item": {
+					"name": "Keyboard",
+					"price": "85.00",
+					"unit": "unit"
+				},
+				"sum": "170.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "170.00"
+			},
+			{
+				"i": 16,
+				"quantity": "2",
+				"item": {
+					"name": "Keyboard",
+					"price": "85.00",
+					"unit": "unit"
+				},
+				"sum": "170.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "170.00"
+			},
+			{
+				"i": 17,
+				"quantity": "2",
+				"item": {
+					"name": "Keyboard",
+					"price": "85.00",
+					"unit": "unit"
+				},
+				"sum": "170.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "170.00"
+			},
+			{
+				"i": 18,
+				"quantity": "2",
+				"item": {
+					"name": "Keyboard",
+					"price": "85.00",
+					"unit": "unit"
+				},
+				"sum": "170.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "170.00"
+			},
+			{
+				"i": 19,
+				"quantity": "2",
+				"item": {
+					"name": "Keyboard",
+					"price": "85.00",
+					"unit": "unit"
+				},
+				"sum": "170.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "170.00"
+			},
+			{
+				"i": 20,
+				"quantity": "2",
+				"item": {
+					"name": "Keyboard",
+					"price": "85.00",
+					"unit": "unit"
+				},
+				"sum": "170.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "170.00"
+			},
+			{
+				"i": 21,
+				"quantity": "2",
+				"item": {
+					"name": "Keyboard",
+					"price": "85.00",
+					"unit": "unit"
+				},
+				"sum": "170.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "170.00"
+			},
+			{
+				"i": 22,
+				"quantity": "2",
+				"item": {
+					"name": "Keyboard",
+					"price": "85.00",
+					"unit": "unit"
+				},
+				"sum": "170.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "170.00"
+			},
+			{
+				"i": 23,
+				"quantity": "4",
+				"item": {
+					"name": "USB Hub",
+					"price": "25.00",
+					"unit": "unit"
+				},
+				"sum": "100.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "100.00"
+			},
+			{
+				"i": 24,
+				"quantity": "1",
+				"item": {
+					"name": "Printer",
+					"price": "350.00",
+					"unit": "item"
+				},
+				"sum": "350.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "350.00"
+			},
+			{
+				"i": 25,
+				"quantity": "3",
+				"item": {
+					"name": "Printer Paper",
+					"price": "15.00",
+					"unit": "item"
+				},
+				"sum": "45.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "45.00"
+			},
+			{
+				"i": 26,
+				"quantity": "2",
+				"item": {
+					"name": "Desk Organizer",
+					"price": "30.00",
+					"unit": "item"
+				},
+				"sum": "60.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "60.00"
+			},
+			{
+				"i": 27,
+				"quantity": "5",
+				"item": {
+					"name": "Sticky Notes",
+					"price": "4.00",
+					"unit": "item"
+				},
+				"sum": "20.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "20.00"
+			},
+			{
+				"i": 28,
+				"quantity": "1",
+				"item": {
+					"name": "Whiteboard",
+					"price": "120.00",
+					"unit": "item"
+				},
+				"sum": "120.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "120.00"
+			},
+			{
+				"i": 29,
+				"quantity": "4",
+				"item": {
+					"name": "Whiteboard Markers",
+					"price": "8.00",
+					"unit": "item"
+				},
+				"sum": "32.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "32.00"
+			},
+			{
+				"i": 30,
+				"quantity": "2",
+				"item": {
+					"name": "Desk Phone",
+					"price": "95.00",
+					"unit": "unit"
+				},
+				"sum": "190.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "190.00"
+			},
+			{
+				"i": 31,
+				"quantity": "3",
+				"item": {
+					"name": "Headset",
+					"price": "65.00",
+					"unit": "unit"
+				},
+				"sum": "195.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "195.00"
+			},
+			{
+				"i": 32,
+				"quantity": "1",
+				"item": {
+					"name": "Scanner",
+					"price": "280.00",
+					"unit": "unit"
+				},
+				"sum": "280.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "280.00"
+			},
+			{
+				"i": 33,
+				"quantity": "4",
+				"item": {
+					"name": "USB Flash Drive",
+					"price": "20.00",
+					"unit": "unit"
+				},
+				"sum": "80.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "80.00"
+			},
+			{
+				"i": 34,
+				"quantity": "2",
+				"item": {
+					"name": "External Hard Drive",
+					"price": "150.00",
+					"unit": "unit"
+				},
+				"sum": "300.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "300.00"
+			},
+			{
+				"i": 35,
+				"quantity": "3",
+				"item": {
+					"name": "Monitor Stand",
+					"price": "40.00",
+					"unit": "unit"
+				},
+				"sum": "120.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "120.00"
+			},
+			{
+				"i": 36,
+				"quantity": "1",
+				"item": {
+					"name": "Network Switch",
+					"price": "220.00",
+					"unit": "unit"
+				},
+				"sum": "220.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "220.00"
+			},
+			{
+				"i": 37,
+				"quantity": "5",
+				"item": {
+					"name": "Ethernet Cable",
+					"price": "12.00",
+					"unit": "unit"
+				},
+				"sum": "60.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				],
+				"total": "60.00"
 			}
 		],
 		"discounts": [
@@ -201,7 +936,7 @@
 				"i": 1,
 				"reason": "Loyalty discount",
 				"percent": "2.0%",
-				"amount": "11.25"
+				"amount": "109.99"
 			}
 		],
 		"charges": [
@@ -212,10 +947,10 @@
 			}
 		],
 		"totals": {
-			"sum": "562.50",
-			"discount": "11.25",
+			"sum": "5499.50",
+			"discount": "109.99",
 			"charge": "10.00",
-			"total": "561.25",
+			"total": "5399.51",
 			"taxes": {
 				"categories": [
 					{
@@ -226,19 +961,19 @@
 								"ext": {
 									"pt-region": "PT"
 								},
-								"base": "562.50",
+								"base": "5499.50",
 								"percent": "23.0%",
-								"amount": "129.38"
+								"amount": "1264.89"
 							}
 						],
-						"amount": "129.38"
+						"amount": "1264.89"
 					}
 				],
-				"sum": "129.38"
+				"sum": "1264.89"
 			},
-			"tax": "129.38",
-			"total_with_tax": "690.63",
-			"payable": "690.63"
+			"tax": "1264.89",
+			"total_with_tax": "6664.40",
+			"payable": "6664.40"
 		},
 		"notes": [
 			{

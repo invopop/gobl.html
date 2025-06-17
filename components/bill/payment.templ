@@ -2,9 +2,9 @@ package bill
 
 import (
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/tax"
 )
@@ -18,51 +18,32 @@ templ Payment(env *gobl.Envelope, pmt *bill.Payment) {
 				@paymentHeader(env, pmt)
 			</header>
 			@paymentLines(pmt, tt)
-			<div class="totals">
-				@paymentTotals(pmt, tt)
-				@taxes(pmt.RegimeDef(), tt)
-			</div>
-			@method(pmt)
-			@notes(pmt.Notes, pmt.Supplier)
-			<div class="extensions">
-				// Region specific information
-				@pt.ATQR(env)
+			<div class="tail"> <!-- `tail` contains everything that should be printed on the last page -->
+				<div class="totals">
+					@paymentTotals(pmt, tt)
+					@taxes(pmt.RegimeDef(), tt)
+				</div>
+				@method(pmt)
+				@notes(pmt.Notes, pmt.Supplier)
+				<div class="extensions">
+					// Region specific information
+					@pt.ATQR(env)
+				</div>
 			</div>
 		</article>
+		@multipage(env, doc.For(pmt))
 	}
 }
 
 templ paymentHeader(env *gobl.Envelope, pmt *bill.Payment) {
 	<div class="details">
-		@paymentTitle(env, pmt)
+		@title(env, doc.For(pmt))
 		@paymentSummary(pmt)
 	</div>
 	<div class="contacts">
 		@contact(pmt.Supplier, "supplier")
 		@contact(pmt.Customer, "customer")
 	</div>
-}
-
-templ paymentTitle(env *gobl.Envelope, pmt *bill.Payment) {
-	@t.Scope(".title") {
-		<section class="title">
-			@titleHero(pmt.Supplier)
-			@paymentTitleType(pmt)
-			<h2 class="code">
-				@titleCode(pmt.Series, pmt.Code, pmt.Regime)
-				@titleBadges(env, pmt)
-			</h2>
-		</section>
-	}
-}
-
-templ paymentTitleType(pmt *bill.Payment) {
-	<h1 class="type">
-		@utils.Coalesce(
-			pt.PaymentTitleType(pmt),
-			defaultTitleType(pmt.Type),
-		)
-	</h1>
 }
 
 templ paymentTotals(pmt *bill.Payment, tt *tax.Total) {
