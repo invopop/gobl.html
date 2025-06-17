@@ -197,7 +197,7 @@ func taxRateRow(r *tax.RegimeDef, cat *tax.CategoryTotal, rate *tax.RateTotal, s
 		}
 		if rate.Percent != nil {
 			if cat.Retained {
-				templ_7745c5c3_Err = t.L(rate.Percent.Invert()).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = t.L(rate.Percent).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -242,7 +242,7 @@ func taxRateRow(r *tax.RegimeDef, cat *tax.CategoryTotal, rate *tax.RateTotal, s
 			return templ_7745c5c3_Err
 		}
 		if cat.Retained {
-			templ_7745c5c3_Err = t.LM(rate.Amount.Invert()).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = t.LM(rate.Amount).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

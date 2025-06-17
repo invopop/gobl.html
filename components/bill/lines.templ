@@ -195,7 +195,7 @@ templ lineGroupDiscounts(l *bill.Line) {
 			if d.Percent != nil {
 				@t.L(*d.Percent)
 			} else {
-				@t.LM(d.Amount.Invert())
+				@t.LM(d.Amount)
 			}
 		</span>
 	}
@@ -287,7 +287,7 @@ templ discountRow(row *bill.Discount, ls *lineSupport, st *subtotal) {
 		}
 		if ls.totals {
 			<td class="total">
-				@t.LM(row.Amount.Invert())
+				@t.LM(row.Amount)
 			</td>
 		}
 	</tr>

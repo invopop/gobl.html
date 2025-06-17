@@ -698,7 +698,7 @@ func lineGroupDiscounts(l *bill.Line) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			} else {
-				templ_7745c5c3_Err = t.LM(d.Amount.Invert()).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = t.LM(d.Amount).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -984,7 +984,7 @@ func discountRow(row *bill.Discount, ls *lineSupport, st *subtotal) templ.Compon
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = t.LM(row.Amount.Invert()).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = t.LM(row.Amount).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

@@ -59,7 +59,7 @@ templ taxRateRow(r *tax.RegimeDef, cat *tax.CategoryTotal, rate *tax.RateTotal, 
 		<td class="rate">
 			if rate.Percent != nil {
 				if cat.Retained {
-					@t.L(rate.Percent.Invert())
+					@t.L(rate.Percent)
 				} else {
 					@t.L(*rate.Percent)
 				}
@@ -76,7 +76,7 @@ templ taxRateRow(r *tax.RegimeDef, cat *tax.CategoryTotal, rate *tax.RateTotal, 
 		</td>
 		<td class="amount">
 			if cat.Retained {
-				@t.LM(rate.Amount.Invert())
+				@t.LM(rate.Amount)
 			} else {
 				@t.LM(rate.Amount)
 			}
