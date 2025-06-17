@@ -14,7 +14,6 @@ import (
 	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl/addons/pt/saft"
 	"github.com/invopop/gobl/cbc"
-	"github.com/invopop/gobl/tax"
 )
 
 func ATQR(env *gobl.Envelope) templ.Component {
@@ -71,8 +70,8 @@ func TitleType(doc doc.Document) templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if doc != nil && doc.GetRegime().Country == country && doc.GetExt() != nil {
-			templ_7745c5c3_Err = titleType(doc.GetExt()).Render(ctx, templ_7745c5c3_Buffer)
+		if isPortuguese(doc) {
+			templ_7745c5c3_Err = titleType(doc).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -81,7 +80,7 @@ func TitleType(doc doc.Document) templ.Component {
 	})
 }
 
-func TitleCode(series, code cbc.Code, reg tax.Regime) templ.Component {
+func JoinCode(doc doc.Document, series, code cbc.Code) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -102,13 +101,52 @@ func TitleCode(series, code cbc.Code, reg tax.Regime) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if reg.Country == country {
+		if isPortuguese(doc) {
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(series.JoinWith("/", code).String())
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/pt/at.templ`, Line: 28, Col: 39}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/pt/at.templ`, Line: 27, Col: 39}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		return nil
+	})
+}
+
+func TitleBadges(doc doc.Document) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var5 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var5 == nil {
+			templ_7745c5c3_Var5 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		if isPortuguese(doc) {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<span class=\"badge\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = t.T("regimes.pt.title.original").Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -133,38 +171,38 @@ func generateATQR(atcud, qr string) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var5 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var5 == nil {
-			templ_7745c5c3_Var5 = templ.NopComponent
+		templ_7745c5c3_Var6 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var6 == nil {
+			templ_7745c5c3_Var6 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<style type=\"text/css\">\n\t\t.at {\n\t\t\tbreak-inside: avoid;\n\t\t\ttext-align: right;\n\t\t\t/* width: 6cm; */\n\t\t}\n\t\t.at .label {\n\t\t\tfont-family: monospace;\n\t\t\tfont-size: 7pt;\n\t\t\ttext-align: right;\n\t\t\tmargin-bottom: 2mm;\n\t\t}\n\t\t.at img {\n\t\t\twidth: 30mm;\n\t\t\theight: 30mm;\n\t\t}\n\t\t.mp-footer .at .qr {\n\t\t\tdisplay: none;\n\t\t}\n\t\t.mp-footer .at{\n\t\t\tmargin-top: 5mm;\n\t\t\tmargin-bottom: -5mm;\n\t\t}\n\t</style><section class=\"pt\"><div class=\"at\"><div class=\"label\">ATCUD: ")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var6 string
-		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(atcud)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/pt/at.templ`, Line: 60, Col: 18}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><div class=\"qr\"><img src=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<style type=\"text/css\">\n\t\t.at {\n\t\t\tbreak-inside: avoid;\n\t\t\ttext-align: right;\n\t\t\t/* width: 6cm; */\n\t\t}\n\t\t.at .label {\n\t\t\tfont-family: monospace;\n\t\t\tfont-size: 7pt;\n\t\t\ttext-align: right;\n\t\t\tmargin-bottom: 2mm;\n\t\t}\n\t\t.at img {\n\t\t\twidth: 30mm;\n\t\t\theight: 30mm;\n\t\t}\n\t\t.mp-footer .at .qr {\n\t\t\tdisplay: none;\n\t\t}\n\t\t.mp-footer .at{\n\t\t\tmargin-top: 5mm;\n\t\t\tmargin-bottom: -5mm;\n\t\t}\n\t</style><section class=\"pt\"><div class=\"at\"><div class=\"label\">ATCUD: ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var7 string
-		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(generateQR(qr))
+		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(atcud)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/pt/at.templ`, Line: 63, Col: 29}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/pt/at.templ`, Line: 67, Col: 18}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "\"></div></div></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div><div class=\"qr\"><img src=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var8 string
+		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(generateQR(qr))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/pt/at.templ`, Line: 70, Col: 29}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "\"></div></div></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -172,7 +210,7 @@ func generateATQR(atcud, qr string) templ.Component {
 	})
 }
 
-func titleType(ext tax.Extensions) templ.Component {
+func titleType(doc doc.Document) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -188,12 +226,12 @@ func titleType(ext tax.Extensions) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var8 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var8 == nil {
-			templ_7745c5c3_Var8 = templ.NopComponent
+		templ_7745c5c3_Var9 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var9 == nil {
+			templ_7745c5c3_Var9 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if typ := docType(ext); typ != cbc.CodeEmpty {
+		if typ := docType(doc); typ != cbc.CodeEmpty {
 			templ_7745c5c3_Err = t.T("regimes.pt.title."+string(typ)).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -203,7 +241,8 @@ func titleType(ext tax.Extensions) templ.Component {
 	})
 }
 
-func docType(ext tax.Extensions) cbc.Code {
+func docType(doc doc.Document) cbc.Code {
+	ext := doc.GetExt()
 	switch {
 	case ext.Has(saft.ExtKeyInvoiceType):
 		return ext.Get(saft.ExtKeyInvoiceType)
@@ -216,6 +255,10 @@ func docType(ext tax.Extensions) cbc.Code {
 	default:
 		return cbc.CodeEmpty
 	}
+}
+
+func isPortuguese(doc doc.Document) bool {
+	return doc != nil && doc.GetRegime().Country == country
 }
 
 var _ = templruntime.GeneratedTemplate

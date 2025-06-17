@@ -3,12 +3,12 @@ package bill
 import (
 	"context"
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cal"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/currency"
-	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
 	"maps"
 	"slices"
@@ -59,7 +59,7 @@ templ summary(inv *bill.Invoice) {
 					</li>
 				}
 				if len(inv.Preceding) > 0 {
-					@summaryPrecedingRows(inv.Preceding, inv.Regime)
+					@summaryPrecedingRows(inv)
 				}
 				if inv.Ordering != nil {
 					@summaryOrderingRows(inv.Ordering)
@@ -72,14 +72,15 @@ templ summary(inv *bill.Invoice) {
 	</section>
 }
 
-templ summaryPrecedingRows(prec []*org.DocumentRef, reg tax.Regime) {
-	for _, pre := range prec {
+templ summaryPrecedingRows(obj any) {
+	{{ doc := doc.For(obj) }}
+	for _, pre := range doc.GetPreceding() {
 		<li class="preceding">
 			<span class="label">
 				@t.T(".preceding_document")
 			</span>
 			<span class="value">
-				@titleCode(pre.Series, pre.Code, reg)
+				@joinCode(doc, pre.Series, pre.Code)
 			</span>
 			if pre.IssueDate != nil {
 				<span class="value">

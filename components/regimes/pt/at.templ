@@ -6,7 +6,6 @@ import (
 	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl/addons/pt/saft"
 	"github.com/invopop/gobl/cbc"
-	"github.com/invopop/gobl/tax"
 )
 
 templ ATQR(env *gobl.Envelope) {
@@ -18,14 +17,22 @@ templ ATQR(env *gobl.Envelope) {
 }
 
 templ TitleType(doc doc.Document) {
-	if doc != nil && doc.GetRegime().Country == country && doc.GetExt() != nil {
-		@titleType(doc.GetExt())
+	if isPortuguese(doc) {
+		@titleType(doc)
 	}
 }
 
-templ TitleCode(series, code cbc.Code, reg tax.Regime) {
-	if reg.Country == country {
+templ JoinCode(doc doc.Document, series, code cbc.Code) {
+	if isPortuguese(doc) {
 		{ series.JoinWith("/", code).String() }
+	}
+}
+
+templ TitleBadges(doc doc.Document) {
+	if isPortuguese(doc) {
+		<span class="badge">
+			@t.T("regimes.pt.title.original")
+		</span>
 	}
 }
 
@@ -66,13 +73,14 @@ templ generateATQR(atcud, qr string) {
 	</section>
 }
 
-templ titleType(ext tax.Extensions) {
-	if typ := docType(ext); typ != cbc.CodeEmpty {
+templ titleType(doc doc.Document) {
+	if typ := docType(doc); typ != cbc.CodeEmpty {
 		@t.T("regimes.pt.title." + string(typ))
 	}
 }
 
-func docType(ext tax.Extensions) cbc.Code {
+func docType(doc doc.Document) cbc.Code {
+	ext := doc.GetExt()
 	switch {
 	case ext.Has(saft.ExtKeyInvoiceType):
 		return ext.Get(saft.ExtKeyInvoiceType)
@@ -85,4 +93,8 @@ func docType(ext tax.Extensions) cbc.Code {
 	default:
 		return cbc.CodeEmpty
 	}
+}
+
+func isPortuguese(doc doc.Document) bool {
+	return doc != nil && doc.GetRegime().Country == country
 }

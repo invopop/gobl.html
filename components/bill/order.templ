@@ -6,8 +6,6 @@ import (
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
-	gorg "github.com/invopop/gobl/org"
-	"github.com/invopop/gobl/tax"
 )
 
 // Order renders a complete GOBL bill.Order object.
@@ -92,10 +90,10 @@ templ orderSummary(ord *bill.Order) {
 					</li>
 				}
 				if len(ord.Preceding) > 0 {
-					@summaryPrecedingRows(ord.Preceding, ord.Regime)
+					@summaryPrecedingRows(ord)
 				}
 				if len(ord.Contracts) > 0 {
-					@summaryContractRows(ord.Contracts, ord.Regime)
+					@summaryContractRows(ord)
 				}
 				if ord.Period != nil {
 					@summaryOrderPeriodRows(ord.Period)
@@ -109,14 +107,14 @@ templ orderSummary(ord *bill.Order) {
 }
 
 // summaryContractRows renders contract information in the summary section
-templ summaryContractRows(contracts []*gorg.DocumentRef, reg tax.Regime) {
-	for _, contract := range contracts {
+templ summaryContractRows(ord *bill.Order) {
+	for _, contract := range ord.Contracts {
 		<li class="contract">
 			<span class="label">
 				@t.T(".contract")
 			</span>
 			<span class="value">
-				@titleCode(contract.Series, contract.Code, reg)
+				@joinCode(doc.For(ord), contract.Series, contract.Code)
 			</span>
 			if contract.IssueDate != nil {
 				<span class="value">

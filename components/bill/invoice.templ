@@ -62,7 +62,7 @@ templ title(env *gobl.Envelope, doc doc.Document) {
 			@titleHero(doc.GetSupplier())
 			@titleType(doc)
 			<h2 class="code">
-				@titleCode(doc.GetSeries(), doc.GetCode(), doc.GetRegime())
+				@titleCode(doc)
 				@titleBadges(env, doc)
 			</h2>
 		</section>
@@ -81,14 +81,18 @@ templ titleHero(sup *org.Party) {
 	</div>
 }
 
-templ titleCode(series, code cbc.Code, reg tax.Regime) {
+templ titleCode(doc doc.Document) {
+	@joinCode(doc, doc.GetSeries(), doc.GetCode())
+}
+
+templ joinCode(doc doc.Document, series, code cbc.Code) {
 	@utils.Coalesce(
-		pt.TitleCode(series, code, reg),
-		defaultTitleCode(series, code),
+		pt.JoinCode(doc, series, code),
+		defaultJoinCode(doc, series, code),
 	)
 }
 
-templ defaultTitleCode(series, code cbc.Code) {
+templ defaultJoinCode(_ doc.Document, series, code cbc.Code) {
 	{ series.Join(code).String() }
 }
 
@@ -119,6 +123,7 @@ templ titleBadges(env *gobl.Envelope, doc doc.Document) {
 			@t.T(".paid")
 		</span>
 	}
+	@pt.TitleBadges(doc)
 }
 
 templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {

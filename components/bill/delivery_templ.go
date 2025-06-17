@@ -340,7 +340,7 @@ func deliverySummary(dlv *bill.Delivery) templ.Component {
 				}
 			}
 			if len(dlv.Preceding) > 0 {
-				templ_7745c5c3_Err = summaryPrecedingRows(dlv.Preceding, dlv.Regime).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = summaryPrecedingRows(dlv).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
