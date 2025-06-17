@@ -29,14 +29,6 @@ templ TitleCode(series, code cbc.Code, reg tax.Regime) {
 	}
 }
 
-templ TitleBadges(env *gobl.Envelope) {
-	if isCanceled(env) {
-		<span class="canceled">
-			@t.T("regimes.pt.title.canceled")
-		</span>
-	}
-}
-
 templ generateATQR(atcud, qr string) {
 	<style type="text/css">
 		.at {

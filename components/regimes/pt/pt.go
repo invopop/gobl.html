@@ -5,7 +5,6 @@ import (
 	"bytes"
 	"encoding/base64"
 	"fmt"
-	"strings"
 
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl/l10n"
@@ -34,12 +33,6 @@ func FooterNotes(env *gobl.Envelope) string {
 		}
 	}
 	return ""
-}
-
-func isCanceled(env *gobl.Envelope) bool {
-	qr := env.Head.GetStamp(pt.StampProviderATQR)
-	// TODO: Find a less hacky way to check if the document is canceled
-	return qr != nil && strings.Contains(qr.Value, "*E:A*")
 }
 
 // generateQR implements a custom QR code generator that complies with the AT spec.
