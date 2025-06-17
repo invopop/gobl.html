@@ -5,9 +5,10 @@ import (
 
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/tax"
 )
 
-templ paymentLines(pmt *bill.Payment) {
+templ paymentLines(pmt *bill.Payment, tt *tax.Total) {
 	@t.Scope(".lines") {
 		<section class="lines">
 			<h2>
@@ -22,8 +23,8 @@ templ paymentLines(pmt *bill.Payment) {
 						<th class="document">
 							@t.T(".document")
 						</th>
-						if r := pmt.RegimeDef(); r != nil && pmt.Tax != nil {
-							for _, cat := range pmt.Tax.Categories {
+						if r := pmt.RegimeDef(); r != nil && tt != nil {
+							for _, cat := range tt.Categories {
 								<th class="tax">
 									{ r.CategoryDef(cat.Code).Name.In(t.Lang(ctx)) }
 								</th>
@@ -37,7 +38,7 @@ templ paymentLines(pmt *bill.Payment) {
 				<tbody>
 					{{ st := newSubtotal() }}
 					for _, l := range pmt.Lines {
-						@paymentLine(l, pmt, st)
+						@paymentLine(l, pmt, tt, st)
 					}
 				</tbody>
 			</table>
@@ -45,25 +46,35 @@ templ paymentLines(pmt *bill.Payment) {
 	}
 }
 
-templ paymentLine(l *bill.PaymentLine, pmt *bill.Payment, st *subtotal) {
-	<tr data-subtotal={ t.LocalizeMoney(ctx, st.Add(&l.Total)) }>
+templ paymentLine(l *bill.PaymentLine, pmt *bill.Payment, tt *tax.Total, st *subtotal) {
+	<tr data-subtotal={ t.LocalizeMoney(ctx, st.Add(&l.Amount)) }>
 		<td class="ref">
 			{ fmt.Sprint(l.Index) }
 		</td>
 		<td class="document">
-			<span>
-				@titleCode(l.Document.Series, l.Document.Code, pmt.Regime)
-			</span>
-			if l.Document.Description != "" {
-				<br/>
-				<small>{ l.Document.Description }</small>
+			if l.Document != nil {
+				<span>
+					@titleCode(l.Document.Series, l.Document.Code, pmt.Regime)
+				</span>
+				if l.Document.Description != "" {
+					<br/>
+					<small>{ l.Document.Description }</small>
+				}
+				if l.Description != "" {
+					<br/>
+					<small>{ l.Description }</small>
+				}
+			} else if l.Description != "" {
+				<span>
+					{ l.Description }
+				</span>
 			}
 		</td>
-		if pmt.Tax != nil {
-			for _, cat := range pmt.Tax.Categories {
+		if tt != nil {
+			for _, cat := range tt.Categories {
 				<td class="tax">
-					if l.Document != nil && l.Document.Tax != nil {
-						if cat := l.Document.Tax.Category(cat.Code); cat != nil {
+					if l.Tax != nil {
+						if cat := l.Tax.Category(cat.Code); cat != nil {
 							@t.LM(cat.Amount)
 						}
 					}
@@ -71,7 +82,7 @@ templ paymentLine(l *bill.PaymentLine, pmt *bill.Payment, st *subtotal) {
 			}
 		}
 		<td class="total">
-			@t.LM(l.Total)
+			@t.LM(l.Amount)
 		</td>
 	</tr>
 }
