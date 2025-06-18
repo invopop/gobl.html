@@ -5,8 +5,12 @@ import (
 	"bytes"
 	"encoding/base64"
 	"fmt"
+	"slices"
 
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/internal/doc"
+	"github.com/invopop/gobl/addons/pt/saft"
+	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/l10n"
 	"github.com/invopop/gobl/regimes/pt"
 	go_qr "github.com/piglig/go-qr"
@@ -24,15 +28,33 @@ const (
 	atQRCorLvl = go_qr.Medium
 )
 
+// Types that serve as invoices
+var invoiceTypes = []cbc.Code{
+	saft.InvoiceTypeStandard,
+	saft.InvoiceTypeSimplified,
+	saft.InvoiceTypeInvoiceReceipt,
+	saft.InvoiceTypeCreditNote,
+	saft.InvoiceTypeDebitNote,
+	saft.WorkTypeConsignmentInv,
+	saft.WorkTypeConsignmentCredit,
+}
+
 // FooterNotes handles the special case when a document contains special
 // notes that need to be added to the footer
-func FooterNotes(env *gobl.Envelope) string {
+func FooterNotes(env *gobl.Envelope) []string {
 	if appID := atAppID(env); appID != "" {
 		if hash := atHash(env); hash != "" {
-			return fmt.Sprintf("<b>%s</b>-Processado por programa certificado n.º %s/AT", hash, appID)
+			var notes []string
+			if !slices.Contains(invoiceTypes, docType(doc.ExtractFrom(env))) {
+				notes = append(notes, "Este documento não serve de fatura")
+			}
+			notes = append(notes,
+				fmt.Sprintf("<b>%s</b>-Processado por programa certificado n.º %s/AT", hash, appID),
+			)
+			return notes
 		}
 	}
-	return ""
+	return nil
 }
 
 // generateQR implements a custom QR code generator that complies with the AT spec.
@@ -100,4 +122,24 @@ func atQR(env *gobl.Envelope) string {
 		}
 	}
 	return ""
+}
+
+func docType(doc doc.Document) cbc.Code {
+	ext := doc.GetExt()
+	switch {
+	case ext.Has(saft.ExtKeyInvoiceType):
+		return ext.Get(saft.ExtKeyInvoiceType)
+	case ext.Has(saft.ExtKeyWorkType):
+		return ext.Get(saft.ExtKeyWorkType)
+	case ext.Has(saft.ExtKeyMovementType):
+		return ext.Get(saft.ExtKeyMovementType)
+	case ext.Has(saft.ExtKeyPaymentType):
+		return ext.Get(saft.ExtKeyPaymentType)
+	default:
+		return cbc.CodeEmpty
+	}
+}
+
+func isPortuguese(doc doc.Document) bool {
+	return doc != nil && doc.GetRegime().Country == country
 }

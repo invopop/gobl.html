@@ -12,7 +12,6 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal/doc"
-	"github.com/invopop/gobl/addons/pt/saft"
 	"github.com/invopop/gobl/cbc"
 )
 
@@ -105,7 +104,7 @@ func JoinCode(doc doc.Document, series, code cbc.Code) templ.Component {
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(series.JoinWith("/", code).String())
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/pt/at.templ`, Line: 27, Col: 39}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/pt/at.templ`, Line: 26, Col: 39}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -183,7 +182,7 @@ func generateATQR(atcud, qr string) templ.Component {
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(atcud)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/pt/at.templ`, Line: 67, Col: 18}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/pt/at.templ`, Line: 66, Col: 18}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -196,7 +195,7 @@ func generateATQR(atcud, qr string) templ.Component {
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(generateQR(qr))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/pt/at.templ`, Line: 70, Col: 29}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/pt/at.templ`, Line: 69, Col: 29}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -239,26 +238,6 @@ func titleType(doc doc.Document) templ.Component {
 		}
 		return nil
 	})
-}
-
-func docType(doc doc.Document) cbc.Code {
-	ext := doc.GetExt()
-	switch {
-	case ext.Has(saft.ExtKeyInvoiceType):
-		return ext.Get(saft.ExtKeyInvoiceType)
-	case ext.Has(saft.ExtKeyWorkType):
-		return ext.Get(saft.ExtKeyWorkType)
-	case ext.Has(saft.ExtKeyMovementType):
-		return ext.Get(saft.ExtKeyMovementType)
-	case ext.Has(saft.ExtKeyPaymentType):
-		return ext.Get(saft.ExtKeyPaymentType)
-	default:
-		return cbc.CodeEmpty
-	}
-}
-
-func isPortuguese(doc doc.Document) bool {
-	return doc != nil && doc.GetRegime().Country == country
 }
 
 var _ = templruntime.GeneratedTemplate

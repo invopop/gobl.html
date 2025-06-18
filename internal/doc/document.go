@@ -41,8 +41,8 @@ func For(doc any) Document {
 	}
 }
 
-// Extract returns a Document interface for the given envelope.
-func Extract(env *gobl.Envelope) Document {
+// ExtractFrom returns a Document interface for the given envelope.
+func ExtractFrom(env *gobl.Envelope) Document {
 	return For(env.Extract())
 }
 

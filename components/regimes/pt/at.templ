@@ -4,7 +4,6 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal/doc"
-	"github.com/invopop/gobl/addons/pt/saft"
 	"github.com/invopop/gobl/cbc"
 )
 
@@ -77,24 +76,4 @@ templ titleType(doc doc.Document) {
 	if typ := docType(doc); typ != cbc.CodeEmpty {
 		@t.T("regimes.pt.title." + string(typ))
 	}
-}
-
-func docType(doc doc.Document) cbc.Code {
-	ext := doc.GetExt()
-	switch {
-	case ext.Has(saft.ExtKeyInvoiceType):
-		return ext.Get(saft.ExtKeyInvoiceType)
-	case ext.Has(saft.ExtKeyWorkType):
-		return ext.Get(saft.ExtKeyWorkType)
-	case ext.Has(saft.ExtKeyMovementType):
-		return ext.Get(saft.ExtKeyMovementType)
-	case ext.Has(saft.ExtKeyPaymentType):
-		return ext.Get(saft.ExtKeyPaymentType)
-	default:
-		return cbc.CodeEmpty
-	}
-}
-
-func isPortuguese(doc doc.Document) bool {
-	return doc != nil && doc.GetRegime().Country == country
 }
