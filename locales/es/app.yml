@@ -46,6 +46,7 @@ es:
         discount: "Desc."
         charges: "Cargos"
         total: "Total"
+        exemption: "Exención"
 
       totals: &totals
         sum: "Suma"
@@ -72,6 +73,7 @@ es:
         base: "Base"
         rate: "Tasa"
         amount: "Monto"
+        exemption: "Exención"
 
       payment: &payment
         title: "Pago"

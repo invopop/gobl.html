@@ -12,6 +12,7 @@ import (
 	"fmt"
 
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/tax"
 )
@@ -86,7 +87,7 @@ func paymentLines(pmt *bill.Payment, tt *tax.Total) templ.Component {
 					var templ_7745c5c3_Var3 string
 					templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(r.CategoryDef(cat.Code).Name.In(t.Lang(ctx)))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment_lines.templ`, Line: 29, Col: 55}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment_lines.templ`, Line: 30, Col: 55}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 					if templ_7745c5c3_Err != nil {
@@ -159,7 +160,7 @@ func paymentLine(l *bill.PaymentLine, pmt *bill.Payment, tt *tax.Total, st *subt
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(t.LocalizeMoney(ctx, st.Add(&l.Amount)))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment_lines.templ`, Line: 50, Col: 60}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment_lines.templ`, Line: 51, Col: 60}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -172,7 +173,7 @@ func paymentLine(l *bill.PaymentLine, pmt *bill.Payment, tt *tax.Total, st *subt
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprint(l.Index))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment_lines.templ`, Line: 52, Col: 24}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment_lines.templ`, Line: 53, Col: 24}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -187,7 +188,7 @@ func paymentLine(l *bill.PaymentLine, pmt *bill.Payment, tt *tax.Total, st *subt
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = titleCode(l.Document.Series, l.Document.Code, pmt.Regime).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = joinCode(doc.For(pmt), l.Document.Series, l.Document.Code).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -203,7 +204,7 @@ func paymentLine(l *bill.PaymentLine, pmt *bill.Payment, tt *tax.Total, st *subt
 				var templ_7745c5c3_Var7 string
 				templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(l.Document.Description)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment_lines.templ`, Line: 61, Col: 36}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment_lines.templ`, Line: 62, Col: 36}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 				if templ_7745c5c3_Err != nil {
@@ -226,7 +227,7 @@ func paymentLine(l *bill.PaymentLine, pmt *bill.Payment, tt *tax.Total, st *subt
 				var templ_7745c5c3_Var8 string
 				templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(l.Description)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment_lines.templ`, Line: 65, Col: 27}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment_lines.templ`, Line: 66, Col: 27}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 				if templ_7745c5c3_Err != nil {
@@ -245,7 +246,7 @@ func paymentLine(l *bill.PaymentLine, pmt *bill.Payment, tt *tax.Total, st *subt
 			var templ_7745c5c3_Var9 string
 			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(l.Description)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment_lines.templ`, Line: 69, Col: 20}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/payment_lines.templ`, Line: 70, Col: 20}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 			if templ_7745c5c3_Err != nil {

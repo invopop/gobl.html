@@ -129,7 +129,7 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 
 	// Extract the currency to use for formatting
 	if o.NumFormatter == nil {
-		if doc := doc.Extract(env); doc != nil {
+		if doc := doc.ExtractFrom(env); doc != nil {
 			nf := doc.GetCurrency().Def().Formatter()
 
 			if doc.GetRegime().Country == l10n.PT.Tax() {

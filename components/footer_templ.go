@@ -228,8 +228,8 @@ func pageNumber(ctx context.Context) string {
 func footerNotesText(ctx context.Context, env *gobl.Envelope) string {
 	out := make([]string, 0)
 	// special case for PT
-	if txt := pt.FooterNotes(env); txt != "" {
-		out = append(out, txt)
+	if notes := pt.FooterNotes(env); len(notes) > 0 {
+		out = append(out, notes...)
 	}
 	if opts := internal.Options(ctx); opts.Notes != "" {
 		out = append(out, opts.Notes)

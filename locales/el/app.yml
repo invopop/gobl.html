@@ -45,6 +45,7 @@ el:
         discount: "Έκπτωση"
         charges: "Χρεώσεις"
         total: "Σύνολο"
+        exemption: "Απαλλαγή"
 
       totals: &totals
         sum: "Άθροισμα"
@@ -71,6 +72,7 @@ el:
         base: "Βάση"
         rate: "Ποσοστό"
         amount: "Ποσό"
+        exemption: "Απαλλαγή"
 
       payment: &payment
         title: "Πληρωμή"

@@ -12,11 +12,11 @@ import (
 	"context"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cal"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/currency"
-	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
 	"maps"
 	"slices"
@@ -154,7 +154,7 @@ func summary(inv *bill.Invoice) templ.Component {
 				}
 			}
 			if len(inv.Preceding) > 0 {
-				templ_7745c5c3_Err = summaryPrecedingRows(inv.Preceding, inv.Regime).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = summaryPrecedingRows(inv).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -189,7 +189,7 @@ func summary(inv *bill.Invoice) templ.Component {
 	})
 }
 
-func summaryPrecedingRows(prec []*org.DocumentRef, reg tax.Regime) templ.Component {
+func summaryPrecedingRows(obj any) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -210,7 +210,8 @@ func summaryPrecedingRows(prec []*org.DocumentRef, reg tax.Regime) templ.Compone
 			templ_7745c5c3_Var4 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		for _, pre := range prec {
+		doc := doc.For(obj)
+		for _, pre := range doc.GetPreceding() {
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "<li class=\"preceding\"><span class=\"label\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -223,7 +224,7 @@ func summaryPrecedingRows(prec []*org.DocumentRef, reg tax.Regime) templ.Compone
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = titleCode(pre.Series, pre.Code, reg).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = joinCode(doc, pre.Series, pre.Code).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -253,7 +254,7 @@ func summaryPrecedingRows(prec []*org.DocumentRef, reg tax.Regime) templ.Compone
 				var templ_7745c5c3_Var5 string
 				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(pre.Reason)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 91, Col: 17}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 92, Col: 17}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 				if templ_7745c5c3_Err != nil {
@@ -310,7 +311,7 @@ func summaryOrderingRows(ord *bill.Ordering) templ.Component {
 			var templ_7745c5c3_Var7 string
 			templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(ord.Code.String())
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 105, Col: 23}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 106, Col: 23}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 			if templ_7745c5c3_Err != nil {
@@ -336,7 +337,7 @@ func summaryOrderingRows(ord *bill.Ordering) templ.Component {
 				var templ_7745c5c3_Var8 string
 				templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(ident.Label)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 116, Col: 18}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 117, Col: 18}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 				if templ_7745c5c3_Err != nil {
@@ -349,7 +350,7 @@ func summaryOrderingRows(ord *bill.Ordering) templ.Component {
 				var templ_7745c5c3_Var9 string
 				templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(ident.Code.String())
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 119, Col: 26}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 120, Col: 26}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 				if templ_7745c5c3_Err != nil {
@@ -395,7 +396,7 @@ func summaryTaxExtRows(ext tax.Extensions) templ.Component {
 				var templ_7745c5c3_Var11 string
 				templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(label)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 131, Col: 12}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 132, Col: 12}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 				if templ_7745c5c3_Err != nil {
@@ -408,7 +409,7 @@ func summaryTaxExtRows(ext tax.Extensions) templ.Component {
 				var templ_7745c5c3_Var12 string
 				templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(ext[k].String())
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 134, Col: 22}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 135, Col: 22}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 				if templ_7745c5c3_Err != nil {
