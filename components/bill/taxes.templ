@@ -7,10 +7,12 @@ import (
 
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/tax"
+	"github.com/invopop/gobl/num"
 )
 
 templ taxes(r *tax.RegimeDef, taxes *tax.Total) {
 	if taxes != nil && len(taxes.Categories) > 0 {
+		{{ ts := prepareTaxSupport(taxes) }}
 		<section class="taxes">
 			@t.Scope(".taxes") {
 				<h2>
@@ -28,6 +30,11 @@ templ taxes(r *tax.RegimeDef, taxes *tax.Total) {
 							<th class="rate">
 								@t.T(".rate")
 							</th>
+							if ts.exemptions {
+								<th class="exemption">
+									@t.T(".exemption")
+								</th>
+							}
 							<th class="amount">
 								@t.T(".amount")
 							</th>
@@ -36,7 +43,7 @@ templ taxes(r *tax.RegimeDef, taxes *tax.Total) {
 					<tbody>
 						for _, cat := range taxes.Categories {
 							for i, rate := range cat.Rates {
-								@taxRateRow(r, cat, rate, taxCategoryRowSpan(cat, i))
+								@taxRateRow(r, cat, rate, taxCategoryRowSpan(cat, i), ts)
 							}
 						}
 					</tbody>
@@ -46,7 +53,7 @@ templ taxes(r *tax.RegimeDef, taxes *tax.Total) {
 	}
 }
 
-templ taxRateRow(r *tax.RegimeDef, cat *tax.CategoryTotal, rate *tax.RateTotal, span int) {
+templ taxRateRow(r *tax.RegimeDef, cat *tax.CategoryTotal, rate *tax.RateTotal, span int, ts *taxSupport) {
 	<tr>
 		if span > 0 {
 			<td rowspan={ fmt.Sprint(span) } class="category">
@@ -63,17 +70,22 @@ templ taxRateRow(r *tax.RegimeDef, cat *tax.CategoryTotal, rate *tax.RateTotal, 
 				} else {
 					@t.L(*rate.Percent)
 				}
-			} else if code := taxExemptionCode(rate.Ext); code != "" {
-				<code>
-					{ code }
-				</code>
 			} else {
-				&mdash;
+				@t.T(".no_percent")
 			}
 			if rate.Surcharge != nil {
 				+@t.P(rate.Surcharge.Percent)
 			}
 		</td>
+		if ts.exemptions {
+			<td class="exemption">
+				if code := taxExemptionCode(rate.Percent, rate.Ext); code != "" {
+					<code>
+						{ code }
+					</code>
+				}
+			</td>
+		}
 		<td class="amount">
 			if cat.Retained {
 				@t.LM(rate.Amount)
@@ -106,7 +118,11 @@ func taxCategoryTotalName(ctx context.Context, r *tax.RegimeDef, cat *tax.Catego
 
 // taxExemptionCode looks at the extension and tries to extract the
 // exemption code.
-func taxExemptionCode(ext tax.Extensions) string {
+func taxExemptionCode(percent *num.Percentage, ext tax.Extensions) string {
+	if percent != nil && !percent.IsZero() {
+		return ""
+	}
+
 	// First try a code with the word `exempt` in the key
 	for k, v := range ext {
 		if strings.Contains(k.String(), "exempt") {

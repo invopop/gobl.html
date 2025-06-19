@@ -43,6 +43,7 @@ de:
         discount: "Rabatt"
         charges: "Gebühren"
         total: "Gesamt"
+        exemption: "Befreiung"
 
       totals: &totals
         sum: "Summe"
@@ -69,6 +70,7 @@ de:
         base: "Basis"
         rate: "Satz"
         amount: "Betrag"
+        exemption: "Befreiung"
 
       payment: &payment
         title: "Zahlung"

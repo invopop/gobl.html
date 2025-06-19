@@ -38,6 +38,7 @@ fr:
         discount: "Remise"
         charges: "Frais"
         total: "Total"
+        exemption: "Exonération"
       totals: &totals
         sum: "Somme"
         discount: "Remise"
@@ -62,6 +63,7 @@ fr:
         base: "Base"
         rate: "Taux"
         amount: "Montant"
+        exemption: "Exonération"
       payment: &payment
         title: "Paiement"
         instructions: &payment_instructions

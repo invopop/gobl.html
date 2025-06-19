@@ -62,6 +62,11 @@ templ linesWithSupport(reg *tax.RegimeDef, lines []*bill.Line, dss []*bill.Disco
 						<th class="tax">
 							{ cat.Name.In(t.Lang(ctx)) }
 						</th>
+						if ls.exemptions[cat] {
+							<th class="exemption">
+								@t.T(".exemption")
+							</th>
+						}
 					}
 					if ls.totals {
 						<th class="total">
@@ -140,17 +145,29 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 			</td>
 		}
 		for _, cat := range ls.categories {
+			{{ combo := l.Taxes.Get(cat.Code) }}
 			<td class="tax">
-				if combo := l.Taxes.Get(cat.Code); combo != nil {
+				if combo != nil {
 					if combo.Percent != nil {
 						@t.L(*combo.Percent)
 					} else {
-						&mdash;
+						@t.T(".no_percent")
 					}
 				} else {
 					<!-- empty -->
 				}
 			</td>
+			if ls.exemptions[cat] {
+				<td class="exemption">
+					if combo != nil {
+						if code := taxExemptionCode(combo.Percent, combo.Ext); code != "" {
+							<code>
+								{ code }
+							</code>
+						}
+					}
+				</td>
+			}
 		}
 		if ls.totals {
 			<td class="total">

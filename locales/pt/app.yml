@@ -43,6 +43,8 @@ pt:
         discount: "Desc."
         charges: "Encargos"
         total: "Total"
+        no_percent: "0,0%"
+        exemption: "Isenção"
 
       totals: &totals
         sum: "Soma"
@@ -69,6 +71,8 @@ pt:
         base: "Base"
         rate: "Taxa"
         amount: "Quantia"
+        exemption: "Isenção"
+        no_percent: "0,0%"
 
       payment: &payment
         title: "Pagamento"

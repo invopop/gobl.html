@@ -38,6 +38,7 @@ it:
         discount: "Sconto"
         charges: "Oneri"
         total: "Totale"
+        exemption: "Esenzione"
       totals: &totals
         sum: "Somma"
         discount: "Sconto"
@@ -62,6 +63,7 @@ it:
         base: "Base"
         rate: "Aliquota"
         amount: "Importo"
+        exemption: "Esenzione"
       payment: &payment
         title: "Pagamento"
         instructions: &payment_instructions

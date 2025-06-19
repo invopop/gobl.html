@@ -43,6 +43,7 @@ pl:
         discount: "Rabat"
         charges: "Opłaty"
         total: "Suma"
+        exemption: "Zwolnienie"
 
       totals: &totals
         sum: "Suma"
@@ -69,6 +70,7 @@ pl:
         base: "Podstawa"
         rate: "Stawka"
         amount: "Kwota"
+        exemption: "Zwolnienie"
 
       payment: &payment
         title: "Płatność"

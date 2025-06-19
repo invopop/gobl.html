@@ -47,6 +47,8 @@ en:
         discount: "Disc."
         charges: "Chgs."
         total: "Total"
+        no_percent: "—"
+        exemption: "Exemption"
 
       totals: &totals
         sum: "Sum"
@@ -73,6 +75,8 @@ en:
         base: "Base"
         rate: "Rate"
         amount: "Amount"
+        exemption: "Exemption"
+        no_percent: "—"
 
       payment: &payment
         title: "Payment"
