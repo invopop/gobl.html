@@ -34,13 +34,14 @@ templ Order(env *gobl.Envelope, ord *bill.Order) {
 }
 
 templ orderHeader(env *gobl.Envelope, ord *bill.Order) {
+	{{ doc := doc.For(ord) }}
 	<div class="details">
-		@title(env, doc.For(ord))
+		@title(env, doc)
 		@orderSummary(ord)
 	</div>
 	<div class="contacts">
-		@contact(ord.Supplier, "supplier")
-		@contact(ord.Customer, "customer")
+		@supplier(doc)
+		@customer(doc)
 		@contact(ord.Buyer, "buyer")
 		@contact(ord.Seller, "seller")
 	</div>

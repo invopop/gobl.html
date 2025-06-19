@@ -609,11 +609,12 @@ func defaultHeader(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 			templ_7745c5c3_Var21 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
+		doc := doc.For(inv)
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "<div class=\"details\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = title(env, doc.For(inv)).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = title(env, doc).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -637,11 +638,11 @@ func defaultHeader(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = contact(inv.Supplier, "supplier").Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = supplier(doc).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = contact(inv.Customer, "customer").Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = customer(doc).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -674,15 +675,16 @@ func din5008Header(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 			templ_7745c5c3_Var22 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
+		doc := doc.For(inv)
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "<div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = title(env, doc.For(inv)).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = title(env, doc).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = contact(inv.Customer, "customer").Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = customer(doc).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -694,7 +696,7 @@ func din5008Header(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = contact(inv.Supplier, "supplier").Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = supplier(doc).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

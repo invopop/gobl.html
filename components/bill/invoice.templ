@@ -127,27 +127,29 @@ templ titleBadges(env *gobl.Envelope, doc doc.Document) {
 }
 
 templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
+	{{ doc := doc.For(inv) }}
 	<div class="details">
-		@title(env, doc.For(inv))
+		@title(env, doc)
 		@summary(inv)
 	</div>
 	// Spanish QRs
 	@es.VerifactuQR(env)
 	@es.TicketBAIQR(env)
 	<div class="contacts">
-		@contact(inv.Supplier, "supplier")
-		@contact(inv.Customer, "customer")
+		@supplier(doc)
+		@customer(doc)
 	</div>
 }
 
 templ din5008Header(env *gobl.Envelope, inv *bill.Invoice) {
+	{{ doc := doc.For(inv) }}
 	<div>
-		@title(env, doc.For(inv))
-		@contact(inv.Customer, "customer")
+		@title(env, doc)
+		@customer(doc)
 	</div>
 	<div>
 		@summary(inv)
-		@contact(inv.Supplier, "supplier")
+		@supplier(doc)
 	</div>
 }
 

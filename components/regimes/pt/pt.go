@@ -12,6 +12,7 @@ import (
 	"github.com/invopop/gobl/addons/pt/saft"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/l10n"
+	gorg "github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/regimes/pt"
 	go_qr "github.com/piglig/go-qr"
 )
@@ -55,6 +56,28 @@ func FooterNotes(env *gobl.Envelope) []string {
 		}
 	}
 	return nil
+}
+
+// AdaptCustomer adapts the customer to the simplified invoice format if needed.
+func AdaptCustomer(doc doc.Document, par *gorg.Party) *gorg.Party {
+	if !isPortuguese(doc) {
+		// no need to adapt
+		return par
+	}
+
+	// Make sure there's a customer even if none is provided
+	var cus gorg.Party
+	if par != nil {
+		cus = *par
+	}
+
+	// If the customer has no tax ID, we need to adapt it to the simplified invoice format
+	if cus.TaxID == nil || cus.TaxID.Code == "" {
+		cus.Alias = cus.Name
+		cus.Name = "Consumidor Final" // Article 2.2.5 of Despacho No. 8632/2014
+	}
+
+	return &cus
 }
 
 // generateQR implements a custom QR code generator that complies with the AT spec.

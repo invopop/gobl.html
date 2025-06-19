@@ -4,7 +4,20 @@ import (
 	gorg "github.com/invopop/gobl/org"
 	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/regimes/pt"
+	"github.com/invopop/gobl.html/internal/doc"
 )
+
+templ supplier(doc doc.Document) {
+	{{ sup := doc.GetSupplier() }}
+	@contact(sup, "supplier")
+}
+
+templ customer(doc doc.Document) {
+	{{ cus := doc.GetCustomer() }}
+	{{ cus = pt.AdaptCustomer(doc, cus) }}
+	@contact(cus, "customer")
+}
 
 templ contact(par *gorg.Party, key string) {
 	if par != nil {

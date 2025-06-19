@@ -16,6 +16,7 @@ type Document interface {
 	Extract() any
 	GetType() cbc.Key
 	GetSupplier() *org.Party
+	GetCustomer() *org.Party
 	GetIssueDate() cal.Date
 	GetSeries() cbc.Code
 	GetCode() cbc.Code
@@ -56,6 +57,7 @@ type paymentDoc bill.Payment
 func (i *invoiceDoc) Extract() any                     { return (*bill.Invoice)(i) }
 func (i *invoiceDoc) GetType() cbc.Key                 { return i.Type }
 func (i *invoiceDoc) GetSupplier() *org.Party          { return i.Supplier }
+func (i *invoiceDoc) GetCustomer() *org.Party          { return i.Customer }
 func (i *invoiceDoc) GetIssueDate() cal.Date           { return i.IssueDate }
 func (i *invoiceDoc) GetSeries() cbc.Code              { return i.Series }
 func (i *invoiceDoc) GetCode() cbc.Code                { return i.Code }
@@ -73,6 +75,7 @@ func (i *invoiceDoc) GetExt() tax.Extensions {
 func (d *deliveryDoc) Extract() any                     { return (*bill.Delivery)(d) }
 func (d *deliveryDoc) GetType() cbc.Key                 { return d.Type }
 func (d *deliveryDoc) GetSupplier() *org.Party          { return d.Supplier }
+func (d *deliveryDoc) GetCustomer() *org.Party          { return d.Customer }
 func (d *deliveryDoc) GetIssueDate() cal.Date           { return d.IssueDate }
 func (d *deliveryDoc) GetSeries() cbc.Code              { return d.Series }
 func (d *deliveryDoc) GetCode() cbc.Code                { return d.Code }
@@ -90,6 +93,7 @@ func (d *deliveryDoc) GetExt() tax.Extensions {
 func (o *orderDoc) Extract() any                     { return (*bill.Order)(o) }
 func (o *orderDoc) GetType() cbc.Key                 { return o.Type }
 func (o *orderDoc) GetSupplier() *org.Party          { return o.Supplier }
+func (o *orderDoc) GetCustomer() *org.Party          { return o.Customer }
 func (o *orderDoc) GetIssueDate() cal.Date           { return o.IssueDate }
 func (o *orderDoc) GetSeries() cbc.Code              { return o.Series }
 func (o *orderDoc) GetCode() cbc.Code                { return o.Code }
@@ -107,6 +111,7 @@ func (o *orderDoc) GetExt() tax.Extensions {
 func (p *paymentDoc) Extract() any                     { return (*bill.Payment)(p) }
 func (p *paymentDoc) GetType() cbc.Key                 { return p.Type }
 func (p *paymentDoc) GetSupplier() *org.Party          { return p.Supplier }
+func (p *paymentDoc) GetCustomer() *org.Party          { return p.Customer }
 func (p *paymentDoc) GetIssueDate() cal.Date           { return p.IssueDate }
 func (p *paymentDoc) GetSeries() cbc.Code              { return p.Series }
 func (p *paymentDoc) GetCode() cbc.Code                { return p.Code }

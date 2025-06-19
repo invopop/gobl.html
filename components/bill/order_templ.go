@@ -137,11 +137,12 @@ func orderHeader(env *gobl.Envelope, ord *bill.Order) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
+		doc := doc.For(ord)
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "<div class=\"details\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = title(env, doc.For(ord)).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = title(env, doc).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -153,11 +154,11 @@ func orderHeader(env *gobl.Envelope, ord *bill.Order) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = contact(ord.Supplier, "supplier").Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = supplier(doc).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = contact(ord.Customer, "customer").Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = customer(doc).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -253,7 +254,7 @@ func orderSummary(ord *bill.Order) templ.Component {
 			var templ_7745c5c3_Var6 string
 			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(currencyName(ctx, ord.Currency))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/order.templ`, Line: 69, Col: 39}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/order.templ`, Line: 70, Col: 39}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 			if templ_7745c5c3_Err != nil {
@@ -414,7 +415,7 @@ func summaryContractRows(ord *bill.Order) templ.Component {
 				var templ_7745c5c3_Var8 string
 				templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(contract.Reason)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/order.templ`, Line: 126, Col: 22}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/order.templ`, Line: 127, Col: 22}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 				if templ_7745c5c3_Err != nil {
