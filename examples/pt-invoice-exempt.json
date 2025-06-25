@@ -4,7 +4,7 @@
 		"uuid": "01902adc-05c8-7000-8703-60c8dcf87bd6",
 		"dig": {
 			"alg": "sha256",
-			"val": "ac894b4a58725012cab8e5da9aa1bbcb96dab8018401517c57a3bbf1d63cf174"
+			"val": "8f0db7383fe853ef8e61550612f9ebe88566ac2f0792a4e533a86003df88cc6a"
 		},
 		"stamps": [
 			{
@@ -28,11 +28,19 @@
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
 		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
 		"uuid": "01902adc-055a-7000-88ea-0dc88769ee3c",
 		"type": "standard",
 		"code": "FT IXTEST-01/27",
 		"issue_date": "2024-06-18",
 		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"pt-saft-invoice-type": "FT"
+			}
+		},
 		"supplier": {
 			"uuid": "28437140-ce65-481a-a58c-9de1fc8dfedd",
 			"name": "IX test",
@@ -73,90 +81,137 @@
 				"i": 1,
 				"quantity": "1",
 				"item": {
-					"name": "Noite em quarto duplo",
-					"price": "1000.00"
+					"name": "Non-exempt item",
+					"price": "123.00",
+					"unit": "one",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
 				},
-				"sum": "1000.00",
+				"sum": "123.00",
 				"taxes": [
 					{
 						"cat": "VAT",
-						"rate": "exempt",
+						"rate": "standard",
+						"percent": "23.0%",
 						"ext": {
 							"pt-region": "PT",
-							"pt-saft-exemption": "M41"
+							"pt-saft-tax-rate": "NOR"
 						}
 					}
 				],
-				"total": "1000.00"
+				"total": "123.00"
 			},
 			{
 				"i": 2,
 				"quantity": "1",
 				"item": {
-					"name": "Noite em quarto duplo extra",
-					"price": "50.00"
+					"name": "Exempt item",
+					"price": "456.00",
+					"unit": "one",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
 				},
-				"sum": "50.00",
+				"sum": "456.00",
 				"taxes": [
 					{
 						"cat": "VAT",
 						"rate": "exempt",
 						"ext": {
 							"pt-region": "PT",
-							"pt-saft-exemption": "M42"
+							"pt-saft-exemption": "M41",
+							"pt-saft-tax-rate": "ISE"
 						}
 					}
 				],
-				"total": "50.00"
+				"total": "456.00"
+			},
+			{
+				"i": 3,
+				"quantity": "1",
+				"item": {
+					"name": "Exempt item (different reason)",
+					"price": "789.00",
+					"unit": "one",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "789.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "exempt",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-exemption": "M42",
+							"pt-saft-tax-rate": "ISE"
+						}
+					}
+				],
+				"total": "789.00"
 			}
 		],
 		"totals": {
-			"sum": "1050.00",
-			"total": "1050.00",
+			"sum": "1368.00",
+			"total": "1368.00",
 			"taxes": {
 				"categories": [
 					{
 						"code": "VAT",
 						"rates": [
 							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "NOR"
+								},
+								"base": "123.00",
+								"percent": "23.0%",
+								"amount": "28.29"
+							},
+							{
 								"key": "exempt",
 								"ext": {
 									"pt-region": "PT",
-									"pt-saft-exemption": "M41"
+									"pt-saft-exemption": "M41",
+									"pt-saft-tax-rate": "ISE"
 								},
-								"base": "1000.00",
+								"base": "456.00",
 								"amount": "0.00"
 							},
 							{
 								"key": "exempt",
 								"ext": {
 									"pt-region": "PT",
-									"pt-saft-exemption": "M42"
+									"pt-saft-exemption": "M42",
+									"pt-saft-tax-rate": "ISE"
 								},
-								"base": "50.00",
+								"base": "789.00",
 								"amount": "0.00"
 							}
 						],
-						"amount": "0.00"
+						"amount": "28.29"
 					}
 				],
-				"sum": "0.00"
+				"sum": "28.29"
 			},
-			"tax": "0.00",
-			"total_with_tax": "1050.00",
-			"payable": "1050.00"
+			"tax": "28.29",
+			"total_with_tax": "1396.29",
+			"payable": "1396.29"
 		},
 		"notes": [
 			{
 				"key": "legal",
 				"code": "M41",
-				"src": "pt-exemption-code",
+				"src": "pt-saft-exemption",
 				"text": "Reverse charge / Autoliquidação - Artigo 8.º n.º 3 do RITI"
 			},
 			{
 				"key": "legal",
 				"code": "M42",
-				"src": "pt-exemption-code",
+				"src": "pt-saft-exemption",
 				"text": "Reverse charge / Autoliquidação - Decreto-Lei n.º 21/2007, de 29 de janeiro"
 			}
 		]

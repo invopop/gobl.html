@@ -36,13 +36,14 @@ templ Delivery(env *gobl.Envelope, dlv *bill.Delivery) {
 }
 
 templ deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) {
+	{{ doc := doc.For(dlv) }}
 	<div class="details">
-		@title(env, doc.For(dlv))
+		@title(env, doc)
 		@deliverySummary(dlv)
 	</div>
 	<div class="contacts">
-		@contact(dlv.Supplier, "supplier")
-		@contact(dlv.Customer, "customer")
+		@supplier(doc)
+		@customer(doc)
 		@contact(dlv.Despatcher, "despatcher")
 		@contact(dlv.Receiver, "receiver")
 		@contact(dlv.Courier, "courier")
@@ -103,7 +104,7 @@ templ deliverySummary(dlv *bill.Delivery) {
 					</li>
 				}
 				if len(dlv.Preceding) > 0 {
-					@summaryPrecedingRows(dlv.Preceding, dlv.Regime)
+					@summaryPrecedingRows(dlv)
 				}
 				if dlv.Ordering != nil {
 					@summaryOrderingRows(dlv.Ordering)
@@ -186,7 +187,7 @@ templ deliveryTotals(dlv *bill.Delivery, totals *bill.Totals) {
 								@t.T(".discount")
 							</th>
 							<td>
-								@t.LM(totals.Discount.Invert())
+								@t.LM(*totals.Discount)
 							</td>
 						</tr>
 					}

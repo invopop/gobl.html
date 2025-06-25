@@ -1,0 +1,121 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01902adc-05c8-7000-8703-60c8dcf87bd6",
+		"dig": {
+			"alg": "sha256",
+			"val": "468b0b7f6dd1c0ca49fab54f095c899eaa644dd16c8852f9c58a15381599fa41"
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJ3JYDP-27"
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:508025338*B:999999990*C:PT*D:FT*E:N*F:20240618*G:FT IXTEST-01/27*H:AAJFJ3JYDP-27*I1:PT*I2:100.00*N:0.00*O:100.00*Q:vVWj*R:192"
+			},
+			{
+				"prv": "at-hash",
+				"val": "vVWj"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "192"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"$tags": [
+			"simplified"
+		],
+		"uuid": "01902adc-055a-7000-88ea-0dc88769ee3c",
+		"type": "standard",
+		"code": "FS IXTEST-01/34",
+		"issue_date": "2024-06-18",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"pt-saft-invoice-type": "FS"
+			}
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "770013813"
+			},
+			"addresses": [
+				{
+					"street": "Rua das Flores 200 3º Esquerdo",
+					"locality": "Porto",
+					"code": "4050-265",
+					"country": "PT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Noite em quarto duplo",
+					"price": "100.00",
+					"unit": "one",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "100.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "100.00"
+			}
+		],
+		"totals": {
+			"sum": "100.00",
+			"total": "100.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "NOR"
+								},
+								"base": "100.00",
+								"percent": "23.0%",
+								"amount": "23.00"
+							}
+						],
+						"amount": "23.00"
+					}
+				],
+				"sum": "23.00"
+			},
+			"tax": "23.00",
+			"total_with_tax": "123.00",
+			"payable": "123.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6ImUzNzFjMzBiLTNiMzMtNGNiMC04NzM5LThiOTUzMWM1NWM2NiJ9.eyJ1dWlkIjoiMDE5MDJhZGMtMDVjOC03MDAwLTg3MDMtNjBjOGRjZjg3YmQ2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjhlZWJmNThlYjhiNTlkYTA0Y2ZlZmQxODVkZDkyYTk1YWU2NzhiYmU5YjYzMTUwOTUxYTMwODRkNDllNjRmNmMifSwic3RhbXBzIjpbeyJwcnYiOiJhdC1hdGN1ZCIsInZhbCI6IkFBSkZKM0pZRFAtMjcifSx7InBydiI6ImF0LXFyIiwidmFsIjoiQTo1MDgwMjUzMzgqQjo5OTk5OTk5OTAqQzpQVCpEOkZUKkU6TipGOjIwMjQwNjE4Kkc6RlQgSVhURVNULTAxLzI3Kkg6QUFKRkozSllEUC0yNypJMTpQVCpJMjoxMDAuMDAqTjowLjAwKk86MTAwLjAwKlE6dlZXaipSOjE5MiJ9LHsicHJ2IjoiYXQtaGFzaCIsInZhbCI6InZWV2oifSx7InBydiI6ImF0LWFwcC1pZCIsInZhbCI6IjE5MiJ9XX0.CTWcw5_36Y3LrwXbX1KpNUqgRWzu2-HNDDJXubCBeiODJ55TsU5oQ1gq_azpImfn3c0CPzPo1k1X-n84TgG5Og"
+	]
+}

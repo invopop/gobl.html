@@ -50,6 +50,9 @@
               </h1>
               <h2 class="code">
                 FT IXTEST-01/27
+                <span class="badge">
+                  Original
+                </span>
               </h2>
             </section>
             <section class="summary">
@@ -103,6 +106,9 @@
                   Customer
                 </h2>
                 <div class="org-party">
+                  <div class="name">
+                    Consumidor Final
+                  </div>
                   <div class="person">
                     João Silva
                   </div>
@@ -130,11 +136,17 @@
                 <th class="quantity">
                   Qty.
                 </th>
+                <th class="unit">
+                  Unit
+                </th>
                 <th class="price">
                   Price
                 </th>
                 <th class="tax">
                   VAT
+                </th>
+                <th class="exemption">
+                  Exemption
                 </th>
                 <th class="total">
                   Total
@@ -142,48 +154,90 @@
               </tr>
             </thead>
             <tbody>
-              <tr data-subtotal="1 000,00 €">
+              <tr data-subtotal="123,00 €">
                 <td class="ref">
                   1
                 </td>
                 <td class="description">
                   <span>
-                    Noite em quarto duplo
+                    Non-exempt item
                   </span>
                 </td>
                 <td class="quantity">
                   1
                 </td>
+                <td class="unit">
+                  one
+                </td>
                 <td class="price">
-                  1 000,00 €
+                  123,00 €
                 </td>
                 <td class="tax">
-                  &mdash;
+                  23,0%
                 </td>
+                <td class="exemption"></td>
                 <td class="total">
-                  1 000,00 €
+                  123,00 €
                 </td>
               </tr>
-              <tr data-subtotal="1 050,00 €">
+              <tr data-subtotal="579,00 €">
                 <td class="ref">
                   2
                 </td>
                 <td class="description">
                   <span>
-                    Noite em quarto duplo extra
+                    Exempt item
                   </span>
                 </td>
                 <td class="quantity">
                   1
                 </td>
+                <td class="unit">
+                  one
+                </td>
                 <td class="price">
-                  50,00 €
+                  456,00 €
                 </td>
                 <td class="tax">
-                  &mdash;
+                  —
+                </td>
+                <td class="exemption">
+                  <code>
+                    (M41)
+                  </code>
                 </td>
                 <td class="total">
-                  50,00 €
+                  456,00 €
+                </td>
+              </tr>
+              <tr data-subtotal="1 368,00 €">
+                <td class="ref">
+                  3
+                </td>
+                <td class="description">
+                  <span>
+                    Exempt item (different reason)
+                  </span>
+                </td>
+                <td class="quantity">
+                  1
+                </td>
+                <td class="unit">
+                  one
+                </td>
+                <td class="price">
+                  789,00 €
+                </td>
+                <td class="tax">
+                  —
+                </td>
+                <td class="exemption">
+                  <code>
+                    (M42)
+                  </code>
+                </td>
+                <td class="total">
+                  789,00 €
                 </td>
               </tr>
             </tbody>
@@ -203,7 +257,7 @@
                       Sum
                     </th>
                     <td>
-                      1 050,00 €
+                      1 368,00 €
                     </td>
                   </tr>
                   <tr class="tax">
@@ -211,7 +265,7 @@
                       Tax
                     </th>
                     <td>
-                      0,00 €
+                      28,29 €
                     </td>
                   </tr>
                   <tr class="payable strong">
@@ -219,7 +273,7 @@
                       Total to pay
                     </th>
                     <td>
-                      1 050,00 €
+                      1 396,29 €
                     </td>
                   </tr>
                 </tbody>
@@ -241,6 +295,9 @@
                     <th class="rate">
                       Rate
                     </th>
+                    <th class="exemption">
+                      Exemption
+                    </th>
                     <th class="amount">
                       Amount
                     </th>
@@ -248,13 +305,28 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td rowspan="2" class="category">
+                    <td rowspan="3" class="category">
                       VAT
                     </td>
                     <td class="base">
-                      1 000,00 €
+                      123,00 €
                     </td>
                     <td class="rate">
+                      23,0%
+                    </td>
+                    <td class="exemption"></td>
+                    <td class="amount">
+                      28,29 €
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="base">
+                      456,00 €
+                    </td>
+                    <td class="rate">
+                      —
+                    </td>
+                    <td class="exemption">
                       <code>
                         (M41)
                       </code>
@@ -265,9 +337,12 @@
                   </tr>
                   <tr>
                     <td class="base">
-                      50,00 €
+                      789,00 €
                     </td>
                     <td class="rate">
+                      —
+                    </td>
+                    <td class="exemption">
                       <code>
                         (M42)
                       </code>
@@ -377,6 +452,9 @@
             </h1>
             <h2 class="code">
               FT IXTEST-01/27
+              <span class="badge">
+                Original
+              </span>
             </h2>
           </section>
         </div>

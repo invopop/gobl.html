@@ -42,7 +42,7 @@ templ totalsBaseRows(inv *bill.Invoice, totals *bill.Totals) {
 				@t.T(".discount")
 			</th>
 			<td>
-				@t.LM(totals.Discount.Invert())
+				@t.LM(*totals.Discount)
 			</td>
 		</tr>
 	}

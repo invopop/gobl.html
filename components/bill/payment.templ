@@ -36,13 +36,14 @@ templ Payment(env *gobl.Envelope, pmt *bill.Payment) {
 }
 
 templ paymentHeader(env *gobl.Envelope, pmt *bill.Payment) {
+	{{ doc := doc.For(pmt) }}
 	<div class="details">
-		@title(env, doc.For(pmt))
+		@title(env, doc)
 		@paymentSummary(pmt)
 	</div>
 	<div class="contacts">
-		@contact(pmt.Supplier, "supplier")
-		@contact(pmt.Customer, "customer")
+		@supplier(doc)
+		@customer(doc)
 	</div>
 }
 

@@ -15,12 +15,14 @@ type lineSupport struct {
 	units      bool
 	prices     bool
 	totals     bool
+	exemptions map[*tax.CategoryDef]bool
 }
 
 // prepareLineSupport goes through the invoice lines and determines
 // some of the columns that will need to be shown
 func prepareLineSupport(reg *tax.RegimeDef, lines []*bill.Line, dss []*bill.Discount, chs []*bill.Charge) *lineSupport {
 	ls := new(lineSupport)
+	ls.exemptions = make(map[*tax.CategoryDef]bool)
 
 	cats := make([]*tax.CategoryDef, 0)
 	for _, l := range lines {
@@ -46,6 +48,9 @@ func prepareLineSupport(reg *tax.RegimeDef, lines []*bill.Line, dss []*bill.Disc
 			cat := reg.CategoryDef(combo.Category)
 			if cat != nil {
 				cats = addCategory(cats, cat)
+				if taxExemptionCode(combo.Percent, combo.Ext) != "" {
+					ls.exemptions[cat] = true
+				}
 			}
 		}
 	}

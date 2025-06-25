@@ -101,7 +101,8 @@ section.title .hero img {
     /* max-height: 10mm; */
 }
 section.title span.paid,
-section.title span.void {
+section.title span.void,
+section.title span.badge {
     font-size: 9pt;
     font-weight: 400;
     vertical-align: text-bottom;
@@ -109,6 +110,9 @@ section.title span.void {
     border-radius: 1mm;
     margin-left: 2mm;
     text-wrap: nowrap;
+    background-color: #5151511a;
+    border: 1px solid #51515133;
+    color: #494949;
 }
 section.title span.paid {
     background-color: #0290621a;
