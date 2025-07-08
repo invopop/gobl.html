@@ -5,7 +5,6 @@ import (
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
-	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/internal"
 	"strings"
 )
@@ -57,10 +56,6 @@ func pageNumber(ctx context.Context) string {
 
 func footerNotesText(ctx context.Context, env *gobl.Envelope) string {
 	out := make([]string, 0)
-	// special case for PT
-	if notes := pt.FooterNotes(env); len(notes) > 0 {
-		out = append(out, notes...)
-	}
 	if opts := internal.Options(ctx); opts.Notes != "" {
 		out = append(out, opts.Notes)
 	} else if env.Head.Notes != "" {
