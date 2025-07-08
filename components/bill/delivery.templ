@@ -24,7 +24,7 @@ templ Delivery(env *gobl.Envelope, dlv *bill.Delivery) {
 					</div>
 				}
 				@deliveryTracking(dlv)
-				@notes(dlv.Notes, dlv.Supplier)
+				@notes(dlv.Notes)
 				<div class="extensions">
 					// Region specific information
 					@pt.ATQR(env)

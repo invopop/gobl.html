@@ -102,15 +102,6 @@ fr:
             delivery: "A la livraison"
       notes:
         title: "Notes"
-        reg:
-          capital: "Capital social %{amount}"
-          registration: "Inscrit au registre:"
-          book: "Livre %{id}"
-          volume: "Volume %{id}"
-          sheet: "Feuille %{id}"
-          section: "Section %{id}"
-          page: "Page %{id}"
-          entry: "Entrée %{id}"
 
     payment:
       <<: *invoice
@@ -193,6 +184,15 @@ fr:
       ext_map:
         # Assurez-vous que cette liste est à jour dans toutes les langues !
         co-dian-municipality: "Municipalité"
+      reg:
+        capital: "Capital social: %{amount}"
+        registration: "Inscrit au registre:"
+        book: "Livre %{id}"
+        volume: "Volume %{id}"
+        sheet: "Feuille %{id}"
+        section: "Section %{id}"
+        page: "Page %{id}"
+        entry: "Entrée %{id}"
     address:
       label: "%{label}"
       country: "(%{country})"

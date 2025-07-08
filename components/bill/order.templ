@@ -22,7 +22,7 @@ templ Order(env *gobl.Envelope, ord *bill.Order) {
 					@taxes(ord.RegimeDef(), ord.Totals.Taxes)
 				</div>
 				@orderPaymentDetails(ord)
-				@notes(ord.Notes, ord.Supplier)
+				@notes(ord.Notes)
 				<div class="extensions">
 					// Region specific information
 					@pt.ATQR(env)

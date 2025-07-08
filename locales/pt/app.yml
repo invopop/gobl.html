@@ -20,7 +20,7 @@ pt:
         operation_date: "Data de Operação"
         currency: "Moeda"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Fatura Anterior"
+        preceding_document: "Referente a Fatura"
         order: "Encomenda"
         order_period: "Período"
         order_period_label: "%{label}"
@@ -58,8 +58,8 @@ pt:
         retained_tax: "Impostos retidos"
         rounding: "Arredondamento"
         total_to_pay: "Total a pagar"
-        advance: "Adiantamento: %{date} %{txt}"
-        advance_sum: "Soma dos adiantamentos"
+        advance: "Pagamento: %{date} %{txt}"
+        advance_sum: "Soma dos pagamentos"
         due_sum: "Total em Dívida"
         exchange_rate: "Câmbio para %{to} (%{amount})"
         carried_fwd: "Valor a transportar"
@@ -112,15 +112,6 @@ pt:
 
       notes:
         title: "Notas"
-        reg:
-          capital: "Capital Social %{amount}"
-          regisration: "Registada:"
-          book: "Livro %{id}"
-          volume: "Volume %{id}"
-          sheet: "Folha %{id}"
-          section: "Seção %{id}"
-          page: "Página %{id}"
-          entry: "Entrada %{id}"
 
     payment:
       <<: *invoice
@@ -200,6 +191,15 @@ pt:
       labels:
         default: "Código Fiscal"
       ext: "%{label}: %{value}"
+      reg:
+        capital: "Capital Social: %{amount}"
+        registration: "Registada:"
+        book: "Livro %{id}"
+        volume: "Volume %{id}"
+        sheet: "Folha %{id}"
+        section: "Seção %{id}"
+        page: "Página %{id}"
+        entry: "Entrada %{id}"
 
     address:
       label: "%{label}:"
