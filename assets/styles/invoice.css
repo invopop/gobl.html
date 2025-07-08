@@ -436,6 +436,7 @@ section.notes .note {
     float: top;
     display: none;
     margin: 0;
+    margin-bottom: 4mm;
 }
 .mp-footer {
     float: bottom;
