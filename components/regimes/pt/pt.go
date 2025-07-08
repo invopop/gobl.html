@@ -55,8 +55,7 @@ func AdaptCustomer(doc doc.Document, par *gorg.Party) *gorg.Party {
 
 	// If the customer has no tax ID, we need to adapt it to the simplified invoice format
 	if cus.TaxID == nil || cus.TaxID.Code == "" {
-		cus.Alias = cus.Name
-		cus.Name = "Consumidor Final" // Article 2.2.5 of Despacho No. 8632/2014
+		cus.Alias = "NIF: Consumidor Final" // Article 2.2.5 of Despacho No. 8632/2014
 	}
 
 	return &cus
