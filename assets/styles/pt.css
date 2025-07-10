@@ -31,3 +31,11 @@
   margin-top: 5mm;
   margin-bottom: -5mm;
 }
+
+.tail {
+  /*
+    This makes the best effort to keep the totals and QR code together in the
+    last page as required by regulations.
+  */
+  break-inside: avoid;
+}

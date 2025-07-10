@@ -35,7 +35,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 				}
 			</header>
 			@lines(inv)
-			<div class="tail"> <!-- `tail` contains everything that should be printed on the last page -->
+			<div class="tail">
 				<div class="totals">
 					@totals(inv, inv.Totals)
 					@taxes(inv.RegimeDef(), inv.Totals.Taxes)

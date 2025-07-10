@@ -16,7 +16,7 @@ templ Order(env *gobl.Envelope, ord *bill.Order) {
 				@orderHeader(env, ord)
 			</header>
 			@orderLines(ord)
-			<div class="tail"> <!-- `tail` contains everything that should be printed on the last page -->
+			<div class="tail">
 				<div class="totals">
 					@orderTotals(ord, ord.Totals)
 					@taxes(ord.RegimeDef(), ord.Totals.Taxes)
