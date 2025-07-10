@@ -16,6 +16,7 @@ import (
 	"github.com/invopop/gobl.html/components/bill"
 	"github.com/invopop/gobl.html/components/note"
 	"github.com/invopop/gobl.html/components/org"
+	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/layout"
 	gbill "github.com/invopop/gobl/bill"
@@ -53,6 +54,10 @@ func Envelope(env *gobl.Envelope) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		templ_7745c5c3_Err = assets.Stylesheet("invoice.css").Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = pt.Stylesheets(env).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

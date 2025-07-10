@@ -8,6 +8,7 @@ import (
 	"github.com/invopop/gobl.html/components/bill"
 	"github.com/invopop/gobl.html/components/note"
 	"github.com/invopop/gobl.html/components/org"
+	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/layout"
 	gbill "github.com/invopop/gobl/bill"
@@ -26,6 +27,7 @@ templ Envelope(env *gobl.Envelope) {
 			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
 			@assets.Stylesheet("envelope.css")
 			@assets.Stylesheet("invoice.css")
+			@pt.Stylesheets(env)
 		</head>
 		<body
 			if applyLetterLayout(ctx) {

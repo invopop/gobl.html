@@ -16,7 +16,7 @@ templ Delivery(env *gobl.Envelope, dlv *bill.Delivery) {
 				@deliveryHeader(env, dlv)
 			</header>
 			@deliveryLines(dlv)
-			<div class="tail"> <!-- `tail` contains everything that should be printed on the last page -->
+			<div class="tail">
 				if dlv.Totals != nil {
 					<div class="totals">
 							@deliveryTotals(dlv, dlv.Totals)

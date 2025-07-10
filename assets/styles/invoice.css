@@ -429,9 +429,6 @@ section.notes .note {
     line-height: 20pt;
     color: #030712;
 }
-.tail {
-    break-inside: avoid;
-}
 .mp-header {
     float: top;
     display: none;

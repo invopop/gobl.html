@@ -10,10 +10,15 @@ import (
 	"github.com/invopop/gobl/cbc"
 )
 
+templ Stylesheets(env *gobl.Envelope) {
+	if atATCUD(env) != "" {
+		@assets.Stylesheet("pt.css")
+	}
+}
+
 templ ATQR(env *gobl.Envelope) {
 	if atcud := atATCUD(env); atcud != "" {
 		if qr := atQR(env); qr != "" {
-			@assets.Stylesheet("pt.css")
 			<section class="pt">
 				<div class="at">
 					<div class="label">

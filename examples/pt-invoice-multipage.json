@@ -4,7 +4,7 @@
 		"uuid": "01902adc-05c8-7000-8703-60c8dcf87bd6",
 		"dig": {
 			"alg": "sha256",
-			"val": "3e26b43da473993a59f4360c13d803ad69979a7f342c3f22bcc87960f7629a9f"
+			"val": "509ff5960106744e92978305a60d7a70aa448227041060d514e08a0288190f56"
 		},
 		"stamps": [
 			{
@@ -901,11 +901,161 @@
 					}
 				],
 				"total": "120.00"
+			},
+			{
+				"i": 34,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de Helicóptero Panorâmico",
+					"price": "300.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "300.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "300.00"
+			},
+			{
+				"i": 35,
+				"quantity": "1",
+				"item": {
+					"name": "Pacote de Passeio de Barco",
+					"price": "85.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "85.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "RED"
+						}
+					}
+				],
+				"total": "85.00"
+			},
+			{
+				"i": 36,
+				"quantity": "2",
+				"item": {
+					"name": "Cocktail Especial da Casa",
+					"price": "18.00",
+					"unit": "piece",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "36.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "intermediate",
+						"percent": "13.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "INT"
+						}
+					}
+				],
+				"total": "36.00"
+			},
+			{
+				"i": 37,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de Spa Completo - 3 horas",
+					"price": "200.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "RED"
+						}
+					}
+				],
+				"total": "200.00"
+			},
+			{
+				"i": 38,
+				"quantity": "1",
+				"item": {
+					"name": "Quarto Vista Jardim - 1 noite",
+					"price": "140.00",
+					"unit": "day",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "140.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "140.00"
+			},
+			{
+				"i": 39,
+				"quantity": "1",
+				"item": {
+					"name": "Serviço de Chef Privado",
+					"price": "180.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "180.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "180.00"
 			}
 		],
 		"totals": {
-			"sum": "4930.50",
-			"total": "4930.50",
+			"sum": "5871.50",
+			"total": "5871.50",
 			"taxes": {
 				"categories": [
 					{
@@ -917,9 +1067,9 @@
 									"pt-region": "PT",
 									"pt-saft-tax-rate": "NOR"
 								},
-								"base": "3145.50",
+								"base": "3765.50",
 								"percent": "23.0%",
-								"amount": "723.47"
+								"amount": "866.07"
 							},
 							{
 								"key": "reduced",
@@ -927,9 +1077,9 @@
 									"pt-region": "PT",
 									"pt-saft-tax-rate": "RED"
 								},
-								"base": "1345.00",
+								"base": "1630.00",
 								"percent": "6.0%",
-								"amount": "80.70"
+								"amount": "97.80"
 							},
 							{
 								"key": "intermediate",
@@ -937,19 +1087,19 @@
 									"pt-region": "PT",
 									"pt-saft-tax-rate": "INT"
 								},
-								"base": "440.00",
+								"base": "476.00",
 								"percent": "13.0%",
-								"amount": "57.20"
+								"amount": "61.88"
 							}
 						],
-						"amount": "861.37"
+						"amount": "1025.75"
 					}
 				],
-				"sum": "861.37"
+				"sum": "1025.75"
 			},
-			"tax": "861.37",
-			"total_with_tax": "5791.87",
-			"payable": "5791.87"
+			"tax": "1025.75",
+			"total_with_tax": "6897.25",
+			"payable": "6897.25"
 		}
 	},
 	"sigs": [
