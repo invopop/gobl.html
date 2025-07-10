@@ -41,7 +41,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 					@taxes(inv.RegimeDef(), inv.Totals.Taxes)
 				</div>
 				@paymentDetails(inv)
-				@notes(inv.Notes, inv.Supplier)
+				@notes(inv.Notes)
 				<div class="extensions">
 					// Region specific information
 					@co.DIANQR(env, inv)

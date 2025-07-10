@@ -40,24 +40,6 @@ var invoiceTypes = []cbc.Code{
 	saft.WorkTypeConsignmentCredit,
 }
 
-// FooterNotes handles the special case when a document contains special
-// notes that need to be added to the footer
-func FooterNotes(env *gobl.Envelope) []string {
-	if appID := atAppID(env); appID != "" {
-		if hash := atHash(env); hash != "" {
-			var notes []string
-			if !slices.Contains(invoiceTypes, docType(doc.ExtractFrom(env))) {
-				notes = append(notes, "Este documento não serve de fatura")
-			}
-			notes = append(notes,
-				fmt.Sprintf("<b>%s</b>-Processado por programa certificado n.º %s/AT", hash, appID),
-			)
-			return notes
-		}
-	}
-	return nil
-}
-
 // AdaptCustomer adapts the customer to the simplified invoice format if needed.
 func AdaptCustomer(doc doc.Document, par *gorg.Party) *gorg.Party {
 	if !isPortuguese(doc) {
@@ -73,8 +55,7 @@ func AdaptCustomer(doc doc.Document, par *gorg.Party) *gorg.Party {
 
 	// If the customer has no tax ID, we need to adapt it to the simplified invoice format
 	if cus.TaxID == nil || cus.TaxID.Code == "" {
-		cus.Alias = cus.Name
-		cus.Name = "Consumidor Final" // Article 2.2.5 of Despacho No. 8632/2014
+		cus.Alias = "NIF: Consumidor Final" // Article 2.2.5 of Despacho No. 8632/2014
 	}
 
 	return &cus
@@ -105,6 +86,27 @@ func generateQR(qrval string) string {
 
 	str := base64.StdEncoding.EncodeToString(buf.Bytes())
 	return "data:image/svg+xml;base64," + str
+}
+
+// qrNotes returns the notes to be added after the QR code
+func qrNotes(env *gobl.Envelope) []string {
+	if appID := atAppID(env); appID != "" {
+		var notes []string
+		if !slices.Contains(invoiceTypes, docType(doc.ExtractFrom(env))) {
+			notes = append(notes, "Este documento não serve de fatura")
+		}
+		if hash := atHash(env); hash != "" {
+			notes = append(notes,
+				fmt.Sprintf("<b>%s</b>-Processado por programa certificado n.º %s/AT", hash, appID),
+			)
+		} else {
+			notes = append(notes,
+				fmt.Sprintf("Emitido por programa certificado n.º %s/AT", appID),
+			)
+		}
+		return notes
+	}
+	return nil
 }
 
 func atAppID(env *gobl.Envelope) string {

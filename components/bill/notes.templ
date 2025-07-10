@@ -5,7 +5,6 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/org"
 	"github.com/yuin/goldmark"
@@ -28,8 +27,8 @@ func init() {
 	)
 }
 
-templ notes(notes []*org.Note, sup *org.Party) {
-	if len(notes) > 0 || sup.Registration != nil {
+templ notes(notes []*org.Note) {
+	if len(notes) > 0 {
 		<section class="notes">
 			@t.Scope(".notes") {
 				<h2>
@@ -40,69 +39,9 @@ templ notes(notes []*org.Note, sup *org.Party) {
 						@templ.Raw(renderNote(note))
 					</div>
 				}
-				if sup.Registration != nil {
-					@noteRegSummary(sup.Registration)
-				}
 			}
 		</section>
 	}
-}
-
-templ noteRegSummary(reg *org.Registration) {
-	<div class="note registration">
-		@t.Scope(".reg") {
-			<span class="title">
-				@t.T(".registration")
-			</span>
-			if reg.Capital != nil {
-				if a := registrationCapital(ctx, reg); a != "" {
-					<span class="capital">
-						@t.T(".capital", i18n.M{"amount": a})
-					</span>
-				}
-			}
-			if reg.Office != "" {
-				<span class="office">
-					{ reg.Office }
-				</span>
-			}
-			if reg.Book != "" {
-				<span class="book">
-					@t.T(".book", i18n.M{"id": reg.Book})
-				</span>
-			}
-			if reg.Volume != "" {
-				<span class="volume">
-					@t.T(".volume", i18n.M{"id": reg.Volume})
-				</span>
-			}
-			if reg.Sheet != "" {
-				<span class="sheet">
-					@t.T(".sheet", i18n.M{"id": reg.Sheet})
-				</span>
-			}
-			if reg.Section != "" {
-				<span class="section">
-					@t.T(".section", i18n.M{"id": reg.Section})
-				</span>
-			}
-			if reg.Page != "" {
-				<span class="page">
-					@t.T(".page", i18n.M{"id": reg.Page})
-				</span>
-			}
-			if reg.Entry != "" {
-				<span class="entry">
-					@t.T(".entry", i18n.M{"id": reg.Entry})
-				</span>
-			}
-			if reg.Other != "" {
-				<span class="other">
-					{ reg.Other }
-				</span>
-			}
-		}
-	</div>
 }
 
 func renderNote(note *org.Note) string {

@@ -4,7 +4,7 @@
 		"uuid": "01902adc-05c8-7000-8703-60c8dcf87bd6",
 		"dig": {
 			"alg": "sha256",
-			"val": "42ea3dfeaa6e3ca21cbb3af3cee1232f84926aa9cd563cc560eba90b715cab14"
+			"val": "3e26b43da473993a59f4360c13d803ad69979a7f342c3f22bcc87960f7629a9f"
 		},
 		"stamps": [
 			{
@@ -54,7 +54,12 @@
 					"code": "4050-265",
 					"country": "PT"
 				}
-			]
+			],
+			"registration": {
+				"capital": "150000.00",
+				"office": "CRC Lisboa",
+				"other": "sob NIF 770013813"
+			}
 		},
 		"customer": {
 			"name": "Gusto Unipessoal Lda",

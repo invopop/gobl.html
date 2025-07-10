@@ -110,15 +110,6 @@ pl:
 
       notes:
         title: "Uwagi"
-        reg:
-          capital: "Kapitał zakładowy %{amount}"
-          registration: "Rejestracja:"
-          book: "Księga %{id}"
-          volume: "Tom %{id}"
-          sheet: "Arkusz %{id}"
-          section: "Sekcja %{id}"
-          page: "Strona %{id}"
-          entry: "Wpis %{id}"
 
     payment:
       <<: *invoice
@@ -198,6 +189,15 @@ pl:
       labels:
         default: "Kod podatkowy"
       ext: "%{label}: %{value}"
+      reg:
+        capital: "Kapitał zakładowy: %{amount}"
+        registration: "Rejestracja:"
+        book: "Księga %{id}"
+        volume: "Tom %{id}"
+        sheet: "Arkusz %{id}"
+        section: "Sekcja %{id}"
+        page: "Strona %{id}"
+        entry: "Wpis %{id}"
 
     address:
       label: "%{label}:"

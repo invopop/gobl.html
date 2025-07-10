@@ -117,15 +117,6 @@ en:
 
       notes:
         title: "Notes"
-        reg:
-          capital: "Social capital %{amount}"
-          registration: "Registration:"
-          book: "Book %{id}"
-          volume: "Volume %{id}"
-          sheet: "Sheet %{id}"
-          section: "Section %{id}"
-          page: "Page %{id}"
-          entry: "Entry %{id}"
 
     payment:
       <<: *invoice
@@ -217,6 +208,15 @@ en:
         mx-cfdi-fiscal-regime: "Régimen fiscal"
         mx-cfdi-post-code: "Lugar"
         mx-cfdi-use: "Uso CFDI"
+      reg:
+        capital: "Social capital: %{amount}"
+        registration: "Registration:"
+        book: "Book %{id}"
+        volume: "Volume %{id}"
+        sheet: "Sheet %{id}"
+        section: "Section %{id}"
+        page: "Page %{id}"
+        entry: "Entry %{id}"
     address:
       label: "%{label}:"
       country: "(%{country})"

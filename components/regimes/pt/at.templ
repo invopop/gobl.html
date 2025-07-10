@@ -1,7 +1,10 @@
 package pt
 
 import (
+	"strings"
+
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/components/assets"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl/cbc"
@@ -10,7 +13,22 @@ import (
 templ ATQR(env *gobl.Envelope) {
 	if atcud := atATCUD(env); atcud != "" {
 		if qr := atQR(env); qr != "" {
-			@generateATQR(atcud, qr)
+			@assets.Stylesheet("pt.css")
+			<section class="pt">
+				<div class="at">
+					<div class="label">
+						ATCUD: { atcud }
+					</div>
+					<div class="qr">
+						<img src={ generateQR(qr) }/>
+					</div>
+					if notes := qrNotes(env); len(notes) > 0 {
+						<div class="notes">
+							@templ.Raw(strings.Join(notes, " &middot; "))
+						</div>
+					}
+				</div>
+			</section>
 		}
 	}
 }
@@ -33,43 +51,6 @@ templ TitleBadges(doc doc.Document) {
 			@t.T("regimes.pt.title.original")
 		</span>
 	}
-}
-
-templ generateATQR(atcud, qr string) {
-	<style type="text/css">
-		.at {
-			break-inside: avoid;
-			text-align: right;
-			/* width: 6cm; */
-		}
-		.at .label {
-			font-family: monospace;
-			font-size: 7pt;
-			text-align: right;
-			margin-bottom: 2mm;
-		}
-		.at img {
-			width: 30mm;
-			height: 30mm;
-		}
-		.mp-footer .at .qr {
-			display: none;
-		}
-		.mp-footer .at{
-			margin-top: 5mm;
-			margin-bottom: -5mm;
-		}
-	</style>
-	<section class="pt">
-		<div class="at">
-			<div class="label">
-				ATCUD: { atcud }
-			</div>
-			<div class="qr">
-				<img src={ generateQR(qr) }/>
-			</div>
-		</div>
-	</section>
 }
 
 templ titleType(doc doc.Document) {

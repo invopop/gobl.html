@@ -112,15 +112,6 @@ el:
 
       notes:
         title: "Σημειώσεις"
-        reg:
-          registration: "Εγγραφή:"
-          capital: "Κοινωνικό Κεφάλαιο %{amount}"
-          book: "Βιβλίο %{id}"
-          volume: "Τόμος %{id}"
-          sheet: "Φύλλο %{id}"
-          section: "Ενότητα %{id}"
-          page: "Σελίδα %{id}"
-          entry: "Καταχώρηση %{id}"
 
     payment:
       <<: *invoice
@@ -207,6 +198,15 @@ el:
         mx-cfdi-fiscal-regime: "Φορολογικό Καθεστώς"
         mx-cfdi-post-code: "Τοποθεσία"
         mx-cfdi-use: "Χρήση CFDI"
+      reg:
+        capital: "Κοινωνικό Κεφάλαιο: %{amount}"
+        registration: "Εγγραφή:"
+        book: "Βιβλίο %{id}"
+        volume: "Τόμος %{id}"
+        sheet: "Φύλλο %{id}"
+        section: "Ενότητα %{id}"
+        page: "Σελίδα %{id}"
+        entry: "Καταχώρηση %{id}"
     address:
       label: "%{label}:"
       country: "(%{country})"

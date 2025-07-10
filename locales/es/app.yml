@@ -114,15 +114,6 @@ es:
 
       notes:
         title: "Notas"
-        reg:
-          capital: "Capital social %{amount}"
-          registration: "Registro:"
-          book: "Libro %{id}"
-          volume: "Volumen %{id}"
-          sheet: "Hoja %{id}"
-          section: "Sección %{id}"
-          page: "Página %{id}"
-          entry: "Entrada %{id}"
 
     payment:
       <<: *invoice
@@ -204,6 +195,15 @@ es:
       ext: "%{label}: %{value}"
       ext_map:
         co-dian-municipality: "Municipio"
+      reg:
+        capital: "Capital social: %{amount}"
+        registration: "Registro:"
+        book: "Libro %{id}"
+        volume: "Volumen %{id}"
+        sheet: "Hoja %{id}"
+        section: "Sección %{id}"
+        page: "Página %{id}"
+        entry: "Entrada %{id}"
     address:
       label: "%{label}:"
       country: "(%{country})"

@@ -1,0 +1,33 @@
+.at {
+  break-inside: avoid;
+  text-align: center;
+}
+
+.at .label {
+  font-family: monospace;
+  font-size: 7pt;
+  margin-bottom: 2mm;
+}
+
+.at img {
+  width: 30mm;
+  height: 30mm;
+}
+
+.at .notes {
+  margin-top: 2mm;
+}
+
+.mp-footer .at .qr {
+  /*
+    1. QR doesn't need to be in all pages, just the last one
+    2. ATCUD must be visible in all pages
+    3. Laws aren't clear regarding QR notes. Show them to avoid rejection by certifiers
+  */
+  display: none;
+}
+
+.mp-footer .at {
+  margin-top: 5mm;
+  margin-bottom: -5mm;
+}
