@@ -27,7 +27,7 @@ templ Script(path string) {
 		if opts.EmbedAssets {
 			@templ.Raw(`<script type="text/javascript">` + assets.ReadData(path) + `</script>`)
 		} else {
-			<script src={ path }/>
+			@templ.Raw(`<script src="` + path + `"></script>`)
 		}
 	}
 }
