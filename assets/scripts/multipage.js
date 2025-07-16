@@ -84,6 +84,6 @@ function insertTemplate(template, page) {
 function updatePageBreakAmount(id, amount) {
   const el = document.getElementById(id);
   if (el) {
-    el.querySelector(".amount").innerHTML = amount;
+    el.querySelector(".amount").textContent = amount;
   }
 }
