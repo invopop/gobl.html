@@ -4,7 +4,7 @@
 		"uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
 		"dig": {
 			"alg": "sha256",
-			"val": "4043a2d175fd50e175fda21d78df72929629e78e91036741dbc5dd5478b02678"
+			"val": "127b9a189e6f96f43b5b4442077a1f4fae763c91edcc5a335ed5e92f5a9da2b3"
 		}
 	},
 	"doc": {
@@ -88,6 +88,7 @@
 				"i": 1,
 				"quantity": "20",
 				"item": {
+					"ref": "DEV1234567890",
 					"name": "Development Day Rate",
 					"identities": [
 						{
@@ -538,9 +539,18 @@
 				"total": "1400.00"
 			}
 		],
+		"discounts": [
+			{
+				"i": 1,
+				"code": "DIS-1234567890",
+				"reason": "Early Payment Discount",
+				"amount": "20.00"
+			}
+		],
 		"charges": [
 			{
 				"i": 1,
+				"code": "CHR-1234567890",
 				"reason": "Impuesto de Turismo",
 				"amount": "15.00"
 			}
@@ -566,7 +576,7 @@
 					"ref": "PAY1234",
 					"description": "Prepayment with Paypal",
 					"percent": "30%",
-					"amount": "13539.11"
+					"amount": "13533.11"
 				}
 			],
 			"instructions": {
@@ -589,8 +599,9 @@
 		},
 		"totals": {
 			"sum": "37322.50",
+			"discount": "20.00",
 			"charge": "15.00",
-			"total": "37337.50",
+			"total": "37317.50",
 			"taxes": {
 				"categories": [
 					{
@@ -628,11 +639,11 @@
 				"retained": "25.88"
 			},
 			"tax": "7818.75",
-			"total_with_tax": "45156.25",
+			"total_with_tax": "45136.25",
 			"retained_tax": "25.88",
-			"payable": "45130.38",
-			"advance": "13539.11",
-			"due": "31591.27"
+			"payable": "45110.38",
+			"advance": "13533.11",
+			"due": "31577.27"
 		},
 		"notes": [
 			{

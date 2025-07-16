@@ -28,6 +28,7 @@ func (pc *princeConvertor) HTML(_ context.Context, data []byte, opts ...Option) 
 	j.Input = &princepdf.Input{
 		Src:        "data.html",
 		Javascript: true,
+		MaxPasses:  20, // Avoid infinite loops. Also, passes are expensive.
 	}
 	j.Files = map[string][]byte{
 		"data.html": data,

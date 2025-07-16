@@ -53,23 +53,25 @@ templ paymentLine(l *bill.PaymentLine, pmt *bill.Payment, tt *tax.Total, st *sub
 			{ fmt.Sprint(l.Index) }
 		</td>
 		<td class="document">
-			if l.Document != nil {
-				<span>
-					@joinCode(doc.For(pmt), l.Document.Series, l.Document.Code)
-				</span>
-				if l.Document.Description != "" {
-					<br/>
-					<small>{ l.Document.Description }</small>
+			<div class="limited-height">
+				if l.Document != nil {
+					<span>
+						@joinCode(doc.For(pmt), l.Document.Series, l.Document.Code)
+					</span>
+					if l.Document.Description != "" {
+						<br/>
+						<small>{ l.Document.Description }</small>
+					}
+					if l.Description != "" {
+						<br/>
+						<small>{ l.Description }</small>
+					}
+				} else if l.Description != "" {
+					<span>
+						{ l.Description }
+					</span>
 				}
-				if l.Description != "" {
-					<br/>
-					<small>{ l.Description }</small>
-				}
-			} else if l.Description != "" {
-				<span>
-					{ l.Description }
-				</span>
-			}
+			</div>
 		</td>
 		if tt != nil {
 			for _, cat := range tt.Categories {
