@@ -1,79 +1,89 @@
 Prince.trackBoxes = true;
-Prince.registerPostLayoutFunc(handleMultipage(1));
+Prince.registerPostLayoutFunc(insertPageBreaks(1));
 
 const headerTemplate = document.getElementById("mp-header-templ");
 const footerTemplate = document.getElementById("mp-footer-templ");
 
-// handleMultipage detects page breaks and attaches the header and footer templates
-// for each page with the subtotal amount
-function handleMultipage(currPage) {
+function insertPageBreaks(fromPage) {
   return function () {
-    const lines = document.querySelectorAll("tr[data-subtotal]");
-    if (lines.length == 0) return;
-
-    let subtotal = "";
-
-    // iterate the lines, detect page breaks and handle them
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i];
-      const boxes = line.getPrinceBoxes();
-      const page = boxes[0].pageNum
-
-      if (page > currPage) {
-        handlePageBreak(currPage, subtotal);
-        return;
-      }
-
-      subtotal = line.getAttribute("data-subtotal");
-    }
-
-    const totals = document.querySelector(".tail");
-    const boxes = totals.getPrinceBoxes();
+    const tail = document.querySelector(".tail");
+    const boxes = tail.getPrinceBoxes();
     const tailPage = boxes[0].pageNum;
 
-    // keep handling page breaks to the tail page
-    if (currPage < tailPage) {
-      handlePageBreak(currPage, subtotal);
-      return;
+    var inserted = false;
+    for (let page = fromPage; page < tailPage; page++) {
+      insertTemplate(footerTemplate, page);
+      insertTemplate(headerTemplate, page + 1);
+      inserted = true;
+    }
+
+    if (fromPage == 1) {
+      // We've just inserted page breaks for the first time, we need to do
+      // another pass, after Prince has refreshed the layout, just in case the
+      // tail was pushed further, which would require more page breaks.
+      Prince.registerPostLayoutFunc(insertPageBreaks(tailPage));
+    } else {
+      // We've made two passes of inserting page breaks, we continue by updating
+      // the amounts in the page breaks.
+      if (inserted) {
+        // DOM has changed, we need to wait for Prince to refresh the layout
+        // before we can update the amounts
+        Prince.registerPostLayoutFunc(updatePageBreakAmounts);
+      } else {
+        // DOM has not changed, we must update the amounts immediately
+        updatePageBreakAmounts();
+      }
     }
   }
 }
 
-function handlePageBreak(page, amount) {
-  const headerInserted = upsertTemplate(headerTemplate, page + 1, amount);
-  const footerInserted = upsertTemplate(footerTemplate, page, amount);
+function updatePageBreakAmounts() {
+  const lines = document.querySelectorAll("tr[data-subtotal]");
+  if (lines.length == 0) return;
 
-  if (headerInserted || footerInserted) {
-    // the inserted elements may have pushed lines to the next page, we need to
-    // register a new function to handle the same page again after Prince
-    // refreshes the layout with the changes
-    Prince.registerPostLayoutFunc(handleMultipage(page));
-  } else {
-    // no lines pushed, so we process the next page
-    Prince.registerPostLayoutFunc(handleMultipage(page + 1));
+  let prevSubtotal = "";
+  let prevPage = 1;
+
+  // Iterate over the lines and update page break amounts
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const boxes = line.getPrinceBoxes();
+    const page = boxes[0].pageNum
+
+    if (page > prevPage) {
+      updatePageBreakAmount("mp-footer-" + prevPage, prevSubtotal);
+      updatePageBreakAmount("mp-header-" + page, prevSubtotal);
+    }
+
+    prevSubtotal = line.getAttribute("data-subtotal");
+    prevPage = page;
+  }
+
+  // Iterate over the remaining pages until the tail and update the page breaks
+  const totals = document.querySelector(".tail");
+  const boxes = totals.getPrinceBoxes();
+  const tailPage = boxes[0].pageNum;
+
+  for (let page = prevPage; page < tailPage; page++) {
+    updatePageBreakAmount("mp-footer-" + page, prevSubtotal);
+    updatePageBreakAmount("mp-header-" + (page + 1), prevSubtotal);
   }
 }
 
-function upsertTemplate(template, page, amount) {
-  let inserted = false;
+function insertTemplate(template, page) {
   const id = template.id.replace("-templ", "-" + page);
-  let el = document.getElementById(id);
+  const el = template.cloneNode(true);
+  el.id = id;
+  el.setAttribute("style", "-prince-float-defer-page: " + (page - 1));
+  el.style.display = "block";
 
-  if (!el) {
-    // the element doesn't exist, insert it from the template
-    el = template.cloneNode(true);
-    el.id = id;
-    el.setAttribute("style", "-prince-float-defer-page: " + (page - 1));
-    el.style.display = "block";
+  const body = document.getElementsByTagName('body')[0];
+  body.insertBefore(el, body.firstChild);
+}
 
-    const body = document.getElementsByTagName('body')[0];
-    body.insertBefore(el, body.firstChild);
-    inserted = true;
+function updatePageBreakAmount(id, amount) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.querySelector(".amount").innerHTML = amount;
   }
-
-  // update the element based on the parameters; even if the element already
-  // existed the parameters may have changed after a DOM change
-  el.querySelector(".amount").innerHTML = amount;
-
-  return inserted;
 }
