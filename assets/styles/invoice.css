@@ -454,3 +454,10 @@ section.notes .note {
 .mp-header .hero {
     display: none;
 }
+
+/* used to ensure certain elements don't exceed the page height which is problematic in multipage.js calculations */
+.limited-height {
+    max-height: 80vh;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

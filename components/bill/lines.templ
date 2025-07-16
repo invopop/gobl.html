@@ -106,13 +106,15 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 			</td>
 		}
 		<td class="description">
-			<span>{ l.Item.Name }</span>
-			if l.Item.Description != "" {
-				<br/>
-				<small>{ l.Item.Description }</small>
-			}
-			@identities(l.Item.Identities)
-			@mx.LineExtensions(l)
+			<div class="limited-height">
+				<span>{ l.Item.Name }</span>
+				if l.Item.Description != "" {
+					<br/>
+					<small>{ l.Item.Description }</small>
+				}
+				@identities(l.Item.Identities)
+				@mx.LineExtensions(l)
+			</div>
 		</td>
 		<td class="quantity">
 			@t.L(l.Quantity)
