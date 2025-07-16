@@ -194,8 +194,7 @@ section.lines .total {
     width: fit-content;
     white-space: nowrap;
 }
-section.lines .description,
-section.lines .reason {
+section.lines .description {
     white-space: wrap;
 }
 section.lines .label {
