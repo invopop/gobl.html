@@ -92,7 +92,8 @@ func generateQR(qrval string) string {
 func qrNotes(env *gobl.Envelope) []string {
 	if appID := atAppID(env); appID != "" {
 		var notes []string
-		if !slices.Contains(invoiceTypes, docType(doc.ExtractFrom(env))) {
+		dt := docType(doc.ExtractFrom(env))
+		if dt != cbc.CodeEmpty && !slices.Contains(invoiceTypes, dt) {
 			notes = append(notes, "Este documento não serve de fatura")
 		}
 		if hash := atHash(env); hash != "" {
