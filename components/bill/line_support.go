@@ -11,7 +11,6 @@ type lineSupport struct {
 	categories []*tax.CategoryDef
 	discounts  bool
 	charges    bool
-	refs       bool
 	units      bool
 	prices     bool
 	totals     bool
@@ -31,9 +30,6 @@ func prepareLineSupport(reg *tax.RegimeDef, lines []*bill.Line, dss []*bill.Disc
 		}
 		if len(l.Charges) > 0 {
 			ls.charges = true
-		}
-		if l.Item.Ref != "" {
-			ls.refs = true
 		}
 		if l.Item.Unit != "" {
 			ls.units = true
@@ -55,18 +51,12 @@ func prepareLineSupport(reg *tax.RegimeDef, lines []*bill.Line, dss []*bill.Disc
 		}
 	}
 	for _, row := range dss {
-		if row.Code != "" {
-			ls.refs = true
-		}
 		if row.Percent != nil {
 			ls.prices = true
 		}
 		ls.totals = true
 	}
 	for _, row := range chs {
-		if row.Code != "" {
-			ls.refs = true
-		}
 		if row.Percent != nil {
 			ls.prices = true
 		}
