@@ -4,7 +4,7 @@
 		"uuid": "01902adc-05c8-7000-8703-60c8dcf87bd6",
 		"dig": {
 			"alg": "sha256",
-			"val": "8f0db7383fe853ef8e61550612f9ebe88566ac2f0792a4e533a86003df88cc6a"
+			"val": "6da7ec16224f62594f4b7a55ad5d3d428b74e15501e284766d6fa9cbb6e83cde"
 		},
 		"stamps": [
 			{
@@ -35,10 +35,12 @@
 		"type": "standard",
 		"code": "FT IXTEST-01/27",
 		"issue_date": "2024-06-18",
+		"value_date": "2024-06-18",
 		"currency": "EUR",
 		"tax": {
 			"ext": {
-				"pt-saft-invoice-type": "FT"
+				"pt-saft-invoice-type": "FT",
+				"pt-saft-source-billing": "P"
 			}
 		},
 		"supplier": {

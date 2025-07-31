@@ -92,18 +92,18 @@ func generateQR(qrval string) string {
 func qrNotes(env *gobl.Envelope) []string {
 	if appID := atAppID(env); appID != "" {
 		var notes []string
-		dt := docType(doc.ExtractFrom(env))
+		d := doc.ExtractFrom(env)
+		dt := docType(d)
 		if dt != cbc.CodeEmpty && !slices.Contains(invoiceTypes, dt) {
 			notes = append(notes, "Este documento não serve de fatura")
 		}
+		if dn := d.GetExt().Get(saft.ExtKeySourceRef); dn != "" {
+			notes = append(notes, fmt.Sprintf("Cópia do documento original - %s", dn))
+		}
 		if hash := atHash(env); hash != "" {
-			notes = append(notes,
-				fmt.Sprintf("<b>%s</b>-Processado por programa certificado n.º %s/AT", hash, appID),
-			)
+			notes = append(notes, fmt.Sprintf("<b>%s</b>-Processado por programa certificado n.º %s/AT", hash, appID))
 		} else {
-			notes = append(notes,
-				fmt.Sprintf("Emitido por programa certificado n.º %s/AT", appID),
-			)
+			notes = append(notes, fmt.Sprintf("Emitido por programa certificado n.º %s/AT", appID))
 		}
 		return notes
 	}
