@@ -96,7 +96,7 @@ de:
         terms:
           key: "Zahlungsbedingungen"
           notes: "Zahlungsbedingungen Hinweise"
-          due_dates: "Fälligkeitsdaten"
+          due_dates: "Fälligkeitsdatum"
           keys:
             na: "Nicht angegeben"
             end_of_month: "Ende des Monats"
