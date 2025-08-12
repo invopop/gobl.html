@@ -148,6 +148,10 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 				if combo != nil {
 					if combo.Percent != nil {
 						@t.L(*combo.Percent)
+						if (combo.Surcharge != nil) {
+							<br>+&nbsp;
+							@t.L(*combo.Surcharge)
+						}
 					} else {
 						@t.T(".no_percent")
 					}

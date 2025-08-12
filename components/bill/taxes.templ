@@ -74,7 +74,7 @@ templ taxRateRow(r *tax.RegimeDef, cat *tax.CategoryTotal, rate *tax.RateTotal, 
 				@t.T(".no_percent")
 			}
 			if rate.Surcharge != nil {
-				+
+				<br> +&nbsp;
 				@t.L(rate.Surcharge.Percent)
 			}
 		</td>
@@ -92,6 +92,10 @@ templ taxRateRow(r *tax.RegimeDef, cat *tax.CategoryTotal, rate *tax.RateTotal, 
 				@t.LM(rate.Amount)
 			} else {
 				@t.LM(rate.Amount)
+				if rate.Surcharge != nil {
+					<br> +&nbsp;
+					@t.LM(rate.Surcharge.Amount)
+				}
 			}
 		</td>
 	</tr>
