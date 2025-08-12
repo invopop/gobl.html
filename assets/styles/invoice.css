@@ -300,6 +300,7 @@ section.taxes th,
 section.taxes td {
     text-align: right;
     padding: 1.5mm 2mm;
+    vertical-align: top;
 }
 section.taxes th {
     background-color: #f3f4f6;
