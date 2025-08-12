@@ -4,7 +4,7 @@
 		"uuid": "92be0222-1d7d-11ed-8719-b24117999d50",
 		"dig": {
 			"alg": "sha256",
-			"val": "295585a78781182c9acf950f024adf5cff0d22d230eb45eea353bef87e880bba"
+			"val": "3e2c642b210f5d766509d403616859836f8782a78f3ca52ba40e91b97fb957a3"
 		},
 		"stamps": [
 			{
@@ -62,63 +62,63 @@
 			]
 		},
 		"lines": [
-        {
-            "i": 1,
-            "quantity": "1",
-            "item": {
-                "name": "test",
-                "description": "Impuesto - Tipo General (más recargo equivalencia).",
-                "price": "100.00"
-            },
-            "sum": "100.00",
-            "taxes": [
-                {
-                    "cat": "VAT",
-                    "rate": "standard+eqs",
-                    "percent": "21.0%",
-                    "surcharge": "5.2%",
-                    "ext": {
-                        "es-verifactu-op-class": "S1",
-                        "es-verifactu-regime": "18"
-                    }
-                }
-            ],
-            "total": "100.00"
-        }
-    ],
-    "totals": {
-        "sum": "100.00",
-        "total": "100.00",
-        "taxes": {
-            "categories": [
-                {
-                    "code": "VAT",
-                    "rates": [
-                        {
-                            "key": "standard+eqs",
-                            "ext": {
-                                "es-verifactu-op-class": "S1",
-                                "es-verifactu-regime": "18"
-                            },
-                            "base": "100.00",
-                            "percent": "21.0%",
-                            "surcharge": {
-                                "percent": "5.2%",
-                                "amount": "5.20"
-                            },
-                            "amount": "21.00"
-                        }
-                    ],
-                    "amount": "21.00",
-                    "surcharge": "5.20"
-                }
-            ],
-            "sum": "26.20"
-        },
-        "tax": "26.20",
-        "total_with_tax": "126.20",
-        "payable": "126.20"
-    }
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "test",
+					"description": "Impuesto - Tipo General (más recargo equivalencia).",
+					"price": "100.00"
+				},
+				"sum": "100.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "standard+eqs",
+						"percent": "21.0%",
+						"surcharge": "5.2%",
+						"ext": {
+							"es-verifactu-op-class": "S1",
+							"es-verifactu-regime": "18"
+						}
+					}
+				],
+				"total": "100.00"
+			}
+		],
+		"totals": {
+			"sum": "100.00",
+			"total": "100.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard+eqs",
+								"ext": {
+									"es-verifactu-op-class": "S1",
+									"es-verifactu-regime": "18"
+								},
+								"base": "100.00",
+								"percent": "21.0%",
+								"surcharge": {
+									"percent": "5.2%",
+									"amount": "5.20"
+								},
+								"amount": "21.00"
+							}
+						],
+						"amount": "21.00",
+						"surcharge": "5.20"
+					}
+				],
+				"sum": "26.20"
+			},
+			"tax": "26.20",
+			"total_with_tax": "126.20",
+			"payable": "126.20"
+		}
 	},
 	"sigs": [
 		"eyJhbGciOiJFUzI1NiIsImtpZCI6ImUzNzFjMzBiLTNiMzMtNGNiMC04NzM5LThiOTUzMWM1NWM2NiJ9.eyJ1dWlkIjoiOTJiZTAyMjItMWQ3ZC0xMWVkLTg3MTktYjI0MTE3OTk5ZDUwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjMxMTQzYzk4NmZhNWM3N2I4ODlkNzhhYjk4MDhjNGMyMzZkNmE2YWMzYjU0N2Q3OWFkM2IwNzY5YWIyZTRkMmEifSwic3RhbXBzIjpbeyJwcnYiOiJ2ZXJpZmFjdHUtcXIiLCJ2YWwiOiJodHRwczovL3ByZXd3dzIuYWVhdC5lcy93bHBsL1RJS0UtQ09OVC9WYWxpZGFyUVI_bmlmPTg5ODkwMDAxS1x1MDAyNm51bXNlcmllPTEyMzQ1Njc4LUczM1x1MDAyNmZlY2hhPTAxLTA5LTIwMjRcdTAwMjZpbXBvcnRlPTI0MS40In1dfQ.fkhC67qd0c2LVdhVYlB2ikl2QGBabXIm-MJFGByErjLyk8ngbWLcABh_gwoz4Na_zq2wlPEm7Zeu6H78hntlag"
