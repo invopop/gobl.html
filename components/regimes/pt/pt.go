@@ -111,6 +111,9 @@ func qrNotes(env *gobl.Envelope) []string {
 }
 
 func atAppID(env *gobl.Envelope) string {
+	if env.Head == nil {
+		return ""
+	}
 	for _, stamp := range env.Head.Stamps {
 		switch stamp.Provider {
 		case pt.StampProviderATAppID:
@@ -121,6 +124,9 @@ func atAppID(env *gobl.Envelope) string {
 }
 
 func atHash(env *gobl.Envelope) string {
+	if env.Head == nil {
+		return ""
+	}
 	for _, stamp := range env.Head.Stamps {
 		switch stamp.Provider {
 		case pt.StampProviderATHash:
@@ -131,6 +137,9 @@ func atHash(env *gobl.Envelope) string {
 }
 
 func atATCUD(env *gobl.Envelope) string {
+	if env.Head == nil {
+		return ""
+	}
 	for _, stamp := range env.Head.Stamps {
 		switch stamp.Provider {
 		case pt.StampProviderATATCUD:
@@ -141,6 +150,9 @@ func atATCUD(env *gobl.Envelope) string {
 }
 
 func atQR(env *gobl.Envelope) string {
+	if env.Head == nil {
+		return ""
+	}
 	for _, stamp := range env.Head.Stamps {
 		switch stamp.Provider {
 		case pt.StampProviderATQR:
