@@ -97,12 +97,14 @@ templ defaultJoinCode(_ doc.Document, series, code cbc.Code) {
 }
 
 templ titleType(doc doc.Document) {
-	<h1 class="type">
-		@utils.Coalesce(
-			pt.TitleType(doc),
-			defaultTitleType(doc),
-		)
-	</h1>
+	if !hasPrecedingDef(doc) {
+		<h1 class="type">
+			@utils.Coalesce(
+				pt.TitleType(doc),
+				defaultTitleType(doc),
+			)
+		</h1>
+	}
 }
 
 templ defaultTitleType(doc doc.Document) {
@@ -199,4 +201,9 @@ func isSimplifiedInvoice(doc doc.Document) bool {
 		return inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard
 	}
 	return false
+}
+
+func hasPrecedingDef(doc doc.Document) bool {
+	docType := doc.GetType()
+	return docType == "credit-note" || docType == "debit-note" || docType == "corrective"
 }

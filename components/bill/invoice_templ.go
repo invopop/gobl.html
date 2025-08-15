@@ -477,20 +477,22 @@ func titleType(doc doc.Document) templ.Component {
 			templ_7745c5c3_Var18 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "<h1 class=\"type\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = utils.Coalesce(
-			pt.TitleType(doc),
-			defaultTitleType(doc),
-		).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "</h1>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
+		if !hasPrecedingDef(doc) {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "<h1 class=\"type\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = utils.Coalesce(
+				pt.TitleType(doc),
+				defaultTitleType(doc),
+			).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "</h1>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 		}
 		return nil
 	})
@@ -754,6 +756,11 @@ func isSimplifiedInvoice(doc doc.Document) bool {
 		return inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard
 	}
 	return false
+}
+
+func hasPrecedingDef(doc doc.Document) bool {
+	docType := doc.GetType()
+	return docType == "credit-note" || docType == "debit-note" || docType == "corrective"
 }
 
 var _ = templruntime.GeneratedTemplate
