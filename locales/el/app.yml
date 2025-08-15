@@ -20,7 +20,7 @@ el:
         operation_date: "Ημερομηνία Ενέργειας"
         currency: "Νόμισμα"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Προηγούμενο Τιμολόγιο"
+        preceding_document: "Διορθωμένα έγγραφα"
         order: "Παραγγελία"
         order_period: "Περίοδος"
         order_period_label: "%{label}"

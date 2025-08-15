@@ -20,7 +20,7 @@ es:
         operation_date: "Fecha de operación"
         currency: "Moneda"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Factura anterior"
+        preceding_document: "Documentos corregidos"
         order: "Orden"
         order_period: "Período"
         order_period_label: "%{label}"

@@ -18,7 +18,7 @@ fr:
         operation_date: "Date d'opération"
         currency: "Devise"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Facture antérieure"
+        preceding_document: "Documents corrigés"
         order: "Commande"
         order_period: "Période"
         order_period_label: "%{label}"

@@ -82,7 +82,18 @@ templ titleHero(sup *org.Party) {
 }
 
 templ titleCode(doc doc.Document) {
-	@joinCode(doc, doc.GetSeries(), doc.GetCode())
+	if isNonStandardInvoice(doc) {
+		<span class="document-type">
+		@utils.Coalesce(
+			pt.TitleType(doc),
+			defaultTitleType(doc),
+		)
+		</span>
+		{ " " }
+	}
+	<span class="series-and-code">
+		@joinCode(doc, doc.GetSeries(), doc.GetCode())
+	</span>
 }
 
 templ joinCode(doc doc.Document, series, code cbc.Code) {
@@ -97,12 +108,15 @@ templ defaultJoinCode(_ doc.Document, series, code cbc.Code) {
 }
 
 templ titleType(doc doc.Document) {
-	<h1 class="type">
-		@utils.Coalesce(
-			pt.TitleType(doc),
-			defaultTitleType(doc),
-		)
-	</h1>
+	// We show the type with the code if it has a preceding doc. 
+	if !isNonStandardInvoice(doc) {
+		<h1 class="type">
+			@utils.Coalesce(
+				pt.TitleType(doc),
+				defaultTitleType(doc),
+			)
+		</h1>
+	}
 }
 
 templ defaultTitleType(doc doc.Document) {
@@ -199,4 +213,9 @@ func isSimplifiedInvoice(doc doc.Document) bool {
 		return inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard
 	}
 	return false
+}
+
+func isNonStandardInvoice(doc doc.Document) bool {
+	docType := doc.GetType()
+	return docType == "credit-note" || docType == "debit-note" || docType == "corrective" || docType == "proforma"
 }

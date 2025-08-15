@@ -20,7 +20,7 @@ pl:
         operation_date: "Data operacji"
         currency: "Waluta"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Poprzednia faktura"
+        preceding_document: "Skorygowane dokumenty"
         order: "Zamówienie"
         order_period: "Okres"
         order_period_label: "%{label}"
