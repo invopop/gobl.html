@@ -129,6 +129,15 @@ section.title h2.code {
     color: #030712;
     font-weight: 600;
 }
+
+section.title h2.code > * {
+    display: inline-block;
+}
+
+section.title h2.code span.series-and-code {
+    word-break: break-all;
+}
+
 section.summary {
     padding-right: 6mm;
     padding-top: 0mm;
