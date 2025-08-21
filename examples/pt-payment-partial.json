@@ -50,7 +50,7 @@
 		"currency": "EUR",
 		"ext": {
 			"pt-saft-payment-type": "RG",
-			"pt-saft-source-billing": "P"
+			"pt-saft-source": "P"
 		},
 		"supplier": {
 			"uuid": "9de7584f-ea5c-42a7-b159-5e4c6a280a5c",

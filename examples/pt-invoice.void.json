@@ -40,7 +40,7 @@
 		"tax": {
 			"ext": {
 				"pt-saft-invoice-type": "FT",
-				"pt-saft-source-billing": "P"
+				"pt-saft-source": "P"
 			}
 		},
 		"supplier": {
