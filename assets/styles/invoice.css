@@ -200,16 +200,14 @@ section.lines .description {
 section.lines .label {
     font-weight: 500;
 }
-section.lines .description .extensions,
-section.lines .description .identity {
+section.lines .subline {
     display: block;
     font-size: 10px;
 }
-section.lines .description .extensions .label,
-section.lines .description .identity .label {
+section.lines .subline .label {
     font-weight: 400;
 }
-section.lines .description .identity .label:after {
+section.lines .subline .label:after {
     content: ": ";
 }
 section.lines .discount-content {

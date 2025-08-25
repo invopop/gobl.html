@@ -34,14 +34,28 @@ templ notes(notes []*org.Note) {
 				<h2>
 					@t.T(".title")
 				</h2>
-				for _, note := range notes {
-					<div class="note">
-						@templ.Raw(renderNote(note))
-					</div>
+				for _, n := range notes {
+					@note(n)
 				}
 			}
 		</section>
 	}
+}
+
+templ lineNotes(notes []*org.Note) {
+	if len(notes) > 0 {
+		<span class="subline">
+			for _, n := range notes {
+				@note(n)
+			}
+		</span>
+	}
+}
+
+templ note(note *org.Note) {
+	<div class="note">
+		@templ.Raw(renderNote(note))
+	</div>
 }
 
 func renderNote(note *org.Note) string {

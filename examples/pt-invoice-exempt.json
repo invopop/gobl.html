@@ -4,7 +4,7 @@
 		"uuid": "01902adc-05c8-7000-8703-60c8dcf87bd6",
 		"dig": {
 			"alg": "sha256",
-			"val": "8f0db7383fe853ef8e61550612f9ebe88566ac2f0792a4e533a86003df88cc6a"
+			"val": "4ccb6ff14a319b7394fbc52378502704af6c71b85893ef32f06b9de253b38717"
 		},
 		"stamps": [
 			{
@@ -106,7 +106,14 @@
 				"i": 2,
 				"quantity": "1",
 				"item": {
+					"ref": "1234567890",
 					"name": "Exempt item",
+					"identities": [
+						{
+							"type": "EAN",
+							"code": "1234567890"
+						}
+					],
 					"price": "456.00",
 					"unit": "one",
 					"ext": {
@@ -125,7 +132,15 @@
 						}
 					}
 				],
-				"total": "456.00"
+				"total": "456.00",
+				"notes": [
+					{
+						"key": "legal",
+						"code": "M41",
+						"src": "pt-saft-exemption",
+						"text": "Artigo 8.º n.º 3 do RITI"
+					}
+				]
 			},
 			{
 				"i": 3,
@@ -150,7 +165,15 @@
 						}
 					}
 				],
-				"total": "789.00"
+				"total": "789.00",
+				"notes": [
+					{
+						"key": "legal",
+						"code": "M42",
+						"src": "pt-saft-exemption",
+						"text": "Decreto-Lei n.º 21/2007, de 29 de janeiro"
+					}
+				]
 			}
 		],
 		"totals": {

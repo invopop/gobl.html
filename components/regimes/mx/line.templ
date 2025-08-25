@@ -8,11 +8,9 @@ import (
 // LineExtensions will add extra information to the line for Mexico.
 templ LineExtensions(line *bill.Line) {
 	if line.Item.Ext.Has(cfdi.ExtKeyProdServ) {
-		<span class="extensions">
-			<span class="label">Clave SAT:</span>
-			<span class="value">
-				{ line.Item.Ext[cfdi.ExtKeyProdServ].String() }
-			</span>
+		<span class="subline">
+			<span class="label">Clave SAT</span>
+			<code>{ line.Item.Ext[cfdi.ExtKeyProdServ] }</code>
 		</span>
 	}
 }
