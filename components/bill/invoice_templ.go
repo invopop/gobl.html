@@ -797,8 +797,12 @@ func isSimplifiedInvoice(doc doc.Document) bool {
 }
 
 func isNonStandardInvoice(doc doc.Document) bool {
-	docType := doc.GetType()
-	return docType == "credit-note" || docType == "debit-note" || docType == "corrective" || docType == "proforma"
+	switch doc.GetType() {
+	case bill.InvoiceTypeCreditNote, bill.InvoiceTypeDebitNote, bill.InvoiceTypeCorrective, bill.InvoiceTypeProforma:
+		return true
+	default:
+		return false
+	}
 }
 
 var _ = templruntime.GeneratedTemplate
