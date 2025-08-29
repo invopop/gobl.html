@@ -60,11 +60,14 @@ templ title(env *gobl.Envelope, doc doc.Document) {
 	@t.Scope(".title") {
 		<section class="title">
 			@titleHero(doc.GetSupplier())
-			@titleType(doc)
-			<h2 class="code">
-				@titleCode(doc)
-				@titleBadges(env, doc)
-			</h2>
+			<div class={"title-group", templ.KV("title-group-inline", isNonStandardInvoice(doc)) }>
+				@titleType(doc)
+				{" "}
+				<h2 class="code">
+					@titleCode(doc)
+					@titleBadges(env, doc)
+				</h2>
+			</div>
 		</section>
 	}
 }
@@ -82,18 +85,7 @@ templ titleHero(sup *org.Party) {
 }
 
 templ titleCode(doc doc.Document) {
-	if isNonStandardInvoice(doc) {
-		<span class="document-type">
-		@utils.Coalesce(
-			pt.TitleType(doc),
-			defaultTitleType(doc),
-		)
-		</span>
-		{ " " }
-	}
-	<span class="series-and-code">
-		@joinCode(doc, doc.GetSeries(), doc.GetCode())
-	</span>
+	@joinCode(doc, doc.GetSeries(), doc.GetCode())
 }
 
 templ joinCode(doc doc.Document, series, code cbc.Code) {
@@ -108,15 +100,12 @@ templ defaultJoinCode(_ doc.Document, series, code cbc.Code) {
 }
 
 templ titleType(doc doc.Document) {
-	// We show the type with the code if it has a preceding doc. 
-	if !isNonStandardInvoice(doc) {
-		<h1 class="type">
-			@utils.Coalesce(
-				pt.TitleType(doc),
-				defaultTitleType(doc),
-			)
-		</h1>
-	}
+	<h1 class="type">
+		@utils.Coalesce(
+			pt.TitleType(doc),
+			defaultTitleType(doc),
+		)
+	</h1>
 }
 
 templ defaultTitleType(doc doc.Document) {
