@@ -10,6 +10,7 @@ pl:
         corrective: "Faktura korygująca"
         credit-note: "Nota kredytowa"
         debit-note: "Nota debetowa"
+        other: "Dokument"
         paid: "Zapłacono"
         void: "Unieważniony"
 

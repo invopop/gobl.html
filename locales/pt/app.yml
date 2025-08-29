@@ -10,6 +10,7 @@ pt:
         corrective: "Fatura Corretiva"
         credit-note: "Nota de Crédito"
         debit-note: "Nota de Débito"
+        other: "Documento"
         paid: "Pago"
         void: "Anulado"
 

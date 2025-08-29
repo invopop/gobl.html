@@ -9,6 +9,7 @@ fr:
         corrective: "Facture Rectificative"
         credit-note: "Note de Crédit"
         debit-note: "Note de Débit"
+        other: "Document"
         paid: "Payé"
         void: "Annulé"
       summary: &summary

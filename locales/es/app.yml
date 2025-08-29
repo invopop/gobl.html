@@ -10,6 +10,7 @@ es:
         corrective: "Factura correctiva"
         credit-note: "Nota de crédito"
         debit-note: "Nota de débito"
+        other: "Documento"
         paid: "Pagado"
         void: "Anulado"
 
