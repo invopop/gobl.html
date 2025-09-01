@@ -124,11 +124,22 @@ section.title span.void {
     border: 1px solid #D32F2F33;
     color: #A32020;
 }
-section.title h2.code {
+section.title h2.code,
+section.title .title-group-inline h1 {
     font-size: 12pt;
     color: #030712;
     font-weight: 600;
 }
+
+section.title .title-group-inline h1,
+section.title .title-group-inline h2 {
+    display: inline-block;
+}
+
+section.title h2.code {
+    word-break: break-all;
+}
+
 section.summary {
     padding-right: 6mm;
     padding-top: 0mm;

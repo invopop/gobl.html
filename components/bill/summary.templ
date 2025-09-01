@@ -74,26 +74,25 @@ templ summary(inv *bill.Invoice) {
 
 templ summaryPrecedingRows(obj any) {
 	{{ doc := doc.For(obj) }}
-	for _, pre := range doc.GetPreceding() {
-		<li class="preceding">
-			<span class="label">
-				@t.T(".preceding_document")
-			</span>
+	<li class="preceding">
+		<span class="label">
+			@t.T(".preceding_document")
+		</span>
+		for _, pre := range doc.GetPreceding() {
+
 			<span class="value">
 				@joinCode(doc, pre.Series, pre.Code)
-			</span>
-			if pre.IssueDate != nil {
-				<span class="value">
+				if pre.IssueDate != nil {
+					{ " · " }
 					@t.L(pre.IssueDate)
-				</span>
-			}
-			if pre.Reason != "" {
-				<span class="value">
+				}
+				if pre.Reason != "" {
+					{ " · " }
 					{ pre.Reason }
-				</span>
-			}
-		</li>
-	}
+				}
+			</span>
+		}
+	</li>
 }
 
 templ summaryOrderingRows(ord *bill.Ordering) {
