@@ -4,7 +4,7 @@
 		"uuid": "01902adc-05c8-7000-8703-60c8dcf87bd6",
 		"dig": {
 			"alg": "sha256",
-			"val": "6da7ec16224f62594f4b7a55ad5d3d428b74e15501e284766d6fa9cbb6e83cde"
+			"val": "df81aebc89073152caec900e402c874d972ab5b59b24b7a5fb51a08478a53121"
 		},
 		"stamps": [
 			{
@@ -94,7 +94,8 @@
 				"taxes": [
 					{
 						"cat": "VAT",
-						"rate": "standard",
+						"key": "standard",
+						"rate": "general",
 						"percent": "23.0%",
 						"ext": {
 							"pt-region": "PT",
@@ -119,7 +120,7 @@
 				"taxes": [
 					{
 						"cat": "VAT",
-						"rate": "exempt",
+						"key": "reverse-charge",
 						"ext": {
 							"pt-region": "PT",
 							"pt-saft-exemption": "M41",
@@ -127,7 +128,15 @@
 						}
 					}
 				],
-				"total": "456.00"
+				"total": "456.00",
+				"notes": [
+					{
+						"key": "legal",
+						"code": "M41",
+						"src": "pt-saft-exemption",
+						"text": "Artigo 8.º n.º 3 do RITI"
+					}
+				]
 			},
 			{
 				"i": 3,
@@ -144,7 +153,7 @@
 				"taxes": [
 					{
 						"cat": "VAT",
-						"rate": "exempt",
+						"key": "reverse-charge",
 						"ext": {
 							"pt-region": "PT",
 							"pt-saft-exemption": "M42",
@@ -152,7 +161,15 @@
 						}
 					}
 				],
-				"total": "789.00"
+				"total": "789.00",
+				"notes": [
+					{
+						"key": "legal",
+						"code": "M42",
+						"src": "pt-saft-exemption",
+						"text": "Decreto-Lei n.º 21/2007, de 29 de janeiro"
+					}
+				]
 			}
 		],
 		"totals": {
@@ -174,7 +191,7 @@
 								"amount": "28.29"
 							},
 							{
-								"key": "exempt",
+								"key": "reverse-charge",
 								"ext": {
 									"pt-region": "PT",
 									"pt-saft-exemption": "M41",
@@ -184,7 +201,7 @@
 								"amount": "0.00"
 							},
 							{
-								"key": "exempt",
+								"key": "reverse-charge",
 								"ext": {
 									"pt-region": "PT",
 									"pt-saft-exemption": "M42",

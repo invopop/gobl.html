@@ -4,7 +4,7 @@
 		"uuid": "c82905b0-061b-11ef-9fc5-12007b149b55",
 		"dig": {
 			"alg": "sha256",
-			"val": "8d633f021a92da823f2ba00ca81e97d693ebefb5a57899bb097617eba5005203"
+			"val": "9de64fc9f3a7a0e8c734f339279297aa359650d2e180f209d4d63571fb974741"
 		},
 		"stamps": [
 			{
@@ -102,7 +102,7 @@
 				"taxes": [
 					{
 						"cat": "VAT",
-						"rate": "exempt"
+						"key": "exempt"
 					}
 				],
 				"total": "0.01"

@@ -15,7 +15,7 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl/regimes/pl"
+	"github.com/invopop/gobl/addons/pl/favat"
 )
 
 var dianQRHTTPRegexp = regexp.MustCompile(`https.+`)
@@ -114,7 +114,7 @@ func generateQR(id, qr string) templ.Component {
 func ksefQR(env *gobl.Envelope) string {
 	for _, stamp := range env.Head.Stamps {
 		switch stamp.Provider {
-		case pl.StampProviderKSeFQR:
+		case favat.StampQR:
 			return stamp.Value
 		}
 	}
@@ -124,7 +124,7 @@ func ksefQR(env *gobl.Envelope) string {
 func ksefID(env *gobl.Envelope) string {
 	for _, stamp := range env.Head.Stamps {
 		switch stamp.Provider {
-		case pl.StampProviderKSeFID:
+		case favat.StampID:
 			return stamp.Value
 		}
 	}
