@@ -1,0 +1,133 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "92be0222-1d7d-11ed-8719-b24117999d50",
+		"dig": {
+			"alg": "sha256",
+			"val": "d2e3e9a6e00f8e6fa215189fed89a7c094077fa9d7cd9eb192f6810e773c448b"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-verifactu-v1"
+		],
+		"uuid": "01971bb1-1499-7001-81ea-26f51cf396e1",
+		"type": "credit-note",
+		"series": "CN",
+		"code": "0131232328387092873491782093478910237840917283904710923874",
+		"issue_date": "2025-05-29",
+		"currency": "EUR",
+		"preceding": [
+			{
+				"uuid": "3aea7b56-59d8-4beb-90bd-f8f280d852a0",
+				"type": "standard",
+				"issue_date": "2024-11-13",
+				"series": "SAMPLE",
+				"code": "004"
+			},
+			{
+				"uuid": "3aea7b56-59d8-4beb-90bd-f8f280d852a0",
+				"type": "standard",
+				"issue_date": "2024-11-13",
+				"series": "SAMPLE",
+				"code": "005"
+			}
+		],
+		"tax": {
+			"ext": {
+				"es-verifactu-correction-type": "I",
+				"es-verifactu-doc-type": "R1"
+			}
+		},
+		"supplier": {
+			"name": "Invopop S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Sample Consumer",
+			"tax_id": {
+				"country": "ES",
+				"code": "B63272603"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Development services",
+					"price": "90.00",
+					"unit": "h"
+				},
+				"sum": "1800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"es-verifactu-op-class": "S1",
+							"es-verifactu-regime": "01"
+						}
+					}
+				],
+				"total": "1800.00"
+			}
+		],
+		"totals": {
+			"sum": "1800.00",
+			"total": "1800.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"es-verifactu-op-class": "S1",
+									"es-verifactu-regime": "01"
+								},
+								"base": "1800.00",
+								"percent": "21.0%",
+								"amount": "378.00"
+							}
+						],
+						"amount": "378.00"
+					}
+				],
+				"sum": "378.00"
+			},
+			"tax": "378.00",
+			"total_with_tax": "2178.00",
+			"payable": "2178.00"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "This is a sample invoice with a standard tax"
+			}
+		]
+	}
+}

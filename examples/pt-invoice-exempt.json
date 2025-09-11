@@ -4,7 +4,7 @@
 		"uuid": "01902adc-05c8-7000-8703-60c8dcf87bd6",
 		"dig": {
 			"alg": "sha256",
-			"val": "df81aebc89073152caec900e402c874d972ab5b59b24b7a5fb51a08478a53121"
+			"val": "62c4ff32d2d2953af8c86f07bd808ec9477347c5113dc1689ded7ee022b02470"
 		},
 		"stamps": [
 			{
@@ -109,7 +109,14 @@
 				"i": 2,
 				"quantity": "1",
 				"item": {
+					"ref": "1234567890",
 					"name": "Exempt item",
+					"identities": [
+						{
+							"type": "EAN",
+							"code": "1234567890"
+						}
+					],
 					"price": "456.00",
 					"unit": "one",
 					"ext": {

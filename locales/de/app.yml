@@ -20,7 +20,7 @@ de:
         operation_date: "Buchungsdatum"
         currency: "Währung"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Vorherige Rechnung"
+        preceding_document: "Korrigierte Dokumente"
         order: "Bestellung"
         order_period: "Zeitraum"
         order_period_label: "%{label}"
@@ -96,7 +96,7 @@ de:
         terms:
           key: "Zahlungsbedingungen"
           notes: "Zahlungsbedingungen Hinweise"
-          due_dates: "Fälligkeitsdaten"
+          due_dates: "Fälligkeitsdatum"
           keys:
             na: "Nicht angegeben"
             end_of_month: "Ende des Monats"

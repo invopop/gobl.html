@@ -4,7 +4,7 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "256e3eda47707c4e32b508fa3234b5f541fb30758368c1e79c7d64056087d3f0"
+			"val": "60c2a2cb2efb2f96d8f5183c81695f866c088d2b34309270c7bd5c79b981f99f"
 		}
 	},
 	"doc": {
@@ -25,6 +25,16 @@
 				"issue_date": "2022-01-10",
 				"series": "SAMPLE",
 				"code": "085",
+				"ext": {
+					"es-tbai-correction": "R2"
+				}
+			},
+			{
+				"type": "standard",
+				"issue_date": "2022-01-10",
+				"series": "SAMPLE",
+				"code": "085",
+				"reason": "Devolución",
 				"ext": {
 					"es-tbai-correction": "R2"
 				}

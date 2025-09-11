@@ -99,7 +99,7 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 					<small>{ l.Item.Description }</small>
 				}
 				if l.Item.Ref != "" {
-					<span class="identity">
+					<span class="subline">
 						<span class="label">
 							@t.T(".ref")
 						</span>
@@ -109,6 +109,7 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 					</span>
 				}
 				@identities(l.Item.Identities)
+				@lineNotes(l.Notes)
 				@mx.LineExtensions(l)
 			</div>
 		</td>
@@ -148,6 +149,10 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 				if combo != nil {
 					if combo.Percent != nil {
 						@t.L(*combo.Percent)
+						if (combo.Surcharge != nil) {
+							<br>+&nbsp;
+							@t.L(*combo.Surcharge)
+						}
 					} else {
 						@t.T(".no_percent")
 					}
@@ -180,7 +185,7 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 templ identities(idents []*org.Identity) {
 	if idents = presentableIdentities(idents); len(idents) > 0 {
 		for _, ident := range idents {
-			<span class="identity">
+			<span class="subline">
 				<span class="label">
 					if ident.Label != "" {
 						{ ident.Label }

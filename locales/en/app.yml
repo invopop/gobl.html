@@ -21,7 +21,7 @@ en:
         operation_date: "Operation date"
         currency: "Currency"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Previous invoice"
+        preceding_document: "Corrected documents"
         order: "Order"
         order_period: "Period"
         order_period_label: "%{label}"

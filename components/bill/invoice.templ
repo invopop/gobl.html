@@ -60,11 +60,14 @@ templ title(env *gobl.Envelope, doc doc.Document) {
 	@t.Scope(".title") {
 		<section class="title">
 			@titleHero(doc.GetSupplier())
-			@titleType(doc)
-			<h2 class="code">
-				@titleCode(doc)
-				@titleBadges(env, doc)
-			</h2>
+			<div class={"title-group", templ.KV("title-group-inline", isNonStandardInvoice(doc))}>
+				@titleType(doc)
+				{" "}
+				<h2 class="code">
+					@titleCode(doc)
+					@titleBadges(env, doc)
+				</h2>
+			</div>
 		</section>
 	}
 }
@@ -199,4 +202,8 @@ func isSimplifiedInvoice(doc doc.Document) bool {
 		return inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard
 	}
 	return false
+}
+
+func isNonStandardInvoice(doc doc.Document) bool {
+  return doc.GetType().In(bill.InvoiceTypeCreditNote, bill.InvoiceTypeDebitNote, bill.InvoiceTypeCorrective, bill.InvoiceTypeProforma)
 }

@@ -124,11 +124,22 @@ section.title span.void {
     border: 1px solid #D32F2F33;
     color: #A32020;
 }
-section.title h2.code {
+section.title h2.code,
+section.title .title-group-inline h1 {
     font-size: 12pt;
     color: #030712;
     font-weight: 600;
 }
+
+section.title .title-group-inline h1,
+section.title .title-group-inline h2 {
+    display: inline-block;
+}
+
+section.title h2.code {
+    word-break: break-all;
+}
+
 section.summary {
     padding-right: 6mm;
     padding-top: 0mm;
@@ -200,16 +211,14 @@ section.lines .description {
 section.lines .label {
     font-weight: 500;
 }
-section.lines .description .extensions,
-section.lines .description .identity {
+section.lines .subline {
     display: block;
     font-size: 10px;
 }
-section.lines .description .extensions .label,
-section.lines .description .identity .label {
+section.lines .subline .label {
     font-weight: 400;
 }
-section.lines .description .identity .label:after {
+section.lines .subline .label:after {
     content: ": ";
 }
 section.lines .discount-content {
@@ -300,6 +309,7 @@ section.taxes th,
 section.taxes td {
     text-align: right;
     padding: 1.5mm 2mm;
+    vertical-align: top;
 }
 section.taxes th {
     background-color: #f3f4f6;
