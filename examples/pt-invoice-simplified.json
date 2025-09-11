@@ -4,7 +4,7 @@
 		"uuid": "01902adc-05c8-7000-8703-60c8dcf87bd6",
 		"dig": {
 			"alg": "sha256",
-			"val": "468b0b7f6dd1c0ca49fab54f095c899eaa644dd16c8852f9c58a15381599fa41"
+			"val": "26582ded6296affa080f8f6a049e6b6e48066fc6a3fccb2fbb7a6ea34bc4fd43"
 		},
 		"stamps": [
 			{
@@ -38,10 +38,12 @@
 		"type": "standard",
 		"code": "FS IXTEST-01/34",
 		"issue_date": "2024-06-18",
+		"value_date": "2024-06-18",
 		"currency": "EUR",
 		"tax": {
 			"ext": {
-				"pt-saft-invoice-type": "FS"
+				"pt-saft-invoice-type": "FS",
+				"pt-saft-source": "P"
 			}
 		},
 		"supplier": {
@@ -75,7 +77,8 @@
 				"taxes": [
 					{
 						"cat": "VAT",
-						"rate": "standard",
+						"key": "standard",
+						"rate": "general",
 						"percent": "23.0%",
 						"ext": {
 							"pt-region": "PT",

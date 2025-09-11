@@ -4,7 +4,7 @@
 		"uuid": "0194020a-1f2e-7000-9ede-4ad7c0a9810f",
 		"dig": {
 			"alg": "sha256",
-			"val": "ee4d6f01941edce9ebb05cd417f43128d1218f569ed62fd774f9f050a9f962b5"
+			"val": "a78b807ec2a92e6e5ee51e8b2d75c3d2376b45b3242c0d019053c247d3c94f41"
 		},
 		"stamps": [
 			{
@@ -44,6 +44,7 @@
 		"series": "NE SERIES-A",
 		"code": "1",
 		"issue_date": "2024-12-23",
+		"value_date": "2024-12-23",
 		"currency": "EUR",
 		"tax": {
 			"ext": {
@@ -118,7 +119,8 @@
 				"taxes": [
 					{
 						"cat": "VAT",
-						"rate": "standard",
+						"key": "standard",
+						"rate": "general",
 						"percent": "23.0%",
 						"ext": {
 							"pt-region": "PT",

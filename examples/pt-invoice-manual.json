@@ -4,7 +4,7 @@
 		"uuid": "01902adc-05c8-7000-8703-60c8dcf87bd6",
 		"dig": {
 			"alg": "sha256",
-			"val": "477ce4996c90baca73e3cae63dd2e300c1cd6ecbe2c33143372a750670c6063a"
+			"val": "4b747c32c8ecda6e6fd1b83390a4ff6777766c6217cb3b240dfb4bfd8c1fa05c"
 		},
 		"stamps": [
 			{
@@ -40,7 +40,8 @@
 		"tax": {
 			"ext": {
 				"pt-saft-invoice-type": "FT",
-				"pt-saft-source": "P"
+				"pt-saft-source": "M",
+				"pt-saft-source-ref": "FTM seriesA/00001"
 			}
 		},
 		"supplier": {
@@ -56,7 +57,12 @@
 					"code": "4050-265",
 					"country": "PT"
 				}
-			]
+			],
+			"registration": {
+				"capital": "150000.00",
+				"office": "CRC Lisboa",
+				"other": "sob NIF 770013813"
+			}
 		},
 		"customer": {
 			"name": "Gusto Unipessoal Lda",
@@ -76,16 +82,16 @@
 		"lines": [
 			{
 				"i": 1,
-				"quantity": "1",
+				"quantity": "2",
 				"item": {
-					"name": "Noite em quarto duplo",
-					"price": "100.00",
-					"unit": "one",
+					"name": "Suite Executiva - 2 noites",
+					"price": "250.00",
+					"unit": "day",
 					"ext": {
 						"pt-saft-product-type": "S"
 					}
 				},
-				"sum": "100.00",
+				"sum": "500.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -98,12 +104,12 @@
 						}
 					}
 				],
-				"total": "100.00"
+				"total": "500.00"
 			}
 		],
 		"totals": {
-			"sum": "100.00",
-			"total": "100.00",
+			"sum": "500.00",
+			"total": "500.00",
 			"taxes": {
 				"categories": [
 					{
@@ -115,19 +121,19 @@
 									"pt-region": "PT",
 									"pt-saft-tax-rate": "NOR"
 								},
-								"base": "100.00",
+								"base": "500.00",
 								"percent": "23.0%",
-								"amount": "23.00"
+								"amount": "115.00"
 							}
 						],
-						"amount": "23.00"
+						"amount": "115.00"
 					}
 				],
-				"sum": "23.00"
+				"sum": "115.00"
 			},
-			"tax": "23.00",
-			"total_with_tax": "123.00",
-			"payable": "123.00"
+			"tax": "115.00",
+			"total_with_tax": "615.00",
+			"payable": "615.00"
 		}
 	},
 	"sigs": [

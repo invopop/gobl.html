@@ -4,19 +4,19 @@
 		"uuid": "d9fbc8bc-89fe-11ee-80f4-92dde50d70fc",
 		"dig": {
 			"alg": "sha256",
-			"val": "0fb8d7a9d3ab41f83711bca540858eb9907d7eb3b890b6b4098063420b2244b5"
+			"val": "3e4e48ecc3d132493a1d323f2c134fa1537349522aeba950974bbaa6d570172c"
 		},
 		"stamps": [
 			{
-				"prv": "ksef-id",
+				"prv": "favat-id",
 				"val": "1234567788-20240404-D1984449A6BC-02"
 			},
 			{
-				"prv": "ksef-hash",
+				"prv": "favat-hash",
 				"val": "8KCfB1Sa5Jc4Gg6ctK4HKdwnRwK+dxT1ScymF6m5d18="
 			},
 			{
-				"prv": "ksef-qr",
+				"prv": "favat-qr",
 				"val": "https://ksef-test.mf.gov.pl/web/verify/1234567788-20240404-D1984449A6BC-02/8KCfB1Sa5Jc4Gg6ctK4HKdwnRwK%2BdxT1ScymF6m5d18%3D"
 			}
 		]
@@ -81,7 +81,8 @@
 				"taxes": [
 					{
 						"cat": "VAT",
-						"rate": "standard",
+						"key": "standard",
+						"rate": "general",
 						"percent": "23.0%"
 					}
 				],
@@ -99,6 +100,7 @@
 				"taxes": [
 					{
 						"cat": "VAT",
+						"key": "standard",
 						"rate": "reduced",
 						"percent": "8.0%"
 					}
@@ -121,7 +123,7 @@
 								"amount": "414.00"
 							},
 							{
-								"key": "reduced",
+								"key": "standard",
 								"base": "10.00",
 								"percent": "8.0%",
 								"amount": "0.80"

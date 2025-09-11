@@ -4,7 +4,7 @@
 		"uuid": "01902adc-05c8-7000-8703-60c8dcf87bd6",
 		"dig": {
 			"alg": "sha256",
-			"val": "4ccb6ff14a319b7394fbc52378502704af6c71b85893ef32f06b9de253b38717"
+			"val": "62c4ff32d2d2953af8c86f07bd808ec9477347c5113dc1689ded7ee022b02470"
 		},
 		"stamps": [
 			{
@@ -35,10 +35,12 @@
 		"type": "standard",
 		"code": "FT IXTEST-01/27",
 		"issue_date": "2024-06-18",
+		"value_date": "2024-06-18",
 		"currency": "EUR",
 		"tax": {
 			"ext": {
-				"pt-saft-invoice-type": "FT"
+				"pt-saft-invoice-type": "FT",
+				"pt-saft-source": "P"
 			}
 		},
 		"supplier": {
@@ -92,7 +94,8 @@
 				"taxes": [
 					{
 						"cat": "VAT",
-						"rate": "standard",
+						"key": "standard",
+						"rate": "general",
 						"percent": "23.0%",
 						"ext": {
 							"pt-region": "PT",
@@ -124,7 +127,7 @@
 				"taxes": [
 					{
 						"cat": "VAT",
-						"rate": "exempt",
+						"key": "reverse-charge",
 						"ext": {
 							"pt-region": "PT",
 							"pt-saft-exemption": "M41",
@@ -157,7 +160,7 @@
 				"taxes": [
 					{
 						"cat": "VAT",
-						"rate": "exempt",
+						"key": "reverse-charge",
 						"ext": {
 							"pt-region": "PT",
 							"pt-saft-exemption": "M42",
@@ -195,7 +198,7 @@
 								"amount": "28.29"
 							},
 							{
-								"key": "exempt",
+								"key": "reverse-charge",
 								"ext": {
 									"pt-region": "PT",
 									"pt-saft-exemption": "M41",
@@ -205,7 +208,7 @@
 								"amount": "0.00"
 							},
 							{
-								"key": "exempt",
+								"key": "reverse-charge",
 								"ext": {
 									"pt-region": "PT",
 									"pt-saft-exemption": "M42",

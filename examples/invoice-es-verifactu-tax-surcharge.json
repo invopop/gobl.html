@@ -4,7 +4,7 @@
 		"uuid": "92be0222-1d7d-11ed-8719-b24117999d50",
 		"dig": {
 			"alg": "sha256",
-			"val": "3e2c642b210f5d766509d403616859836f8782a78f3ca52ba40e91b97fb957a3"
+			"val": "f07893654ae107a9cb7d18e890cbda32d9b61cc1ec87ce6b12d2881c8ed3887d"
 		},
 		"stamps": [
 			{
@@ -74,7 +74,8 @@
 				"taxes": [
 					{
 						"cat": "VAT",
-						"rate": "standard+eqs",
+						"key": "standard",
+						"rate": "general+eqs",
 						"percent": "21.0%",
 						"surcharge": "5.2%",
 						"ext": {
@@ -95,7 +96,7 @@
 						"code": "VAT",
 						"rates": [
 							{
-								"key": "standard+eqs",
+								"key": "standard",
 								"ext": {
 									"es-verifactu-op-class": "S1",
 									"es-verifactu-regime": "18"

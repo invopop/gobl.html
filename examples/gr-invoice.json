@@ -4,7 +4,7 @@
 		"uuid": "0190a168-3bb2-71de-989e-1afa884e838c",
 		"dig": {
 			"alg": "sha256",
-			"val": "6f780b7e14d255dd7f5b313a96a805b865060c8557ca75decd2d7782b8b268c4"
+			"val": "fb77b610c6c34d89c7b359f7eb47da30326604c402e905ca667636e61b1006d2"
 		},
 		"stamps": [
 			{
@@ -84,10 +84,11 @@
 				"taxes": [
 					{
 						"cat": "VAT",
-						"rate": "standard",
+						"key": "standard",
+						"rate": "general",
 						"percent": "24%",
 						"ext": {
-							"gr-mydata-vat-rate": "1"
+							"gr-mydata-vat-rate": "7"
 						}
 					}
 				],
@@ -113,7 +114,7 @@
 							{
 								"key": "standard",
 								"ext": {
-									"gr-mydata-vat-rate": "1"
+									"gr-mydata-vat-rate": "7"
 								},
 								"base": "90.00",
 								"percent": "24%",
