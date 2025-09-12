@@ -116,12 +116,11 @@ templ summaryContractRows(ord *bill.Order) {
 			</span>
 			<span class="value">
 				@joinCode(doc.For(ord), contract.Series, contract.Code)
-			</span>
-			if contract.IssueDate != nil {
-				<span class="value">
+				if contract.IssueDate != nil {
+					{" · "}
 					@t.L(contract.IssueDate)
-				</span>
-			}
+				}
+			</span>
 			if contract.Reason != "" {
 				<span class="value">
 					{ contract.Reason }
