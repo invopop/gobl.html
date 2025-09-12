@@ -215,7 +215,7 @@ func summaryPrecedingRows(obj any) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = t.T(".preceding_document").Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = t.N(".preceding_document", len(doc.GetPreceding())).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -20,7 +20,9 @@ pl:
         operation_date: "Data operacji"
         currency: "Waluta"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Skorygowane dokumenty"
+        preceding_document:
+          one: "Skorygowany dokument"
+          other: "Skorygowane dokumenty"
         order: "Zamówienie"
         order_period: "Okres"
         order_period_label: "%{label}"
@@ -139,7 +141,9 @@ pl:
         <<: *summary
         despatch_date: "Data wysyłki"
         receive_date: "Data odbioru"
-        preceding_document: "Poprzedni dokument"
+        preceding_document:
+          one: "Poprzedni dokument"
+          other: "Poprzednie dokumenty"
 
       despatcher:
         title: "Nadawca"
@@ -164,7 +168,9 @@ pl:
 
       summary:
         <<: *summary
-        preceding_document: "Poprzedni dokument"
+        preceding_document:
+          one: "Poprzedni dokument"
+          other: "Poprzednie dokumenty"
         contract: "Umowa"
         period: "Okres"
 

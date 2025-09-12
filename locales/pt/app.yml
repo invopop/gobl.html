@@ -20,7 +20,9 @@ pt:
         operation_date: "Data de Operação"
         currency: "Moeda"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Referente a Fatura"
+        preceding_document:
+          one: "Referente a Fatura"
+          other: "Referente a Faturas"
         order: "Encomenda"
         order_period: "Período"
         order_period_label: "%{label}"
@@ -141,7 +143,9 @@ pt:
         <<: *summary
         despatch_date: "Data de Expedição"
         receive_date: "Data de Recepção"
-        preceding_document: "Documento Anterior"
+        preceding_document:
+          one: "Documento anterior"
+          other: "Documentos anteriores"
 
       despatcher:
         title: "Remetente"
@@ -166,7 +170,9 @@ pt:
 
       summary:
         <<: *summary
-        preceding_document: "Documento Anterior"
+        preceding_document:
+          one: "Documento anterior"
+          other: "Documentos anteriores"
         contract: "Contrato"
         period: "Período"
 

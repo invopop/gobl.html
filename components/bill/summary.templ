@@ -76,7 +76,7 @@ templ summaryPrecedingRows(obj any) {
 	{{ doc := doc.For(obj) }}
 	<li class="preceding">
 		<span class="label">
-			@t.T(".preceding_document")
+			@t.N(".preceding_document", len(doc.GetPreceding()))
 		</span>
 		for _, pre := range doc.GetPreceding() {
 
