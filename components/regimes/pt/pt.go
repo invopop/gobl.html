@@ -4,6 +4,7 @@ package pt
 import (
 	"bytes"
 	"encoding/base64"
+	"errors"
 	"fmt"
 	"slices"
 
@@ -59,6 +60,15 @@ func AdaptCustomer(doc doc.Document, par *gorg.Party) *gorg.Party {
 	}
 
 	return &cus
+}
+
+// Validate validates the invoice against the AT spec.
+func Validate(env *gobl.Envelope) error {
+	d := doc.ExtractFrom(env)
+	if isPortuguese(d) && atHash(env) == "" {
+		return errors.New("Portuguese documents must be sealed to render as PDF")
+	}
+	return nil
 }
 
 // generateQR implements a custom QR code generator that complies with the AT spec.
