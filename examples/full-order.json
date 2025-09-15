@@ -5,7 +5,33 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "e389571c45ebcc8a11ef9e932162752747a7d647f6be1f92f188dd3c2d56ccf4"
-		}
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJHNC82-123"
+			},
+			{
+				"prv": "at-hash",
+				"val": "FV3o"
+			},
+			{
+				"prv": "at-hash-full",
+				"val": "FCIPv7kRXeVbUVVqcnxO3uZFFFIQLCotZlOBGFZlPJwAWgRnZVFidZlbXhR3/nxoMqqEFBTHH9EHU7t5jnKkjQ+XlSJxQoEvphSaI/Ps3y1V9r5eoOAXM5OUusASQKmWzwKc1T2tXXadN+0b2dXF5Y/koSSS91zmZ8r/8J9qWWk="
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:770013813*B:514329874*C:PT*D:NE*E:N*F:20241223*G:NE SERIES-A/1*H:AAJFJHNC82-1*I1:PT*I7:42.50*I8:9.78*N:9.78*O:52.28*Q:FV3o*R:123"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "123"
+			},
+			{
+				"prv": "at-ts",
+				"val": "2025-01-01T00:00:00"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/order",
@@ -728,5 +754,8 @@
 				"text": "This is a confidential document"
 			}
 		]
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6ImU3M2EyNGNiLTNlNDgtNGY0NC1iOTM4LTE0NjlhYjgyMThkZCJ9.eyJ1dWlkIjoiMDE5NDAyMGEtMWYyZS03MDAwLTllZGUtNGFkN2MwYTk4MTBmIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImNhMmZiMDY4OWRkYzc4ZjkyM2E1MjJiYmUwZTMzNDg0YTExNDA0NGM3NzQwNGYyMmFiM2FkMDM4M2I5NWNiOTEifX0.P35n367iv2zjsLK28iwWprZ03Z3kfH7Q4iZytdXLO8g_QeycYadqQ6VUQB74QtFEvNyfzK2M8759DSEcks0TsQ"
+	]
 }

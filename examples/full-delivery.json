@@ -5,7 +5,29 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "1e89f1b13afac319ada0bbb10c41c032f45a64c99cbc20f6b2d1e5044e616b0a"
-		}
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJR2KW4-2"
+			},
+			{
+				"prv": "at-hash",
+				"val": "0vot"
+			},
+			{
+				"prv": "at-hash-full",
+				"val": "0WMEHADswWv5aavY+2VboOclMpPyoQtl7neqfA/7PPvhayQR1OQMok5fFr8N4vi6TGm8ymmHSpfX4QG28jeDJqNuO92v5TbRH78/4lPbcryEmVIgG0x9jXtYPX6RehwYYuUZg1q1XSEYrEGg+zQoPN8VZetI5PxGRWqrkIe8G5w="
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:770013813*B:514329874*C:PT*D:GR*E:N*F:20241223*G:GR DEV-10/2*H:AAJFJR2KW4-2*I1:PT*I7:42.50*I8:9.78*N:9.78*O:52.28*Q:0vot*R:0"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "0"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/delivery",
@@ -1017,5 +1039,8 @@
 				"text": "Delivery of ordered products as per contract agreement."
 			}
 		]
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjdiNzFmZTgwLTZkMjUtNGI3My05MWQzLWRhNjMzYzY5Mzc3NSJ9.eyJ1dWlkIjoiMDE5NTY2MjQtMTBmMi03MzRhLWJlOWYtZDY4YjJhMDExY2FjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImY0MzY2NWRhZDMxMDdlYjFiNzUyNDhhZTBjYmJkNWJiNzA3NjI2YjBmNjE3MzE1MTgyZjEyZTM1ZTg4ZDE2NTIifX0.NH6VqdHt8k-A5syW2pIMTMVICUXad8MsS0DDhz49UMV3O511EfpyW_yBsVih_QloPhZYEwusFe8WcHs1OEPmrA"
+	]
 }
