@@ -119,6 +119,7 @@ de:
         advice: "Zahlungsavis"
         receipt: "Zahlungseingang"
         paid: "Bezahlt"
+        void: "Ungültig"
 
       lines:
         <<: *lines

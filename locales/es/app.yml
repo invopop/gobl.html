@@ -122,6 +122,7 @@ es:
         advice: "Aviso de pago"
         receipt: "Recibo de pago"
         paid: "Pagado"
+        void: "Anulado"
 
       lines:
         <<: *lines

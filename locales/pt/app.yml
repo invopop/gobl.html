@@ -120,6 +120,7 @@ pt:
         advice: "Aviso de Pagamento"
         receipt: "Recibo de Pagamento"
         paid: "Pago"
+        void: "Anulado"
 
       lines:
         <<: *lines
