@@ -110,6 +110,7 @@ fr:
         advice: "Avis de paiement"
         receipt: "Reçu de paiement"
         paid: "Payé"
+        void: "Annulé"
 
       lines:
         <<: *lines

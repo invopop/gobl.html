@@ -125,6 +125,7 @@ en:
         advice: "Remittance advice"
         receipt: "Payment receipt"
         paid: "Paid"
+        void: "Void"
 
       lines:
         <<: *lines

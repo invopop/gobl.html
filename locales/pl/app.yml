@@ -118,6 +118,7 @@ pl:
         advice: "Powiadomienie o płatności"
         receipt: "Potwierdzenie płatności"
         paid: "Opłacone"
+        void: "Unieważniony"
 
       lines:
         <<: *lines
