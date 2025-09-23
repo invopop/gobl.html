@@ -35,7 +35,8 @@ templ Envelope(env *gobl.Envelope) {
 			}
 		>
 			<article class="envelope">
-				// footer required at start to appear on all pages
+				// watermark and footer required at start to appear on all pages
+				@watermark(env)
 				@footerPrint(env)
 				switch doc := env.Extract().(type) {
 					case *gbill.Invoice:

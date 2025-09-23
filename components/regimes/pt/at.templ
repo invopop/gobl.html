@@ -50,14 +50,6 @@ templ JoinCode(doc doc.Document, series, code cbc.Code) {
 	}
 }
 
-templ TitleBadges(doc doc.Document) {
-	if isPortuguese(doc) {
-		<span class="badge">
-			@t.T("regimes.pt.title.original")
-		</span>
-	}
-}
-
 templ titleType(doc doc.Document) {
 	if typ := docType(doc); typ != cbc.CodeEmpty {
 		@t.T("regimes.pt.title." + string(typ))

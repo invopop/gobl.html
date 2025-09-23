@@ -119,3 +119,28 @@ footer .gobl-logo img {
 footer.print .gobl-logo {
     margin-top: -7mm;
 }
+@page {
+    @prince-overlay {
+        content: element(watermark);
+    }
+}
+div.watermark {
+    position: running(watermark);
+    font-size: 100pt;
+    font-weight: 700;
+    color: #6B727D26;
+    text-align: center;
+    width: 100%;
+    line-height: 1;
+    z-index: 0;
+    --wm-transform: rotate(-30deg) scale(1.1);
+    transform: var(--wm-transform);
+}
+@media screen {
+    div.watermark {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) var(--wm-transform);
+    }
+}

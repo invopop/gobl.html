@@ -1,0 +1,15 @@
+package components
+
+import (
+	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/internal"
+)
+
+templ watermark(_ *gobl.Envelope) {
+  {{ opts := internal.Options(ctx)}}
+  if wm := opts.Watermark; wm != "" {
+    <div class="watermark">
+      { wm }
+    </div>
+  }
+}

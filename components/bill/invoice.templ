@@ -126,7 +126,11 @@ templ titleBadges(env *gobl.Envelope, doc doc.Document) {
 			@t.T(".paid")
 		</span>
 	}
-	@pt.TitleBadges(doc)
+	if lbl := label(ctx); lbl != "" {
+		<span class="label">
+			{ lbl }
+		</span>
+	}
 }
 
 templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
@@ -195,6 +199,12 @@ func voided(ctx context.Context) bool {
 	opts := internal.Options(ctx)
 
 	return opts.Void
+}
+
+func label(ctx context.Context) string {
+	opts := internal.Options(ctx)
+
+	return opts.Label
 }
 
 func isSimplifiedInvoice(doc doc.Document) bool {
