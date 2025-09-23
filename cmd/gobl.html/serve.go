@@ -181,8 +181,11 @@ func (s *serveOpts) generate(c echo.Context) error {
 	if ext == ".pdf" {
 		opts = append(opts, goblhtml.WithEmbeddedAssets())
 	}
-	if strings.HasSuffix(fn, ".void.json") {
+	if strings.Contains(fn, ".void.") {
 		opts = append(opts, goblhtml.WithVoid(true))
+	}
+	if strings.Contains(fn, ".sandbox.") {
+		opts = append(opts, goblhtml.WithSandbox(true))
 	}
 	data, err := s.render(c, req, env, opts)
 	if err != nil {

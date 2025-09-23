@@ -27,7 +27,7 @@ templ ATQR(env *gobl.Envelope) {
 					<div class="qr">
 						<img src={ generateQR(qr) }/>
 					</div>
-					if notes := qrNotes(env); len(notes) > 0 {
+					if notes := qrNotes(ctx, env); len(notes) > 0 {
 						<div class="notes">
 							@templ.Raw(strings.Join(notes, " &middot; "))
 						</div>

@@ -110,6 +110,13 @@ func WithVoid(void bool) Option {
 	}
 }
 
+// WithSandbox indicates that the document should be rendered in sandbox mode
+func WithSandbox(sandbox bool) Option {
+	return func(o *internal.Opts) {
+		o.Sandbox = sandbox
+	}
+}
+
 // Render takes the GOBL envelope and attempts to render an HTML document
 // from it.
 func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, error) {

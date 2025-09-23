@@ -88,8 +88,11 @@ func convertExample(name string) ([]byte, error) {
 
 	// Extract the state from the name
 	var opts []goblhtml.Option
-	if strings.HasSuffix(name, ".void.json") {
+	if strings.Contains(name, ".void.") {
 		opts = append(opts, goblhtml.WithVoid(true))
+	}
+	if strings.Contains(name, ".sandbox.") {
+		opts = append(opts, goblhtml.WithSandbox(true))
 	}
 
 	ctx := context.Background()

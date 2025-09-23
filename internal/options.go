@@ -41,6 +41,8 @@ type Opts struct {
 	Layout layout.Code
 	// Void indicates if the document should be rendered as void
 	Void bool
+	// Sandbox indicates if the document should be rendered in sandbox mode
+	Sandbox bool
 }
 
 // WithOptions prepares the context with the options to use.

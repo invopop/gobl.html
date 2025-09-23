@@ -102,7 +102,7 @@ func ATQR(env *gobl.Envelope) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				if notes := qrNotes(env); len(notes) > 0 {
+				if notes := qrNotes(ctx, env); len(notes) > 0 {
 					templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div class=\"notes\">")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
