@@ -110,6 +110,27 @@ func WithVoid(void bool) Option {
 	}
 }
 
+// WithSandbox indicates that the document should be rendered in sandbox mode
+func WithSandbox(sandbox bool) Option {
+	return func(o *internal.Opts) {
+		o.Sandbox = sandbox
+	}
+}
+
+// WithWatermark indicates that the document should be rendered with the provided watermark
+func WithWatermark(watermark string) Option {
+	return func(o *internal.Opts) {
+		o.Watermark = watermark
+	}
+}
+
+// WithLabel indicates that the document should be rendered with the provided label
+func WithLabel(label string) Option {
+	return func(o *internal.Opts) {
+		o.Label = label
+	}
+}
+
 // Render takes the GOBL envelope and attempts to render an HTML document
 // from it.
 func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, error) {

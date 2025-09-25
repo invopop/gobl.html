@@ -102,7 +102,7 @@ section.title .hero img {
 }
 section.title span.paid,
 section.title span.void,
-section.title span.badge {
+section.title span.label {
     font-size: 9pt;
     font-weight: 400;
     vertical-align: text-bottom;

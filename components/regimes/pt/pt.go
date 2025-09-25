@@ -3,12 +3,14 @@ package pt
 
 import (
 	"bytes"
+	"context"
 	"encoding/base64"
 	"errors"
 	"fmt"
 	"slices"
 
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl/addons/pt/saft"
 	"github.com/invopop/gobl/cbc"
@@ -99,13 +101,16 @@ func generateQR(qrval string) string {
 }
 
 // qrNotes returns the notes to be added after the QR code
-func qrNotes(env *gobl.Envelope) []string {
+func qrNotes(ctx context.Context, env *gobl.Envelope) []string {
 	if appID := atAppID(env); appID != "" {
 		var notes []string
 		d := doc.ExtractFrom(env)
 		dt := docType(d)
 		if dt != cbc.CodeEmpty && !slices.Contains(invoiceTypes, dt) {
 			notes = append(notes, "Este documento não serve de fatura")
+		}
+		if isSandbox(ctx) {
+			notes = append(notes, "Documento emitido para fins de Formação")
 		}
 		if dn := d.GetExt().Get(saft.ExtKeySourceRef); dn != "" {
 			notes = append(notes, fmt.Sprintf("Cópia do documento original - %s", dn))
@@ -190,4 +195,9 @@ func docType(doc doc.Document) cbc.Code {
 
 func isPortuguese(doc doc.Document) bool {
 	return doc != nil && doc.GetRegime().Country == country
+}
+
+func isSandbox(ctx context.Context) bool {
+	opts := internal.Options(ctx)
+	return opts.Sandbox
 }

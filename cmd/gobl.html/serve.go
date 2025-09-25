@@ -139,6 +139,12 @@ func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opt
 	} else {
 		opts = append(opts, goblhtml.WithLayout(layout.A4))
 	}
+	if req.Watermark != "" {
+		opts = append(opts, goblhtml.WithWatermark(req.Watermark))
+	}
+	if req.Label != "" {
+		opts = append(opts, goblhtml.WithLabel(req.Label))
+	}
 
 	out, err := goblhtml.Render(ctx, env, opts...)
 	if err != nil {
@@ -156,6 +162,8 @@ type options struct {
 	LogoHeight int32       `query:"logo_height"`
 	Notes      string      `query:"notes"`
 	Layout     layout.Code `query:"layout"`
+	Watermark  string      `query:"watermark"`
+	Label      string      `query:"label"`
 }
 
 func (s *serveOpts) generate(c echo.Context) error {
@@ -181,8 +189,11 @@ func (s *serveOpts) generate(c echo.Context) error {
 	if ext == ".pdf" {
 		opts = append(opts, goblhtml.WithEmbeddedAssets())
 	}
-	if strings.HasSuffix(fn, ".void.json") {
+	if strings.Contains(fn, ".void.") {
 		opts = append(opts, goblhtml.WithVoid(true))
+	}
+	if strings.Contains(fn, ".sandbox.") {
+		opts = append(opts, goblhtml.WithSandbox(true))
 	}
 	data, err := s.render(c, req, env, opts)
 	if err != nil {
