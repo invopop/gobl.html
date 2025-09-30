@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	defaultLocale i18n.Code = "de"
+	defaultLocale i18n.Code = "en"
 )
 
 // locales contains the database of locales defined for this package.

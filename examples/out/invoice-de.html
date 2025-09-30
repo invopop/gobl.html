@@ -30,7 +30,7 @@
           </a>
         </div>
       </footer>
-      <article class="payment">
+      <article class="invoice">
         <header class="regular">
           <div class="details">
             <section class="title">
@@ -41,13 +41,10 @@
               </div>
               <div class="title-group">
                 <h1 class="type">
-                  Zahlungseingang
+                  Rechnung
                 </h1>
                 <h2 class="code">
-                  RCT-0001
-                  <span class="paid">
-                    Bezahlt
-                  </span>
+                  SAMPLE-001
                 </h2>
               </div>
             </section>
@@ -61,7 +58,7 @@
                     Ausstellungsdatum
                   </span>
                   <span class="value">
-                    2025-01-28
+                    2023-12-20
                   </span>
                 </li>
                 <li class="currency">
@@ -87,14 +84,14 @@
                   </div>
                   <div class="org-address">
                     <span>
-                      Calle Pradillo 42, Madrid, Madrid, 28002 (Spanien)
+                      Calle Pradillo 42, Madrid, Madrid, 00-015 (Polen)
                     </span>
                   </div>
                   <div class="emails">
                     E-Mail: billing@example.com
                   </div>
                   <div class="tax-id">
-                    NIF: (ES) B98602642
+                    Umsatzsteuer: (DE) 111111125
                   </div>
                 </div>
               </div>
@@ -108,8 +105,13 @@
                   <div class="name">
                     Sample Consumer
                   </div>
+                  <div class="org-address">
+                    <span>
+                      Calle Pradillo 43, Madrid, Madrid, 00-015 (Deutschland)
+                    </span>
+                  </div>
                   <div class="tax-id">
-                    NIF: (ES) 54387763P
+                    Umsatzsteuer: (DE) 111111125
                   </div>
                 </div>
               </div>
@@ -126,11 +128,20 @@
                 <th class="ref">
                   #
                 </th>
-                <th class="document">
-                  Dokument
+                <th class="description">
+                  Beschreibung
+                </th>
+                <th class="quantity">
+                  Menge
+                </th>
+                <th class="unit">
+                  Einheit
+                </th>
+                <th class="price">
+                  Einzelprice
                 </th>
                 <th class="tax">
-                  VAT
+                  MwSt
                 </th>
                 <th class="total">
                   Gesamt
@@ -138,26 +149,58 @@
               </tr>
             </thead>
             <tbody>
-              <tr data-subtotal="€1.972,30">
+              <tr data-subtotal="€1.800,00">
                 <td class="ref">
                   1
                 </td>
-                <td class="document">
+                <td class="description">
                   <div class="limited-height">
                     <span>
-                      SAMPLE-001
+                      Development services
                     </span>
-                    <br>
-                    <small>
-                      Invoice
-                    </small>
                   </div>
                 </td>
+                <td class="quantity">
+                  20
+                </td>
+                <td class="unit">
+                  h
+                </td>
+                <td class="price">
+                  €90,00
+                </td>
                 <td class="tax">
-                  €342,30
+                  19%
                 </td>
                 <td class="total">
-                  €1.972,30
+                  €1.800,00
+                </td>
+              </tr>
+              <tr data-subtotal="€1.810,00">
+                <td class="ref">
+                  2
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Financial service
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  1
+                </td>
+                <td class="unit">
+                  service
+                </td>
+                <td class="price">
+                  €10,00
+                </td>
+                <td class="tax">
+                  7%
+                </td>
+                <td class="total">
+                  €10,00
                 </td>
               </tr>
             </tbody>
@@ -171,20 +214,28 @@
               </h2>
               <table>
                 <tbody>
+                  <tr class="sum strong">
+                    <th>
+                      Summe
+                    </th>
+                    <td>
+                      €1.810,00
+                    </td>
+                  </tr>
                   <tr class="tax">
                     <th>
                       Steuern
                     </th>
                     <td>
-                      €342,30
+                      €342,70
                     </td>
                   </tr>
-                  <tr class="total strong">
+                  <tr class="payable strong">
                     <th>
-                      Gesamt
+                      Gesamt zu zahlen
                     </th>
                     <td>
-                      €1.972,30
+                      €2.152,70
                     </td>
                   </tr>
                 </tbody>
@@ -213,38 +264,34 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td rowspan="1" class="category">
-                      VAT
+                    <td rowspan="2" class="category">
+                      MwSt
                     </td>
                     <td class="base">
-                      €1.630,00
+                      €1.800,00
                     </td>
                     <td class="rate">
-                      21,0%
+                      19%
                     </td>
                     <td class="amount">
-                      €342,30
+                      €342,00
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="base">
+                      €10,00
+                    </td>
+                    <td class="rate">
+                      7%
+                    </td>
+                    <td class="amount">
+                      €0,70
                     </td>
                   </tr>
                 </tbody>
               </table>
             </section>
           </div>
-          <section class="payment">
-            <h2 class="title">
-              Zahlungsdetails
-            </h2>
-            <ul class="instructions">
-              <li class="method-name">
-                <span class="label">
-                  Zahlungsmethode
-                </span>
-                <span class="value">
-                  Banküberweisung
-                </span>
-              </li>
-            </ul>
-          </section>
           <div class="extensions"></div>
         </div>
       </article>
@@ -272,13 +319,10 @@
             </div>
             <div class="title-group">
               <h1 class="type">
-                Zahlungseingang
+                Rechnung
               </h1>
               <h2 class="code">
-                RCT-0001
-                <span class="paid">
-                  Bezahlt
-                </span>
+                SAMPLE-001
               </h2>
             </div>
           </section>

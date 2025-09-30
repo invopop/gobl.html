@@ -16,11 +16,11 @@
     <article class="envelope">
       <footer class="print">
         <span class="page">
-          Page
+          Seite
           <span class="page-number">
             1
           </span>
-          of
+          von
           <span class="pages-number">
             1
           </span>
@@ -42,7 +42,7 @@
               </div>
               <div class="title-group">
                 <h1 class="type">
-                  Invoice
+                  !(MISSING: regimes.pt.title.FT)
                 </h1>
                 <h2 class="code">
                   FT IXTEST-01/27
@@ -51,12 +51,12 @@
             </section>
             <section class="summary">
               <h2 class="title">
-                Summary
+                Zusammenfassung
               </h2>
               <ul>
                 <li class="issue-date">
                   <span class="label">
-                    Issue date
+                    Ausstellungsdatum
                   </span>
                   <span class="value">
                     2024-06-18
@@ -64,7 +64,7 @@
                 </li>
                 <li class="currency">
                   <span class="label">
-                    Currency
+                    Währung
                   </span>
                   <span class="value">
                     Euro (EUR)
@@ -72,7 +72,7 @@
                 </li>
                 <li class="value-date">
                   <span class="label">
-                    Value date
+                    Wertstellungsdatum
                   </span>
                   <span class="value">
                     2024-06-18
@@ -85,7 +85,7 @@
             <section class="supplier">
               <div class="party-border">
                 <h2>
-                  Supplier
+                  Lieferant
                 </h2>
                 <div class="org-party">
                   <div class="name">
@@ -101,14 +101,14 @@
                   </div>
                   <div class="registration">
                     <span>
-                      Registration:
+                      Registrierung:
                     </span>
                     <span class="other">
                       CRC Porto sob nº123123123 - SIRPEEE: PT000123
                     </span>
                   </div>
                   <div class="capital">
-                    Social capital: €2.000.000,00
+                    Sozialkapital: €2.000.000,00
                   </div>
                 </div>
               </div>
@@ -116,17 +116,17 @@
             <section class="customer">
               <div class="party-border">
                 <h2>
-                  Customer
+                  Kunde
                 </h2>
                 <div class="org-party">
                   <div class="alias">
                     NIF: Consumidor Final
                   </div>
                   <div class="person">
-                    João Silva
+                    !(MISSING: org.party.person)
                   </div>
                   <div class="emails">
-                    Email: joao@example.com
+                    E-Mail: joao@example.com
                   </div>
                 </div>
               </div>
@@ -135,7 +135,7 @@
         </header>
         <section class="lines">
           <h2>
-            Lines
+            Positionen
           </h2>
           <table>
             <thead>
@@ -144,25 +144,25 @@
                   #
                 </th>
                 <th class="description">
-                  Description
+                  Beschreibung
                 </th>
                 <th class="quantity">
-                  Qty.
+                  Menge
                 </th>
                 <th class="unit">
-                  Unit
+                  Einheit
                 </th>
                 <th class="price">
-                  Price
+                  Einzelprice
                 </th>
                 <th class="tax">
                   VAT
                 </th>
                 <th class="exemption">
-                  Exemption
+                  Befreiung
                 </th>
                 <th class="total">
-                  Total
+                  Gesamt
                 </th>
               </tr>
             </thead>
@@ -242,7 +242,7 @@
                   456,00 €
                 </td>
                 <td class="tax">
-                  —
+                  !(MISSING: billing.invoice.lines.no_percent)
                 </td>
                 <td class="exemption">
                   <code>
@@ -284,7 +284,7 @@
                   789,00 €
                 </td>
                 <td class="tax">
-                  —
+                  !(MISSING: billing.invoice.lines.no_percent)
                 </td>
                 <td class="exemption">
                   <code>
@@ -302,13 +302,13 @@
           <div class="totals">
             <section class="totals">
               <h2>
-                Totals
+                Summen
               </h2>
               <table>
                 <tbody>
                   <tr class="sum strong">
                     <th>
-                      Sum
+                      Summe
                     </th>
                     <td>
                       1 368,00 €
@@ -316,7 +316,7 @@
                   </tr>
                   <tr class="tax">
                     <th>
-                      Tax
+                      Steuern
                     </th>
                     <td>
                       28,29 €
@@ -324,7 +324,7 @@
                   </tr>
                   <tr class="payable strong">
                     <th>
-                      Total to pay
+                      Gesamt zu zahlen
                     </th>
                     <td>
                       1 396,29 €
@@ -335,25 +335,25 @@
             </section>
             <section class="taxes">
               <h2>
-                Taxes
+                Steuern
               </h2>
               <table>
                 <thead>
                   <tr>
                     <th class="category">
-                      Tax
+                      Steuer
                     </th>
                     <th class="base">
-                      Base
+                      Basis
                     </th>
                     <th class="rate">
-                      Rate
+                      Satz
                     </th>
                     <th class="exemption">
-                      Exemption
+                      Befreiung
                     </th>
                     <th class="amount">
-                      Amount
+                      Betrag
                     </th>
                   </tr>
                 </thead>
@@ -378,7 +378,7 @@
                       456,00 €
                     </td>
                     <td class="rate">
-                      —
+                      !(MISSING: billing.invoice.taxes.no_percent)
                     </td>
                     <td class="exemption">
                       <code>
@@ -394,7 +394,7 @@
                       789,00 €
                     </td>
                     <td class="rate">
-                      —
+                      !(MISSING: billing.invoice.taxes.no_percent)
                     </td>
                     <td class="exemption">
                       <code>
@@ -411,7 +411,7 @@
           </div>
           <section class="notes">
             <h2>
-              Notes
+              Hinweise
             </h2>
             <div class="note">
               <p>
@@ -457,7 +457,7 @@
               <tbody>
                 <tr class="strong">
                   <th>
-                    Brought forward
+                    Vortrag
                   </th>
                   <td class="amount">
                     0,00 €
@@ -474,7 +474,7 @@
             </div>
             <div class="title-group">
               <h1 class="type">
-                Invoice
+                !(MISSING: regimes.pt.title.FT)
               </h1>
               <h2 class="code">
                 FT IXTEST-01/27
@@ -490,7 +490,7 @@
               <tbody>
                 <tr class="strong">
                   <th>
-                    Carried forward
+                    Übertrag
                   </th>
                   <td class="amount">
                     0,00 €
