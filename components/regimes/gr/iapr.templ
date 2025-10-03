@@ -1,9 +1,14 @@
 package gr
 
 import (
+	//"fmt"
 	"github.com/invopop/gobl"
   "github.com/invopop/gobl/regimes/gr"
   "github.com/invopop/gobl.html/components/images"
+  "github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal/doc"
+	"github.com/invopop/gobl/addons/gr/mydata"
+	//"github.com/invopop/gobl/cbc"
 )
 
 templ IAPR(env *gobl.Envelope) {
@@ -64,6 +69,19 @@ templ IAPR(env *gobl.Envelope) {
 		</section>
 	}
 }
+
+templ TitleType(doc doc.Document) {
+  if typ := myDataInvoiceType(doc); typ != "" {
+    @t.T("regimes.gr.title." + string(typ))
+  }
+}
+
+func myDataInvoiceType(doc doc.Document) string {
+    ext := doc.GetExt()
+   	code := ext.Get(mydata.ExtKeyInvoiceType)
+    return string(code)
+}
+
 
 func hasStamps(env *gobl.Envelope) bool {
 	return env.Head.GetStamp(gr.StampIAPRQR) != nil

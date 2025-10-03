@@ -103,6 +103,7 @@ templ titleType(doc doc.Document) {
 	<h1 class="type">
 		@utils.Coalesce(
 			pt.TitleType(doc),
+			gr.TitleType(doc),
 			defaultTitleType(doc),
 		)
 	</h1>
@@ -111,6 +112,8 @@ templ titleType(doc doc.Document) {
 templ defaultTitleType(doc doc.Document) {
 	if isSimplifiedInvoice(doc) {
 		@t.T(".standard-simplified")
+	} else if isOtherInvoice(doc) {
+
 	} else {
 		@t.T("." + string(doc.GetType()))
 	}
@@ -208,6 +211,13 @@ func label(ctx context.Context) string {
 }
 
 func isSimplifiedInvoice(doc doc.Document) bool {
+	if inv, ok := doc.Extract().(*bill.Invoice); ok {
+		return inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard
+	}
+	return false
+}
+
+func isOtherInvoice(doc doc.Document) bool {
 	if inv, ok := doc.Extract().(*bill.Invoice); ok {
 		return inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard
 	}

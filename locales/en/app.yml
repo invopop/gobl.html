@@ -229,6 +229,66 @@ en:
       cufe: "CUFE: %{cufe}"
       cude: "CUDE: %{cude}"
       preceding_cufe: "CUFE previous invoice: %{cufe}"
+    gr:
+      title:
+        1:
+          1: "Sales invoice"
+          2: "Sales invoice/Intra-community supplies"
+          3: "Sales invoice/Third country supplies"
+          4: "Sales invoice/Sale on behalf of third parties"
+          5: "Sales invoice/Clearance of sales on behalf of third parties – Fees from sales on behalf of third parties"
+          6: "Sales invoice/Supplemental accounting source document"
+        2:
+          1: "Service rendered invoice"
+          2: "Intra-community service rendered invoice"
+          3: "Third country service rendered invoice"
+          4: "Service rendered invoice/Supplemental accounting source document"
+        3:
+          1: "Proof of expenditure (non-liable issuer)"
+          2: "Proof of expenditure (denial of issuance by liable issuer)"
+        5:
+          1: "Credit invoice/Associated"
+          2: "Credit invoice/Non-associated"
+        6:
+          1: "Self-delivery record"
+          2: "Self-supply record"
+        7:
+          1: "Contract – Income"
+        8:
+          1: "Rents – Income"
+          2: "Special record – Accommodation tax collection/Payment receipt"
+        11:
+          1: "Retail sales receipt"
+          2: "Service rendered receipt"
+          3: "Simplified invoice"
+          4: "Retail sales credit note"
+          5: "Retail sales receipt on behalf of third parties"
+        13:
+          1: "Expenses – Domestic/Foreign retail transaction purchases"
+          2: "Domestic/Foreign retail transaction provision"
+          3: "Shared utility bills"
+          4: "Subscriptions"
+          30: "Self-declared entity accounting source documents (Dynamic)"
+          31: "Domestic/Foreign retail sales credit note"
+        14:
+          1: "Invoice/Intra-community acquisitions"
+          2: "Invoice/Third country acquisitions"
+          3: "Invoice/Intra-community services receipt"
+          4: "Invoice/Third country services receipt"
+          5: "EFKA"
+          30: "Self-declared entity accounting source documents (Dynamic)"
+          31: "Domestic/Foreign credit note"
+        15:
+          1: "Contract-Expense"
+        16:
+          1: "Rent-Expense"
+        17:
+          1: "Payroll"
+          2: "Amortizations"
+          3: "Other income adjustment/Regularization entries – Accounting base"
+          4: "Other income adjustment/Regularization entries – Tax base"
+          5: "Other expense adjustment/Regularization entries – Accounting base"
+          6: "Other expense adjustment/Regularization entries – Tax base"
     pt:
       title:
         FT: "Invoice"

@@ -9,9 +9,14 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
+	//"fmt"
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal/doc"
+	"github.com/invopop/gobl/addons/gr/mydata"
 	"github.com/invopop/gobl/regimes/gr"
+	//"github.com/invopop/gobl/cbc"
 )
 
 func IAPR(env *gobl.Envelope) templ.Component {
@@ -48,7 +53,7 @@ func IAPR(env *gobl.Envelope) templ.Component {
 				var templ_7745c5c3_Var2 templ.SafeURL
 				templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL(st.Value))
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/gr/iapr.templ`, Line: 33, Col: 34}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/gr/iapr.templ`, Line: 38, Col: 34}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 				if templ_7745c5c3_Err != nil {
@@ -79,7 +84,7 @@ func IAPR(env *gobl.Envelope) templ.Component {
 				var templ_7745c5c3_Var3 string
 				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(st.Value)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/gr/iapr.templ`, Line: 42, Col: 36}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/gr/iapr.templ`, Line: 47, Col: 36}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 				if templ_7745c5c3_Err != nil {
@@ -98,7 +103,7 @@ func IAPR(env *gobl.Envelope) templ.Component {
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(st.Value)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/gr/iapr.templ`, Line: 48, Col: 36}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/gr/iapr.templ`, Line: 53, Col: 36}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
@@ -117,7 +122,7 @@ func IAPR(env *gobl.Envelope) templ.Component {
 				var templ_7745c5c3_Var5 string
 				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(st.Value)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/gr/iapr.templ`, Line: 54, Col: 36}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/gr/iapr.templ`, Line: 59, Col: 36}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 				if templ_7745c5c3_Err != nil {
@@ -136,7 +141,7 @@ func IAPR(env *gobl.Envelope) templ.Component {
 				var templ_7745c5c3_Var6 string
 				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(st.Value)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/gr/iapr.templ`, Line: 60, Col: 22}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/gr/iapr.templ`, Line: 65, Col: 22}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 				if templ_7745c5c3_Err != nil {
@@ -154,6 +159,43 @@ func IAPR(env *gobl.Envelope) templ.Component {
 		}
 		return nil
 	})
+}
+
+func TitleType(doc doc.Document) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var7 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var7 == nil {
+			templ_7745c5c3_Var7 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		if typ := myDataInvoiceType(doc); typ != "" {
+			templ_7745c5c3_Err = t.T("regimes.gr.title."+string(typ)).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		return nil
+	})
+}
+
+func myDataInvoiceType(doc doc.Document) string {
+	ext := doc.GetExt()
+	code := ext.Get(mydata.ExtKeyInvoiceType)
+	return string(code)
 }
 
 func hasStamps(env *gobl.Envelope) bool {
