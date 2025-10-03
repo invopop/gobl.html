@@ -15,11 +15,11 @@
     <article class="envelope">
       <footer class="print">
         <span class="page">
-          Seite
+          Page
           <span class="page-number">
             1
           </span>
-          von
+          of
           <span class="pages-number">
             1
           </span>
@@ -41,7 +41,7 @@
               </div>
               <div class="title-group">
                 <h1 class="type">
-                  Rechnung
+                  Invoice
                 </h1>
                 <h2 class="code">
                   TEST-00001
@@ -50,12 +50,12 @@
             </section>
             <section class="summary">
               <h2 class="title">
-                Zusammenfassung
+                Summary
               </h2>
               <ul>
                 <li class="issue-date">
                   <span class="label">
-                    Ausstellungsdatum
+                    Issue date
                   </span>
                   <span class="value">
                     2023-07-10
@@ -63,10 +63,26 @@
                 </li>
                 <li class="currency">
                   <span class="label">
-                    Währung
+                    Currency
                   </span>
                   <span class="value">
-                    Mexikanischer Peso (MXN)
+                    Mexican Peso (MXN)
+                  </span>
+                </li>
+                <li class="tax-ext">
+                  <span class="label">
+                    Place of issue
+                  </span>
+                  <span class="value">
+                    44100
+                  </span>
+                </li>
+                <li class="tax-ext">
+                  <span class="label">
+                    Payment Method
+                  </span>
+                  <span class="value">
+                    PPD
                   </span>
                 </li>
               </ul>
@@ -76,7 +92,7 @@
             <section class="supplier">
               <div class="party-border">
                 <h2>
-                  Lieferant
+                  Supplier
                 </h2>
                 <div class="org-party">
                   <div class="name">
@@ -85,13 +101,16 @@
                   <div class="tax-id">
                     RFC: (MX) EKU9003173C9
                   </div>
+                  <div class="party-extension">
+                    Régimen fiscal: 601
+                  </div>
                 </div>
               </div>
             </section>
             <section class="customer">
               <div class="party-border">
                 <h2>
-                  Kunde
+                  Customer
                 </h2>
                 <div class="org-party">
                   <div class="name">
@@ -105,6 +124,12 @@
                   <div class="tax-id">
                     RFC: (MX) URE180429TM6
                   </div>
+                  <div class="party-extension">
+                    Régimen fiscal: 601
+                  </div>
+                  <div class="party-extension">
+                    Uso CFDI: G01
+                  </div>
                 </div>
               </div>
             </section>
@@ -112,7 +137,7 @@
         </header>
         <section class="lines">
           <h2>
-            Positionen
+            Lines
           </h2>
           <table>
             <thead>
@@ -121,22 +146,22 @@
                   #
                 </th>
                 <th class="description">
-                  Beschreibung
+                  Description
                 </th>
                 <th class="quantity">
-                  Menge
+                  Qty.
                 </th>
                 <th class="price">
-                  Einzelprice
+                  Price
                 </th>
                 <th class="charge">
-                  Gebühren
+                  Chgs.
                 </th>
                 <th class="tax">
                   VAT
                 </th>
                 <th class="total">
-                  Gesamt
+                  Total
                 </th>
               </tr>
             </thead>
@@ -194,13 +219,13 @@
           <div class="totals">
             <section class="totals">
               <h2>
-                Summen
+                Totals
               </h2>
               <table>
                 <tbody>
                   <tr class="sum strong">
                     <th>
-                      Summe
+                      Sum
                     </th>
                     <td>
                       $37.90
@@ -208,7 +233,7 @@
                   </tr>
                   <tr class="tax">
                     <th>
-                      Steuern
+                      Tax
                     </th>
                     <td>
                       $6.06
@@ -216,7 +241,7 @@
                   </tr>
                   <tr class="payable strong">
                     <th>
-                      Gesamt zu zahlen
+                      Total to pay
                     </th>
                     <td>
                       $43.96
@@ -227,22 +252,22 @@
             </section>
             <section class="taxes">
               <h2>
-                Steuern
+                Taxes
               </h2>
               <table>
                 <thead>
                   <tr>
                     <th class="category">
-                      Steuer
+                      Tax
                     </th>
                     <th class="base">
-                      Basis
+                      Base
                     </th>
                     <th class="rate">
-                      Satz
+                      Rate
                     </th>
                     <th class="amount">
-                      Betrag
+                      Amount
                     </th>
                   </tr>
                 </thead>
@@ -267,12 +292,12 @@
           </div>
           <section class="payment">
             <h2 class="title">
-              Zahlung
+              Payment
             </h2>
             <ul class="terms">
               <li class="terms-notes">
                 <span class="label">
-                  Zahlungsbedingungen Hinweise
+                  Payment terms notes
                 </span>
                 <span class="value">
                   Condiciones de pago
@@ -290,7 +315,7 @@
               <tbody>
                 <tr class="strong">
                   <th>
-                    Vortrag
+                    Brought forward
                   </th>
                   <td class="amount">
                     $0.00
@@ -307,7 +332,7 @@
             </div>
             <div class="title-group">
               <h1 class="type">
-                Rechnung
+                Invoice
               </h1>
               <h2 class="code">
                 TEST-00001
@@ -323,7 +348,7 @@
               <tbody>
                 <tr class="strong">
                   <th>
-                    Übertrag
+                    Carried forward
                   </th>
                   <td class="amount">
                     $0.00
