@@ -15,11 +15,11 @@
     <article class="envelope">
       <footer class="print">
         <span class="page">
-          Seite
+          Page
           <span class="page-number">
             1
           </span>
-          von
+          of
           <span class="pages-number">
             1
           </span>
@@ -41,7 +41,7 @@
               </div>
               <div class="title-group">
                 <h1 class="type">
-                  Rechnung
+                  Invoice
                 </h1>
                 <h2 class="code">
                   IN2024-0001
@@ -50,12 +50,12 @@
             </section>
             <section class="summary">
               <h2 class="title">
-                Zusammenfassung
+                Summary
               </h2>
               <ul>
                 <li class="issue-date">
                   <span class="label">
-                    Ausstellungsdatum
+                    Issue date
                   </span>
                   <span class="value">
                     2024-04-29
@@ -63,10 +63,18 @@
                 </li>
                 <li class="currency">
                   <span class="label">
-                    Währung
+                    Currency
                   </span>
                   <span class="value">
-                    Mexikanischer Peso (MXN)
+                    Mexican Peso (MXN)
+                  </span>
+                </li>
+                <li class="tax-ext">
+                  <span class="label">
+                    Place of issue
+                  </span>
+                  <span class="value">
+                    26015
                   </span>
                 </li>
               </ul>
@@ -76,7 +84,7 @@
             <section class="supplier">
               <div class="party-border">
                 <h2>
-                  Lieferant
+                  Supplier
                 </h2>
                 <div class="org-party">
                   <div class="name">
@@ -85,13 +93,16 @@
                   <div class="tax-id">
                     RFC: (MX) EKU9003173C9
                   </div>
+                  <div class="party-extension">
+                    Régimen fiscal: 601
+                  </div>
                 </div>
               </div>
             </section>
             <section class="customer">
               <div class="party-border">
                 <h2>
-                  Kunde
+                  Customer
                 </h2>
                 <div class="org-party">
                   <div class="name">
@@ -105,6 +116,12 @@
                   <div class="tax-id">
                     RFC: (MX) URE180429TM6
                   </div>
+                  <div class="party-extension">
+                    Régimen fiscal: 601
+                  </div>
+                  <div class="party-extension">
+                    Uso CFDI: G01
+                  </div>
                 </div>
               </div>
             </section>
@@ -112,7 +129,7 @@
         </header>
         <section class="lines">
           <h2>
-            Positionen
+            Lines
           </h2>
           <table>
             <thead>
@@ -121,25 +138,25 @@
                   #
                 </th>
                 <th class="description">
-                  Beschreibung
+                  Description
                 </th>
                 <th class="quantity">
-                  Menge
+                  Qty.
                 </th>
                 <th class="unit">
-                  Einheit
+                  Unit
                 </th>
                 <th class="price">
-                  Einzelprice
+                  Price
                 </th>
                 <th class="discount">
-                  Rabatt
+                  Disc.
                 </th>
                 <th class="tax">
                   VAT
                 </th>
                 <th class="total">
-                  Gesamt
+                  Total
                 </th>
               </tr>
             </thead>
@@ -178,7 +195,7 @@
                   </span>
                 </td>
                 <td class="tax">
-                  !(MISSING: billing.invoice.lines.no_percent)
+                  —
                 </td>
                 <td class="total">
                   $0.01
@@ -191,13 +208,13 @@
           <div class="totals">
             <section class="totals">
               <h2>
-                Summen
+                Totals
               </h2>
               <table>
                 <tbody>
                   <tr class="sum strong">
                     <th>
-                      Summe
+                      Sum
                     </th>
                     <td>
                       $0.01
@@ -205,7 +222,7 @@
                   </tr>
                   <tr class="tax">
                     <th>
-                      Steuern
+                      Tax
                     </th>
                     <td>
                       $0.00
@@ -213,7 +230,7 @@
                   </tr>
                   <tr class="payable strong">
                     <th>
-                      Gesamt zu zahlen
+                      Total to pay
                     </th>
                     <td>
                       $0.01
@@ -221,7 +238,7 @@
                   </tr>
                   <tr class="advance">
                     <th>
-                      Vorauszahlung:  Transferencia electrónica de fondos
+                      Advance:  Transferencia electrónica de fondos
                     </th>
                     <td>
                       $0.00
@@ -229,7 +246,7 @@
                   </tr>
                   <tr class="due strong">
                     <th>
-                      Gesamtbetrag fällig
+                      Total due
                     </th>
                     <td>
                       $0.01
@@ -240,22 +257,22 @@
             </section>
             <section class="taxes">
               <h2>
-                Steuern
+                Taxes
               </h2>
               <table>
                 <thead>
                   <tr>
                     <th class="category">
-                      Steuer
+                      Tax
                     </th>
                     <th class="base">
-                      Basis
+                      Base
                     </th>
                     <th class="rate">
-                      Satz
+                      Rate
                     </th>
                     <th class="amount">
-                      Betrag
+                      Amount
                     </th>
                   </tr>
                 </thead>
@@ -268,7 +285,7 @@
                       $0.01
                     </td>
                     <td class="rate">
-                      !(MISSING: billing.invoice.taxes.no_percent)
+                      —
                     </td>
                     <td class="amount">
                       $0.00
@@ -518,7 +535,7 @@
               <tbody>
                 <tr class="strong">
                   <th>
-                    Vortrag
+                    Brought forward
                   </th>
                   <td class="amount">
                     $0.00
@@ -535,7 +552,7 @@
             </div>
             <div class="title-group">
               <h1 class="type">
-                Rechnung
+                Invoice
               </h1>
               <h2 class="code">
                 IN2024-0001
@@ -551,7 +568,7 @@
               <tbody>
                 <tr class="strong">
                   <th>
-                    Übertrag
+                    Carried forward
                   </th>
                   <td class="amount">
                     $0.00
