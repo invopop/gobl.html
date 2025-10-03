@@ -554,7 +554,6 @@ func defaultTitleType(doc doc.Document) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-		} else if isOtherInvoice(doc) {
 		} else {
 			templ_7745c5c3_Err = t.T("."+string(doc.GetType())).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
@@ -621,7 +620,7 @@ func titleBadges(env *gobl.Envelope, doc doc.Document) templ.Component {
 			var templ_7745c5c3_Var24 string
 			templ_7745c5c3_Var24, templ_7745c5c3_Err = templ.JoinStringErrs(lbl)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 134, Col: 8}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 132, Col: 8}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var24))
 			if templ_7745c5c3_Err != nil {
@@ -804,13 +803,6 @@ func label(ctx context.Context) string {
 }
 
 func isSimplifiedInvoice(doc doc.Document) bool {
-	if inv, ok := doc.Extract().(*bill.Invoice); ok {
-		return inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard
-	}
-	return false
-}
-
-func isOtherInvoice(doc doc.Document) bool {
 	if inv, ok := doc.Extract().(*bill.Invoice); ok {
 		return inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard
 	}
