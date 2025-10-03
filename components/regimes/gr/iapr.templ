@@ -71,6 +71,12 @@ templ IAPR(env *gobl.Envelope) {
 }
 
 templ TitleType(doc doc.Document) {
+	if isGreek(doc) {
+		@titleType(doc)
+	}
+}
+
+templ titleType(doc doc.Document) {
   if typ := myDataInvoiceType(doc); typ != "" {
     @t.T("regimes.gr.title." + string(typ))
   }
