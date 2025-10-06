@@ -366,6 +366,11 @@ section.payment .due-dates span.percent:before {
 section.payment .due-dates span.percent:after {
     content: ")";
 }
+section.payment .due-dates td.date,
+section.payment .due-dates td.amount {
+    width: fit-content;
+    white-space: nowrap;
+}
 section.payment {
     border-bottom: 0.5px solid #e5e7eb;
     padding: 6mm 0mm;
