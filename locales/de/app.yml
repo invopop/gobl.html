@@ -43,6 +43,7 @@ de:
         discount: "Rabatt"
         charges: "Gebühren"
         total: "Gesamt"
+        no_percent: "—"
         exemption: "Befreiung"
 
       totals: &totals
@@ -71,6 +72,7 @@ de:
         rate: "Satz"
         amount: "Betrag"
         exemption: "Befreiung"
+        no_percent: "—"
 
       payment: &payment
         title: "Zahlung"
@@ -96,7 +98,9 @@ de:
         terms:
           key: "Zahlungsbedingungen"
           notes: "Zahlungsbedingungen Hinweise"
-          due_dates: "Fälligkeitsdatum"
+          due_dates: 
+            one: "Fälligkeitsdatum"
+            other: "Fälligkeitsdaten"
           keys:
             na: "Nicht angegeben"
             end_of_month: "Ende des Monats"

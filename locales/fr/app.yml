@@ -38,6 +38,7 @@ fr:
         discount: "Remise"
         charges: "Frais"
         total: "Total"
+        no_percent: "—"
         exemption: "Exonération"
       totals: &totals
         sum: "Somme"
@@ -64,6 +65,7 @@ fr:
         rate: "Taux"
         amount: "Montant"
         exemption: "Exonération"
+        no_percent: "—"
       payment: &payment
         title: "Paiement"
         instructions: &payment_instructions
@@ -88,7 +90,9 @@ fr:
         terms:
           key: "Conditions de paiement"
           notes: "Notes sur les conditions de paiement"
-          due_dates: "Dates d'échéance"
+          due_dates: 
+            one: "Date d'échéance"
+            many: "Dates d'échéance"
           keys:
             na: "Non spécifié"
             end-of-month: "Fin du mois"

@@ -38,13 +38,14 @@ it:
         discount: "Sconto"
         charges: "Oneri"
         total: "Totale"
+        no_percent: "—"
         exemption: "Esenzione"
       totals: &totals
         sum: "Somma"
         discount: "Sconto"
         charge: "Oneri"
         title: "Totali"
-        prices_include: "%{tax} incluse"
+        prices_include: "%{tax} inclusa"
         total: "Totale"
         taxes: "Tasse"
         total_with_tax: "Totale con tasse"
@@ -60,10 +61,11 @@ it:
       taxes:
         title: "Tasse"
         category: "Tassa"
-        base: "Base"
+        base: "Base imponibile"
         rate: "Aliquota"
         amount: "Importo"
         exemption: "Esenzione"
+        no_percent: "—"
       payment: &payment
         title: "Pagamento"
         instructions: &payment_instructions
@@ -87,7 +89,9 @@ it:
         terms:
           key: "Termini di pagamento"
           notes: "Note sui termini di pagamento"
-          due_dates: "Scadenze"
+          due_dates:
+            one: "Scadenza"
+            other: "Scadenze"
           keys:
             na: "Non specificato"
             end_of_month: "Fine mese"

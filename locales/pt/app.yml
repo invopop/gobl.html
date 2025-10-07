@@ -97,7 +97,9 @@ pt:
         terms:
           key: "Condições de Pagamento"
           notes: "Notas das Condições de Pagamento"
-          due_dates: "Datas de vencimento"
+          due_dates: 
+            one: "Data de vencimento"
+            many: "Datas de vencimento"
           keys:
             na: "Não especificado"
             end_of_month: "Fim do mês"

@@ -43,6 +43,7 @@ pl:
         discount: "Rabat"
         charges: "Opłaty"
         total: "Suma"
+        no_percent: "—"
         exemption: "Zwolnienie"
 
       totals: &totals
@@ -71,6 +72,7 @@ pl:
         rate: "Stawka"
         amount: "Kwota"
         exemption: "Zwolnienie"
+        no_percent: "—"
 
       payment: &payment
         title: "Płatność"
@@ -95,7 +97,9 @@ pl:
         terms:
           key: "Warunki płatności"
           notes: "Uwagi dotyczące warunków płatności"
-          due_dates: "Terminy płatności"
+          due_dates: 
+            one: "Termin płatności"
+            many: "Terminy płatności"
           keys:
             na: "Nieokreślone"
             end_of_month: "Koniec miesiąca"

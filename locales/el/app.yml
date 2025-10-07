@@ -45,6 +45,7 @@ el:
         discount: "Έκπτωση"
         charges: "Χρεώσεις"
         total: "Σύνολο"
+        no_percent: "—"
         exemption: "Απαλλαγή"
 
       totals: &totals
@@ -73,6 +74,7 @@ el:
         rate: "Ποσοστό"
         amount: "Ποσό"
         exemption: "Απαλλαγή"
+        no_percent: "—"
 
       payment: &payment
         title: "Πληρωμή"
@@ -97,7 +99,9 @@ el:
         terms:
           key: "Όροι πληρωμής"
           notes: "Σημειώσεις όρων πληρωμής"
-          due_dates: "Ημερομηνίες πληρωμής"
+          due_dates:
+            one: "Ημερομηνία πληρωμής"
+            many: "Ημερομηνίες πληρωμής"
           keys:
             na: "Δεν έχει καθοριστεί"
             end_of_month: "Τέλος μήνα"
