@@ -103,6 +103,7 @@ templ titleType(doc doc.Document) {
 	<h1 class="type">
 		@utils.Coalesce(
 			pt.TitleType(doc),
+			gr.TitleType(doc),
 			defaultTitleType(doc),
 		)
 	</h1>
