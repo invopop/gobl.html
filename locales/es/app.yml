@@ -46,6 +46,7 @@ es:
         discount: "Desc."
         charges: "Cargos"
         total: "Total"
+        no_percent: "—"
         exemption: "Exención"
 
       totals: &totals
@@ -70,10 +71,11 @@ es:
       taxes:
         title: "Impuestos"
         category: "Impuesto"
-        base: "Base"
+        base: "Base imponible"
         rate: "Tasa"
         amount: "Monto"
         exemption: "Exención"
+        no_percent: "—"
 
       payment: &payment
         title: "Pago"
@@ -99,7 +101,9 @@ es:
         terms:
           key: "Términos de pago"
           notes: "Notas de términos de pago"
-          due_dates: "Fechas de vencimiento"
+          due_dates: 
+            one: "Fecha de vencimiento"
+            many: "Fechas de vencimiento"
           keys:
             na: "No especificado"
             end_of_month: "Fin de mes"
