@@ -8,8 +8,24 @@ import (
 templ watermark(_ *gobl.Envelope) {
   {{ opts := internal.Options(ctx)}}
   if wm := opts.Watermark; wm != "" {
-    <div class="watermark">
+    {{ 
+      var sizeClass string
+      wmLen := len(wm)
+      switch {
+      case wmLen >= 1 && wmLen <= 8:
+        sizeClass = "short"
+      case wmLen >= 9 && wmLen <= 16:
+        sizeClass = "medium"
+      case wmLen >= 17 && wmLen <= 32:
+        sizeClass = "long"
+      case wmLen >= 33:
+        sizeClass = "xlong"
+      }
+    }}
+    <div class={ "watermark", sizeClass }>
       { wm }
     </div>
   }
 }
+
+
