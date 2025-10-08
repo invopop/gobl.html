@@ -10,7 +10,6 @@ import (
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components"
-	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl.html/layout"
@@ -167,11 +166,6 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 
 	if o.CalFormatter == nil {
 		o.CalFormatter = &internal.CalFormatterISO
-	}
-
-	// Local validations
-	if err := pt.Validate(env); err != nil {
-		return nil, err
 	}
 
 	ctx = internal.WithOptions(ctx, o)
