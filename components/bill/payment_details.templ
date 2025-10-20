@@ -166,7 +166,7 @@ templ paymentTerms(terms *pay.Terms) {
 			if len(terms.DueDates) > 0 {
 				<li class="due-dates">
 					<span class="label">
-						@t.T(".due_dates")
+						@t.N(".due_dates", len(terms.DueDates))
 					</span>
 					<span class="value">
 						@paymentDueDates(terms)

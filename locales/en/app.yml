@@ -102,7 +102,9 @@ en:
         terms:
           key: "Payment terms"
           notes: "Payment terms notes"
-          due_dates: "Due dates"
+          due_dates:
+            one: "Due date"
+            other: "Due dates"
           keys:
             na: "Not specified"
             end_of_month: "End of month"
