@@ -10,6 +10,7 @@ de:
         corrective: "Korrekturrechnung"
         credit-note: "Gutschrift"
         debit-note: "Belastungsanzeige"
+        other: "Beleg"
         paid: "Bezahlt"
         void: "Ungültig"
 

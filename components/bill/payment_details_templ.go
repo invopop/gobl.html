@@ -528,7 +528,7 @@ func paymentTerms(terms *pay.Terms) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = t.T(".due_dates").Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = t.N(".due_dates", len(terms.DueDates)).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}

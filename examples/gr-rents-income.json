@@ -4,7 +4,7 @@
 		"uuid": "0190a168-3bb2-71de-989e-1afa884e838c",
 		"dig": {
 			"alg": "sha256",
-			"val": "cef92bbc8935f3c0645b46992faea102812899370b5b2e67687b7c600d28ba1c"
+			"val": "7a328f49785edf3228b20d5230dfb5507856f9b258f3ebc89addd5bbebc737ea"
 		},
 		"stamps": [
 			{
@@ -36,14 +36,14 @@
 			"gr-mydata-v1"
 		],
 		"uuid": "0190a15e-c559-7000-837c-822e43253969",
-		"type": "standard",
+		"type": "other",
 		"series": "GRT",
 		"code": "082",
 		"issue_date": "2024-07-12",
 		"currency": "EUR",
 		"tax": {
 			"ext": {
-				"gr-mydata-invoice-type": "2.1"
+				"gr-mydata-invoice-type": "8.1"
 			}
 		},
 		"supplier": {
