@@ -1,16 +1,14 @@
 package gr
 
 import (
-	//"fmt"
 	"strings"
 	"github.com/invopop/gobl"
 	"github.com/invopop/ctxi18n/i18n"
-  "github.com/invopop/gobl/regimes/gr"
-  "github.com/invopop/gobl.html/components/images"
-  "github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/regimes/gr"
+	"github.com/invopop/gobl.html/components/images"
+	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl/addons/gr/mydata"
-	//"github.com/invopop/gobl/cbc"
 )
 
 templ IAPR(env *gobl.Envelope) {
@@ -79,21 +77,21 @@ templ TitleType(doc doc.Document) {
 }
 
 templ titleType(doc doc.Document) {
-  if typ := myDataInvoiceType(doc); typ != "" {
-    if translation := i18n.T(ctx, "regimes.gr.title." + string(typ)); typ != "" {
-	    if strings.HasPrefix(translation, "!") {
-	      @t.T("billing.invoice.title.other")
-	    } else {
-	      { translation }
-	    }
-    }
-  }
+	if typ := myDataInvoiceType(doc); typ != "" {
+		if translation := i18n.T(ctx, "regimes.gr.title." + string(typ)); typ != "" {
+			if strings.HasPrefix(translation, "!") {
+				@t.T("billing.invoice.title.other")
+			} else {
+				{ translation }
+			}
+		}
+	}
 }
 
 func myDataInvoiceType(doc doc.Document) string {
-    ext := doc.GetExt()
-   	code := ext.Get(mydata.ExtKeyInvoiceType)
-    return string(code)
+		ext := doc.GetExt()
+		code := ext.Get(mydata.ExtKeyInvoiceType)
+		return string(code)
 }
 
 func hasStamps(env *gobl.Envelope) bool {
