@@ -21,7 +21,9 @@ el:
         operation_date: "Ημερομηνία Ενέργειας"
         currency: "Νόμισμα"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Διορθωμένα έγγραφα"
+        preceding_document:
+          one: "Διορθωμένο έγγραφο"
+          other: "Διορθωμένα έγγραφα"
         order: "Παραγγελία"
         order_period: "Περίοδος"
         order_period_label: "%{label}"
@@ -147,7 +149,9 @@ el:
         <<: *summary
         despatch_date: "Ημερομηνία Αποστολής"
         receive_date: "Ημερομηνία Παραλαβής"
-        preceding_document: "Προηγούμενο Έγγραφο"
+        preceding_document:
+          one: "Προηγούμενο Έγγραφο"
+          other: "Προηγούμενα Έγγραφα"
 
       despatcher:
         title: "Αποστολέας"
@@ -172,7 +176,9 @@ el:
 
       summary:
         <<: *summary
-        preceding_document: "Προηγούμενο Έγγραφο"
+        preceding_document:
+          one: "Προηγούμενο Έγγραφο"
+          other: "Προηγούμενα Έγγραφα"
         contract: "Συμβόλαιο"
         period: "Περίοδος"
 

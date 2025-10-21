@@ -21,7 +21,9 @@ de:
         operation_date: "Leistungsdatum"
         currency: "Währung"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Korrigierte Dokumente"
+        preceding_document:
+          one: "Korrigiertes Dokument"
+          other: "Korrigierte Dokumente"
         order: "Bestellung"
         order_period: "Zeitraum"
         order_period_label: "%{label}"
@@ -146,7 +148,9 @@ de:
         <<: *summary
         despatch_date: "Versanddatum"
         receive_date: "Empfangsdatum"
-        preceding_document: "Vorheriges Dokument"
+        preceding_document: 
+          one: "Vorheriges Dokument"
+          other: "Vorherige Dokumente"
 
       despatcher:
         title: "Absender"
@@ -171,7 +175,9 @@ de:
 
       summary:
         <<: *summary
-        preceding_document: "Vorheriges Dokument"
+        preceding_document: 
+          one: "Vorheriges Dokument"
+          other: "Vorherige Dokumente"
         contract: "Vertrag"
         period: "Zeitraum"
 

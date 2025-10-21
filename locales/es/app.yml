@@ -21,7 +21,9 @@ es:
         operation_date: "Fecha de operación"
         currency: "Moneda"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Documentos corregidos"
+        preceding_document:
+          one: "Documento corregido"
+          other: "Documentos corregidos"
         order: "Orden"
         order_period: "Período"
         order_period_label: "%{label}"
@@ -149,7 +151,9 @@ es:
         <<: *summary
         despatch_date: "Fecha de envío"
         receive_date: "Fecha de recepción"
-        preceding_document: "Documento anterior"
+        preceding_document:
+          one: "Documento anterior"
+          other: "Documentos anteriores"
 
       despatcher:
         title: "Remitente"
@@ -174,7 +178,9 @@ es:
 
       summary:
         <<: *summary
-        preceding_document: "Documento anterior"
+        preceding_document:
+          one: "Documento anterior"
+          other: "Documentos anteriores"
         contract: "Contrato"
         period: "Período"
 
