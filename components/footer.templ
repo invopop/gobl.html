@@ -58,7 +58,7 @@ func footerNotesText(ctx context.Context, env *gobl.Envelope) string {
 	out := make([]string, 0)
 	if opts := internal.Options(ctx); opts.Notes != "" {
 		out = append(out, opts.Notes)
-	} else if env.Head.Notes != "" {
+	} else if env.Head != nil && env.Head.Notes != "" { 
 		out = append(out, env.Head.Notes)
 	}
 	return strings.Join(out, " &middot; ")
