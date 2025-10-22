@@ -155,15 +155,16 @@ func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opt
 }
 
 type options struct {
-	Filename   string      `param:"filename"`
-	Locale     i18n.Code   `query:"locale"`
-	DateFormat string      `query:"date_format"`
-	LogoURL    string      `query:"logo_url"`
-	LogoHeight int32       `query:"logo_height"`
-	Notes      string      `query:"notes"`
-	Layout     layout.Code `query:"layout"`
-	Watermark  string      `query:"watermark"`
-	Label      string      `query:"label"`
+	Filename       string      `param:"filename"`
+	Locale         i18n.Code   `query:"locale"`
+	DateFormat     string      `query:"date_format"`
+	LogoURL        string      `query:"logo_url"`
+	LogoHeight     int32       `query:"logo_height"`
+	Notes          string      `query:"notes"`
+	Layout         layout.Code `query:"layout"`
+	Watermark      string      `query:"watermark"`
+	Label          string      `query:"label"`
+	AdjustmentMode bool        `query:"adjustment_mode"`
 }
 
 func (s *serveOpts) generate(c echo.Context) error {
@@ -194,6 +195,9 @@ func (s *serveOpts) generate(c echo.Context) error {
 	}
 	if strings.Contains(fn, ".sandbox.") {
 		opts = append(opts, goblhtml.WithSandbox(true))
+	}
+	if strings.Contains(fn, ".adjustment.") {
+		opts = append(opts, goblhtml.EnableAdjustmentMode)
 	}
 	data, err := s.render(c, req, env, opts)
 	if err != nil {

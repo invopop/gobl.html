@@ -14,6 +14,7 @@ import (
 	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl.html/layout"
 	srclocales "github.com/invopop/gobl.html/locales"
+	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/l10n"
 	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/org"
@@ -130,6 +131,13 @@ func WithLabel(label string) Option {
 	}
 }
 
+// EnableAdjustmentMode indicates that invoice types credit-note and debit-note
+// or similar should be rendered as adjustments to the original invoice, as
+// required in certain jurisdictions. By default, this mode is disabled.
+var EnableAdjustmentMode = func(o *internal.Opts) {
+	o.AdjustmentMode = true
+}
+
 // Render takes the GOBL envelope and attempts to render an HTML document
 // from it.
 func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, error) {
@@ -169,6 +177,17 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 	}
 
 	ctx = internal.WithOptions(ctx, o)
+
+	if o.AdjustmentMode {
+		switch doc := env.Extract().(type) {
+		case *bill.Invoice:
+			if doc.Type.In(bill.InvoiceTypeCreditNote) {
+				if err := doc.Invert(); err != nil {
+					return nil, fmt.Errorf("inverting invoice for adjustment mode: %w", err)
+				}
+			}
+		}
+	}
 
 	out := components.Envelope(env)
 	buf := new(bytes.Buffer)
