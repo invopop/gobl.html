@@ -22,6 +22,8 @@ pt:
         currency: "Moeda"
         currency_value: "%{desc} (%{code})"
         preceding_document: "Referente a Fatura"
+        replaced_documents: "Documentos substituídos"
+        corrected_documents: "Documentos corrigidos"
         order: "Encomenda"
         order_period: "Período"
         order_period_label: "%{label}"
