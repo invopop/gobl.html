@@ -31,6 +31,17 @@ type Opts struct {
 	Notes string
 	// NumFormatter is used to format numbers.
 	NumFormatter *num.Formatter
+
+	// CurrencyTemplate is used to format currency amounts with their units,
+	// and overrides those from the number formatter.
+	CurrencyTemplate string
+	// ThousandsSeparator overrides the thousands separator from the number formatter.
+	ThousandsSeparator string
+	// DecimalMark overrides the decimal mark from the number formatter.
+	DecimalMark string
+	// NegativeTemplate overrides the negative template from the number formatter.
+	NegativeTemplate string
+
 	// CalFormatter is used to format calendar dates and times.
 	CalFormatter *CalFormatter
 	// EmbedAssets when try ensures that all the stylesheet or script files

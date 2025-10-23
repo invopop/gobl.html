@@ -145,6 +145,18 @@ func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opt
 	if req.Label != "" {
 		opts = append(opts, goblhtml.WithLabel(req.Label))
 	}
+	if req.Currency != "" {
+		opts = append(opts, goblhtml.WithCurrencyTemplate(req.Currency))
+	}
+	if req.Thousands != "" {
+		opts = append(opts, goblhtml.WithThousandsSeparator(req.Thousands))
+	}
+	if req.Decimals != "" {
+		opts = append(opts, goblhtml.WithDecimalMark(req.Decimals))
+	}
+	if req.Negative != "" {
+		opts = append(opts, goblhtml.WithNegativeTemplate(req.Negative))
+	}
 
 	out, err := goblhtml.Render(ctx, env, opts...)
 	if err != nil {
@@ -165,6 +177,10 @@ type options struct {
 	Watermark      string      `query:"watermark"`
 	Label          string      `query:"label"`
 	AdjustmentMode bool        `query:"adjustment_mode"`
+	Thousands      string      `query:"thousands"`
+	Decimals       string      `query:"decimals"`
+	Negative       string      `query:"negative"`
+	Currency       string      `query:"currency"`
 }
 
 func (s *serveOpts) generate(c echo.Context) error {
