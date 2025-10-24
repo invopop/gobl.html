@@ -10,6 +10,7 @@ de:
         corrective: "Korrekturrechnung"
         credit-note: "Gutschrift"
         debit-note: "Belastungsanzeige"
+        other: "Beleg"
         paid: "Bezahlt"
         void: "Ungültig"
 
@@ -20,7 +21,9 @@ de:
         operation_date: "Leistungsdatum"
         currency: "Währung"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Korrigierte Dokumente"
+        preceding_document: "Vorheriges Dokument"
+        replaced_documents: "Ersetzte Dokumente"
+        corrected_documents: "Berichtigte Dokumente"
         order: "Bestellung"
         order_period: "Zeitraum"
         order_period_label: "%{label}"

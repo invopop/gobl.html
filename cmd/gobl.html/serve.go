@@ -145,6 +145,18 @@ func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opt
 	if req.Label != "" {
 		opts = append(opts, goblhtml.WithLabel(req.Label))
 	}
+	if req.Currency != "" {
+		opts = append(opts, goblhtml.WithCurrencyTemplate(req.Currency))
+	}
+	if req.Thousands != "" {
+		opts = append(opts, goblhtml.WithThousandsSeparator(req.Thousands))
+	}
+	if req.Decimals != "" {
+		opts = append(opts, goblhtml.WithDecimalMark(req.Decimals))
+	}
+	if req.Negative != "" {
+		opts = append(opts, goblhtml.WithNegativeTemplate(req.Negative))
+	}
 
 	out, err := goblhtml.Render(ctx, env, opts...)
 	if err != nil {
@@ -155,15 +167,20 @@ func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opt
 }
 
 type options struct {
-	Filename   string      `param:"filename"`
-	Locale     i18n.Code   `query:"locale"`
-	DateFormat string      `query:"date_format"`
-	LogoURL    string      `query:"logo_url"`
-	LogoHeight int32       `query:"logo_height"`
-	Notes      string      `query:"notes"`
-	Layout     layout.Code `query:"layout"`
-	Watermark  string      `query:"watermark"`
-	Label      string      `query:"label"`
+	Filename       string      `param:"filename"`
+	Locale         i18n.Code   `query:"locale"`
+	DateFormat     string      `query:"date_format"`
+	LogoURL        string      `query:"logo_url"`
+	LogoHeight     int32       `query:"logo_height"`
+	Notes          string      `query:"notes"`
+	Layout         layout.Code `query:"layout"`
+	Watermark      string      `query:"watermark"`
+	Label          string      `query:"label"`
+	AdjustmentMode bool        `query:"adjustment_mode"`
+	Thousands      string      `query:"thousands"`
+	Decimals       string      `query:"decimals"`
+	Negative       string      `query:"negative"`
+	Currency       string      `query:"currency"`
 }
 
 func (s *serveOpts) generate(c echo.Context) error {
@@ -194,6 +211,9 @@ func (s *serveOpts) generate(c echo.Context) error {
 	}
 	if strings.Contains(fn, ".sandbox.") {
 		opts = append(opts, goblhtml.WithSandbox(true))
+	}
+	if strings.Contains(fn, ".adjustment.") {
+		opts = append(opts, goblhtml.EnableAdjustmentMode)
 	}
 	data, err := s.render(c, req, env, opts)
 	if err != nil {

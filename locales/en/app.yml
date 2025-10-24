@@ -8,9 +8,11 @@ en:
         standard: "Invoice"
         standard-simplified: "Simplified invoice"
         proforma: "Proforma invoice"
-        corrective: "Corrective invoice"
+        corrective: "Replacement invoice"
         credit-note: "Credit note"
         debit-note: "Debit note"
+        adjustment: "Adjustment invoice"
+        other: "Document"
         paid: "Paid"
         void: "Void"
 
@@ -21,7 +23,9 @@ en:
         operation_date: "Operation date"
         currency: "Currency"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Corrected documents"
+        preceding_document: "Preceding documents"
+        replaced_documents: "Replaced documents"
+        corrected_documents: "Corrected documents"
         order: "Order"
         order_period: "Period"
         order_period_label: "%{label}"
@@ -231,6 +235,66 @@ en:
       cufe: "CUFE: %{cufe}"
       cude: "CUDE: %{cude}"
       preceding_cufe: "CUFE previous invoice: %{cufe}"
+    gr:
+      title:
+        1:
+          1: "Sales invoice"
+          2: "Sales invoice" # "Sales invoice/Intra-community supplies"
+          3: "Sales invoice" # "Sales invoice/Third country supplies"
+          4: "Sales invoice" # "Sales invoice/Sale on behalf of third parties"
+          5: "Sales invoice" # "Sales invoice/Clearance of sales on behalf of third parties – Fees from sales on behalf of third parties"
+          6: "Sales invoice" # "Sales invoice/Supplemental accounting source document"
+        2:
+          1: "Service invoice" # Service rendered invoice
+          2: "Service invoice" # "Intra-community service rendered invoice"
+          3: "Service invoice" # "Third country service rendered invoice"
+          4: "Service invoice" # "Service rendered invoice/Supplemental accounting source document"
+        3:
+          1: "Proof of expenditure" # "Proof of expenditure (non-liable issuer)"
+          2: "Proof of expenditure" # "Proof of expenditure (denial of issuance by liable issuer)"
+        5:
+          1: "Credit note" # "Credit invoice/Associated"
+          2: "Credit note" # "Credit invoice/Non-associated"
+        6:
+          1: "Self-delivery record"
+          2: "Self-supply record"
+        7:
+          1: "Income contract" # "Contract – Income"
+        8:
+          1: "Rental income" # "Rents – Income"
+          2: "Accommodation tax receipt" # "Special record – Accommodation tax collection/Payment receipt"
+        11:
+          1: "Retail sales receipt"
+          2: "Service rendered receipt"
+          3: "Simplified invoice"
+          4: "Retail sales credit note"
+          5: "Retail sales receipt" # "Retail sales receipt on behalf of third parties"
+        13:
+          1: "Retail purchases" # "Expenses – Domestic/Foreign retail transaction purchases"
+          2: "Retail provision" # "Domestic/Foreign retail transaction provision"
+          3: "Shared utility bills"
+          4: "Subscriptions"
+          30: "Self-declared accounting document" # "Self-declared entity accounting source documents (Dynamic)"
+          31: "Retail sales credit note" # "Domestic/Foreign retail sales credit note"
+        14:
+          1: "Invoice - Intra-EU acquisitions" # "Invoice/Intra-community acquisitions"
+          2: "Invoice - Third country imports" # "Invoice/Third country acquisitions"
+          3: "Invoice - Intra-EU services" # "Invoice/Intra-community services receipt"
+          4: "Invoice - Third country services" # "Invoice/Third country services receipt"
+          5: "EFKA"
+          30: "Self-declared accounting document" # "Self-declared entity accounting source documents (Dynamic)"
+          31: "Domestic/Foreign credit note"
+        15:
+          1: "Contract-Expense"
+        16:
+          1: "Rent-Expense"
+        17:
+          1: "Payroll"
+          2: "Amortizations"
+          3: "Income adjustment (accounting base)" # "Other income adjustment/Regularization entries – Accounting base"
+          4: "Income adjustment (tax base) " # "Other income adjustment/Regularization entries – Tax base"
+          5: "Expense adjustment (accounting base)" # "Other expense adjustment/Regularization entries – Accounting base"
+          6: "Expense adjustment (tax base)" # "Other expense adjustment/Regularization entries – Tax base"
     pt:
       title:
         FT: "Invoice"

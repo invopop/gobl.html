@@ -9,6 +9,7 @@ it:
         corrective: "Fattura Correttiva"
         credit-note: "Nota di Credito"
         debit-note: "Nota di Debito"
+        other: "Documento"
         paid: "Pagato"
         void: "Annullato"
       summary: &summary
@@ -18,7 +19,9 @@ it:
         operation_date: "Data Operazione"
         currency: "Valuta"
         currency_value: "%{desc} (%{code})"
-        preceding_document: "Documenti corretti"
+        preceding_document: "Documenti precedenti"
+        replaced_documents: "Documenti sostituiti"
+        corrected_documents: "Documenti corretti"
         order: "Ordine"
         order_period: "Periodo"
         order_period_label: "%{label}"
