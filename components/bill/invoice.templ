@@ -6,7 +6,6 @@ import (
 
 	"github.com/invopop/gobl"
 
-	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/regimes/es"
 	"github.com/invopop/gobl.html/components/regimes/gr"
@@ -16,6 +15,7 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl.html/internal"
+	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl.html/layout"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
@@ -60,9 +60,9 @@ templ title(env *gobl.Envelope, doc doc.Document) {
 	@t.Scope(".title") {
 		<section class="title">
 			@titleHero(doc.GetSupplier())
-			<div class={"title-group", templ.KV("title-group-inline", isNonStandardInvoice(doc))}>
+			<div class={ "title-group", templ.KV("title-group-inline", isNonStandardInvoice(doc)) }>
 				@titleType(doc)
-				{" "}
+				{ " " }
 				<h2 class="code">
 					@titleCode(doc)
 					@titleBadges(env, doc)
@@ -74,13 +74,13 @@ templ title(env *gobl.Envelope, doc doc.Document) {
 
 templ titleHero(sup *org.Party) {
 	<div class="hero">
-			if img := supplierLogo(ctx, sup); img != nil {
-				<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
-			} else {
-				<div class="alias">
-					{ supplierAlias(sup) }
-				</div>
-			}
+		if img := supplierLogo(ctx, sup); img != nil {
+			<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
+		} else {
+			<div class="alias">
+				{ supplierAlias(sup) }
+			</div>
+		}
 	</div>
 }
 
@@ -110,10 +110,13 @@ templ titleType(doc doc.Document) {
 }
 
 templ defaultTitleType(doc doc.Document) {
+	{{ typ := doc.GetType() }}
 	if isSimplifiedInvoice(doc) {
 		@t.T(".standard-simplified")
+	} else if internal.Options(ctx).AdjustmentMode {
+		@t.T(".adjustment")
 	} else {
-		@t.T("." + string(doc.GetType()))
+		@t.T("." + typ.String())
 	}
 }
 
@@ -216,5 +219,5 @@ func isSimplifiedInvoice(doc doc.Document) bool {
 }
 
 func isNonStandardInvoice(doc doc.Document) bool {
-  return doc.GetType().In(bill.InvoiceTypeCreditNote, bill.InvoiceTypeDebitNote, bill.InvoiceTypeCorrective, bill.InvoiceTypeProforma)
+	return doc.GetType().In(bill.InvoiceTypeCreditNote, bill.InvoiceTypeDebitNote, bill.InvoiceTypeCorrective, bill.InvoiceTypeProforma)
 }

@@ -14,6 +14,7 @@ import (
 	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl.html/layout"
 	srclocales "github.com/invopop/gobl.html/locales"
+	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/l10n"
 	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/org"
@@ -85,6 +86,39 @@ func WithNumFormatter(nf num.Formatter) Option {
 	}
 }
 
+// WithCurrencyTemplate sets a custom template for determining the position of
+// currency units in the formatted amounts. This will modify the currency's default
+// formatter.
+func WithCurrencyTemplate(val string) Option {
+	return func(o *internal.Opts) {
+		o.CurrencyTemplate = val
+	}
+}
+
+// WithThousandsSeparator sets a custom thousands separator for formatting
+// currency amounts. This will modify the currency's default formatter.
+func WithThousandsSeparator(val string) Option {
+	return func(o *internal.Opts) {
+		o.ThousandsSeparator = val
+	}
+}
+
+// WithDecimalMark sets a custom decimal mark for formatting currency amounts.
+// This will modify the currency's default formatter.
+func WithDecimalMark(val string) Option {
+	return func(o *internal.Opts) {
+		o.DecimalMark = val
+	}
+}
+
+// WithNegativeTemplate sets a custom negative template for formatting
+// currency amounts. This will modify the currency's default formatter.
+func WithNegativeTemplate(val string) Option {
+	return func(o *internal.Opts) {
+		o.NegativeTemplate = val
+	}
+}
+
 // WithEmbeddedAssets indicates that the stylesheets and scripts should be
 // embedded inside the HTML document as opposed to links.
 func WithEmbeddedAssets() Option {
@@ -130,6 +164,13 @@ func WithLabel(label string) Option {
 	}
 }
 
+// EnableAdjustmentMode indicates that invoice types credit-note and debit-note
+// or similar should be rendered as adjustments to the original invoice, as
+// required in certain jurisdictions. By default, this mode is disabled.
+var EnableAdjustmentMode = func(o *internal.Opts) {
+	o.AdjustmentMode = true
+}
+
 // Render takes the GOBL envelope and attempts to render an HTML document
 // from it.
 func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, error) {
@@ -149,9 +190,12 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 	ctx = l.WithContext(ctx)
 
 	// Extract the currency to use for formatting
-	if o.NumFormatter == nil {
+	var nf num.Formatter
+	if o.NumFormatter != nil {
+		nf = *o.NumFormatter
+	} else {
 		if doc := doc.ExtractFrom(env); doc != nil {
-			nf := doc.GetCurrency().Def().Formatter()
+			nf = doc.GetCurrency().Def().Formatter()
 
 			if doc.GetRegime().Country == l10n.PT.Tax() {
 				// As required by the Portuguese tax law
@@ -159,16 +203,38 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 				nf.DecimalMark = ","
 				nf.Template = "%n %u"
 			}
-
-			o.NumFormatter = &nf
 		}
 	}
+	if o.CurrencyTemplate != "" {
+		nf.Template = o.CurrencyTemplate
+	}
+	if o.ThousandsSeparator != "" {
+		nf.ThousandsSeparator = o.ThousandsSeparator
+	}
+	if o.DecimalMark != "" {
+		nf.DecimalMark = o.DecimalMark
+	}
+	if o.NegativeTemplate != "" {
+		nf.NegativeTemplate = o.NegativeTemplate
+	}
+	o.NumFormatter = &nf
 
 	if o.CalFormatter == nil {
 		o.CalFormatter = &internal.CalFormatterISO
 	}
 
 	ctx = internal.WithOptions(ctx, o)
+
+	if o.AdjustmentMode {
+		switch doc := env.Extract().(type) {
+		case *bill.Invoice:
+			if doc.Type.In(bill.InvoiceTypeCreditNote) {
+				if err := doc.Invert(); err != nil {
+					return nil, fmt.Errorf("inverting invoice for adjustment mode: %w", err)
+				}
+			}
+		}
+	}
 
 	out := components.Envelope(env)
 	buf := new(bytes.Buffer)

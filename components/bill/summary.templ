@@ -3,8 +3,9 @@ package bill
 import (
 	"context"
 	"github.com/invopop/ctxi18n/i18n"
-	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal"
+	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cal"
 	"github.com/invopop/gobl/cbc"
@@ -76,10 +77,17 @@ templ summaryPrecedingRows(obj any) {
 	{{ doc := doc.For(obj) }}
 	<li class="preceding">
 		<span class="label">
-			@t.T(".preceding_document")
+			if internal.Options(ctx).AdjustmentMode {
+				if doc.GetType().In(bill.InvoiceTypeCorrective) {
+					@t.T(".replaced_documents")
+				} else {
+					@t.T(".corrected_documents")
+				}
+			} else {
+				@t.T(".preceding_document")
+			}
 		</span>
 		for _, pre := range doc.GetPreceding() {
-
 			<span class="value">
 				@joinCode(doc, pre.Series, pre.Code)
 				if pre.IssueDate != nil {

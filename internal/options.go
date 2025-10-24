@@ -31,6 +31,17 @@ type Opts struct {
 	Notes string
 	// NumFormatter is used to format numbers.
 	NumFormatter *num.Formatter
+
+	// CurrencyTemplate is used to format currency amounts with their units,
+	// and overrides those from the number formatter.
+	CurrencyTemplate string
+	// ThousandsSeparator overrides the thousands separator from the number formatter.
+	ThousandsSeparator string
+	// DecimalMark overrides the decimal mark from the number formatter.
+	DecimalMark string
+	// NegativeTemplate overrides the negative template from the number formatter.
+	NegativeTemplate string
+
 	// CalFormatter is used to format calendar dates and times.
 	CalFormatter *CalFormatter
 	// EmbedAssets when try ensures that all the stylesheet or script files
@@ -47,6 +58,10 @@ type Opts struct {
 	Watermark string
 	// Label indicates the label to use in the document
 	Label string
+	// AdjustmentMode indicates that invoice types credit-note and debit-note
+	// or similar should be rendered as adjustments to the original invoice, as
+	// required in certain jurisdictions.
+	AdjustmentMode bool
 }
 
 // WithOptions prepares the context with the options to use.

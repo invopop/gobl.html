@@ -94,6 +94,12 @@ func convertExample(name string) ([]byte, error) {
 	if strings.Contains(name, ".sandbox.") {
 		opts = append(opts, goblhtml.WithSandbox(true))
 	}
+	if strings.Contains(name, ".adjustment.") {
+		opts = append(opts, goblhtml.EnableAdjustmentMode)
+	}
+	if strings.Contains(name, ".es.") {
+		opts = append(opts, goblhtml.WithLocale("es"))
+	}
 
 	ctx := context.Background()
 	return goblhtml.Render(ctx, env, opts...)
