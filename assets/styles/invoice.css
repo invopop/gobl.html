@@ -159,6 +159,10 @@ section.summary li {
     margin-bottom: 6mm;
     flex: 50%;
 }
+section.summary li:nth-child(even) {
+    padding-left: 3mm;
+    box-sizing: border-box;
+}
 section.summary span.label {
     display: block;
     font-weight: 500;
@@ -166,6 +170,9 @@ section.summary span.label {
 section.summary span.value {
     display: block;
     color: #030712;
+}
+section.summary span.date {
+    white-space: nowrap;
 }
 section.lines {
     order: 5;

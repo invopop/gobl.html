@@ -27,7 +27,7 @@ templ summary(inv *bill.Invoice) {
 					<span class="label">
 						@t.T(".issue_date")
 					</span>
-					<span class="value">
+					<span class="value date">
 						@t.L(inv.IssueDate)
 					</span>
 				</li>
@@ -44,7 +44,7 @@ templ summary(inv *bill.Invoice) {
 						<span class="label">
 							@t.T(".value_date")
 						</span>
-						<span class="value">
+						<span class="value date">
 							@t.L(inv.ValueDate)
 						</span>
 					</li>
@@ -54,7 +54,7 @@ templ summary(inv *bill.Invoice) {
 						<span class="label">
 							@t.T(".operation_date")
 						</span>
-						<span class="value">
+						<span class="value date">
 							@t.L(inv.OperationDate)
 						</span>
 					</li>
@@ -92,7 +92,9 @@ templ summaryPrecedingRows(obj any) {
 				@joinCode(doc, pre.Series, pre.Code)
 				if pre.IssueDate != nil {
 					{ " · " }
-					@t.L(pre.IssueDate)
+					<span class="date">
+						@t.L(pre.IssueDate)
+					</span>
 				}
 				if pre.Reason != "" {
 					{ " · " }
