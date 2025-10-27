@@ -1,0 +1,324 @@
+eu:
+  page: "%{count}tik %{page}. orria"
+
+  billing:
+    invoice: &invoice
+      title:
+        standard: "Faktura"
+        standard-simplified: "Faktura erraztua"
+        proforma: "Proforma faktura"
+        corrective: "Faktura zuzentzailea"
+        credit-note: "Kreditu-oharra"
+        debit-note: "Zordun-oharra"
+        adjustment: "Faktura zuzentzailea"
+        other: "Dokumentua"
+        paid: "Ordaindua"
+        void: "Ezeztatua"
+
+      summary: &summary
+        title: "Laburpena"
+        issue_date: "Jaulkitze data"
+        value_date: "Balio data"
+        operation_date: "Eragiketa data"
+        currency: "Moneta"
+        currency_value: "%{desc} (%{code})"
+        preceding_document: "Aurreko dokumentuak"
+        replaced_documents: "Ordezkatutako dokumentuak"
+        corrected_documents: "Zuzendutako dokumentuak"
+        order: "Eskaria"
+        order_period: "Aldia"
+        order_period_label: "%{label}"
+        order_period_range: "%{start}(e)tik %{end}(e)ra"
+        ext_map:
+          mx-cfdi-issue-place: "Jaulkitze lekua"
+          mx-cfdi-payment-method: "Ordainketa metodoa"
+
+      supplier:
+        title: "Hornitzailea"
+
+      customer:
+        title: "Bezeroa"
+
+      lines: &lines
+        title: "Lerroak"
+        i: "#"
+        ref: "Err."
+        description: "Deskripzioa"
+        quantity: "Kant."
+        unit: "Unitatea"
+        price: "Prezioa"
+        discount: "Desk."
+        charges: "Kargak"
+        total: "Guztira"
+        no_percent: "—"
+        exemption: "Salbuespenea"
+
+      totals: &totals
+        sum: "Batura"
+        discount: "Deskontua"
+        charge: "Karga"
+        title: "Guztira"
+        prices_include: "%{tax} barne"
+        total: "Guztira"
+        taxes: "Zerga"
+        total_with_tax: "Guztira zergarekin"
+        retained_tax: "Atxikitako zergak"
+        rounding: "Biribiltzea"
+        total_to_pay: "Ordaintzeko guztira"
+        advance: "Aurrerapen: %{date} %{txt}"
+        advance_sum: "Aurrerakinen batura"
+        due_sum: "Zor den guztira"
+        exchange_rate: "%{to}(e)rako aldaketa (%{amount})"
+        carried_fwd: "Garraiatzea"
+        brought_fwd: "Garraiatutako saldoa"
+
+      taxes:
+        title: "Zergak"
+        category: "Zerga"
+        base: "Zerga-oinarria"
+        rate: "Tasa"
+        amount: "Zenbatekoa"
+        exemption: "Salbuespenea"
+        no_percent: "—"
+
+      payment: &payment
+        title: "Ordainketa"
+        instructions: &payment_instructions
+          method: "Ordainketa metodoa"
+          ref: "Erreferentzia"
+          bank_data: "Banku transferentzia jarraibideak"
+          card: "Txartelaren ordainketa"
+          card_detail: "%{last4}(e)n amaitutako txartelaren bidez ordaindua, %{holder}(r)ena"
+          observations: "Ordainketa oharrak"
+          bank_name: "Bankua: %{name}"
+          iban: "IBAN: %{iban}"
+          account_number: "Kontu zenbakia: %{num}"
+          bic: "BIC: %{bic}"
+          online: "Ordainketa esteka"
+          methods:
+            card: "Banku txartela"
+            credit-transfer: "Banku transferentzia"
+            cash: "Dirutan"
+            direct-debit: "Banku domiziliazioa"
+            online: "Linean"
+            cheque: "Txekea"
+        terms:
+          key: "Ordainketa baldintzak"
+          notes: "Ordainketa baldintzen oharrak"
+          due_dates: 
+            one: "Epemuga data"
+            other: "Epemuga datak"
+          keys:
+            na: "Ez da zehaztu"
+            end_of_month: "Hilabete amaieran"
+            due_date: "Epemuga datan"
+            deferred: "Epemuga data ondoren"
+            proximo: "Hurrengo hilabetea"
+            instant: "Fakturaren entregaldian"
+            elective: "Bezeroak aukeratua"
+            pending: "Hornitzaileak zehaztuko du"
+            advanced: "Ordaindua"
+            delivery: "Entregaldian"
+
+      notes:
+        title: "Oharrak"
+
+    payment:
+      <<: *invoice
+      title:
+        request: "Ordainketa eskaera"
+        advice: "Ordainketa abisua"
+        receipt: "Ordainketa agiri"
+        paid: "Ordaindua"
+        void: "Ezeztatua"
+
+      lines:
+        <<: *lines
+        document: "Dokumentua"
+
+      method:
+        title: "Ordainketa xehetasunak"
+        instructions: *payment_instructions
+
+    delivery:
+      <<: *invoice
+      title:
+        advice: "Entrega abisua"
+        note: "Entrega-albarana"
+        waybill: "Garraio gutuna"
+        receipt: "Entrega agiri"
+
+      summary:
+        <<: *summary
+        despatch_date: "Bidalketa data"
+        receive_date: "Jasotze data"
+        preceding_document: "Aurreko dokumentua"
+
+      despatcher:
+        title: "Bidaltzailea"
+
+      receiver:
+        title: "Hartzailea"
+
+      courier:
+        title: "Garraiolaria"
+
+      tracking:
+        title: "Jarraipena informazioa"
+        code: "Jarraipena kodea"
+        website: "Jarraipena esteka"
+
+    order:
+      <<: *invoice
+      title:
+        purchase: "Erosketa eskaera"
+        sale: "Salmenta eskaera"
+        quote: "Aurrekontua"
+
+      summary:
+        <<: *summary
+        preceding_document: "Aurreko dokumentua"
+        contract: "Kontratua"
+        period: "Aldia"
+
+      buyer:
+        title: "Eroslea"
+
+      seller:
+        title: "Saltzailea"
+
+  org:
+    party:
+      tax_id: "%{label}: (%{country}) %{code}"
+      person: "%{name}"
+      person_label: "%{label}: %{name}"
+      tel: "Tel: %{num}"
+      tel_label: "Tel: %{num} (%{label})"
+      email:
+        one: "Posta elektronikoa: %{addr}"
+        other: "Posta elektronikoak: %{addr}"
+      email_label: "%{addr} (%{label})"
+      website: "Webgunea: %{url}"
+      website_label: "%{label}: %{url}"
+      po_box: "Posta kutxa %{po_box}"
+      labels:
+        default: "IFZ"
+      identity: "%{label}: %{code}"
+      identity_code: "Identitate kodea"
+      identity_labels:
+        it-fiscal-code: "Codice fiscale"
+        de-tax-number: "St. -Nr."
+      ext: "%{label}: %{value}"
+      ext_map:
+        co-dian-municipality: "Udalerria"
+        mx-cfdi-fiscal-regime: "Régimen fiscal"
+        mx-cfdi-post-code: "Lekua"
+        mx-cfdi-use: "CFDI erabilera"
+      reg:
+        capital: "Kapital soziala: %{amount}"
+        registration: "Erregistroa:"
+        book: "Liburua %{id}"
+        volume: "Liburukia %{id}"
+        sheet: "Orria %{id}"
+        section: "Atala %{id}"
+        page: "Orrialdea %{id}"
+        entry: "Sarrera %{id}"
+    address:
+      label: "%{label}:"
+      country: "(%{country})"
+
+  regimes:
+    pl:
+      ksef-id: "ID: %{id}"
+    co:
+      cufe: "CUFE: %{cufe}"
+      cude: "CUDE: %{cude}"
+      preceding_cufe: "CUFE aurreko faktura: %{cufe}"
+    gr:
+      title:
+        1:
+          1: "Salmenta faktura"
+          2: "Salmenta faktura"
+          3: "Salmenta faktura"
+          4: "Salmenta faktura"
+          5: "Salmenta faktura"
+          6: "Salmenta faktura"
+        2:
+          1: "Zerbitzu faktura"
+          2: "Zerbitzu faktura"
+          3: "Zerbitzu faktura"
+          4: "Zerbitzu faktura"
+        3:
+          1: "Gastu frogagiriak"
+          2: "Gastu frogagiriak"
+        5:
+          1: "Kreditu-oharra"
+          2: "Kreditu-oharra"
+        6:
+          1: "Auto-entrega erregistroa"
+          2: "Auto-hornidura erregistroa"
+        7:
+          1: "Kontratua"
+        8:
+          1: "Alokairuko diru-sarreren"
+          2: "Ostatuko zergaren agiri"
+        11:
+          1: "Txikizkako salmenta agiri"
+          2: "Emandako zerbitzu agiri"
+          3: "Faktura erraztua"
+          4: "Txikizkako salmenta kreditu-oharra"
+          5: "Txikizkako salmenta agiri"
+        13:
+          1: "Txikizkako erosketak"
+          2: "Txikizkako hornidura"
+          3: "Partekatutako zerbitzu fakturak"
+          4: "Harpidetzak"
+          30: "Auto-deklaratutako kontabilitate dokumentua"
+          31: "Txikizkako salmenta kreditu-oharra"
+        14:
+          1: "Faktura - Erkidego barneko eskuraldeek"
+          2: "Faktura - Hirugarren herrialdeen inportazioak"
+          3: "Faktura - Erkidego barneko zerbitzuak"
+          4: "Faktura - Hirugarren herrialdeen zerbitzuak"
+          5: "EFKA"
+          30: "Auto-deklaratutako kontabilitate dokumentua"
+          31: "Barne/kanpo kreditu-oharra"
+        15:
+          1: "Kontratua-Gastua"
+        16:
+          1: "Alokairua-Gastua"
+        17:
+          1: "Nominak"
+          2: "Amortizazioak"
+          3: "Diru-sarreren doikuntza (kontabilitate oinarria)"
+          4: "Diru-sarreren doikuntza (zerga oinarria)"
+          5: "Gastuen doikuntza (kontabilitate oinarria)"
+          6: "Gastuen doikuntza (zerga oinarria)"
+    pt:
+      title:
+        FT: "Faktura"
+        FS: "Faktura erraztua"
+        FR: "Faktura-agiri"
+        ND: "Zordun-oharra"
+        NC: "Kreditu-oharra"
+        RC: "Dirutako agiri"
+        RG: "Agiri"
+        CM: "Mahai eskaera"
+        CC: "Kontsignazio-kreditu"
+        FC: "Kontsignazio-faktura"
+        FO: "Lan agindu"
+        NE: "Erosketa eskaera"
+        OU: "Beste dokumentu bat"
+        OR: "Aurrekontua"
+        PF: "Proforma faktura"
+        DC: "Entrega dokumentu"
+        GR: "Entrega oharra"
+        GT: "Garraio gutuna"
+        GA: "Aktibo finkoen entrega"
+        GC: "Kontsignazio entrega"
+        GD: "Itzultzea"
+        RP: "Prima agiri"
+        RE: "Karga alderantzikatua agiri"
+        CS: "Koasegurutzailearen esleipena"
+        LD: "Koasegurutzaile nagusiaren esleipena"
+        RA: "Onartutako berraseguru"

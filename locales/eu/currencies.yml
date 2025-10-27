@@ -1,0 +1,168 @@
+eu:
+  currencies:
+    AED: Arabiar Emirerri Batuen dirhama
+    AFN: Afgani
+    ALL: Lek
+    AMD: Dram armeniarra
+    ANG: Antilla holandarren florina
+    AOA: Kwanza
+    ARS: Peso argentinarra
+    AUD: Dolar australiarra
+    AWG: Arubako florina
+    AZN: Manat azerbaijandarra
+    BAM: Marko bihurgarria
+    BBD: Barbadosko dolarra
+    BDT: Taka
+    BGN: Lev bulgarra
+    BHD: Bahraingo dinarra
+    BIF: Burundiko frankoa
+    BMD: Bermudako dolarra
+    BND: Bruneiko dolarra
+    BOB: Boliviano
+    BOV: MVDOL
+    BRL: Erreal brasildarra
+    BSD: Bahamako dolarra
+    BTN: Ngultrum
+    BWP: Pula
+    BYN: Errublo bielorrusiar
+    BZD: Belizeko dolarra
+    CAD: Dolar kanadarra
+    CDF: Kongoko frankoa
+    CHE: WIR euroa
+    CHF: Franko suitzarra
+    CHW: WIR frankoa
+    CLF: Sustapen unitatea
+    CLP: Peso txiletarra
+    CNY: Yuan txinarra
+    COP: Peso kolonbiarra
+    COU: Balio errealaren unitatea
+    CRC: Colón costarrikarra
+    CUC: Peso kubatar bihurgarria
+    CUP: Peso kubatarra
+    CVE: Cabo Verdeko eskudoa
+    CZK: Koroa txekiarra
+    DJF: Djibutiko frankoa
+    DKK: Koroa danimarkarra
+    DOP: Peso dominikarra
+    DZD: Dinar aljeriarra
+    EGP: Libera egiptoarra
+    ERN: Nakfa
+    ETB: Birr etiopiarra
+    EUR: Euroa
+    FJD: Fijiko dolarra
+    FKP: Malvinetako libera
+    GBP: Libera esterlina
+    GEL: Lari
+    GHS: Cedi ghanarra
+    GIP: Gibraltarreko libera
+    GMD: Dalasi
+    GNF: Gineako frankoa
+    GTQ: Quetzal
+    GYD: Guyanako dolarra
+    HKD: Hong Kongeko dolarra
+    HNL: Lempira
+    HRK: Kuna kroaziarra
+    HTG: Gourde
+    HUF: Forint
+    IDR: Rupia indonesiarra
+    ILS: Shekel israeldar berria
+    INR: Rupia indiarra
+    IQD: Dinar irakiarra
+    IRR: Rial irandarra
+    ISK: Koroa islandiarra
+    JMD: Jamaikako dolarra
+    JOD: Dinar jordaniarra
+    JPY: Yen
+    KES: Txelin keniarra
+    KGS: Som
+    KHR: Riel
+    KMF: Komoreetako frankoa
+    KPW: Won ipar-korearra
+    KRW: Won
+    KWD: Dinar kuwaittarra
+    KYD: Kaiman uharteetako dolarra
+    KZT: Tenge
+    LAK: Kip
+    LBP: Libera libanoarra
+    LKR: Sri Lankako rupia
+    LRD: Dolar liberiarra
+    LSL: Loti
+    LYD: Dinar libiarra
+    MAD: Dirham marokarra
+    MDL: Leu moldaviarra
+    MGA: Ariary malgaxea
+    MKD: Denar
+    MMK: Kyat
+    MNT: Tögrög
+    MOP: Pataca
+    MRU: Ouguiya
+    MUR: Maurizioko rupia
+    MVR: Rufiyaa
+    MWK: Kwacha
+    MXN: Peso mexikarra
+    MXV: Inbertsioko unitate (UDI) mexikarra
+    MYR: Ringgit malaysiarra
+    MZN: Metical mozambiketarra
+    NAD: Dolar namibiarra
+    NGN: Naira
+    NIO: Córdoba
+    NOK: Koroa norvegiarra
+    NPR: Rupia nepaldarra
+    NZD: Dolar zeelandaberritarra
+    OMR: Rial omandarra
+    PAB: Balboa
+    PEN: Sol
+    PGK: Kina
+    PHP: Peso filipinarra
+    PKR: Rupia pakistandarra
+    PLN: Zloty
+    PYG: Guaraní
+    QAR: Rial katartarra
+    RON: Leu errumaniarra
+    RSD: Dinar serbiarra
+    RUB: Errublo errusiarra
+    RWF: Ruandako frankoa
+    SAR: Rial saudiarra
+    SBD: Salomon uharteetako dolarra
+    SCR: Seychelleetako rupia
+    SDG: Libera sudandarra
+    SEK: Koroa suediarra
+    SGD: Singapurreko dolarra
+    SHP: Santa Helenako libera
+    SLL: Leone
+    SOS: Txelin somaliarra
+    SRD: Dolar surinamdarra
+    SSP: Libera hego-sudandarra
+    STN: Dobra
+    SVC: Colón salvadortarra
+    SYP: Libera siriarra
+    SZL: Lilangeni
+    THB: Baht
+    TJS: Somoni tajikistandarra
+    TMT: Manat turkmenistandarra
+    TND: Dinar tunisiarra
+    TOP: Paʻanga
+    TRY: Lira turkiarra
+    TTD: Trinidad eta Tobagoko dolarra
+    TWD: Dolar taiwandar berria
+    TZS: Txelin tanzaniarra
+    UAH: Hryvnia
+    UGX: Txelin ugandarra
+    USD: Dolar estatubatuarra
+    USN: Dolar estatubatuarra (hurrengo eguna)
+    UYI: Peso uruguaitarra (unitate indexatuak)
+    UYU: Peso uruguaitarra
+    UYW: Aurreikuspenen unitatea
+    UZS: Som uzbekistandarra
+    VES: Bolívar subiraua
+    VND: Dong vietnamdarra
+    VUV: Vatu
+    WST: Tala
+    XAF: Afrika Erdiko CFA frankoa
+    XCD: Karibeko ekialdeko dolarra
+    XOF: Afrika mendebaldeko CFA frankoa
+    XPF: CFP frankoa
+    YER: Rial yemendarra
+    ZAR: Rand
+    ZMW: Kwacha zambiarra
+    ZWL: Dolar zimbabwearra
