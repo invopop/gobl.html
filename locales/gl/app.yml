@@ -1,0 +1,324 @@
+gl:
+  page: "Páxina %{page} de %{count}"
+
+  billing:
+    invoice: &invoice
+      title:
+        standard: "Factura"
+        standard-simplified: "Factura simplificada"
+        proforma: "Factura proforma"
+        corrective: "Factura rectificativa"
+        credit-note: "Nota de crédito"
+        debit-note: "Nota de débito"
+        adjustment: "Factura rectificativa"
+        other: "Documento"
+        paid: "Pagado"
+        void: "Anulado"
+
+      summary: &summary
+        title: "Resumo"
+        issue_date: "Data de emisión"
+        value_date: "Data de valor"
+        operation_date: "Data de operación"
+        currency: "Moeda"
+        currency_value: "%{desc} (%{code})"
+        preceding_document: "Documentos anteriores"
+        replaced_documents: "Documentos substituídos"
+        corrected_documents: "Documentos rectificados"
+        order: "Pedido"
+        order_period: "Período"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} a %{end}"
+        ext_map:
+          mx-cfdi-issue-place: "Lugar de expedición"
+          mx-cfdi-payment-method: "Método de pagamento"
+
+      supplier:
+        title: "Provedor"
+
+      customer:
+        title: "Cliente"
+
+      lines: &lines
+        title: "Liñas"
+        i: "#"
+        ref: "Ref."
+        description: "Descrición"
+        quantity: "Cant."
+        unit: "Unidade"
+        price: "Prezo"
+        discount: "Desc."
+        charges: "Cargos"
+        total: "Total"
+        no_percent: "—"
+        exemption: "Exención"
+
+      totals: &totals
+        sum: "Suma"
+        discount: "Desconto"
+        charge: "Cargo"
+        title: "Totais"
+        prices_include: "%{tax} incluído"
+        total: "Total"
+        taxes: "Imposto"
+        total_with_tax: "Total con impostos"
+        retained_tax: "Impostos retidos"
+        rounding: "Redondeo"
+        total_to_pay: "Total a pagar"
+        advance: "Anticipo: %{date} %{txt}"
+        advance_sum: "Suma anticipos"
+        due_sum: "Total debido"
+        exchange_rate: "Cambio a %{to} (%{amount})"
+        carried_fwd: "A transportar"
+        brought_fwd: "Saldo transportado"
+
+      taxes:
+        title: "Impostos"
+        category: "Imposto"
+        base: "Base impoñible"
+        rate: "Taxa"
+        amount: "Importe"
+        exemption: "Exención"
+        no_percent: "—"
+
+      payment: &payment
+        title: "Pagamento"
+        instructions: &payment_instructions
+          method: "Método de pagamento"
+          ref: "Referencia"
+          bank_data: "Instrucións de transferencia bancaria"
+          card: "Pagamento con tarxeta"
+          card_detail: "Pagamento realizado con tarxeta rematada en %{last4} pertencente a %{holder}"
+          observations: "Notas de pagamento"
+          bank_name: "Banco: %{name}"
+          iban: "IBAN: %{iban}"
+          account_number: "Número de conta: %{num}"
+          bic: "BIC: %{bic}"
+          online: "Ligazón de pagamento"
+          methods:
+            card: "Tarxeta bancaria"
+            credit-transfer: "Transferencia bancaria"
+            cash: "Efectivo"
+            direct-debit: "Domiciliación bancaria"
+            online: "En liña"
+            cheque: "Cheque"
+        terms:
+          key: "Termos de pagamento"
+          notes: "Notas de termos de pagamento"
+          due_dates: 
+            one: "Data de vencemento"
+            other: "Datas de vencemento"
+          keys:
+            na: "Non especificado"
+            end_of_month: "Fin de mes"
+            due_date: "Na data de vencemento"
+            deferred: "Despois da data de vencemento"
+            proximo: "Mes próximo"
+            instant: "Na entrega da factura"
+            elective: "Elixido polo cliente"
+            pending: "A determinar polo provedor"
+            advanced: "Pagado"
+            delivery: "Na entrega"
+
+      notes:
+        title: "Notas"
+
+    payment:
+      <<: *invoice
+      title:
+        request: "Solicitude de pagamento"
+        advice: "Aviso de pagamento"
+        receipt: "Recibo de pagamento"
+        paid: "Pagado"
+        void: "Anulado"
+
+      lines:
+        <<: *lines
+        document: "Documento"
+
+      method:
+        title: "Detalles de pagamento"
+        instructions: *payment_instructions
+
+    delivery:
+      <<: *invoice
+      title:
+        advice: "Aviso de entrega"
+        note: "Albarán de entrega"
+        waybill: "Carta de porte"
+        receipt: "Recibo de entrega"
+
+      summary:
+        <<: *summary
+        despatch_date: "Data de envío"
+        receive_date: "Data de recepción"
+        preceding_document: "Documento anterior"
+
+      despatcher:
+        title: "Remitente"
+
+      receiver:
+        title: "Destinatario"
+
+      courier:
+        title: "Transportista"
+
+      tracking:
+        title: "Información de seguimento"
+        code: "Código de seguimento"
+        website: "Ligazón de seguimento"
+
+    order:
+      <<: *invoice
+      title:
+        purchase: "Pedido de compra"
+        sale: "Pedido de venda"
+        quote: "Orzamento"
+
+      summary:
+        <<: *summary
+        preceding_document: "Documento anterior"
+        contract: "Contrato"
+        period: "Período"
+
+      buyer:
+        title: "Comprador"
+
+      seller:
+        title: "Vendedor"
+
+  org:
+    party:
+      tax_id: "%{label}: (%{country}) %{code}"
+      person: "%{name}"
+      person_label: "%{label}: %{name}"
+      tel: "Tel: %{num}"
+      tel_label: "Tel: %{num} (%{label})"
+      email:
+        one: "Correo electrónico: %{addr}"
+        other: "Correos electrónicos: %{addr}"
+      email_label: "%{addr} (%{label})"
+      website: "Web: %{url}"
+      website_label: "%{label}: %{url}"
+      po_box: "Apartado postal %{po_box}"
+      labels:
+        default: "NIF"
+      identity: "%{label}: %{code}"
+      identity_code: "Código de identidade"
+      identity_labels:
+        it-fiscal-code: "Codice fiscale"
+        de-tax-number: "St. -Nr."
+      ext: "%{label}: %{value}"
+      ext_map:
+        co-dian-municipality: "Municipio"
+        mx-cfdi-fiscal-regime: "Régimen fiscal"
+        mx-cfdi-post-code: "Lugar"
+        mx-cfdi-use: "Uso CFDI"
+      reg:
+        capital: "Capital social: %{amount}"
+        registration: "Rexistro:"
+        book: "Libro %{id}"
+        volume: "Volume %{id}"
+        sheet: "Folla %{id}"
+        section: "Sección %{id}"
+        page: "Páxina %{id}"
+        entry: "Entrada %{id}"
+    address:
+      label: "%{label}:"
+      country: "(%{country})"
+
+  regimes:
+    pl:
+      ksef-id: "ID: %{id}"
+    co:
+      cufe: "CUFE: %{cufe}"
+      cude: "CUDE: %{cude}"
+      preceding_cufe: "CUFE factura anterior: %{cufe}"
+    gr:
+      title:
+        1:
+          1: "Factura de venda"
+          2: "Factura de venda"
+          3: "Factura de venda"
+          4: "Factura de venda"
+          5: "Factura de venda"
+          6: "Factura de venda"
+        2:
+          1: "Factura de servizos"
+          2: "Factura de servizos"
+          3: "Factura de servizos"
+          4: "Factura de servizos"
+        3:
+          1: "Xustificante de gastos"
+          2: "Xustificante de gastos"
+        5:
+          1: "Nota de crédito"
+          2: "Nota de crédito"
+        6:
+          1: "Rexistro de autoentrega"
+          2: "Rexistro de autosubministración"
+        7:
+          1: "Contrato"
+        8:
+          1: "Ingresos por alugueiro"
+          2: "Recibo do imposto de aloxamento"
+        11:
+          1: "Recibo de venda ao retallo"
+          2: "Recibo de servizos prestados"
+          3: "Factura simplificada"
+          4: "Nota de crédito de venda ao retallo"
+          5: "Recibo de venda ao retallo"
+        13:
+          1: "Compras ao retallo"
+          2: "Provisión ao retallo"
+          3: "Facturas de servizos compartidos"
+          4: "Subscricións"
+          30: "Documento contable autodeclarado"
+          31: "Nota de crédito de venda ao retallo"
+        14:
+          1: "Factura - Adquisicións intracomunitarias"
+          2: "Factura - Importacións de terceiros países"
+          3: "Factura - Servizos intracomunitarios"
+          4: "Factura - Servizos de terceiros países"
+          5: "EFKA"
+          30: "Documento contable autodeclarado"
+          31: "Nota de crédito nacional/estranxeira"
+        15:
+          1: "Contrato-Gasto"
+        16:
+          1: "Alugueiro-Gasto"
+        17:
+          1: "Nómina"
+          2: "Amortizacións"
+          3: "Axuste de ingresos (base contable)"
+          4: "Axuste de ingresos (base fiscal)"
+          5: "Axuste de gastos (base contable)"
+          6: "Axuste de gastos (base fiscal)"
+    pt:
+      title:
+        FT: "Factura"
+        FS: "Factura simplificada"
+        FR: "Factura-recibo"
+        ND: "Nota de débito"
+        NC: "Nota de crédito"
+        RC: "Recibo de efectivo"
+        RG: "Recibo"
+        CM: "Pedido de mesa"
+        CC: "Crédito de consignación"
+        FC: "Factura de consignación"
+        FO: "Orde de traballo"
+        NE: "Pedido de compra"
+        OU: "Outro documento"
+        OR: "Orzamento"
+        PF: "Factura proforma"
+        DC: "Documento de entrega"
+        GR: "Nota de entrega"
+        GT: "Carta de porte"
+        GA: "Entrega de activos fixos"
+        GC: "Entrega de consignación"
+        GD: "Devolución"
+        RP: "Recibo de premio"
+        RE: "Recibo de contracargo"
+        CS: "Asignación de coasegurador"
+        LD: "Asignación de coasegurador principal"
+        RA: "Reaseguro aceptado"

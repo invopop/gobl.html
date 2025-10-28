@@ -1,0 +1,324 @@
+ca:
+  page: "Pàgina %{page} de %{count}"
+
+  billing:
+    invoice: &invoice
+      title:
+        standard: "Factura"
+        standard-simplified: "Factura simplificada"
+        proforma: "Factura proforma"
+        corrective: "Factura rectificativa"
+        credit-note: "Nota de crèdit"
+        debit-note: "Nota de dèbit"
+        adjustment: "Factura rectificativa"
+        other: "Document"
+        paid: "Pagat"
+        void: "Anul·lat"
+
+      summary: &summary
+        title: "Resum"
+        issue_date: "Data d'emissió"
+        value_date: "Data de valor"
+        operation_date: "Data d'operació"
+        currency: "Moneda"
+        currency_value: "%{desc} (%{code})"
+        preceding_document: "Documents anteriors"
+        replaced_documents: "Documents substituïts"
+        corrected_documents: "Documents rectificats"
+        order: "Comanda"
+        order_period: "Període"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} a %{end}"
+        ext_map:
+          mx-cfdi-issue-place: "Lloc d'expedició"
+          mx-cfdi-payment-method: "Mètode de pagament"
+
+      supplier:
+        title: "Proveïdor"
+
+      customer:
+        title: "Client"
+
+      lines: &lines
+        title: "Línies"
+        i: "#"
+        ref: "Ref."
+        description: "Descripció"
+        quantity: "Quant."
+        unit: "Unitat"
+        price: "Preu"
+        discount: "Desc."
+        charges: "Càrrecs"
+        total: "Total"
+        no_percent: "—"
+        exemption: "Exempció"
+
+      totals: &totals
+        sum: "Suma"
+        discount: "Descompte"
+        charge: "Càrrec"
+        title: "Totals"
+        prices_include: "%{tax} inclòs"
+        total: "Total"
+        taxes: "Impost"
+        total_with_tax: "Total amb impostos"
+        retained_tax: "Impostos retinguts"
+        rounding: "Arrodoniment"
+        total_to_pay: "Total a pagar"
+        advance: "Avançament: %{date} %{txt}"
+        advance_sum: "Suma d'avançaments"
+        due_sum: "Total degut"
+        exchange_rate: "Canvi a %{to} (%{amount})"
+        carried_fwd: "A transportar"
+        brought_fwd: "Saldo transportat"
+
+      taxes:
+        title: "Impostos"
+        category: "Impost"
+        base: "Base imposable"
+        rate: "Taxa"
+        amount: "Import"
+        exemption: "Exempció"
+        no_percent: "—"
+
+      payment: &payment
+        title: "Pagament"
+        instructions: &payment_instructions
+          method: "Mètode de pagament"
+          ref: "Referència"
+          bank_data: "Instruccions de transferència bancària"
+          card: "Pagament amb targeta"
+          card_detail: "Pagament realitzat amb targeta acabada en %{last4} pertanyent a %{holder}"
+          observations: "Notes de pagament"
+          bank_name: "Banc: %{name}"
+          iban: "IBAN: %{iban}"
+          account_number: "Número de compte: %{num}"
+          bic: "BIC: %{bic}"
+          online: "Enllaç de pagament"
+          methods:
+            card: "Targeta bancària"
+            credit-transfer: "Transferència bancària"
+            cash: "Efectiu"
+            direct-debit: "Domiciliació bancària"
+            online: "En línia"
+            cheque: "Xec"
+        terms:
+          key: "Termes de pagament"
+          notes: "Notes de termes de pagament"
+          due_dates: 
+            one: "Data de venciment"
+            other: "Dates de venciment"
+          keys:
+            na: "No especificat"
+            end_of_month: "Final de mes"
+            due_date: "En data de venciment"
+            deferred: "Després de la data de venciment"
+            proximo: "Mes proper"
+            instant: "En l'entrega de la factura"
+            elective: "Triat pel client"
+            pending: "A determinar pel proveïdor"
+            advanced: "Pagat"
+            delivery: "En l'entrega"
+
+      notes:
+        title: "Notes"
+
+    payment:
+      <<: *invoice
+      title:
+        request: "Sol·licitud de pagament"
+        advice: "Avís de pagament"
+        receipt: "Rebut de pagament"
+        paid: "Pagat"
+        void: "Anul·lat"
+
+      lines:
+        <<: *lines
+        document: "Document"
+
+      method:
+        title: "Detalls de pagament"
+        instructions: *payment_instructions
+
+    delivery:
+      <<: *invoice
+      title:
+        advice: "Avís de lliurament"
+        note: "Albarà de lliurament"
+        waybill: "Carta de port"
+        receipt: "Rebut de lliurament"
+
+      summary:
+        <<: *summary
+        despatch_date: "Data d'enviament"
+        receive_date: "Data de recepció"
+        preceding_document: "Document anterior"
+
+      despatcher:
+        title: "Remitent"
+
+      receiver:
+        title: "Destinatari"
+
+      courier:
+        title: "Transportista"
+
+      tracking:
+        title: "Informació de seguiment"
+        code: "Codi de seguiment"
+        website: "Enllaç de seguiment"
+
+    order:
+      <<: *invoice
+      title:
+        purchase: "Comanda de compra"
+        sale: "Comanda de venda"
+        quote: "Pressupost"
+
+      summary:
+        <<: *summary
+        preceding_document: "Document anterior"
+        contract: "Contracte"
+        period: "Període"
+
+      buyer:
+        title: "Comprador"
+
+      seller:
+        title: "Venedor"
+
+  org:
+    party:
+      tax_id: "%{label}: (%{country}) %{code}"
+      person: "%{name}"
+      person_label: "%{label}: %{name}"
+      tel: "Tel: %{num}"
+      tel_label: "Tel: %{num} (%{label})"
+      email:
+        one: "Correu electrònic: %{addr}"
+        other: "Correus electrònics: %{addr}"
+      email_label: "%{addr} (%{label})"
+      website: "Web: %{url}"
+      website_label: "%{label}: %{url}"
+      po_box: "Apartat postal %{po_box}"
+      labels:
+        default: "NIF"
+      identity: "%{label}: %{code}"
+      identity_code: "Codi d'identitat"
+      identity_labels:
+        it-fiscal-code: "Codice fiscale"
+        de-tax-number: "St. -Nr."
+      ext: "%{label}: %{value}"
+      ext_map:
+        co-dian-municipality: "Municipi"
+        mx-cfdi-fiscal-regime: "Régimen fiscal"
+        mx-cfdi-post-code: "Lloc"
+        mx-cfdi-use: "Ús CFDI"
+      reg:
+        capital: "Capital social: %{amount}"
+        registration: "Registre:"
+        book: "Llibre %{id}"
+        volume: "Volum %{id}"
+        sheet: "Full %{id}"
+        section: "Secció %{id}"
+        page: "Pàgina %{id}"
+        entry: "Entrada %{id}"
+    address:
+      label: "%{label}:"
+      country: "(%{country})"
+
+  regimes:
+    pl:
+      ksef-id: "ID: %{id}"
+    co:
+      cufe: "CUFE: %{cufe}"
+      cude: "CUDE: %{cude}"
+      preceding_cufe: "CUFE factura anterior: %{cufe}"
+    gr:
+      title:
+        1:
+          1: "Factura de venda"
+          2: "Factura de venda"
+          3: "Factura de venda"
+          4: "Factura de venda"
+          5: "Factura de venda"
+          6: "Factura de venda"
+        2:
+          1: "Factura de serveis"
+          2: "Factura de serveis"
+          3: "Factura de serveis"
+          4: "Factura de serveis"
+        3:
+          1: "Justificant de despeses"
+          2: "Justificant de despeses"
+        5:
+          1: "Nota de crèdit"
+          2: "Nota de crèdit"
+        6:
+          1: "Registre d'autoentrega"
+          2: "Registre d'autosubministrament"
+        7:
+          1: "Contracte"
+        8:
+          1: "Ingressos per lloguer"
+          2: "Rebut de l'impost d'allotjament"
+        11:
+          1: "Rebut de venda al detall"
+          2: "Rebut de serveis prestats"
+          3: "Factura simplificada"
+          4: "Nota de crèdit de venda al detall"
+          5: "Rebut de venda al detall"
+        13:
+          1: "Compres al detall"
+          2: "Provisió al detall"
+          3: "Factures de serveis compartits"
+          4: "Subscripcions"
+          30: "Document comptable autodeclarat"
+          31: "Nota de crèdit de venda al detall"
+        14:
+          1: "Factura - Adquisicions intracomunitàries"
+          2: "Factura - Importacions de tercers països"
+          3: "Factura - Serveis intracomunitaris"
+          4: "Factura - Serveis de tercers països"
+          5: "EFKA"
+          30: "Document comptable autodeclarat"
+          31: "Nota de crèdit nacional/estrangera"
+        15:
+          1: "Contracte-Despesa"
+        16:
+          1: "Lloguer-Despesa"
+        17:
+          1: "Nòmina"
+          2: "Amortitzacions"
+          3: "Ajust d'ingressos (base comptable)"
+          4: "Ajust d'ingressos (base fiscal)"
+          5: "Ajust de despeses (base comptable)"
+          6: "Ajust de despeses (base fiscal)"
+    pt:
+      title:
+        FT: "Factura"
+        FS: "Factura simplificada"
+        FR: "Factura-rebut"
+        ND: "Nota de dèbit"
+        NC: "Nota de crèdit"
+        RC: "Rebut d'efectiu"
+        RG: "Rebut"
+        CM: "Comanda de taula"
+        CC: "Crèdit de consignació"
+        FC: "Factura de consignació"
+        FO: "Ordre de treball"
+        NE: "Comanda de compra"
+        OU: "Altre document"
+        OR: "Pressupost"
+        PF: "Factura proforma"
+        DC: "Document de lliurament"
+        GR: "Nota de lliurament"
+        GT: "Carta de port"
+        GA: "Lliurament d'actius fixos"
+        GC: "Lliurament de consignació"
+        GD: "Devolució"
+        RP: "Rebut de prima"
+        RE: "Rebut de contracàrrec"
+        CS: "Assignació de coassegurador"
+        LD: "Assignació de coassegurador principal"
+        RA: "Reassegurança acceptada"
