@@ -42,7 +42,7 @@ de:
         description: "Beschreibung"
         quantity: "Menge"
         unit: "Einheit"
-        price: "Einzelprice"
+        price: "Einzelpreis"
         discount: "Rabatt"
         charges: "Gebühren"
         total: "Gesamt"
