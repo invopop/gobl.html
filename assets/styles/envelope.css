@@ -136,6 +136,23 @@ div.watermark {
     --wm-transform: rotate(-30deg) scale(1.1);
     transform: var(--wm-transform);
 }
+
+div.watermark.short {
+    font-size: 100pt;
+}
+
+div.watermark.medium {
+    font-size: 80pt;
+}
+
+div.watermark.long {
+    font-size: 60pt;
+}
+
+div.watermark.xlong {
+    font-size: 40pt;
+}
+
 @media screen {
     div.watermark {
         position: fixed;
