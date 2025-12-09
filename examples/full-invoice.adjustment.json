@@ -1,0 +1,686 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
+		"dig": {
+			"alg": "sha256",
+			"val": "566514523d358342dec4bc4bc02fa7915eebaab014e3c8392c274637b5238877"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"uuid": "019565ce-910a-7785-abef-467ceeb896f1",
+		"type": "standard",
+		"code": "FAKE20220001",
+		"issue_date": "2022-02-01",
+		"currency": "EUR",
+		"tax": {},
+		"supplier": {
+			"name": "Biz España S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B28774008"
+			},
+			"identities": [
+				{
+					"type": "LEI",
+					"code": "1010101010"
+				},
+				{
+					"code": "ABC1234"
+				}
+			],
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@bizspain.es"
+				}
+			],
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+				}
+			]
+		},
+		"customer": {
+			"name": "Customer Spain S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B33105842"
+			},
+			"identities": [
+				{
+					"label": "Código de Cliente",
+					"code": "123456789ABC"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Office",
+					"po_box": "20",
+					"num": "10",
+					"street": "Calle Mayor",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28003",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "sam@customer.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"ref": "DEV1234567890",
+					"name": "Development Day Rate",
+					"identities": [
+						{
+							"label": "Product Code",
+							"code": "5294-3433"
+						},
+						{
+							"type": "EAN",
+							"code": "0799439112766"
+						}
+					],
+					"description": "Development services for the month of February 2022",
+					"price": "200.00"
+				},
+				"sum": "4000.00",
+				"discounts": [
+					{
+						"reason": "Just because",
+						"percent": "5%",
+						"amount": "200.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "3800.00"
+			},
+			{
+				"i": 2,
+				"quantity": "10",
+				"item": {
+					"name": "Something random",
+					"price": "100.00"
+				},
+				"sum": "1000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "1000.00"
+			},
+			{
+				"i": 3,
+				"quantity": "5",
+				"item": {
+					"name": "Additional random services",
+					"identities": [
+						{
+							"type": "EAN",
+							"code": "0799439112766"
+						}
+					],
+					"price": "34.50"
+				},
+				"sum": "172.50",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "10.0%"
+					},
+					{
+						"cat": "IRPF",
+						"percent": "15%"
+					}
+				],
+				"total": "172.50"
+			},
+			{
+				"i": 4,
+				"quantity": "2",
+				"item": {
+					"name": "Office Supplies Bundle",
+					"price": "75.00"
+				},
+				"sum": "150.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "150.00"
+			},
+			{
+				"i": 5,
+				"quantity": "1",
+				"item": {
+					"name": "Software License - Annual",
+					"price": "1200.00"
+				},
+				"sum": "1200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "1200.00"
+			},
+			{
+				"i": 6,
+				"quantity": "3",
+				"item": {
+					"name": "Cloud Storage - Monthly",
+					"price": "50.00"
+				},
+				"sum": "150.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "150.00"
+			},
+			{
+				"i": 7,
+				"quantity": "1",
+				"item": {
+					"name": "Technical Support - Premium",
+					"price": "500.00"
+				},
+				"sum": "500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "500.00"
+			},
+			{
+				"i": 8,
+				"quantity": "4",
+				"item": {
+					"name": "Training Session",
+					"price": "200.00"
+				},
+				"sum": "800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "800.00"
+			},
+			{
+				"i": 9,
+				"quantity": "2",
+				"item": {
+					"name": "Data Backup Service",
+					"price": "150.00"
+				},
+				"sum": "300.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "300.00"
+			},
+			{
+				"i": 10,
+				"quantity": "1",
+				"item": {
+					"name": "System Integration",
+					"price": "2500.00"
+				},
+				"sum": "2500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "2500.00"
+			},
+			{
+				"i": 11,
+				"quantity": "5",
+				"item": {
+					"name": "API Access - Monthly",
+					"price": "100.00"
+				},
+				"sum": "500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "500.00"
+			},
+			{
+				"i": 12,
+				"quantity": "1",
+				"item": {
+					"name": "Security Audit",
+					"price": "3000.00"
+				},
+				"sum": "3000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "3000.00"
+			},
+			{
+				"i": 13,
+				"quantity": "3",
+				"item": {
+					"name": "Consulting Hours",
+					"price": "150.00"
+				},
+				"sum": "450.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "450.00"
+			},
+			{
+				"i": 14,
+				"quantity": "1",
+				"item": {
+					"name": "Custom Development",
+					"price": "5000.00"
+				},
+				"sum": "5000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "5000.00"
+			},
+			{
+				"i": 15,
+				"quantity": "2",
+				"item": {
+					"name": "Server Maintenance",
+					"price": "400.00"
+				},
+				"sum": "800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "800.00"
+			},
+			{
+				"i": 16,
+				"quantity": "1",
+				"item": {
+					"name": "Network Setup",
+					"price": "1200.00"
+				},
+				"sum": "1200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "1200.00"
+			},
+			{
+				"i": 17,
+				"quantity": "4",
+				"item": {
+					"name": "User Training",
+					"price": "75.00"
+				},
+				"sum": "300.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "300.00"
+			},
+			{
+				"i": 18,
+				"quantity": "1",
+				"item": {
+					"name": "System Upgrade",
+					"price": "2500.00"
+				},
+				"sum": "2500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "2500.00"
+			},
+			{
+				"i": 19,
+				"quantity": "3",
+				"item": {
+					"name": "Data Migration",
+					"price": "800.00"
+				},
+				"sum": "2400.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "2400.00"
+			},
+			{
+				"i": 20,
+				"quantity": "1",
+				"item": {
+					"name": "Performance Optimization",
+					"price": "1800.00"
+				},
+				"sum": "1800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "1800.00"
+			},
+			{
+				"i": 21,
+				"quantity": "2",
+				"item": {
+					"name": "Security Training",
+					"price": "600.00"
+				},
+				"sum": "1200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "1200.00"
+			},
+			{
+				"i": 22,
+				"quantity": "1",
+				"item": {
+					"name": "Disaster Recovery Setup",
+					"price": "3500.00"
+				},
+				"sum": "3500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "3500.00"
+			},
+			{
+				"i": 23,
+				"quantity": "4",
+				"item": {
+					"name": "API Development",
+					"price": "450.00"
+				},
+				"sum": "1800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "1800.00"
+			},
+			{
+				"i": 24,
+				"quantity": "1",
+				"item": {
+					"name": "System Documentation",
+					"price": "900.00"
+				},
+				"sum": "900.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "900.00"
+			},
+			{
+				"i": 25,
+				"quantity": "2",
+				"item": {
+					"name": "Quality Assurance Testing",
+					"price": "700.00"
+				},
+				"sum": "1400.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "1400.00"
+			}
+		],
+		"discounts": [
+			{
+				"i": 1,
+				"code": "DIS-1234567890",
+				"reason": "Early Payment Discount",
+				"amount": "20.00"
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"code": "CHR-1234567890",
+				"reason": "Impuesto de Turismo",
+				"amount": "15.00"
+			}
+		],
+		"ordering": {
+			"code": "111-9244735-1237858",
+			"identities": [
+				{
+					"label": "Provider Ref.",
+					"code": "PROV1234"
+				}
+			],
+			"period": {
+				"label": "Service period",
+				"start": "2022-02-01",
+				"end": "2022-02-28"
+			}
+		},
+		"payment": {
+			"advances": [
+				{
+					"date": "2022-01-15",
+					"ref": "PAY1234",
+					"description": "Prepayment with Paypal",
+					"percent": "30%",
+					"amount": "13533.11"
+				}
+			],
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "ES31 0240 4036 4573 9340 5564",
+						"name": "RANDOM"
+					}
+				],
+				"online": [
+					{
+						"key": "paypal",
+						"label": "Paypal",
+						"url": "https://www.paypal.com/pay?ref=PAY1234"
+					}
+				],
+				"notes": "**Please** pay within _30 days_"
+			}
+		},
+		"totals": {
+			"sum": "37322.50",
+			"discount": "20.00",
+			"charge": "15.00",
+			"total": "37317.50",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "37150.00",
+								"percent": "21.0%",
+								"amount": "7801.50"
+							},
+							{
+								"key": "standard",
+								"base": "172.50",
+								"percent": "10.0%",
+								"amount": "17.25"
+							}
+						],
+						"amount": "7818.75"
+					},
+					{
+						"code": "IRPF",
+						"retained": true,
+						"rates": [
+							{
+								"base": "172.50",
+								"percent": "15%",
+								"amount": "25.88"
+							}
+						],
+						"amount": "25.88"
+					}
+				],
+				"sum": "7818.75",
+				"retained": "25.88"
+			},
+			"tax": "7818.75",
+			"total_with_tax": "45136.25",
+			"retained_tax": "25.88",
+			"payable": "45110.38",
+			"advance": "13533.11",
+			"due": "31577.27"
+		},
+		"notes": [
+			{
+				"text": "Thank you for you business!"
+			},
+			{
+				"key": "legal",
+				"text": "Please pay within 30 days according to some random law in the country we sell from that you should comply with because we want to be paid sooner.",
+				"meta": {
+					"position": "footer"
+				}
+			}
+		]
+	}
+}

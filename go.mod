@@ -5,7 +5,7 @@ go 1.23.0
 toolchain go1.23.4
 
 require (
-	github.com/a-h/templ v0.3.943
+	github.com/a-h/templ v0.3.960
 	github.com/go-resty/resty/v2 v2.12.0
 	github.com/invopop/ctxi18n v0.9.0
 	github.com/invopop/gobl v0.301.0
