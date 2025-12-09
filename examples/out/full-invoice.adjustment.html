@@ -1,0 +1,1296 @@
+<html data-theme="light">
+  <head>
+    <title>
+      GOBL HTML Generator
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/envelope.css">
+    <link rel="stylesheet" href="styles/invoice.css">
+  </head>
+  <body>
+    <article class="envelope">
+      <footer class="print">
+        <span class="page">
+          Page
+          <span class="page-number">
+            1
+          </span>
+          of
+          <span class="pages-number">
+            1
+          </span>
+        </span>
+        <div class="gobl-logo">
+          <a href="https://gobl.org">
+            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjQuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDE4MC42IDIxOC44IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxODAuNiAyMTguODsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8Zz4KCTxwYXRoIGQ9Ik0xNzIsMTI3LjVWMzIuNmMwLTEuNC0wLjctMi44LTEuOS0zLjZjLTEuMi0wLjgtMi43LTAuOS00LTAuM2wtMzguOCwxNi44di0yN2MwLTEuNC0wLjctMi44LTEuOS0zLjYKCQljLTEuMi0wLjgtMi43LTAuOS00LTAuNEw4Mi42LDMxLjN2LTI3YzAtMS40LTAuNy0yLjgtMS45LTMuNmMtMS4yLTAuOC0yLjctMC45LTQtMC40TDExLDI4LjdjLTEuNiwwLjctMi42LDIuMi0yLjYsMy45djk0LjkKCQljMCwxLjQsMC43LDIuOCwxLjksMy42YzAuNywwLjUsMS41LDAuNywyLjMsMC43YzAuNiwwLDEuMS0wLjEsMS43LTAuM2wzOC44LTE2Ljh2MjdjMCwxLjQsMC43LDIuOCwxLjksMy42CgkJYzAuNywwLjUsMS41LDAuNywyLjMsMC43YzAuNiwwLDEuMS0wLjEsMS43LTAuM2wzOC44LTE2Ljh2MjdjMCwxLjQsMC43LDIuOCwxLjksMy42YzAuNywwLjUsMS41LDAuNywyLjMsMC43CgkJYzAuNiwwLDEuMS0wLjEsMS43LTAuM2w2NS42LTI4LjRDMTcxLDEzMC44LDE3MiwxMjkuMiwxNzIsMTI3LjV6IE0xNjMuNSwxMjQuN2wtNTcuMSwyNC43di0yNC4ybDE4LjMtNy45YzEuNi0wLjcsMi42LTIuMiwyLjYtMy45CgkJVjY0bC04LjUsMy43djQyLjhsLTEyLjQsNS40bC04LjUsMy43bC0zNi4yLDE1LjZWMTExbDE4LjMtNy45YzEuNi0wLjcsMi42LTIuMiwyLjYtMy45VjQ5LjhsLTguNSwzLjd2NDIuOGwtMTIuNCw1LjRsLTguNSwzLjcKCQlMMTcsMTIxVjM1LjRsNTcuMS0yNC43VjM1bC0xOC4zLDcuOWMtMS42LDAuNy0yLjYsMi4yLTIuNiwzLjl2NDkuM2w4LjUtMy43VjQ5LjZsMTIuNC01LjRsOC41LTMuN2wzNi4yLTE1LjZ2MjQuMmwtMTguMyw3LjkKCQljLTEuNiwwLjctMi42LDIuMi0yLjYsMy45djQ5LjNsOC41LTMuN1Y2My44bDEyLjQtNS40bDguNS0zLjdsMzYuMi0xNS42VjEyNC43eiIvPgoJPGc+CgkJPGc+CgkJCTxwYXRoIGQ9Ik00NC4yLDE4Ny40Yy0yLjMtNy4xLTkuNC0xMS40LTIwLjEtMTEuNEM5LjEsMTc2LDAsMTg0LjcsMCwxOTcuNGMwLDEzLDkuMSwyMS41LDIzLDIxLjVjMTYsMCwyMi45LTguNiwyMi45LTIwLjUKCQkJCWMwLTEuMiwwLTIuNS0wLjMtMy44SDIzLjJ2N2gxMi41YzAuMiw1LjYtNS4yLDkuNC0xMS45LDkuNGMtOC42LDAtMTMtNS4zLTEzLTEzLjZjMC04LjMsNC41LTEzLjgsMTIuMy0xMy44CgkJCQljNC42LDAsOC40LDEuOSw5LjksNi4yTDQ0LjIsMTg3LjR6Ii8+CgkJCTxwYXRoIGQ9Ik03NC42LDIxMC45Yy03LjYsMC0xMi40LTUuMy0xMi40LTEzLjVjMC04LjMsNC44LTEzLjUsMTIuNC0xMy41YzcuNiwwLDEyLjQsNS4yLDEyLjQsMTMuNQoJCQkJQzg3LDIwNS43LDgyLjIsMjEwLjksNzQuNiwyMTAuOXogTTc0LjYsMjE4LjhjMTQsMCwyMy4xLTguMywyMy4xLTIxLjRjMC0xMy4xLTkuMS0yMS40LTIzLjEtMjEuNHMtMjMuMSw4LjMtMjMuMSwyMS40CgkJCQlDNTEuNiwyMTAuNSw2MC43LDIxOC44LDc0LjYsMjE4Ljh6Ii8+CgkJCTxwYXRoIGQ9Ik0xMjUsMjEwLjdoLTExLjJ2LTEwLjNoMTEuM2M0LjIsMCw2LjMsMiw2LjMsNS4xQzEzMS40LDIwOC40LDEyOS40LDIxMC43LDEyNSwyMTAuN3ogTTExMy44LDE4NC4yaDEwLjYKCQkJCWM0LjMsMCw1LjksMi4xLDUuOSw0LjZjMCwyLjYtMS40LDQuOS01LjksNC45aC0xMC42VjE4NC4yeiBNMTMzLjQsMTk2LjVjNS0xLjIsNy42LTQuNyw3LjYtOWMwLTUuOS00LjMtMTAuMy0xMy44LTEwLjNoLTIzLjYKCQkJCXY0MC41aDI0LjFjOS45LDAsMTQuNC01LjEsMTQuNC0xMS41QzE0Mi4xLDIwMC45LDEzOS4xLDE5Ny40LDEzMy40LDE5Ni41eiIvPgoJCQk8cG9seWdvbiBwb2ludHM9IjE0OS4yLDE3Ny4yIDE0OS4yLDIxNy43IDE4MC42LDIxNy43IDE4MC42LDIwOS41IDE1OS40LDIwOS41IDE1OS40LDE3Ny4yIAkJCSIvPgoJCTwvZz4KCTwvZz4KPC9nPgo8L3N2Zz4K" alt="GOBL">
+          </a>
+        </div>
+      </footer>
+      <article class="invoice">
+        <header class="regular">
+          <div class="details">
+            <section class="title">
+              <div class="hero">
+                <img src="https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0" alt="Invopop" height="40">
+              </div>
+              <div class="title-group">
+                <h1 class="type">
+                  Invoice
+                </h1>
+                <h2 class="code">
+                  FAKE20220001
+                </h2>
+              </div>
+            </section>
+            <section class="summary">
+              <h2 class="title">
+                Summary
+              </h2>
+              <ul>
+                <li class="issue-date">
+                  <span class="label">
+                    Issue date
+                  </span>
+                  <span class="value date">
+                    2022-02-01
+                  </span>
+                </li>
+                <li class="currency">
+                  <span class="label">
+                    Currency
+                  </span>
+                  <span class="value">
+                    Euro (EUR)
+                  </span>
+                </li>
+                <li class="ordering-code">
+                  <span class="label">
+                    Order
+                  </span>
+                  <span class="value">
+                    111-9244735-1237858
+                  </span>
+                </li>
+                <li class="ordering-period">
+                  <span class="label">
+                    Service period
+                  </span>
+                  <span class="value">
+                    2022-02-01 to 2022-02-28
+                  </span>
+                </li>
+                <li class="ordering-ident">
+                  <span class="label">
+                    Provider Ref.
+                  </span>
+                  <span class="value">
+                    PROV1234
+                  </span>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div class="contacts">
+            <section class="supplier">
+              <div class="party-border">
+                <h2>
+                  Supplier
+                </h2>
+                <div class="org-party">
+                  <div class="name">
+                    Biz España S.L.
+                  </div>
+                  <div class="org-address">
+                    <span>
+                      Calle Pradillo 42, Madrid, Madrid, 28002 (Spain)
+                    </span>
+                  </div>
+                  <div class="emails">
+                    Email: billing@bizspain.es
+                  </div>
+                  <div class="tax-id">
+                    NIF: (ES) B28774008
+                  </div>
+                  <div class="identitiy">
+                    LEI: 1010101010
+                  </div>
+                  <div class="identitiy">
+                    Identity code: ABC1234
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="customer">
+              <div class="party-border">
+                <h2>
+                  Customer
+                </h2>
+                <div class="org-party">
+                  <div class="name">
+                    Customer Spain S.L.
+                  </div>
+                  <div class="org-address">
+                    <span class="label">
+                      Office:&nbsp;
+                    </span>
+                    <span>
+                      Calle Mayor 10, Madrid, Madrid, 28003 (Spain)
+                    </span>
+                  </div>
+                  <div class="emails">
+                    Email: sam@customer.com
+                  </div>
+                  <div class="tax-id">
+                    NIF: (ES) B33105842
+                  </div>
+                  <div class="identitiy">
+                    Código de Cliente: 123456789ABC
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </header>
+        <section class="lines">
+          <h2>
+            Lines
+          </h2>
+          <table>
+            <thead>
+              <tr>
+                <th class="ref">
+                  #
+                </th>
+                <th class="description">
+                  Description
+                </th>
+                <th class="quantity">
+                  Qty.
+                </th>
+                <th class="price">
+                  Price
+                </th>
+                <th class="discount">
+                  Disc.
+                </th>
+                <th class="tax">
+                  VAT
+                </th>
+                <th class="tax">
+                  IRPF
+                </th>
+                <th class="total">
+                  Total
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-subtotal="€3.800,00">
+                <td class="ref">
+                  1
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Development Day Rate
+                    </span>
+                    <br>
+                    <small>
+                      Development services for the month of February 2022
+                    </small>
+                    <span class="subline">
+                      <span class="label">
+                        Ref.
+                      </span>
+                      <code>
+                        DEV1234567890
+                      </code>
+                    </span>
+                    <span class="subline">
+                      <span class="label">
+                        Product Code
+                      </span>
+                      <code>
+                        5294-3433
+                      </code>
+                    </span>
+                    <span class="subline">
+                      <span class="label">
+                        EAN
+                      </span>
+                      <code>
+                        0799439112766
+                      </code>
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  20
+                </td>
+                <td class="price">
+                  €200,00
+                </td>
+                <td class="discount">
+                  <span class="discount-content">
+                    5%
+                  </span>
+                </td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €3.800,00
+                </td>
+              </tr>
+              <tr data-subtotal="€4.800,00">
+                <td class="ref">
+                  2
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Something random
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  10
+                </td>
+                <td class="price">
+                  €100,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €1.000,00
+                </td>
+              </tr>
+              <tr data-subtotal="€4.972,50">
+                <td class="ref">
+                  3
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Additional random services
+                    </span>
+                    <span class="subline">
+                      <span class="label">
+                        EAN
+                      </span>
+                      <code>
+                        0799439112766
+                      </code>
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  5
+                </td>
+                <td class="price">
+                  €34,50
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  10,0%
+                </td>
+                <td class="tax">
+                  15%
+                </td>
+                <td class="total">
+                  €172,50
+                </td>
+              </tr>
+              <tr data-subtotal="€5.122,50">
+                <td class="ref">
+                  4
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Office Supplies Bundle
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  2
+                </td>
+                <td class="price">
+                  €75,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €150,00
+                </td>
+              </tr>
+              <tr data-subtotal="€6.322,50">
+                <td class="ref">
+                  5
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Software License - Annual
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  1
+                </td>
+                <td class="price">
+                  €1.200,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €1.200,00
+                </td>
+              </tr>
+              <tr data-subtotal="€6.472,50">
+                <td class="ref">
+                  6
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Cloud Storage - Monthly
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  3
+                </td>
+                <td class="price">
+                  €50,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €150,00
+                </td>
+              </tr>
+              <tr data-subtotal="€6.972,50">
+                <td class="ref">
+                  7
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Technical Support - Premium
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  1
+                </td>
+                <td class="price">
+                  €500,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €500,00
+                </td>
+              </tr>
+              <tr data-subtotal="€7.772,50">
+                <td class="ref">
+                  8
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Training Session
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  4
+                </td>
+                <td class="price">
+                  €200,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €800,00
+                </td>
+              </tr>
+              <tr data-subtotal="€8.072,50">
+                <td class="ref">
+                  9
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Data Backup Service
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  2
+                </td>
+                <td class="price">
+                  €150,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €300,00
+                </td>
+              </tr>
+              <tr data-subtotal="€10.572,50">
+                <td class="ref">
+                  10
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      System Integration
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  1
+                </td>
+                <td class="price">
+                  €2.500,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €2.500,00
+                </td>
+              </tr>
+              <tr data-subtotal="€11.072,50">
+                <td class="ref">
+                  11
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      API Access - Monthly
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  5
+                </td>
+                <td class="price">
+                  €100,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €500,00
+                </td>
+              </tr>
+              <tr data-subtotal="€14.072,50">
+                <td class="ref">
+                  12
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Security Audit
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  1
+                </td>
+                <td class="price">
+                  €3.000,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €3.000,00
+                </td>
+              </tr>
+              <tr data-subtotal="€14.522,50">
+                <td class="ref">
+                  13
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Consulting Hours
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  3
+                </td>
+                <td class="price">
+                  €150,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €450,00
+                </td>
+              </tr>
+              <tr data-subtotal="€19.522,50">
+                <td class="ref">
+                  14
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Custom Development
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  1
+                </td>
+                <td class="price">
+                  €5.000,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €5.000,00
+                </td>
+              </tr>
+              <tr data-subtotal="€20.322,50">
+                <td class="ref">
+                  15
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Server Maintenance
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  2
+                </td>
+                <td class="price">
+                  €400,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €800,00
+                </td>
+              </tr>
+              <tr data-subtotal="€21.522,50">
+                <td class="ref">
+                  16
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Network Setup
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  1
+                </td>
+                <td class="price">
+                  €1.200,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €1.200,00
+                </td>
+              </tr>
+              <tr data-subtotal="€21.822,50">
+                <td class="ref">
+                  17
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      User Training
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  4
+                </td>
+                <td class="price">
+                  €75,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €300,00
+                </td>
+              </tr>
+              <tr data-subtotal="€24.322,50">
+                <td class="ref">
+                  18
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      System Upgrade
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  1
+                </td>
+                <td class="price">
+                  €2.500,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €2.500,00
+                </td>
+              </tr>
+              <tr data-subtotal="€26.722,50">
+                <td class="ref">
+                  19
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Data Migration
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  3
+                </td>
+                <td class="price">
+                  €800,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €2.400,00
+                </td>
+              </tr>
+              <tr data-subtotal="€28.522,50">
+                <td class="ref">
+                  20
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Performance Optimization
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  1
+                </td>
+                <td class="price">
+                  €1.800,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €1.800,00
+                </td>
+              </tr>
+              <tr data-subtotal="€29.722,50">
+                <td class="ref">
+                  21
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Security Training
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  2
+                </td>
+                <td class="price">
+                  €600,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €1.200,00
+                </td>
+              </tr>
+              <tr data-subtotal="€33.222,50">
+                <td class="ref">
+                  22
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Disaster Recovery Setup
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  1
+                </td>
+                <td class="price">
+                  €3.500,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €3.500,00
+                </td>
+              </tr>
+              <tr data-subtotal="€35.022,50">
+                <td class="ref">
+                  23
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      API Development
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  4
+                </td>
+                <td class="price">
+                  €450,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €1.800,00
+                </td>
+              </tr>
+              <tr data-subtotal="€35.922,50">
+                <td class="ref">
+                  24
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      System Documentation
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  1
+                </td>
+                <td class="price">
+                  €900,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €900,00
+                </td>
+              </tr>
+              <tr data-subtotal="€37.322,50">
+                <td class="ref">
+                  25
+                </td>
+                <td class="description">
+                  <div class="limited-height">
+                    <span>
+                      Quality Assurance Testing
+                    </span>
+                  </div>
+                </td>
+                <td class="quantity">
+                  2
+                </td>
+                <td class="price">
+                  €700,00
+                </td>
+                <td class="discount"></td>
+                <td class="tax">
+                  21,0%
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €1.400,00
+                </td>
+              </tr>
+            </tbody>
+            <tbody class="discounts">
+              <tr data-subtotal="€37.302,50">
+                <td class="i">
+                  D1
+                </td>
+                <td class="description">
+                  Early Payment Discount
+                  <span class="identity">
+                    <span class="label">
+                      Ref.
+                    </span>
+                    <code>
+                      DIS-1234567890
+                    </code>
+                  </span>
+                </td>
+                <td class="quantity">
+                  <!-- no quantity -->
+                </td>
+                <td class="percent">
+                  <!-- empty -->
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td>
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €20,00
+                </td>
+              </tr>
+            </tbody>
+            <tbody class="charges">
+              <tr data-subtotal="€37.317,50">
+                <td class="ref">
+                  C1
+                </td>
+                <td class="description">
+                  Impuesto de Turismo
+                  <span class="identity">
+                    <span class="label">
+                      Ref.
+                    </span>
+                    <code>
+                      CHR-1234567890
+                    </code>
+                  </span>
+                </td>
+                <td class="quantity">
+                  <!-- no quantity -->
+                </td>
+                <td class="percent">
+                  <!-- empty -->
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td class="tax">
+                  <!-- empty -->
+                </td>
+                <td>
+                  <!-- empty -->
+                </td>
+                <td class="total">
+                  €15,00
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <div class="tail">
+          <div class="totals">
+            <section class="totals">
+              <h2>
+                Totals
+              </h2>
+              <table>
+                <tbody>
+                  <tr class="sum strong">
+                    <th>
+                      Sum
+                    </th>
+                    <td>
+                      €37.322,50
+                    </td>
+                  </tr>
+                  <tr class="discount">
+                    <th>
+                      Discount
+                    </th>
+                    <td>
+                      €20,00
+                    </td>
+                  </tr>
+                  <tr class="charges">
+                    <th>
+                      Charge
+                    </th>
+                    <td>
+                      €15,00
+                    </td>
+                  </tr>
+                  <tr class="total">
+                    <th>
+                      Total
+                    </th>
+                    <td>
+                      €37.317,50
+                    </td>
+                  </tr>
+                  <tr class="tax">
+                    <th>
+                      Tax
+                    </th>
+                    <td>
+                      €7.818,75
+                    </td>
+                  </tr>
+                  <tr class="total-with-tax strong">
+                    <th>
+                      Total with tax
+                    </th>
+                    <td>
+                      €45.136,25
+                    </td>
+                  </tr>
+                  <tr class="retained-tax">
+                    <th>
+                      Tax withheld
+                    </th>
+                    <td>
+                      €-25,88
+                    </td>
+                  </tr>
+                  <tr class="payable strong">
+                    <th>
+                      Total to pay
+                    </th>
+                    <td>
+                      €45.110,38
+                    </td>
+                  </tr>
+                  <tr class="advance">
+                    <th>
+                      Advance: 2022-01-15 Prepayment with Paypal (PAY1234)
+                    </th>
+                    <td>
+                      €13.533,11
+                    </td>
+                  </tr>
+                  <tr class="due strong">
+                    <th>
+                      Total due
+                    </th>
+                    <td>
+                      €31.577,27
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <section class="taxes">
+              <h2>
+                Taxes
+              </h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th class="category">
+                      Tax
+                    </th>
+                    <th class="base">
+                      Base
+                    </th>
+                    <th class="rate">
+                      Rate
+                    </th>
+                    <th class="amount">
+                      Amount
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="2" class="category">
+                      VAT
+                    </td>
+                    <td class="base">
+                      €37.150,00
+                    </td>
+                    <td class="rate">
+                      21,0%
+                    </td>
+                    <td class="amount">
+                      €7.801,50
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="base">
+                      €172,50
+                    </td>
+                    <td class="rate">
+                      10,0%
+                    </td>
+                    <td class="amount">
+                      €17,25
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="1" class="category">
+                      IRPF
+                    </td>
+                    <td class="base">
+                      €172,50
+                    </td>
+                    <td class="rate">
+                      15%
+                    </td>
+                    <td class="amount">
+                      €25,88
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+          <section class="payment">
+            <h2 class="title">
+              Payment
+            </h2>
+            <ul class="instructions">
+              <li class="method-name">
+                <span class="label">
+                  Method of payment
+                </span>
+                <span class="value">
+                  Bank transfer
+                </span>
+              </li>
+              <li class="bank-data">
+                <span class="label">
+                  Bank transfer instructions
+                </span>
+                <span class="value">
+                  <span class="credit-transfer">
+                    <span class="bank-name">
+                      Bank: RANDOM
+                    </span>
+                    <span class="iban">
+                      IBAN: ES31 0240 4036 4573 9340 5564
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li class="online">
+                <span class="label">
+                  Payment link
+                </span>
+                <span class="value">
+                  <a href="https://www.paypal.com/pay?ref=PAY1234">
+                    Paypal
+                  </a>
+                </span>
+              </li>
+              <li class="notes">
+                <span class="label">
+                  Payment notes
+                </span>
+                <span class="value">
+                  <p>
+                    <strong>
+                      Please
+                    </strong>
+                    pay within
+                    <em>
+                      30 days
+                    </em>
+                  </p>
+                </span>
+              </li>
+            </ul>
+          </section>
+          <section class="notes">
+            <h2>
+              Notes
+            </h2>
+            <div class="note">
+              <p>
+                Thank you for you business!
+              </p>
+            </div>
+            <div class="note">
+              <p>
+                Please pay within 30 days according to some random law in the country we sell from that you should comply with because we want to be paid sooner.
+              </p>
+            </div>
+          </section>
+          <div class="extensions"></div>
+        </div>
+      </article>
+      <div id="mp-header-templ" class="mp-header">
+        <div class="totals">
+          <section class="totals">
+            <table>
+              <tbody>
+                <tr class="strong">
+                  <th>
+                    Brought forward
+                  </th>
+                  <td class="amount">
+                    €0,00
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section class="title">
+            <div class="hero">
+              <img src="https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0" alt="Invopop" height="40">
+            </div>
+            <div class="title-group">
+              <h1 class="type">
+                Invoice
+              </h1>
+              <h2 class="code">
+                FAKE20220001
+              </h2>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div id="mp-footer-templ" class="mp-footer">
+        <div class="totals">
+          <section class="totals">
+            <table>
+              <tbody>
+                <tr class="strong">
+                  <th>
+                    Carried forward
+                  </th>
+                  <td class="amount">
+                    €0,00
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </div>
+      <script src="scripts/multipage.js"></script>
+      <footer class="screen">
+        <div class="gobl-logo">
+          <a href="https://gobl.org">
+            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjQuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDE4MC42IDIxOC44IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxODAuNiAyMTguODsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8Zz4KCTxwYXRoIGQ9Ik0xNzIsMTI3LjVWMzIuNmMwLTEuNC0wLjctMi44LTEuOS0zLjZjLTEuMi0wLjgtMi43LTAuOS00LTAuM2wtMzguOCwxNi44di0yN2MwLTEuNC0wLjctMi44LTEuOS0zLjYKCQljLTEuMi0wLjgtMi43LTAuOS00LTAuNEw4Mi42LDMxLjN2LTI3YzAtMS40LTAuNy0yLjgtMS45LTMuNmMtMS4yLTAuOC0yLjctMC45LTQtMC40TDExLDI4LjdjLTEuNiwwLjctMi42LDIuMi0yLjYsMy45djk0LjkKCQljMCwxLjQsMC43LDIuOCwxLjksMy42YzAuNywwLjUsMS41LDAuNywyLjMsMC43YzAuNiwwLDEuMS0wLjEsMS43LTAuM2wzOC44LTE2Ljh2MjdjMCwxLjQsMC43LDIuOCwxLjksMy42CgkJYzAuNywwLjUsMS41LDAuNywyLjMsMC43YzAuNiwwLDEuMS0wLjEsMS43LTAuM2wzOC44LTE2Ljh2MjdjMCwxLjQsMC43LDIuOCwxLjksMy42YzAuNywwLjUsMS41LDAuNywyLjMsMC43CgkJYzAuNiwwLDEuMS0wLjEsMS43LTAuM2w2NS42LTI4LjRDMTcxLDEzMC44LDE3MiwxMjkuMiwxNzIsMTI3LjV6IE0xNjMuNSwxMjQuN2wtNTcuMSwyNC43di0yNC4ybDE4LjMtNy45YzEuNi0wLjcsMi42LTIuMiwyLjYtMy45CgkJVjY0bC04LjUsMy43djQyLjhsLTEyLjQsNS40bC04LjUsMy43bC0zNi4yLDE1LjZWMTExbDE4LjMtNy45YzEuNi0wLjcsMi42LTIuMiwyLjYtMy45VjQ5LjhsLTguNSwzLjd2NDIuOGwtMTIuNCw1LjRsLTguNSwzLjcKCQlMMTcsMTIxVjM1LjRsNTcuMS0yNC43VjM1bC0xOC4zLDcuOWMtMS42LDAuNy0yLjYsMi4yLTIuNiwzLjl2NDkuM2w4LjUtMy43VjQ5LjZsMTIuNC01LjRsOC41LTMuN2wzNi4yLTE1LjZ2MjQuMmwtMTguMyw3LjkKCQljLTEuNiwwLjctMi42LDIuMi0yLjYsMy45djQ5LjNsOC41LTMuN1Y2My44bDEyLjQtNS40bDguNS0zLjdsMzYuMi0xNS42VjEyNC43eiIvPgoJPGc+CgkJPGc+CgkJCTxwYXRoIGQ9Ik00NC4yLDE4Ny40Yy0yLjMtNy4xLTkuNC0xMS40LTIwLjEtMTEuNEM5LjEsMTc2LDAsMTg0LjcsMCwxOTcuNGMwLDEzLDkuMSwyMS41LDIzLDIxLjVjMTYsMCwyMi45LTguNiwyMi45LTIwLjUKCQkJCWMwLTEuMiwwLTIuNS0wLjMtMy44SDIzLjJ2N2gxMi41YzAuMiw1LjYtNS4yLDkuNC0xMS45LDkuNGMtOC42LDAtMTMtNS4zLTEzLTEzLjZjMC04LjMsNC41LTEzLjgsMTIuMy0xMy44CgkJCQljNC42LDAsOC40LDEuOSw5LjksNi4yTDQ0LjIsMTg3LjR6Ii8+CgkJCTxwYXRoIGQ9Ik03NC42LDIxMC45Yy03LjYsMC0xMi40LTUuMy0xMi40LTEzLjVjMC04LjMsNC44LTEzLjUsMTIuNC0xMy41YzcuNiwwLDEyLjQsNS4yLDEyLjQsMTMuNQoJCQkJQzg3LDIwNS43LDgyLjIsMjEwLjksNzQuNiwyMTAuOXogTTc0LjYsMjE4LjhjMTQsMCwyMy4xLTguMywyMy4xLTIxLjRjMC0xMy4xLTkuMS0yMS40LTIzLjEtMjEuNHMtMjMuMSw4LjMtMjMuMSwyMS40CgkJCQlDNTEuNiwyMTAuNSw2MC43LDIxOC44LDc0LjYsMjE4Ljh6Ii8+CgkJCTxwYXRoIGQ9Ik0xMjUsMjEwLjdoLTExLjJ2LTEwLjNoMTEuM2M0LjIsMCw2LjMsMiw2LjMsNS4xQzEzMS40LDIwOC40LDEyOS40LDIxMC43LDEyNSwyMTAuN3ogTTExMy44LDE4NC4yaDEwLjYKCQkJCWM0LjMsMCw1LjksMi4xLDUuOSw0LjZjMCwyLjYtMS40LDQuOS01LjksNC45aC0xMC42VjE4NC4yeiBNMTMzLjQsMTk2LjVjNS0xLjIsNy42LTQuNyw3LjYtOWMwLTUuOS00LjMtMTAuMy0xMy44LTEwLjNoLTIzLjYKCQkJCXY0MC41aDI0LjFjOS45LDAsMTQuNC01LjEsMTQuNC0xMS41QzE0Mi4xLDIwMC45LDEzOS4xLDE5Ny40LDEzMy40LDE5Ni41eiIvPgoJCQk8cG9seWdvbiBwb2ludHM9IjE0OS4yLDE3Ny4yIDE0OS4yLDIxNy43IDE4MC42LDIxNy43IDE4MC42LDIwOS41IDE1OS40LDIwOS41IDE1OS40LDE3Ny4yIAkJCSIvPgoJCTwvZz4KCTwvZz4KPC9nPgo8L3N2Zz4K" alt="GOBL">
+          </a>
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>

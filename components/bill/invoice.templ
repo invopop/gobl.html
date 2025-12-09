@@ -113,11 +113,20 @@ templ defaultTitleType(doc doc.Document) {
 	{{ typ := doc.GetType() }}
 	if isSimplifiedInvoice(doc) {
 		@t.T(".standard-simplified")
-	} else if internal.Options(ctx).AdjustmentMode {
+	} else if adjustmentMode(ctx, doc) {
 		@t.T(".adjustment")
 	} else {
 		@t.T("." + typ.String())
 	}
+}
+
+func adjustmentMode(ctx context.Context, doc doc.Document) bool {
+	switch doc.GetType() {
+	case bill.InvoiceTypeCreditNote, bill.InvoiceTypeDebitNote, bill.InvoiceTypeCorrective:
+		opts := internal.Options(ctx)
+		return opts.AdjustmentMode
+	}
+	return false
 }
 
 templ titleBadges(env *gobl.Envelope, doc doc.Document) {
