@@ -56,8 +56,6 @@ templ generateQR(cae, caeExpiry, qr string) {
 	</section>
 }
 
-
-
 func arcaCAE(env *gobl.Envelope) string {
     for _, stamp := range env.Head.Stamps {
         switch stamp.Provider {
