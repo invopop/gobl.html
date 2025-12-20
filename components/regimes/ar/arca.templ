@@ -1,0 +1,89 @@
+package ar
+
+import (
+	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/components/images"
+	"github.com/invopop/gobl/addons/ar/arca"
+)
+
+templ ARCAQR(env *gobl.Envelope) {
+	if cae := arcaCAE(env); cae != "" {
+		if caeExpiry := arcaCAEExpiry(env); caeExpiry != "" {
+			if qr := arcaQR(env); qr != "" {
+				@generateQR(cae, caeExpiry, qr)
+			}
+		}
+	}
+}
+
+templ generateQR(cae, caeExpiry, qr string) {
+	<style type="text/css">
+        .arca-qr {
+			display: flex;
+            font-family: sans-serif;
+            font-size: 9pt;
+        }
+		.arca-qr .image {
+			margin-right: 6mm;
+		}
+		.arca-qr .text {
+			margin-top: auto;
+			margin-bottom: auto;
+		}
+		.arca-qr .text .cae {
+			font-weight: bold;
+			margin-bottom: 2mm;
+		}
+        .arca-qr img {
+            width: 24mm;
+            height: 24mm;
+        }
+    </style>
+	<section class="arca-qr">
+		<div class="image">
+			<a href={ templ.URL(qr) }>
+				@images.QR(qr)
+			</a>
+		</div>
+		<div class="text">
+			<div class="cae">
+				CAE N°: { cae }
+			</div>
+			<div class="cae-expiry">
+				Fecha de Vto. de CAE: { caeExpiry }
+			</div>
+		</div>
+	</section>
+}
+
+
+
+func arcaCAE(env *gobl.Envelope) string {
+    for _, stamp := range env.Head.Stamps {
+        switch stamp.Provider {
+        case arca.StampCAE:
+            return stamp.Value
+        }
+    }
+    return ""
+}
+
+func arcaCAEExpiry(env *gobl.Envelope) string {
+    for _, stamp := range env.Head.Stamps {
+        switch stamp.Provider {
+        case arca.StampCAEExpiry:
+            return stamp.Value
+        }
+    }
+    return ""
+}
+
+func arcaQR(env *gobl.Envelope) string {
+    for _, stamp := range env.Head.Stamps {
+        switch stamp.Provider {
+        case arca.StampQR:
+            return stamp.Value
+        }
+    }
+    return ""
+}

@@ -8,8 +8,8 @@ import (
 )
 
 // Country to check for regime-specific components
-var country = l10n.EL.Tax()
+var country = l10n.EL
 
 func isGreek(doc doc.Document) bool {
-	return doc != nil && doc.GetRegime().Country == country
+	return doc != nil && doc.GetRegime().Country.Code() == country
 }

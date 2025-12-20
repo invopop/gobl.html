@@ -20,7 +20,7 @@ import (
 )
 
 // Country to check for regime-specific components
-var country = l10n.PT.Tax()
+var country = l10n.PT
 
 // Parameters required by the AT for the QR code generator
 const (
@@ -184,7 +184,7 @@ func docType(doc doc.Document) cbc.Code {
 }
 
 func isPortuguese(doc doc.Document) bool {
-	return doc != nil && doc.GetRegime().Country == country
+	return doc != nil && doc.GetRegime().Country.Code() == country
 }
 
 func isSandbox(ctx context.Context) bool {
