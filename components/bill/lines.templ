@@ -180,6 +180,126 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 			</td>
 		}
 	</tr>
+	for _, b := range l.Breakdown {
+		@breakdownLine(b, ls, st)
+	}
+}
+
+templ breakdownLine(sl *bill.SubLine, ls *lineSupport, st *subtotal) {
+	<tr class="breakdown" data-subtotal={ t.LocalizeMoney(ctx, st.Add(sl.Total)) }>
+		<td class="ref">
+			<!-- empty for breakdown -->
+		</td>
+		<td class="description">
+			<div class="limited-height">
+				<span>{ sl.Item.Name }</span>
+				if sl.Item.Description != "" {
+					<br/>
+					<small>{ sl.Item.Description }</small>
+				}
+				if sl.Item.Ref != "" {
+					<span class="subline">
+						<span class="label">
+							@t.T(".ref")
+						</span>
+						<code>
+							{ sl.Item.Ref.String() }
+						</code>
+					</span>
+				}
+				@identities(sl.Item.Identities)
+				@sublineNotes(sl.Notes)
+			</div>
+		</td>
+		<td class="quantity">
+			@t.L(sl.Quantity)
+		</td>
+		if ls.units {
+			<td class="unit">
+				if sl.Item.Unit != "" {
+					{ string(sl.Item.Unit) }
+				} else {
+					<!-- empty -->
+				}
+			</td>
+		}
+		if ls.prices {
+			<td class="price">
+				if sl.Item.Price != nil {
+					@t.LM(*sl.Item.Price)
+					@sublineItemAltPrices(sl)
+				}
+			</td>
+		}
+		if ls.discounts {
+			<td class="discount">
+				@sublineGroupDiscounts(sl)
+			</td>
+		}
+		if ls.charges {
+			<td class="charge">
+				@sublineGroupCharges(sl)
+			</td>
+		}
+		for _, cat := range ls.categories {
+			<td class="tax">
+				<!-- SubLines don't have taxes -->
+			</td>
+			if ls.exemptions[cat] {
+				<td class="exemption">
+					<!-- empty -->
+				</td>
+			}
+		}
+		if ls.totals {
+			<td class="total">
+				if sl.Total != nil {
+					@t.LM(*sl.Total)
+				}
+			</td>
+		}
+	</tr>
+}
+
+templ sublineNotes(notes []*org.Note) {
+	@lineNotes(notes)
+}
+
+templ sublineItemAltPrices(sl *bill.SubLine) {
+	for _, a := range sl.Item.AltPrices {
+		<span class="alt-price">
+			@t.LCD(a.Value, a.Currency)
+		</span>
+	}
+}
+
+templ sublineGroupDiscounts(sl *bill.SubLine) {
+	for _, d := range sl.Discounts {
+		<span class="discount-content">
+			if d.Percent != nil {
+				@t.L(*d.Percent)
+			} else {
+				@t.LM(d.Amount)
+			}
+		</span>
+	}
+}
+
+templ sublineGroupCharges(sl *bill.SubLine) {
+	for _, c := range sl.Charges {
+		<span class="charge-content">
+			if c.Code != "" {
+				<span class="code">
+					{ c.Code.String() }
+				</span>
+			}
+			if c.Percent != nil {
+				@t.L(*c.Percent)
+			} else {
+				@t.LM(c.Amount)
+			}
+		</span>
+	}
 }
 
 templ identities(idents []*org.Identity) {
