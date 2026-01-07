@@ -1,0 +1,175 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "92be0222-1d7d-11ed-8719-b24117999d50",
+		"dig": {
+			"alg": "sha256",
+			"val": "fbf9c5611a00cc288d1144c070762c5935c6f71826913289089639642a9a4763"
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=89890001K\u0026numserie=12345678-G33\u0026fecha=01-09-2024\u0026importe=241.4"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"uuid": "019565d4-f152-7080-acb6-f47b5cd82a2d",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "001",
+		"issue_date": "2022-02-01",
+		"currency": "EUR",
+		"supplier": {
+			"name": "Provide One S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B98602642"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Bilbao",
+					"region": "Vizcaya",
+					"code": "48001",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Sample Consumer",
+			"tax_id": {
+				"country": "ES",
+				"code": "54387763P"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "E-invoicing Fee",
+					"currency": "EUR",
+					"price": "1861.270"
+				},
+				"breakdown": [
+					{
+						"i": 1,
+						"quantity": "50000",
+						"item": {
+							"name": "First 50000",
+							"price": "0.02"
+						},
+						"sum": "1000.000",
+						"total": "1000.000"
+					},
+					{
+						"i": 2,
+						"quantity": "50000",
+						"item": {
+							"name": "Next 50001 to 100000",
+							"price": "0.015"
+						},
+						"sum": "750.000",
+						"total": "750.000"
+					},
+					{
+						"i": 3,
+						"quantity": "11127",
+						"item": {
+							"name": "Next 100001 to 500000",
+							"price": "0.01"
+						},
+						"sum": "111.270",
+						"total": "111.270"
+					}
+				],
+				"sum": "1861.270",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"es-verifactu-op-class": "S1",
+							"es-verifactu-regime": "01"
+						}
+					}
+				],
+				"total": "1861.270"
+			},
+			{
+				"i": 2,
+				"quantity": "210438",
+				"item": {
+					"name": "PDF Invoice Fee",
+					"price": "0.003"
+				},
+				"sum": "631.314",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"es-verifactu-op-class": "S1",
+							"es-verifactu-regime": "01"
+						}
+					}
+				],
+				"total": "631.314"
+			}
+		],
+		"totals": {
+			"sum": "2492.58",
+			"total": "2492.58",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"es-verifactu-op-class": "S1",
+									"es-verifactu-regime": "01"
+								},
+								"base": "2492.58",
+								"percent": "21.0%",
+								"amount": "523.44"
+							}
+						],
+						"amount": "523.44"
+					}
+				],
+				"sum": "523.44"
+			},
+			"tax": "523.44",
+			"total_with_tax": "3016.03",
+			"payable": "3016.03"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6ImUzNzFjMzBiLTNiMzMtNGNiMC04NzM5LThiOTUzMWM1NWM2NiJ9.eyJ1dWlkIjoiOTJiZTAyMjItMWQ3ZC0xMWVkLTg3MTktYjI0MTE3OTk5ZDUwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjMxMTQzYzk4NmZhNWM3N2I4ODlkNzhhYjk4MDhjNGMyMzZkNmE2YWMzYjU0N2Q3OWFkM2IwNzY5YWIyZTRkMmEifSwic3RhbXBzIjpbeyJwcnYiOiJ2ZXJpZmFjdHUtcXIiLCJ2YWwiOiJodHRwczovL3ByZXd3dzIuYWVhdC5lcy93bHBsL1RJS0UtQ09OVC9WYWxpZGFyUVI_bmlmPTg5ODkwMDAxS1x1MDAyNm51bXNlcmllPTEyMzQ1Njc4LUczM1x1MDAyNmZlY2hhPTAxLTA5LTIwMjRcdTAwMjZpbXBvcnRlPTI0MS40In1dfQ.fkhC67qd0c2LVdhVYlB2ikl2QGBabXIm-MJFGByErjLyk8ngbWLcABh_gwoz4Na_zq2wlPEm7Zeu6H78hntlag"
+	]
+}

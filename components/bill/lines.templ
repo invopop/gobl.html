@@ -5,6 +5,7 @@ import (
 	"github.com/invopop/gobl.html/components/regimes/mx"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/currency"
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
 )
@@ -180,6 +181,101 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 			</td>
 		}
 	</tr>
+	for _, b := range l.Breakdown {
+		@breakdownLine(b, ls, st)
+	}
+}
+
+templ breakdownLine(sl *bill.SubLine, ls *lineSupport, st *subtotal) {
+	<tr class="breakdown" data-subtotal={ t.LocalizeMoney(ctx, st.Add(sl.Total)) }>
+		<td class="ref">
+			<!-- empty for breakdown -->
+		</td>
+		<td class="description">
+			<div class="limited-height">
+				<span>{ sl.Item.Name }</span>
+				if sl.Item.Description != "" {
+					<br/>
+					<small>{ sl.Item.Description }</small>
+				}
+				if sl.Item.Ref != "" {
+					<span class="subline">
+						<span class="label">
+							@t.T(".ref")
+						</span>
+						<code>
+							{ sl.Item.Ref.String() }
+						</code>
+					</span>
+				}
+				@identities(sl.Item.Identities)
+				@sublineNotes(sl.Notes)
+			</div>
+		</td>
+		<td class="quantity">
+			@t.L(sl.Quantity)
+		</td>
+		if ls.units {
+			<td class="unit">
+				if sl.Item.Unit != "" {
+					{ string(sl.Item.Unit) }
+				} else {
+					<!-- empty -->
+				}
+			</td>
+		}
+		if ls.prices {
+			<td class="price">
+				if sl.Item.Price != nil {
+					@t.LM(*sl.Item.Price)
+					@sublineItemAltPrices(sl)
+				}
+			</td>
+		}
+		if ls.discounts {
+			<td class="discount">
+				@sublineGroupDiscounts(sl)
+			</td>
+		}
+		if ls.charges {
+			<td class="charge">
+				@sublineGroupCharges(sl)
+			</td>
+		}
+		for _, cat := range ls.categories {
+			<td class="tax">
+				<!-- SubLines don't have taxes -->
+			</td>
+			if ls.exemptions[cat] {
+				<td class="exemption">
+					<!-- empty -->
+				</td>
+			}
+		}
+		if ls.totals {
+			<td class="total">
+				if sl.Total != nil {
+					@t.LM(*sl.Total)
+				}
+			</td>
+		}
+	</tr>
+}
+
+templ sublineNotes(notes []*org.Note) {
+	@lineNotes(notes)
+}
+
+templ sublineItemAltPrices(sl *bill.SubLine) {
+	@itemAltPrices(sl.Item.AltPrices)
+}
+
+templ sublineGroupDiscounts(sl *bill.SubLine) {
+	@groupDiscounts(sl.Discounts)
+}
+
+templ sublineGroupCharges(sl *bill.SubLine) {
+	@groupCharges(sl.Charges)
 }
 
 templ identities(idents []*org.Identity) {
@@ -202,15 +298,27 @@ templ identities(idents []*org.Identity) {
 }
 
 templ lineItemAltPrices(l *bill.Line) {
-	for _, a := range l.Item.AltPrices {
+	@itemAltPrices(l.Item.AltPrices)
+}
+
+templ lineGroupDiscounts(l *bill.Line) {
+	@groupDiscounts(l.Discounts)
+}
+
+templ lineGroupCharges(l *bill.Line) {
+	@groupCharges(l.Charges)
+}
+
+templ itemAltPrices(altPrices []*currency.Amount) {
+	for _, a := range altPrices {
 		<span class="alt-price">
 			@t.LCD(a.Value, a.Currency)
 		</span>
 	}
 }
 
-templ lineGroupDiscounts(l *bill.Line) {
-	for _, d := range l.Discounts {
+templ groupDiscounts(discounts []*bill.LineDiscount) {
+	for _, d := range discounts {
 		<span class="discount-content">
 			if d.Percent != nil {
 				@t.L(*d.Percent)
@@ -221,8 +329,8 @@ templ lineGroupDiscounts(l *bill.Line) {
 	}
 }
 
-templ lineGroupCharges(l *bill.Line) {
-	for _, c := range l.Charges {
+templ groupCharges(charges []*bill.LineCharge) {
+	for _, c := range charges {
 		<span class="charge-content">
 			if c.Code != "" {
 				<span class="code">

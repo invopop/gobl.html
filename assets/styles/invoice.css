@@ -247,7 +247,15 @@ section.lines .alt-price:before {
 section.lines .alt-price:after {
     content: ")";
 }
-
+section.lines tr.breakdown td {
+    color: #8995af;
+}
+section.lines tr.breakdown td.ref {
+    border-bottom-width: 0;
+}
+section.lines tr.breakdown:has(+ :not(.breakdown)) td.ref {
+    border-bottom-width: 0.5px;
+}
 div.totals {
     order: 8;
     display: flex;
