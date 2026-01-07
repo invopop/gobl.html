@@ -1,0 +1,510 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
+		"dig": {
+			"alg": "sha256",
+			"val": "75914d1b0a8ad295db18bf9c9f991cb108c6a8304a9d47aace98304784a85223"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "AR",
+		"uuid": "019565ce-910a-7785-abef-467ceeb896f1",
+		"type": "standard",
+		"code": "FAKE20220001",
+		"issue_date": "2022-02-01",
+		"currency": "SAR",
+		"tax": {},
+		"supplier": {
+			"name": "بيز إسبانيا ش.م.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B28774008"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "شارع براديلو",
+					"locality": "مدريد",
+					"region": "مدريد",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@bizspain.es"
+				}
+			],
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://assets.invopop.com/icons/invopop.svg",
+					"height": 64,
+					"width": 64
+				}
+			]
+		},
+		"customer": {
+			"name": "عميل إسبانيا ش.م.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B33105842"
+			},
+			"identities": [
+				{
+					"label": "رمز العميل",
+					"code": "123456789ABC"
+				}
+			],
+			"addresses": [
+				{
+					"label": "المكتب",
+					"po_box": "20",
+					"num": "10",
+					"street": "شارع مايور",
+					"locality": "مدريد",
+					"region": "مدريد",
+					"code": "28003",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "sam@customer.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "سعر يوم التطوير",
+					"price": "200.00"
+				},
+				"sum": "4000.00",
+				"discounts": [
+					{
+						"reason": "فقط لأن",
+						"percent": "5%",
+						"amount": "200.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "3800.00"
+			},
+			{
+				"i": 2,
+				"quantity": "10",
+				"item": {
+					"name": "شيء عشوائي",
+					"price": "100.00"
+				},
+				"sum": "1000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "1000.00"
+			},
+			{
+				"i": 3,
+				"quantity": "5",
+				"item": {
+					"name": "خدمات إضافية عشوائية",
+					"price": "34.50"
+				},
+				"sum": "172.50",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "172.50"
+			},
+			{
+				"i": 4,
+				"quantity": "2",
+				"item": {
+					"name": "حزمة مستلزمات المكتب",
+					"price": "75.00"
+				},
+				"sum": "150.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "150.00"
+			},
+			{
+				"i": 5,
+				"quantity": "1",
+				"item": {
+					"name": "ترخيص البرمجيات - سنوي",
+					"price": "1200.00"
+				},
+				"sum": "1200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "1200.00"
+			},
+			{
+				"i": 6,
+				"quantity": "3",
+				"item": {
+					"name": "تخزين سحابي - شهري",
+					"price": "50.00"
+				},
+				"sum": "150.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "150.00"
+			},
+			{
+				"i": 7,
+				"quantity": "1",
+				"item": {
+					"name": "الدعم الفني - مميز",
+					"price": "500.00"
+				},
+				"sum": "500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "500.00"
+			},
+			{
+				"i": 8,
+				"quantity": "4",
+				"item": {
+					"name": "جلسة تدريبية",
+					"price": "200.00"
+				},
+				"sum": "800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "800.00"
+			},
+			{
+				"i": 9,
+				"quantity": "2",
+				"item": {
+					"name": "خدمة النسخ الاحتياطي للبيانات",
+					"price": "150.00"
+				},
+				"sum": "300.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "300.00"
+			},
+			{
+				"i": 10,
+				"quantity": "1",
+				"item": {
+					"name": "تكامل النظام",
+					"price": "2500.00"
+				},
+				"sum": "2500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "2500.00"
+			},
+			{
+				"i": 11,
+				"quantity": "5",
+				"item": {
+					"name": "الوصول إلى واجهة برمجة التطبيقات - شهري",
+					"price": "100.00"
+				},
+				"sum": "500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "500.00"
+			},
+			{
+				"i": 12,
+				"quantity": "1",
+				"item": {
+					"name": "تدقيق الأمان",
+					"price": "3000.00"
+				},
+				"sum": "3000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "3000.00"
+			},
+			{
+				"i": 13,
+				"quantity": "3",
+				"item": {
+					"name": "ساعات استشارية",
+					"price": "150.00"
+				},
+				"sum": "450.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "450.00"
+			},
+			{
+				"i": 14,
+				"quantity": "1",
+				"item": {
+					"name": "تطوير مخصص",
+					"price": "5000.00"
+				},
+				"sum": "5000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "5000.00"
+			},
+			{
+				"i": 15,
+				"quantity": "2",
+				"item": {
+					"name": "صيانة الخادم",
+					"price": "400.00"
+				},
+				"sum": "800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "800.00"
+			},
+			{
+				"i": 16,
+				"quantity": "1",
+				"item": {
+					"name": "إعداد الشبكة",
+					"price": "1200.00"
+				},
+				"sum": "1200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "1200.00"
+			},
+			{
+				"i": 17,
+				"quantity": "4",
+				"item": {
+					"name": "تدريب المستخدمين",
+					"price": "75.00"
+				},
+				"sum": "300.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "300.00"
+			},
+			{
+				"i": 18,
+				"quantity": "1",
+				"item": {
+					"name": "ترقية النظام",
+					"price": "2500.00"
+				},
+				"sum": "2500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "2500.00"
+			},
+			{
+				"i": 19,
+				"quantity": "3",
+				"item": {
+					"name": "نقل البيانات",
+					"price": "800.00"
+				},
+				"sum": "2400.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "5%"
+					}
+				],
+				"total": "2400.00"
+			}
+		],
+		"discounts": [
+			{
+				"i": 1,
+				"code": "DIS-1234567890",
+				"reason": "خصم الدفع المبكر",
+				"amount": "20.00"
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"code": "CHR-1234567890",
+				"reason": "ضريبة السياحة",
+				"amount": "15.00"
+			}
+		],
+		"ordering": {
+			"code": "111-9244735-1237858",
+			"identities": [
+				{
+					"label": "مرجع المورد",
+					"code": "PROV1234"
+				}
+			],
+			"period": {
+				"label": "فترة الخدمة",
+				"start": "2022-02-01",
+				"end": "2022-02-28"
+			}
+		},
+		"payment": {
+			"advances": [
+				{
+					"date": "2022-01-15",
+					"ref": "PAY1234",
+					"description": "دفعة مقدمة عبر باي بال",
+					"percent": "30%",
+					"amount": "8416.09"
+				}
+			],
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "ES31 0240 4036 4573 9340 5564",
+						"name": "RANDOM"
+					}
+				],
+				"online": [
+					{
+						"key": "paypal",
+						"label": "Paypal",
+						"url": "https://www.paypal.com/pay?ref=PAY1234"
+					}
+				],
+				"notes": "**يرجى** الدفع خلال _30 يومًا_"
+			}
+		},
+		"totals": {
+			"sum": "26722.50",
+			"discount": "20.00",
+			"charge": "15.00",
+			"total": "26717.50",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "26722.50",
+								"percent": "5%",
+								"amount": "1336.13"
+							}
+						],
+						"amount": "1336.13"
+					}
+				],
+				"sum": "1336.13"
+			},
+			"tax": "1336.13",
+			"total_with_tax": "28053.63",
+			"payable": "28053.63",
+			"advance": "8416.09",
+			"due": "19637.54"
+		},
+		"notes": [
+			{
+				"text": "شكرًا لكم على عملكم!"
+			},
+			{
+				"key": "legal",
+				"text": "يرجى الدفع خلال 30 يومًا وفقًا لبعض القوانين العشوائية في البلد الذي نبيع منه والتي يجب عليك الامتثال لها لأننا نريد أن نُدفع لنا عاجلاً.",
+				"meta": {
+					"position": "footer"
+				}
+			}
+		]
+	}
+}
