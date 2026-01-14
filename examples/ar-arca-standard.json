@@ -4,7 +4,7 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "8fa2efb901dd5ab0b380ee752801cbe4a5ba66a4d4f549459c27b33f4cc1767b"
+			"val": "09c7b58fbcfd82ce3ba5d8e2935f11c5c19f75d1122deba75609244c47b0edaf"
 		},
 		"stamps": [
 			{
@@ -26,9 +26,6 @@
 		"$regime": "AR",
 		"$addons": [
 			"ar-arca-v4"
-		],
-		"$tags": [
-			"vat-registered"
 		],
 		"uuid": "3aea7b56-59d8-4beb-90bd-f8f280d852a0",
 		"type": "standard",
