@@ -20,7 +20,7 @@ import (
 )
 
 // Country to check for regime-specific components
-var country = l10n.PT
+var country = l10n.PT.Tax()
 
 // Parameters required by the AT for the QR code generator
 const (
