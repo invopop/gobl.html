@@ -184,7 +184,7 @@ func docType(doc doc.Document) cbc.Code {
 }
 
 func isPortuguese(doc doc.Document) bool {
-	return doc != nil && doc.GetRegime().Country.Code() == country
+	return doc != nil && doc.GetRegime().Country.Code().Tax() == country
 }
 
 func isSandbox(ctx context.Context) bool {
