@@ -197,7 +197,7 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 		if doc := doc.ExtractFrom(env); doc != nil {
 			nf = doc.GetCurrency().Def().Formatter()
 
-			if doc.GetRegime().Country == l10n.PT.Tax() {
+			if doc.GetRegime().Country.Code() == l10n.PT {
 				// As required by the Portuguese tax law
 				nf.ThousandsSeparator = " "
 				nf.DecimalMark = ","
