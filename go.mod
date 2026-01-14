@@ -8,7 +8,7 @@ require (
 	github.com/a-h/templ v0.3.960
 	github.com/go-resty/resty/v2 v2.12.0
 	github.com/invopop/ctxi18n v0.9.0
-	github.com/invopop/gobl v0.301.0
+	github.com/invopop/gobl v0.305.1
 	github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/piglig/go-qr v0.2.4
@@ -56,4 +56,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/invopop/gobl => ../gobl
+// replace github.com/invopop/gobl => ../gobl
