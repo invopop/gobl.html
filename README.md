@@ -49,3 +49,11 @@ Tests are currently pretty limited. To ensure the basics are covered, the conten
 ```bash
 go test ./... --update
 ```
+
+When adding new examples make sure to run:
+
+```bash
+go test examples_test.go --update
+```
+
+This will ensure the test file for that example is updated.

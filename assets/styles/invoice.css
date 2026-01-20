@@ -42,6 +42,10 @@ header.regular div.details {
     flex: 1;
     border-right: 0.5px solid #e5e7eb;
 }
+html[dir="rtl"] header.regular div.details {
+    border-right: none;
+    border-left: 0.5px solid #e5e7eb;
+}
 header.regular > div.contacts {
     flex: 1;
 }
@@ -130,20 +134,21 @@ section.title .title-group-inline h1 {
     color: #030712;
     font-weight: 600;
 }
-
 section.title .title-group-inline h1,
 section.title .title-group-inline h2 {
     display: inline-block;
 }
-
 section.title h2.code {
     word-break: break-all;
 }
-
 section.summary {
     padding-right: 6mm;
     padding-top: 0mm;
     padding-bottom: 0mm;
+}
+html[dir="rtl"] section.summary {
+    padding-right: 0mm;
+    padding-left: 6mm;
 }
 section.summary h2.title {
     display: none;

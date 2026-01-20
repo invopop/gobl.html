@@ -17,7 +17,7 @@ import (
 )
 
 templ Envelope(env *gobl.Envelope) {
-	<html data-theme="light">
+	<html data-theme="light" if isRTL(ctx) { dir="rtl" }>
 		<head>
 			<title>GOBL HTML Generator</title>
 			<meta charset="utf-8"/>
@@ -65,4 +65,28 @@ func applyLetterLayout(ctx context.Context) bool {
 	opts := internal.Options(ctx)
 
 	return opts.Layout == layout.Letter
+}
+
+// isRTL returns true if the current locale is a right-to-left language
+func isRTL(ctx context.Context) bool {
+	opts := internal.Options(ctx)
+	if opts == nil {
+		return false
+	}
+	locale := opts.Locale.String()
+	rtlLocales := map[string]bool{
+		"ar":  true,
+		"he":  true,
+		"iw":  true,
+		"fa":  true,
+		"ur":  true,
+		"ps":  true,
+		"ckb": true,
+		"sd":  true,
+		"ug":  true,
+		"yi":  true,
+		"ji":  true,
+		"dv":  true,
+	}
+	return rtlLocales[locale]
 }

@@ -1,0 +1,98 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
+		"dig": {
+			"alg": "sha256",
+			"val": "06f08895b0f7cf34392a0a17f67fb2f7efe162d0d283137b275c5b8e27228fe8"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$tags": [
+			"simplified"
+		],
+		"uuid": "019ba3c2-6cbb-7000-b3d0-f0207aca55e6",
+		"type": "standard",
+		"code": "1765973",
+		"issue_date": "2025-09-25",
+		"currency": "SAR",
+		"supplier": {
+			"name": "كريموس العربية للفعاليات الترفيهية",
+			"tax_id": {
+				"country": "SA",
+				"code": "311588107200003"
+			},
+			"addresses": [
+				{
+					"num": "108",
+					"street": "طريق الملك عبد الله الفرعي",
+					"locality": "الورود",
+					"region": "الرياض",
+					"code": "12253",
+					"country": "SA"
+				}
+			],
+			"logos": [
+				{
+					"url": "https://assets.invopop.com/misc/fever.jpg",
+					"height": 75,
+					"width": 75
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "3",
+				"item": {
+					"name": "Candlelight: أفضل الأعمال العربية والغربية - منطقة C",
+					"price": "275.00"
+				},
+				"sum": "825.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "15%"
+					}
+				],
+				"total": "825.00"
+			}
+		],
+		"totals": {
+			"sum": "825.00",
+			"total": "825.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "825.00",
+								"percent": "15%",
+								"amount": "123.75"
+							}
+						],
+						"amount": "123.75"
+					}
+				],
+				"sum": "123.75"
+			},
+			"tax": "123.75",
+			"total_with_tax": "948.75",
+			"payable": "948.75"
+		},
+		"notes": [
+			{
+				"text": "\u003cimg src='https://assets.invopop.com/misc/qr.png' width='100'\u003e"
+			},
+			{
+				"key": "legal",
+				"src": "simplified",
+				"text": "Simplified Tax Invoice"
+			}
+		]
+	}
+}

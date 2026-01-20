@@ -1,0 +1,325 @@
+ar:
+  page: "الصفحة %{page} من %{count}"
+
+  billing:
+    invoice: &invoice
+      title:
+        standard: "فاتورة"
+        standard-simplified: "فاتورة مبسطة"
+        proforma: "فاتورة أولية"
+        corrective: "فاتورة تصحيحية"
+        credit-note: "إشعار دائن"
+        debit-note: "إشعار مدين"
+        adjustment: "فاتورة تعديل"
+        other: "وثيقة"
+        paid: "مدفوع"
+        void: "ملغي"
+
+      summary: &summary
+        title: "ملخص"
+        issue_date: "تاريخ الإصدار"
+        value_date: "تاريخ القيمة"
+        operation_date: "تاريخ العملية"
+        currency: "العملة"
+        currency_value: "%{desc} (%{code})"
+        preceding_document: "الوثائق السابقة"
+        replaced_documents: "الوثائق المستبدلة"
+        corrected_documents: "الوثائق المصححة"
+        order: "الطلب"
+        order_period: "الفترة"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} إلى %{end}"
+        ext_map:
+          mx-cfdi-issue-place: "مكان الإصدار"
+          mx-cfdi-payment-method: "طريقة الدفع"
+
+      supplier:
+        title: "المورد"
+
+      customer:
+        title: "العميل"
+
+      lines: &lines
+        title: "البنود"
+        i: "#"
+        ref: "المرجع"
+        description: "الوصف"
+        quantity: "الكمية"
+        unit: "الوحدة"
+        price: "السعر"
+        discount: "الخصم"
+        charges: "الرسوم"
+        total: "الإجمالي"
+        no_percent: "—"
+        exemption: "إعفاء"
+
+      totals: &totals
+        sum: "المجموع"
+        discount: "الخصم"
+        charge: "الرسوم"
+        title: "الإجماليات"
+        prices_include: "يشمل %{tax}"
+        total: "الإجمالي"
+        taxes: "الضريبة"
+        total_with_tax: "الإجمالي مع الضريبة"
+        retained_tax: "الضريبة المقتطعة"
+        rounding: "التقريب"
+        total_to_pay: "المبلغ المستحق"
+        advance: "دفعة مقدمة: %{date} %{txt}"
+        advance_sum: "مجموع الدفعات المقدمة"
+        due_sum: "المبلغ المستحق"
+        exchange_rate: "سعر الصرف إلى %{to} (%{amount})"
+        carried_fwd: "منقول للأمام"
+        brought_fwd: "منقول من الخلف"
+
+      taxes:
+        title: "الضرائب"
+        category: "الضريبة"
+        base: "الأساس"
+        rate: "المعدل"
+        amount: "المبلغ"
+        exemption: "إعفاء"
+        no_percent: "—"
+
+      payment: &payment
+        title: "الدفع"
+        instructions: &payment_instructions
+          method: "طريقة الدفع"
+          ref: "المرجع"
+          bank_data: "تعليمات التحويل البنكي"
+          card: "الدفع بالبطاقة"
+          card_detail: "تم الدفع بالبطاقة المنتهية بـ %{last4} المملوكة لـ %{holder}"
+          observations: "ملاحظات الدفع"
+          bank_name: "البنك: %{name}"
+          iban: "IBAN: %{iban}"
+          account_number: "رقم الحساب: %{num}"
+          bic: "BIC: %{bic}"
+          online: "رابط الدفع"
+          methods:
+            card: "بطاقة بنكية"
+            credit-transfer: "تحويل بنكي"
+            cash: "نقد"
+            direct-debit: "خصم مباشر"
+            online: "عبر الإنترنت"
+            cheque: "شيك"
+        terms:
+          key: "شروط الدفع"
+          notes: "ملاحظات شروط الدفع"
+          due_dates:
+            one: "تاريخ الاستحقاق"
+            other: "تواريخ الاستحقاق"
+          keys:
+            na: "غير محدد"
+            end_of_month: "نهاية الشهر"
+            due_date: "في تاريخ الاستحقاق"
+            deferred: "بعد تاريخ الاستحقاق"
+            proximo: "الشهر القادم"
+            instant: "عند تسليم الفاتورة"
+            elective: "اختيار العميل"
+            pending: "يحددها المورد"
+            advanced: "مدفوع"
+            delivery: "عند التسليم"
+
+      notes:
+        title: "ملاحظات"
+
+    payment:
+      <<: *invoice
+      title:
+        request: "طلب الدفع"
+        advice: "إشعار التحويل"
+        receipt: "إيصال الدفع"
+        paid: "مدفوع"
+        void: "ملغي"
+
+      lines:
+        <<: *lines
+        document: "الوثيقة"
+
+      method:
+        title: "تفاصيل الدفع"
+        instructions: *payment_instructions
+
+    delivery:
+      <<: *invoice
+      title:
+        advice: "إشعار التسليم"
+        note: "مذكرة التسليم"
+        waybill: "دليل الشحن"
+        receipt: "إيصال التسليم"
+
+      summary:
+        <<: *summary
+        despatch_date: "تاريخ الإرسال"
+        receive_date: "تاريخ الاستلام"
+        preceding_document: "الوثيقة السابقة"
+
+      despatcher:
+        title: "المرسل"
+
+      receiver:
+        title: "المستلم"
+
+      courier:
+        title: "شركة الشحن"
+
+      tracking:
+        title: "معلومات التتبع"
+        code: "رمز التتبع"
+        website: "رابط التتبع"
+
+    order:
+      <<: *invoice
+      title:
+        purchase: "أمر الشراء"
+        sale: "أمر البيع"
+        quote: "عرض سعر"
+
+      summary:
+        <<: *summary
+        preceding_document: "الوثيقة السابقة"
+        contract: "العقد"
+        period: "الفترة"
+
+      buyer:
+        title: "المشتري"
+
+      seller:
+        title: "البائع"
+
+  org:
+    party:
+      tax_id: "%{label}: (%{country}) %{code}"
+      person: "%{name}"
+      person_label: "%{label}: %{name}"
+      tel: "هاتف: %{num}"
+      tel_label: "هاتف: %{num} (%{label})"
+      email:
+        one: "البريد الإلكتروني: %{addr}"
+        other: "البريد الإلكتروني: %{addr}"
+      email_label: "%{addr} (%{label})"
+      website: "الويب: %{url}"
+      website_label: "%{label}: %{url}"
+      po_box: "صندوق بريد %{po_box}"
+      labels:
+        default: "الرقم الضريبي"
+      identity: "%{label}: %{code}"
+      identity_code: "رمز الهوية"
+      identity_labels:
+        it-fiscal-code: "الرمز الضريبي"
+        de-tax-number: "St. -Nr."
+      ext: "%{label}: %{value}"
+      ext_map:
+        co-dian-municipality: "البلدية"
+        mx-cfdi-fiscal-regime: "النظام الضريبي"
+        mx-cfdi-post-code: "المكان"
+        mx-cfdi-use: "استخدام CFDI"
+      reg:
+        capital: "رأس المال الاجتماعي: %{amount}"
+        registration: "التسجيل:"
+        book: "الكتاب %{id}"
+        volume: "المجلد %{id}"
+        sheet: "الورقة %{id}"
+        section: "القسم %{id}"
+        page: "الصفحة %{id}"
+        entry: "الإدخال %{id}"
+    address:
+      label: "%{label}:"
+      country: "(%{country})"
+
+  regimes:
+    pl:
+      ksef-id: "المعرف: %{id}"
+    co:
+      cufe: "CUFE: %{cufe}"
+      cude: "CUDE: %{cude}"
+      preceding_cufe: "CUFE الفاتورة السابقة: %{cufe}"
+    gr:
+      title:
+        1:
+          1: "فاتورة مبيعات"
+          2: "فاتورة مبيعات"
+          3: "فاتورة مبيعات"
+          4: "فاتورة مبيعات"
+          5: "فاتورة مبيعات"
+          6: "فاتورة مبيعات"
+        2:
+          1: "فاتورة خدمة"
+          2: "فاتورة خدمة"
+          3: "فاتورة خدمة"
+          4: "فاتورة خدمة"
+        3:
+          1: "إثبات المصروفات"
+          2: "إثبات المصروفات"
+        5:
+          1: "إشعار دائن"
+          2: "إشعار دائن"
+        6:
+          1: "سجل التسليم الذاتي"
+          2: "سجل التوريد الذاتي"
+        7:
+          1: "عقد الدخل"
+        8:
+          1: "دخل الإيجار"
+          2: "إيصال ضريبة الإقامة"
+        11:
+          1: "إيصال مبيعات التجزئة"
+          2: "إيصال الخدمة المقدمة"
+          3: "فاتورة مبسطة"
+          4: "إشعار دائن لمبيعات التجزئة"
+          5: "إيصال مبيعات التجزئة"
+        13:
+          1: "مشتريات التجزئة"
+          2: "توفير التجزئة"
+          3: "فواتير المرافق المشتركة"
+          4: "الاشتراكات"
+          30: "وثيقة محاسبية ذاتية الإعلان"
+          31: "إشعار دائن لمبيعات التجزئة"
+        14:
+          1: "فاتورة - المشتريات داخل الاتحاد الأوروبي"
+          2: "فاتورة - الواردات من دول ثالثة"
+          3: "فاتورة - الخدمات داخل الاتحاد الأوروبي"
+          4: "فاتورة - الخدمات من دول ثالثة"
+          5: "EFKA"
+          30: "وثيقة محاسبية ذاتية الإعلان"
+          31: "إشعار دائن محلي/أجنبي"
+        15:
+          1: "عقد-المصروفات"
+        16:
+          1: "إيجار-المصروفات"
+        17:
+          1: "كشف الرواتب"
+          2: "الاستهلاكات"
+          3: "تعديل الدخل (الأساس المحاسبي)"
+          4: "تعديل الدخل (الأساس الضريبي)"
+          5: "تعديل المصروفات (الأساس المحاسبي)"
+          6: "تعديل المصروفات (الأساس الضريبي)"
+    pt:
+      title:
+        FT: "فاتورة"
+        FS: "فاتورة مبسطة"
+        FR: "فاتورة-إيصال"
+        ND: "إشعار مدين"
+        NC: "إشعار دائن"
+        RC: "إيصال نقدي"
+        RG: "إيصال"
+        CM: "طلب الطاولة"
+        CC: "ائتمان الوكالة"
+        FC: "فاتورة الوكالة"
+        FO: "أمر العمل"
+        NE: "أمر الشراء"
+        OU: "وثيقة أخرى"
+        OR: "عرض سعر"
+        PF: "فاتورة أولية"
+        DC: "وثيقة التسليم"
+        GR: "مذكرة التسليم"
+        GT: "دليل الشحن"
+        GA: "تسليم الأصول الثابتة"
+        GC: "تسليم الوكالة"
+        GD: "الإرجاع"
+        RP: "إيصال القسط"
+        RE: "إيصال الاسترجاع"
+        CS: "تخصيص المشارك في التأمين"
+        LD: "تخصيص المشارك الرئيسي في التأمين"
+        RA: "إعادة التأمين المقبولة"
+
