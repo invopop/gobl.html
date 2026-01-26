@@ -1,14 +1,12 @@
 module github.com/invopop/gobl.html
 
-go 1.23.0
-
-toolchain go1.23.4
+go 1.24.0
 
 require (
 	github.com/a-h/templ v0.3.960
 	github.com/go-resty/resty/v2 v2.12.0
 	github.com/invopop/ctxi18n v0.9.0
-	github.com/invopop/gobl v0.305.1
+	github.com/invopop/gobl v0.306.0
 	github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/piglig/go-qr v0.2.4
@@ -48,12 +46,12 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	github.com/wk8/go-ordered-map/v2 v2.1.8 // indirect
-	golang.org/x/crypto v0.40.0 // indirect
-	golang.org/x/net v0.42.0 // indirect
-	golang.org/x/sys v0.34.0 // indirect
-	golang.org/x/text v0.27.0 // indirect
+	golang.org/x/crypto v0.47.0 // indirect
+	golang.org/x/net v0.48.0 // indirect
+	golang.org/x/sys v0.40.0 // indirect
+	golang.org/x/text v0.33.0 // indirect
 	golang.org/x/time v0.9.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-// replace github.com/invopop/gobl => ../gobl
+replace github.com/invopop/gobl => ../gobl
