@@ -1,4 +1,6 @@
 // Package utils provides utility functions for the components package.
+//
+//nolint:revive // utils is an acceptable name for this utility package
 package utils
 
 import (
