@@ -13,10 +13,8 @@ import (
 var dianQRHTTPRegexp = regexp.MustCompile(`https.+`)
 
 templ KSeFQR(env *gobl.Envelope) {
-	if id := ksefID(env); id != "" {
-		if qr := ksefQR(env); qr != "" {
-			@generateQR(id, qr)
-		}
+	if qr := ksefQR(env); qr != "" {
+		@generateQR(ksefID(env), qr)
 	}
 }
 
@@ -47,7 +45,11 @@ templ generateQR(id, qr string) {
 		</div>
 		<div class="text">
 			<div class="ksef-id">
-				@t.T("regimes.pl.ksef-id", i18n.M{"id": id})
+				if id != "" {
+					@t.T("regimes.pl.ksef-id", i18n.M{"id": id})
+				} else {
+					OFFLINE
+				}
 			</div>
 		</div>
 	</section>
@@ -66,7 +68,7 @@ func ksefQR(env *gobl.Envelope) string {
 func ksefID(env *gobl.Envelope) string {
 	for _, stamp := range env.Head.Stamps {
 		switch stamp.Provider {
-		case favat.StampID:
+		case favat.StampKSEFNumber:
 			return stamp.Value
 		}
 	}

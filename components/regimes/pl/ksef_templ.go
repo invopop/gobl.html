@@ -41,12 +41,10 @@ func KSeFQR(env *gobl.Envelope) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if id := ksefID(env); id != "" {
-			if qr := ksefQR(env); qr != "" {
-				templ_7745c5c3_Err = generateQR(id, qr).Render(ctx, templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
+		if qr := ksefQR(env); qr != "" {
+			templ_7745c5c3_Err = generateQR(ksefID(env), qr).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
 			}
 		}
 		return nil
@@ -81,7 +79,7 @@ func generateQR(id, qr string) templ.Component {
 		var templ_7745c5c3_Var3 templ.SafeURL
 		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL(qr))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/pl/ksef.templ`, Line: 44, Col: 26}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/pl/ksef.templ`, Line: 42, Col: 26}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {
@@ -99,11 +97,18 @@ func generateQR(id, qr string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = t.T("regimes.pl.ksef-id", i18n.M{"id": id}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
+		if id != "" {
+			templ_7745c5c3_Err = t.T("regimes.pl.ksef-id", i18n.M{"id": id}).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		} else {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "OFFLINE")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div></div></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div></div></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -124,7 +129,7 @@ func ksefQR(env *gobl.Envelope) string {
 func ksefID(env *gobl.Envelope) string {
 	for _, stamp := range env.Head.Stamps {
 		switch stamp.Provider {
-		case favat.StampID:
+		case favat.StampKSEFNumber:
 			return stamp.Value
 		}
 	}
