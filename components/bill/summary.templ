@@ -106,13 +106,13 @@ templ summaryPrecedingRows(obj any) {
 }
 
 templ summaryOrderingRows(ord *bill.Ordering) {
-	if ord.Code != "" {
+	if oc := orderingCode(ord); oc != "" {
 		<li class="ordering-code">
 			<span class="label">
 				@t.T(".order")
 			</span>
 			<span class="value">
-				{ ord.Code.String() }
+				{ oc }
 			</span>
 		</li>
 	}
@@ -180,4 +180,16 @@ func mapTaxExtension(ctx context.Context, k cbc.Key) string {
 		return ""
 	}
 	return label
+}
+
+// orderingCode returns the ordering code, falling back to the first
+// purchase order code if the ordering code is empty.
+func orderingCode(ord *bill.Ordering) string {
+	if ord.Code != "" {
+		return ord.Code.String()
+	}
+	if len(ord.Purchases) > 0 && ord.Purchases[0].Code != "" {
+		return ord.Purchases[0].Code.String()
+	}
+	return ""
 }
