@@ -16,7 +16,7 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl.html/internal"
-	"github.com/invopop/gobl.html/internal/doc"
+	"github.com/invopop/gobl.html/internal/document"
 	"github.com/invopop/gobl.html/layout"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
@@ -54,11 +54,11 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 				</div>
 			</div>
 		</article>
-		@multipage(env, doc.For(inv))
+		@multipage(env, document.For(inv))
 	}
 }
 
-templ title(env *gobl.Envelope, doc doc.Document) {
+templ title(env *gobl.Envelope, doc document.Document) {
 	@t.Scope(".title") {
 		<section class="title">
 			@titleHero(doc.GetSupplier())
@@ -86,22 +86,22 @@ templ titleHero(sup *org.Party) {
 	</div>
 }
 
-templ titleCode(doc doc.Document) {
+templ titleCode(doc document.Document) {
 	@joinCode(doc, doc.GetSeries(), doc.GetCode())
 }
 
-templ joinCode(doc doc.Document, series, code cbc.Code) {
+templ joinCode(doc document.Document, series, code cbc.Code) {
 	@utils.Coalesce(
 		pt.JoinCode(doc, series, code),
 		defaultJoinCode(doc, series, code),
 	)
 }
 
-templ defaultJoinCode(_ doc.Document, series, code cbc.Code) {
+templ defaultJoinCode(_ document.Document, series, code cbc.Code) {
 	{ series.Join(code).String() }
 }
 
-templ titleType(doc doc.Document) {
+templ titleType(doc document.Document) {
 	<h1 class="type">
 		@utils.Coalesce(
 			pt.TitleType(doc),
@@ -111,7 +111,7 @@ templ titleType(doc doc.Document) {
 	</h1>
 }
 
-templ defaultTitleType(doc doc.Document) {
+templ defaultTitleType(doc document.Document) {
 	{{ typ := doc.GetType() }}
 	if isSimplifiedInvoice(doc) {
 		@t.T(".standard-simplified")
@@ -122,7 +122,7 @@ templ defaultTitleType(doc doc.Document) {
 	}
 }
 
-func adjustmentMode(ctx context.Context, doc doc.Document) bool {
+func adjustmentMode(ctx context.Context, doc document.Document) bool {
 	switch doc.GetType() {
 	case bill.InvoiceTypeCreditNote, bill.InvoiceTypeDebitNote, bill.InvoiceTypeCorrective:
 		opts := internal.Options(ctx)
@@ -131,7 +131,7 @@ func adjustmentMode(ctx context.Context, doc doc.Document) bool {
 	return false
 }
 
-templ titleBadges(env *gobl.Envelope, doc doc.Document) {
+templ titleBadges(env *gobl.Envelope, doc document.Document) {
 	if voided(ctx) {
 		<span class="void">
 			@t.T(".void")
@@ -149,7 +149,7 @@ templ titleBadges(env *gobl.Envelope, doc doc.Document) {
 }
 
 templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
-	{{ doc := doc.For(inv) }}
+	{{ doc := document.For(inv) }}
 	<div class="details">
 		@title(env, doc)
 		@summary(inv)
@@ -164,7 +164,7 @@ templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
 }
 
 templ din5008Header(env *gobl.Envelope, inv *bill.Invoice) {
-	{{ doc := doc.For(inv) }}
+	{{ doc := document.For(inv) }}
 	<div>
 		@title(env, doc)
 		@customer(doc)
@@ -222,13 +222,13 @@ func label(ctx context.Context) string {
 	return opts.Label
 }
 
-func isSimplifiedInvoice(doc doc.Document) bool {
+func isSimplifiedInvoice(doc document.Document) bool {
 	if inv, ok := doc.Extract().(*bill.Invoice); ok {
 		return inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard
 	}
 	return false
 }
 
-func isNonStandardInvoice(doc doc.Document) bool {
+func isNonStandardInvoice(doc document.Document) bool {
 	return doc.GetType().In(bill.InvoiceTypeCreditNote, bill.InvoiceTypeDebitNote, bill.InvoiceTypeCorrective, bill.InvoiceTypeProforma)
 }

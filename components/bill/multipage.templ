@@ -3,12 +3,12 @@ package bill
 import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/assets"
-	"github.com/invopop/gobl.html/internal/doc"
+	"github.com/invopop/gobl.html/internal/document"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 )
 
-templ multipage(env *gobl.Envelope, doc doc.Document) {
+templ multipage(env *gobl.Envelope, doc document.Document) {
 	{{ zero := doc.GetCurrency().Def().Zero() }}
 
 	<div id="mp-header-templ" class="mp-header">

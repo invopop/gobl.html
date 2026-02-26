@@ -3,13 +3,13 @@
 package gr
 
 import (
-	"github.com/invopop/gobl.html/internal/doc"
+	"github.com/invopop/gobl.html/internal/document"
 	"github.com/invopop/gobl/l10n"
 )
 
 // Country to check for regime-specific components
 var country = l10n.EL.Tax()
 
-func isGreek(doc doc.Document) bool {
+func isGreek(doc document.Document) bool {
 	return doc != nil && doc.GetRegime().Country.Code().Tax() == country
 }

@@ -2,7 +2,7 @@ package bill
 
 import (
 	"github.com/invopop/gobl"
-	"github.com/invopop/gobl.html/internal/doc"
+	"github.com/invopop/gobl.html/internal/document"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
@@ -31,12 +31,12 @@ templ Payment(env *gobl.Envelope, pmt *bill.Payment) {
 				</div>
 			</div>
 		</article>
-		@multipage(env, doc.For(pmt))
+		@multipage(env, document.For(pmt))
 	}
 }
 
 templ paymentHeader(env *gobl.Envelope, pmt *bill.Payment) {
-	{{ doc := doc.For(pmt) }}
+	{{ doc := document.For(pmt) }}
 	<div class="details">
 		@title(env, doc)
 		@paymentSummary(pmt)

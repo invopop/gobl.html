@@ -24,7 +24,7 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl.html/internal"
-	"github.com/invopop/gobl.html/internal/doc"
+	"github.com/invopop/gobl.html/internal/document"
 	"github.com/invopop/gobl.html/layout"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
@@ -185,7 +185,7 @@ func Invoice(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = multipage(env, doc.For(inv)).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = multipage(env, document.For(inv)).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -199,7 +199,7 @@ func Invoice(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 	})
 }
 
-func title(env *gobl.Envelope, doc doc.Document) templ.Component {
+func title(env *gobl.Envelope, doc document.Document) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -397,7 +397,7 @@ func titleHero(sup *org.Party) templ.Component {
 	})
 }
 
-func titleCode(doc doc.Document) templ.Component {
+func titleCode(doc document.Document) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -426,7 +426,7 @@ func titleCode(doc doc.Document) templ.Component {
 	})
 }
 
-func joinCode(doc doc.Document, series, code cbc.Code) templ.Component {
+func joinCode(doc document.Document, series, code cbc.Code) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -458,7 +458,7 @@ func joinCode(doc doc.Document, series, code cbc.Code) templ.Component {
 	})
 }
 
-func defaultJoinCode(_ doc.Document, series, code cbc.Code) templ.Component {
+func defaultJoinCode(_ document.Document, series, code cbc.Code) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -492,7 +492,7 @@ func defaultJoinCode(_ doc.Document, series, code cbc.Code) templ.Component {
 	})
 }
 
-func titleType(doc doc.Document) templ.Component {
+func titleType(doc document.Document) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -533,7 +533,7 @@ func titleType(doc doc.Document) templ.Component {
 	})
 }
 
-func defaultTitleType(doc doc.Document) templ.Component {
+func defaultTitleType(doc document.Document) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -575,7 +575,7 @@ func defaultTitleType(doc doc.Document) templ.Component {
 	})
 }
 
-func adjustmentMode(ctx context.Context, doc doc.Document) bool {
+func adjustmentMode(ctx context.Context, doc document.Document) bool {
 	switch doc.GetType() {
 	case bill.InvoiceTypeCreditNote, bill.InvoiceTypeDebitNote, bill.InvoiceTypeCorrective:
 		opts := internal.Options(ctx)
@@ -584,7 +584,7 @@ func adjustmentMode(ctx context.Context, doc doc.Document) bool {
 	return false
 }
 
-func titleBadges(env *gobl.Envelope, doc doc.Document) templ.Component {
+func titleBadges(env *gobl.Envelope, doc document.Document) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -676,7 +676,7 @@ func defaultHeader(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 			templ_7745c5c3_Var25 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		doc := doc.For(inv)
+		doc := document.For(inv)
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "<div class=\"details\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -742,7 +742,7 @@ func din5008Header(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 			templ_7745c5c3_Var26 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		doc := doc.For(inv)
+		doc := document.For(inv)
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 35, "<div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -822,14 +822,14 @@ func label(ctx context.Context) string {
 	return opts.Label
 }
 
-func isSimplifiedInvoice(doc doc.Document) bool {
+func isSimplifiedInvoice(doc document.Document) bool {
 	if inv, ok := doc.Extract().(*bill.Invoice); ok {
 		return inv.HasTags(tax.TagSimplified) && inv.Type == bill.InvoiceTypeStandard
 	}
 	return false
 }
 
-func isNonStandardInvoice(doc doc.Document) bool {
+func isNonStandardInvoice(doc document.Document) bool {
 	return doc.GetType().In(bill.InvoiceTypeCreditNote, bill.InvoiceTypeDebitNote, bill.InvoiceTypeCorrective, bill.InvoiceTypeProforma)
 }
 

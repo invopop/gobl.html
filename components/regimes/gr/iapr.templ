@@ -7,7 +7,7 @@ import (
 	"github.com/invopop/gobl/regimes/gr"
 	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl.html/internal/doc"
+	"github.com/invopop/gobl.html/internal/document"
 	"github.com/invopop/gobl/addons/gr/mydata"
 )
 
@@ -70,13 +70,13 @@ templ IAPR(env *gobl.Envelope) {
 	}
 }
 
-templ TitleType(doc doc.Document) {
+templ TitleType(doc document.Document) {
 	if isGreek(doc) {
 		@titleType(doc)
 	}
 }
 
-templ titleType(doc doc.Document) {
+templ titleType(doc document.Document) {
 	if typ := myDataInvoiceType(doc); typ != "" {
 		if translation := i18n.T(ctx, "regimes.gr.title." + string(typ)); typ != "" {
 			if strings.HasPrefix(translation, "!") {
@@ -88,7 +88,7 @@ templ titleType(doc doc.Document) {
 	}
 }
 
-func myDataInvoiceType(doc doc.Document) string {
+func myDataInvoiceType(doc document.Document) string {
 		ext := doc.GetExt()
 		code := ext.Get(mydata.ExtKeyInvoiceType)
 		return string(code)

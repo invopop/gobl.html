@@ -12,7 +12,7 @@ import (
 	"fmt"
 
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl.html/internal/doc"
+	"github.com/invopop/gobl.html/internal/document"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/tax"
 )
@@ -188,7 +188,7 @@ func paymentLine(l *bill.PaymentLine, pmt *bill.Payment, tt *tax.Total, st *subt
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = joinCode(doc.For(pmt), l.Document.Series, l.Document.Code).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = joinCode(document.For(pmt), l.Document.Series, l.Document.Code).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

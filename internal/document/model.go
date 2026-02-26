@@ -1,5 +1,5 @@
-// Package doc provides an interface to handle GOBL documents generically.
-package doc
+// Package document provides an interface to handle GOBL documents generically.
+package document
 
 import (
 	"github.com/invopop/gobl"

@@ -14,7 +14,7 @@ import (
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl.html/internal/doc"
+	"github.com/invopop/gobl.html/internal/document"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/pay"
 )
@@ -657,7 +657,7 @@ func showPayments(inv *bill.Invoice) bool {
 	return true
 }
 
-func paid(doc doc.Document) bool {
+func paid(doc document.Document) bool {
 	switch d := doc.Extract().(type) {
 	case *bill.Invoice:
 		return d.Totals.Due != nil && d.Totals.Due.IsZero()
