@@ -104,7 +104,7 @@ func Payment(env *gobl.Envelope, pmt *bill.Payment) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = multipage(env, internal.For(pmt)).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = multipage(env, internal.DocumentFor(pmt)).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -139,7 +139,7 @@ func paymentHeader(env *gobl.Envelope, pmt *bill.Payment) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		doc := internal.For(pmt)
+		doc := internal.DocumentFor(pmt)
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "<div class=\"details\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err

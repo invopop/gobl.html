@@ -193,7 +193,7 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 	if o.NumFormatter != nil {
 		nf = *o.NumFormatter
 	} else {
-		if d := internal.ExtractFrom(env); d != nil {
+		if d := internal.ExtractDocumentFrom(env); d != nil {
 			nf = d.GetCurrency().Def().Formatter()
 
 			if d.GetRegime().Country.Code() == l10n.PT {

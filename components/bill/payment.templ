@@ -31,12 +31,12 @@ templ Payment(env *gobl.Envelope, pmt *bill.Payment) {
 				</div>
 			</div>
 		</article>
-		@multipage(env, internal.For(pmt))
+		@multipage(env, internal.DocumentFor(pmt))
 	}
 }
 
 templ paymentHeader(env *gobl.Envelope, pmt *bill.Payment) {
-	{{ doc := internal.For(pmt) }}
+	{{ doc := internal.DocumentFor(pmt) }}
 	<div class="details">
 		@title(env, doc)
 		@paymentSummary(pmt)

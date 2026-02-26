@@ -31,12 +31,12 @@ templ Delivery(env *gobl.Envelope, dlv *bill.Delivery) {
 				</div>
 			</div>
 		</article>
-		@multipage(env, internal.For(dlv))
+		@multipage(env, internal.DocumentFor(dlv))
 	}
 }
 
 templ deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) {
-	{{ doc := internal.For(dlv) }}
+	{{ doc := internal.DocumentFor(dlv) }}
 	<div class="details">
 		@title(env, doc)
 		@deliverySummary(dlv)

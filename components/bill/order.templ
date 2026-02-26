@@ -29,12 +29,12 @@ templ Order(env *gobl.Envelope, ord *bill.Order) {
 				</div>
 			</div>
 		</article>
-		@multipage(env, internal.For(ord))
+		@multipage(env, internal.DocumentFor(ord))
 	}
 }
 
 templ orderHeader(env *gobl.Envelope, ord *bill.Order) {
-	{{ doc := internal.For(ord) }}
+	{{ doc := internal.DocumentFor(ord) }}
 	<div class="details">
 		@title(env, doc)
 		@orderSummary(ord)
@@ -115,7 +115,7 @@ templ summaryContractRows(ord *bill.Order) {
 				@t.T(".contract")
 			</span>
 			<span class="value">
-				@joinCode(internal.For(ord), contract.Series, contract.Code)
+				@joinCode(internal.DocumentFor(ord), contract.Series, contract.Code)
 			</span>
 			if contract.IssueDate != nil {
 				<span class="value">

@@ -53,7 +53,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 				</div>
 			</div>
 		</article>
-		@multipage(env, internal.For(inv))
+		@multipage(env, internal.DocumentFor(inv))
 	}
 }
 
@@ -148,7 +148,7 @@ templ titleBadges(env *gobl.Envelope, doc internal.Document) {
 }
 
 templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
-	{{ doc := internal.For(inv) }}
+	{{ doc := internal.DocumentFor(inv) }}
 	<div class="details">
 		@title(env, doc)
 		@summary(inv)
@@ -163,7 +163,7 @@ templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
 }
 
 templ din5008Header(env *gobl.Envelope, inv *bill.Invoice) {
-	{{ doc := internal.For(inv) }}
+	{{ doc := internal.DocumentFor(inv) }}
 	<div>
 		@title(env, doc)
 		@customer(doc)

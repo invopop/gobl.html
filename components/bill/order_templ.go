@@ -102,7 +102,7 @@ func Order(env *gobl.Envelope, ord *bill.Order) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = multipage(env, internal.For(ord)).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = multipage(env, internal.DocumentFor(ord)).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -137,7 +137,7 @@ func orderHeader(env *gobl.Envelope, ord *bill.Order) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		doc := internal.For(ord)
+		doc := internal.DocumentFor(ord)
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "<div class=\"details\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -385,7 +385,7 @@ func summaryContractRows(ord *bill.Order) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = joinCode(internal.For(ord), contract.Series, contract.Code).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = joinCode(internal.DocumentFor(ord), contract.Series, contract.Code).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

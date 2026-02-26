@@ -188,7 +188,7 @@ func paymentLine(l *bill.PaymentLine, pmt *bill.Payment, tt *tax.Total, st *subt
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = joinCode(internal.For(pmt), l.Document.Series, l.Document.Code).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = joinCode(internal.DocumentFor(pmt), l.Document.Series, l.Document.Code).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
