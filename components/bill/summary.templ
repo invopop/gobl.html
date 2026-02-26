@@ -131,6 +131,26 @@ templ summaryOrderingRows(ord *bill.Ordering) {
 			</li>
 		}
 	}
+	if len(ord.Purchases) > 0 {
+		<li class="ordering-purchases">
+			<span class="label">
+				@t.T("billing.order.title.purchase")
+			</span>
+			for _, purchase := range ord.Purchases {
+				if purchase != nil {
+					<span class="value">
+						{ purchase.Series.Join(purchase.Code).String() }
+						if purchase.IssueDate != nil {
+							{ " · " }
+							<span class="date">
+								@t.L(purchase.IssueDate)
+							</span>
+						}
+					</span>
+				}
+			}
+		</li>
+	}
 }
 
 templ summaryTaxExtRows(ext tax.Extensions) {
