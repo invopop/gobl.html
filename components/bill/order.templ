@@ -2,7 +2,7 @@ package bill
 
 import (
 	"github.com/invopop/gobl"
-	"github.com/invopop/gobl.html/internal/doc"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
@@ -29,12 +29,12 @@ templ Order(env *gobl.Envelope, ord *bill.Order) {
 				</div>
 			</div>
 		</article>
-		@multipage(env, doc.For(ord))
+		@multipage(env, internal.DocumentFor(ord))
 	}
 }
 
 templ orderHeader(env *gobl.Envelope, ord *bill.Order) {
-	{{ doc := doc.For(ord) }}
+	{{ doc := internal.DocumentFor(ord) }}
 	<div class="details">
 		@title(env, doc)
 		@orderSummary(ord)
@@ -115,7 +115,7 @@ templ summaryContractRows(ord *bill.Order) {
 				@t.T(".contract")
 			</span>
 			<span class="value">
-				@joinCode(doc.For(ord), contract.Series, contract.Code)
+				@joinCode(internal.DocumentFor(ord), contract.Series, contract.Code)
 			</span>
 			if contract.IssueDate != nil {
 				<span class="value">

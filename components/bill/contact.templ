@@ -5,15 +5,15 @@ import (
 	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/regimes/pt"
-	"github.com/invopop/gobl.html/internal/doc"
+	"github.com/invopop/gobl.html/internal"
 )
 
-templ supplier(doc doc.Document) {
+templ supplier(doc internal.Document) {
 	{{ sup := doc.GetSupplier() }}
 	@contact(sup, "supplier")
 }
 
-templ customer(doc doc.Document) {
+templ customer(doc internal.Document) {
 	{{ cus := doc.GetCustomer() }}
 	{{ cus = pt.AdaptCustomer(doc, cus) }}
 	@contact(cus, "customer")

@@ -5,7 +5,6 @@ import (
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal"
-	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cal"
 	"github.com/invopop/gobl/cbc"
@@ -74,7 +73,7 @@ templ summary(inv *bill.Invoice) {
 }
 
 templ summaryPrecedingRows(obj any) {
-	{{ doc := doc.For(obj) }}
+	{{ doc := internal.DocumentFor(obj) }}
 	<li class="preceding">
 		<span class="label">
 			if internal.Options(ctx).AdjustmentMode {
@@ -130,6 +129,26 @@ templ summaryOrderingRows(ord *bill.Ordering) {
 				</span>
 			</li>
 		}
+	}
+	if len(ord.Purchases) > 0 {
+		<li class="ordering-purchases">
+			<span class="label">
+				@t.T("billing.order.title.purchase")
+			</span>
+			for _, purchase := range ord.Purchases {
+				if purchase != nil {
+					<span class="value">
+						{ purchase.Series.Join(purchase.Code).String() }
+						if purchase.IssueDate != nil {
+							{ " · " }
+							<span class="date">
+								@t.L(purchase.IssueDate)
+							</span>
+						}
+					</span>
+				}
+			}
+		</li>
 	}
 }
 

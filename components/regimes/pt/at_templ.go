@@ -14,7 +14,7 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/assets"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl.html/internal/doc"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/cbc"
 )
 
@@ -126,7 +126,7 @@ func ATQR(env *gobl.Envelope) templ.Component {
 	})
 }
 
-func TitleType(doc doc.Document) templ.Component {
+func TitleType(doc internal.Document) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -157,7 +157,7 @@ func TitleType(doc doc.Document) templ.Component {
 	})
 }
 
-func JoinCode(doc doc.Document, series, code cbc.Code) templ.Component {
+func JoinCode(doc internal.Document, series, code cbc.Code) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -193,7 +193,7 @@ func JoinCode(doc doc.Document, series, code cbc.Code) templ.Component {
 	})
 }
 
-func titleType(doc doc.Document) templ.Component {
+func titleType(doc internal.Document) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {

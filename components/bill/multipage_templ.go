@@ -13,10 +13,10 @@ import (
 	"github.com/invopop/gobl.html/components/assets"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl.html/internal/doc"
+	"github.com/invopop/gobl.html/internal"
 )
 
-func multipage(env *gobl.Envelope, doc doc.Document) templ.Component {
+func multipage(env *gobl.Envelope, doc internal.Document) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {

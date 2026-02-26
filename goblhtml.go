@@ -11,7 +11,6 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components"
 	"github.com/invopop/gobl.html/internal"
-	"github.com/invopop/gobl.html/internal/doc"
 	"github.com/invopop/gobl.html/layout"
 	srclocales "github.com/invopop/gobl.html/locales"
 	"github.com/invopop/gobl/bill"
@@ -194,10 +193,10 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 	if o.NumFormatter != nil {
 		nf = *o.NumFormatter
 	} else {
-		if doc := doc.ExtractFrom(env); doc != nil {
-			nf = doc.GetCurrency().Def().Formatter()
+		if d := internal.ExtractDocumentFrom(env); d != nil {
+			nf = d.GetCurrency().Def().Formatter()
 
-			if doc.GetRegime().Country.Code() == l10n.PT {
+			if d.GetRegime().Country.Code() == l10n.PT {
 				// As required by the Portuguese tax law
 				nf.ThousandsSeparator = " "
 				nf.DecimalMark = ","

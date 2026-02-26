@@ -1,5 +1,4 @@
-// Package doc provides an interface to handle GOBL documents generically.
-package doc
+package internal
 
 import (
 	"github.com/invopop/gobl"
@@ -26,8 +25,8 @@ type Document interface {
 	GetPreceding() []*org.DocumentRef
 }
 
-// For returns a Document interface for the given document.
-func For(doc any) Document {
+// DocumentFor returns a Document interface for the given document.
+func DocumentFor(doc any) Document {
 	switch doc := doc.(type) {
 	case *bill.Invoice:
 		return (*invoiceDoc)(doc)
@@ -42,9 +41,9 @@ func For(doc any) Document {
 	}
 }
 
-// ExtractFrom returns a Document interface for the given envelope.
-func ExtractFrom(env *gobl.Envelope) Document {
-	return For(env.Extract())
+// ExtractDocumentFrom returns a Document interface for the given envelope.
+func ExtractDocumentFrom(env *gobl.Envelope) Document {
+	return DocumentFor(env.Extract())
 }
 
 // Alias types to implement the Document interface.
