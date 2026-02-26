@@ -3,7 +3,7 @@ package bill
 import (
 	"fmt"
 
-	"github.com/invopop/gobl.html/internal/document"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/tax"
@@ -56,7 +56,7 @@ templ paymentLine(l *bill.PaymentLine, pmt *bill.Payment, tt *tax.Total, st *sub
 			<div class="limited-height">
 				if l.Document != nil {
 					<span>
-						@joinCode(document.For(pmt), l.Document.Series, l.Document.Code)
+						@joinCode(internal.For(pmt), l.Document.Series, l.Document.Code)
 					</span>
 					if l.Document.Description != "" {
 						<br/>

@@ -11,7 +11,6 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components"
 	"github.com/invopop/gobl.html/internal"
-	"github.com/invopop/gobl.html/internal/document"
 	"github.com/invopop/gobl.html/layout"
 	srclocales "github.com/invopop/gobl.html/locales"
 	"github.com/invopop/gobl/bill"
@@ -194,7 +193,7 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 	if o.NumFormatter != nil {
 		nf = *o.NumFormatter
 	} else {
-		if d := document.ExtractFrom(env); d != nil {
+		if d := internal.ExtractFrom(env); d != nil {
 			nf = d.GetCurrency().Def().Formatter()
 
 			if d.GetRegime().Country.Code() == l10n.PT {

@@ -5,7 +5,6 @@ import (
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal"
-	"github.com/invopop/gobl.html/internal/document"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cal"
 	"github.com/invopop/gobl/cbc"
@@ -74,7 +73,7 @@ templ summary(inv *bill.Invoice) {
 }
 
 templ summaryPrecedingRows(obj any) {
-	{{ doc := document.For(obj) }}
+	{{ doc := internal.For(obj) }}
 	<li class="preceding">
 		<span class="label">
 			if internal.Options(ctx).AdjustmentMode {

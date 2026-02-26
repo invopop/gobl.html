@@ -12,7 +12,7 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl.html/internal/document"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
 )
 
@@ -108,7 +108,7 @@ func Delivery(env *gobl.Envelope, dlv *bill.Delivery) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = multipage(env, document.For(dlv)).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = multipage(env, internal.For(dlv)).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -143,7 +143,7 @@ func deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		doc := document.For(dlv)
+		doc := internal.For(dlv)
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "<div class=\"details\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err

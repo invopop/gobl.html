@@ -6,7 +6,7 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/assets"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl.html/internal/document"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/cbc"
 )
 
@@ -38,19 +38,19 @@ templ ATQR(env *gobl.Envelope) {
 	}
 }
 
-templ TitleType(doc document.Document) {
+templ TitleType(doc internal.Document) {
 	if isPortuguese(doc) {
 		@titleType(doc)
 	}
 }
 
-templ JoinCode(doc document.Document, series, code cbc.Code) {
+templ JoinCode(doc internal.Document, series, code cbc.Code) {
 	if isPortuguese(doc) {
 		{ series.JoinWith("/", code).String() }
 	}
 }
 
-templ titleType(doc document.Document) {
+templ titleType(doc internal.Document) {
 	if typ := docType(doc); typ != cbc.CodeEmpty {
 		@t.T("regimes.pt.title." + string(typ))
 	}

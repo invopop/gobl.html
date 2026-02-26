@@ -10,7 +10,6 @@ import (
 
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/internal"
-	"github.com/invopop/gobl.html/internal/document"
 	"github.com/invopop/gobl/addons/pt/saft"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/l10n"
@@ -43,7 +42,7 @@ var invoiceTypes = []cbc.Code{
 }
 
 // AdaptCustomer adapts the customer to the simplified invoice format if needed.
-func AdaptCustomer(doc document.Document, par *gorg.Party) *gorg.Party {
+func AdaptCustomer(doc internal.Document, par *gorg.Party) *gorg.Party {
 	if !isPortuguese(doc) {
 		// no need to adapt
 		return par
@@ -94,7 +93,7 @@ func generateQR(qrval string) string {
 func qrNotes(ctx context.Context, env *gobl.Envelope) []string {
 	if appID := atAppID(env); appID != "" {
 		var notes []string
-		d := document.ExtractFrom(env)
+		d := internal.ExtractFrom(env)
 		dt := docType(d)
 		if dt != cbc.CodeEmpty && !slices.Contains(invoiceTypes, dt) {
 			notes = append(notes, "Este documento não serve de fatura")
@@ -167,7 +166,7 @@ func atQR(env *gobl.Envelope) string {
 	return ""
 }
 
-func docType(doc document.Document) cbc.Code {
+func docType(doc internal.Document) cbc.Code {
 	ext := doc.GetExt()
 	switch {
 	case ext.Has(saft.ExtKeyInvoiceType):
@@ -183,7 +182,7 @@ func docType(doc document.Document) cbc.Code {
 	}
 }
 
-func isPortuguese(doc document.Document) bool {
+func isPortuguese(doc internal.Document) bool {
 	return doc != nil && doc.GetRegime().Country.Code().Tax() == country
 }
 
