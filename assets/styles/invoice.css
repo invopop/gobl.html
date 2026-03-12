@@ -495,3 +495,8 @@ section.notes .note {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+/* used to ensure certain elements don't break to the next line */
+.nowrap {
+    white-space: nowrap;
+}

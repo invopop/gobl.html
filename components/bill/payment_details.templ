@@ -116,28 +116,28 @@ func renderPaymentNotes(txt string) string {
 }
 
 templ paymentCreditTransferRow(ct *pay.CreditTransfer) {
-	<span class="credit-transfer">
+	<div class="credit-transfer">
 		if ct.Name != "" {
-			<span class="bank-name">
+			<div class="bank-name nowrap">
 				@t.T(".bank_name", i18n.M{"name": ct.Name})
-			</span>
+			</div>
 		}
 		if ct.IBAN != "" {
-			<span class="iban">
+			<div class="iban nowrap">
 				@t.T(".iban", i18n.M{"iban": ct.IBAN})
-			</span>
+			</div>
 		}
 		if ct.Number != "" {
-			<span class="account-number">
+			<div class="account-number nowrap">
 				@t.T(".account_number", i18n.M{"num": ct.Number})
-			</span>
+			</div>
 		}
 		if ct.BIC != "" {
-			<span class="bic">
+			<div class="bic nowrap">
 				@t.T(".bic", i18n.M{"bic": ct.BIC})
-			</span>
+			</div>
 		}
-	</span>
+	</div>
 }
 
 templ paymentTerms(terms *pay.Terms) {
