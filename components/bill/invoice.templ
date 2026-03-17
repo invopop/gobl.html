@@ -60,7 +60,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 templ title(env *gobl.Envelope, doc internal.Document) {
 	@t.Scope(".title") {
 		<section class="title">
-			@titleHero(doc.GetSupplier())
+			@titleHero(doc)
 			<div class={ "title-group", templ.KV("title-group-inline", isNonStandardInvoice(doc)) }>
 				@titleType(doc)
 				{ " " }
@@ -73,15 +73,16 @@ templ title(env *gobl.Envelope, doc internal.Document) {
 	}
 }
 
-templ titleHero(sup *org.Party) {
+templ titleHero(doc internal.Document) {
 	<div class="hero">
-		if img := supplierLogo(ctx, sup); img != nil {
-			<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
-		} else {
-			<div class="alias">
-				{ supplierAlias(sup) }
-			</div>
-		}
+		<div class="alias">
+			if img := supplierLogo(ctx, doc.GetSupplier()); img != nil {
+				<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
+			} else {
+				{ supplierAlias(doc.GetSupplier()) }
+			}
+		</div>
+		@ar.ARCADocTypeLetter(doc)
 	</div>
 }
 
