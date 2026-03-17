@@ -1,10 +1,50 @@
 package ar
 
 import (
+	"fmt"
+	"slices"
+
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/addons/ar/arca"
+	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/tax"
 )
+
+// ARCADocTypeLetter renders the ARCA document type letter box (A, B, or C)
+// in the invoice header, if the document has an ar-arca-doc-type extension.
+templ ARCADocTypeLetter(doc internal.Document) {
+	if letter, code := arcaDocTypeLetter(doc.GetExt()); letter != "" {
+		<div class="arca-doc-type">
+			<div class="letter">{ letter }</div>
+			<div class="code">{ code }</div>
+		</div>
+	}
+}
+
+func arcaDocTypeLetter(ext tax.Extensions) (string, string) {
+	if ext == nil {
+		return "", ""
+	}
+	dt := ext[arca.ExtKeyDocType]
+	if dt.IsEmpty() {
+		return "", ""
+	}
+	code := cbc.Code(dt.String())
+	var letter string
+	switch {
+	case slices.Contains(arca.DocTypesA, code):
+		letter = "A"
+	case slices.Contains(arca.DocTypesB, code):
+		letter = "B"
+	case slices.Contains(arca.DocTypesC, code):
+		letter = "C"
+	default:
+		return "", ""
+	}
+	return letter, fmt.Sprintf("Cod. %s", dt.String())
+}
 
 templ ARCAQR(env *gobl.Envelope) {
 	if cae := arcaCAE(env); cae != "" {
