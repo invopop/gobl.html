@@ -110,11 +110,15 @@ section.title .hero img {
 section.title .arca-doc-type {
     border: 1px solid #e5e7eb;
     border-radius: 1mm;
-    text-align: center;
     text-transform: uppercase;
-    padding: 1.5mm 2.2mm;
+    width: 1.4cm;
     font-weight: 500;
     margin: 0 6mm 0 3mm;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 section.title .arca-doc-type .letter {
     font-size: 18pt;
@@ -491,6 +495,12 @@ section.notes .note {
     font-size: 12pt;
     line-height: 20pt;
     color: #030712;
+}
+.arca-vat-legend {
+    font-size: 8pt;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #4b5563;
 }
 .mp-header {
     float: top;

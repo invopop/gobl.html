@@ -26,7 +26,7 @@ es:
         replaced_documents: "Documentos sustituidos"
         corrected_documents: "Documentos rectificados"
         order: "Orden"
-        order_period: "Período"
+        order_period: "Periodo"
         order_period_label: "%{label}"
         order_period_range: "%{start} a %{end}"
         ext_map:
@@ -76,7 +76,7 @@ es:
       taxes:
         title: "Impuestos"
         category: "Impuesto"
-        base: "Base imponible"
+        base: "Base imp."
         rate: "Tasa"
         amount: "Monto"
         exemption: "Exención"
@@ -180,7 +180,7 @@ es:
         <<: *summary
         preceding_document: "Documento anterior"
         contract: "Contrato"
-        period: "Período"
+        period: "Periodo"
 
       buyer:
         title: "Comprador"

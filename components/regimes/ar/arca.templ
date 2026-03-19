@@ -9,8 +9,17 @@ import (
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/addons/ar/arca"
 	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
 )
+
+// ARCAVATLegend renders the tax status legend (e.g. "IVA RESPONSABLE INSCRIPTO")
+// underneath the supplier or customer name on Argentine invoices.
+templ ARCAVATLegend(doc internal.Document, party *org.Party, role string) {
+	if legend := arcaVATLegend(doc, party, role); legend != "" {
+		<div class="arca-vat-legend">{ legend }</div>
+	}
+}
 
 // ARCADocTypeLetter renders the ARCA document type letter box (A, B, or C)
 // in the invoice header, if the document has an ar-arca-doc-type extension.
