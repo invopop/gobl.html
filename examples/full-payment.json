@@ -4,7 +4,7 @@
 		"uuid": "0194da65-8e80-77d0-9843-944211a0eb1a",
 		"dig": {
 			"alg": "sha256",
-			"val": "d866bb71aefdccf5e8d7d718aabbc3e4174c9c716b3f38dbea6ba8625b1e0dd5"
+			"val": "0a8ae4e57440ee2b6370247a019aad4744ff4c81e27f61bf76b5ae9a899d1d65"
 		},
 		"stamps": [
 			{
@@ -784,7 +784,7 @@
 		"total": "3924.75",
 		"notes": [
 			{
-				"text": "Thank you for you business!"
+				"text": "Thank you for your business!"
 			}
 		]
 	},

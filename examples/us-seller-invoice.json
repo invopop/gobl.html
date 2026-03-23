@@ -4,7 +4,7 @@
 		"uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
 		"dig": {
 			"alg": "sha256",
-			"val": "e84da69bfcb9669a1ea971e29f1c2722824c1262b39367a194fc66c022ab6aac"
+			"val": "1c13910098d1c167de22f1c116c94f462a3a3ee45b02109378d1bff675baa44f"
 		}
 	},
 	"doc": {
@@ -123,7 +123,7 @@
 		},
 		"notes": [
 			{
-				"text": "Thank you for you business!"
+				"text": "Thank you for your business!"
 			},
 			{
 				"key": "legal",
