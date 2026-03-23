@@ -282,10 +282,12 @@ templ sublineGroupCharges(sl *bill.SubLine) {
 
 templ lineSeller(seller *org.Party) {
 	if seller != nil {
-		@utils.Coalesce(
-			mx.LineSeller(seller),
-			defaultLineSeller(seller),
-		)
+		<span class="seller">
+			@utils.Coalesce(
+				mx.LineSeller(seller),
+				defaultLineSeller(seller),
+			)
+		</span>
 	}
 }
 
