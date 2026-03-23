@@ -235,7 +235,6 @@ section.lines .subline .label:after {
 }
 section.lines .seller {
     display: block;
-    margin-top: 1mm;
     padding: 1.5mm 0;
 }
 section.lines .discount-content {
