@@ -13,11 +13,11 @@
 		"$addons": [
 			"ar-arca-v4"
 		],
-		"uuid": "019d057d-3594-7000-9684-0dd24f33a9ec",
+		"uuid": "019d1b71-5ad1-7000-b8ec-da19240550f6",
 		"type": "standard",
-		"series": "2",
-		"code": "2",
-		"issue_date": "2026-03-18",
+		"series": "1",
+		"code": "001",
+		"issue_date": "2026-03-23",
 		"currency": "ARS",
 		"tax": {
 			"ext": {
@@ -26,46 +26,18 @@
 			}
 		},
 		"supplier": {
-			"name": "Acme Servicios Argentina S.A.",
+			"name": "Intermediario S.A.",
 			"tax_id": {
 				"country": "AR",
-				"code": "30123456781"
-			},
-			"addresses": [
-				{
-					"street": "Av. Corrientes 1234 Piso 5",
-					"locality": "Buenos Aires",
-					"region": "Ciudad Autónoma de Buenos Aires",
-					"code": "C1043",
-					"country": "AR"
-				}
-			],
-			"emails": [
-				{
-					"addr": "facturacion@acmeservicios.com.ar"
-				}
-			]
+				"code": "30712345671"
+			}
 		},
 		"customer": {
-			"name": "Distribuidora del Sur S.R.L.",
+			"name": "Cliente Comprador S.R.L.",
 			"tax_id": {
 				"country": "AR",
-				"code": "30876543210"
+				"code": "30987654321"
 			},
-			"addresses": [
-				{
-					"street": "Av. Santa Fe 2500",
-					"locality": "Buenos Aires",
-					"region": "Ciudad Autónoma de Buenos Aires",
-					"code": "C1123",
-					"country": "AR"
-				}
-			],
-			"emails": [
-				{
-					"addr": "compras@dominio.com.ar"
-				}
-			],
 			"ext": {
 				"ar-arca-vat-status": "1"
 			}
@@ -76,100 +48,66 @@
 				"quantity": "1",
 				"item": {
 					"key": "services",
-					"name": "Resumen de Ventas - Venta de entradas",
-					"price": "100000.00"
+					"name": "Servicio de intermediación - Venta de entradas",
+					"price": "1000.00"
 				},
-				"sum": "100000.00",
+				"sum": "1000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
-						"key": "zero",
-						"percent": "0%",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
 						"ext": {
-							"ar-arca-vat-rate": "3"
+							"ar-arca-vat-rate": "5"
 						}
 					}
 				],
-				"total": "100000.00"
-			}
-		],
-		"discounts": [
-			{
-				"i": 1,
-				"reason": "Comisión de Fever",
-				"percent": "5%",
-				"amount": "5000.00"
-			}
-		],
-		"charges": [
-			{
-				"i": 1,
-				"key": "tax",
-				"reason": "IIBB s/Comisión",
-				"base": "5000",
-				"percent": "1.5%",
-				"amount": "75",
-				"ext": {
-					"ar-arca-tax-type": "5"
-				}
-			},
-			{
-				"i": 2,
-				"key": "tax",
-				"reason": "RT Ganancias s/Comisión",
-				"base": "5000",
-				"percent": "2%",
-				"amount": "100",
-				"ext": {
-					"ar-arca-tax-type": "1"
-				}
+				"total": "1000.00"
 			}
 		],
 		"ordering": {
 			"period": {
 				"start": "2026-03-01",
-				"end": "2026-03-17"
+				"end": "2026-03-23"
 			}
 		},
 		"payment": {
 			"terms": {
-				"key": "instant",
 				"due_dates": [
 					{
-						"date": "2026-03-19",
-						"amount": "94825.00"
+						"date": "2026-03-25",
+						"amount": "1210.00"
 					}
 				]
 			}
 		},
 		"totals": {
-			"sum": "100000.00",
-			"discount": "5000.00",
-			"charge": "175.00",
-			"total": "95175.00",
+			"sum": "1000.00",
+			"total": "1000.00",
 			"taxes": {
 				"categories": [
 					{
 						"code": "VAT",
 						"rates": [
 							{
-								"key": "zero",
+								"key": "standard",
 								"ext": {
-									"ar-arca-vat-rate": "3"
+									"ar-arca-vat-rate": "5"
 								},
-								"base": "100000.00",
-								"percent": "0%",
-								"amount": "0.00"
+								"base": "1000.00",
+								"percent": "21.0%",
+								"amount": "210.00"
 							}
 						],
-						"amount": "0.00"
+						"amount": "210.00"
 					}
 				],
-				"sum": "0.00"
+				"sum": "210.00"
 			},
-			"tax": "0.00",
-			"total_with_tax": "95175.00",
-			"payable": "95175.00"
+			"tax": "210.00",
+			"total_with_tax": "1210.00",
+			"payable": "1210.00"
 		}
 	}
 }

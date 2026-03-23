@@ -111,10 +111,11 @@ section.title .arca-doc-type {
     border: 1px solid #e5e7eb;
     border-radius: 1mm;
     text-transform: uppercase;
-    width: 1.4cm;
+    width: 1.2cm;
+    height: 1.2cm;
     font-weight: 500;
     margin: 0 6mm 0 3mm;
-    aspect-ratio: 1 / 1;
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -128,7 +129,7 @@ section.title .arca-doc-type .letter {
 }
 section.title .arca-doc-type .code {
     font-size: 7pt;
-    color: #030712;
+    color: #4b5563;
     margin-top: 0.5mm;
     white-space: nowrap;
     line-height: 1;
