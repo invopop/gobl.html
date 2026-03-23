@@ -94,15 +94,40 @@ section.title {
 }
 section.title .hero {
     margin-bottom: 6mm;
+    display: flex;
 }
 section.title .alias {
     font-size: 16pt;
     font-weight: bold;
     color: #030712;
+    flex-grow: 1;
+    line-height: 1.2;
 }
 section.title .hero img {
     max-width: 100%;
-    /* max-height: 10mm; */
+    object-fit: contain;
+}
+section.title .arca-doc-type {
+    border: 1px solid #e5e7eb;
+    border-radius: 1mm;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 1.5mm 2.2mm;
+    font-weight: 500;
+    margin: 0 6mm 0 3mm;
+}
+section.title .arca-doc-type .letter {
+    font-size: 18pt;
+    font-weight: 600;
+    color: #030712;
+    line-height: 1;
+}
+section.title .arca-doc-type .code {
+    font-size: 7pt;
+    color: #030712;
+    margin-top: 0.5mm;
+    white-space: nowrap;
+    line-height: 1;
 }
 section.title span.paid,
 section.title span.void,
