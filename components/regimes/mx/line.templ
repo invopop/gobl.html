@@ -3,6 +3,7 @@ package mx
 import (
 	"github.com/invopop/gobl/addons/mx/cfdi"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/org"
 )
 
 // LineExtensions will add extra information to the line for Mexico.
@@ -13,4 +14,32 @@ templ LineExtensions(line *bill.Line) {
 			<code>{ line.Item.Ext[cfdi.ExtKeyProdServ] }</code>
 		</span>
 	}
+}
+
+// LineSeller renders CFDI-specific third-party seller info on a line item.
+// Only renders when the seller has CFDI fiscal regime extensions.
+templ LineSeller(seller *org.Party) {
+	if isCFDISeller(seller) {
+		<span class="subline">
+			<span class="label">A cuenta de terceros</span><br />
+			if seller.TaxID != nil && seller.TaxID.Code != "" {
+				{ "RFC: " }
+				<code>{ seller.TaxID.Code.String() }</code>
+			}
+			{ " · Razón social: " }
+			<code>{ seller.Name }</code>
+			if seller.Ext.Has(cfdi.ExtKeyFiscalRegime) {
+				{ " · Régimen: " }
+				<code>{ seller.Ext[cfdi.ExtKeyFiscalRegime] }</code>
+			}
+			if len(seller.Addresses) > 0 && seller.Addresses[0].Code != "" {
+				{ " · CP: " }
+				<code>{ seller.Addresses[0].Code }</code>
+			}
+		</span>
+	}
+}
+
+func isCFDISeller(seller *org.Party) bool {
+	return seller != nil && seller.Ext.Has(cfdi.ExtKeyFiscalRegime)
 }

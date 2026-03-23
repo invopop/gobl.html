@@ -4,7 +4,7 @@
 		"uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
 		"dig": {
 			"alg": "sha256",
-			"val": "4f187a565b00821f20a37a4c69e46fff0820f51cba3bc89f02810828ff2fcb8c"
+			"val": "1c13910098d1c167de22f1c116c94f462a3a3ee45b02109378d1bff675baa44f"
 		}
 	},
 	"doc": {
@@ -89,7 +89,19 @@
 						"amount": "200.00"
 					}
 				],
-				"total": "3800.00"
+				"total": "3800.00",
+				"seller": {
+					"name": "OZONO POLARIS",
+					"tax_id": {
+						"country": "MX",
+						"code": "OPO870812NC7"
+					},
+					"addresses": [
+						{
+							"code": "72190"
+						}
+					]
+				}
 			},
 			{
 				"i": 2,

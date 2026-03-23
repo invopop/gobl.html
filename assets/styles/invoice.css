@@ -233,6 +233,10 @@ section.lines .subline .label {
 section.lines .subline .label:after {
     content: ": ";
 }
+section.lines .seller {
+    display: block;
+    padding: 1.5mm 0;
+}
 section.lines .discount-content {
     display: block;
 }

@@ -35,14 +35,16 @@
           <div class="details">
             <section class="title">
               <div class="hero">
-                <img src="https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0" alt="Invopop" height="40">
+                <div class="alias">
+                  ESCUELA KEMPER URGATE
+                </div>
               </div>
               <div class="title-group">
                 <h1 class="type">
                   Invoice
                 </h1>
                 <h2 class="code">
-                  FAKE-0001
+                  LMC-002
                 </h2>
               </div>
             </section>
@@ -56,7 +58,7 @@
                     Issue date
                   </span>
                   <span class="value date">
-                    2024-05-08
+                    2026-03-20
                   </span>
                 </li>
                 <li class="currency">
@@ -64,7 +66,23 @@
                     Currency
                   </span>
                   <span class="value">
-                    United States Dollar (USD)
+                    Mexican Peso (MXN)
+                  </span>
+                </li>
+                <li class="tax-ext">
+                  <span class="label">
+                    Place of issue
+                  </span>
+                  <span class="value">
+                    26015
+                  </span>
+                </li>
+                <li class="tax-ext">
+                  <span class="label">
+                    Payment Method
+                  </span>
+                  <span class="value">
+                    PPD
                   </span>
                 </li>
               </ul>
@@ -78,15 +96,13 @@
                 </h2>
                 <div class="org-party">
                   <div class="name">
-                    Invopop Inc.
+                    ESCUELA KEMPER URGATE
                   </div>
-                  <div class="org-address">
-                    <span>
-                      1111B S Governors Ave #6229, Dover, DE, 19904 (United States of America)
-                    </span>
+                  <div class="tax-id">
+                    RFC: (MX) EKU9003173C9
                   </div>
-                  <div class="emails">
-                    Email: billing@invopop.com
+                  <div class="party-extension">
+                    Régimen fiscal: 601
                   </div>
                 </div>
               </div>
@@ -98,21 +114,21 @@
                 </h2>
                 <div class="org-party">
                   <div class="name">
-                    Customer Random Inc.
+                    UNIVERSIDAD ROBOTICA ESPAÑOLA
                   </div>
                   <div class="org-address">
-                    <span class="label">
-                      Office:&nbsp;
-                    </span>
                     <span>
-                      10 Calle Mayor, Madrid, CA, 28003 (United States of America)
+                      86991
                     </span>
                   </div>
-                  <div class="emails">
-                    Email: sam@example.com
+                  <div class="tax-id">
+                    RFC: (MX) URE180429TM6
                   </div>
-                  <div class="identitiy">
-                    Código de Cliente: 123456789ABC
+                  <div class="party-extension">
+                    Régimen fiscal: 601
+                  </div>
+                  <div class="party-extension">
+                    Uso CFDI: G01
                   </div>
                 </div>
               </div>
@@ -138,8 +154,8 @@
                 <th class="price">
                   Price
                 </th>
-                <th class="discount">
-                  Disc.
+                <th class="tax">
+                  VAT
                 </th>
                 <th class="total">
                   Total
@@ -147,56 +163,60 @@
               </tr>
             </thead>
             <tbody>
-              <tr data-subtotal="$3,800.00">
+              <tr data-subtotal="$200.00">
                 <td class="ref">
                   1
                 </td>
                 <td class="description">
                   <div class="limited-height">
                     <span>
-                      Development Day Rate
+                      Venta en consignación
                     </span>
-                    <br>
-                    <small>
-                      Development services for the month of February 2022
-                    </small>
+                    <span class="subline">
+                      <span class="label">
+                        Clave SAT
+                      </span>
+                      <code>
+                        50211502
+                      </code>
+                    </span>
+                    <span class="seller">
+                      <span class="subline">
+                        <span class="label">
+                          A cuenta de terceros
+                        </span>
+                        <br>
+                        RFC:
+                        <code>
+                          OPO870812NC7
+                        </code>
+                        · Razón social:
+                        <code>
+                          OZONO POLARIS
+                        </code>
+                        · Régimen:
+                        <code>
+                          601
+                        </code>
+                        · CP:
+                        <code>
+                          72190
+                        </code>
+                      </span>
+                    </span>
                   </div>
                 </td>
                 <td class="quantity">
-                  20
-                </td>
-                <td class="price">
-                  $200.00
-                </td>
-                <td class="discount">
-                  <span class="discount-content">
-                    5%
-                  </span>
-                </td>
-                <td class="total">
-                  $3,800.00
-                </td>
-              </tr>
-              <tr data-subtotal="$4,800.00">
-                <td class="ref">
                   2
-                </td>
-                <td class="description">
-                  <div class="limited-height">
-                    <span>
-                      Something random
-                    </span>
-                  </div>
-                </td>
-                <td class="quantity">
-                  10
                 </td>
                 <td class="price">
                   $100.00
                 </td>
-                <td class="discount"></td>
+                <td class="tax">
+                  16.0%
+                </td>
                 <td class="total">
-                  $1,000.00
+                  $200.00
                 </td>
               </tr>
             </tbody>
@@ -215,7 +235,15 @@
                       Sum
                     </th>
                     <td>
-                      $4,800.00
+                      $200.00
+                    </td>
+                  </tr>
+                  <tr class="tax">
+                    <th>
+                      Tax
+                    </th>
+                    <td>
+                      $32.00
                     </td>
                   </tr>
                   <tr class="payable strong">
@@ -223,28 +251,52 @@
                       Total to pay
                     </th>
                     <td>
-                      $4,800.00
+                      $232.00
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <section class="taxes">
+              <h2>
+                Taxes
+              </h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th class="category">
+                      Tax
+                    </th>
+                    <th class="base">
+                      Base
+                    </th>
+                    <th class="rate">
+                      Rate
+                    </th>
+                    <th class="amount">
+                      Amount
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="1" class="category">
+                      VAT
+                    </td>
+                    <td class="base">
+                      $200.00
+                    </td>
+                    <td class="rate">
+                      16.0%
+                    </td>
+                    <td class="amount">
+                      $32.00
                     </td>
                   </tr>
                 </tbody>
               </table>
             </section>
           </div>
-          <section class="notes">
-            <h2>
-              Notes
-            </h2>
-            <div class="note">
-              <p>
-                Thank you for your business!
-              </p>
-            </div>
-            <div class="note">
-              <p>
-                Please pay within 30 days according to some random law in the country we sell from that you should comply with because we want to be paid sooner.
-              </p>
-            </div>
-          </section>
           <div class="extensions"></div>
         </div>
       </article>
@@ -266,14 +318,16 @@
           </section>
           <section class="title">
             <div class="hero">
-              <img src="https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0" alt="Invopop" height="40">
+              <div class="alias">
+                ESCUELA KEMPER URGATE
+              </div>
             </div>
             <div class="title-group">
               <h1 class="type">
                 Invoice
               </h1>
               <h2 class="code">
-                FAKE-0001
+                LMC-002
               </h2>
             </div>
           </section>

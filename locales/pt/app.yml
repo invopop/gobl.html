@@ -48,6 +48,7 @@ pt:
         total: "Total"
         no_percent: "0,0%"
         exemption: "Isenção"
+        on_behalf_of: "Em nome de"
 
       totals: &totals
         sum: "Soma"

@@ -43,6 +43,7 @@ fr:
         total: "Total"
         no_percent: "—"
         exemption: "Exonération"
+        on_behalf_of: "Pour le compte de"
       totals: &totals
         sum: "Somme"
         discount: "Remise"

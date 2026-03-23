@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/invopop/gobl.html/components/regimes/mx"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/currency"
 	"github.com/invopop/gobl/org"
@@ -109,10 +110,11 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 						</code>
 					</span>
 				}
-				@identities(l.Item.Identities)
-				@lineNotes(l.Notes)
-				@mx.LineExtensions(l)
-			</div>
+			@identities(l.Item.Identities)
+			@lineNotes(l.Notes)
+			@mx.LineExtensions(l)
+			@lineSeller(l.Seller)
+		</div>
 		</td>
 		<td class="quantity">
 			@t.L(l.Quantity)
@@ -276,6 +278,30 @@ templ sublineGroupDiscounts(sl *bill.SubLine) {
 
 templ sublineGroupCharges(sl *bill.SubLine) {
 	@groupCharges(sl.Charges)
+}
+
+templ lineSeller(seller *org.Party) {
+	if seller != nil {
+		<span class="seller">
+			@utils.Coalesce(
+				mx.LineSeller(seller),
+				defaultLineSeller(seller),
+			)
+		</span>
+	}
+}
+
+templ defaultLineSeller(seller *org.Party) {
+	<span class="subline">
+		<span class="label">
+			@t.T(".on_behalf_of")
+		</span>
+		{ seller.Name }
+		if seller.TaxID != nil && seller.TaxID.Code != "" {
+			{ " · " }
+			<code>{ seller.TaxID.Code.String() }</code>
+		}
+	</span>
 }
 
 templ identities(idents []*org.Identity) {
