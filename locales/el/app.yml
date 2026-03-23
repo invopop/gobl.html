@@ -50,6 +50,7 @@ el:
         total: "Σύνολο"
         no_percent: "—"
         exemption: "Απαλλαγή"
+        on_behalf_of: "Για λογαριασμό"
 
       totals: &totals
         sum: "Άθροισμα"

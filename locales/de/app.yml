@@ -48,6 +48,7 @@ de:
         total: "Gesamt"
         no_percent: "—"
         exemption: "Befreiung"
+        on_behalf_of: "Im Auftrag von"
 
       totals: &totals
         sum: "Summe"

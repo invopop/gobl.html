@@ -52,6 +52,7 @@ ar:
         total: "الإجمالي"
         no_percent: "—"
         exemption: "إعفاء"
+        on_behalf_of: "بالنيابة عن"
 
       totals: &totals
         sum: "المجموع"

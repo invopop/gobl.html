@@ -52,6 +52,7 @@ eu:
         total: "Guztira"
         no_percent: "—"
         exemption: "Salbuespenea"
+        on_behalf_of: "Izenean"
 
       totals: &totals
         sum: "Batura"

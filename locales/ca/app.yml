@@ -52,6 +52,7 @@ ca:
         total: "Total"
         no_percent: "—"
         exemption: "Exempció"
+        on_behalf_of: "En nom de"
 
       totals: &totals
         sum: "Suma"

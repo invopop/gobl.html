@@ -52,6 +52,7 @@ gl:
         total: "Total"
         no_percent: "—"
         exemption: "Exención"
+        on_behalf_of: "En nome de"
 
       totals: &totals
         sum: "Suma"

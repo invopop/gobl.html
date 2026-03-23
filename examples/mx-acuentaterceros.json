@@ -1,0 +1,118 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "c82905b0-061b-11ef-9fc5-12007b149b55",
+		"dig": {
+			"alg": "sha256",
+			"val": "35d95e0080b99b4c0f05d0667a017f89d6404cf8039ebd5d1cc25d4062af636a"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "MX",
+		"$addons": [
+			"mx-cfdi-v4"
+		],
+		"uuid": "019d0a9f-d04e-7001-905a-141f3bbe6e13",
+		"type": "standard",
+		"series": "LMC",
+		"code": "002",
+		"issue_date": "2026-03-20",
+		"issue_time": "01:42:18",
+		"currency": "MXN",
+		"tax": {
+			"ext": {
+				"mx-cfdi-doc-type": "I",
+				"mx-cfdi-issue-place": "26015",
+				"mx-cfdi-payment-method": "PPD"
+			}
+		},
+		"supplier": {
+			"name": "ESCUELA KEMPER URGATE",
+			"tax_id": {
+				"country": "MX",
+				"code": "EKU9003173C9"
+			},
+			"ext": {
+				"mx-cfdi-fiscal-regime": "601"
+			}
+		},
+		"customer": {
+			"name": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+			"tax_id": {
+				"country": "MX",
+				"code": "URE180429TM6"
+			},
+			"addresses": [
+				{
+					"code": "86991"
+				}
+			],
+			"ext": {
+				"mx-cfdi-fiscal-regime": "601",
+				"mx-cfdi-use": "G01"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Venta en consignación",
+					"price": "100.00",
+					"ext": {
+						"mx-cfdi-prod-serv": "50211502"
+					}
+				},
+				"sum": "200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "16.0%"
+					}
+				],
+				"total": "200.00",
+				"seller": {
+					"name": "OZONO POLARIS",
+					"tax_id": {
+						"country": "MX",
+						"code": "OPO870812NC7"
+					},
+					"addresses": [
+						{
+							"code": "72190"
+						}
+					],
+					"ext": {
+						"mx-cfdi-fiscal-regime": "601"
+					}
+				}
+			}
+		],
+		"totals": {
+			"sum": "200.00",
+			"total": "200.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "200.00",
+								"percent": "16.0%",
+								"amount": "32.00"
+							}
+						],
+						"amount": "32.00"
+					}
+				],
+				"sum": "32.00"
+			},
+			"tax": "32.00",
+			"total_with_tax": "232.00",
+			"payable": "232.00"
+		}
+	}
+}
