@@ -88,6 +88,6 @@ type CalFormatter struct {
 // the recommended ISO 8601 formatting.
 var CalFormatterISO = CalFormatter{
 	Date:     "2006-01-02",
-	DateTime: "2006-01-02 15:04",
+	DateTime: "2006-01-02 · 15:04",
 	Location: time.UTC,
 }
