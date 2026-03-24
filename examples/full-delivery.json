@@ -4,7 +4,7 @@
 		"uuid": "0194020a-1f2e-7000-9ede-4ad7c0a9810f",
 		"dig": {
 			"alg": "sha256",
-			"val": "1e89f1b13afac319ada0bbb10c41c032f45a64c99cbc20f6b2d1e5044e616b0a"
+			"val": "ac5e2a255bd19390cedbbb649c6e09a5954e089ea66667bb6a1c74590d3c1ffb"
 		},
 		"stamps": [
 			{
@@ -37,6 +37,7 @@
 		"series": "GR SERIES-A",
 		"code": "1",
 		"issue_date": "2024-12-23",
+		"issue_time": "12:34:56",
 		"value_date": "2024-12-24",
 		"currency": "EUR",
 		"exchange_rates": [

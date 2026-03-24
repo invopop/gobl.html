@@ -4,7 +4,7 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "e389571c45ebcc8a11ef9e932162752747a7d647f6be1f92f188dd3c2d56ccf4"
+			"val": "80dda2d55e2d8a912ef320e089c9219f60419ac102c4a1d9096d8be330011fbe"
 		},
 		"stamps": [
 			{
@@ -41,6 +41,7 @@
 		"series": "NE SERIES-A",
 		"code": "123",
 		"issue_date": "2023-01-30",
+		"issue_time": "12:34:56",
 		"op_date": "2023-02-01",
 		"value_date": "2023-01-31",
 		"currency": "EUR",

@@ -62,7 +62,7 @@ templ deliverySummary(dlv *bill.Delivery) {
 						@t.T(".issue_date")
 					</span>
 					<span class="value">
-						@t.L(dlv.IssueDate)
+						@issueDateTime(dlv.IssueDate, dlv.IssueTime)
 					</span>
 				</li>
 				<li class="currency">

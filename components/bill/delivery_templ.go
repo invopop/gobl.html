@@ -245,7 +245,7 @@ func deliverySummary(dlv *bill.Delivery) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = t.L(dlv.IssueDate).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = issueDateTime(dlv.IssueDate, dlv.IssueTime).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

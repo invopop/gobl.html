@@ -70,7 +70,7 @@ func paymentSummary(pmt *bill.Payment) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = t.L(pmt.IssueDate).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = issueDateTime(pmt.IssueDate, pmt.IssueTime).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

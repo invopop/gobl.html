@@ -4,7 +4,7 @@
 		"uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
 		"dig": {
 			"alg": "sha256",
-			"val": "1cfa1632e477d3e332fbfec430fd46ab6f631456e6e75f23b1b1343c3a67f588"
+			"val": "8fe661741a84d818bbccfb0b29cf4f79256bb214db3d7f216c28f06e52ee9e14"
 		}
 	},
 	"doc": {
@@ -14,6 +14,7 @@
 		"type": "standard",
 		"code": "FAKE20220001",
 		"issue_date": "2022-02-01",
+		"issue_time": "12:34:56",
 		"currency": "EUR",
 		"tax": {},
 		"supplier": {

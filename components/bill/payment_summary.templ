@@ -17,7 +17,7 @@ templ paymentSummary(pmt *bill.Payment) {
 						@t.T(".issue_date")
 					</span>
 					<span class="value">
-						@t.L(pmt.IssueDate)
+						@issueDateTime(pmt.IssueDate, pmt.IssueTime)
 					</span>
 				</li>
 				<li class="currency">
