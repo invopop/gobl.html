@@ -4,7 +4,7 @@
 		"uuid": "c82905b0-061b-11ef-9fc5-12007b149b55",
 		"dig": {
 			"alg": "sha256",
-			"val": "35d95e0080b99b4c0f05d0667a017f89d6404cf8039ebd5d1cc25d4062af636a"
+			"val": "89c905a760c34209cc0654f2202318d3d4b99ba46c7d4399f6a0c9864f5d140e"
 		}
 	},
 	"doc": {
@@ -17,7 +17,7 @@
 		"type": "standard",
 		"series": "LMC",
 		"code": "002",
-		"issue_date": "2026-03-20",
+		"issue_date": "2026-03-24",
 		"issue_time": "01:42:18",
 		"currency": "MXN",
 		"tax": {
@@ -74,14 +74,14 @@
 				],
 				"total": "200.00",
 				"seller": {
-					"name": "OZONO POLARIS",
+					"name": "XENON INDUSTRIAL ARTICLES",
 					"tax_id": {
 						"country": "MX",
-						"code": "OPO870812NC7"
+						"code": "XIA190128J61"
 					},
 					"addresses": [
 						{
-							"code": "72190"
+							"code": "76343"
 						}
 					],
 					"ext": {
