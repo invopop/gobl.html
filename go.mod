@@ -3,7 +3,7 @@ module github.com/invopop/gobl.html
 go 1.24.0
 
 require (
-	github.com/a-h/templ v0.3.960
+	github.com/a-h/templ v0.3.977
 	github.com/go-resty/resty/v2 v2.12.0
 	github.com/invopop/ctxi18n v0.9.0
 	github.com/invopop/gobl v0.307.0
