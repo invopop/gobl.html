@@ -4,7 +4,7 @@
 		"uuid": "0194da65-8e80-77d0-9843-944211a0eb1a",
 		"dig": {
 			"alg": "sha256",
-			"val": "0a8ae4e57440ee2b6370247a019aad4744ff4c81e27f61bf76b5ae9a899d1d65"
+			"val": "ebf552cefa7e66d72b78fc5304e23b3a1f0d7271dfe488af319381e72b15c7f0"
 		},
 		"stamps": [
 			{
@@ -41,6 +41,7 @@
 		"series": "RG DEV-05",
 		"code": "4",
 		"issue_date": "2024-12-23",
+		"issue_time": "12:34:56",
 		"currency": "EUR",
 		"ext": {
 			"pt-saft-payment-type": "RG"

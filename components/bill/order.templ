@@ -59,7 +59,7 @@ templ orderSummary(ord *bill.Order) {
 						@t.T(".issue_date")
 					</span>
 					<span class="value">
-						@t.L(ord.IssueDate)
+						@issueDateTime(ord.IssueDate, ord.IssueTime)
 					</span>
 				</li>
 				<li class="currency">

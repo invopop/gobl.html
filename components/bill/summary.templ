@@ -27,7 +27,7 @@ templ summary(inv *bill.Invoice) {
 						@t.T(".issue_date")
 					</span>
 					<span class="value date">
-						@t.L(inv.IssueDate)
+						@issueDateTime(inv.IssueDate, inv.IssueTime)
 					</span>
 				</li>
 				<li class="currency">
@@ -190,6 +190,13 @@ func currencyName(ctx context.Context, cur currency.Code) string {
 	// does a translation for the currency name exist?
 	name := i18n.T(ctx, "currencies."+string(cur), i18n.Default(def.Name))
 	return i18n.T(ctx, ".currency_value", i18n.M{"desc": name, "code": cur})
+}
+
+func issueDateTime(date cal.Date, time *cal.Time) templ.Component {
+	if time == nil {
+		return t.L(date)
+	}
+	return t.L(date.WithTime(*time))
 }
 
 func mapTaxExtension(ctx context.Context, k cbc.Key) string {
