@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GOBL HTML — examples</title>
+<style>
+* { box-sizing: border-box; }
+:root {
+	--border: #e4e4e7;
+	--background: #ffffff;
+	--foreground: #18181b;
+	--foreground-secondary: #71717a;
+	--foreground-tertiary: #a1a1aa;
+	--border-document: #e4e4e7;
+	--background-document: #fafafa;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background: #f9f9fa; color: var(--foreground); }
+
+/* Screen-reader-only label (not related to the [hidden] attribute on cards) */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.gallery-header {
+	padding: 1.25rem 1.25rem 0;
+}
+.gallery-search {
+	display: block;
+	width: min(32rem, 100%);
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0.5rem 0.75rem;
+	font: inherit;
+	color: inherit;
+	border: 1px solid var(--border);
+	border-radius: 0.5rem;
+	background: var(--background);
+	box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+.gallery-search::placeholder {
+	color: var(--foreground-tertiary);
+}
+.gallery-search:focus {
+	outline: 2px solid var(--foreground-tertiary);
+	outline-offset: 2px;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
+	gap: 1.25rem;
+	padding: 1.25rem;
+	max-width: 100%;
+}
+
+.card {
+	position: relative;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	border-radius: 1rem;
+	border: 1px solid var(--border);
+	padding: 0.5rem;
+	background: var(--background);
+	overflow: hidden;
+	box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+.card[hidden] {
+	display: none !important;
+}
+
+.card-header {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	min-width: 0;
+}
+
+.card-avatar {
+	flex-shrink: 0;
+	width: 2rem;
+	height: 2rem;
+	position: relative;
+	font-weight: 600;
+	font-size: 1.125rem;
+	line-height: 1;
+	color: var(--foreground-secondary);
+	border-radius: 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: solid 1px var(--border);
+}
+
+.preview {
+	position: relative;
+	width: 100%;
+}
+.preview-open {
+	position: relative;
+	z-index: 101;
+	aspect-ratio: 1 / 1.333;
+	width: 100%;
+	display: block;
+}
+
+.preview iframe {
+	position: absolute;
+	z-index: 1;
+	width: 200%;
+	height: 200%;
+	border: 0;
+	transform: scale(0.5);
+	transform-origin: top left;
+	border-radius: 0 0 1rem 1rem;
+	aspect-ratio: 1 / 1.333;
+	inset: 0
+}
+
+.preview:target {
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	width: 100vw;
+	height: 100vh;
+	aspect-ratio: unset;
+	overflow: hidden;
+	overscroll-behavior: contain;
+	background-color: rgba(80,80,80, .8)
+}
+.preview:target iframe {
+	transform: translate(-50%, -50%);
+	left: 50%;
+	top: 50%;
+	height: 100%;
+	width: auto;
+	border-radius: 0;
+}
+.preview:target .preview-open-enter {
+	display: none;
+}
+
+</style>
+</head>
+<body>
+<header class="gallery-header">
+	<label class="sr-only" for="gallery-search">Filter by filename</label>
+	<input type="search" id="gallery-search" class="gallery-search" placeholder="Filter by filename…" autocomplete="off" spellcheck="false" autofocus>
+</header>
+<div class="grid" id="gallery-grid" tabindex="0" role="region" aria-label="Example documents">
+{{range .}}
+<article class="card" id="{{.Label}}">
+	<div class="card-header">
+		<div data-avatar class="card-avatar">
+			<img class="card-avatar-img" src="{{.FlagURL}}" alt="" width="16" height="16" loading="lazy" decoding="async">
+		</div>
+		<div class="card-title">
+			{{.Label}}
+		</div>
+	</div>
+	<div class="preview" id="{{.Label}}-pdf">
+		<a class="preview-open preview-open-enter" href="#{{.Label}}-pdf" aria-label="Open {{.Label}}"></a>
+		<iframe src="{{.PdfHref}}" title="{{.Label}}" loading="lazy"></iframe></div>
+</article>
+{{end}}
+</div>
+<script>
+(function () {
+	var input = document.getElementById("gallery-search");
+	var grid = document.getElementById("gallery-grid");
+	if (!input || !grid) return;
+
+	var cards = grid.querySelectorAll(".card");
+	var selectedEl = null;
+
+	function visibleCards() {
+		var out = [];
+		for (var i = 0; i < cards.length; i++) {
+			if (!cards[i].hidden) out.push(cards[i]);
+		}
+		return out;
+	}
+
+	function columnCount(vis) {
+		if (vis.length <= 1) return 1;
+		var top0 = vis[0].getBoundingClientRect().top;
+		var n = 0;
+		for (var i = 0; i < vis.length; i++) {
+			if (Math.abs(vis[i].getBoundingClientRect().top - top0) < 4) n++;
+			else break;
+		}
+		return n || 1;
+	}
+
+	function applySelectionVisual() {
+		for (var i = 0; i < cards.length; i++) cards[i].classList.remove("card-selected");
+		if (selectedEl && document.activeElement === grid) {
+			selectedEl.classList.add("card-selected");
+			grid.setAttribute("aria-activedescendant", selectedEl.id);
+		} else {
+			grid.removeAttribute("aria-activedescendant");
+		}
+	}
+
+	function select(el) {
+		selectedEl = el;
+		applySelectionVisual();
+	}
+
+	function ensureSelection() {
+		var v = visibleCards();
+		if (v.length === 0) {
+			selectedEl = null;
+			applySelectionVisual();
+			return;
+		}
+		if (!selectedEl || selectedEl.hidden || v.indexOf(selectedEl) === -1) selectedEl = v[0];
+		applySelectionVisual();
+	}
+
+	function filter() {
+		var q = input.value.trim().toLowerCase();
+		for (var i = 0; i < cards.length; i++) {
+			var id = cards[i].id.toLowerCase();
+			cards[i].hidden = !!(q && id.indexOf(q) === -1);
+		}
+		ensureSelection();
+	}
+
+	function isModalOpen() {
+		var h = location.hash;
+		if (!h || h.length < 2) return false;
+		var el = document.getElementById(decodeURIComponent(h.slice(1)));
+		return !!(el && el.classList.contains("preview"));
+	}
+
+	function openSelectedPreview() {
+		if (!selectedEl || selectedEl.hidden || isModalOpen()) return;
+		location.hash = selectedEl.id + "-pdf";
+	}
+
+	input.addEventListener("input", filter);
+	filter();
+
+	grid.addEventListener("focus", function () {
+		ensureSelection();
+	});
+	grid.addEventListener("blur", function () {
+		for (var i = 0; i < cards.length; i++) cards[i].classList.remove("card-selected");
+		grid.removeAttribute("aria-activedescendant");
+	});
+
+	grid.addEventListener("keydown", function (e) {
+		if (document.activeElement !== grid) return;
+		if (isModalOpen()) return;
+
+		var v = visibleCards();
+		if (v.length === 0) return;
+
+		var key = e.key;
+		if (key === "Enter" || key === " ") {
+			e.preventDefault();
+			openSelectedPreview();
+			return;
+		}
+
+		var cols = columnCount(v);
+		var idx = selectedEl ? v.indexOf(selectedEl) : 0;
+		if (idx < 0) idx = 0;
+
+		if (key === "ArrowRight") {
+			e.preventDefault();
+			if (idx < v.length - 1) {
+				select(v[idx + 1]);
+				v[idx + 1].scrollIntoView({ block: "nearest", inline: "nearest" });
+			}
+			return;
+		}
+		if (key === "ArrowLeft") {
+			e.preventDefault();
+			if (idx > 0) {
+				select(v[idx - 1]);
+				v[idx - 1].scrollIntoView({ block: "nearest", inline: "nearest" });
+			}
+			return;
+		}
+		if (key === "ArrowDown") {
+			e.preventDefault();
+			var next = idx + cols;
+			if (next < v.length) {
+				select(v[next]);
+				v[next].scrollIntoView({ block: "nearest", inline: "nearest" });
+			}
+			return;
+		}
+		if (key === "ArrowUp") {
+			e.preventDefault();
+			var prev = idx - cols;
+			if (prev >= 0) {
+				select(v[prev]);
+				v[prev].scrollIntoView({ block: "nearest", inline: "nearest" });
+			}
+			return;
+		}
+		if (key === "Home") {
+			e.preventDefault();
+			select(v[0]);
+			v[0].scrollIntoView({ block: "nearest", inline: "nearest" });
+			return;
+		}
+		if (key === "End") {
+			e.preventDefault();
+			select(v[v.length - 1]);
+			v[v.length - 1].scrollIntoView({ block: "nearest", inline: "nearest" });
+		}
+	});
+
+	input.focus();
+
+	document.querySelectorAll(".preview").forEach(function (preview) {
+		preview.addEventListener(
+			"click",
+			function (e) {
+				var iframe = preview.querySelector("iframe");
+				if (e.target === iframe) return;
+				if (e.target !== preview) return;
+				location.hash = "";
+				input.focus();
+			},
+			true
+		);
+	});
+})();
+
+
+</script>
+</body>
+</html>
