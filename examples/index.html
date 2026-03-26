@@ -8,29 +8,19 @@
 * { box-sizing: border-box; }
 :root {
 	--border: #e4e4e7;
+	--border-secondary: #d4d4d7;
 	--background: #ffffff;
 	--foreground: #18181b;
 	--foreground-secondary: #71717a;
 	--foreground-tertiary: #a1a1aa;
 	--border-document: #e4e4e7;
 	--background-document: #fafafa;
+	--background-tertiary: #f4f4f5;
+	--accent: #018551;
 }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background: #f9f9fa; color: var(--foreground); }
-
- 
-.sr-only {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
-	border: 0;
-}
 
 .gallery-header {
 	padding: 1.25rem 1.25rem 0;
@@ -51,9 +41,11 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 .gallery-search::placeholder {
 	color: var(--foreground-tertiary);
 }
-.gallery-search:focus {
-	outline: 2px solid var(--foreground-tertiary);
-	outline-offset: 2px;
+.gallery-search:focus,
+.card:focus {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent);
+	outline: none;
 }
 
 .grid {
@@ -75,8 +67,15 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 	padding: 0.5rem;
 	background: var(--background);
 	overflow: hidden;
-	box-shadow: 0 1px 2px rgba(0,0,0,.04);
+	text-decoration: none;
+	color: var(--foreground);
 }
+
+.card:hover {
+	box-shadow: 0 1px 2px rgba(0,0,0,.04);
+	border-color: var(--border-secondary);
+}
+
 .card[hidden] {
 	display: none !important;
 }
@@ -105,28 +104,91 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 }
 
 .preview {
-	position: relative;
+	display: flex;
+	flex-direction: column;
 	width: 100%;
+	pointer-events: none;
 }
-.preview-open {
-	position: relative;
-	z-index: 101;
-	aspect-ratio: 1 / 1.414;
+
+.preview-tabs {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0.375rem;
+	background: var(--background-tertiary);
+	color: var(--foreground);
+	font-size: 1rem;
+	line-height: 1.5;
+	gap: 0.125rem;
+	padding: 2px;
+	width: auto;
+}
+
+.preview-tab {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	width: 100%;
-	display: block;
+	padding: 0.125rem 0.75rem;
+	gap: 0.375rem;
+	font: inherit;
+	font-weight: 500;
+	font-size: 1rem;
+	line-height: 1.5;
+	white-space: nowrap;
+	border: none;
+	background: transparent;
+	color: inherit;
+	border-radius: 0.25rem;
+	cursor: pointer;
+	transition: box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.preview-tab:focus-visible {
+	outline: none;
+	box-shadow:
+		0 0 0 2px var(--background),
+		0 0 0 4px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.preview-tab:disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.preview-tab[data-state="active"] {
+	background: var(--background);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.preview-viewport {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 1 / 1.414;
+	overflow: hidden;
 }
 
 .preview iframe {
-	position: absolute;
-	z-index: 1;
 	width: 200%;
 	height: 200%;
 	border: 0;
 	transform: scale(0.5);
 	transform-origin: top left;
 	border-radius: 0 0 1rem 1rem;
-	aspect-ratio: 1 / 1.414;
-	inset: 0
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.preview[data-active-tab="html"] .preview-viewport iframe.preview-pdf {
+	visibility: hidden;
+	pointer-events: none;
+}
+
+.preview[data-active-tab="pdf"] .preview-viewport iframe.preview-html {
+	visibility: hidden;
+	pointer-events: none;
 }
 
 .preview:target {
@@ -138,30 +200,60 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 	aspect-ratio: unset;
 	overflow: hidden;
 	overscroll-behavior: contain;
-	background-color: rgba(80,80,80, .8)
+	background-color: rgba(80,80,80, .8);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+	box-sizing: border-box;
+	pointer-events: auto;
 }
-.preview:target iframe {
-	transform: translate(-50%, -50%);
-	left: 50%;
-	top: 50%;
-	height: 100%;
+
+.preview:target .preview-tabs {
+	position: absolute;
+	right: 16px;
+	top: 16px;
+	display: flex;
+	width: 350px;
+}
+
+.preview:target .preview-viewport {
 	width: auto;
-	border-radius: 0;
+	height: 100vh;
+	aspect-ratio: 1 / 1.414;
 }
-.preview:target .preview-open-enter {
+
+.preview:target iframe {
+	width: 100%;
+	height: 100%;
+	pointer-events: auto;
+	transform: none;
+	transform-origin: unset;
+	border-radius: 0;
+	position: static;
+	background-color: white;
+}
+
+.preview:target[data-active-tab="html"] .preview-viewport iframe.preview-pdf {
 	display: none;
+	pointer-events: none;
+}
+
+.preview:target[data-active-tab="pdf"] .preview-viewport iframe.preview-html {
+	display: none;
+	pointer-events: none;
 }
 
 </style>
 </head>
 <body>
 <header class="gallery-header">
-	<label class="sr-only" for="gallery-search">Filter by filename</label>
 	<input type="search" id="gallery-search" class="gallery-search" placeholder="Filter by filename…" autocomplete="off" spellcheck="false" autofocus>
 </header>
-<div class="grid" id="gallery-grid" tabindex="0" role="region" aria-label="Example documents">
+<div class="grid" id="gallery-grid">
 
-<article class="card" id="ar-arca-invoice-logo">
+<a class="card" id="ar-arca-invoice-logo" href="#ar-arca-invoice-logo-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/ar.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -170,12 +262,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			ar-arca-invoice-logo
 		</div>
 	</div>
-	<div class="preview" id="ar-arca-invoice-logo-pdf">
-		<a class="preview-open preview-open-enter" href="#ar-arca-invoice-logo-pdf" aria-label="Open ar-arca-invoice-logo"></a>
-		<iframe src="/ar-arca-invoice-logo.pdf?locale=es#zoom=fit&amp;toolbar=0" title="ar-arca-invoice-logo" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="ar-arca-invoice-logo-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="ar-arca-invoice-logo-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="ar-arca-invoice-logo-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="ar-arca-invoice-logo-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="ar-arca-invoice-logo-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="ar-arca-invoice-logo-iframe-pdf" src="/ar-arca-invoice-logo.pdf?locale=es#view=Fit&amp;toolbar=0" title="ar-arca-invoice-logo (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="ar-arca-invoice-logo-iframe-html" src="/ar-arca-invoice-logo.html?locale=es" title="ar-arca-invoice-logo (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="ar-arca-invoice">
+<a class="card" id="ar-arca-invoice" href="#ar-arca-invoice-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/ar.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -184,12 +283,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			ar-arca-invoice
 		</div>
 	</div>
-	<div class="preview" id="ar-arca-invoice-pdf">
-		<a class="preview-open preview-open-enter" href="#ar-arca-invoice-pdf" aria-label="Open ar-arca-invoice"></a>
-		<iframe src="/ar-arca-invoice.pdf?locale=es#zoom=fit&amp;toolbar=0" title="ar-arca-invoice" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="ar-arca-invoice-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="ar-arca-invoice-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="ar-arca-invoice-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="ar-arca-invoice-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="ar-arca-invoice-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="ar-arca-invoice-iframe-pdf" src="/ar-arca-invoice.pdf?locale=es#view=Fit&amp;toolbar=0" title="ar-arca-invoice (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="ar-arca-invoice-iframe-html" src="/ar-arca-invoice.html?locale=es" title="ar-arca-invoice (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="de-invoice">
+<a class="card" id="de-invoice" href="#de-invoice-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/de.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -198,12 +304,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			de-invoice
 		</div>
 	</div>
-	<div class="preview" id="de-invoice-pdf">
-		<a class="preview-open preview-open-enter" href="#de-invoice-pdf" aria-label="Open de-invoice"></a>
-		<iframe src="/de-invoice.pdf?locale=de#zoom=fit&amp;toolbar=0" title="de-invoice" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="de-invoice-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="de-invoice-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="de-invoice-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="de-invoice-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="de-invoice-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="de-invoice-iframe-pdf" src="/de-invoice.pdf?locale=de#view=Fit&amp;toolbar=0" title="de-invoice (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="de-invoice-iframe-html" src="/de-invoice.html?locale=de" title="de-invoice (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-party">
+<a class="card" id="es-party" href="#es-party-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -212,12 +325,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-party
 		</div>
 	</div>
-	<div class="preview" id="es-party-pdf">
-		<a class="preview-open preview-open-enter" href="#es-party-pdf" aria-label="Open es-party"></a>
-		<iframe src="/es-party.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-party" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-party-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-party-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-party-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-party-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-party-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-party-iframe-pdf" src="/es-party.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-party (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-party-iframe-html" src="/es-party.html?locale=es" title="es-party (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-ticketbai-credit-note.adjustment.es">
+<a class="card" id="es-ticketbai-credit-note.adjustment.es" href="#es-ticketbai-credit-note.adjustment.es-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -226,12 +346,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-ticketbai-credit-note.adjustment.es
 		</div>
 	</div>
-	<div class="preview" id="es-ticketbai-credit-note.adjustment.es-pdf">
-		<a class="preview-open preview-open-enter" href="#es-ticketbai-credit-note.adjustment.es-pdf" aria-label="Open es-ticketbai-credit-note.adjustment.es"></a>
-		<iframe src="/es-ticketbai-credit-note.adjustment.es.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-ticketbai-credit-note.adjustment.es" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-ticketbai-credit-note.adjustment.es-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-ticketbai-credit-note.adjustment.es-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-ticketbai-credit-note.adjustment.es-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-ticketbai-credit-note.adjustment.es-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-ticketbai-credit-note.adjustment.es-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-ticketbai-credit-note.adjustment.es-iframe-pdf" src="/es-ticketbai-credit-note.adjustment.es.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-ticketbai-credit-note.adjustment.es (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-ticketbai-credit-note.adjustment.es-iframe-html" src="/es-ticketbai-credit-note.adjustment.es.html?locale=es" title="es-ticketbai-credit-note.adjustment.es (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-ticketbai-credit-note">
+<a class="card" id="es-ticketbai-credit-note" href="#es-ticketbai-credit-note-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -240,12 +367,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-ticketbai-credit-note
 		</div>
 	</div>
-	<div class="preview" id="es-ticketbai-credit-note-pdf">
-		<a class="preview-open preview-open-enter" href="#es-ticketbai-credit-note-pdf" aria-label="Open es-ticketbai-credit-note"></a>
-		<iframe src="/es-ticketbai-credit-note.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-ticketbai-credit-note" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-ticketbai-credit-note-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-ticketbai-credit-note-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-ticketbai-credit-note-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-ticketbai-credit-note-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-ticketbai-credit-note-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-ticketbai-credit-note-iframe-pdf" src="/es-ticketbai-credit-note.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-ticketbai-credit-note (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-ticketbai-credit-note-iframe-html" src="/es-ticketbai-credit-note.html?locale=es" title="es-ticketbai-credit-note (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-ticketbai-invoice">
+<a class="card" id="es-ticketbai-invoice" href="#es-ticketbai-invoice-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -254,12 +388,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-ticketbai-invoice
 		</div>
 	</div>
-	<div class="preview" id="es-ticketbai-invoice-pdf">
-		<a class="preview-open preview-open-enter" href="#es-ticketbai-invoice-pdf" aria-label="Open es-ticketbai-invoice"></a>
-		<iframe src="/es-ticketbai-invoice.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-ticketbai-invoice" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-ticketbai-invoice-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-ticketbai-invoice-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-ticketbai-invoice-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-ticketbai-invoice-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-ticketbai-invoice-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-ticketbai-invoice-iframe-pdf" src="/es-ticketbai-invoice.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-ticketbai-invoice (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-ticketbai-invoice-iframe-html" src="/es-ticketbai-invoice.html?locale=es" title="es-ticketbai-invoice (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-verifactu-credit-note.adjustment.es">
+<a class="card" id="es-verifactu-credit-note.adjustment.es" href="#es-verifactu-credit-note.adjustment.es-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -268,12 +409,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-verifactu-credit-note.adjustment.es
 		</div>
 	</div>
-	<div class="preview" id="es-verifactu-credit-note.adjustment.es-pdf">
-		<a class="preview-open preview-open-enter" href="#es-verifactu-credit-note.adjustment.es-pdf" aria-label="Open es-verifactu-credit-note.adjustment.es"></a>
-		<iframe src="/es-verifactu-credit-note.adjustment.es.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-verifactu-credit-note.adjustment.es" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-verifactu-credit-note.adjustment.es-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-credit-note.adjustment.es-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-verifactu-credit-note.adjustment.es-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-credit-note.adjustment.es-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-verifactu-credit-note.adjustment.es-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-verifactu-credit-note.adjustment.es-iframe-pdf" src="/es-verifactu-credit-note.adjustment.es.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-verifactu-credit-note.adjustment.es (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-verifactu-credit-note.adjustment.es-iframe-html" src="/es-verifactu-credit-note.adjustment.es.html?locale=es" title="es-verifactu-credit-note.adjustment.es (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-verifactu-invoice-breakdown">
+<a class="card" id="es-verifactu-invoice-breakdown" href="#es-verifactu-invoice-breakdown-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -282,12 +430,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-verifactu-invoice-breakdown
 		</div>
 	</div>
-	<div class="preview" id="es-verifactu-invoice-breakdown-pdf">
-		<a class="preview-open preview-open-enter" href="#es-verifactu-invoice-breakdown-pdf" aria-label="Open es-verifactu-invoice-breakdown"></a>
-		<iframe src="/es-verifactu-invoice-breakdown.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-verifactu-invoice-breakdown" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-verifactu-invoice-breakdown-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-breakdown-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-verifactu-invoice-breakdown-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-breakdown-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-verifactu-invoice-breakdown-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-verifactu-invoice-breakdown-iframe-pdf" src="/es-verifactu-invoice-breakdown.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-verifactu-invoice-breakdown (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-verifactu-invoice-breakdown-iframe-html" src="/es-verifactu-invoice-breakdown.html?locale=es" title="es-verifactu-invoice-breakdown (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-verifactu-invoice-env">
+<a class="card" id="es-verifactu-invoice-env" href="#es-verifactu-invoice-env-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -296,12 +451,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-verifactu-invoice-env
 		</div>
 	</div>
-	<div class="preview" id="es-verifactu-invoice-env-pdf">
-		<a class="preview-open preview-open-enter" href="#es-verifactu-invoice-env-pdf" aria-label="Open es-verifactu-invoice-env"></a>
-		<iframe src="/es-verifactu-invoice-env.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-verifactu-invoice-env" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-verifactu-invoice-env-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-env-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-verifactu-invoice-env-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-env-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-verifactu-invoice-env-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-verifactu-invoice-env-iframe-pdf" src="/es-verifactu-invoice-env.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-verifactu-invoice-env (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-verifactu-invoice-env-iframe-html" src="/es-verifactu-invoice-env.html?locale=es" title="es-verifactu-invoice-env (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-verifactu-invoice-freelance">
+<a class="card" id="es-verifactu-invoice-freelance" href="#es-verifactu-invoice-freelance-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -310,12 +472,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-verifactu-invoice-freelance
 		</div>
 	</div>
-	<div class="preview" id="es-verifactu-invoice-freelance-pdf">
-		<a class="preview-open preview-open-enter" href="#es-verifactu-invoice-freelance-pdf" aria-label="Open es-verifactu-invoice-freelance"></a>
-		<iframe src="/es-verifactu-invoice-freelance.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-verifactu-invoice-freelance" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-verifactu-invoice-freelance-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-freelance-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-verifactu-invoice-freelance-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-freelance-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-verifactu-invoice-freelance-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-verifactu-invoice-freelance-iframe-pdf" src="/es-verifactu-invoice-freelance.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-verifactu-invoice-freelance (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-verifactu-invoice-freelance-iframe-html" src="/es-verifactu-invoice-freelance.html?locale=es" title="es-verifactu-invoice-freelance (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-verifactu-invoice-full">
+<a class="card" id="es-verifactu-invoice-full" href="#es-verifactu-invoice-full-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -324,12 +493,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-verifactu-invoice-full
 		</div>
 	</div>
-	<div class="preview" id="es-verifactu-invoice-full-pdf">
-		<a class="preview-open preview-open-enter" href="#es-verifactu-invoice-full-pdf" aria-label="Open es-verifactu-invoice-full"></a>
-		<iframe src="/es-verifactu-invoice-full.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-verifactu-invoice-full" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-verifactu-invoice-full-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-full-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-verifactu-invoice-full-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-full-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-verifactu-invoice-full-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-verifactu-invoice-full-iframe-pdf" src="/es-verifactu-invoice-full.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-verifactu-invoice-full (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-verifactu-invoice-full-iframe-html" src="/es-verifactu-invoice-full.html?locale=es" title="es-verifactu-invoice-full (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-verifactu-invoice-limited-company">
+<a class="card" id="es-verifactu-invoice-limited-company" href="#es-verifactu-invoice-limited-company-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -338,12 +514,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-verifactu-invoice-limited-company
 		</div>
 	</div>
-	<div class="preview" id="es-verifactu-invoice-limited-company-pdf">
-		<a class="preview-open preview-open-enter" href="#es-verifactu-invoice-limited-company-pdf" aria-label="Open es-verifactu-invoice-limited-company"></a>
-		<iframe src="/es-verifactu-invoice-limited-company.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-verifactu-invoice-limited-company" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-verifactu-invoice-limited-company-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-limited-company-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-verifactu-invoice-limited-company-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-limited-company-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-verifactu-invoice-limited-company-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-verifactu-invoice-limited-company-iframe-pdf" src="/es-verifactu-invoice-limited-company.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-verifactu-invoice-limited-company (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-verifactu-invoice-limited-company-iframe-html" src="/es-verifactu-invoice-limited-company.html?locale=es" title="es-verifactu-invoice-limited-company (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-verifactu-invoice-simplified">
+<a class="card" id="es-verifactu-invoice-simplified" href="#es-verifactu-invoice-simplified-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -352,12 +535,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-verifactu-invoice-simplified
 		</div>
 	</div>
-	<div class="preview" id="es-verifactu-invoice-simplified-pdf">
-		<a class="preview-open preview-open-enter" href="#es-verifactu-invoice-simplified-pdf" aria-label="Open es-verifactu-invoice-simplified"></a>
-		<iframe src="/es-verifactu-invoice-simplified.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-verifactu-invoice-simplified" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-verifactu-invoice-simplified-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-simplified-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-verifactu-invoice-simplified-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-simplified-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-verifactu-invoice-simplified-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-verifactu-invoice-simplified-iframe-pdf" src="/es-verifactu-invoice-simplified.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-verifactu-invoice-simplified (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-verifactu-invoice-simplified-iframe-html" src="/es-verifactu-invoice-simplified.html?locale=es" title="es-verifactu-invoice-simplified (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-verifactu-invoice-tax-included">
+<a class="card" id="es-verifactu-invoice-tax-included" href="#es-verifactu-invoice-tax-included-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -366,12 +556,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-verifactu-invoice-tax-included
 		</div>
 	</div>
-	<div class="preview" id="es-verifactu-invoice-tax-included-pdf">
-		<a class="preview-open preview-open-enter" href="#es-verifactu-invoice-tax-included-pdf" aria-label="Open es-verifactu-invoice-tax-included"></a>
-		<iframe src="/es-verifactu-invoice-tax-included.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-verifactu-invoice-tax-included" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-verifactu-invoice-tax-included-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-tax-included-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-verifactu-invoice-tax-included-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-tax-included-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-verifactu-invoice-tax-included-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-verifactu-invoice-tax-included-iframe-pdf" src="/es-verifactu-invoice-tax-included.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-verifactu-invoice-tax-included (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-verifactu-invoice-tax-included-iframe-html" src="/es-verifactu-invoice-tax-included.html?locale=es" title="es-verifactu-invoice-tax-included (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-verifactu-invoice-tax-surcharge">
+<a class="card" id="es-verifactu-invoice-tax-surcharge" href="#es-verifactu-invoice-tax-surcharge-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -380,12 +577,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-verifactu-invoice-tax-surcharge
 		</div>
 	</div>
-	<div class="preview" id="es-verifactu-invoice-tax-surcharge-pdf">
-		<a class="preview-open preview-open-enter" href="#es-verifactu-invoice-tax-surcharge-pdf" aria-label="Open es-verifactu-invoice-tax-surcharge"></a>
-		<iframe src="/es-verifactu-invoice-tax-surcharge.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-verifactu-invoice-tax-surcharge" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-verifactu-invoice-tax-surcharge-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-tax-surcharge-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-verifactu-invoice-tax-surcharge-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-tax-surcharge-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-verifactu-invoice-tax-surcharge-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-verifactu-invoice-tax-surcharge-iframe-pdf" src="/es-verifactu-invoice-tax-surcharge.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-verifactu-invoice-tax-surcharge (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-verifactu-invoice-tax-surcharge-iframe-html" src="/es-verifactu-invoice-tax-surcharge.html?locale=es" title="es-verifactu-invoice-tax-surcharge (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-verifactu-invoice-usd">
+<a class="card" id="es-verifactu-invoice-usd" href="#es-verifactu-invoice-usd-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -394,12 +598,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-verifactu-invoice-usd
 		</div>
 	</div>
-	<div class="preview" id="es-verifactu-invoice-usd-pdf">
-		<a class="preview-open preview-open-enter" href="#es-verifactu-invoice-usd-pdf" aria-label="Open es-verifactu-invoice-usd"></a>
-		<iframe src="/es-verifactu-invoice-usd.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-verifactu-invoice-usd" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-verifactu-invoice-usd-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-usd-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-verifactu-invoice-usd-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-usd-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-verifactu-invoice-usd-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-verifactu-invoice-usd-iframe-pdf" src="/es-verifactu-invoice-usd.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-verifactu-invoice-usd (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-verifactu-invoice-usd-iframe-html" src="/es-verifactu-invoice-usd.html?locale=es" title="es-verifactu-invoice-usd (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-verifactu-invoice.adjustment">
+<a class="card" id="es-verifactu-invoice.adjustment" href="#es-verifactu-invoice.adjustment-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -408,12 +619,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-verifactu-invoice.adjustment
 		</div>
 	</div>
-	<div class="preview" id="es-verifactu-invoice.adjustment-pdf">
-		<a class="preview-open preview-open-enter" href="#es-verifactu-invoice.adjustment-pdf" aria-label="Open es-verifactu-invoice.adjustment"></a>
-		<iframe src="/es-verifactu-invoice.adjustment.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-verifactu-invoice.adjustment" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-verifactu-invoice.adjustment-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice.adjustment-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-verifactu-invoice.adjustment-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice.adjustment-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-verifactu-invoice.adjustment-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-verifactu-invoice.adjustment-iframe-pdf" src="/es-verifactu-invoice.adjustment.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-verifactu-invoice.adjustment (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-verifactu-invoice.adjustment-iframe-html" src="/es-verifactu-invoice.adjustment.html?locale=es" title="es-verifactu-invoice.adjustment (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-verifactu-invoice">
+<a class="card" id="es-verifactu-invoice" href="#es-verifactu-invoice-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -422,12 +640,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-verifactu-invoice
 		</div>
 	</div>
-	<div class="preview" id="es-verifactu-invoice-pdf">
-		<a class="preview-open preview-open-enter" href="#es-verifactu-invoice-pdf" aria-label="Open es-verifactu-invoice"></a>
-		<iframe src="/es-verifactu-invoice.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-verifactu-invoice" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-verifactu-invoice-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-verifactu-invoice-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-invoice-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-verifactu-invoice-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-verifactu-invoice-iframe-pdf" src="/es-verifactu-invoice.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-verifactu-invoice (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-verifactu-invoice-iframe-html" src="/es-verifactu-invoice.html?locale=es" title="es-verifactu-invoice (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="es-verifactu-receipt-with-tax">
+<a class="card" id="es-verifactu-receipt-with-tax" href="#es-verifactu-receipt-with-tax-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/es.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -436,12 +661,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			es-verifactu-receipt-with-tax
 		</div>
 	</div>
-	<div class="preview" id="es-verifactu-receipt-with-tax-pdf">
-		<a class="preview-open preview-open-enter" href="#es-verifactu-receipt-with-tax-pdf" aria-label="Open es-verifactu-receipt-with-tax"></a>
-		<iframe src="/es-verifactu-receipt-with-tax.pdf?locale=es#zoom=fit&amp;toolbar=0" title="es-verifactu-receipt-with-tax" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="es-verifactu-receipt-with-tax-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-receipt-with-tax-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="es-verifactu-receipt-with-tax-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="es-verifactu-receipt-with-tax-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="es-verifactu-receipt-with-tax-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="es-verifactu-receipt-with-tax-iframe-pdf" src="/es-verifactu-receipt-with-tax.pdf?locale=es#view=Fit&amp;toolbar=0" title="es-verifactu-receipt-with-tax (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="es-verifactu-receipt-with-tax-iframe-html" src="/es-verifactu-receipt-with-tax.html?locale=es" title="es-verifactu-receipt-with-tax (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="gr-mydata-invoice">
+<a class="card" id="gr-mydata-invoice" href="#gr-mydata-invoice-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/gr.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -450,12 +682,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			gr-mydata-invoice
 		</div>
 	</div>
-	<div class="preview" id="gr-mydata-invoice-pdf">
-		<a class="preview-open preview-open-enter" href="#gr-mydata-invoice-pdf" aria-label="Open gr-mydata-invoice"></a>
-		<iframe src="/gr-mydata-invoice.pdf?locale=el#zoom=fit&amp;toolbar=0" title="gr-mydata-invoice" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="gr-mydata-invoice-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="gr-mydata-invoice-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="gr-mydata-invoice-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="gr-mydata-invoice-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="gr-mydata-invoice-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="gr-mydata-invoice-iframe-pdf" src="/gr-mydata-invoice.pdf?locale=el#view=Fit&amp;toolbar=0" title="gr-mydata-invoice (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="gr-mydata-invoice-iframe-html" src="/gr-mydata-invoice.html?locale=el" title="gr-mydata-invoice (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="gr-mydata-other-rents-income">
+<a class="card" id="gr-mydata-other-rents-income" href="#gr-mydata-other-rents-income-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/gr.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -464,12 +703,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			gr-mydata-other-rents-income
 		</div>
 	</div>
-	<div class="preview" id="gr-mydata-other-rents-income-pdf">
-		<a class="preview-open preview-open-enter" href="#gr-mydata-other-rents-income-pdf" aria-label="Open gr-mydata-other-rents-income"></a>
-		<iframe src="/gr-mydata-other-rents-income.pdf?locale=el#zoom=fit&amp;toolbar=0" title="gr-mydata-other-rents-income" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="gr-mydata-other-rents-income-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="gr-mydata-other-rents-income-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="gr-mydata-other-rents-income-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="gr-mydata-other-rents-income-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="gr-mydata-other-rents-income-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="gr-mydata-other-rents-income-iframe-pdf" src="/gr-mydata-other-rents-income.pdf?locale=el#view=Fit&amp;toolbar=0" title="gr-mydata-other-rents-income (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="gr-mydata-other-rents-income-iframe-html" src="/gr-mydata-other-rents-income.html?locale=el" title="gr-mydata-other-rents-income (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="it-sdi-invoice-hotel-b2c">
+<a class="card" id="it-sdi-invoice-hotel-b2c" href="#it-sdi-invoice-hotel-b2c-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/it.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -478,12 +724,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			it-sdi-invoice-hotel-b2c
 		</div>
 	</div>
-	<div class="preview" id="it-sdi-invoice-hotel-b2c-pdf">
-		<a class="preview-open preview-open-enter" href="#it-sdi-invoice-hotel-b2c-pdf" aria-label="Open it-sdi-invoice-hotel-b2c"></a>
-		<iframe src="/it-sdi-invoice-hotel-b2c.pdf?locale=it#zoom=fit&amp;toolbar=0" title="it-sdi-invoice-hotel-b2c" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="it-sdi-invoice-hotel-b2c-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="it-sdi-invoice-hotel-b2c-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="it-sdi-invoice-hotel-b2c-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="it-sdi-invoice-hotel-b2c-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="it-sdi-invoice-hotel-b2c-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="it-sdi-invoice-hotel-b2c-iframe-pdf" src="/it-sdi-invoice-hotel-b2c.pdf?locale=it#view=Fit&amp;toolbar=0" title="it-sdi-invoice-hotel-b2c (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="it-sdi-invoice-hotel-b2c-iframe-html" src="/it-sdi-invoice-hotel-b2c.html?locale=it" title="it-sdi-invoice-hotel-b2c (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="it-sdi-invoice-purchase-code">
+<a class="card" id="it-sdi-invoice-purchase-code" href="#it-sdi-invoice-purchase-code-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/it.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -492,12 +745,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			it-sdi-invoice-purchase-code
 		</div>
 	</div>
-	<div class="preview" id="it-sdi-invoice-purchase-code-pdf">
-		<a class="preview-open preview-open-enter" href="#it-sdi-invoice-purchase-code-pdf" aria-label="Open it-sdi-invoice-purchase-code"></a>
-		<iframe src="/it-sdi-invoice-purchase-code.pdf?locale=it#zoom=fit&amp;toolbar=0" title="it-sdi-invoice-purchase-code" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="it-sdi-invoice-purchase-code-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="it-sdi-invoice-purchase-code-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="it-sdi-invoice-purchase-code-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="it-sdi-invoice-purchase-code-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="it-sdi-invoice-purchase-code-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="it-sdi-invoice-purchase-code-iframe-pdf" src="/it-sdi-invoice-purchase-code.pdf?locale=it#view=Fit&amp;toolbar=0" title="it-sdi-invoice-purchase-code (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="it-sdi-invoice-purchase-code-iframe-html" src="/it-sdi-invoice-purchase-code.html?locale=it" title="it-sdi-invoice-purchase-code (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="mx-sat-invoice-acuentaterceros">
+<a class="card" id="mx-sat-invoice-acuentaterceros" href="#mx-sat-invoice-acuentaterceros-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/mx.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -506,12 +766,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			mx-sat-invoice-acuentaterceros
 		</div>
 	</div>
-	<div class="preview" id="mx-sat-invoice-acuentaterceros-pdf">
-		<a class="preview-open preview-open-enter" href="#mx-sat-invoice-acuentaterceros-pdf" aria-label="Open mx-sat-invoice-acuentaterceros"></a>
-		<iframe src="/mx-sat-invoice-acuentaterceros.pdf?locale=es#zoom=fit&amp;toolbar=0" title="mx-sat-invoice-acuentaterceros" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="mx-sat-invoice-acuentaterceros-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="mx-sat-invoice-acuentaterceros-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="mx-sat-invoice-acuentaterceros-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="mx-sat-invoice-acuentaterceros-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="mx-sat-invoice-acuentaterceros-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="mx-sat-invoice-acuentaterceros-iframe-pdf" src="/mx-sat-invoice-acuentaterceros.pdf?locale=es#view=Fit&amp;toolbar=0" title="mx-sat-invoice-acuentaterceros (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="mx-sat-invoice-acuentaterceros-iframe-html" src="/mx-sat-invoice-acuentaterceros.html?locale=es" title="mx-sat-invoice-acuentaterceros (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="mx-sat-invoice-food-voucher">
+<a class="card" id="mx-sat-invoice-food-voucher" href="#mx-sat-invoice-food-voucher-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/mx.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -520,12 +787,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			mx-sat-invoice-food-voucher
 		</div>
 	</div>
-	<div class="preview" id="mx-sat-invoice-food-voucher-pdf">
-		<a class="preview-open preview-open-enter" href="#mx-sat-invoice-food-voucher-pdf" aria-label="Open mx-sat-invoice-food-voucher"></a>
-		<iframe src="/mx-sat-invoice-food-voucher.pdf?locale=es#zoom=fit&amp;toolbar=0" title="mx-sat-invoice-food-voucher" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="mx-sat-invoice-food-voucher-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="mx-sat-invoice-food-voucher-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="mx-sat-invoice-food-voucher-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="mx-sat-invoice-food-voucher-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="mx-sat-invoice-food-voucher-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="mx-sat-invoice-food-voucher-iframe-pdf" src="/mx-sat-invoice-food-voucher.pdf?locale=es#view=Fit&amp;toolbar=0" title="mx-sat-invoice-food-voucher (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="mx-sat-invoice-food-voucher-iframe-html" src="/mx-sat-invoice-food-voucher.html?locale=es" title="mx-sat-invoice-food-voucher (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="mx-sat-invoice-fuel-balance">
+<a class="card" id="mx-sat-invoice-fuel-balance" href="#mx-sat-invoice-fuel-balance-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/mx.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -534,12 +808,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			mx-sat-invoice-fuel-balance
 		</div>
 	</div>
-	<div class="preview" id="mx-sat-invoice-fuel-balance-pdf">
-		<a class="preview-open preview-open-enter" href="#mx-sat-invoice-fuel-balance-pdf" aria-label="Open mx-sat-invoice-fuel-balance"></a>
-		<iframe src="/mx-sat-invoice-fuel-balance.pdf?locale=es#zoom=fit&amp;toolbar=0" title="mx-sat-invoice-fuel-balance" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="mx-sat-invoice-fuel-balance-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="mx-sat-invoice-fuel-balance-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="mx-sat-invoice-fuel-balance-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="mx-sat-invoice-fuel-balance-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="mx-sat-invoice-fuel-balance-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="mx-sat-invoice-fuel-balance-iframe-pdf" src="/mx-sat-invoice-fuel-balance.pdf?locale=es#view=Fit&amp;toolbar=0" title="mx-sat-invoice-fuel-balance (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="mx-sat-invoice-fuel-balance-iframe-html" src="/mx-sat-invoice-fuel-balance.html?locale=es" title="mx-sat-invoice-fuel-balance (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="mx-sat-invoice-ieps">
+<a class="card" id="mx-sat-invoice-ieps" href="#mx-sat-invoice-ieps-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/mx.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -548,12 +829,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			mx-sat-invoice-ieps
 		</div>
 	</div>
-	<div class="preview" id="mx-sat-invoice-ieps-pdf">
-		<a class="preview-open preview-open-enter" href="#mx-sat-invoice-ieps-pdf" aria-label="Open mx-sat-invoice-ieps"></a>
-		<iframe src="/mx-sat-invoice-ieps.pdf?locale=es#zoom=fit&amp;toolbar=0" title="mx-sat-invoice-ieps" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="mx-sat-invoice-ieps-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="mx-sat-invoice-ieps-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="mx-sat-invoice-ieps-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="mx-sat-invoice-ieps-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="mx-sat-invoice-ieps-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="mx-sat-invoice-ieps-iframe-pdf" src="/mx-sat-invoice-ieps.pdf?locale=es#view=Fit&amp;toolbar=0" title="mx-sat-invoice-ieps (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="mx-sat-invoice-ieps-iframe-html" src="/mx-sat-invoice-ieps.html?locale=es" title="mx-sat-invoice-ieps (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="mx-sat-invoice">
+<a class="card" id="mx-sat-invoice" href="#mx-sat-invoice-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/mx.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -562,12 +850,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			mx-sat-invoice
 		</div>
 	</div>
-	<div class="preview" id="mx-sat-invoice-pdf">
-		<a class="preview-open preview-open-enter" href="#mx-sat-invoice-pdf" aria-label="Open mx-sat-invoice"></a>
-		<iframe src="/mx-sat-invoice.pdf?locale=es#zoom=fit&amp;toolbar=0" title="mx-sat-invoice" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="mx-sat-invoice-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="mx-sat-invoice-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="mx-sat-invoice-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="mx-sat-invoice-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="mx-sat-invoice-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="mx-sat-invoice-iframe-pdf" src="/mx-sat-invoice.pdf?locale=es#view=Fit&amp;toolbar=0" title="mx-sat-invoice (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="mx-sat-invoice-iframe-html" src="/mx-sat-invoice.html?locale=es" title="mx-sat-invoice (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="pl-ksef-invoice">
+<a class="card" id="pl-ksef-invoice" href="#pl-ksef-invoice-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/pl.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -576,12 +871,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			pl-ksef-invoice
 		</div>
 	</div>
-	<div class="preview" id="pl-ksef-invoice-pdf">
-		<a class="preview-open preview-open-enter" href="#pl-ksef-invoice-pdf" aria-label="Open pl-ksef-invoice"></a>
-		<iframe src="/pl-ksef-invoice.pdf?locale=pl#zoom=fit&amp;toolbar=0" title="pl-ksef-invoice" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="pl-ksef-invoice-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="pl-ksef-invoice-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="pl-ksef-invoice-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="pl-ksef-invoice-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="pl-ksef-invoice-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="pl-ksef-invoice-iframe-pdf" src="/pl-ksef-invoice.pdf?locale=pl#view=Fit&amp;toolbar=0" title="pl-ksef-invoice (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="pl-ksef-invoice-iframe-html" src="/pl-ksef-invoice.html?locale=pl" title="pl-ksef-invoice (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="pt-at-delivery-full">
+<a class="card" id="pt-at-delivery-full" href="#pt-at-delivery-full-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/pt.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -590,12 +892,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			pt-at-delivery-full
 		</div>
 	</div>
-	<div class="preview" id="pt-at-delivery-full-pdf">
-		<a class="preview-open preview-open-enter" href="#pt-at-delivery-full-pdf" aria-label="Open pt-at-delivery-full"></a>
-		<iframe src="/pt-at-delivery-full.pdf?locale=pt#zoom=fit&amp;toolbar=0" title="pt-at-delivery-full" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="pt-at-delivery-full-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="pt-at-delivery-full-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="pt-at-delivery-full-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="pt-at-delivery-full-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="pt-at-delivery-full-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="pt-at-delivery-full-iframe-pdf" src="/pt-at-delivery-full.pdf?locale=pt#view=Fit&amp;toolbar=0" title="pt-at-delivery-full (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="pt-at-delivery-full-iframe-html" src="/pt-at-delivery-full.html?locale=pt" title="pt-at-delivery-full (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="pt-at-delivery-non-valued">
+<a class="card" id="pt-at-delivery-non-valued" href="#pt-at-delivery-non-valued-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/pt.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -604,12 +913,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			pt-at-delivery-non-valued
 		</div>
 	</div>
-	<div class="preview" id="pt-at-delivery-non-valued-pdf">
-		<a class="preview-open preview-open-enter" href="#pt-at-delivery-non-valued-pdf" aria-label="Open pt-at-delivery-non-valued"></a>
-		<iframe src="/pt-at-delivery-non-valued.pdf?locale=pt#zoom=fit&amp;toolbar=0" title="pt-at-delivery-non-valued" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="pt-at-delivery-non-valued-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="pt-at-delivery-non-valued-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="pt-at-delivery-non-valued-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="pt-at-delivery-non-valued-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="pt-at-delivery-non-valued-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="pt-at-delivery-non-valued-iframe-pdf" src="/pt-at-delivery-non-valued.pdf?locale=pt#view=Fit&amp;toolbar=0" title="pt-at-delivery-non-valued (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="pt-at-delivery-non-valued-iframe-html" src="/pt-at-delivery-non-valued.html?locale=pt" title="pt-at-delivery-non-valued (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="pt-at-delivery">
+<a class="card" id="pt-at-delivery" href="#pt-at-delivery-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/pt.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -618,12 +934,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			pt-at-delivery
 		</div>
 	</div>
-	<div class="preview" id="pt-at-delivery-pdf">
-		<a class="preview-open preview-open-enter" href="#pt-at-delivery-pdf" aria-label="Open pt-at-delivery"></a>
-		<iframe src="/pt-at-delivery.pdf?locale=pt#zoom=fit&amp;toolbar=0" title="pt-at-delivery" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="pt-at-delivery-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="pt-at-delivery-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="pt-at-delivery-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="pt-at-delivery-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="pt-at-delivery-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="pt-at-delivery-iframe-pdf" src="/pt-at-delivery.pdf?locale=pt#view=Fit&amp;toolbar=0" title="pt-at-delivery (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="pt-at-delivery-iframe-html" src="/pt-at-delivery.html?locale=pt" title="pt-at-delivery (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="pt-at-invoice-exempt">
+<a class="card" id="pt-at-invoice-exempt" href="#pt-at-invoice-exempt-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/pt.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -632,12 +955,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			pt-at-invoice-exempt
 		</div>
 	</div>
-	<div class="preview" id="pt-at-invoice-exempt-pdf">
-		<a class="preview-open preview-open-enter" href="#pt-at-invoice-exempt-pdf" aria-label="Open pt-at-invoice-exempt"></a>
-		<iframe src="/pt-at-invoice-exempt.pdf?locale=pt#zoom=fit&amp;toolbar=0" title="pt-at-invoice-exempt" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="pt-at-invoice-exempt-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="pt-at-invoice-exempt-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="pt-at-invoice-exempt-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="pt-at-invoice-exempt-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="pt-at-invoice-exempt-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="pt-at-invoice-exempt-iframe-pdf" src="/pt-at-invoice-exempt.pdf?locale=pt#view=Fit&amp;toolbar=0" title="pt-at-invoice-exempt (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="pt-at-invoice-exempt-iframe-html" src="/pt-at-invoice-exempt.html?locale=pt" title="pt-at-invoice-exempt (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="pt-at-invoice-manual">
+<a class="card" id="pt-at-invoice-manual" href="#pt-at-invoice-manual-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/pt.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -646,12 +976,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			pt-at-invoice-manual
 		</div>
 	</div>
-	<div class="preview" id="pt-at-invoice-manual-pdf">
-		<a class="preview-open preview-open-enter" href="#pt-at-invoice-manual-pdf" aria-label="Open pt-at-invoice-manual"></a>
-		<iframe src="/pt-at-invoice-manual.pdf?locale=pt#zoom=fit&amp;toolbar=0" title="pt-at-invoice-manual" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="pt-at-invoice-manual-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="pt-at-invoice-manual-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="pt-at-invoice-manual-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="pt-at-invoice-manual-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="pt-at-invoice-manual-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="pt-at-invoice-manual-iframe-pdf" src="/pt-at-invoice-manual.pdf?locale=pt#view=Fit&amp;toolbar=0" title="pt-at-invoice-manual (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="pt-at-invoice-manual-iframe-html" src="/pt-at-invoice-manual.html?locale=pt" title="pt-at-invoice-manual (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="pt-at-invoice-multipage">
+<a class="card" id="pt-at-invoice-multipage" href="#pt-at-invoice-multipage-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/pt.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -660,12 +997,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			pt-at-invoice-multipage
 		</div>
 	</div>
-	<div class="preview" id="pt-at-invoice-multipage-pdf">
-		<a class="preview-open preview-open-enter" href="#pt-at-invoice-multipage-pdf" aria-label="Open pt-at-invoice-multipage"></a>
-		<iframe src="/pt-at-invoice-multipage.pdf?locale=pt#zoom=fit&amp;toolbar=0" title="pt-at-invoice-multipage" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="pt-at-invoice-multipage-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="pt-at-invoice-multipage-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="pt-at-invoice-multipage-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="pt-at-invoice-multipage-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="pt-at-invoice-multipage-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="pt-at-invoice-multipage-iframe-pdf" src="/pt-at-invoice-multipage.pdf?locale=pt#view=Fit&amp;toolbar=0" title="pt-at-invoice-multipage (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="pt-at-invoice-multipage-iframe-html" src="/pt-at-invoice-multipage.html?locale=pt" title="pt-at-invoice-multipage (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="pt-at-invoice-simplified">
+<a class="card" id="pt-at-invoice-simplified" href="#pt-at-invoice-simplified-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/pt.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -674,12 +1018,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			pt-at-invoice-simplified
 		</div>
 	</div>
-	<div class="preview" id="pt-at-invoice-simplified-pdf">
-		<a class="preview-open preview-open-enter" href="#pt-at-invoice-simplified-pdf" aria-label="Open pt-at-invoice-simplified"></a>
-		<iframe src="/pt-at-invoice-simplified.pdf?locale=pt#zoom=fit&amp;toolbar=0" title="pt-at-invoice-simplified" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="pt-at-invoice-simplified-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="pt-at-invoice-simplified-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="pt-at-invoice-simplified-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="pt-at-invoice-simplified-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="pt-at-invoice-simplified-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="pt-at-invoice-simplified-iframe-pdf" src="/pt-at-invoice-simplified.pdf?locale=pt#view=Fit&amp;toolbar=0" title="pt-at-invoice-simplified (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="pt-at-invoice-simplified-iframe-html" src="/pt-at-invoice-simplified.html?locale=pt" title="pt-at-invoice-simplified (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="pt-at-invoice.sandbox">
+<a class="card" id="pt-at-invoice.sandbox" href="#pt-at-invoice.sandbox-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/pt.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -688,12 +1039,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			pt-at-invoice.sandbox
 		</div>
 	</div>
-	<div class="preview" id="pt-at-invoice.sandbox-pdf">
-		<a class="preview-open preview-open-enter" href="#pt-at-invoice.sandbox-pdf" aria-label="Open pt-at-invoice.sandbox"></a>
-		<iframe src="/pt-at-invoice.sandbox.pdf?locale=pt#zoom=fit&amp;toolbar=0" title="pt-at-invoice.sandbox" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="pt-at-invoice.sandbox-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="pt-at-invoice.sandbox-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="pt-at-invoice.sandbox-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="pt-at-invoice.sandbox-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="pt-at-invoice.sandbox-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="pt-at-invoice.sandbox-iframe-pdf" src="/pt-at-invoice.sandbox.pdf?locale=pt#view=Fit&amp;toolbar=0" title="pt-at-invoice.sandbox (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="pt-at-invoice.sandbox-iframe-html" src="/pt-at-invoice.sandbox.html?locale=pt" title="pt-at-invoice.sandbox (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="pt-at-invoice.void">
+<a class="card" id="pt-at-invoice.void" href="#pt-at-invoice.void-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/pt.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -702,12 +1060,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			pt-at-invoice.void
 		</div>
 	</div>
-	<div class="preview" id="pt-at-invoice.void-pdf">
-		<a class="preview-open preview-open-enter" href="#pt-at-invoice.void-pdf" aria-label="Open pt-at-invoice.void"></a>
-		<iframe src="/pt-at-invoice.void.pdf?locale=pt#zoom=fit&amp;toolbar=0" title="pt-at-invoice.void" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="pt-at-invoice.void-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="pt-at-invoice.void-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="pt-at-invoice.void-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="pt-at-invoice.void-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="pt-at-invoice.void-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="pt-at-invoice.void-iframe-pdf" src="/pt-at-invoice.void.pdf?locale=pt#view=Fit&amp;toolbar=0" title="pt-at-invoice.void (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="pt-at-invoice.void-iframe-html" src="/pt-at-invoice.void.html?locale=pt" title="pt-at-invoice.void (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="pt-at-order-full">
+<a class="card" id="pt-at-order-full" href="#pt-at-order-full-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/pt.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -716,12 +1081,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			pt-at-order-full
 		</div>
 	</div>
-	<div class="preview" id="pt-at-order-full-pdf">
-		<a class="preview-open preview-open-enter" href="#pt-at-order-full-pdf" aria-label="Open pt-at-order-full"></a>
-		<iframe src="/pt-at-order-full.pdf?locale=pt#zoom=fit&amp;toolbar=0" title="pt-at-order-full" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="pt-at-order-full-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="pt-at-order-full-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="pt-at-order-full-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="pt-at-order-full-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="pt-at-order-full-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="pt-at-order-full-iframe-pdf" src="/pt-at-order-full.pdf?locale=pt#view=Fit&amp;toolbar=0" title="pt-at-order-full (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="pt-at-order-full-iframe-html" src="/pt-at-order-full.html?locale=pt" title="pt-at-order-full (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="pt-at-order">
+<a class="card" id="pt-at-order" href="#pt-at-order-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/pt.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -730,12 +1102,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			pt-at-order
 		</div>
 	</div>
-	<div class="preview" id="pt-at-order-pdf">
-		<a class="preview-open preview-open-enter" href="#pt-at-order-pdf" aria-label="Open pt-at-order"></a>
-		<iframe src="/pt-at-order.pdf?locale=pt#zoom=fit&amp;toolbar=0" title="pt-at-order" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="pt-at-order-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="pt-at-order-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="pt-at-order-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="pt-at-order-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="pt-at-order-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="pt-at-order-iframe-pdf" src="/pt-at-order.pdf?locale=pt#view=Fit&amp;toolbar=0" title="pt-at-order (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="pt-at-order-iframe-html" src="/pt-at-order.html?locale=pt" title="pt-at-order (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="pt-at-receipt-full">
+<a class="card" id="pt-at-receipt-full" href="#pt-at-receipt-full-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/pt.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -744,12 +1123,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			pt-at-receipt-full
 		</div>
 	</div>
-	<div class="preview" id="pt-at-receipt-full-pdf">
-		<a class="preview-open preview-open-enter" href="#pt-at-receipt-full-pdf" aria-label="Open pt-at-receipt-full"></a>
-		<iframe src="/pt-at-receipt-full.pdf?locale=pt#zoom=fit&amp;toolbar=0" title="pt-at-receipt-full" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="pt-at-receipt-full-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="pt-at-receipt-full-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="pt-at-receipt-full-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="pt-at-receipt-full-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="pt-at-receipt-full-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="pt-at-receipt-full-iframe-pdf" src="/pt-at-receipt-full.pdf?locale=pt#view=Fit&amp;toolbar=0" title="pt-at-receipt-full (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="pt-at-receipt-full-iframe-html" src="/pt-at-receipt-full.html?locale=pt" title="pt-at-receipt-full (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="pt-at-receipt-partial">
+<a class="card" id="pt-at-receipt-partial" href="#pt-at-receipt-partial-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/pt.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -758,12 +1144,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			pt-at-receipt-partial
 		</div>
 	</div>
-	<div class="preview" id="pt-at-receipt-partial-pdf">
-		<a class="preview-open preview-open-enter" href="#pt-at-receipt-partial-pdf" aria-label="Open pt-at-receipt-partial"></a>
-		<iframe src="/pt-at-receipt-partial.pdf?locale=pt#zoom=fit&amp;toolbar=0" title="pt-at-receipt-partial" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="pt-at-receipt-partial-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="pt-at-receipt-partial-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="pt-at-receipt-partial-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="pt-at-receipt-partial-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="pt-at-receipt-partial-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="pt-at-receipt-partial-iframe-pdf" src="/pt-at-receipt-partial.pdf?locale=pt#view=Fit&amp;toolbar=0" title="pt-at-receipt-partial (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="pt-at-receipt-partial-iframe-html" src="/pt-at-receipt-partial.html?locale=pt" title="pt-at-receipt-partial (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="pt-at-receipt">
+<a class="card" id="pt-at-receipt" href="#pt-at-receipt-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/pt.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -772,12 +1165,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			pt-at-receipt
 		</div>
 	</div>
-	<div class="preview" id="pt-at-receipt-pdf">
-		<a class="preview-open preview-open-enter" href="#pt-at-receipt-pdf" aria-label="Open pt-at-receipt"></a>
-		<iframe src="/pt-at-receipt.pdf?locale=pt#zoom=fit&amp;toolbar=0" title="pt-at-receipt" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="pt-at-receipt-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="pt-at-receipt-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="pt-at-receipt-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="pt-at-receipt-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="pt-at-receipt-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="pt-at-receipt-iframe-pdf" src="/pt-at-receipt.pdf?locale=pt#view=Fit&amp;toolbar=0" title="pt-at-receipt (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="pt-at-receipt-iframe-html" src="/pt-at-receipt.html?locale=pt" title="pt-at-receipt (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="sa-invoice-simplified">
+<a class="card" id="sa-invoice-simplified" href="#sa-invoice-simplified-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/sa.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -786,12 +1186,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			sa-invoice-simplified
 		</div>
 	</div>
-	<div class="preview" id="sa-invoice-simplified-pdf">
-		<a class="preview-open preview-open-enter" href="#sa-invoice-simplified-pdf" aria-label="Open sa-invoice-simplified"></a>
-		<iframe src="/sa-invoice-simplified.pdf?locale=ar#zoom=fit&amp;toolbar=0" title="sa-invoice-simplified" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="sa-invoice-simplified-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="sa-invoice-simplified-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="sa-invoice-simplified-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="sa-invoice-simplified-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="sa-invoice-simplified-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="sa-invoice-simplified-iframe-pdf" src="/sa-invoice-simplified.pdf?locale=ar#view=Fit&amp;toolbar=0" title="sa-invoice-simplified (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="sa-invoice-simplified-iframe-html" src="/sa-invoice-simplified.html?locale=ar" title="sa-invoice-simplified (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="us-invoice-seller">
+<a class="card" id="us-invoice-seller" href="#us-invoice-seller-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/us.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -800,12 +1207,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			us-invoice-seller
 		</div>
 	</div>
-	<div class="preview" id="us-invoice-seller-pdf">
-		<a class="preview-open preview-open-enter" href="#us-invoice-seller-pdf" aria-label="Open us-invoice-seller"></a>
-		<iframe src="/us-invoice-seller.pdf?locale=en#zoom=fit&amp;toolbar=0" title="us-invoice-seller" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="us-invoice-seller-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="us-invoice-seller-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="us-invoice-seller-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="us-invoice-seller-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="us-invoice-seller-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="us-invoice-seller-iframe-pdf" src="/us-invoice-seller.pdf?locale=en#view=Fit&amp;toolbar=0" title="us-invoice-seller (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="us-invoice-seller-iframe-html" src="/us-invoice-seller.html?locale=en" title="us-invoice-seller (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="us-invoice">
+<a class="card" id="us-invoice" href="#us-invoice-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/us.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -814,12 +1228,19 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			us-invoice
 		</div>
 	</div>
-	<div class="preview" id="us-invoice-pdf">
-		<a class="preview-open preview-open-enter" href="#us-invoice-pdf" aria-label="Open us-invoice"></a>
-		<iframe src="/us-invoice.pdf?locale=en#zoom=fit&amp;toolbar=0" title="us-invoice" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="us-invoice-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="us-invoice-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="us-invoice-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="us-invoice-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="us-invoice-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="us-invoice-iframe-pdf" src="/us-invoice.pdf?locale=en#view=Fit&amp;toolbar=0" title="us-invoice (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="us-invoice-iframe-html" src="/us-invoice.html?locale=en" title="us-invoice (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
-<article class="card" id="zw-invoice-usd">
+<a class="card" id="zw-invoice-usd" href="#zw-invoice-usd-pdf" >
 	<div class="card-header">
 		<div data-avatar class="card-avatar">
 			<img class="card-avatar-img" src="https://assets.invopop.com/flags/zw.svg" alt="" width="16" height="16" loading="lazy" decoding="async">
@@ -828,65 +1249,63 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			zw-invoice-usd
 		</div>
 	</div>
-	<div class="preview" id="zw-invoice-usd-pdf">
-		<a class="preview-open preview-open-enter" href="#zw-invoice-usd-pdf" aria-label="Open zw-invoice-usd"></a>
-		<iframe src="/zw-invoice-usd.pdf?locale=en#zoom=fit&amp;toolbar=0" title="zw-invoice-usd" loading="lazy"></iframe></div>
-</article>
+	<div class="preview" id="zw-invoice-usd-pdf" data-active-tab="pdf">
+		<div role="tablist" aria-label="Preview format" class="preview-tabs">
+			<button type="button" role="tab" class="preview-tab" id="zw-invoice-usd-tab-pdf" data-tab="pdf" data-state="active" aria-selected="true" aria-controls="zw-invoice-usd-iframe-pdf">PDF</button>
+			<button type="button" role="tab" class="preview-tab" id="zw-invoice-usd-tab-html" data-tab="html" data-state="inactive" aria-selected="false" aria-controls="zw-invoice-usd-iframe-html" tabindex="-1">HTML</button>
+		</div>
+		<div class="preview-viewport">
+			<iframe class="preview-pdf" id="zw-invoice-usd-iframe-pdf" src="/zw-invoice-usd.pdf?locale=en#view=Fit&amp;toolbar=0" title="zw-invoice-usd (PDF)" tabindex="-1" loading="lazy"></iframe>
+			<iframe class="preview-html" id="zw-invoice-usd-iframe-html" src="/zw-invoice-usd.html?locale=en" title="zw-invoice-usd (HTML)" tabindex="-1" loading="lazy"></iframe>
+		</div>
+	</div>
+</a>
 
 </div>
 <script>
-(function () {
 	var input = document.getElementById("gallery-search");
-	var grid = document.getElementById("gallery-grid");
-	if (!input || !grid) return;
+	var cards = document.querySelectorAll(".card");
+	var previews = document.querySelectorAll(".preview");
 
-	var cards = grid.querySelectorAll(".card");
-	var selectedEl = null;
+	input.addEventListener("input", filter);
 
-	function visibleCards() {
-		var out = [];
-		for (var i = 0; i < cards.length; i++) {
-			if (!cards[i].hidden) out.push(cards[i]);
+	function setPreviewTab(preview, mode) {
+		preview.setAttribute("data-active-tab", mode);
+		var tabs = preview.querySelectorAll('[role="tab"]');
+		var pdfFrame = preview.querySelector("iframe.preview-pdf");
+		var htmlFrame = preview.querySelector("iframe.preview-html");
+		for (var j = 0; j < tabs.length; j++) {
+			var tab = tabs[j];
+			var active = tab.getAttribute("data-tab") === mode;
+			tab.setAttribute("data-state", active ? "active" : "inactive");
+			tab.setAttribute("aria-selected", active ? "true" : "false");
+			tab.tabIndex = active ? 0 : -1;
 		}
-		return out;
+		if (pdfFrame) pdfFrame.setAttribute("aria-hidden", mode === "html" ? "true" : "false");
+		if (htmlFrame) htmlFrame.setAttribute("aria-hidden", mode === "pdf" ? "true" : "false");
 	}
 
-	function columnCount(vis) {
-		if (vis.length <= 1) return 1;
-		var top0 = vis[0].getBoundingClientRect().top;
-		var n = 0;
-		for (var i = 0; i < vis.length; i++) {
-			if (Math.abs(vis[i].getBoundingClientRect().top - top0) < 4) n++;
-			else break;
+	previews.forEach(function (preview) {
+		var tabs = preview.querySelectorAll('[role="tab"]');
+		for (var t = 0; t < tabs.length; t++) {
+			tabs[t].addEventListener("click", function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+				setPreviewTab(preview, this.getAttribute("data-tab"));
+			});
 		}
-		return n || 1;
-	}
+		setPreviewTab(preview, preview.getAttribute("data-active-tab") || "pdf");
+	});
 
-	function applySelectionVisual() {
-		for (var i = 0; i < cards.length; i++) cards[i].classList.remove("card-selected");
-		if (selectedEl && document.activeElement === grid) {
-			selectedEl.classList.add("card-selected");
-			grid.setAttribute("aria-activedescendant", selectedEl.id);
-		} else {
-			grid.removeAttribute("aria-activedescendant");
-		}
-	}
-
-	function select(el) {
-		selectedEl = el;
-		applySelectionVisual();
-	}
-
-	function ensureSelection() {
-		var v = visibleCards();
-		if (v.length === 0) {
-			selectedEl = null;
-			applySelectionVisual();
-			return;
-		}
-		if (!selectedEl || selectedEl.hidden || v.indexOf(selectedEl) === -1) selectedEl = v[0];
-		applySelectionVisual();
-	}
+	previews.forEach(preview => {
+		preview.addEventListener("click", function (e) {
+			
+			setTimeout(function () {
+				window.location.hash = "#";
+				history.replaceState(null, "", location.pathname + location.search);
+			}, 50);
+		});
+	});
 
 	function filter() {
 		var q = input.value.trim().toLowerCase();
@@ -894,113 +1313,21 @@ body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background:
 			var id = cards[i].id.toLowerCase();
 			cards[i].hidden = !!(q && id.indexOf(q) === -1);
 		}
-		ensureSelection();
 	}
-
-	function isModalOpen() {
-		var h = location.hash;
-		if (!h || h.length < 2) return false;
-		var el = document.getElementById(decodeURIComponent(h.slice(1)));
-		return !!(el && el.classList.contains("preview"));
-	}
-
-	function openSelectedPreview() {
-		if (!selectedEl || selectedEl.hidden || isModalOpen()) return;
-		location.hash = selectedEl.id + "-pdf";
-	}
-
-	input.addEventListener("input", filter);
-	filter();
-
-	grid.addEventListener("focus", function () {
-		ensureSelection();
-	});
-	grid.addEventListener("blur", function () {
-		for (var i = 0; i < cards.length; i++) cards[i].classList.remove("card-selected");
-		grid.removeAttribute("aria-activedescendant");
-	});
-
-	grid.addEventListener("keydown", function (e) {
-		if (document.activeElement !== grid) return;
-		if (isModalOpen()) return;
-
-		var v = visibleCards();
-		if (v.length === 0) return;
-
-		var key = e.key;
-		if (key === "Enter" || key === " ") {
-			e.preventDefault();
-			openSelectedPreview();
-			return;
-		}
-
-		var cols = columnCount(v);
-		var idx = selectedEl ? v.indexOf(selectedEl) : 0;
-		if (idx < 0) idx = 0;
-
-		if (key === "ArrowRight") {
-			e.preventDefault();
-			if (idx < v.length - 1) {
-				select(v[idx + 1]);
-				v[idx + 1].scrollIntoView({ block: "nearest", inline: "nearest" });
-			}
-			return;
-		}
-		if (key === "ArrowLeft") {
-			e.preventDefault();
-			if (idx > 0) {
-				select(v[idx - 1]);
-				v[idx - 1].scrollIntoView({ block: "nearest", inline: "nearest" });
-			}
-			return;
-		}
-		if (key === "ArrowDown") {
-			e.preventDefault();
-			var next = idx + cols;
-			if (next < v.length) {
-				select(v[next]);
-				v[next].scrollIntoView({ block: "nearest", inline: "nearest" });
-			}
-			return;
-		}
-		if (key === "ArrowUp") {
-			e.preventDefault();
-			var prev = idx - cols;
-			if (prev >= 0) {
-				select(v[prev]);
-				v[prev].scrollIntoView({ block: "nearest", inline: "nearest" });
-			}
-			return;
-		}
-		if (key === "Home") {
-			e.preventDefault();
-			select(v[0]);
-			v[0].scrollIntoView({ block: "nearest", inline: "nearest" });
-			return;
-		}
-		if (key === "End") {
-			e.preventDefault();
-			select(v[v.length - 1]);
-			v[v.length - 1].scrollIntoView({ block: "nearest", inline: "nearest" });
-		}
-	});
 
 	input.focus();
 
-	document.querySelectorAll(".preview").forEach(function (preview) {
-		preview.addEventListener(
-			"click",
-			function (e) {
-				var iframe = preview.querySelector("iframe");
-				if (e.target === iframe) return;
-				if (e.target !== preview) return;
-				location.hash = "";
-				input.focus();
-			},
-			true
-		);
+	document.addEventListener("keydown", function (e) {
+		if (e.key !== "Escape") return;
+		e.preventDefault();
+		window.location.hash = "#";
+		history.replaceState(null, "", location.pathname + location.search);
 	});
-})();
+
+	document.addEventListener('focusin', (e) => {
+		if (!e.target.hash || !window.location.hash) return;
+		window.location.hash = e.target.hash;
+	});
 
 
 </script>

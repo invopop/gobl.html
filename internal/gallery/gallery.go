@@ -86,7 +86,7 @@ func ListEntries(dir string) ([]Entry, error) {
 		out = append(out, Entry{
 			Label:    base,
 			HtmlHref: "/" + base + ".html" + q,
-			PdfHref:  "/" + base + ".pdf" + q + "#zoom=fit&toolbar=0",
+			PdfHref:  "/" + base + ".pdf" + q + "#view=Fit&toolbar=0",
 			FlagURL:  flagAssetURL(cc),
 		})
 	}
