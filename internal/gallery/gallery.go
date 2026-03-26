@@ -21,7 +21,7 @@ var catalogTmpl = template.Must(template.New("catalog").Parse(catalogHTML))
 // Entry is one tile in the examples gallery (HTML + PDF links for the dev server).
 type Entry struct {
 	Label    string
-	HtmlHref string
+	HTMLHref string
 	PdfHref  string
 	// FlagURL is https://assets.invopop.com/flags/{cc}.svg when the example basename has a country prefix.
 	FlagURL string
@@ -85,7 +85,7 @@ func ListEntries(dir string) ([]Entry, error) {
 		cc := countryCodeFromBase(base)
 		out = append(out, Entry{
 			Label:    base,
-			HtmlHref: "/" + base + ".html" + q,
+			HTMLHref: "/" + base + ".html" + q,
 			PdfHref:  "/" + base + ".pdf" + q + "#view=Fit&toolbar=0",
 			FlagURL:  flagAssetURL(cc),
 		})
