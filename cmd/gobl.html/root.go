@@ -4,6 +4,7 @@ import (
 	"io"
 	"os"
 
+	"github.com/invopop/gobl.html/internal/gallery"
 	"github.com/spf13/cobra"
 )
 
@@ -24,6 +25,13 @@ func (o *rootOpts) cmd() *cobra.Command {
 	cmd.AddCommand(versionCmd())
 	cmd.AddCommand(convert(o).cmd())
 	cmd.AddCommand(serve(o).cmd())
+	cmd.AddCommand(&cobra.Command{
+		Use:   "generate-index",
+		Short: "Write examples/index.html from internal/gallery/catalog.html and examples/*.json",
+		RunE: func(*cobra.Command, []string) error {
+			return gallery.WriteIndexHTML(gallery.ExamplesDir, gallery.IndexHTMLPath())
+		},
+	})
 
 	return cmd
 }
