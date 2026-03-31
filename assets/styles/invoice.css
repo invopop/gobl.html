@@ -374,13 +374,11 @@ section.taxes th.category,
 section.taxes td.category {
     text-align: left;
 }
-section.tax-notes {
-    padding: 6mm 0mm 0mm 0mm;
+section.taxes .tax-notes {
+    padding: 2mm 0 0 0;
     font-size: 8pt;
-    color: #4b5563;
-}
-section.tax-notes .note {
-    margin-bottom: 0mm;
+    width: 90%; /* to align with the table */
+    border-top: 0.5px solid #e5e7eb;
 }
 section.payment {
     border-bottom: 0.5px solid #e5e7eb;
