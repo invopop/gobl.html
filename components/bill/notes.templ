@@ -46,13 +46,13 @@ templ notes(notes []*org.Note) {
 
 templ taxNotes(r *tax.RegimeDef, inv *bill.Tax) {
 	if inv != nil && len(inv.Notes) > 0 {
-		<section class="tax-notes">
+		<div class="tax-notes">
 			for _, n := range inv.Notes {
 				<div class="note">
 					@templ.Raw(renderTaxNote(ctx, r, n))
 				</div>
 			}
-		</section>
+		</div>
 	}
 }
 

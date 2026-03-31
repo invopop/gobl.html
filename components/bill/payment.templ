@@ -21,7 +21,7 @@ templ Payment(env *gobl.Envelope, pmt *bill.Payment) {
 			<div class="tail">
 				<div class="totals">
 					@paymentTotals(pmt, tt)
-					@taxes(pmt.RegimeDef(), tt)
+					@taxes(pmt.RegimeDef(), tt, nil)
 				</div>
 				@method(pmt)
 				@notes(pmt.Notes)

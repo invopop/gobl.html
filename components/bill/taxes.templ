@@ -6,11 +6,12 @@ import (
 	"strings"
 
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/tax"
 	"github.com/invopop/gobl/num"
 )
 
-templ taxes(r *tax.RegimeDef, taxes *tax.Total) {
+templ taxes(r *tax.RegimeDef, taxes *tax.Total, inv *bill.Tax) {
 	if taxes != nil && len(taxes.Categories) > 0 {
 		{{ ts := prepareTaxSupport(taxes) }}
 		<section class="taxes">
@@ -49,6 +50,7 @@ templ taxes(r *tax.RegimeDef, taxes *tax.Total) {
 					</tbody>
 				</table>
 			}
+			@taxNotes(r, inv)
 		</section>
 	}
 }

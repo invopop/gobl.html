@@ -74,7 +74,7 @@ func Order(env *gobl.Envelope, ord *bill.Order) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = taxes(ord.RegimeDef(), ord.Totals.Taxes).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = taxes(ord.RegimeDef(), ord.Totals.Taxes, nil).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
