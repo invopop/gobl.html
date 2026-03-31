@@ -20,7 +20,7 @@ templ Delivery(env *gobl.Envelope, dlv *bill.Delivery) {
 				if dlv.Totals != nil {
 					<div class="totals">
 							@deliveryTotals(dlv, dlv.Totals)
-							@taxes(dlv.RegimeDef(), dlv.Totals.Taxes)
+							@taxes(dlv.RegimeDef(), dlv.Totals.Taxes, nil)
 					</div>
 				}
 				@deliveryTracking(dlv)

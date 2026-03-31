@@ -11,7 +11,7 @@ import (
 	"github.com/invopop/gobl/num"
 )
 
-templ invoiceTaxes(r *tax.RegimeDef, taxes *tax.Total, inv *bill.Tax) {
+templ taxes(r *tax.RegimeDef, taxes *tax.Total, inv *bill.Tax) {
 	if taxes != nil && len(taxes.Categories) > 0 {
 		{{ ts := prepareTaxSupport(taxes) }}
 		<section class="taxes">
@@ -51,49 +51,6 @@ templ invoiceTaxes(r *tax.RegimeDef, taxes *tax.Total, inv *bill.Tax) {
 				</table>
 			}
 			@taxNotes(r, inv)
-		</section>
-	}
-}
-
-templ taxes(r *tax.RegimeDef, taxes *tax.Total) {
-	if taxes != nil && len(taxes.Categories) > 0 {
-		{{ ts := prepareTaxSupport(taxes) }}
-		<section class="taxes">
-			@t.Scope(".taxes") {
-				<h2>
-					@t.T(".title")
-				</h2>
-				<table>
-					<thead>
-						<tr>
-							<th class="category">
-								@t.T(".category")
-							</th>
-							<th class="base">
-								@t.T(".base")
-							</th>
-							<th class="rate">
-								@t.T(".rate")
-							</th>
-							if ts.exemptions {
-								<th class="exemption">
-									@t.T(".exemption")
-								</th>
-							}
-							<th class="amount">
-								@t.T(".amount")
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						for _, cat := range taxes.Categories {
-							for i, rate := range cat.Rates {
-								@taxRateRow(r, cat, rate, taxCategoryRowSpan(cat, i), ts)
-							}
-						}
-					</tbody>
-				</table>
-			}
 		</section>
 	}
 }

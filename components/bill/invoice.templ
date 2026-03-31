@@ -38,7 +38,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 			<div class="tail">
 				<div class="totals">
 					@totals(inv, inv.Totals)
-					@invoiceTaxes(inv.RegimeDef(), inv.Totals.Taxes, inv.Tax)
+					@taxes(inv.RegimeDef(), inv.Totals.Taxes, inv.Tax)
 				</div>
 				@paymentDetails(inv)
 				@notes(inv.Notes)

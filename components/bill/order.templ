@@ -19,7 +19,7 @@ templ Order(env *gobl.Envelope, ord *bill.Order) {
 			<div class="tail">
 				<div class="totals">
 					@orderTotals(ord, ord.Totals)
-					@taxes(ord.RegimeDef(), ord.Totals.Taxes)
+					@taxes(ord.RegimeDef(), ord.Totals.Taxes, nil)
 				</div>
 				@orderPaymentDetails(ord)
 				@notes(ord.Notes)
