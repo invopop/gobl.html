@@ -6,7 +6,9 @@ import (
 	"fmt"
 
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/org"
+	"github.com/invopop/gobl/tax"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/renderer/html"
@@ -40,6 +42,38 @@ templ notes(notes []*org.Note) {
 			}
 		</section>
 	}
+}
+
+templ taxNotes(r *tax.RegimeDef, inv *bill.Tax) {
+	if inv != nil && len(inv.Notes) > 0 {
+		<section class="tax-notes">
+			for _, n := range inv.Notes {
+				<div class="note">
+					@templ.Raw(renderTaxNote(ctx, r, n))
+				</div>
+			}
+		</section>
+	}
+}
+
+func renderTaxNote(ctx context.Context, r *tax.RegimeDef, n *tax.Note) string {
+	txt := n.Text
+	prefix := ""
+	if n.Category != "" {
+		if cd := r.CategoryDef(n.Category); cd != nil {
+			prefix = cd.Name.In(t.Lang(ctx))
+		} else {
+			prefix = n.Category.String()
+		}
+	}
+	if prefix != "" {
+		txt = fmt.Sprintf("**%s** &middot; %s", prefix, txt)
+	}
+	buf := new(bytes.Buffer)
+	if err := markdown.Convert([]byte(txt), buf); err != nil {
+		return fmt.Sprintf("!(ERR %v)", err.Error())
+	}
+	return buf.String()
 }
 
 templ lineNotes(notes []*org.Note) {

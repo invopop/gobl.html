@@ -34,6 +34,8 @@ github.com/invopop/ctxi18n v0.9.0 h1:BIia4u4OngaHVn/7gvK0w6lccOXVtad8xU0KgJ+mnVA
 github.com/invopop/ctxi18n v0.9.0/go.mod h1:1Osw+JGYA+anHt0Z4reF36r5FtGHYjGQ+m1X7keIhPc=
 github.com/invopop/gobl v0.307.0 h1:0r+LrTzmT/7HrSKTWDhiBpwYsNw4DD/K/tA7ySx749w=
 github.com/invopop/gobl v0.307.0/go.mod h1:AVq7NPXN8/ob9Iz1eyYdc3kYseZdboMepXRPb2kPBLI=
+github.com/invopop/gobl v0.308.1-0.20260330094629-9387088a48eb h1:0n/1d5J1kvLdyLs4t4nr0cZTnfeYS/eboO+A745OUaU=
+github.com/invopop/gobl v0.308.1-0.20260330094629-9387088a48eb/go.mod h1:AVq7NPXN8/ob9Iz1eyYdc3kYseZdboMepXRPb2kPBLI=
 github.com/invopop/jsonschema v0.13.0 h1:KvpoAJWEjR3uD9Kbm2HWJmqsEaHt8lBUpd0qHcIi21E=
 github.com/invopop/jsonschema v0.13.0/go.mod h1:ffZ5Km5SWWRAIN6wbDXItl95euhFz2uON45H2qjYt+0=
 github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a h1:xt18LlIfizLkFgLi+vK/m2SWOsAbQwVwQgbkzxKY0eU=
