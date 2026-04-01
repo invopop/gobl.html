@@ -6,7 +6,9 @@ import (
 	"fmt"
 
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/org"
+	"github.com/invopop/gobl/tax"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/renderer/html"
@@ -27,14 +29,21 @@ func init() {
 	)
 }
 
-templ notes(notes []*org.Note) {
-	if len(notes) > 0 {
+templ notes(r *tax.RegimeDef, td *bill.Tax, orgNotes []*org.Note) {
+	if (td != nil && len(td.Notes) > 0) || len(orgNotes) > 0 {
 		<section class="notes">
 			@t.Scope(".notes") {
 				<h2>
 					@t.T(".title")
 				</h2>
-				for _, n := range notes {
+				if td != nil {
+					for _, n := range td.Notes {
+						<div class="note">
+							@templ.Raw(renderTaxNote(ctx, r, n))
+						</div>
+					}
+				}
+				for _, n := range orgNotes {
 					@note(n)
 				}
 			}
@@ -56,6 +65,26 @@ templ note(note *org.Note) {
 	<div class="note">
 		@templ.Raw(renderNote(note))
 	</div>
+}
+
+func renderTaxNote(ctx context.Context, r *tax.RegimeDef, n *tax.Note) string {
+	txt := n.Text
+	prefix := ""
+	if n.Category != "" {
+		if cd := r.CategoryDef(n.Category); cd != nil {
+			prefix = cd.Name.In(t.Lang(ctx))
+		} else {
+			prefix = n.Category.String()
+		}
+	}
+	if prefix != "" {
+		txt = fmt.Sprintf("%s &middot; %s", prefix, txt)
+	}
+	buf := new(bytes.Buffer)
+	if err := markdown.Convert([]byte(txt), buf); err != nil {
+		return fmt.Sprintf("!(ERR %v)", err.Error())
+	}
+	return buf.String()
 }
 
 func renderNote(note *org.Note) string {
