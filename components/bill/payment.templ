@@ -24,7 +24,16 @@ templ Payment(env *gobl.Envelope, pmt *bill.Payment) {
 					@taxes(pmt.RegimeDef(), tt)
 				</div>
 				@method(pmt)
-				@notes(nil, nil, pmt.Notes)
+				if len(pmt.Notes) > 0 {
+					<section class="notes">
+						@t.Scope(".notes") {
+							<h2>
+								@t.T(".title")
+							</h2>
+							@notes(pmt.Notes)
+						}
+					</section>
+				}
 				<div class="extensions">
 					// Region specific information
 					@pt.ATQR(env)

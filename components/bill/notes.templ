@@ -29,25 +29,19 @@ func init() {
 	)
 }
 
-templ notes(r *tax.RegimeDef, td *bill.Tax, orgNotes []*org.Note) {
-	if (td != nil && len(td.Notes) > 0) || len(orgNotes) > 0 {
-		<section class="notes">
-			@t.Scope(".notes") {
-				<h2>
-					@t.T(".title")
-				</h2>
-				if td != nil {
-					for _, n := range td.Notes {
-						<div class="note">
-							@templ.Raw(renderTaxNote(ctx, r, n))
-						</div>
-					}
-				}
-				for _, n := range orgNotes {
-					@note(n)
-				}
-			}
-		</section>
+templ notes(notes []*org.Note) {
+	for _, n := range notes {
+		@note(n)
+	}
+}
+
+templ taxNotes(r *tax.RegimeDef, td *bill.Tax) {
+	if td != nil {
+		for _, n := range td.Notes {
+			<div class="note">
+				@templ.Raw(renderTaxNote(ctx, r, n))
+			</div>
+		}
 	}
 }
 
@@ -65,6 +59,10 @@ templ note(note *org.Note) {
 	<div class="note">
 		@templ.Raw(renderNote(note))
 	</div>
+}
+
+func hasTaxNotes(td *bill.Tax) bool {
+	return td != nil && len(td.Notes) > 0
 }
 
 func renderTaxNote(ctx context.Context, r *tax.RegimeDef, n *tax.Note) string {
