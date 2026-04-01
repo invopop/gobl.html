@@ -22,16 +22,7 @@ templ Order(env *gobl.Envelope, ord *bill.Order) {
 					@taxes(ord.RegimeDef(), ord.Totals.Taxes)
 				</div>
 				@orderPaymentDetails(ord)
-				if len(ord.Notes) > 0 {
-					<section class="notes">
-						@t.Scope(".notes") {
-							<h2>
-								@t.T(".title")
-							</h2>
-							@notes(ord.Notes)
-						}
-					</section>
-				}
+				@notes(ord.Notes)
 				<div class="extensions">
 					// Region specific information
 					@pt.ATQR(env)

@@ -24,16 +24,7 @@ templ Delivery(env *gobl.Envelope, dlv *bill.Delivery) {
 					</div>
 				}
 				@deliveryTracking(dlv)
-				if len(dlv.Notes) > 0 {
-					<section class="notes">
-						@t.Scope(".notes") {
-							<h2>
-								@t.T(".title")
-							</h2>
-							@notes(dlv.Notes)
-						}
-					</section>
-				}
+				@notes(dlv.Notes)
 				<div class="extensions">
 					// Region specific information
 					@pt.ATQR(env)

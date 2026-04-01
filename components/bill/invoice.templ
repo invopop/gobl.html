@@ -41,17 +41,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 					@taxes(inv.RegimeDef(), inv.Totals.Taxes)
 				</div>
 				@paymentDetails(inv)
-				if hasTaxNotes(inv.Tax) || len(inv.Notes) > 0 {
-					<section class="notes">
-						@t.Scope(".notes") {
-							<h2>
-								@t.T(".title")
-							</h2>
-							@taxNotes(inv.RegimeDef(), inv.Tax)
-							@notes(inv.Notes)
-						}
-					</section>
-				}
+				@notes(invoiceNotes(ctx, inv))
 				<div class="extensions">
 					// Region specific information
 					@ar.ARCAQR(env)

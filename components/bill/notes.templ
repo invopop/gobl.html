@@ -30,18 +30,17 @@ func init() {
 }
 
 templ notes(notes []*org.Note) {
-	for _, n := range notes {
-		@note(n)
-	}
-}
-
-templ taxNotes(r *tax.RegimeDef, td *bill.Tax) {
-	if td != nil {
-		for _, n := range td.Notes {
-			<div class="note">
-				@templ.Raw(renderTaxNote(ctx, r, n))
-			</div>
-		}
+	if len(notes) > 0 {
+		<section class="notes">
+			@t.Scope(".notes") {
+				<h2>
+					@t.T(".title")
+				</h2>
+				for _, n := range notes {
+					@note(n)
+				}
+			}
+		</section>
 	}
 }
 
@@ -61,11 +60,25 @@ templ note(note *org.Note) {
 	</div>
 }
 
-func hasTaxNotes(td *bill.Tax) bool {
-	return td != nil && len(td.Notes) > 0
+// invoiceNotes converts tax notes to org notes (with bold category prefix)
+// and prepends them to the invoice's regular notes.
+func invoiceNotes(ctx context.Context, inv *bill.Invoice) []*org.Note {
+	var result []*org.Note
+	if inv.Tax != nil {
+		r := inv.RegimeDef()
+		for _, tn := range inv.Tax.Notes {
+			result = append(result, &org.Note{
+				Text: renderTaxNoteText(ctx, r, tn),
+			})
+		}
+	}
+	result = append(result, inv.Notes...)
+	return result
 }
 
-func renderTaxNote(ctx context.Context, r *tax.RegimeDef, n *tax.Note) string {
+// renderTaxNoteText returns formatted markdown text for a tax note,
+// with a bold category prefix when available.
+func renderTaxNoteText(ctx context.Context, r *tax.RegimeDef, n *tax.Note) string {
 	txt := n.Text
 	prefix := ""
 	if n.Category != "" {
@@ -78,11 +91,7 @@ func renderTaxNote(ctx context.Context, r *tax.RegimeDef, n *tax.Note) string {
 	if prefix != "" {
 		txt = fmt.Sprintf("%s &middot; %s", prefix, txt)
 	}
-	buf := new(bytes.Buffer)
-	if err := markdown.Convert([]byte(txt), buf); err != nil {
-		return fmt.Sprintf("!(ERR %v)", err.Error())
-	}
-	return buf.String()
+	return txt
 }
 
 func renderNote(note *org.Note) string {
