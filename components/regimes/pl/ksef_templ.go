@@ -129,7 +129,7 @@ func ksefQR(env *gobl.Envelope) string {
 func ksefID(env *gobl.Envelope) string {
 	for _, stamp := range env.Head.Stamps {
 		switch stamp.Provider {
-		case favat.StampKSEFNumber:
+		case favat.StampKSeFNumber:
 			return stamp.Value
 		}
 	}
