@@ -12,6 +12,7 @@ import (
 templ supplier(doc internal.Document) {
 	{{ sup := doc.GetSupplier() }}
 	@contact(sup, "supplier") {
+		@ar.ARCAActivityStart(sup)
 		@ar.ARCAVATLegend(doc, sup, "supplier")
 	}
 }

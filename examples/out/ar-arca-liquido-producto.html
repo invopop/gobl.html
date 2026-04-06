@@ -36,7 +36,7 @@
             <section class="title">
               <div class="hero">
                 <div class="alias">
-                  Acme Servicios Argentina S.A.
+                  Intermediario S.A.
                 </div>
                 <div class="arca-doc-type">
                   <div class="letter">
@@ -52,7 +52,7 @@
                   Invoice
                 </h1>
                 <h2 class="code">
-                  2-2
+                  1-001
                 </h2>
               </div>
             </section>
@@ -66,7 +66,7 @@
                     Issue date
                   </span>
                   <span class="value date">
-                    2026-03-18
+                    2026-03-23
                   </span>
                 </li>
                 <li class="currency">
@@ -82,7 +82,7 @@
                     Period
                   </span>
                   <span class="value">
-                    2026-03-01 to 2026-03-17
+                    2026-03-01 to 2026-03-23
                   </span>
                 </li>
               </ul>
@@ -96,21 +96,24 @@
                 </h2>
                 <div class="org-party">
                   <div class="name">
-                    Acme Servicios Argentina S.A.
-                  </div>
-                  <div class="arca-vat-legend">
-                    IVA RESPONSABLE INSCRIPTO
+                    Intermediario S.A.
                   </div>
                   <div class="org-address">
                     <span>
-                      Av. Corrientes 1234 Piso 5, Buenos Aires, Ciudad Autónoma de Buenos Aires, C1043 (Argentina)
+                      Av. Corrientes 1234, Buenos Aires, Ciudad Autónoma de Buenos Aires, C1043 (Argentina)
                     </span>
                   </div>
                   <div class="emails">
-                    Email: facturacion@acmeservicios.com.ar
+                    Email: ventas@proveedorejemplo.com.ar
                   </div>
                   <div class="tax-id">
-                    TIN: (AR) 30123456781
+                    TIN: (AR) 30712345671
+                  </div>
+                  <div class="arca-activity-start">
+                    Inicio de actividades: 2016-03-01
+                  </div>
+                  <div class="arca-vat-legend">
+                    IVA RESPONSABLE INSCRIPTO
                   </div>
                 </div>
               </div>
@@ -122,10 +125,7 @@
                 </h2>
                 <div class="org-party">
                   <div class="name">
-                    Distribuidora del Sur S.R.L.
-                  </div>
-                  <div class="arca-vat-legend">
-                    IVA RESPONSABLE INSCRIPTO
+                    Cliente Comprador S.R.L.
                   </div>
                   <div class="org-address">
                     <span>
@@ -133,10 +133,13 @@
                     </span>
                   </div>
                   <div class="emails">
-                    Email: compras@dominio.com.ar
+                    Email: compras@clientecomercial.com.ar
                   </div>
                   <div class="tax-id">
-                    TIN: (AR) 30876543210
+                    TIN: (AR) 30987654321
+                  </div>
+                  <div class="arca-vat-legend">
+                    IVA RESPONSABLE INSCRIPTO
                   </div>
                 </div>
               </div>
@@ -165,23 +168,20 @@
                 <th class="tax">
                   VAT
                 </th>
-                <th class="exemption">
-                  Exemption
-                </th>
                 <th class="total">
                   Total
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr data-subtotal="$100.000,00">
+              <tr data-subtotal="$1.000,00">
                 <td class="ref">
                   1
                 </td>
                 <td class="description">
                   <div class="limited-height">
                     <span>
-                      Resumen de Ventas - Venta de entradas
+                      Servicio de intermediación - Venta de entradas
                     </span>
                   </div>
                 </td>
@@ -189,91 +189,13 @@
                   1
                 </td>
                 <td class="price">
-                  $100.000,00
+                  $1.000,00
                 </td>
                 <td class="tax">
-                  0%
-                </td>
-                <td class="exemption">
-                  <code>
-                    (3)
-                  </code>
+                  21,0%
                 </td>
                 <td class="total">
-                  $100.000,00
-                </td>
-              </tr>
-            </tbody>
-            <tbody class="discounts">
-              <tr data-subtotal="$95.000,00">
-                <td class="i">
-                  D1
-                </td>
-                <td class="description">
-                  Comisión de Fever
-                </td>
-                <td class="quantity">
-                  <!-- no quantity -->
-                </td>
-                <td class="percent">
-                  5%
-                </td>
-                <td class="tax">
-                  <!-- empty -->
-                </td>
-                <td class="exemption">
-                  <!-- empty -->
-                </td>
-                <td class="total">
-                  $5.000,00
-                </td>
-              </tr>
-            </tbody>
-            <tbody class="charges">
-              <tr data-subtotal="$95.075">
-                <td class="ref">
-                  C1
-                </td>
-                <td class="description">
-                  IIBB s/Comisión
-                </td>
-                <td class="quantity">
-                  <!-- no quantity -->
-                </td>
-                <td class="percent">
-                  1,5%
-                </td>
-                <td class="tax">
-                  <!-- empty -->
-                </td>
-                <td class="exemption">
-                  <!-- empty -->
-                </td>
-                <td class="total">
-                  $75
-                </td>
-              </tr>
-              <tr data-subtotal="$95.175">
-                <td class="ref">
-                  C2
-                </td>
-                <td class="description">
-                  RT Ganancias s/Comisión
-                </td>
-                <td class="quantity">
-                  <!-- no quantity -->
-                </td>
-                <td class="percent">
-                  2%
-                </td>
-                <td class="tax">
-                  <!-- empty -->
-                </td>
-                <td class="exemption">
-                  <!-- empty -->
-                </td>
-                <td class="total">
-                  $100
+                  $1.000,00
                 </td>
               </tr>
             </tbody>
@@ -292,31 +214,7 @@
                       Sum
                     </th>
                     <td>
-                      $100.000,00
-                    </td>
-                  </tr>
-                  <tr class="discount">
-                    <th>
-                      Discount
-                    </th>
-                    <td>
-                      $5.000,00
-                    </td>
-                  </tr>
-                  <tr class="charges">
-                    <th>
-                      Charge
-                    </th>
-                    <td>
-                      $175,00
-                    </td>
-                  </tr>
-                  <tr class="total">
-                    <th>
-                      Total
-                    </th>
-                    <td>
-                      $95.175,00
+                      $1.000,00
                     </td>
                   </tr>
                   <tr class="tax">
@@ -324,7 +222,7 @@
                       Tax
                     </th>
                     <td>
-                      $0,00
+                      $210,00
                     </td>
                   </tr>
                   <tr class="payable strong">
@@ -332,7 +230,7 @@
                       Total to pay
                     </th>
                     <td>
-                      $95.175,00
+                      $1.210,00
                     </td>
                   </tr>
                 </tbody>
@@ -354,9 +252,6 @@
                     <th class="rate">
                       Rate
                     </th>
-                    <th class="exemption">
-                      Exemption
-                    </th>
                     <th class="amount">
                       Amount
                     </th>
@@ -368,18 +263,13 @@
                       VAT
                     </td>
                     <td class="base">
-                      $100.000,00
+                      $1.000,00
                     </td>
                     <td class="rate">
-                      0%
-                    </td>
-                    <td class="exemption">
-                      <code>
-                        (3)
-                      </code>
+                      21,0%
                     </td>
                     <td class="amount">
-                      $0,00
+                      $210,00
                     </td>
                   </tr>
                 </tbody>
@@ -391,14 +281,6 @@
               Payment
             </h2>
             <ul class="terms">
-              <li class="terms-key">
-                <span class="label">
-                  Payment terms
-                </span>
-                <span class="value">
-                  On invoice delivery
-                </span>
-              </li>
               <li class="due-dates">
                 <span class="label">
                   Due date
@@ -408,11 +290,11 @@
                     <tbody>
                       <tr>
                         <td class="date">
-                          2026-03-19
+                          2026-03-25
                         </td>
                         <td class="notes"></td>
                         <td class="amount">
-                          $94.825,00
+                          $1.210,00
                         </td>
                       </tr>
                     </tbody>
@@ -420,6 +302,16 @@
                 </span>
               </li>
             </ul>
+          </section>
+          <section class="notes">
+            <h2>
+              Notes
+            </h2>
+            <div class="note">
+              <p>
+                Retenciones: XXX
+              </p>
+            </div>
           </section>
           <div class="extensions"></div>
         </div>
@@ -443,7 +335,7 @@
           <section class="title">
             <div class="hero">
               <div class="alias">
-                Acme Servicios Argentina S.A.
+                Intermediario S.A.
               </div>
               <div class="arca-doc-type">
                 <div class="letter">
@@ -459,7 +351,7 @@
                 Invoice
               </h1>
               <h2 class="code">
-                2-2
+                1-001
               </h2>
             </div>
           </section>

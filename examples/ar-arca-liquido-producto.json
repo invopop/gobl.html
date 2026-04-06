@@ -4,7 +4,7 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "7e70029730f1df477083c3db9cc971d4f39c516db2392f780c33055bdd9ef946"
+			"val": "c1d4878206800375e614a3bdcad8d26b65820b65b36b164b2e219de3e8177f26"
 		}
 	},
 	"doc": {
@@ -30,7 +30,24 @@
 			"tax_id": {
 				"country": "AR",
 				"code": "30712345671"
-			}
+			},
+			"addresses": [
+				{
+					"street": "Av. Corrientes 1234",
+					"locality": "Buenos Aires",
+					"region": "Ciudad Autónoma de Buenos Aires",
+					"code": "C1043",
+					"country": "AR",
+					"meta": {
+						"ar-arca-activity-start": "2016-03-01"
+					}
+				}
+			],
+			"emails": [
+				{
+					"addr": "ventas@proveedorejemplo.com.ar"
+				}
+			]
 		},
 		"customer": {
 			"name": "Cliente Comprador S.R.L.",
@@ -38,6 +55,20 @@
 				"country": "AR",
 				"code": "30987654321"
 			},
+			"addresses": [
+				{
+					"street": "Av. Santa Fe 2500",
+					"locality": "Buenos Aires",
+					"region": "Ciudad Autónoma de Buenos Aires",
+					"code": "C1123",
+					"country": "AR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "compras@clientecomercial.com.ar"
+				}
+			],
 			"ext": {
 				"ar-arca-vat-status": "1"
 			}
@@ -49,6 +80,7 @@
 				"item": {
 					"key": "services",
 					"name": "Servicio de intermediación - Venta de entradas",
+					"currency": "ARS",
 					"price": "1000.00"
 				},
 				"sum": "1000.00",
@@ -108,6 +140,12 @@
 			"tax": "210.00",
 			"total_with_tax": "1210.00",
 			"payable": "1210.00"
-		}
+		},
+		"notes": [
+			{
+				"key": "tax",
+				"text": "Retenciones: XXX"
+			}
+		]
 	}
 }

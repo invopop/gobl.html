@@ -21,7 +21,6 @@ templ Party(party *org.Party) {
 			if party.Name != "" {
 				<div class="name">{ party.Name }</div>
 			}
-			{ children... }
 			if party.Alias != "" {
 				<div class="alias">{ party.Alias }</div>
 			}
@@ -34,6 +33,7 @@ templ Party(party *org.Party) {
 			@partyExtensions(party)
 			@identities(party.Identities)
 			@registration(party.Registration)
+			{ children... }
 		}
 	</div>
 }
