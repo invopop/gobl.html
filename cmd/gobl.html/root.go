@@ -27,7 +27,7 @@ func (o *rootOpts) cmd() *cobra.Command {
 	cmd.AddCommand(serve(o).cmd())
 	cmd.AddCommand(&cobra.Command{
 		Use:   "generate-index",
-		Short: "Write examples/index.html from internal/gallery/catalog.html and examples/*.json",
+		Short: "Write examples/index.html (also runs with: go test -run TestGOBLRenderExamples -update)",
 		RunE: func(*cobra.Command, []string) error {
 			return gallery.WriteIndexHTML(gallery.ExamplesDir, gallery.IndexHTMLPath())
 		},
