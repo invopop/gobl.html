@@ -13,6 +13,7 @@ import (
 
 	"github.com/invopop/gobl"
 	goblhtml "github.com/invopop/gobl.html"
+	"github.com/invopop/gobl.html/internal/gallery"
 	"github.com/pmezard/go-difflib/difflib"
 	"github.com/stretchr/testify/require"
 	"github.com/yosssi/gohtml"
@@ -23,7 +24,7 @@ const (
 	examplesOutPath = "./examples/out"
 )
 
-var updateOut = flag.Bool("update", false, "Update the HTML files in the examples/out directory")
+var updateOut = flag.Bool("update", false, "Update the HTML files in examples/out and regenerate examples/index.html")
 
 func TestGOBLRenderExamples(t *testing.T) {
 	examples, err := findExamples()
@@ -64,6 +65,11 @@ func TestGOBLRenderExamples(t *testing.T) {
 			}
 			// assert.Equal(t, string(expected), out, "output file %s does not match, run tests with `--update` flag to update", filepath.Base(outPath))
 		})
+	}
+
+	if *updateOut {
+		err := gallery.WriteIndexHTML(gallery.ExamplesDir, gallery.IndexHTMLPath())
+		require.NoError(t, err)
 	}
 }
 
