@@ -33,6 +33,7 @@ templ Party(party *org.Party) {
 			@partyExtensions(party)
 			@identities(party.Identities)
 			@registration(party.Registration)
+			{ children... }
 		}
 	</div>
 }

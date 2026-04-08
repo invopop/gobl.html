@@ -517,6 +517,7 @@ func titleType(doc internal.Document) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		templ_7745c5c3_Err = utils.Coalesce(
+			ar.TitleType(doc),
 			pt.TitleType(doc),
 			gr.TitleType(doc),
 			defaultTitleType(doc),
@@ -639,7 +640,7 @@ func titleBadges(env *gobl.Envelope, doc internal.Document) templ.Component {
 			var templ_7745c5c3_Var24 string
 			templ_7745c5c3_Var24, templ_7745c5c3_Err = templ.JoinStringErrs(lbl)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 146, Col: 8}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 147, Col: 8}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var24))
 			if templ_7745c5c3_Err != nil {

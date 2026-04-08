@@ -4,22 +4,8 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "ee6be80cde2c2772650d63dc371ae52cbca0ea6f78d1cc836a34ae5698cfb24c"
-		},
-		"stamps": [
-			{
-				"prv": "arca-cae",
-				"val": "1234567890"
-			},
-			{
-				"prv": "arca-cae-expiry",
-				"val": "2025-01-15"
-			},
-			{
-				"prv": "arca-qr",
-				"val": "https://www.afip.gob.ar/fe/qr/conceptos-generales.asp"
-			}
-		]
+			"val": "c1d4878206800375e614a3bdcad8d26b65820b65b36b164b2e219de3e8177f26"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -27,20 +13,20 @@
 		"$addons": [
 			"ar-arca-v4"
 		],
-		"uuid": "3aea7b56-59d8-4beb-90bd-f8f280d852a0",
+		"uuid": "019d1b71-5ad1-7000-b8ec-da19240550f6",
 		"type": "standard",
 		"series": "1",
-		"code": "00000123",
-		"issue_date": "2025-01-15",
+		"code": "001",
+		"issue_date": "2026-03-23",
 		"currency": "ARS",
 		"tax": {
 			"ext": {
 				"ar-arca-concept": "2",
-				"ar-arca-doc-type": "1"
+				"ar-arca-doc-type": "60"
 			}
 		},
 		"supplier": {
-			"name": "Proveedor Ejemplo S.A.",
+			"name": "Intermediario S.A.",
 			"tax_id": {
 				"country": "AR",
 				"code": "30712345671"
@@ -61,16 +47,10 @@
 				{
 					"addr": "ventas@proveedorejemplo.com.ar"
 				}
-			],
-			"logos": [
-				{
-					"label": "Invopop",
-					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
-				}
 			]
 		},
 		"customer": {
-			"name": "Cliente Comercial S.R.L.",
+			"name": "Cliente Comprador S.R.L.",
 			"tax_id": {
 				"country": "AR",
 				"code": "30987654321"
@@ -120,15 +100,15 @@
 		],
 		"ordering": {
 			"period": {
-				"start": "2025-01-01",
-				"end": "2025-01-15"
+				"start": "2026-03-01",
+				"end": "2026-03-23"
 			}
 		},
 		"payment": {
 			"terms": {
 				"due_dates": [
 					{
-						"date": "2025-01-20",
+						"date": "2026-03-25",
 						"amount": "1210.00"
 					}
 				]
@@ -163,11 +143,9 @@
 		},
 		"notes": [
 			{
-				"text": "XXX"
+				"key": "tax",
+				"text": "Retenciones: XXX"
 			}
 		]
-	},
-	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6ImUzNzFjMzBiLTNiMzMtNGNiMC04NzM5LThiOTUzMWM1NWM2NiJ9.eyJ1dWlkIjoiMDE5MDJhZGMtMDVjOC03MDAwLTg3MDMtNjBjOGRjZjg3YmQ2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjhlZWJmNThlYjhiNTlkYTA0Y2ZlZmQxODVkZDkyYTk1YWU2NzhiYmU5YjYzMTUwOTUxYTMwODRkNDllNjRmNmMifSwic3RhbXBzIjpbeyJwcnYiOiJhdC1hdGN1ZCIsInZhbCI6IkFBSkZKM0pZRFAtMjcifSx7InBydiI6ImF0LXFyIiwidmFsIjoiQTo1MDgwMjUzMzgqQjo5OTk5OTk5OTAqQzpQVCpEOkZUKkU6TipGOjIwMjQwNjE4Kkc6RlQgSVhURVNULTAxLzI3Kkg6QUFKRkozSllEUC0yNypJMTpQVCpJMjoxMDAuMDAqTjowLjAwKk86MTAwLjAwKlE6dlZXaipSOjE5MiJ9LHsicHJ2IjoiYXQtaGFzaCIsInZhbCI6InZWV2oifSx7InBydiI6ImF0LWFwcC1pZCIsInZhbCI6IjE5MiJ9XX0.CTWcw5_36Y3LrwXbX1KpNUqgRWzu2-HNDDJXubCBeiODJ55TsU5oQ1gq_azpImfn3c0CPzPo1k1X-n84TgG5Og"
-	]
+	}
 }

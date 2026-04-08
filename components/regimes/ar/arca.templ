@@ -6,11 +6,75 @@ import (
 
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
+	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/addons/ar/arca"
 	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
 )
+
+// ARCAVATLegend renders the tax status legend (e.g. "IVA RESPONSABLE INSCRIPTO")
+// underneath the supplier or customer name on Argentine invoices.
+templ ARCAVATLegend(doc internal.Document, party *org.Party, role string) {
+	if legend := arcaVATLegend(doc, party, role); legend != "" {
+		<div class="arca-vat-legend">{ legend }</div>
+	}
+}
+
+// ARCAActivityStart renders the "Inicio de actividades" date for Argentine suppliers.
+templ ARCAActivityStart(party *org.Party) {
+	if dt := arcaActivityStart(party); dt != "" {
+		<div class="arca-activity-start">Inicio de actividades: { dt }</div>
+	}
+}
+
+func arcaActivityStart(party *org.Party) string {
+	if party == nil {
+		return ""
+	}
+	key := cbc.Key("ar-arca-activity-start")
+	for _, addr := range party.Addresses {
+		if v := addr.Meta[key]; v != "" {
+			return v
+		}
+	}
+	return ""
+}
+
+// TitleType renders the ARCA document type title (e.g. "Factura A", "Nota de Crédito B")
+// based on the ar-arca-doc-type extension code.
+templ TitleType(doc internal.Document) {
+	if isArgentine(doc) {
+		@titleType(doc)
+	}
+}
+
+templ titleType(doc internal.Document) {
+	if typ := arcaDocType(doc); typ != "" {
+		@t.T("regimes.ar.title." + typ)
+	}
+}
+
+func isArgentine(doc internal.Document) bool {
+	ext := doc.GetExt()
+	if ext == nil {
+		return false
+	}
+	return !ext[arca.ExtKeyDocType].IsEmpty()
+}
+
+func arcaDocType(doc internal.Document) string {
+	ext := doc.GetExt()
+	if ext == nil {
+		return ""
+	}
+	dt := ext[arca.ExtKeyDocType]
+	if dt.IsEmpty() {
+		return ""
+	}
+	return dt.String()
+}
 
 // ARCADocTypeLetter renders the ARCA document type letter box (A, B, or C)
 // in the invoice header, if the document has an ar-arca-doc-type extension.
