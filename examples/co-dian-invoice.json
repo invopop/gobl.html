@@ -1,0 +1,502 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "019d23bb-a9a6-7000-acf3-3271e5bf5902",
+		"dig": {
+			"alg": "sha256",
+			"val": "726511212f500d132986958ae82aa555df19a3d7c97dc10916454d837593edcd"
+		},
+		"stamps": [
+			{
+				"prv": "dian-cude",
+				"val": "50d06ed88fb3f4f2d4a903c613db4d7b8bc550df7087d35091860dcf78a4a920846b2d16dd15ef4b8438e66f4857b887"
+			},
+			{
+				"prv": "dian-qr",
+				"val": "NumFac: 1041282\nFecFac: 2026-03-25\nNitFac: 901585284\nDocAdq: 901585284\nValFac: 200000.00\nValIva: 38000.00\nValOtroIm: 0.00\nValTotal: 238000.00\nCUFE: 50d06ed88fb3f4f2d4a903c613db4d7b8bc550df7087d35091860dcf78a4a920846b2d16dd15ef4b8438e66f4857b887\nhttps://catalogo-vpfe-hab.dian.gov.co/document/searchqr?documentkey=50d06ed88fb3f4f2d4a903c613db4d7b8bc550df7087d35091860dcf78a4a920846b2d16dd15ef4b8438e66f4857b887"
+			},
+			{
+				"prv": "email-subject",
+				"val": "901585284;BMAC SAS;SETT1041282;01;BMAC SAS"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "CO",
+		"$addons": [
+			"co-dian-v2"
+		],
+		"uuid": "019d23bb-7e6f-7001-90fe-5e772c270abe",
+		"type": "standard",
+		"series": "SETT",
+		"code": "1041282",
+		"issue_date": "2026-03-25",
+		"issue_time": "12:34:56",
+		"currency": "COP",
+		"supplier": {
+			"uuid": "64bc95e0-451b-40b1-a463-414d9399336d",
+			"name": "Cyberdyne Sistemas SAS",
+			"tax_id": {
+				"country": "CO",
+				"code": "9015852843",
+				"type": "tin"
+			},
+			"addresses": [
+				{
+					"street": "CRA 8 113 31 OF 703",
+					"locality": "Bogotá",
+					"region": "Bogotá, D.C.",
+					"country": "CO"
+				}
+			],
+			"emails": [
+				{
+					"addr": "dev@invopop.com"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+5715551234"
+				}
+			],
+			"ext": {
+				"co-dian-fiscal-responsibility": "R-99-PN",
+				"co-dian-municipality": "11001"
+			}
+		},
+		"customer": {
+			"name": "Atlas Organization",
+			"tax_id": {
+				"country": "CO",
+				"code": "9015852843"
+			},
+			"people": [
+				{
+					"name": {
+						"given": "Diego",
+						"surname": "Lopez"
+					}
+				}
+			],
+			"addresses": [
+				{
+					"street": "Carrera 74 4303",
+					"locality": "Medellin",
+					"region": "Medellin",
+					"code": "050037",
+					"country": "CO"
+				}
+			],
+			"emails": [
+				{
+					"addr": "diego.lopez@atlas.com"
+				}
+			],
+			"ext": {
+				"co-dian-fiscal-responsibility": "R-99-PN",
+				"co-dian-municipality": "05001"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "10",
+				"item": {
+					"name": "Servicio de consultoría técnica",
+					"price": "350000.00"
+				},
+				"sum": "3500000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "3500000.00"
+			},
+			{
+				"i": 2,
+				"quantity": "5",
+				"item": {
+					"name": "Licencia de software mensual",
+					"price": "180000.00"
+				},
+				"sum": "900000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "900000.00"
+			},
+			{
+				"i": 3,
+				"quantity": "20",
+				"item": {
+					"name": "Horas de desarrollo web",
+					"price": "125000.00"
+				},
+				"sum": "2500000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "2500000.00"
+			},
+			{
+				"i": 4,
+				"quantity": "3",
+				"item": {
+					"name": "Servidor dedicado - alquiler trimestral",
+					"price": "950000.00"
+				},
+				"sum": "2850000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "2850000.00"
+			},
+			{
+				"i": 5,
+				"quantity": "1",
+				"item": {
+					"name": "Auditoría de seguridad informática",
+					"price": "4500000.00"
+				},
+				"sum": "4500000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "4500000.00"
+			},
+			{
+				"i": 6,
+				"quantity": "50",
+				"item": {
+					"name": "Certificado digital SSL",
+					"price": "45000.00"
+				},
+				"sum": "2250000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "2250000.00"
+			},
+			{
+				"i": 7,
+				"quantity": "8",
+				"item": {
+					"name": "Soporte técnico remoto (por incidencia)",
+					"price": "85000.00"
+				},
+				"sum": "680000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "680000.00"
+			},
+			{
+				"i": 8,
+				"quantity": "2",
+				"item": {
+					"name": "Diseño de interfaz de usuario (UI/UX)",
+					"price": "2200000.00"
+				},
+				"sum": "4400000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "4400000.00"
+			},
+			{
+				"i": 9,
+				"quantity": "15",
+				"item": {
+					"name": "Migración de datos - por tabla",
+					"price": "320000.00"
+				},
+				"sum": "4800000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "4800000.00"
+			},
+			{
+				"i": 10,
+				"quantity": "1",
+				"item": {
+					"name": "Capacitación presencial (jornada completa)",
+					"price": "1800000.00"
+				},
+				"sum": "1800000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "1800000.00"
+			},
+			{
+				"i": 11,
+				"quantity": "4",
+				"item": {
+					"name": "Mantenimiento preventivo de equipos",
+					"price": "275000.00"
+				},
+				"sum": "1100000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "1100000.00"
+			},
+			{
+				"i": 12,
+				"quantity": "100",
+				"item": {
+					"name": "Almacenamiento en la nube (GB/mes)",
+					"price": "3500.00"
+				},
+				"sum": "350000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "350000.00"
+			},
+			{
+				"i": 13,
+				"quantity": "6",
+				"item": {
+					"name": "Instalación de red cableada - punto",
+					"price": "185000.00"
+				},
+				"sum": "1110000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "1110000.00"
+			},
+			{
+				"i": 14,
+				"quantity": "1",
+				"item": {
+					"name": "Plan de recuperación ante desastres",
+					"price": "7500000.00"
+				},
+				"sum": "7500000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "7500000.00"
+			},
+			{
+				"i": 15,
+				"quantity": "12",
+				"item": {
+					"name": "Monitoreo de infraestructura 24/7 (mensual)",
+					"price": "420000.00"
+				},
+				"sum": "5040000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "5040000.00"
+			},
+			{
+				"i": 16,
+				"quantity": "3",
+				"item": {
+					"name": "Desarrollo de API REST personalizada",
+					"price": "3800000.00"
+				},
+				"sum": "11400000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "11400000.00"
+			},
+			{
+				"i": 17,
+				"quantity": "25",
+				"item": {
+					"name": "Licencia de antivirus empresarial (anual)",
+					"price": "95000.00"
+				},
+				"sum": "2375000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "2375000.00"
+			},
+			{
+				"i": 18,
+				"quantity": "1",
+				"item": {
+					"name": "Implementación de ERP - fase inicial",
+					"price": "15000000.00"
+				},
+				"sum": "15000000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "15000000.00"
+			},
+			{
+				"i": 19,
+				"quantity": "7",
+				"item": {
+					"name": "Configuración de firewall avanzado",
+					"price": "550000.00"
+				},
+				"sum": "3850000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "3850000.00"
+			},
+			{
+				"i": 20,
+				"quantity": "2",
+				"item": {
+					"name": "Pruebas de penetración (pentest)",
+					"price": "6000000.00"
+				},
+				"sum": "12000000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "12000000.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"due_dates": [
+					{
+						"date": "2026-04-25",
+						"amount": "104606950.00",
+						"percent": "100%"
+					}
+				]
+			}
+		},
+		"totals": {
+			"sum": "87905000.00",
+			"total": "87905000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "87905000.00",
+								"percent": "19.0%",
+								"amount": "16701950.00"
+							}
+						],
+						"amount": "16701950.00"
+					}
+				],
+				"sum": "16701950.00"
+			},
+			"tax": "16701950.00",
+			"total_with_tax": "104606950.00",
+			"payable": "104606950.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6ImM0NWQyZDM0LWIzMjItNDc0MS1hMjRlLTZmYzNjMGEwOTJmMCJ9.eyJ1dWlkIjoiMDE5ZDIzYmItYTlhNi03MDAwLWFjZjMtMzI3MWU1YmY1OTAyIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImEyNGJkNDc2ZGRhZDBmNWY3YmU0M2NkMTM4M2YxOGIzMjljZThhNWU4ODA4OGU0MTg1NjM1YTY2ZWYzZjgyOTkifX0.nzGtoJ8tITe88htd-kp0a-VV0GTH1O5r0RMRuKukmEa5wfKAqZW6_u_FWLcfos28dyTWOihNkYKKRkEUTGi96Q"
+	]
+}

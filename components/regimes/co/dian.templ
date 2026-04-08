@@ -12,15 +12,15 @@ import (
 
 var dianQRHTTPRegexp = regexp.MustCompile(`https.+`)
 
-templ DIANQR(env *gobl.Envelope, inv *bill.Invoice) {
+templ DIANQR(env *gobl.Envelope) {
 	if cude := dianCUDE(env); cude != "" {
 		if qr := dianQR(env); qr != "" {
-			@generateQR(inv, cude, qr)
+			@generateQR(env, cude, qr)
 		}
 	}
 }
 
-templ generateQR(inv *bill.Invoice, code, qr string) {
+templ generateQR(env *gobl.Envelope, code, qr string) {
 	<style type="text/css">
         .dian-qr {
 			display: flex;
@@ -46,7 +46,7 @@ templ generateQR(inv *bill.Invoice, code, qr string) {
 			</a>
 		</div>
 		<div class="text">
-			if pcude := dianPrecedingCUDE(inv); pcude != "" {
+			if pcude := dianPrecedingCUDE(env); pcude != "" {
 				<div class="cude">
 					@t.T("regimes.co.cude", i18n.M{"cude": code})
 				</div>
@@ -76,8 +76,9 @@ func dianCUDE(env *gobl.Envelope) string {
 	return ""
 }
 
-func dianPrecedingCUDE(inv *bill.Invoice) string {
-	if len(inv.Preceding) == 0 {
+func dianPrecedingCUDE(env *gobl.Envelope) string {
+	inv, ok := env.Extract().(*bill.Invoice)
+	if !ok || len(inv.Preceding) == 0 {
 		return ""
 	}
 	for _, stamp := range inv.Preceding[0].Stamps {

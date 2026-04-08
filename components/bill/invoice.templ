@@ -45,7 +45,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 				<div class="extensions">
 					// Region specific information
 					@ar.ARCAQR(env)
-					@co.DIANQR(env, inv)
+					@co.DIANQR(env)
 					@mx.CFDI(env, inv)
 					@pl.KSeFQR(env)
 					@pt.ATQR(env)
