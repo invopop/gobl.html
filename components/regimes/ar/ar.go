@@ -7,7 +7,6 @@ import (
 
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/addons/ar/arca"
-	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
 )
@@ -47,15 +46,13 @@ func arcaVATLegend(doc internal.Document, party *org.Party, role string) string 
 	return customerLegend(party)
 }
 
-func supplierLegend(doc internal.Document, docType cbc.Code) string {
+func supplierLegend(_ internal.Document, docType cbc.Code) string {
 	switch {
 	case slices.Contains(arca.DocTypesA, docType),
 		slices.Contains(arca.DocTypesB, docType):
 		return "IVA RESPONSABLE INSCRIPTO"
 	case slices.Contains(arca.DocTypesC, docType):
-		if inv, ok := doc.Extract().(*bill.Invoice); ok && inv.HasTags(arca.TagMonotax) {
-			return "RESPONSABLE MONOTRIBUTO"
-		}
+		return "RESPONSABLE MONOTRIBUTO"
 	}
 	return ""
 }
