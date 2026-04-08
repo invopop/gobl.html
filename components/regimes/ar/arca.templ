@@ -6,6 +6,7 @@ import (
 
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
+	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/addons/ar/arca"
 	"github.com/invopop/gobl/cbc"
@@ -39,6 +40,40 @@ func arcaActivityStart(party *org.Party) string {
 		}
 	}
 	return ""
+}
+
+// TitleType renders the ARCA document type title (e.g. "Factura A", "Nota de Crédito B")
+// based on the ar-arca-doc-type extension code.
+templ TitleType(doc internal.Document) {
+	if isArgentine(doc) {
+		@titleType(doc)
+	}
+}
+
+templ titleType(doc internal.Document) {
+	if typ := arcaDocType(doc); typ != "" {
+		@t.T("regimes.ar.title." + typ)
+	}
+}
+
+func isArgentine(doc internal.Document) bool {
+	ext := doc.GetExt()
+	if ext == nil {
+		return false
+	}
+	return !ext[arca.ExtKeyDocType].IsEmpty()
+}
+
+func arcaDocType(doc internal.Document) string {
+	ext := doc.GetExt()
+	if ext == nil {
+		return ""
+	}
+	dt := ext[arca.ExtKeyDocType]
+	if dt.IsEmpty() {
+		return ""
+	}
+	return dt.String()
 }
 
 // ARCADocTypeLetter renders the ARCA document type letter box (A, B, or C)
