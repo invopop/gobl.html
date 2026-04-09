@@ -75,7 +75,7 @@ func DIANQR(env *gobl.Envelope) templ.Component {
 		ctx = templ.ClearChildren(ctx)
 		if cude := dianCUDE(env); cude != "" {
 			if qr := dianQR(env); qr != "" {
-				templ_7745c5c3_Err = generateQR(env, cude, qr).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = generateQR(cude, dianPrecedingCUDE(env), qr).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -85,7 +85,7 @@ func DIANQR(env *gobl.Envelope) templ.Component {
 	})
 }
 
-func generateQR(env *gobl.Envelope, code, qr string) templ.Component {
+func generateQR(code, precedingCode, qr string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -131,7 +131,7 @@ func generateQR(env *gobl.Envelope, code, qr string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		if pcude := dianPrecedingCUDE(env); pcude != "" {
+		if precedingCode != "" {
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div class=\"cude\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -144,7 +144,7 @@ func generateQR(env *gobl.Envelope, code, qr string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = t.T("regimes.co.preceding_cufe", i18n.M{"cufe": pcude}).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = t.T("regimes.co.preceding_cufe", i18n.M{"cufe": precedingCode}).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

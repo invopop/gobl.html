@@ -22,12 +22,12 @@ templ Stylesheets(env *gobl.Envelope) {
 templ DIANQR(env *gobl.Envelope) {
 	if cude := dianCUDE(env); cude != "" {
 		if qr := dianQR(env); qr != "" {
-			@generateQR(env, cude, qr)
+			@generateQR(cude, dianPrecedingCUDE(env), qr)
 		}
 	}
 }
 
-templ generateQR(env *gobl.Envelope, code, qr string) {
+templ generateQR(code, precedingCode, qr string) {
 	<section class="dian-qr">
 		<div class="image">
 			<a href={ templ.URL(dianURL(qr)) }>
@@ -35,12 +35,12 @@ templ generateQR(env *gobl.Envelope, code, qr string) {
 			</a>
 		</div>
 		<div class="text">
-			if pcude := dianPrecedingCUDE(env); pcude != "" {
+			if precedingCode != "" {
 				<div class="cude">
 					@t.T("regimes.co.cude", i18n.M{"cude": code})
 				</div>
 				<div class="cufe">
-					@t.T("regimes.co.preceding_cufe", i18n.M{"cufe": pcude})
+					@t.T("regimes.co.preceding_cufe", i18n.M{"cufe": precedingCode})
 				</div>
 			} else {
 				<div class="cufe">
