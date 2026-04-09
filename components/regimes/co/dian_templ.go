@@ -11,6 +11,7 @@ import templruntime "github.com/a-h/templ/runtime"
 import (
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/components/assets"
 	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/addons/co/dian"
@@ -20,7 +21,7 @@ import (
 
 var dianQRHTTPRegexp = regexp.MustCompile(`https.+`)
 
-func DIANQR(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
+func Stylesheets(env *gobl.Envelope) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -41,19 +42,17 @@ func DIANQR(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if cude := dianCUDE(env); cude != "" {
-			if qr := dianQR(env); qr != "" {
-				templ_7745c5c3_Err = generateQR(inv, cude, qr).Render(ctx, templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
+		if dianCUDE(env) != "" {
+			templ_7745c5c3_Err = assets.Stylesheet("co.css").Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
 			}
 		}
 		return nil
 	})
 }
 
-func generateQR(inv *bill.Invoice, code, qr string) templ.Component {
+func DIANQR(env *gobl.Envelope) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -74,16 +73,49 @@ func generateQR(inv *bill.Invoice, code, qr string) templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<style type=\"text/css\">\n        .dian-qr {\n\t\t\tdisplay: flex;\n            font-family: monospace;\n            font-size: 7pt;\n        }\n\t\t.dian-qr .image {\n\t\t\tmargin-right: 6mm;\n\t\t}\n\t\t.dian-qr .text {\n\t\t\tmargin-top: auto;\n\t\t\tword-break: break-all;\n\t\t}\n        .dian-qr img {\n            width: 24mm;\n            height: 24mm;\n        }\n    </style><section class=\"dian-qr\"><div class=\"image\"><a href=\"")
+		if cude := dianCUDE(env); cude != "" {
+			if qr := dianQR(env); qr != "" {
+				templ_7745c5c3_Err = generateQR(cude, dianPrecedingCUDE(env), qr).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+		}
+		return nil
+	})
+}
+
+func generateQR(code, precedingCode, qr string) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var3 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var3 == nil {
+			templ_7745c5c3_Var3 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"dian-qr\"><div class=\"image\"><a href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var3 templ.SafeURL
-		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL(dianURL(qr)))
+		var templ_7745c5c3_Var4 templ.SafeURL
+		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL(dianURL(qr)))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/co/dian.templ`, Line: 44, Col: 35}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/co/dian.templ`, Line: 33, Col: 35}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -99,7 +131,7 @@ func generateQR(inv *bill.Invoice, code, qr string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		if pcude := dianPrecedingCUDE(inv); pcude != "" {
+		if precedingCode != "" {
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div class=\"cude\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -112,7 +144,7 @@ func generateQR(inv *bill.Invoice, code, qr string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = t.T("regimes.co.preceding_cufe", i18n.M{"cufe": pcude}).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = t.T("regimes.co.preceding_cufe", i18n.M{"cufe": precedingCode}).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -156,8 +188,9 @@ func dianCUDE(env *gobl.Envelope) string {
 	return ""
 }
 
-func dianPrecedingCUDE(inv *bill.Invoice) string {
-	if len(inv.Preceding) == 0 {
+func dianPrecedingCUDE(env *gobl.Envelope) string {
+	inv, ok := env.Extract().(*bill.Invoice)
+	if !ok || len(inv.Preceding) == 0 {
 		return ""
 	}
 	for _, stamp := range inv.Preceding[0].Stamps {
