@@ -1,0 +1,19 @@
+.dian-qr {
+  display: flex;
+  font-family: monospace;
+  font-size: 7pt;
+}
+
+.dian-qr .image {
+  margin-right: 6mm;
+}
+
+.dian-qr .text {
+  margin-top: auto;
+  word-break: break-all;
+}
+
+.dian-qr img {
+  width: 24mm;
+  height: 24mm;
+}

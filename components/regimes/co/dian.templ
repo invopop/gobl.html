@@ -3,6 +3,7 @@ package co
 import (
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/components/assets"
 	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/addons/co/dian"
@@ -11,6 +12,12 @@ import (
 )
 
 var dianQRHTTPRegexp = regexp.MustCompile(`https.+`)
+
+templ Stylesheets(env *gobl.Envelope) {
+	if dianCUDE(env) != "" {
+		@assets.Stylesheet("co.css")
+	}
+}
 
 templ DIANQR(env *gobl.Envelope) {
 	if cude := dianCUDE(env); cude != "" {
@@ -21,24 +28,6 @@ templ DIANQR(env *gobl.Envelope) {
 }
 
 templ generateQR(env *gobl.Envelope, code, qr string) {
-	<style type="text/css">
-        .dian-qr {
-			display: flex;
-            font-family: monospace;
-            font-size: 7pt;
-        }
-		.dian-qr .image {
-			margin-right: 6mm;
-		}
-		.dian-qr .text {
-			margin-top: auto;
-			word-break: break-all;
-		}
-        .dian-qr img {
-            width: 24mm;
-            height: 24mm;
-        }
-    </style>
 	<section class="dian-qr">
 		<div class="image">
 			<a href={ templ.URL(dianURL(qr)) }>
