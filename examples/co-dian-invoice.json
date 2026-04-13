@@ -4,7 +4,7 @@
 		"uuid": "019d23bb-a9a6-7000-acf3-3271e5bf5902",
 		"dig": {
 			"alg": "sha256",
-			"val": "811d018fcc9cac5c43e4be02746c72d44c962c312ad299ad1dce02a04e40b235"
+			"val": "726511212f500d132986958ae82aa555df19a3d7c97dc10916454d837593edcd"
 		},
 		"stamps": [
 			{
@@ -27,11 +27,11 @@
 		"$addons": [
 			"co-dian-v2"
 		],
-		"uuid": "019d861f-7d3a-7001-847e-b0e3b909f404",
+		"uuid": "019d23bb-7e6f-7001-90fe-5e772c270abe",
 		"type": "standard",
 		"series": "SETT",
-		"code": "1041295",
-		"issue_date": "2026-04-13",
+		"code": "1041282",
+		"issue_date": "2026-03-25",
 		"issue_time": "12:34:56",
 		"currency": "COP",
 		"supplier": {
@@ -96,29 +96,17 @@
 			"ext": {
 				"co-dian-fiscal-responsibility": "R-99-PN",
 				"co-dian-municipality": "05001"
-			},
-			"meta": {
-				"chargebee-customer-id": "BTUNYQUQiM63UQB"
 			}
 		},
 		"lines": [
 			{
 				"i": 1,
-				"quantity": "1",
-				"period": {
-					"start": "2025-08-20",
-					"end": "2025-08-27"
-				},
+				"quantity": "10",
 				"item": {
-					"name": "Basic Plan",
-					"description": "Subscription BTUNYQUQiMMIKQS",
-					"price": "200000.00",
-					"meta": {
-						"chargebee-date-from": "2025-08-20",
-						"chargebee-date-to": "2025-08-27"
-					}
+					"name": "Servicio de consultoría técnica",
+					"price": "350000.00"
 				},
-				"sum": "200000.00",
+				"sum": "3500000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -127,25 +115,16 @@
 						"percent": "19.0%"
 					}
 				],
-				"total": "200000.00"
+				"total": "3500000.00"
 			},
 			{
 				"i": 2,
-				"quantity": "1",
-				"period": {
-					"start": "2025-08-20",
-					"end": "2025-08-27"
-				},
+				"quantity": "5",
 				"item": {
-					"name": "Basic Plan",
-					"description": "Subscription BTUNYQUQiMMIKQS",
-					"price": "200000.00",
-					"meta": {
-						"chargebee-date-from": "2025-08-20",
-						"chargebee-date-to": "2025-08-27"
-					}
+					"name": "Licencia de software mensual",
+					"price": "180000.00"
 				},
-				"sum": "200000.00",
+				"sum": "900000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -154,25 +133,16 @@
 						"percent": "19.0%"
 					}
 				],
-				"total": "200000.00"
+				"total": "900000.00"
 			},
 			{
 				"i": 3,
-				"quantity": "1",
-				"period": {
-					"start": "2025-08-20",
-					"end": "2025-08-27"
-				},
+				"quantity": "20",
 				"item": {
-					"name": "Basic Plan",
-					"description": "Subscription BTUNYQUQiMMIKQS",
-					"price": "200000.00",
-					"meta": {
-						"chargebee-date-from": "2025-08-20",
-						"chargebee-date-to": "2025-08-27"
-					}
+					"name": "Horas de desarrollo web",
+					"price": "125000.00"
 				},
-				"sum": "200000.00",
+				"sum": "2500000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -181,25 +151,16 @@
 						"percent": "19.0%"
 					}
 				],
-				"total": "200000.00"
+				"total": "2500000.00"
 			},
 			{
 				"i": 4,
-				"quantity": "1",
-				"period": {
-					"start": "2025-08-20",
-					"end": "2025-08-27"
-				},
+				"quantity": "3",
 				"item": {
-					"name": "Basic Plan",
-					"description": "Subscription BTUNYQUQiMMIKQS",
-					"price": "200000.00",
-					"meta": {
-						"chargebee-date-from": "2025-08-20",
-						"chargebee-date-to": "2025-08-27"
-					}
+					"name": "Servidor dedicado - alquiler trimestral",
+					"price": "950000.00"
 				},
-				"sum": "200000.00",
+				"sum": "2850000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -208,25 +169,16 @@
 						"percent": "19.0%"
 					}
 				],
-				"total": "200000.00"
+				"total": "2850000.00"
 			},
 			{
 				"i": 5,
 				"quantity": "1",
-				"period": {
-					"start": "2025-08-20",
-					"end": "2025-08-27"
-				},
 				"item": {
-					"name": "Basic Plan",
-					"description": "Subscription BTUNYQUQiMMIKQS",
-					"price": "200000.00",
-					"meta": {
-						"chargebee-date-from": "2025-08-20",
-						"chargebee-date-to": "2025-08-27"
-					}
+					"name": "Auditoría de seguridad informática",
+					"price": "4500000.00"
 				},
-				"sum": "200000.00",
+				"sum": "4500000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -235,25 +187,16 @@
 						"percent": "19.0%"
 					}
 				],
-				"total": "200000.00"
+				"total": "4500000.00"
 			},
 			{
 				"i": 6,
-				"quantity": "1",
-				"period": {
-					"start": "2025-08-20",
-					"end": "2025-08-27"
-				},
+				"quantity": "50",
 				"item": {
-					"name": "Basic Plan",
-					"description": "Subscription BTUNYQUQiMMIKQS",
-					"price": "200000.00",
-					"meta": {
-						"chargebee-date-from": "2025-08-20",
-						"chargebee-date-to": "2025-08-27"
-					}
+					"name": "Certificado digital SSL",
+					"price": "45000.00"
 				},
-				"sum": "200000.00",
+				"sum": "2250000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -262,25 +205,16 @@
 						"percent": "19.0%"
 					}
 				],
-				"total": "200000.00"
+				"total": "2250000.00"
 			},
 			{
 				"i": 7,
-				"quantity": "1",
-				"period": {
-					"start": "2025-08-20",
-					"end": "2025-08-27"
-				},
+				"quantity": "8",
 				"item": {
-					"name": "Basic Plan",
-					"description": "Subscription BTUNYQUQiMMIKQS",
-					"price": "200000.00",
-					"meta": {
-						"chargebee-date-from": "2025-08-20",
-						"chargebee-date-to": "2025-08-27"
-					}
+					"name": "Soporte técnico remoto (por incidencia)",
+					"price": "85000.00"
 				},
-				"sum": "200000.00",
+				"sum": "680000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -289,25 +223,16 @@
 						"percent": "19.0%"
 					}
 				],
-				"total": "200000.00"
+				"total": "680000.00"
 			},
 			{
 				"i": 8,
-				"quantity": "1",
-				"period": {
-					"start": "2025-08-20",
-					"end": "2025-08-27"
-				},
+				"quantity": "2",
 				"item": {
-					"name": "Basic Plan",
-					"description": "Subscription BTUNYQUQiMMIKQS",
-					"price": "200000.00",
-					"meta": {
-						"chargebee-date-from": "2025-08-20",
-						"chargebee-date-to": "2025-08-27"
-					}
+					"name": "Diseño de interfaz de usuario (UI/UX)",
+					"price": "2200000.00"
 				},
-				"sum": "200000.00",
+				"sum": "4400000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -316,25 +241,16 @@
 						"percent": "19.0%"
 					}
 				],
-				"total": "200000.00"
+				"total": "4400000.00"
 			},
 			{
 				"i": 9,
-				"quantity": "1",
-				"period": {
-					"start": "2025-08-20",
-					"end": "2025-08-27"
-				},
+				"quantity": "15",
 				"item": {
-					"name": "Basic Plan",
-					"description": "Subscription BTUNYQUQiMMIKQS",
-					"price": "200000.00",
-					"meta": {
-						"chargebee-date-from": "2025-08-20",
-						"chargebee-date-to": "2025-08-27"
-					}
+					"name": "Migración de datos - por tabla",
+					"price": "320000.00"
 				},
-				"sum": "200000.00",
+				"sum": "4800000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -343,25 +259,16 @@
 						"percent": "19.0%"
 					}
 				],
-				"total": "200000.00"
+				"total": "4800000.00"
 			},
 			{
 				"i": 10,
 				"quantity": "1",
-				"period": {
-					"start": "2025-08-20",
-					"end": "2025-08-27"
-				},
 				"item": {
-					"name": "Basic Plan",
-					"description": "Subscription BTUNYQUQiMMIKQS",
-					"price": "200000.00",
-					"meta": {
-						"chargebee-date-from": "2025-08-20",
-						"chargebee-date-to": "2025-08-27"
-					}
+					"name": "Capacitación presencial (jornada completa)",
+					"price": "1800000.00"
 				},
-				"sum": "200000.00",
+				"sum": "1800000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -370,25 +277,16 @@
 						"percent": "19.0%"
 					}
 				],
-				"total": "200000.00"
+				"total": "1800000.00"
 			},
 			{
 				"i": 11,
-				"quantity": "1",
-				"period": {
-					"start": "2025-08-20",
-					"end": "2025-08-27"
-				},
+				"quantity": "4",
 				"item": {
-					"name": "Basic Plan",
-					"description": "Subscription BTUNYQUQiMMIKQS",
-					"price": "200000.00",
-					"meta": {
-						"chargebee-date-from": "2025-08-20",
-						"chargebee-date-to": "2025-08-27"
-					}
+					"name": "Mantenimiento preventivo de equipos",
+					"price": "275000.00"
 				},
-				"sum": "200000.00",
+				"sum": "1100000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -397,25 +295,16 @@
 						"percent": "19.0%"
 					}
 				],
-				"total": "200000.00"
+				"total": "1100000.00"
 			},
 			{
 				"i": 12,
-				"quantity": "1",
-				"period": {
-					"start": "2025-08-20",
-					"end": "2025-08-27"
-				},
+				"quantity": "100",
 				"item": {
-					"name": "Basic Plan",
-					"description": "Subscription BTUNYQUQiMMIKQS",
-					"price": "200000.00",
-					"meta": {
-						"chargebee-date-from": "2025-08-20",
-						"chargebee-date-to": "2025-08-27"
-					}
+					"name": "Almacenamiento en la nube (GB/mes)",
+					"price": "3500.00"
 				},
-				"sum": "200000.00",
+				"sum": "350000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -424,25 +313,16 @@
 						"percent": "19.0%"
 					}
 				],
-				"total": "200000.00"
+				"total": "350000.00"
 			},
 			{
 				"i": 13,
-				"quantity": "1",
-				"period": {
-					"start": "2025-08-20",
-					"end": "2025-08-27"
-				},
+				"quantity": "6",
 				"item": {
-					"name": "Basic Plan",
-					"description": "Subscription BTUNYQUQiMMIKQS",
-					"price": "200000.00",
-					"meta": {
-						"chargebee-date-from": "2025-08-20",
-						"chargebee-date-to": "2025-08-27"
-					}
+					"name": "Instalación de red cableada - punto",
+					"price": "185000.00"
 				},
-				"sum": "200000.00",
+				"sum": "1110000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -451,25 +331,16 @@
 						"percent": "19.0%"
 					}
 				],
-				"total": "200000.00"
+				"total": "1110000.00"
 			},
 			{
 				"i": 14,
 				"quantity": "1",
-				"period": {
-					"start": "2025-08-20",
-					"end": "2025-08-27"
-				},
 				"item": {
-					"name": "Basic Plan",
-					"description": "Subscription BTUNYQUQiMMIKQS",
-					"price": "200000.00",
-					"meta": {
-						"chargebee-date-from": "2025-08-20",
-						"chargebee-date-to": "2025-08-27"
-					}
+					"name": "Plan de recuperación ante desastres",
+					"price": "7500000.00"
 				},
-				"sum": "200000.00",
+				"sum": "7500000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -478,32 +349,131 @@
 						"percent": "19.0%"
 					}
 				],
-				"total": "200000.00"
+				"total": "7500000.00"
+			},
+			{
+				"i": 15,
+				"quantity": "12",
+				"item": {
+					"name": "Monitoreo de infraestructura 24/7 (mensual)",
+					"price": "420000.00"
+				},
+				"sum": "5040000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "5040000.00"
+			},
+			{
+				"i": 16,
+				"quantity": "3",
+				"item": {
+					"name": "Desarrollo de API REST personalizada",
+					"price": "3800000.00"
+				},
+				"sum": "11400000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "11400000.00"
+			},
+			{
+				"i": 17,
+				"quantity": "25",
+				"item": {
+					"name": "Licencia de antivirus empresarial (anual)",
+					"price": "95000.00"
+				},
+				"sum": "2375000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "2375000.00"
+			},
+			{
+				"i": 18,
+				"quantity": "1",
+				"item": {
+					"name": "Implementación de ERP - fase inicial",
+					"price": "15000000.00"
+				},
+				"sum": "15000000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "15000000.00"
+			},
+			{
+				"i": 19,
+				"quantity": "7",
+				"item": {
+					"name": "Configuración de firewall avanzado",
+					"price": "550000.00"
+				},
+				"sum": "3850000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "3850000.00"
+			},
+			{
+				"i": 20,
+				"quantity": "2",
+				"item": {
+					"name": "Pruebas de penetración (pentest)",
+					"price": "6000000.00"
+				},
+				"sum": "12000000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "12000000.00"
 			}
 		],
-		"ordering": {
-			"identities": [
-				{
-					"label": "CB ID",
-					"key": "chargebee-id",
-					"code": "IN-0229"
-				}
-			]
-		},
 		"payment": {
 			"terms": {
 				"due_dates": [
 					{
-						"date": "2027-01-01",
-						"amount": "3332000.00",
+						"date": "2026-04-25",
+						"amount": "104606950.00",
 						"percent": "100%"
 					}
 				]
 			}
 		},
 		"totals": {
-			"sum": "2800000.00",
-			"total": "2800000.00",
+			"sum": "87905000.00",
+			"total": "87905000.00",
 			"taxes": {
 				"categories": [
 					{
@@ -511,24 +481,19 @@
 						"rates": [
 							{
 								"key": "standard",
-								"base": "2800000.00",
+								"base": "87905000.00",
 								"percent": "19.0%",
-								"amount": "532000.00"
+								"amount": "16701950.00"
 							}
 						],
-						"amount": "532000.00"
+						"amount": "16701950.00"
 					}
 				],
-				"sum": "532000.00"
+				"sum": "16701950.00"
 			},
-			"tax": "532000.00",
-			"total_with_tax": "3332000.00",
-			"payable": "3332000.00"
-		},
-		"meta": {
-			"chargebee-doc-id": "IN-0229",
-			"chargebee-doc-type": "invoice",
-			"chargebee-site": "invopop-dev-test"
+			"tax": "16701950.00",
+			"total_with_tax": "104606950.00",
+			"payable": "104606950.00"
 		}
 	},
 	"sigs": [

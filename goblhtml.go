@@ -226,7 +226,7 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 	if o.CalFormatter == nil {
 		cf := internal.CalFormatterISO
 		if d != nil && d.GetRegime().Country.Code() == l10n.CO {
-			// Colombian tax law requires seconds in the issue time
+			// Including seconds in the issue time is customary for Colombian invoices.
 			cf.DateTime = "2006-01-02 · 15:04:05"
 		}
 		o.CalFormatter = &cf
