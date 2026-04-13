@@ -1,0 +1,536 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "019d23bb-a9a6-7000-acf3-3271e5bf5902",
+		"dig": {
+			"alg": "sha256",
+			"val": "939cfe77dda603cb701cef05c431a749687e83e264ffae670f5a74092a7d1f76"
+		},
+		"stamps": [
+			{
+				"prv": "dian-cude",
+				"val": "50d06ed88fb3f4f2d4a903c613db4d7b8bc550df7087d35091860dcf78a4a920846b2d16dd15ef4b8438e66f4857b887"
+			},
+			{
+				"prv": "dian-qr",
+				"val": "NumFac: 1041282\nFecFac: 2026-03-25\nNitFac: 9015852843\nDocAdq: 9015852843\nValFac: 87905000.00\nValIva: 16701950.00\nValOtroIm: 0.00\nValTotal: 104606950.00\nCUFE: 50d06ed88fb3f4f2d4a903c613db4d7b8bc550df7087d35091860dcf78a4a920846b2d16dd15ef4b8438e66f4857b887\nhttps://catalogo-vpfe-hab.dian.gov.co/document/searchqr?documentkey=50d06ed88fb3f4f2d4a903c613db4d7b8bc550df7087d35091860dcf78a4a920846b2d16dd15ef4b8438e66f4857b887"
+			},
+			{
+				"prv": "email-subject",
+				"val": "9015852843;Cyberdyne Sistemas SAS;SETT1041282;01;Cyberdyne Sistemas SAS"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "CO",
+		"$addons": [
+			"co-dian-v2"
+		],
+		"uuid": "019d72ca-def0-7001-86d3-c2d6bbbfd112",
+		"type": "standard",
+		"series": "SETT",
+		"code": "1041287",
+		"issue_date": "2026-04-09",
+		"currency": "COP",
+		"supplier": {
+			"uuid": "64bc95e0-451b-40b1-a463-414d9399336d",
+			"name": "Cyberdyne Sistemas SAS",
+			"tax_id": {
+				"country": "CO",
+				"code": "9015852843",
+				"type": "tin"
+			},
+			"addresses": [
+				{
+					"street": "CRA 8 113 31 OF 703",
+					"locality": "Bogotá",
+					"region": "Bogotá, D.C.",
+					"country": "CO"
+				}
+			],
+			"emails": [
+				{
+					"addr": "dev@invopop.com"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+5715551234"
+				}
+			],
+			"ext": {
+				"co-dian-fiscal-responsibility": "R-99-PN",
+				"co-dian-municipality": "11001"
+			}
+		},
+		"customer": {
+			"name": "Atlas Organization",
+			"tax_id": {
+				"country": "CO",
+				"code": "9015852843"
+			},
+			"people": [
+				{
+					"name": {
+						"given": "Diego",
+						"surname": "Lopez"
+					}
+				}
+			],
+			"addresses": [
+				{
+					"street": "Carrera 74 4303",
+					"locality": "Medellin",
+					"region": "Medellin",
+					"code": "050037",
+					"country": "CO"
+				}
+			],
+			"emails": [
+				{
+					"addr": "diego.lopez@atlas.com"
+				}
+			],
+			"ext": {
+				"co-dian-fiscal-responsibility": "R-99-PN",
+				"co-dian-municipality": "05001"
+			},
+			"meta": {
+				"chargebee-customer-id": "BTUNYQUQiM63UQB"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"period": {
+					"start": "2025-08-20",
+					"end": "2025-08-27"
+				},
+				"item": {
+					"name": "Basic Plan",
+					"description": "Subscription BTUNYQUQiMMIKQS",
+					"price": "200000.00",
+					"meta": {
+						"chargebee-date-from": "2025-08-20",
+						"chargebee-date-to": "2025-08-27"
+					}
+				},
+				"sum": "200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "200000.00"
+			},
+			{
+				"i": 2,
+				"quantity": "1",
+				"period": {
+					"start": "2025-08-20",
+					"end": "2025-08-27"
+				},
+				"item": {
+					"name": "Basic Plan",
+					"description": "Subscription BTUNYQUQiMMIKQS",
+					"price": "200000.00",
+					"meta": {
+						"chargebee-date-from": "2025-08-20",
+						"chargebee-date-to": "2025-08-27"
+					}
+				},
+				"sum": "200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "200000.00"
+			},
+			{
+				"i": 3,
+				"quantity": "1",
+				"period": {
+					"start": "2025-08-20",
+					"end": "2025-08-27"
+				},
+				"item": {
+					"name": "Basic Plan",
+					"description": "Subscription BTUNYQUQiMMIKQS",
+					"price": "200000.00",
+					"meta": {
+						"chargebee-date-from": "2025-08-20",
+						"chargebee-date-to": "2025-08-27"
+					}
+				},
+				"sum": "200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "200000.00"
+			},
+			{
+				"i": 4,
+				"quantity": "1",
+				"period": {
+					"start": "2025-08-20",
+					"end": "2025-08-27"
+				},
+				"item": {
+					"name": "Basic Plan",
+					"description": "Subscription BTUNYQUQiMMIKQS",
+					"price": "200000.00",
+					"meta": {
+						"chargebee-date-from": "2025-08-20",
+						"chargebee-date-to": "2025-08-27"
+					}
+				},
+				"sum": "200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "200000.00"
+			},
+			{
+				"i": 5,
+				"quantity": "1",
+				"period": {
+					"start": "2025-08-20",
+					"end": "2025-08-27"
+				},
+				"item": {
+					"name": "Basic Plan",
+					"description": "Subscription BTUNYQUQiMMIKQS",
+					"price": "200000.00",
+					"meta": {
+						"chargebee-date-from": "2025-08-20",
+						"chargebee-date-to": "2025-08-27"
+					}
+				},
+				"sum": "200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "200000.00"
+			},
+			{
+				"i": 6,
+				"quantity": "1",
+				"period": {
+					"start": "2025-08-20",
+					"end": "2025-08-27"
+				},
+				"item": {
+					"name": "Basic Plan",
+					"description": "Subscription BTUNYQUQiMMIKQS",
+					"price": "200000.00",
+					"meta": {
+						"chargebee-date-from": "2025-08-20",
+						"chargebee-date-to": "2025-08-27"
+					}
+				},
+				"sum": "200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "200000.00"
+			},
+			{
+				"i": 7,
+				"quantity": "1",
+				"period": {
+					"start": "2025-08-20",
+					"end": "2025-08-27"
+				},
+				"item": {
+					"name": "Basic Plan",
+					"description": "Subscription BTUNYQUQiMMIKQS",
+					"price": "200000.00",
+					"meta": {
+						"chargebee-date-from": "2025-08-20",
+						"chargebee-date-to": "2025-08-27"
+					}
+				},
+				"sum": "200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "200000.00"
+			},
+			{
+				"i": 8,
+				"quantity": "1",
+				"period": {
+					"start": "2025-08-20",
+					"end": "2025-08-27"
+				},
+				"item": {
+					"name": "Basic Plan",
+					"description": "Subscription BTUNYQUQiMMIKQS",
+					"price": "200000.00",
+					"meta": {
+						"chargebee-date-from": "2025-08-20",
+						"chargebee-date-to": "2025-08-27"
+					}
+				},
+				"sum": "200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "200000.00"
+			},
+			{
+				"i": 9,
+				"quantity": "1",
+				"period": {
+					"start": "2025-08-20",
+					"end": "2025-08-27"
+				},
+				"item": {
+					"name": "Basic Plan",
+					"description": "Subscription BTUNYQUQiMMIKQS",
+					"price": "200000.00",
+					"meta": {
+						"chargebee-date-from": "2025-08-20",
+						"chargebee-date-to": "2025-08-27"
+					}
+				},
+				"sum": "200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "200000.00"
+			},
+			{
+				"i": 10,
+				"quantity": "1",
+				"period": {
+					"start": "2025-08-20",
+					"end": "2025-08-27"
+				},
+				"item": {
+					"name": "Basic Plan",
+					"description": "Subscription BTUNYQUQiMMIKQS",
+					"price": "200000.00",
+					"meta": {
+						"chargebee-date-from": "2025-08-20",
+						"chargebee-date-to": "2025-08-27"
+					}
+				},
+				"sum": "200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "200000.00"
+			},
+			{
+				"i": 11,
+				"quantity": "1",
+				"period": {
+					"start": "2025-08-20",
+					"end": "2025-08-27"
+				},
+				"item": {
+					"name": "Basic Plan",
+					"description": "Subscription BTUNYQUQiMMIKQS",
+					"price": "200000.00",
+					"meta": {
+						"chargebee-date-from": "2025-08-20",
+						"chargebee-date-to": "2025-08-27"
+					}
+				},
+				"sum": "200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "200000.00"
+			},
+			{
+				"i": 12,
+				"quantity": "1",
+				"period": {
+					"start": "2025-08-20",
+					"end": "2025-08-27"
+				},
+				"item": {
+					"name": "Basic Plan",
+					"description": "Subscription BTUNYQUQiMMIKQS",
+					"price": "200000.00",
+					"meta": {
+						"chargebee-date-from": "2025-08-20",
+						"chargebee-date-to": "2025-08-27"
+					}
+				},
+				"sum": "200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "200000.00"
+			},
+			{
+				"i": 13,
+				"quantity": "1",
+				"period": {
+					"start": "2025-08-20",
+					"end": "2025-08-27"
+				},
+				"item": {
+					"name": "Basic Plan",
+					"description": "Subscription BTUNYQUQiMMIKQS",
+					"price": "200000.00",
+					"meta": {
+						"chargebee-date-from": "2025-08-20",
+						"chargebee-date-to": "2025-08-27"
+					}
+				},
+				"sum": "200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "200000.00"
+			},
+			{
+				"i": 14,
+				"quantity": "1",
+				"period": {
+					"start": "2025-08-20",
+					"end": "2025-08-27"
+				},
+				"item": {
+					"name": "Basic Plan",
+					"description": "Subscription BTUNYQUQiMMIKQS",
+					"price": "200000.00",
+					"meta": {
+						"chargebee-date-from": "2025-08-20",
+						"chargebee-date-to": "2025-08-27"
+					}
+				},
+				"sum": "200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "200000.00"
+			}
+		],
+		"ordering": {
+			"identities": [
+				{
+					"label": "CB ID",
+					"key": "chargebee-id",
+					"code": "IN-0229"
+				}
+			]
+		},
+		"payment": {
+			"terms": {
+				"due_dates": [
+					{
+						"date": "2027-01-01",
+						"amount": "3332000.00",
+						"percent": "100%"
+					}
+				]
+			}
+		},
+		"totals": {
+			"sum": "2800000.00",
+			"total": "2800000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "2800000.00",
+								"percent": "19.0%",
+								"amount": "532000.00"
+							}
+						],
+						"amount": "532000.00"
+					}
+				],
+				"sum": "532000.00"
+			},
+			"tax": "532000.00",
+			"total_with_tax": "3332000.00",
+			"payable": "3332000.00"
+		},
+		"meta": {
+			"chargebee-doc-id": "IN-0229",
+			"chargebee-doc-type": "invoice",
+			"chargebee-site": "invopop-dev-test"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6ImM0NWQyZDM0LWIzMjItNDc0MS1hMjRlLTZmYzNjMGEwOTJmMCJ9.eyJ1dWlkIjoiMDE5ZDIzYmItYTlhNi03MDAwLWFjZjMtMzI3MWU1YmY1OTAyIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImEyNGJkNDc2ZGRhZDBmNWY3YmU0M2NkMTM4M2YxOGIzMjljZThhNWU4ODA4OGU0MTg1NjM1YTY2ZWYzZjgyOTkifX0.nzGtoJ8tITe88htd-kp0a-VV0GTH1O5r0RMRuKukmEa5wfKAqZW6_u_FWLcfos28dyTWOihNkYKKRkEUTGi96Q"
+	]
+}
