@@ -22,26 +22,6 @@ templ ARCAVATLegend(doc internal.Document, party *org.Party, role string) {
 	}
 }
 
-// ARCAActivityStart renders the "Inicio de actividades" date for Argentine suppliers.
-templ ARCAActivityStart(party *org.Party) {
-	if dt := arcaActivityStart(party); dt != "" {
-		<div class="arca-activity-start">Inicio de actividades: { dt }</div>
-	}
-}
-
-func arcaActivityStart(party *org.Party) string {
-	if party == nil {
-		return ""
-	}
-	key := cbc.Key("ar-arca-activity-start")
-	for _, addr := range party.Addresses {
-		if v := addr.Meta[key]; v != "" {
-			return v
-		}
-	}
-	return ""
-}
-
 // TitleType renders the ARCA document type title (e.g. "Factura A", "Nota de Crédito B")
 // based on the ar-arca-doc-type extension code.
 templ TitleType(doc internal.Document) {

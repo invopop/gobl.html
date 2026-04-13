@@ -4,7 +4,7 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "ee6be80cde2c2772650d63dc371ae52cbca0ea6f78d1cc836a34ae5698cfb24c"
+			"val": "1d198a7c35a2f33f0f3b6628b8a4611d45af5db4480fb39e2c22a389718f324f"
 		},
 		"stamps": [
 			{
@@ -51,10 +51,7 @@
 					"locality": "Buenos Aires",
 					"region": "Ciudad Autónoma de Buenos Aires",
 					"code": "C1043",
-					"country": "AR",
-					"meta": {
-						"ar-arca-activity-start": "2016-03-01"
-					}
+					"country": "AR"
 				}
 			],
 			"emails": [
@@ -62,6 +59,9 @@
 					"addr": "ventas@proveedorejemplo.com.ar"
 				}
 			],
+			"registration": {
+				"other": "Inicio de actividades 2016-03-01"
+			},
 			"logos": [
 				{
 					"label": "Invopop",

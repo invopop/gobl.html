@@ -4,7 +4,7 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "c1d4878206800375e614a3bdcad8d26b65820b65b36b164b2e219de3e8177f26"
+			"val": "63d17b0d5aea84262c5ca3f779a2c7810418c2f01e8f9ce2fc2c73563eaa702e"
 		}
 	},
 	"doc": {
@@ -37,17 +37,17 @@
 					"locality": "Buenos Aires",
 					"region": "Ciudad Autónoma de Buenos Aires",
 					"code": "C1043",
-					"country": "AR",
-					"meta": {
-						"ar-arca-activity-start": "2016-03-01"
-					}
+					"country": "AR"
 				}
 			],
 			"emails": [
 				{
 					"addr": "ventas@proveedorejemplo.com.ar"
 				}
-			]
+			],
+			"registration": {
+				"other": "Inicio de actividades: 2016-03-01"
+			}
 		},
 		"customer": {
 			"name": "Cliente Comprador S.R.L.",
