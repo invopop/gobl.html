@@ -190,12 +190,15 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 	}
 	ctx = l.WithContext(ctx)
 
+	// Extract the document for regime-specific formatting
+	d := internal.ExtractDocumentFrom(env)
+
 	// Extract the currency to use for formatting
 	var nf num.Formatter
 	if o.NumFormatter != nil {
 		nf = *o.NumFormatter
 	} else {
-		if d := internal.ExtractDocumentFrom(env); d != nil {
+		if d != nil {
 			nf = d.GetCurrency().Def().Formatter()
 
 			if d.GetRegime().Country.Code() == l10n.PT {
@@ -221,7 +224,12 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 	o.NumFormatter = &nf
 
 	if o.CalFormatter == nil {
-		o.CalFormatter = &internal.CalFormatterISO
+		cf := internal.CalFormatterISO
+		if d != nil && d.GetRegime().Country.Code() == l10n.CO {
+			// Colombian tax law requires seconds in the issue time
+			cf.DateTime = "2006-01-02 · 15:04:05"
+		}
+		o.CalFormatter = &cf
 	}
 
 	ctx = internal.WithOptions(ctx, o)
