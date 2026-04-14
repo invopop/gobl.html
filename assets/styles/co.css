@@ -2,6 +2,9 @@
 @page {
   margin-bottom: 48mm;
 }
+@page Letter {
+  margin-bottom: 48mm;
+}
 
 footer.print {
   height: auto;
