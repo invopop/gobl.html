@@ -5,12 +5,14 @@ import (
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
+	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/internal"
 	"strings"
 )
 
 templ footerPrint(env *gobl.Envelope) {
 	<footer class="print">
+		@co.DIANQR(env)
 		@footerNotes(env)
 		@footerPage()
 		@footerGOBLLogo()
