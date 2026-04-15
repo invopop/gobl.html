@@ -585,11 +585,11 @@ func currencyName(ctx context.Context, cur currency.Code) string {
 	return i18n.T(ctx, ".currency_value", i18n.M{"desc": name, "code": cur})
 }
 
-func issueDateTime(date cal.Date, time *cal.Time) templ.Component {
-	if time == nil {
+func issueDateTime(date cal.Date, tm *cal.Time) templ.Component {
+	if tm == nil {
 		return t.L(date)
 	}
-	return t.L(date.WithTime(*time))
+	return t.LDateTime(date, *tm)
 }
 
 func mapTaxExtension(ctx context.Context, k cbc.Key) string {
