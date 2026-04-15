@@ -68,6 +68,10 @@ func WithCalFormatter(date, dateTime string, loc *time.Location) Option {
 		cf := internal.CalFormatterISO
 		if date != "" {
 			cf.Date = date
+			if dateTime == "" {
+				// Auto-derive DateTime from custom Date format
+				cf.DateTime = date + " · 15:04"
+			}
 		}
 		if dateTime != "" {
 			cf.DateTime = dateTime

@@ -27,12 +27,6 @@ templ L(a any) {
 	{ Localize(ctx, a) }
 }
 
-// LDateTime localizes a date and time separately, ensuring the date portion
-// always uses the Date format and the time is appended.
-templ LDateTime(date cal.Date, tm cal.Time) {
-	{ LocalizeDateTime(ctx, date, tm) }
-}
-
 // LM localizes amounts using the currency and formatter defined in the context.
 templ LM(a num.Amount) {
 	{ LocalizeMoney(ctx, a) }
@@ -82,15 +76,6 @@ func Localize(ctx context.Context, a any) string {
 	default:
 		return fmt.Sprintf("!(UNKOWN TYPE %T)", a)
 	}
-}
-
-// LocalizeDateTime formats a date and time ensuring the date portion uses the
-// Date format and the time is appended with the standard separator.
-func LocalizeDateTime(ctx context.Context, date cal.Date, tm cal.Time) string {
-	cf := calFormatter(ctx)
-	ds := date.Time().Format(cf.Date)
-	ts := fmt.Sprintf("%02d:%02d", tm.Hour, tm.Minute)
-	return ds + " · " + ts
 }
 
 // LocalizeMoney will localise a monetary amount using the context's currency
