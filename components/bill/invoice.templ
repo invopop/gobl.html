@@ -6,7 +6,6 @@ import (
 
 	"github.com/invopop/gobl"
 
-	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/regimes/ar"
 	"github.com/invopop/gobl.html/components/regimes/es"
 	"github.com/invopop/gobl.html/components/regimes/gr"
@@ -45,7 +44,6 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 				<div class="extensions">
 					// Region specific information
 					@ar.ARCAQR(env)
-					@co.DIANQR(env, inv)
 					@mx.CFDI(env, inv)
 					@pl.KSeFQR(env)
 					@pt.ATQR(env)
