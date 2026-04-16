@@ -4,7 +4,7 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "46e106d08f66e3c8d7cf979a609d23280f0b0e7bc5c5d28613dbf6a4c695bea6"
+			"val": "1d198a7c35a2f33f0f3b6628b8a4611d45af5db4480fb39e2c22a389718f324f"
 		},
 		"stamps": [
 			{
@@ -35,7 +35,7 @@
 		"currency": "ARS",
 		"tax": {
 			"ext": {
-				"ar-arca-concept": "1",
+				"ar-arca-concept": "2",
 				"ar-arca-doc-type": "1"
 			}
 		},
@@ -59,6 +59,9 @@
 					"addr": "ventas@proveedorejemplo.com.ar"
 				}
 			],
+			"registration": {
+				"other": "Inicio de actividades 2016-03-01"
+			},
 			"logos": [
 				{
 					"label": "Invopop",
@@ -93,13 +96,14 @@
 		"lines": [
 			{
 				"i": 1,
-				"quantity": "10",
+				"quantity": "1",
 				"item": {
-					"key": "goods",
-					"name": "Notebooks Dell Latitude",
-					"price": "450000.00"
+					"key": "services",
+					"name": "Servicio de intermediación - Venta de entradas",
+					"currency": "ARS",
+					"price": "1000.00"
 				},
-				"sum": "4500000.00",
+				"sum": "1000.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -111,12 +115,28 @@
 						}
 					}
 				],
-				"total": "4500000.00"
+				"total": "1000.00"
 			}
 		],
+		"ordering": {
+			"period": {
+				"start": "2025-01-01",
+				"end": "2025-01-15"
+			}
+		},
+		"payment": {
+			"terms": {
+				"due_dates": [
+					{
+						"date": "2025-01-20",
+						"amount": "1210.00"
+					}
+				]
+			}
+		},
 		"totals": {
-			"sum": "4500000.00",
-			"total": "4500000.00",
+			"sum": "1000.00",
+			"total": "1000.00",
 			"taxes": {
 				"categories": [
 					{
@@ -127,20 +147,25 @@
 								"ext": {
 									"ar-arca-vat-rate": "5"
 								},
-								"base": "4500000.00",
+								"base": "1000.00",
 								"percent": "21.0%",
-								"amount": "945000.00"
+								"amount": "210.00"
 							}
 						],
-						"amount": "945000.00"
+						"amount": "210.00"
 					}
 				],
-				"sum": "945000.00"
+				"sum": "210.00"
 			},
-			"tax": "945000.00",
-			"total_with_tax": "5445000.00",
-			"payable": "5445000.00"
-		}
+			"tax": "210.00",
+			"total_with_tax": "1210.00",
+			"payable": "1210.00"
+		},
+		"notes": [
+			{
+				"text": "XXX"
+			}
+		]
 	},
 	"sigs": [
 		"eyJhbGciOiJFUzI1NiIsImtpZCI6ImUzNzFjMzBiLTNiMzMtNGNiMC04NzM5LThiOTUzMWM1NWM2NiJ9.eyJ1dWlkIjoiMDE5MDJhZGMtMDVjOC03MDAwLTg3MDMtNjBjOGRjZjg3YmQ2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjhlZWJmNThlYjhiNTlkYTA0Y2ZlZmQxODVkZDkyYTk1YWU2NzhiYmU5YjYzMTUwOTUxYTMwODRkNDllNjRmNmMifSwic3RhbXBzIjpbeyJwcnYiOiJhdC1hdGN1ZCIsInZhbCI6IkFBSkZKM0pZRFAtMjcifSx7InBydiI6ImF0LXFyIiwidmFsIjoiQTo1MDgwMjUzMzgqQjo5OTk5OTk5OTAqQzpQVCpEOkZUKkU6TipGOjIwMjQwNjE4Kkc6RlQgSVhURVNULTAxLzI3Kkg6QUFKRkozSllEUC0yNypJMTpQVCpJMjoxMDAuMDAqTjowLjAwKk86MTAwLjAwKlE6dlZXaipSOjE5MiJ9LHsicHJ2IjoiYXQtaGFzaCIsInZhbCI6InZWV2oifSx7InBydiI6ImF0LWFwcC1pZCIsInZhbCI6IjE5MiJ9XX0.CTWcw5_36Y3LrwXbX1KpNUqgRWzu2-HNDDJXubCBeiODJ55TsU5oQ1gq_azpImfn3c0CPzPo1k1X-n84TgG5Og"

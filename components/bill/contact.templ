@@ -3,6 +3,7 @@ package bill
 import (
 	gorg "github.com/invopop/gobl/org"
 	"github.com/invopop/gobl.html/components/org"
+	"github.com/invopop/gobl.html/components/regimes/ar"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/internal"
@@ -10,13 +11,17 @@ import (
 
 templ supplier(doc internal.Document) {
 	{{ sup := doc.GetSupplier() }}
-	@contact(sup, "supplier")
+	@contact(sup, "supplier") {
+		@ar.ARCAVATLegend(doc, sup, "supplier")
+	}
 }
 
 templ customer(doc internal.Document) {
 	{{ cus := doc.GetCustomer() }}
 	{{ cus = pt.AdaptCustomer(doc, cus) }}
-	@contact(cus, "customer")
+	@contact(cus, "customer") {
+		@ar.ARCAVATLegend(doc, cus, "customer")
+	}
 }
 
 templ contact(par *gorg.Party, key string) {
@@ -30,7 +35,9 @@ templ contact(par *gorg.Party, key string) {
 						@t.T("." + key + ".title")
 					}
 				</h2>
-				@org.Party(par)
+				@org.Party(par) {
+					{ children... }
+				}
 			</div>
 		</section>
 	}

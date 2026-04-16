@@ -429,6 +429,11 @@ templ discountRow(row *bill.Discount, ls *lineSupport, st *subtotal) {
 					<!-- empty -->
 				}
 			</td>
+			if ls.exemptions[cat] {
+				<td class="exemption">
+					<!-- empty -->
+				</td>
+			}
 		}
 		if ls.discounts {
 			<td>
@@ -505,6 +510,11 @@ templ chargeRow(row *bill.Charge, ls *lineSupport, st *subtotal) {
 					<!-- empty -->
 				}
 			</td>
+			if ls.exemptions[cat] {
+				<td class="exemption">
+					<!-- empty -->
+				</td>
+			}
 		}
 		if ls.discounts {
 			<td>

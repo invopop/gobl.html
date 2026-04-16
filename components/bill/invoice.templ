@@ -102,6 +102,7 @@ templ defaultJoinCode(_ internal.Document, series, code cbc.Code) {
 templ titleType(doc internal.Document) {
 	<h1 class="type">
 		@utils.Coalesce(
+			ar.TitleType(doc),
 			pt.TitleType(doc),
 			gr.TitleType(doc),
 			defaultTitleType(doc),
