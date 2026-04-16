@@ -26,7 +26,7 @@ gl:
         replaced_documents: "Documentos substituídos"
         corrected_documents: "Documentos rectificados"
         order: "Pedido"
-        order_period: "Periodo"
+        order_period: "Período"
         order_period_label: "%{label}"
         order_period_range: "%{start} a %{end}"
         ext_map:
@@ -180,7 +180,7 @@ gl:
         <<: *summary
         preceding_document: "Documento anterior"
         contract: "Contrato"
-        period: "Periodo"
+        period: "Período"
 
       buyer:
         title: "Comprador"

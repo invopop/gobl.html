@@ -25,7 +25,7 @@ pt:
         replaced_documents: "Documentos substituídos"
         corrected_documents: "Documentos corrigidos"
         order: "Encomenda"
-        order_period: "Periodo"
+        order_period: "Período"
         order_period_label: "%{label}"
         order_period_range: "%{start} a %{end}"
 
@@ -175,7 +175,7 @@ pt:
         <<: *summary
         preceding_document: "Documento Anterior"
         contract: "Contrato"
-        period: "Periodo"
+        period: "Período"
 
       buyer:
         title: "Comprador"
