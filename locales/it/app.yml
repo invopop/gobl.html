@@ -16,6 +16,12 @@ it:
         title: "Riepilogo"
         issue_date: "Data Emissione"
         value_date: "Data Valuta"
+        taxable_event: "Fatto generatore"
+        taxable_event_date: "Data del fatto generatore"
+        tax_points:
+          issue: "Data emissione"
+          delivery: "Data consegna"
+          payment: "Data pagamento"
         operation_date: "Data Operazione"
         currency: "Valuta"
         currency_value: "%{desc} (%{code})"

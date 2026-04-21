@@ -19,6 +19,12 @@ ar:
         title: "ملخص"
         issue_date: "تاريخ الإصدار"
         value_date: "تاريخ القيمة"
+        taxable_event: "الحدث الخاضع للضريبة"
+        taxable_event_date: "تاريخ الحدث الخاضع للضريبة"
+        tax_points:
+          issue: "تاريخ الإصدار"
+          delivery: "تاريخ التسليم"
+          payment: "تاريخ الدفع"
         operation_date: "تاريخ العملية"
         currency: "العملة"
         currency_value: "%{desc} (%{code})"

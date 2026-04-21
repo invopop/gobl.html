@@ -19,6 +19,12 @@ eu:
         title: "Laburpena"
         issue_date: "Jaulkitze data"
         value_date: "Balio data"
+        taxable_event: "Gertakari zergagarria"
+        taxable_event_date: "Gertakari zergagarriaren data"
+        tax_points:
+          issue: "Jaulkitze data"
+          delivery: "Entrega data"
+          payment: "Ordainketa data"
         operation_date: "Eragiketa data"
         currency: "Moneta"
         currency_value: "%{desc} (%{code})"

@@ -18,6 +18,12 @@ pt:
         title: "Resumo"
         issue_date: "Data de Emissão"
         value_date: "Data do Facto Tributário"
+        taxable_event: "Facto tributário"
+        taxable_event_date: "Data do facto tributário"
+        tax_points:
+          issue: "Data de emissão"
+          delivery: "Data de entrega"
+          payment: "Data de pagamento"
         operation_date: "Data de Operação"
         currency: "Moeda"
         currency_value: "%{desc} (%{code})"

@@ -20,6 +20,12 @@ en:
         title: "Summary"
         issue_date: "Issue date"
         value_date: "Value date"
+        taxable_event: "Taxable event"
+        taxable_event_date: "Taxable event date"
+        tax_points:
+          issue: "Issue date"
+          delivery: "Delivery date"
+          payment: "Payment date"
         operation_date: "Operation date"
         currency: "Currency"
         currency_value: "%{desc} (%{code})"

@@ -18,6 +18,12 @@ el:
         title: "Περίληψη"
         issue_date: "Ημερομηνία Έκδοσης"
         value_date: "Ημερομηνία Αξίας"
+        taxable_event: "Φορολογητέο γεγονός"
+        taxable_event_date: "Ημερομηνία φορολογητέου γεγονότος"
+        tax_points:
+          issue: "Ημερομηνία έκδοσης"
+          delivery: "Ημερομηνία παράδοσης"
+          payment: "Ημερομηνία πληρωμής"
         operation_date: "Ημερομηνία Ενέργειας"
         currency: "Νόμισμα"
         currency_value: "%{desc} (%{code})"

@@ -18,6 +18,12 @@ pl:
         title: "Podsumowanie"
         issue_date: "Data wystawienia"
         value_date: "Data wartości"
+        taxable_event: "Zdarzenie podatkowe"
+        taxable_event_date: "Data zdarzenia podatkowego"
+        tax_points:
+          issue: "Data wystawienia"
+          delivery: "Data dostawy"
+          payment: "Data płatności"
         operation_date: "Data operacji"
         currency: "Waluta"
         currency_value: "%{desc} (%{code})"

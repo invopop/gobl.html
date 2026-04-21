@@ -4,7 +4,7 @@
 		"uuid": "01902adc-05c8-7000-8703-60c8dcf87bd6",
 		"dig": {
 			"alg": "sha256",
-			"val": "62c4ff32d2d2953af8c86f07bd808ec9477347c5113dc1689ded7ee022b02470"
+			"val": "ca0717b9dbb316da293fd0e1cb22d538256f1ed600bd7d5fcff7192e17bc8622"
 		},
 		"stamps": [
 			{
@@ -174,7 +174,7 @@
 						"key": "legal",
 						"code": "M42",
 						"src": "pt-saft-exemption",
-						"text": "Decreto-Lei n.º 21/2007, de 29 de janeiro"
+						"text": "Decreto-Lei n.º 21/2007, de 29 de jan."
 					}
 				]
 			}
@@ -232,13 +232,13 @@
 				"key": "legal",
 				"code": "M41",
 				"src": "pt-saft-exemption",
-				"text": "Reverse charge / Autoliquidação - Artigo 8.º n.º 3 do RITI"
+				"text": "Autoliquidação - Art. 8.º n.º 3 do RITI"
 			},
 			{
 				"key": "legal",
 				"code": "M42",
 				"src": "pt-saft-exemption",
-				"text": "Reverse charge / Autoliquidação - Decreto-Lei n.º 21/2007, de 29 de janeiro"
+				"text": "Autoliquidação - Decreto-Lei n.º 21/2007, de 29 de jan."
 			}
 		]
 	},

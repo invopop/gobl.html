@@ -18,6 +18,12 @@ de:
         title: "Zusammenfassung"
         issue_date: "Ausstellungsdatum"
         value_date: "Wertstellungsdatum"
+        taxable_event: "Steuerbarer Vorgang"
+        taxable_event_date: "Datum des steuerbaren Vorgangs"
+        tax_points:
+          issue: "Ausstellungsdatum"
+          delivery: "Lieferdatum"
+          payment: "Zahlungsdatum"
         operation_date: "Leistungsdatum"
         currency: "Währung"
         currency_value: "%{desc} (%{code})"

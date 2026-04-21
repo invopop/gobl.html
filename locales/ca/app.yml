@@ -19,6 +19,12 @@ ca:
         title: "Resum"
         issue_date: "Data d'emissió"
         value_date: "Data de valor"
+        taxable_event: "Fet imposable"
+        taxable_event_date: "Data del fet imposable"
+        tax_points:
+          issue: "Data d'emissió"
+          delivery: "Data de lliurament"
+          payment: "Data de pagament"
         operation_date: "Data d'operació"
         currency: "Moneda"
         currency_value: "%{desc} (%{code})"

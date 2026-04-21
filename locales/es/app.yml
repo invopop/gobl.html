@@ -19,6 +19,12 @@ es:
         title: "Resumen"
         issue_date: "Fecha de emisión"
         value_date: "Fecha de valor"
+        taxable_event: "Hecho imponible"
+        taxable_event_date: "Fecha del hecho imponible"
+        tax_points:
+          issue: "Fecha de emisión"
+          delivery: "Fecha de entrega"
+          payment: "Fecha de pago"
         operation_date: "Fecha de operación"
         currency: "Moneda"
         currency_value: "%{desc} (%{code})"

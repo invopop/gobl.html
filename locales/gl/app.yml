@@ -19,6 +19,12 @@ gl:
         title: "Resumo"
         issue_date: "Data de emisión"
         value_date: "Data de valor"
+        taxable_event: "Feito impoñible"
+        taxable_event_date: "Data do feito impoñible"
+        tax_points:
+          issue: "Data de emisión"
+          delivery: "Data de entrega"
+          payment: "Data de pagamento"
         operation_date: "Data de operación"
         currency: "Moeda"
         currency_value: "%{desc} (%{code})"

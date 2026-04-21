@@ -16,6 +16,12 @@ fr:
         title: "Résumé"
         issue_date: "Date d'émission"
         value_date: "Date de valeur"
+        taxable_event: "Fait générateur"
+        taxable_event_date: "Date du fait générateur"
+        tax_points:
+          issue: "Date d'émission"
+          delivery: "Date de livraison"
+          payment: "Date de paiement"
         operation_date: "Date d'opération"
         currency: "Devise"
         currency_value: "%{desc} (%{code})"

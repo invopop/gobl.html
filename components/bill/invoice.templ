@@ -231,3 +231,4 @@ func isSimplifiedInvoice(doc internal.Document) bool {
 func isNonStandardInvoice(doc internal.Document) bool {
 	return doc.GetType().In(bill.InvoiceTypeCreditNote, bill.InvoiceTypeDebitNote, bill.InvoiceTypeCorrective, bill.InvoiceTypeProforma)
 }
+
