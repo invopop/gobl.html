@@ -13,6 +13,18 @@ de:
         other: "Beleg"
         paid: "Bezahlt"
         void: "Ungültig"
+        untdid:
+          "325": "Proforma-Rechnung"
+          "380": "Rechnung"
+          "381": "Gutschrift"
+          "383": "Lastschrift"
+          "384": "Korrekturrechnung"
+          "326": "Teilrechnung"
+          "389": "Selbst ausgestellte Rechnung"
+          "261": "Selbst ausgestellte Gutschrift"
+          "386": "Anzahlungsrechnung"
+          "393": "Abgetretene Rechnung (Factoring)"
+          "396": "Abgetretene Gutschrift (Factoring)"
 
       summary: &summary
         title: "Zusammenfassung"

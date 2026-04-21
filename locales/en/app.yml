@@ -15,6 +15,18 @@ en:
         other: "Document"
         paid: "Paid"
         void: "Void"
+        untdid:
+          "325": "Proforma invoice"
+          "380": "Invoice"
+          "381": "Credit note"
+          "383": "Debit note"
+          "384": "Corrective invoice"
+          "326": "Partial invoice"
+          "389": "Self-billed invoice"
+          "261": "Self-billed credit note"
+          "386": "Prepayment invoice"
+          "393": "Factored invoice"
+          "396": "Factored credit note"
 
       summary: &summary
         title: "Summary"

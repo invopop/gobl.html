@@ -14,6 +14,18 @@ es:
         other: "Documento"
         paid: "Pagado"
         void: "Anulado"
+        untdid:
+          "325": "Factura proforma"
+          "380": "Factura"
+          "381": "Factura rectificativa"
+          "383": "Nota de débito"
+          "384": "Factura correctiva"
+          "326": "Factura parcial"
+          "389": "Factura autofacturada"
+          "261": "Factura rectificativa autofacturada"
+          "386": "Factura de anticipo"
+          "393": "Factura cedida (factoring)"
+          "396": "Factura rectificativa cedida (factoring)"
 
       summary: &summary
         title: "Resumen"

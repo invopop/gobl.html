@@ -12,6 +12,18 @@ it:
         other: "Documento"
         paid: "Pagato"
         void: "Annullato"
+        untdid:
+          "325": "Fattura proforma"
+          "380": "Fattura"
+          "381": "Nota di credito"
+          "383": "Nota di addebito"
+          "384": "Fattura rettificativa"
+          "326": "Fattura parziale"
+          "389": "Autofattura"
+          "261": "Nota di credito autofatturata"
+          "386": "Fattura di acconto"
+          "393": "Fattura ceduta (factoring)"
+          "396": "Nota di credito ceduta (factoring)"
       summary: &summary
         title: "Riepilogo"
         issue_date: "Data Emissione"

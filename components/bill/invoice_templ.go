@@ -11,7 +11,9 @@ import templruntime "github.com/a-h/templ/runtime"
 import (
 	"context"
 	"fmt"
+	"strings"
 
+	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
 
 	"github.com/invopop/gobl.html/components/regimes/ar"
@@ -25,6 +27,7 @@ import (
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/layout"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/catalogues/untdid"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
@@ -263,7 +266,7 @@ func title(env *gobl.Envelope, doc internal.Document) templ.Component {
 			var templ_7745c5c3_Var11 string
 			templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(" ")
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 64, Col: 9}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 67, Col: 9}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 			if templ_7745c5c3_Err != nil {
@@ -328,7 +331,7 @@ func titleHero(doc internal.Document) templ.Component {
 			var templ_7745c5c3_Var13 string
 			templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(img.URL)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 78, Col: 22}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 81, Col: 22}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 			if templ_7745c5c3_Err != nil {
@@ -341,7 +344,7 @@ func titleHero(doc internal.Document) templ.Component {
 			var templ_7745c5c3_Var14 string
 			templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(img.Label)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 78, Col: 40}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 81, Col: 40}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 			if templ_7745c5c3_Err != nil {
@@ -354,7 +357,7 @@ func titleHero(doc internal.Document) templ.Component {
 			var templ_7745c5c3_Var15 string
 			templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(logoHeight(img))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 78, Col: 67}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 81, Col: 67}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 			if templ_7745c5c3_Err != nil {
@@ -368,7 +371,7 @@ func titleHero(doc internal.Document) templ.Component {
 			var templ_7745c5c3_Var16 string
 			templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(supplierAlias(doc.GetSupplier()))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 80, Col: 38}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 83, Col: 38}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 			if templ_7745c5c3_Err != nil {
@@ -476,7 +479,7 @@ func defaultJoinCode(_ internal.Document, series, code cbc.Code) templ.Component
 		var templ_7745c5c3_Var20 string
 		templ_7745c5c3_Var20, templ_7745c5c3_Err = templ.JoinStringErrs(series.Join(code).String())
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 99, Col: 29}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 102, Col: 29}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var20))
 		if templ_7745c5c3_Err != nil {
@@ -515,6 +518,7 @@ func titleType(doc internal.Document) templ.Component {
 			ar.TitleType(doc),
 			pt.TitleType(doc),
 			gr.TitleType(doc),
+			untdidTitleType(doc),
 			defaultTitleType(doc),
 		).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
@@ -523,6 +527,45 @@ func titleType(doc internal.Document) templ.Component {
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "</h1>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
+		}
+		return nil
+	})
+}
+
+// untdidTitleType renders a title based on the UNTDID 1001 document type code
+// set by EN 16931 family addons. Only the codes listed in the addon's
+// scenarios are supported.
+func untdidTitleType(doc internal.Document) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var22 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var22 == nil {
+			templ_7745c5c3_Var22 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		if lbl := untdidTitleLabel(ctx, doc); lbl != "" {
+			var templ_7745c5c3_Var23 string
+			templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinStringErrs(lbl)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 122, Col: 7}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var23))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 		}
 		return nil
 	})
@@ -544,9 +587,9 @@ func defaultTitleType(doc internal.Document) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var22 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var22 == nil {
-			templ_7745c5c3_Var22 = templ.NopComponent
+		templ_7745c5c3_Var24 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var24 == nil {
+			templ_7745c5c3_Var24 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		typ := doc.GetType()
@@ -595,9 +638,9 @@ func titleBadges(env *gobl.Envelope, doc internal.Document) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var23 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var23 == nil {
-			templ_7745c5c3_Var23 = templ.NopComponent
+		templ_7745c5c3_Var25 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var25 == nil {
+			templ_7745c5c3_Var25 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		if voided(ctx) {
@@ -632,12 +675,12 @@ func titleBadges(env *gobl.Envelope, doc internal.Document) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var24 string
-			templ_7745c5c3_Var24, templ_7745c5c3_Err = templ.JoinStringErrs(lbl)
+			var templ_7745c5c3_Var26 string
+			templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(lbl)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 145, Col: 8}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 158, Col: 8}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var24))
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var26))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -666,9 +709,9 @@ func defaultHeader(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var25 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var25 == nil {
-			templ_7745c5c3_Var25 = templ.NopComponent
+		templ_7745c5c3_Var27 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var27 == nil {
+			templ_7745c5c3_Var27 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		doc := internal.DocumentFor(inv)
@@ -732,9 +775,9 @@ func din5008Header(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var26 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var26 == nil {
-			templ_7745c5c3_Var26 = templ.NopComponent
+		templ_7745c5c3_Var28 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var28 == nil {
+			templ_7745c5c3_Var28 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		doc := internal.DocumentFor(inv)
@@ -826,6 +869,25 @@ func isSimplifiedInvoice(doc internal.Document) bool {
 
 func isNonStandardInvoice(doc internal.Document) bool {
 	return doc.GetType().In(bill.InvoiceTypeCreditNote, bill.InvoiceTypeDebitNote, bill.InvoiceTypeCorrective, bill.InvoiceTypeProforma)
+}
+
+// untdidTitleLabel looks up a translated title for the UNTDID 1001 document
+// type code set by EN 16931 addons. Returns empty if the extension is absent
+// or the code has no translation registered.
+func untdidTitleLabel(ctx context.Context, doc internal.Document) string {
+	ext := doc.GetExt()
+	if ext == nil {
+		return ""
+	}
+	code := ext[untdid.ExtKeyDocumentType]
+	if code.IsEmpty() {
+		return ""
+	}
+	label := i18n.T(ctx, "billing.invoice.title.untdid."+code.String())
+	if strings.HasPrefix(label, "!") {
+		return ""
+	}
+	return label
 }
 
 var _ = templruntime.GeneratedTemplate

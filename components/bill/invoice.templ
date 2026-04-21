@@ -3,7 +3,9 @@ package bill
 import (
 	"context"
 	"fmt"
+	"strings"
 
+	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
 
 	"github.com/invopop/gobl.html/components/regimes/ar"
@@ -17,6 +19,7 @@ import (
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/layout"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/catalogues/untdid"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
@@ -105,9 +108,19 @@ templ titleType(doc internal.Document) {
 			ar.TitleType(doc),
 			pt.TitleType(doc),
 			gr.TitleType(doc),
+			untdidTitleType(doc),
 			defaultTitleType(doc),
 		)
 	</h1>
+}
+
+// untdidTitleType renders a title based on the UNTDID 1001 document type code
+// set by EN 16931 family addons. Only the codes listed in the addon's
+// scenarios are supported.
+templ untdidTitleType(doc internal.Document) {
+	if lbl := untdidTitleLabel(ctx, doc); lbl != "" {
+		{ lbl }
+	}
 }
 
 templ defaultTitleType(doc internal.Document) {
@@ -232,3 +245,21 @@ func isNonStandardInvoice(doc internal.Document) bool {
 	return doc.GetType().In(bill.InvoiceTypeCreditNote, bill.InvoiceTypeDebitNote, bill.InvoiceTypeCorrective, bill.InvoiceTypeProforma)
 }
 
+// untdidTitleLabel looks up a translated title for the UNTDID 1001 document
+// type code set by EN 16931 addons. Returns empty if the extension is absent
+// or the code has no translation registered.
+func untdidTitleLabel(ctx context.Context, doc internal.Document) string {
+	ext := doc.GetExt()
+	if ext == nil {
+		return ""
+	}
+	code := ext[untdid.ExtKeyDocumentType]
+	if code.IsEmpty() {
+		return ""
+	}
+	label := i18n.T(ctx, "billing.invoice.title.untdid."+code.String())
+	if strings.HasPrefix(label, "!") {
+		return ""
+	}
+	return label
+}

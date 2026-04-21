@@ -12,6 +12,18 @@ fr:
         other: "Document"
         paid: "Payé"
         void: "Annulé"
+        untdid:
+          "325": "Facture proforma"
+          "380": "Facture"
+          "381": "Avoir"
+          "383": "Note de débit"
+          "384": "Facture rectificative"
+          "326": "Facture partielle"
+          "389": "Facture auto-facturée"
+          "261": "Avoir auto-facturé"
+          "386": "Facture d'acompte"
+          "393": "Facture cédée (affacturage)"
+          "396": "Avoir cédé (affacturage)"
       summary: &summary
         title: "Résumé"
         issue_date: "Date d'émission"

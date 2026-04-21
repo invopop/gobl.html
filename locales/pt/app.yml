@@ -13,6 +13,18 @@ pt:
         other: "Documento"
         paid: "Pago"
         void: "Anulado"
+        untdid:
+          "325": "Fatura proforma"
+          "380": "Fatura"
+          "381": "Nota de crédito"
+          "383": "Nota de débito"
+          "384": "Fatura retificativa"
+          "326": "Fatura parcial"
+          "389": "Autofatura"
+          "261": "Nota de crédito autofaturada"
+          "386": "Fatura de adiantamento"
+          "393": "Fatura cedida (factoring)"
+          "396": "Nota de crédito cedida (factoring)"
 
       summary: &summary
         title: "Resumo"

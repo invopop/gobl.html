@@ -14,6 +14,18 @@ eu:
         other: "Dokumentua"
         paid: "Ordaindua"
         void: "Ezeztatua"
+        untdid:
+          "325": "Proforma faktura"
+          "380": "Faktura"
+          "381": "Abonu-oharra"
+          "383": "Zordunketa-oharra"
+          "384": "Zuzenketa-faktura"
+          "326": "Faktura partziala"
+          "389": "Auto-faktura"
+          "261": "Auto-abonu-oharra"
+          "386": "Aurrerakinaren faktura"
+          "393": "Lagatako faktura (faktoringa)"
+          "396": "Lagatako abonu-oharra (faktoringa)"
 
       summary: &summary
         title: "Laburpena"

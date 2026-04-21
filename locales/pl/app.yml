@@ -13,6 +13,18 @@ pl:
         other: "Dokument"
         paid: "Zapłacono"
         void: "Unieważniony"
+        untdid:
+          "325": "Faktura proforma"
+          "380": "Faktura"
+          "381": "Faktura korygująca"
+          "383": "Nota debetowa"
+          "384": "Faktura korygująca"
+          "326": "Faktura częściowa"
+          "389": "Faktura samofakturowana"
+          "261": "Faktura korygująca samofakturowana"
+          "386": "Faktura zaliczkowa"
+          "393": "Faktura scedowana (faktoring)"
+          "396": "Faktura korygująca scedowana (faktoring)"
 
       summary: &summary
         title: "Podsumowanie"
