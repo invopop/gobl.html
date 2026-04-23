@@ -28,10 +28,10 @@ fr:
         title: "Résumé"
         issue_date: "Date d'émission"
         value_date: "Date de valeur"
-        taxable_event: "Fait générateur"
-        taxable_event_date: "Date du fait générateur"
+        taxable_event: "Exigibilité TVA"
+        taxable_event_date: "Date d'exigibilité de la TVA"
         tax_points:
-          issue: "Date d'émission"
+          issue: "TVA sur les débits"
           delivery: "Date de livraison"
           payment: "Date de paiement"
         operation_date: "Date d'opération"
