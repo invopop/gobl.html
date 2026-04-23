@@ -31,7 +31,7 @@ fr:
         taxable_event: "Exigibilité TVA"
         taxable_event_date: "Date d'exigibilité de la TVA"
         tax_points:
-          issue: "Date de la facture"
+          issue: "TVA sur les débits"
           delivery: "Date de livraison"
           payment: "Date de paiement"
         operation_date: "Date d'opération"
