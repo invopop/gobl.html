@@ -52,6 +52,8 @@ func LocaleForExample(base string) string {
 		return "it"
 	case "gr":
 		return "el"
+	case "fr":
+		return "fr"
 	case "sa":
 		return "ar"
 	case "us", "zw":

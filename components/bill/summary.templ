@@ -38,10 +38,20 @@ templ summary(inv *bill.Invoice) {
 						{ currencyName(ctx, inv.Currency) }
 					</span>
 				</li>
+				if inv.Tax != nil && inv.Tax.Point != "" {
+					<li class="tax-point">
+						<span class="label">
+							@t.T(".taxable_event")
+						</span>
+						<span class="value">
+							@t.T(".tax_points." + inv.Tax.Point.String())
+						</span>
+					</li>
+				}
 				if inv.ValueDate != nil {
 					<li class="value-date">
 						<span class="label">
-							@t.T(".value_date")
+							@t.T(".taxable_event_date")
 						</span>
 						<span class="value date">
 							@t.L(inv.ValueDate)

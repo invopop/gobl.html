@@ -3,6 +3,8 @@ package bill
 import (
 	"context"
 	"fmt"
+	"maps"
+	"slices"
 	"strings"
 
 	"github.com/invopop/gobl.html/components/t"
@@ -128,16 +130,18 @@ func taxExemptionCode(percent *num.Percentage, ext tax.Extensions) string {
 		return ""
 	}
 
+	keys := slices.Sorted(maps.Keys(ext))
+
 	// First try a code with the word `exempt` in the key
-	for k, v := range ext {
+	for _, k := range keys {
 		if strings.Contains(k.String(), "exempt") {
-			return fmt.Sprintf("(%s)", v.String())
+			return fmt.Sprintf("(%s)", ext[k].String())
 		}
 	}
 
 	// Next return the first code found
-	for _, v := range ext {
-		return fmt.Sprintf("(%s)", v.String())
+	for _, k := range keys {
+		return fmt.Sprintf("(%s)", ext[k].String())
 	}
 
 	return ""
