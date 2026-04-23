@@ -351,6 +351,13 @@ func taxExemptionCode(percent *num.Percentage, ext tax.Extensions) string {
 		}
 	}
 
+	// Next try a code with the word `class` in the key
+	for k, v := range ext {
+		if strings.Contains(k.String(), "class") {
+			return fmt.Sprintf("(%s)", v.String())
+		}
+	}
+
 	// Next return the first code found
 	for _, k := range keys {
 		return fmt.Sprintf("(%s)", ext[k].String())
