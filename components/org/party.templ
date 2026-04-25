@@ -227,6 +227,8 @@ func showTaxID(party *org.Party) bool {
 func taxIDLabel(ctx context.Context, party *org.Party) string {
 	tID := party.TaxID
 	switch tID.Country {
+	case "AR":
+		return "CUIT"
 	case "ES":
 		return "NIF"
 	case "CO":
