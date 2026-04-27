@@ -124,8 +124,8 @@ func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opt
 	var err error
 
 	// Prepare the request options
-	if req.DateFormat != "" {
-		opts = append(opts, goblhtml.WithCalFormatter(req.DateFormat, "", time.UTC))
+	if req.DateFormat != "" || req.TimeFormat != "" {
+		opts = append(opts, goblhtml.WithCalFormatter(req.DateFormat, req.TimeFormat, time.UTC))
 	}
 	opts = append(opts, goblhtml.WithLocale(req.Locale))
 
@@ -176,6 +176,7 @@ type options struct {
 	Filename       string      `param:"filename"`
 	Locale         i18n.Code   `query:"locale"`
 	DateFormat     string      `query:"date_format"`
+	TimeFormat     string      `query:"time_format"`
 	LogoURL        string      `query:"logo_url"`
 	LogoHeight     int32       `query:"logo_height"`
 	Notes          string      `query:"notes"`

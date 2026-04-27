@@ -6,6 +6,7 @@ import (
 	"reflect"
 
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/cal"
 	"github.com/invopop/gobl/currency"
 	"github.com/invopop/gobl/num"
@@ -69,7 +70,8 @@ func Localize(ctx context.Context, a any) string {
 		return nf.Percentage(v)
 	case cal.DateTime:
 		cf := calFormatter(ctx)
-		return v.In(cf.Location).Format(cf.DateTime)
+		t := v.In(cf.Location)
+		return t.Format(cf.Date) + internal.DateTimeSeparator + t.Format(cf.Time)
 	case cal.Date:
 		cf := calFormatter(ctx)
 		return v.Time().Format(cf.Date)

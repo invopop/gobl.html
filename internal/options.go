@@ -77,17 +77,23 @@ func Options(ctx context.Context) *Opts {
 	return nil
 }
 
-// CalFormatter defines a simple date and datetime formatter
+// CalFormatter defines a simple date and time formatter. Date and time
+// formats are configured independently; date-time values are rendered by
+// composing the two with a separator.
 type CalFormatter struct {
 	Date     string // Golang date format for dates, e.g. `02/01/2006`
+	Time     string // Golang time format for times, e.g. `15:04`
 	Location *time.Location
-	DateTime string // Date-time format
 }
 
 // CalFormatterISO is the default formatter for dates and times based on
 // the recommended ISO 8601 formatting.
 var CalFormatterISO = CalFormatter{
 	Date:     "2006-01-02",
-	DateTime: "2006-01-02 · 15:04",
+	Time:     "15:04",
 	Location: time.UTC,
 }
+
+// DateTimeSeparator is used to join the formatted date and time when
+// rendering a cal.DateTime value.
+const DateTimeSeparator = " · "
