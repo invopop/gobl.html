@@ -14,6 +14,7 @@ import (
 	"reflect"
 
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/cal"
 	"github.com/invopop/gobl/currency"
 	"github.com/invopop/gobl/num"
@@ -44,7 +45,7 @@ func T(key string, args ...any) templ.Component {
 		var templ_7745c5c3_Var2 string
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(i18n.T(ctx, key, args...))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 16, Col: 28}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 17, Col: 28}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
@@ -79,7 +80,7 @@ func N(key string, n int, args ...any) templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(i18n.N(ctx, key, n, args...))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 21, Col: 31}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 22, Col: 31}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -115,7 +116,7 @@ func L(a any) templ.Component {
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(Localize(ctx, a))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 27, Col: 19}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 28, Col: 19}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -150,7 +151,7 @@ func LM(a num.Amount) templ.Component {
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(LocalizeMoney(ctx, a))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 32, Col: 24}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 33, Col: 24}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -186,7 +187,7 @@ func LC(a num.Amount, cur currency.Code) templ.Component {
 		var templ_7745c5c3_Var10 string
 		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(LocalizeCurrency(ctx, a, cur))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 38, Col: 32}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 39, Col: 32}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
@@ -222,7 +223,7 @@ func LCD(a num.Amount, cur currency.Code) templ.Component {
 		var templ_7745c5c3_Var12 string
 		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(LocalizeCurrency(ctx, a, cur, currency.WithDisambiguateSymbol()))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 44, Col: 67}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/t/i18n.templ`, Line: 45, Col: 67}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 		if templ_7745c5c3_Err != nil {
@@ -282,7 +283,8 @@ func Localize(ctx context.Context, a any) string {
 		return nf.Percentage(v)
 	case cal.DateTime:
 		cf := calFormatter(ctx)
-		return v.In(cf.Location).Format(cf.DateTime)
+		t := v.In(cf.Location)
+		return t.Format(cf.Date) + internal.DateTimeSeparator + t.Format(cf.Time)
 	case cal.Date:
 		cf := calFormatter(ctx)
 		return v.Time().Format(cf.Date)
