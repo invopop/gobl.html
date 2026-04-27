@@ -66,14 +66,14 @@ func WithLocale(locale i18n.Code) Option {
 // time formats are configured independently; date-time values render as
 // "<date><sep><time>" using the provided formats. Pass an empty string to
 // keep the ISO default for a given field.
-func WithCalFormatter(date, t string, loc *time.Location) Option {
+func WithCalFormatter(date, timeFormat string, loc *time.Location) Option {
 	return func(o *internal.Opts) {
 		cf := internal.CalFormatterISO
 		if date != "" {
 			cf.Date = date
 		}
-		if t != "" {
-			cf.Time = t
+		if timeFormat != "" {
+			cf.Time = timeFormat
 		}
 		if loc != nil {
 			cf.Location = loc
