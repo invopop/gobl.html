@@ -55,8 +55,8 @@ de:
 
       receiver:
         title: "Lieferadresse"
-        date: "Datum: %{date}"
-        period: "Datum: %{start} bis %{end}"
+        date: "Lieferdatum: %{date}"
+        period: "Lieferdatum: %{start} bis %{end}"
 
       lines: &lines
         title: "Positionen"

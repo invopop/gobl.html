@@ -59,8 +59,8 @@ ar:
 
       receiver:
         title: "عنوان التسليم"
-        date: "التاريخ: %{date}"
-        period: "التاريخ: من %{start} إلى %{end}"
+        date: "تاريخ التسليم: %{date}"
+        period: "تاريخ التسليم: من %{start} إلى %{end}"
 
       lines: &lines
         title: "البنود"

@@ -55,8 +55,8 @@ pl:
 
       receiver:
         title: "Adres dostawy"
-        date: "Data: %{date}"
-        period: "Data: od %{start} do %{end}"
+        date: "Data dostawy: %{date}"
+        period: "Data dostawy: od %{start} do %{end}"
 
       lines: &lines
         title: "Linie"

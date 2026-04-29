@@ -59,8 +59,8 @@ eu:
 
       receiver:
         title: "Bidaltze-helbidea"
-        date: "Data: %{date}"
-        period: "Data: %{start} - %{end}"
+        date: "Bidaltze-data: %{date}"
+        period: "Bidaltze-data: %{start} - %{end}"
 
       lines: &lines
         title: "Lerroak"

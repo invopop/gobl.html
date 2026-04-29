@@ -60,8 +60,8 @@ en:
 
       receiver:
         title: "Delivery address"
-        date: "Date: %{date}"
-        period: "Date: %{start} to %{end}"
+        date: "Delivery date: %{date}"
+        period: "Delivery date: %{start} to %{end}"
 
       lines: &lines
         title: "Lines"

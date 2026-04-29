@@ -50,8 +50,8 @@ it:
         title: "Cliente"
       receiver:
         title: "Indirizzo di consegna"
-        date: "Data: %{date}"
-        period: "Data: dal %{start} al %{end}"
+        date: "Data di consegna: %{date}"
+        period: "Data di consegna: dal %{start} al %{end}"
       lines: &lines
         title: "Righe"
         i: "#"

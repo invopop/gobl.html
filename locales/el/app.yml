@@ -57,8 +57,8 @@ el:
 
       receiver:
         title: "Διεύθυνση παράδοσης"
-        date: "Ημερομηνία: %{date}"
-        period: "Ημερομηνία: %{start} έως %{end}"
+        date: "Ημερομηνία παράδοσης: %{date}"
+        period: "Ημερομηνία παράδοσης: %{start} έως %{end}"
 
       lines: &lines
         title: "Γραμμές"

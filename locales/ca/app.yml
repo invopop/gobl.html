@@ -59,8 +59,8 @@ ca:
 
       receiver:
         title: "Adreça de lliurament"
-        date: "Data: %{date}"
-        period: "Data: %{start} a %{end}"
+        date: "Data de lliurament: %{date}"
+        period: "Data de lliurament: %{start} a %{end}"
 
       lines: &lines
         title: "Línies"
