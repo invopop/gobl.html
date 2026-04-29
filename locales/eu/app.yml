@@ -57,6 +57,9 @@ eu:
       customer:
         title: "Bezeroa"
 
+      receiver:
+        title: "Bidaltze-helbidea"
+
       lines: &lines
         title: "Lerroak"
         i: "#"

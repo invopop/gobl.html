@@ -83,6 +83,11 @@ header.with-qr section.customer {
     padding-top: 6mm;
     padding-bottom: 6mm;
 }
+header.with-qr section.receiver {
+    padding-left: 6mm;
+    padding-top: 6mm;
+    padding-bottom: 6mm;
+}
 section {
     padding: 0mm;
     /* width: 100%; */
@@ -494,7 +499,8 @@ section.notes .note {
 .org-party .name {
     font-weight: 600;
     font-size: 12pt;
-    line-height: 20pt;
+    line-height: 16pt;
+    padding-bottom: 2pt;
     color: #030712;
 }
 .arca-vat-legend {

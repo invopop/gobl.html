@@ -55,6 +55,9 @@ el:
       customer:
         title: "Πελάτης"
 
+      receiver:
+        title: "Διεύθυνση παράδοσης"
+
       lines: &lines
         title: "Γραμμές"
         i: "#"

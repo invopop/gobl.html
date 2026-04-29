@@ -57,6 +57,9 @@ ar:
       customer:
         title: "العميل"
 
+      receiver:
+        title: "عنوان التسليم"
+
       lines: &lines
         title: "البنود"
         i: "#"

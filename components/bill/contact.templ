@@ -1,6 +1,7 @@
 package bill
 
 import (
+	"github.com/invopop/gobl/bill"
 	gorg "github.com/invopop/gobl/org"
 	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/components/regimes/ar"
@@ -21,6 +22,12 @@ templ customer(doc internal.Document) {
 	{{ cus = pt.AdaptCustomer(doc, cus) }}
 	@contact(cus, "customer") {
 		@ar.ARCAVATLegend(doc, cus, "customer")
+	}
+}
+
+templ deliveryReceiver(dlv *bill.DeliveryDetails) {
+	if dlv != nil {
+		@contact(dlv.Receiver, "receiver")
 	}
 }
 

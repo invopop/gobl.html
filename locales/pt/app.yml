@@ -53,6 +53,9 @@ pt:
       customer:
         title: "Cliente"
 
+      receiver:
+        title: "Endereço de entrega"
+
       lines: &lines
         title: "Linhas"
         i: "#"

@@ -57,6 +57,9 @@ gl:
       customer:
         title: "Cliente"
 
+      receiver:
+        title: "Enderezo de entrega"
+
       lines: &lines
         title: "Liñas"
         i: "#"

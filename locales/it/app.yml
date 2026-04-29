@@ -48,6 +48,8 @@ it:
         title: "Fornitore"
       customer:
         title: "Cliente"
+      receiver:
+        title: "Indirizzo di consegna"
       lines: &lines
         title: "Righe"
         i: "#"

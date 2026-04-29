@@ -57,6 +57,9 @@ ca:
       customer:
         title: "Client"
 
+      receiver:
+        title: "Adreça de lliurament"
+
       lines: &lines
         title: "Línies"
         i: "#"

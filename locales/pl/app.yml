@@ -53,6 +53,9 @@ pl:
       customer:
         title: "Klient"
 
+      receiver:
+        title: "Adres dostawy"
+
       lines: &lines
         title: "Linie"
         i: "#"

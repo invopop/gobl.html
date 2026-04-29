@@ -53,6 +53,9 @@ de:
       customer:
         title: "Kunde"
 
+      receiver:
+        title: "Lieferadresse"
+
       lines: &lines
         title: "Positionen"
         i: "#"
