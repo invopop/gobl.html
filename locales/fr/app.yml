@@ -50,6 +50,8 @@ fr:
         title: "Client"
       receiver:
         title: "Adresse de livraison"
+        date: "Date : %{date}"
+        period: "Date : du %{start} au %{end}"
       lines: &lines
         title: "Lignes"
         i: "#"

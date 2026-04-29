@@ -55,6 +55,8 @@ pt:
 
       receiver:
         title: "Endereço de entrega"
+        date: "Data: %{date}"
+        period: "Data: %{start} a %{end}"
 
       lines: &lines
         title: "Linhas"

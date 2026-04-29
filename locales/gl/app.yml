@@ -59,6 +59,8 @@ gl:
 
       receiver:
         title: "Enderezo de entrega"
+        date: "Data: %{date}"
+        period: "Data: %{start} a %{end}"
 
       lines: &lines
         title: "Liñas"

@@ -59,6 +59,8 @@ es:
 
       receiver:
         title: "Dirección de entrega"
+        date: "Fecha: %{date}"
+        period: "Fecha: %{start} a %{end}"
 
       lines: &lines
         title: "Líneas"

@@ -1,6 +1,7 @@
 package bill
 
 import (
+	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl/bill"
 	gorg "github.com/invopop/gobl/org"
 	"github.com/invopop/gobl.html/components/org"
@@ -27,7 +28,26 @@ templ customer(doc internal.Document) {
 
 templ deliveryReceiver(dlv *bill.DeliveryDetails) {
 	if dlv != nil {
-		@contact(dlv.Receiver, "receiver")
+		@contact(dlv.Receiver, "receiver") {
+			@deliveryDate(dlv)
+		}
+	}
+}
+
+templ deliveryDate(dlv *bill.DeliveryDetails) {
+	if dlv.Period != nil {
+		<div class="delivery-date">
+			@t.T(".receiver.period", i18n.M{
+				"start": t.Localize(ctx, dlv.Period.Start),
+				"end":   t.Localize(ctx, dlv.Period.End),
+			})
+		</div>
+	} else if dlv.Date != nil {
+		<div class="delivery-date">
+			@t.T(".receiver.date", i18n.M{
+				"date": t.Localize(ctx, *dlv.Date),
+			})
+		</div>
 	}
 }
 
@@ -42,9 +62,8 @@ templ contact(par *gorg.Party, key string) {
 						@t.T("." + key + ".title")
 					}
 				</h2>
-				@org.Party(par) {
-					{ children... }
-				}
+				@org.Party(par)
+				{ children... }
 			</div>
 		</section>
 	}
