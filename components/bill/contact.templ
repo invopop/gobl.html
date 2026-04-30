@@ -62,8 +62,9 @@ templ contact(par *gorg.Party, key string) {
 						@t.T("." + key + ".title")
 					}
 				</h2>
-				@org.Party(par)
-				{ children... }
+				@org.Party(par) {
+					{ children... }
+				}
 			</div>
 		</section>
 	}
