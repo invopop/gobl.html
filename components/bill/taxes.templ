@@ -8,8 +8,9 @@ import (
 	"strings"
 
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl/tax"
+	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/num"
+	"github.com/invopop/gobl/tax"
 )
 
 templ taxes(r *tax.RegimeDef, taxes *tax.Total) {
@@ -82,7 +83,7 @@ templ taxRateRow(r *tax.RegimeDef, cat *tax.CategoryTotal, rate *tax.RateTotal, 
 		</td>
 		if ts.exemptions {
 			<td class="exemption">
-				if code := taxExemptionCode(rate.Percent, rate.Ext); code != "" {
+				if code := taxExemptionCode(ctx, rate.Percent, rate.Ext); code != "" {
 					<code>
 						{ code }
 					</code>
@@ -123,9 +124,18 @@ func taxCategoryTotalName(ctx context.Context, r *tax.RegimeDef, cat *tax.Catego
 	return category.Name.In(t.Lang(ctx))
 }
 
+// hasExemptionCode returns true if the tax combo has an exemption code
+// that should be displayed.
+func hasExemptionCode(percent *num.Percentage, ext tax.Extensions) bool {
+	if percent != nil && !percent.IsZero() {
+		return false
+	}
+	return len(ext) > 0
+}
+
 // taxExemptionCode looks at the extension and tries to extract the
-// exemption code.
-func taxExemptionCode(percent *num.Percentage, ext tax.Extensions) string {
+// exemption reason using its human-readable name from the catalogue.
+func taxExemptionCode(ctx context.Context, percent *num.Percentage, ext tax.Extensions) string {
 	if percent != nil && !percent.IsZero() {
 		return ""
 	}
@@ -135,14 +145,30 @@ func taxExemptionCode(percent *num.Percentage, ext tax.Extensions) string {
 	// First try a code with the word `exempt` in the key
 	for _, k := range keys {
 		if strings.Contains(k.String(), "exempt") {
-			return fmt.Sprintf("(%s)", ext[k].String())
+			return extCodeName(ctx, k, ext[k])
 		}
 	}
 
 	// Next return the first code found
 	for _, k := range keys {
-		return fmt.Sprintf("(%s)", ext[k].String())
+		return extCodeName(ctx, k, ext[k])
 	}
 
 	return ""
+}
+
+// extCodeName resolves an extension code to its human-readable name from the
+// catalogue definitions. Falls back to the raw code string if no name is found.
+func extCodeName(ctx context.Context, key cbc.Key, code cbc.Code) string {
+	ext := tax.ExtensionForKey(key)
+	if ext != nil {
+		cd := ext.CodeDef(code)
+		if cd != nil {
+			name := cd.Name.In(t.Lang(ctx))
+			if name != "" {
+				return name
+			}
+		}
+	}
+	return code.String()
 }

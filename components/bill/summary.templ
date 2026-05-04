@@ -170,7 +170,7 @@ templ summaryTaxExtRows(ext tax.Extensions) {
 					{ label }
 				</span>
 				<span class="value">
-					{ ext[k].String() }
+					{ extCodeName(ctx, k, ext[k]) }
 				</span>
 			</li>
 		}

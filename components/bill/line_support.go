@@ -44,7 +44,7 @@ func prepareLineSupport(reg *tax.RegimeDef, lines []*bill.Line, dss []*bill.Disc
 			cat := reg.CategoryDef(combo.Category)
 			if cat != nil {
 				cats = addCategory(cats, cat)
-				if taxExemptionCode(combo.Percent, combo.Ext) != "" {
+				if hasExemptionCode(combo.Percent, combo.Ext) {
 					ls.exemptions[cat] = true
 				}
 			}
