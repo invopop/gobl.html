@@ -14,6 +14,8 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/pay"
 	"github.com/invopop/gobl/tax"
 )
 
@@ -322,9 +324,11 @@ func method(pmt *bill.Payment) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = paymentInstructions(pmt.Method).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
+			for _, rec := range pmt.Methods {
+				templ_7745c5c3_Err = paymentInstructions(recordAsInstructions(rec)).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
 			}
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "</section>")
 			if templ_7745c5c3_Err != nil {
@@ -338,6 +342,25 @@ func method(pmt *bill.Payment) templ.Component {
 		}
 		return nil
 	})
+}
+
+func recordAsInstructions(rec *pay.Record) *pay.Instructions {
+	if rec == nil {
+		return nil
+	}
+	inst := &pay.Instructions{
+		Key:         rec.Key,
+		Detail:      rec.Description,
+		Ref:         cbc.Code(rec.Ref),
+		Card:        rec.Card,
+		DirectDebit: rec.DirectDebit,
+		Online:      rec.Online,
+		Ext:         rec.Ext,
+	}
+	if rec.CreditTransfer != nil {
+		inst.CreditTransfer = []*pay.CreditTransfer{rec.CreditTransfer}
+	}
+	return inst
 }
 
 func mergePaymentTaxTotals(pmt *bill.Payment) *tax.Total {

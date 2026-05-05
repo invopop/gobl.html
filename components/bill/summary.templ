@@ -10,8 +10,6 @@ import (
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/currency"
 	"github.com/invopop/gobl/tax"
-	"maps"
-	"slices"
 	"strings"
 )
 
@@ -163,14 +161,14 @@ templ summaryOrderingRows(ord *bill.Ordering) {
 }
 
 templ summaryTaxExtRows(ext tax.Extensions) {
-	for _, k := range slices.Sorted(maps.Keys(ext)) {
+	for _, k := range ext.Keys() {
 		if label := mapTaxExtension(ctx, k); label != "" {
 			<li class="tax-ext">
 				<span class="label">
 					{ label }
 				</span>
 				<span class="value">
-					{ ext[k].String() }
+					{ ext.Get(k).String() }
 				</span>
 			</li>
 		}

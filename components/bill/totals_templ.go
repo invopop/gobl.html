@@ -513,7 +513,7 @@ func totalExchangeRates(inv *bill.Invoice) []*currency.ExchangeRate {
 	return list
 }
 
-func advanceMap(adv *pay.Advance) i18n.M {
+func advanceMap(adv *pay.Record) i18n.M {
 	txt := adv.Description
 	if adv.Ref != "" {
 		txt = fmt.Sprintf("%s (%s)", txt, adv.Ref)

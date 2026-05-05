@@ -6,6 +6,8 @@ import (
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/pay"
 	"github.com/invopop/gobl/tax"
 )
 
@@ -85,9 +87,30 @@ templ method(pmt *bill.Payment) {
 			<h2 class="title">
 				@t.T(".title")
 			</h2>
-			@paymentInstructions(pmt.Method)
+			for _, rec := range pmt.Methods {
+				@paymentInstructions(recordAsInstructions(rec))
+			}
 		</section>
 	}
+}
+
+func recordAsInstructions(rec *pay.Record) *pay.Instructions {
+	if rec == nil {
+		return nil
+	}
+	inst := &pay.Instructions{
+		Key:         rec.Key,
+		Detail:      rec.Description,
+		Ref:         cbc.Code(rec.Ref),
+		Card:        rec.Card,
+		DirectDebit: rec.DirectDebit,
+		Online:      rec.Online,
+		Ext:         rec.Ext,
+	}
+	if rec.CreditTransfer != nil {
+		inst.CreditTransfer = []*pay.CreditTransfer{rec.CreditTransfer}
+	}
+	return inst
 }
 
 func mergePaymentTaxTotals(pmt *bill.Payment) *tax.Total {
