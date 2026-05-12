@@ -231,6 +231,11 @@ section.methods td {
     margin: 0px;
     vertical-align: top;
 }
+section.methods td,
+section.methods th {
+    line-height: 1.4;
+    padding: 2mm;
+}
 section.lines th,
 section.methods th {
     font-weight: 600;
@@ -346,6 +351,10 @@ section.totals tr:first-child td {
 section.totals tr.strong th,
 section.totals tr.strong td {
     font-weight: 600;
+}
+article.payment section.totals tr.strong th,
+article.payment section.totals tr.strong td {
+    font-weight: 400;
 }
 section.totals .exchange-rate {
     font-style: italic;
