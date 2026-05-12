@@ -217,18 +217,22 @@ section.lines {
 section.lines h2 {
     display: none;
 }
-section.lines table {
+section.lines table,
+section.methods table {
     width: 100%;
 }
 section.lines th,
-section.lines td {
+section.lines td,
+section.methods th,
+section.methods td {
     text-align: left;
     border-bottom: 0.5px solid #e5e7eb;
     padding: 1.5mm 2mm;
     margin: 0px;
     vertical-align: top;
 }
-section.lines th {
+section.lines th,
+section.methods th {
     font-weight: 600;
     background-color: #f3f4f6;
 }
@@ -440,6 +444,37 @@ section.payment ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+section.methods {
+    display: block;
+}
+section.methods th.num,
+section.methods td.date,
+section.methods td.amount {
+    text-align: right;
+    white-space: nowrap;
+    width: 1%;
+}
+
+section.methods .card-detail,
+section.methods .description,
+section.methods .ref,
+section.methods .credit-transfer,
+section.methods .direct-debit-details,
+section.methods .online {
+    color: #4b5563;
+    font-size: smaller;
+}
+section.methods tfoot th,
+section.methods tfoot td {
+    font-weight: 600;
+    border-top: 0.5px solid #e5e7eb;
+    padding-bottom: 6mm;
+    white-space: nowrap;
+}
+section.methods tfoot th {
+    background-color: white;
+    text-align: right;
 }
 section.tracking {
     border-bottom: 0.5px solid #e5e7eb;

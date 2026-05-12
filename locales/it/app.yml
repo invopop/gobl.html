@@ -93,9 +93,15 @@ it:
         instructions: &payment_instructions
           method: "Metodo di pagamento"
           ref: "Riferimento"
+          ref_line: "Riferimento: %{ref}"
+          amount: "Importo"
+          description: "Descrizione"
           bank_data: "Istruzioni per bonifico bancario"
           card: "Pagamento con carta"
           card_detail: "Pagamento effettuato con carta terminante in %{last4} intestata a %{holder}"
+          direct_debit: "Addebito diretto"
+          mandate_ref: "Mandato: %{ref}"
+          creditor: "ID creditore: %{creditor}"
           observations: "Note di pagamento"
           bank_name: "Banca: %{name}"
           iban: "IBAN: %{iban}"
@@ -141,8 +147,11 @@ it:
         <<: *lines
         document: "Documento"
 
-      method:
+      methods:
         title: "Dettagli del Pagamento"
+        date: "Data"
+        amount: "Importo"
+        total: "Totale pagato"
         instructions: *payment_instructions
 
     delivery:

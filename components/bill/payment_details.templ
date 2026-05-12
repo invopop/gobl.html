@@ -70,11 +70,20 @@ templ paymentInstructions(inst *pay.Instructions) {
 						@t.T(".card")
 					</span>
 					<span class="value">
-						@t.T(".card_detail", i18n.M{"last4": inst.Card.Last4, "holder": inst.Card.Holder})
+						@paymentCardRow(inst.Card)
 					</span>
 				</li>
 			}
-			// TODO: Direct Debit
+			if inst.DirectDebit != nil {
+				<li class="direct-debit">
+					<span class="label">
+						@t.T(".direct_debit")
+					</span>
+					<span class="value">
+						@paymentDirectDebitRow(inst.DirectDebit)
+					</span>
+				</li>
+			}
 			if len(inst.Online) > 0 {
 				<li class="online">
 					<span class="label">
@@ -82,13 +91,7 @@ templ paymentInstructions(inst *pay.Instructions) {
 					</span>
 					for _, ol := range inst.Online {
 						<span class="value">
-							<a href={ templ.SafeURL(ol.URL) }>
-								if ol.Label != "" {
-									{ ol.Label }
-								} else {
-									{ ol.URL }
-								}
-							</a>
+							@paymentOnlineRow(ol)
 						</span>
 					}
 				</li>
@@ -113,6 +116,40 @@ func renderPaymentNotes(txt string) string {
 		return fmt.Sprintf("!(ERR %v)", err.Error())
 	}
 	return buf.String()
+}
+
+templ paymentDirectDebitRow(dd *pay.DirectDebit) {
+	<div class="direct-debit-details">
+		if dd.Ref != "" {
+			<div class="mandate-ref nowrap">
+				@t.T(".mandate_ref", i18n.M{"ref": dd.Ref})
+			</div>
+		}
+		if dd.Creditor != "" {
+			<div class="creditor nowrap">
+				@t.T(".creditor", i18n.M{"creditor": dd.Creditor})
+			</div>
+		}
+		if dd.Account != "" {
+			<div class="account nowrap">
+				@t.T(".account_number", i18n.M{"num": dd.Account})
+			</div>
+		}
+	</div>
+}
+
+templ paymentCardRow(card *pay.Card) {
+	@t.T(".card_detail", i18n.M{"last4": card.Last4, "holder": card.Holder})
+}
+
+templ paymentOnlineRow(ol *pay.Online) {
+	<a href={ templ.SafeURL(ol.URL) }>
+		if ol.Label != "" {
+			{ ol.Label }
+		} else {
+			{ ol.URL }
+		}
+	</a>
 }
 
 templ paymentCreditTransferRow(ct *pay.CreditTransfer) {

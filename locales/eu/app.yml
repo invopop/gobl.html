@@ -105,9 +105,15 @@ eu:
         instructions: &payment_instructions
           method: "Ordainketa metodoa"
           ref: "Erreferentzia"
+          ref_line: "Erreferentzia: %{ref}"
+          amount: "Zenbatekoa"
+          description: "Deskribapena"
           bank_data: "Banku transferentzia jarraibideak"
           card: "Txartelaren ordainketa"
           card_detail: "%{last4}(e)n amaitutako txartelaren bidez ordaindua, %{holder}(r)ena"
+          direct_debit: "Zuzeneko kargua"
+          mandate_ref: "Mandatua: %{ref}"
+          creditor: "Hartzekodunaren ID: %{creditor}"
           observations: "Ordainketa oharrak"
           bank_name: "Bankua: %{name}"
           iban: "IBAN: %{iban}"
@@ -155,8 +161,11 @@ eu:
         <<: *lines
         document: "Dokumentua"
 
-      method:
+      methods:
         title: "Ordainketa xehetasunak"
+        date: "Data"
+        amount: "Zenbatekoa"
+        total: "Ordaindutako guztira"
         instructions: *payment_instructions
 
     delivery:

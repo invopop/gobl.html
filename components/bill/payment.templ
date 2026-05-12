@@ -1,12 +1,12 @@
 package bill
 
 import (
+	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
-	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/pay"
 	"github.com/invopop/gobl/tax"
 )
@@ -25,7 +25,7 @@ templ Payment(env *gobl.Envelope, pmt *bill.Payment) {
 					@paymentTotals(pmt, tt)
 					@taxes(pmt.RegimeDef(), tt)
 				</div>
-				@method(pmt)
+				@paymentMethods(pmt)
 				@notes(pmt.Notes)
 				<div class="extensions">
 					// Region specific information
@@ -81,36 +81,105 @@ templ paymentTotals(pmt *bill.Payment, tt *tax.Total) {
 	</section>
 }
 
-templ method(pmt *bill.Payment) {
-	@t.Scope(".method") {
-		<section class="payment">
-			<h2 class="title">
-				@t.T(".title")
-			</h2>
-			for _, rec := range pmt.Methods {
-				@paymentInstructions(recordAsInstructions(rec))
-			}
-		</section>
+templ paymentMethods(pmt *bill.Payment) {
+	@t.Scope(".methods") {
+		if len(pmt.Methods) > 0 {
+			{{ ms := prepareMethodSupport(pmt.Methods) }}
+			<section class="methods">
+				<table>
+					<thead>
+						<tr>
+							<th>
+								@t.T(".title")
+							</th>
+							if ms.dates {
+								<th>
+									@t.T(".date")
+								</th>
+							}
+							<th class="num">
+								@t.T(".amount")
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						for _, rec := range pmt.Methods {
+							@paymentMethod(ms, rec)
+						}
+					</tbody>
+					<tfoot>
+						<tr>
+							if ms.dates {
+								<th colspan="2">
+									@t.T(".total")
+								</th>
+							} else {
+								<th>
+									@t.T(".total")
+								</th>
+							}
+							<td class="num">
+								@t.LM(pmt.Total)
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</section>
+		}
 	}
 }
 
-func recordAsInstructions(rec *pay.Record) *pay.Instructions {
-	if rec == nil {
-		return nil
+// paymentMethod renders a single payment record as a table row.
+templ paymentMethod(ms *methodSupport, rec *pay.Record) {
+	@t.Scope(".instructions") {
+		<tr>
+			<td class="method">
+				<div class="method-name">
+					@t.T(".methods." + string(rec.Key))
+				</div>
+				if rec.Description != "" {
+					<div class="description">
+						{ rec.Description }
+					</div>
+				}
+				if rec.CreditTransfer != nil {
+					@paymentCreditTransferRow(rec.CreditTransfer)
+				}
+				if rec.Card != nil {
+					<div class="card-detail">
+						@paymentCardRow(rec.Card)
+					</div>
+				}
+				if rec.Ref != "" {
+					<div class="ref">
+						@t.T(".ref_line", i18n.M{"ref": rec.Ref})
+					</div>
+				}
+				if rec.DirectDebit != nil {
+					@paymentDirectDebitRow(rec.DirectDebit)
+				}
+				for _, ol := range rec.Online {
+					<div class="online">
+						@paymentOnlineRow(ol)
+					</div>
+				}
+			</td>
+			if ms.dates {
+				<td class="date">
+					if rec.Date != nil {
+						@t.L(*rec.Date)
+					}
+				</td>
+			}
+			<td class="amount num">
+				if rec.Currency != "" {
+					@t.LCD(rec.Amount, rec.Currency)
+				} else {
+					@t.LM(rec.Amount)
+				}
+			</td>
+		</tr>
 	}
-	inst := &pay.Instructions{
-		Key:         rec.Key,
-		Detail:      rec.Description,
-		Ref:         cbc.Code(rec.Ref),
-		Card:        rec.Card,
-		DirectDebit: rec.DirectDebit,
-		Online:      rec.Online,
-		Ext:         rec.Ext,
-	}
-	if rec.CreditTransfer != nil {
-		inst.CreditTransfer = []*pay.CreditTransfer{rec.CreditTransfer}
-	}
-	return inst
 }
 
 func mergePaymentTaxTotals(pmt *bill.Payment) *tax.Total {
