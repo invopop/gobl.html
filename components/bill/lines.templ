@@ -166,7 +166,7 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 			if ls.exemptions[cat] {
 				<td class="exemption">
 					if combo != nil {
-						if code := taxExemptionCode(combo.Percent, combo.Ext); code != "" {
+						if code := taxExemptionCode(ctx, combo.Percent, combo.Ext); code != "" {
 							<code>
 								{ code }
 							</code>

@@ -10,7 +10,7 @@ func prepareTaxSupport(taxes *tax.Total) *taxSupport {
 	ts := new(taxSupport)
 	for _, cat := range taxes.Categories {
 		for _, rate := range cat.Rates {
-			if taxExemptionCode(rate.Percent, rate.Ext) != "" {
+			if hasExemptionCode(rate.Percent, rate.Ext) {
 				ts.exemptions = true
 			}
 		}
