@@ -122,6 +122,8 @@ eu:
           online: "Ordainketa esteka"
           methods:
             card: "Banku txartela"
+            card+credit: "Kreditu txartela"
+            card+debit: "Debitu txartela"
             credit-transfer: "Banku transferentzia"
             cash: "Dirutan"
             direct-debit: "Banku domiziliazioa"

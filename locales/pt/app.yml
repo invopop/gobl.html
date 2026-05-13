@@ -118,6 +118,8 @@ pt:
           online: "Link de pagamento"
           methods:
             card: "Cartão bancário"
+            card+credit: "Cartão de crédito"
+            card+debit: "Cartão de débito"
             credit-transfer: "Transferência bancária"
             cash: "Dinheiro"
             direct-debit: "Débito direto"

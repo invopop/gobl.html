@@ -118,6 +118,8 @@ pl:
           online: "Link do płatności"
           methods:
             card: "Karta bankowa"
+            card+credit: "Karta kredytowa"
+            card+debit: "Karta debetowa"
             credit-transfer: "Przelew bankowy"
             cash: "Gotówka"
             direct-debit: "Polecenie zapłaty"

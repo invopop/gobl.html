@@ -118,6 +118,8 @@ de:
           online: "Zahlungslink"
           methods:
             card: "Bankkarte"
+            card+credit: "Kreditkarte"
+            card+debit: "Debitkarte"
             credit-transfer: "Banküberweisung"
             cash: "Bargeld"
             direct-debit: "Lastschrift"

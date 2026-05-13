@@ -110,6 +110,8 @@ fr:
           online: "Lien de paiement"
           methods:
             card: "Carte bancaire"
+            card+credit: "Carte de crédit"
+            card+debit: "Carte de débit"
             credit-transfer: "Virement bancaire"
             cash: "Espèces"
             direct-debit: "Prélèvement automatique"
