@@ -1,19 +1,19 @@
 {
 	"$schema": "https://gobl.org/draft-0/envelope",
 	"head": {
-		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
+		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120009",
 		"dig": {
 			"alg": "sha256",
-			"val": "2b3f3fe033a77f3617ab1d56f72bfc7adcefa4243d43e5867b12ba3761a40f27"
+			"val": "73fa42f6d60560c0392c621a69a0c371a9398e8a8bd79a925e9f5c5052c9f760"
 		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/payment",
 		"$regime": "ES",
-		"uuid": "0194ad4c-3462-7695-a40c-66a30ccc1405",
+		"uuid": "0194ad4c-3462-7695-a40c-66a30ccc14ff",
 		"type": "receipt",
 		"series": "RCT",
-		"code": "0001",
+		"code": "0002",
 		"issue_date": "2025-01-28",
 		"currency": "EUR",
 		"supplier": {
@@ -31,11 +31,6 @@
 					"code": "28002",
 					"country": "ES"
 				}
-			],
-			"emails": [
-				{
-					"addr": "billing@example.com"
-				}
 			]
 		},
 		"customer": {
@@ -49,37 +44,70 @@
 			{
 				"i": 1,
 				"document": {
-					"uuid": "3aea7b56-59d8-4beb-90bd-f8f280d852a0",
+					"uuid": "3aea7b56-59d8-4beb-90bd-f8f280d852a1",
 					"issue_date": "2025-01-10",
 					"series": "SAMPLE",
 					"code": "001"
 				},
 				"description": "Invoice",
-				"amount": "1972.30",
+				"amount": "242.00",
 				"tax": {
 					"categories": [
 						{
 							"code": "VAT",
 							"rates": [
 								{
-									"base": "1630.00",
+									"base": "200.00",
 									"percent": "21.0%",
-									"amount": "342.30"
+									"amount": "42.00"
 								}
 							],
-							"amount": "342.30"
+							"amount": "42.00"
 						}
 					],
-					"sum": "342.30"
+					"sum": "42.00"
 				}
 			}
 		],
 		"methods": [
 			{
+				"date": "2025-01-28",
+				"key": "card+credit",
+				"amount": "60.00",
+				"card": {
+					"last4": "4242",
+					"holder": "Sample Consumer"
+				}
+			},
+			{
 				"key": "credit-transfer",
-				"amount": "1972.30"
+				"ref": "INV-001",
+				"amount": "62.00",
+				"credit_transfer": {
+					"iban": "ES7921000813610123456789",
+					"name": "Banco Sample"
+				}
+			},
+			{
+				"key": "direct-debit",
+				"amount": "60.00",
+				"direct_debit": {
+					"ref": "MANDATE-2025-01",
+					"creditor": "CRED-ES-001",
+					"account": "ES7921000813610123456789"
+				}
+			},
+			{
+				"key": "online",
+				"amount": "60.00",
+				"online": [
+					{
+						"label": "PayPal",
+						"url": "https://paypal.com/pay?ref=PMT-001"
+					}
+				]
 			}
 		],
-		"total": "1972.30"
+		"total": "242.00"
 	}
 }

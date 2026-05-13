@@ -4,7 +4,7 @@
 		"uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
 		"dig": {
 			"alg": "sha256",
-			"val": "8fe661741a84d818bbccfb0b29cf4f79256bb214db3d7f216c28f06e52ee9e14"
+			"val": "cfa46b6b15107652dabe2b46861bc94d3b42d53ca0a88c5e174b16fb5419f81c"
 		}
 	},
 	"doc": {
@@ -613,6 +613,15 @@
 						"name": "RANDOM"
 					}
 				],
+				"card": {
+					"last4": "4321",
+					"holder": "Jane Doe"
+				},
+				"direct_debit": {
+					"ref": "MANDATE-001",
+					"creditor": "CRED-ES-001",
+					"account": "ES7921000813610123456789"
+				},
 				"online": [
 					{
 						"key": "paypal",

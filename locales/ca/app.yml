@@ -110,9 +110,15 @@ ca:
         instructions: &payment_instructions
           method: "Mètode de pagament"
           ref: "Referència"
+          ref_line: "Referència: %{ref}"
+          amount: "Import"
+          description: "Descripció"
           bank_data: "Instruccions de transferència bancària"
           card: "Pagament amb targeta"
           card_detail: "Pagament realitzat amb targeta acabada en %{last4} pertanyent a %{holder}"
+          direct_debit: "Domiciliació bancària"
+          mandate_ref: "Mandat: %{ref}"
+          creditor: "ID del creditor: %{creditor}"
           observations: "Notes de pagament"
           bank_name: "Banc: %{name}"
           iban: "IBAN: %{iban}"
@@ -121,6 +127,8 @@ ca:
           online: "Enllaç de pagament"
           methods:
             card: "Targeta bancària"
+            card+credit: "Targeta de crèdit"
+            card+debit: "Targeta de dèbit"
             credit-transfer: "Transferència bancària"
             cash: "Efectiu"
             direct-debit: "Domiciliació bancària"
@@ -160,8 +168,11 @@ ca:
         <<: *lines
         document: "Document"
 
-      method:
+      methods:
         title: "Detalls de pagament"
+        date: "Data"
+        amount: "Import"
+        total: "Total pagat"
         instructions: *payment_instructions
 
     delivery:

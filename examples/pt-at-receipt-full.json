@@ -4,7 +4,7 @@
 		"uuid": "0194da65-8e80-77d0-9843-944211a0eb1a",
 		"dig": {
 			"alg": "sha256",
-			"val": "ebf552cefa7e66d72b78fc5304e23b3a1f0d7271dfe488af319381e72b15c7f0"
+			"val": "779a8c0be3375663ed3c65d24682920d9642abda3fd57e18471330b5b48bc0d8"
 		},
 		"stamps": [
 			{
@@ -34,10 +34,6 @@
 		"$regime": "PT",
 		"uuid": "0194d10a-9314-760b-a68c-a3044d45cf9e",
 		"type": "receipt",
-		"method": {
-			"key": "cash",
-			"detail": "Full settlement made in cash"
-		},
 		"series": "RG DEV-05",
 		"code": "4",
 		"issue_date": "2024-12-23",
@@ -766,6 +762,13 @@
 					],
 					"sum": "57.50"
 				}
+			}
+		],
+		"methods": [
+			{
+				"key": "cash",
+				"description": "Full settlement made in cash",
+				"amount": "3924.75"
 			}
 		],
 		"ordering": {

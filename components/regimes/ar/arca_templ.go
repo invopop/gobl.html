@@ -134,18 +134,18 @@ func titleType(doc internal.Document) templ.Component {
 
 func isArgentine(doc internal.Document) bool {
 	ext := doc.GetExt()
-	if ext == nil {
+	if ext.IsZero() {
 		return false
 	}
-	return !ext[arca.ExtKeyDocType].IsEmpty()
+	return !ext.Get(arca.ExtKeyDocType).IsEmpty()
 }
 
 func arcaDocType(doc internal.Document) string {
 	ext := doc.GetExt()
-	if ext == nil {
+	if ext.IsZero() {
 		return ""
 	}
-	dt := ext[arca.ExtKeyDocType]
+	dt := ext.Get(arca.ExtKeyDocType)
 	if dt.IsEmpty() {
 		return ""
 	}
@@ -212,10 +212,10 @@ func ARCADocTypeLetter(doc internal.Document) templ.Component {
 }
 
 func arcaDocTypeLetter(ext tax.Extensions) (string, string) {
-	if ext == nil {
+	if ext.IsZero() {
 		return "", ""
 	}
-	dt := ext[arca.ExtKeyDocType]
+	dt := ext.Get(arca.ExtKeyDocType)
 	if dt.IsEmpty() {
 		return "", ""
 	}

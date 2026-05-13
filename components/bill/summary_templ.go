@@ -18,8 +18,6 @@ import (
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/currency"
 	"github.com/invopop/gobl/tax"
-	"maps"
-	"slices"
 	"strings"
 )
 
@@ -99,7 +97,7 @@ func summary(inv *bill.Invoice) templ.Component {
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(currencyName(ctx, inv.Currency))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 38, Col: 39}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 36, Col: 39}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -272,7 +270,7 @@ func summaryPrecedingRows(obj any) templ.Component {
 				var templ_7745c5c3_Var5 string
 				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(" · ")
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 103, Col: 13}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 101, Col: 13}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 				if templ_7745c5c3_Err != nil {
@@ -295,7 +293,7 @@ func summaryPrecedingRows(obj any) templ.Component {
 				var templ_7745c5c3_Var6 string
 				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(" · ")
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 109, Col: 13}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 107, Col: 13}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 				if templ_7745c5c3_Err != nil {
@@ -308,7 +306,7 @@ func summaryPrecedingRows(obj any) templ.Component {
 				var templ_7745c5c3_Var7 string
 				templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(pre.Reason)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 110, Col: 17}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 108, Col: 17}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 				if templ_7745c5c3_Err != nil {
@@ -365,7 +363,7 @@ func summaryOrderingRows(ord *bill.Ordering) templ.Component {
 			var templ_7745c5c3_Var9 string
 			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(ord.Code.String())
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 124, Col: 23}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 122, Col: 23}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 			if templ_7745c5c3_Err != nil {
@@ -391,7 +389,7 @@ func summaryOrderingRows(ord *bill.Ordering) templ.Component {
 				var templ_7745c5c3_Var10 string
 				templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(ident.Label)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 135, Col: 18}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 133, Col: 18}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 				if templ_7745c5c3_Err != nil {
@@ -404,7 +402,7 @@ func summaryOrderingRows(ord *bill.Ordering) templ.Component {
 				var templ_7745c5c3_Var11 string
 				templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(ident.Code.String())
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 138, Col: 26}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 136, Col: 26}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 				if templ_7745c5c3_Err != nil {
@@ -438,7 +436,7 @@ func summaryOrderingRows(ord *bill.Ordering) templ.Component {
 					var templ_7745c5c3_Var12 string
 					templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(purchase.Series.Join(purchase.Code).String())
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 151, Col: 52}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 149, Col: 52}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 					if templ_7745c5c3_Err != nil {
@@ -452,7 +450,7 @@ func summaryOrderingRows(ord *bill.Ordering) templ.Component {
 						var templ_7745c5c3_Var13 string
 						templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(" · ")
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 153, Col: 15}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 151, Col: 15}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 						if templ_7745c5c3_Err != nil {
@@ -507,7 +505,7 @@ func summaryTaxExtRows(ext tax.Extensions) templ.Component {
 			templ_7745c5c3_Var14 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		for _, k := range slices.Sorted(maps.Keys(ext)) {
+		for _, k := range ext.Keys() {
 			if label := mapTaxExtension(ctx, k); label != "" {
 				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 41, "<li class=\"tax-ext\"><span class=\"label\">")
 				if templ_7745c5c3_Err != nil {
@@ -516,7 +514,7 @@ func summaryTaxExtRows(ext tax.Extensions) templ.Component {
 				var templ_7745c5c3_Var15 string
 				templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(label)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 170, Col: 12}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 168, Col: 12}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 				if templ_7745c5c3_Err != nil {
@@ -527,9 +525,9 @@ func summaryTaxExtRows(ext tax.Extensions) templ.Component {
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var16 string
-				templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(ext[k].String())
+				templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(ext.Get(k).String())
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 173, Col: 22}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/summary.templ`, Line: 171, Col: 26}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 				if templ_7745c5c3_Err != nil {

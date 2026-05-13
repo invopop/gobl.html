@@ -106,9 +106,15 @@ pt:
         instructions: &payment_instructions
           method: "Método de pagamento"
           ref: "Referência"
+          ref_line: "Referência: %{ref}"
+          amount: "Valor"
+          description: "Descrição"
           bank_data: "Instruções de transferência bancária"
           card: "Pagamento com Cartão"
           card_detail: "Pagamento efetuado com cartão terminando em %{last4} pertencente a %{holder}"
+          direct_debit: "Débito direto"
+          mandate_ref: "Mandato: %{ref}"
+          creditor: "ID do credor: %{creditor}"
           observations: "Notas de Pagamento"
           bank_name: "Banco: %{name}"
           iban: "IBAN: %{iban}"
@@ -117,6 +123,8 @@ pt:
           online: "Link de pagamento"
           methods:
             card: "Cartão bancário"
+            card+credit: "Cartão de crédito"
+            card+debit: "Cartão de débito"
             credit-transfer: "Transferência bancária"
             cash: "Dinheiro"
             direct-debit: "Débito direto"
@@ -155,8 +163,11 @@ pt:
         <<: *lines
         document: "Documento"
 
-      method:
-        title: "Detalhes do Pagamento"
+      methods:
+        title: "Métodos"
+        date: "Data"
+        amount: "Valor"
+        total: "Total pago"
         instructions: *payment_instructions
 
     delivery:

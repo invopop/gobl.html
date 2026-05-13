@@ -110,9 +110,15 @@ gl:
         instructions: &payment_instructions
           method: "Método de pagamento"
           ref: "Referencia"
+          ref_line: "Referencia: %{ref}"
+          amount: "Importe"
+          description: "Descripción"
           bank_data: "Instrucións de transferencia bancaria"
           card: "Pagamento con tarxeta"
           card_detail: "Pagamento realizado con tarxeta rematada en %{last4} pertencente a %{holder}"
+          direct_debit: "Domiciliación bancaria"
+          mandate_ref: "Mandato: %{ref}"
+          creditor: "ID do acreedor: %{creditor}"
           observations: "Notas de pagamento"
           bank_name: "Banco: %{name}"
           iban: "IBAN: %{iban}"
@@ -121,6 +127,8 @@ gl:
           online: "Ligazón de pagamento"
           methods:
             card: "Tarxeta bancaria"
+            card+credit: "Tarxeta de crédito"
+            card+debit: "Tarxeta de débito"
             credit-transfer: "Transferencia bancaria"
             cash: "Efectivo"
             direct-debit: "Domiciliación bancaria"
@@ -160,8 +168,11 @@ gl:
         <<: *lines
         document: "Documento"
 
-      method:
+      methods:
         title: "Detalles de pagamento"
+        date: "Data"
+        amount: "Importe"
+        total: "Total pagado"
         instructions: *payment_instructions
 
     delivery:

@@ -108,9 +108,15 @@ el:
         instructions: &payment_instructions
           method: "Μέθοδος πληρωμής"
           ref: "Αναφορά"
+          ref_line: "Αναφορά: %{ref}"
+          amount: "Ποσό"
+          description: "Περιγραφή"
           bank_data: "Οδηγίες τραπεζικής μεταφοράς"
           card: "Πληρωμή με κάρτα"
           card_detail: "Πληρωμή προς κάρτα με τελευταία 4 ψηφία %{last4} που ανήκει σε %{holder}"
+          direct_debit: "Άμεση χρέωση"
+          mandate_ref: "Εντολή: %{ref}"
+          creditor: "Ταυτότητα δανειστή: %{creditor}"
           observations: "Σημειώσεις πληρωμής"
           bank_name: "Τράπεζα: %{name}"
           iban: "IBAN: %{iban}"
@@ -119,6 +125,8 @@ el:
           online: "Σύνδεσμος πληρωμής"
           methods:
             card: "Κάρτα τραπέζης"
+            card+credit: "Πιστωτική κάρτα"
+            card+debit: "Χρεωστική κάρτα"
             credit-transfer: "Τραπεζική μεταφορά"
             cash: "Μετρητά"
             direct-debit: "Άμεση πίστωση"
@@ -157,8 +165,11 @@ el:
         <<: *lines
         document: "Έγγραφο"
 
-      method:
+      methods:
         title: "Λεπτομέρειες Πληρωμής"
+        date: "Ημερομηνία"
+        amount: "Ποσό"
+        total: "Σύνολο πληρωμής"
         instructions: *payment_instructions
 
     delivery:

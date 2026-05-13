@@ -106,9 +106,15 @@ de:
         instructions: &payment_instructions
           method: "Zahlungsmethode"
           ref: "Referenz"
+          ref_line: "Referenz: %{ref}"
+          amount: "Betrag"
+          description: "Beschreibung"
           bank_data: "Banküberweisungsanweisungen"
           card: "Kartenzahlung"
           card_detail: "Zahlung mit Karte mit den letzten 4 Ziffern %{last4} von %{holder}"
+          direct_debit: "Lastschrift"
+          mandate_ref: "Mandat: %{ref}"
+          creditor: "Gläubiger-ID: %{creditor}"
           observations: "Zahlungshinweise"
           bank_name: "Bank: %{name}"
           iban: "IBAN: %{iban}"
@@ -117,6 +123,8 @@ de:
           online: "Zahlungslink"
           methods:
             card: "Bankkarte"
+            card+credit: "Kreditkarte"
+            card+debit: "Debitkarte"
             credit-transfer: "Banküberweisung"
             cash: "Bargeld"
             direct-debit: "Lastschrift"
@@ -156,8 +164,11 @@ de:
         <<: *lines
         document: "Dokument"
 
-      method:
+      methods:
         title: "Zahlungsdetails"
+        date: "Datum"
+        amount: "Betrag"
+        total: "Gezahlt"
         instructions: *payment_instructions
 
     delivery:

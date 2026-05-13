@@ -30,21 +30,24 @@
           </a>
         </div>
       </footer>
-      <article class="invoice">
+      <article class="payment">
         <header class="regular">
           <div class="details">
             <section class="title">
               <div class="hero">
                 <div class="alias">
-                  <img src="https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0" alt="Invopop" height="40">
+                  Provide One S.L.
                 </div>
               </div>
               <div class="title-group">
                 <h1 class="type">
-                  Invoice
+                  Payment receipt
                 </h1>
                 <h2 class="code">
-                  FAKE-0001
+                  RCT-0002
+                  <span class="paid">
+                    Paid
+                  </span>
                 </h2>
               </div>
             </section>
@@ -57,8 +60,8 @@
                   <span class="label">
                     Issue date
                   </span>
-                  <span class="value date">
-                    2024-05-08
+                  <span class="value">
+                    2025-01-28
                   </span>
                 </li>
                 <li class="currency">
@@ -66,7 +69,7 @@
                     Currency
                   </span>
                   <span class="value">
-                    United States Dollar (USD)
+                    Euro (EUR)
                   </span>
                 </li>
               </ul>
@@ -80,15 +83,15 @@
                 </h2>
                 <div class="org-party">
                   <div class="name">
-                    Invopop Inc.
+                    Provide One S.L.
                   </div>
                   <div class="org-address">
                     <span>
-                      1111B S Governors Ave #6229, Dover, DE, 19904 (United States of America)
+                      Calle Pradillo 42, Madrid, Madrid, 28002 (Spain)
                     </span>
                   </div>
-                  <div class="emails">
-                    Email: billing@invopop.com
+                  <div class="tax-id">
+                    NIF: (ES) B98602642
                   </div>
                 </div>
               </div>
@@ -100,21 +103,10 @@
                 </h2>
                 <div class="org-party">
                   <div class="name">
-                    Customer Random Inc.
+                    Sample Consumer
                   </div>
-                  <div class="org-address">
-                    <span class="label">
-                      Office:&nbsp;
-                    </span>
-                    <span>
-                      10 Calle Mayor, Madrid, CA, 28003 (United States of America)
-                    </span>
-                  </div>
-                  <div class="emails">
-                    Email: sam@example.com
-                  </div>
-                  <div class="identitiy">
-                    Código de Cliente: 123456789ABC
+                  <div class="tax-id">
+                    NIF: (ES) 54387763P
                   </div>
                 </div>
               </div>
@@ -131,17 +123,11 @@
                 <th class="ref">
                   #
                 </th>
-                <th class="description">
-                  Description
+                <th class="document">
+                  Document
                 </th>
-                <th class="quantity">
-                  Qty.
-                </th>
-                <th class="price">
-                  Price
-                </th>
-                <th class="discount">
-                  Disc.
+                <th class="tax">
+                  VAT
                 </th>
                 <th class="total">
                   Total
@@ -149,56 +135,26 @@
               </tr>
             </thead>
             <tbody>
-              <tr data-subtotal="$3,800.00">
+              <tr data-subtotal="€242,00">
                 <td class="ref">
                   1
                 </td>
-                <td class="description">
+                <td class="document">
                   <div class="limited-height">
                     <span>
-                      Development Day Rate
+                      SAMPLE-001
                     </span>
                     <br>
                     <small>
-                      Development services for the month of February 2022
+                      Invoice
                     </small>
                   </div>
                 </td>
-                <td class="quantity">
-                  20
-                </td>
-                <td class="price">
-                  $200.00
-                </td>
-                <td class="discount">
-                  <span class="discount-content">
-                    5%
-                  </span>
+                <td class="tax">
+                  €42,00
                 </td>
                 <td class="total">
-                  $3,800.00
-                </td>
-              </tr>
-              <tr data-subtotal="$4,800.00">
-                <td class="ref">
-                  2
-                </td>
-                <td class="description">
-                  <div class="limited-height">
-                    <span>
-                      Something random
-                    </span>
-                  </div>
-                </td>
-                <td class="quantity">
-                  10
-                </td>
-                <td class="price">
-                  $100.00
-                </td>
-                <td class="discount"></td>
-                <td class="total">
-                  $1,000.00
+                  €242,00
                 </td>
               </tr>
             </tbody>
@@ -212,63 +168,169 @@
               </h2>
               <table>
                 <tbody>
-                  <tr class="sum strong">
+                  <tr class="tax">
                     <th>
-                      Sum
+                      Tax
                     </th>
                     <td>
-                      $4,800.00
+                      €42,00
                     </td>
                   </tr>
-                  <tr class="payable strong">
+                  <tr class="total strong">
                     <th>
-                      Total to pay
+                      Total
                     </th>
                     <td>
-                      $4,800.00
+                      €242,00
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <section class="taxes">
+              <h2>
+                Taxes
+              </h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th class="category">
+                      Tax
+                    </th>
+                    <th class="base">
+                      Base
+                    </th>
+                    <th class="rate">
+                      Rate
+                    </th>
+                    <th class="amount">
+                      Amount
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="1" class="category">
+                      VAT
+                    </td>
+                    <td class="base">
+                      €200,00
+                    </td>
+                    <td class="rate">
+                      21,0%
+                    </td>
+                    <td class="amount">
+                      €42,00
                     </td>
                   </tr>
                 </tbody>
               </table>
             </section>
           </div>
-          <section class="payment">
-            <h2 class="title">
-              Payment
-            </h2>
-            <ul class="instructions">
-              <li class="method-name">
-                <span class="label">
-                  Method of payment
-                </span>
-                <span class="value">
-                  Credit card
-                </span>
-              </li>
-              <li class="card">
-                <span class="label">
-                  Card payment
-                </span>
-                <span class="value">
-                  Payment made to card ending 1234 belonging to Customer Random Inc.
-                </span>
-              </li>
-            </ul>
-          </section>
-          <section class="notes">
-            <h2>
-              Notes
-            </h2>
-            <div class="note">
-              <p>
-                Thank you for your business!
-              </p>
-            </div>
-            <div class="note">
-              <p>
-                Please pay within 30 days according to some random law in the country we sell from that you should comply with because we want to be paid sooner.
-              </p>
-            </div>
+          <section class="methods">
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                    Methods
+                  </th>
+                  <th>
+                    Date
+                  </th>
+                  <th class="num">
+                    Amount
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="method">
+                    <div class="method-name">
+                      Credit card
+                    </div>
+                    <div class="card-detail">
+                      Payment made to card ending 4242 belonging to Sample Consumer
+                    </div>
+                  </td>
+                  <td class="date">
+                    2025-01-28
+                  </td>
+                  <td class="amount num">
+                    €60,00
+                  </td>
+                </tr>
+                <tr>
+                  <td class="method">
+                    <div class="method-name">
+                      Bank transfer
+                    </div>
+                    <div class="credit-transfer">
+                      <div class="bank-name nowrap">
+                        Bank: Banco Sample
+                      </div>
+                      <div class="iban nowrap">
+                        IBAN: ES7921000813610123456789
+                      </div>
+                    </div>
+                    <div class="ref">
+                      Reference: INV-001
+                    </div>
+                  </td>
+                  <td class="date"></td>
+                  <td class="amount num">
+                    €62,00
+                  </td>
+                </tr>
+                <tr>
+                  <td class="method">
+                    <div class="method-name">
+                      Direct debit
+                    </div>
+                    <div class="direct-debit-details">
+                      <div class="mandate-ref nowrap">
+                        Mandate: MANDATE-2025-01
+                      </div>
+                      <div class="creditor nowrap">
+                        Creditor ID: CRED-ES-001
+                      </div>
+                      <div class="account nowrap">
+                        Account number: ES7921000813610123456789
+                      </div>
+                    </div>
+                  </td>
+                  <td class="date"></td>
+                  <td class="amount num">
+                    €60,00
+                  </td>
+                </tr>
+                <tr>
+                  <td class="method">
+                    <div class="method-name">
+                      Online
+                    </div>
+                    <div class="online">
+                      <a href="https://paypal.com/pay?ref=PMT-001">
+                        PayPal
+                      </a>
+                    </div>
+                  </td>
+                  <td class="date"></td>
+                  <td class="amount num">
+                    €60,00
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th colspan="2">
+                    Total paid
+                  </th>
+                  <td class="num">
+                    €242,00
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
           </section>
           <div class="extensions"></div>
         </div>
@@ -283,7 +345,7 @@
                     Brought forward
                   </th>
                   <td class="amount">
-                    $0.00
+                    €0,00
                   </td>
                 </tr>
               </tbody>
@@ -292,15 +354,18 @@
           <section class="title">
             <div class="hero">
               <div class="alias">
-                <img src="https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0" alt="Invopop" height="40">
+                Provide One S.L.
               </div>
             </div>
             <div class="title-group">
               <h1 class="type">
-                Invoice
+                Payment receipt
               </h1>
               <h2 class="code">
-                FAKE-0001
+                RCT-0002
+                <span class="paid">
+                  Paid
+                </span>
               </h2>
             </div>
           </section>
@@ -316,7 +381,7 @@
                     Carried forward
                   </th>
                   <td class="amount">
-                    $0.00
+                    €0,00
                   </td>
                 </tr>
               </tbody>
