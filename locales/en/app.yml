@@ -106,9 +106,15 @@ en:
         instructions: &payment_instructions
           method: "Method of payment"
           ref: "Reference"
+          ref_line: "Reference: %{ref}"
+          amount: "Amount"
+          description: "Description"
           bank_data: "Bank transfer instructions"
           card: "Card payment"
           card_detail: "Payment made to card ending %{last4} belonging to %{holder}"
+          direct_debit: "Direct debit"
+          mandate_ref: "Mandate: %{ref}"
+          creditor: "Creditor ID: %{creditor}"
           observations: "Payment notes"
           bank_name: "Bank: %{name}"
           iban: "IBAN: %{iban}"
@@ -156,8 +162,11 @@ en:
         <<: *lines
         document: "Document"
 
-      method:
-        title: "Payment details"
+      methods:
+        title: "Methods"
+        date: "Date"
+        amount: "Amount"
+        total: "Total paid"
         instructions: *payment_instructions
 
     delivery:

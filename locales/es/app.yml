@@ -105,9 +105,15 @@ es:
         instructions: &payment_instructions
           method: "Método de pago"
           ref: "Referencia"
+          ref_line: "Referencia: %{ref}"
+          amount: "Importe"
+          description: "Descripción"
           bank_data: "Instrucciones de transferencia bancaria"
           card: "Pago con tarjeta"
           card_detail: "Pago realizado con tarjeta terminada en %{last4} perteneciente a %{holder}"
+          direct_debit: "Domiciliación bancaria"
+          mandate_ref: "Mandato: %{ref}"
+          creditor: "ID del acreedor: %{creditor}"
           observations: "Notas de pago"
           bank_name: "Banco: %{name}"
           iban: "IBAN: %{iban}"
@@ -155,8 +161,11 @@ es:
         <<: *lines
         document: "Documento"
 
-      method:
-        title: "Detalles de pago"
+      methods:
+        title: "Métodos"
+        date: "Fecha"
+        amount: "Importe"
+        total: "Total pagado"
         instructions: *payment_instructions
 
     delivery:

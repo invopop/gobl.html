@@ -101,9 +101,15 @@ pl:
         instructions: &payment_instructions
           method: "Metoda płatności"
           ref: "Referencja"
+          ref_line: "Numer ref.: %{ref}"
+          amount: "Kwota"
+          description: "Opis"
           bank_data: "Instrukcje przelewu bankowego"
           card: "Płatność kartą"
           card_detail: "Płatność dokonana kartą kończącą się na %{last4} należącą do %{holder}"
+          direct_debit: "Polecenie zapłaty"
+          mandate_ref: "Zlecenie: %{ref}"
+          creditor: "ID wierzyciela: %{creditor}"
           observations: "Uwagi dotyczące płatności"
           bank_name: "Bank: %{name}"
           iban: "IBAN: %{iban}"
@@ -150,8 +156,11 @@ pl:
         <<: *lines
         document: "Dokument"
 
-      method:
+      methods:
         title: "Szczegóły płatności"
+        date: "Data"
+        amount: "Kwota"
+        total: "Razem zapłacono"
         instructions: *payment_instructions
 
     delivery:

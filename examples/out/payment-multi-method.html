@@ -44,7 +44,7 @@
                   Payment receipt
                 </h1>
                 <h2 class="code">
-                  RCT-0001
+                  RCT-0002
                   <span class="paid">
                     Paid
                   </span>
@@ -89,9 +89,6 @@
                     <span>
                       Calle Pradillo 42, Madrid, Madrid, 28002 (Spain)
                     </span>
-                  </div>
-                  <div class="emails">
-                    Email: billing@example.com
                   </div>
                   <div class="tax-id">
                     NIF: (ES) B98602642
@@ -138,7 +135,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr data-subtotal="€1.972,30">
+              <tr data-subtotal="€242,00">
                 <td class="ref">
                   1
                 </td>
@@ -154,10 +151,10 @@
                   </div>
                 </td>
                 <td class="tax">
-                  €342,30
+                  €42,00
                 </td>
                 <td class="total">
-                  €1.972,30
+                  €242,00
                 </td>
               </tr>
             </tbody>
@@ -176,7 +173,7 @@
                       Tax
                     </th>
                     <td>
-                      €342,30
+                      €42,00
                     </td>
                   </tr>
                   <tr class="total strong">
@@ -184,7 +181,7 @@
                       Total
                     </th>
                     <td>
-                      €1.972,30
+                      €242,00
                     </td>
                   </tr>
                 </tbody>
@@ -217,13 +214,13 @@
                       VAT
                     </td>
                     <td class="base">
-                      €1.630,00
+                      €200,00
                     </td>
                     <td class="rate">
                       21,0%
                     </td>
                     <td class="amount">
-                      €342,30
+                      €42,00
                     </td>
                   </tr>
                 </tbody>
@@ -237,6 +234,9 @@
                   <th>
                     Methods
                   </th>
+                  <th>
+                    Date
+                  </th>
                   <th class="num">
                     Amount
                   </th>
@@ -246,21 +246,87 @@
                 <tr>
                   <td class="method">
                     <div class="method-name">
-                      Bank transfer
+                      Bank card
+                    </div>
+                    <div class="card-detail">
+                      Payment made to card ending 4242 belonging to Sample Consumer
                     </div>
                   </td>
+                  <td class="date">
+                    2025-01-28
+                  </td>
                   <td class="amount num">
-                    €1.972,30
+                    €60,00
+                  </td>
+                </tr>
+                <tr>
+                  <td class="method">
+                    <div class="method-name">
+                      Bank transfer
+                    </div>
+                    <div class="credit-transfer">
+                      <div class="bank-name nowrap">
+                        Bank: Banco Sample
+                      </div>
+                      <div class="iban nowrap">
+                        IBAN: ES7921000813610123456789
+                      </div>
+                    </div>
+                    <div class="ref">
+                      Reference: INV-001
+                    </div>
+                  </td>
+                  <td class="date"></td>
+                  <td class="amount num">
+                    €62,00
+                  </td>
+                </tr>
+                <tr>
+                  <td class="method">
+                    <div class="method-name">
+                      Direct debit
+                    </div>
+                    <div class="direct-debit-details">
+                      <div class="mandate-ref nowrap">
+                        Mandate: MANDATE-2025-01
+                      </div>
+                      <div class="creditor nowrap">
+                        Creditor ID: CRED-ES-001
+                      </div>
+                      <div class="account nowrap">
+                        Account number: ES7921000813610123456789
+                      </div>
+                    </div>
+                  </td>
+                  <td class="date"></td>
+                  <td class="amount num">
+                    €60,00
+                  </td>
+                </tr>
+                <tr>
+                  <td class="method">
+                    <div class="method-name">
+                      Online
+                    </div>
+                    <div class="online">
+                      <a href="https://paypal.com/pay?ref=PMT-001">
+                        PayPal
+                      </a>
+                    </div>
+                  </td>
+                  <td class="date"></td>
+                  <td class="amount num">
+                    €60,00
                   </td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
-                  <th>
+                  <th colspan="2">
                     Total paid
                   </th>
                   <td class="num">
-                    €1.972,30
+                    €242,00
                   </td>
                 </tr>
               </tfoot>
@@ -296,7 +362,7 @@
                 Payment receipt
               </h1>
               <h2 class="code">
-                RCT-0001
+                RCT-0002
                 <span class="paid">
                   Paid
                 </span>

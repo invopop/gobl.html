@@ -32,10 +32,10 @@ func arcaVATLegend(doc internal.Document, party *org.Party, role string) string 
 		return ""
 	}
 	ext := doc.GetExt()
-	if ext == nil {
+	if ext.IsZero() {
 		return ""
 	}
-	dt := ext[arca.ExtKeyDocType]
+	dt := ext.Get(arca.ExtKeyDocType)
 	if dt.IsEmpty() {
 		return ""
 	}
@@ -58,10 +58,10 @@ func supplierLegend(_ internal.Document, docType cbc.Code) string {
 }
 
 func customerLegend(party *org.Party) string {
-	if party.Ext == nil {
+	if party.Ext.IsZero() {
 		return ""
 	}
-	vs := party.Ext[arca.ExtKeyVATStatus]
+	vs := party.Ext.Get(arca.ExtKeyVATStatus)
 	if vs.IsEmpty() {
 		return ""
 	}

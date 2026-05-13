@@ -65,7 +65,7 @@ func (i *invoiceDoc) GetCurrency() currency.Code       { return i.Currency }
 func (i *invoiceDoc) GetPreceding() []*org.DocumentRef { return i.Preceding }
 func (i *invoiceDoc) GetExt() tax.Extensions {
 	if i.Tax == nil {
-		return nil
+		return tax.Extensions{}
 	}
 	return i.Tax.Ext
 }
@@ -83,7 +83,7 @@ func (d *deliveryDoc) GetCurrency() currency.Code       { return d.Currency }
 func (d *deliveryDoc) GetPreceding() []*org.DocumentRef { return d.Preceding }
 func (d *deliveryDoc) GetExt() tax.Extensions {
 	if d.Tax == nil {
-		return nil
+		return tax.Extensions{}
 	}
 	return d.Tax.Ext
 }
@@ -101,7 +101,7 @@ func (o *orderDoc) GetCurrency() currency.Code       { return o.Currency }
 func (o *orderDoc) GetPreceding() []*org.DocumentRef { return o.Preceding }
 func (o *orderDoc) GetExt() tax.Extensions {
 	if o.Tax == nil {
-		return nil
+		return tax.Extensions{}
 	}
 	return o.Tax.Ext
 }

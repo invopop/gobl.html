@@ -250,10 +250,10 @@ func isNonStandardInvoice(doc internal.Document) bool {
 // or the code has no translation registered.
 func untdidTitleLabel(ctx context.Context, doc internal.Document) string {
 	ext := doc.GetExt()
-	if ext == nil {
+	if ext.IsZero() {
 		return ""
 	}
-	code := ext[untdid.ExtKeyDocumentType]
+	code := ext.Get(untdid.ExtKeyDocumentType)
 	if code.IsEmpty() {
 		return ""
 	}

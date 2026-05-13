@@ -105,9 +105,15 @@ ar:
         instructions: &payment_instructions
           method: "طريقة الدفع"
           ref: "المرجع"
+          ref_line: "المرجع: %{ref}"
+          amount: "المبلغ"
+          description: "الوصف"
           bank_data: "تعليمات التحويل البنكي"
           card: "الدفع بالبطاقة"
           card_detail: "تم الدفع بالبطاقة المنتهية بـ %{last4} المملوكة لـ %{holder}"
+          direct_debit: "الخصم المباشر"
+          mandate_ref: "الولاية: %{ref}"
+          creditor: "معرف الدائن: %{creditor}"
           observations: "ملاحظات الدفع"
           bank_name: "البنك: %{name}"
           iban: "IBAN: %{iban}"
@@ -155,8 +161,11 @@ ar:
         <<: *lines
         document: "الوثيقة"
 
-      method:
+      methods:
         title: "تفاصيل الدفع"
+        date: "التاريخ"
+        amount: "المبلغ"
+        total: "المجموع المدفوع"
         instructions: *payment_instructions
 
     delivery:

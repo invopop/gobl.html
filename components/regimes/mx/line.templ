@@ -11,7 +11,7 @@ templ LineExtensions(line *bill.Line) {
 	if line.Item.Ext.Has(cfdi.ExtKeyProdServ) {
 		<span class="subline">
 			<span class="label">Clave SAT</span>
-			<code>{ line.Item.Ext[cfdi.ExtKeyProdServ] }</code>
+			<code>{ line.Item.Ext.Get(cfdi.ExtKeyProdServ).String() }</code>
 		</span>
 	}
 }
@@ -30,7 +30,7 @@ templ LineSeller(seller *org.Party) {
 			<code>{ seller.Name }</code>
 			if seller.Ext.Has(cfdi.ExtKeyFiscalRegime) {
 				{ " · Régimen: " }
-				<code>{ seller.Ext[cfdi.ExtKeyFiscalRegime] }</code>
+				<code>{ seller.Ext.Get(cfdi.ExtKeyFiscalRegime).String() }</code>
 			}
 			if len(seller.Addresses) > 0 && seller.Addresses[0].Code != "" {
 				{ " · CP: " }

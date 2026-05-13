@@ -4,7 +4,7 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "20aa07ce3152dd66cddc4f82ac92c9b43be9da42fc83ee5fad6807299b4097f3"
+			"val": "64f4075142e5b508162b141960ae5f293c0717980a55b274ac31ab53003d6091"
 		},
 		"stamps": [
 			{
@@ -35,10 +35,10 @@
 		"$addons": [
 			"pt-saft-v1"
 		],
-		"uuid": "d7388b17-d35f-4f2e-a33e-9bca2fae9089",
+		"uuid": "d7388b17-d35f-4f2e-a33e-9bca2fae9099",
 		"type": "receipt",
 		"series": "RG SAMPLE",
-		"code": "1",
+		"code": "2",
 		"issue_date": "2025-01-30",
 		"currency": "EUR",
 		"ext": {
@@ -81,33 +81,11 @@
 					"issue_date": "2025-01-15",
 					"series": "FT SAMPLE",
 					"code": "1",
-					"tax": {
-						"categories": [
-							{
-								"code": "VAT",
-								"rates": [
-									{
-										"key": "standard",
-										"ext": {
-											"pt-region": "PT",
-											"pt-saft-tax-rate": "NOR"
-										},
-										"base": "100.00",
-										"percent": "23.0%",
-										"amount": "23.00"
-									}
-								],
-								"amount": "23.00"
-							}
-						],
-						"sum": "23.00"
-					},
-					"payable": "123.00"
+					"payable": "61.50"
 				},
-				"payable": "123.00",
-				"advances": "25.00",
-				"amount": "50.00",
-				"due": "48.00",
+				"payable": "61.50",
+				"amount": "61.50",
+				"due": "0.00",
 				"tax": {
 					"categories": [
 						{
@@ -119,29 +97,39 @@
 										"pt-region": "PT",
 										"pt-saft-tax-rate": "NOR"
 									},
-									"base": "40.65",
+									"base": "50.00",
 									"percent": "23.0%",
-									"amount": "9.35"
+									"amount": "11.50"
 								}
 							],
-							"amount": "9.35"
+							"amount": "11.50"
 						}
 					],
-					"sum": "9.35"
+					"sum": "11.50"
 				}
 			}
 		],
 		"methods": [
 			{
-				"key": "credit-transfer",
-				"description": "Transferência bancária",
-				"amount": "50.00",
+				"key": "cash",
+				"amount": "30.00",
 				"ext": {
-					"pt-saft-payment-means": "TB"
+					"pt-saft-payment-means": "NU"
+				}
+			},
+			{
+				"key": "card",
+				"amount": "31.50",
+				"card": {
+					"last4": "1234",
+					"holder": "Maria Santos Silva"
+				},
+				"ext": {
+					"pt-saft-payment-means": "CC"
 				}
 			}
 		],
-		"total": "50.00"
+		"total": "61.50"
 	},
 	"sigs": [
 		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjU2ZDIwN2E5LTc5ZDMtNDRjYy05OTQwLTYwNjczM2JhN2MxMyJ9.eyJ1dWlkIjoiMDE5NGRhNjUtOGU4MC03N2QwLTk4NDMtOTQ0MjExYTBlYjFhIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImFiODQxYTViYzAyNTNiZWM1OTg3Y2Q1ZDY5ODE5ZDk2OTAzZDM3MDc5MDRkZDJmYjE2YjczNzg4OGNlOGZmOGQifX0.VglMwc1bYRGKaxgmkAIRpaq0OX-hhmSJkcbkCXp3rDfDyoNi_KpvsFdsVF8KFA9p2OiiRAC9bNNUsvOKVNwE4Q"

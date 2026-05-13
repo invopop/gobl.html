@@ -93,9 +93,15 @@ fr:
         instructions: &payment_instructions
           method: "Méthode de paiement"
           ref: "Référence"
+          ref_line: "Référence : %{ref}"
+          amount: "Montant"
+          description: "Description"
           bank_data: "Instructions de virement bancaire"
           card: "Paiement par carte"
           card_detail: "Paiement effectué avec la carte se terminant par %{last4} appartenant à %{holder}"
+          direct_debit: "Prélèvement automatique"
+          mandate_ref: "Mandat : %{ref}"
+          creditor: "ID créancier : %{creditor}"
           observations: "Notes de paiement"
           bank_name: "Banque: %{name}"
           iban: "IBAN: %{iban}"
@@ -142,8 +148,11 @@ fr:
         <<: *lines
         document: "Document"
 
-      method:
+      methods:
         title: "Détails de paiement"
+        date: "Date"
+        amount: "Montant"
+        total: "Total payé"
         instructions: *payment_instructions
 
     delivery:
