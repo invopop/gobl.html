@@ -57,6 +57,11 @@ eu:
       customer:
         title: "Bezeroa"
 
+      receiver:
+        title: "Bidaltze-helbidea"
+        date: "Bidaltze-data: %{date}"
+        period: "Bidaltze-data: %{start} - %{end}"
+
       lines: &lines
         title: "Lerroak"
         i: "#"

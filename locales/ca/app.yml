@@ -57,6 +57,11 @@ ca:
       customer:
         title: "Client"
 
+      receiver:
+        title: "Adreça de lliurament"
+        date: "Data de lliurament: %{date}"
+        period: "Data de lliurament: %{start} a %{end}"
+
       lines: &lines
         title: "Línies"
         i: "#"

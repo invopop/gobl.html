@@ -172,6 +172,7 @@ templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
 	<div class="contacts">
 		@supplier(doc)
 		@customer(doc)
+		@deliveryReceiver(inv.Delivery)
 	</div>
 }
 
@@ -180,6 +181,7 @@ templ din5008Header(env *gobl.Envelope, inv *bill.Invoice) {
 	<div>
 		@title(env, doc)
 		@customer(doc)
+		@deliveryReceiver(inv.Delivery)
 	</div>
 	<div>
 		@summary(inv)

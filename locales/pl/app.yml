@@ -53,6 +53,11 @@ pl:
       customer:
         title: "Klient"
 
+      receiver:
+        title: "Adres dostawy"
+        date: "Data dostawy: %{date}"
+        period: "Data dostawy: od %{start} do %{end}"
+
       lines: &lines
         title: "Linie"
         i: "#"

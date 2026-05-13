@@ -42,6 +42,7 @@ templ orderHeader(env *gobl.Envelope, ord *bill.Order) {
 	<div class="contacts">
 		@supplier(doc)
 		@customer(doc)
+		@deliveryReceiver(ord.Delivery)
 		@contact(ord.Buyer, "buyer")
 		@contact(ord.Seller, "seller")
 	</div>

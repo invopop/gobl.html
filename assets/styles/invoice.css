@@ -73,16 +73,13 @@ header.with-qr div.contacts {
     flex-basis: 100%;
     display: flex;
     border-top: 0.5px solid #e5e7eb;
+    gap: 16pt;
 }
-header.with-qr section.supplier {
+header.with-qr div.contacts section {
     padding-top: 6mm;
     padding-bottom: 6mm;
 }
-header.with-qr section.customer {
-    padding-left: 6mm;
-    padding-top: 6mm;
-    padding-bottom: 6mm;
-}
+
 section {
     padding: 0mm;
     /* width: 100%; */
@@ -538,7 +535,8 @@ section.notes .note {
 .org-party .name {
     font-weight: 600;
     font-size: 12pt;
-    line-height: 20pt;
+    line-height: 16pt;
+    padding-bottom: 2pt;
     color: #030712;
 }
 .arca-vat-legend {

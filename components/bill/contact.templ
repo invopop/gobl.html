@@ -1,6 +1,8 @@
 package bill
 
 import (
+	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl/bill"
 	gorg "github.com/invopop/gobl/org"
 	"github.com/invopop/gobl.html/components/org"
 	"github.com/invopop/gobl.html/components/regimes/ar"
@@ -21,6 +23,31 @@ templ customer(doc internal.Document) {
 	{{ cus = pt.AdaptCustomer(doc, cus) }}
 	@contact(cus, "customer") {
 		@ar.ARCAVATLegend(doc, cus, "customer")
+	}
+}
+
+templ deliveryReceiver(dlv *bill.DeliveryDetails) {
+	if dlv != nil {
+		@contact(dlv.Receiver, "receiver") {
+			@deliveryDate(dlv)
+		}
+	}
+}
+
+templ deliveryDate(dlv *bill.DeliveryDetails) {
+	if dlv.Period != nil {
+		<div class="delivery-date">
+			@t.T(".receiver.period", i18n.M{
+				"start": t.Localize(ctx, dlv.Period.Start),
+				"end":   t.Localize(ctx, dlv.Period.End),
+			})
+		</div>
+	} else if dlv.Date != nil {
+		<div class="delivery-date">
+			@t.T(".receiver.date", i18n.M{
+				"date": t.Localize(ctx, *dlv.Date),
+			})
+		</div>
 	}
 }
 

@@ -57,6 +57,11 @@ ar:
       customer:
         title: "العميل"
 
+      receiver:
+        title: "عنوان التسليم"
+        date: "تاريخ التسليم: %{date}"
+        period: "تاريخ التسليم: من %{start} إلى %{end}"
+
       lines: &lines
         title: "البنود"
         i: "#"

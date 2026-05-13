@@ -58,6 +58,11 @@ en:
       customer:
         title: "Customer"
 
+      receiver:
+        title: "Delivery address"
+        date: "Delivery date: %{date}"
+        period: "Delivery date: %{start} to %{end}"
+
       lines: &lines
         title: "Lines"
         i: "#"

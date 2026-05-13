@@ -48,6 +48,10 @@ it:
         title: "Fornitore"
       customer:
         title: "Cliente"
+      receiver:
+        title: "Indirizzo di consegna"
+        date: "Data di consegna: %{date}"
+        period: "Data di consegna: dal %{start} al %{end}"
       lines: &lines
         title: "Righe"
         i: "#"

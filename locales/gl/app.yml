@@ -57,6 +57,11 @@ gl:
       customer:
         title: "Cliente"
 
+      receiver:
+        title: "Enderezo de entrega"
+        date: "Data de entrega: %{date}"
+        period: "Data de entrega: %{start} a %{end}"
+
       lines: &lines
         title: "Liñas"
         i: "#"

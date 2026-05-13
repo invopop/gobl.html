@@ -55,6 +55,11 @@ el:
       customer:
         title: "Πελάτης"
 
+      receiver:
+        title: "Διεύθυνση παράδοσης"
+        date: "Ημερομηνία παράδοσης: %{date}"
+        period: "Ημερομηνία παράδοσης: %{start} έως %{end}"
+
       lines: &lines
         title: "Γραμμές"
         i: "#"

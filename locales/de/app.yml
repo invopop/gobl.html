@@ -53,6 +53,11 @@ de:
       customer:
         title: "Kunde"
 
+      receiver:
+        title: "Lieferadresse"
+        date: "Lieferdatum: %{date}"
+        period: "Lieferdatum: %{start} bis %{end}"
+
       lines: &lines
         title: "Positionen"
         i: "#"
