@@ -4,7 +4,7 @@
 		"uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
 		"dig": {
 			"alg": "sha256",
-			"val": "4f187a565b00821f20a37a4c69e46fff0820f51cba3bc89f02810828ff2fcb8c"
+			"val": "919d0fb2468f40d7c0960f0e6442dbad3637af6e99faf6d0e76b0b61bd7bf878"
 		}
 	},
 	"doc": {
@@ -102,6 +102,15 @@
 				"total": "1000.00"
 			}
 		],
+		"payment": {
+			"instructions": {
+				"key": "card+credit",
+				"card": {
+					"last4": "1234",
+					"holder": "Customer Random Inc."
+				}
+			}
+		},
 		"totals": {
 			"sum": "4800.00",
 			"total": "4800.00",

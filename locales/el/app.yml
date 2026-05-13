@@ -120,6 +120,8 @@ el:
           online: "Σύνδεσμος πληρωμής"
           methods:
             card: "Κάρτα τραπέζης"
+            card+credit: "Πιστωτική κάρτα"
+            card+debit: "Χρεωστική κάρτα"
             credit-transfer: "Τραπεζική μεταφορά"
             cash: "Μετρητά"
             direct-debit: "Άμεση πίστωση"

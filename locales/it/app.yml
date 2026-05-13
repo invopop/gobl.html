@@ -110,6 +110,8 @@ it:
           online: "Link di pagamento"
           methods:
             card: "Carta di credito"
+            card+credit: "Carta di credito"
+            card+debit: "Carta di debito"
             credit-transfer: "Bonifico bancario"
             cash: "Contanti"
             direct-debit: "Addebito diretto"

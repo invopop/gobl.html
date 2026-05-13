@@ -122,6 +122,8 @@ es:
           online: "Link de pago"
           methods:
             card: "Tarjeta bancaria"
+            card+credit: "Tarjeta de crédito"
+            card+debit: "Tarjeta de débito"
             credit-transfer: "Transferencia bancaria"
             cash: "Efectivo"
             direct-debit: "Domiciliación bancaria"

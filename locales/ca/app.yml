@@ -122,6 +122,8 @@ ca:
           online: "Enllaç de pagament"
           methods:
             card: "Targeta bancària"
+            card+credit: "Targeta de crèdit"
+            card+debit: "Targeta de dèbit"
             credit-transfer: "Transferència bancària"
             cash: "Efectiu"
             direct-debit: "Domiciliació bancària"

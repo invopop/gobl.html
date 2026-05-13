@@ -122,6 +122,8 @@ gl:
           online: "Ligazón de pagamento"
           methods:
             card: "Tarxeta bancaria"
+            card+credit: "Tarxeta de crédito"
+            card+debit: "Tarxeta de débito"
             credit-transfer: "Transferencia bancaria"
             cash: "Efectivo"
             direct-debit: "Domiciliación bancaria"

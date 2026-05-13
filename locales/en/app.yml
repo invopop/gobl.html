@@ -123,6 +123,8 @@ en:
           online: "Payment link"
           methods:
             card: "Bank card"
+            card+credit: "Credit card"
+            card+debit: "Debit card"
             credit-transfer: "Bank transfer"
             cash: "Cash"
             direct-debit: "Direct debit"

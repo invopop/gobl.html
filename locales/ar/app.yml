@@ -122,6 +122,8 @@ ar:
           online: "رابط الدفع"
           methods:
             card: "بطاقة بنكية"
+            card+credit: "بطاقة ائتمانية"
+            card+debit: "بطاقة خصم"
             credit-transfer: "تحويل بنكي"
             cash: "نقد"
             direct-debit: "خصم مباشر"

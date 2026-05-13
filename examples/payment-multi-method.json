@@ -4,7 +4,7 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120009",
 		"dig": {
 			"alg": "sha256",
-			"val": "14b4881811fe50e656e2872597d271f506007bda0edf37829b072f19eca0553c"
+			"val": "73fa42f6d60560c0392c621a69a0c371a9398e8a8bd79a925e9f5c5052c9f760"
 		}
 	},
 	"doc": {
@@ -72,7 +72,7 @@
 		"methods": [
 			{
 				"date": "2025-01-28",
-				"key": "card",
+				"key": "card+credit",
 				"amount": "60.00",
 				"card": {
 					"last4": "4242",
