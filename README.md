@@ -30,7 +30,7 @@ The `.toml` is already configured and ready in this repository, so simply run:
 air
 ```
 
-Air is a bit more reliable at detecting file changes, especially for stylesheets. You'll always need to wait a few seconds before page reloads to give the system chance to recompile. A proxy is available with Air, but we didn't find it to be very reliable and was breaking with query parameters, it obvously also wouldn't work for PDF reloads.
+Air is a bit more reliable at detecting file changes, especially for stylesheets. You'll always need to wait a few seconds before page reloads to give the system chance to recompile. A proxy is available with Air, but we didn't find it to be very reliable and was breaking with query parameters, it obviously also wouldn't work for PDF reloads.
 
 #### Templ Watcher
 

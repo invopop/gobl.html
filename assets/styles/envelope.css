@@ -6,7 +6,8 @@
     counter-increment: page;
     font-size: 9pt;
     line-height: 1.5em;
-    color: #4b5563;
+    color: #030712;
+    font-weight: 400;
 }
 @page Letter {
     size: letter portrait;
@@ -18,9 +19,7 @@ body {
     line-height: 1.5em;
     margin: 0;
     margin-bottom: 0mm;
-    /* color: #030712; */
-    /* color: #6B7280; */
-    color: #4b5563;
+    color: #030712;
 }
 body.letter {
     page: Letter;
@@ -59,7 +58,7 @@ h2,
 h3,
 h4 {
     font-weight: 500;
-    /* color: #030712; */
+    color: #4b5563;
 }
 a {
     color: #4b5563;
@@ -67,11 +66,15 @@ a {
 table {
     border-spacing: 0;
     border-collapse: collapse;
+    line-height: 1.5;
 }
 th,
 td {
     text-align: left;
     break-inside: avoid;
+}
+code {
+    font-family: monospace;
 }
 section.footer span.page-number:before {
     content: counter(page);

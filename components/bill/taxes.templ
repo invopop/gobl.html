@@ -133,13 +133,13 @@ func taxExemptionCode(percent *num.Percentage, ext tax.Extensions) string {
 	// First try a code with the word `exempt` in the key
 	for _, k := range keys {
 		if strings.Contains(k.String(), "exempt") {
-			return fmt.Sprintf("(%s)", ext.Get(k).String())
+			return fmt.Sprintf("%s", ext.Get(k).String())
 		}
 	}
 
 	// Next return the first code found
 	for _, k := range keys {
-		return fmt.Sprintf("(%s)", ext.Get(k).String())
+		return fmt.Sprintf("%s", ext.Get(k).String())
 	}
 
 	return ""

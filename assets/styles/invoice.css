@@ -5,7 +5,7 @@ header {
     border-bottom: 0.5px solid #e5e7eb;
 }
 .invoice.din5008 section.title {
-    min-height: 30mm; /* +10mm from envelop marging +5mm from printer margins = 45mm */
+    min-height: 30mm;
     max-height: 30mm;
 }
 .invoice.din5008 section.summary {
@@ -37,7 +37,12 @@ header {
     box-sizing: border-box;
     border-right: 0.5px solid #e5e7eb;
 }
-
+.invoice code {
+    background: #f3f4f6;
+    border-radius: 1mm;
+    padding: 0.5mm 1mm;
+    white-space: nowrap;
+}
 header.regular div.details {
     flex: 1;
     border-right: 0.5px solid #e5e7eb;
@@ -96,7 +101,6 @@ section.title .hero {
 section.title .alias {
     font-size: 16pt;
     font-weight: bold;
-    color: #030712;
     flex-grow: 1;
     line-height: 1.2;
 }
@@ -121,7 +125,6 @@ section.title .arca-doc-type {
 section.title .arca-doc-type .letter {
     font-size: 18pt;
     font-weight: 600;
-    color: #030712;
     line-height: 1;
 }
 section.title .arca-doc-type .code {
@@ -158,7 +161,6 @@ section.title span.void {
 section.title h2.code,
 section.title .title-group-inline h1 {
     font-size: 12pt;
-    color: #030712;
     font-weight: 600;
 }
 section.title .title-group-inline h1,
@@ -198,10 +200,10 @@ section.summary li:nth-child(even) {
 section.summary span.label {
     display: block;
     font-weight: 500;
+    color: #4b5563;
 }
 section.summary span.value {
     display: block;
-    color: #030712;
 }
 section.summary span.date {
     white-space: nowrap;
@@ -261,10 +263,14 @@ section.lines .label {
 }
 section.lines .subline {
     display: block;
-    font-size: 10px;
+    font-size: 0.85em;
 }
 section.lines .subline .label {
     font-weight: 400;
+}
+section.lines .subline code {
+    padding: 0;
+    background-color: transparent;
 }
 section.lines .subline .label:after {
     content: ": ";
@@ -284,16 +290,13 @@ section.lines .charge-content .code:after {
 }
 section.lines .alt-price {
     display: block;
-    font-style: italic;
-}
-section.lines .alt-price:before {
-    content: "(";
-}
-section.lines .alt-price:after {
-    content: ")";
+    font-size: 0.85em;
+    font-weight: 450;
+    color: #4b5563;
 }
 section.lines tr.breakdown td {
-    color: #8995af;
+    color: #4b5563;
+    font-weight: 300;
 }
 section.lines tr.breakdown td.ref {
     border-bottom-width: 0;
@@ -349,12 +352,13 @@ section.totals tr.strong th,
 section.totals tr.strong td {
     font-weight: 600;
 }
+section.totals tr.exchange-rate th,
+section.totals tr.exchange-rate td {
+    color: #4b5563;
+}
 article.payment section.totals tr.strong th,
 article.payment section.totals tr.strong td {
     font-weight: 400;
-}
-section.totals .exchange-rate {
-    font-style: italic;
 }
 section.taxes {
     order: 1;
@@ -537,7 +541,6 @@ section.notes .note {
     font-size: 12pt;
     line-height: 16pt;
     padding-bottom: 2pt;
-    color: #030712;
 }
 .arca-vat-legend {
     text-transform: uppercase;
