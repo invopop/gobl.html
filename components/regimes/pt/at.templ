@@ -23,6 +23,10 @@ templ ATQR(env *gobl.Envelope) {
 				<div class="at">
 					<div class="label">
 						ATCUD: { atcud }
+						if docCode := atDocCode(env); docCode != "" {
+							<br/>
+							@t.T("regimes.pt.at.doc_code"): { docCode }
+						}
 					</div>
 					<div class="qr">
 						<img src={ generateQR(qr) }/>

@@ -454,6 +454,8 @@ en:
         "331": "Secondary Grain Settlement"
         "332": "Electronic Certification (Grains)"
     pt:
+      at:
+        doc_code: "AT Code"
       title:
         FT: "Invoice"
         FS: "Simplified invoice"

@@ -11,6 +11,7 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/addons/pt/saft"
+	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/l10n"
 	gorg "github.com/invopop/gobl/org"
@@ -45,6 +46,14 @@ var invoiceTypes = []cbc.Code{
 func AdaptCustomer(doc internal.Document, par *gorg.Party) *gorg.Party {
 	if !isPortuguese(doc) {
 		// no need to adapt
+		return par
+	}
+
+	// The "Consumidor Final" fallback only applies to invoices (Article 2.2.5
+	// of Despacho No. 8632/2014). For other documents (e.g. deliveries such as
+	// Guia de Transporte Global, where the customer is legitimately absent),
+	// leave the customer untouched so the contact block hides cleanly.
+	if _, ok := doc.Extract().(*bill.Invoice); !ok {
 		return par
 	}
 
@@ -149,6 +158,16 @@ func atATCUD(env *gobl.Envelope) string {
 		case pt.StampProviderATATCUD:
 			return stamp.Value
 		}
+	}
+	return ""
+}
+
+func atDocCode(env *gobl.Envelope) string {
+	if env.Head == nil {
+		return ""
+	}
+	if s := env.Head.GetStamp("at-doc-code"); s != nil { // TODO: Replace with GOBL constants when available
+		return s.Value
 	}
 	return ""
 }

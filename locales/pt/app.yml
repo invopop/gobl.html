@@ -248,6 +248,8 @@ pt:
 
   regimes:
     pt:
+      at:
+        doc_code: "Código AT"
       title:
         FT: "Fatura"
         FS: "Fatura Simplificada"
