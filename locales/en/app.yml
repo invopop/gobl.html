@@ -315,6 +315,8 @@ en:
           5: "Expense adjustment (accounting base)" # "Other expense adjustment/Regularization entries – Accounting base"
           6: "Expense adjustment (tax base)" # "Other expense adjustment/Regularization entries – Tax base"
     pt:
+      at:
+        doc_code: "AT Code"
       title:
         FT: "Invoice"
         FS: "Simplified invoice"
