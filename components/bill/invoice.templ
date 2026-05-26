@@ -14,7 +14,6 @@ import (
 	"github.com/invopop/gobl.html/components/regimes/mx"
 	"github.com/invopop/gobl.html/components/regimes/pl"
 	"github.com/invopop/gobl.html/components/regimes/pt"
-	"github.com/invopop/gobl.html/components/regimes/sa"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl.html/internal"
@@ -51,7 +50,6 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 					@mx.CFDI(env, inv)
 					@pl.KSeFQR(env)
 					@pt.ATQR(env)
-					@sa.ZATCAQR(env)
 					@gr.IAPR(env)
 				</div>
 			</div>
