@@ -72,6 +72,8 @@ de:
         no_percent: "—"
         exemption: "Befreiung"
         on_behalf_of: "Im Auftrag von"
+        period: "Zeitraum"
+        period_range: "%{start} bis %{end}"
 
       totals: &totals
         sum: "Summe"

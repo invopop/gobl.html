@@ -77,6 +77,8 @@ en:
         no_percent: "—"
         exemption: "Exemption"
         on_behalf_of: "On behalf of"
+        period: "Period"
+        period_range: "%{start} to %{end}"
 
       totals: &totals
         sum: "Sum"

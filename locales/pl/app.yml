@@ -72,6 +72,8 @@ pl:
         no_percent: "—"
         exemption: "Zwolnienie"
         on_behalf_of: "W imieniu"
+        period: "Okres"
+        period_range: "%{start} do %{end}"
 
       totals: &totals
         sum: "Suma"
