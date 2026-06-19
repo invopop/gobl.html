@@ -76,14 +76,14 @@ func generateVerifactuQR(qr string) templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<style type=\"text/css\">\n\t\t.verifactu {\n\t\t\tbreak-inside: avoid;\n\t\t\ttext-align: center;\n\t\t}\n\t\t.verifactu p {\n\t\t\tcolor: #030712;\n\t\t\ttext-align: center;\n\t\t\tfont-family: Inter;\n\t\t\tfont-size: 9px;\n\t\t\tfont-weight: 600;\n\t\t\tline-height: 12px;\n\t\t\tmargin-bottom: 8px;\n\t\t}\n\t\t.verifactu .label {\n\t\t\tcolor: #4B5563;\n\t\t\tfont-family: monospace;\n\t\t\tfont-size:9px;\n\t\t\ttext-align: center; \n\t\t\tmargin-top: 8px;\n\t\t}\n\t\t.verifactu img {\n\t\t\twidth: 35mm;\n\t\t\theight: 35mm;\n\t\t}\n\t</style><section class=\"qr\"><div class=\"verifactu\"><p>QR tributario:</p><div class=\"qr\"><a href=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<style type=\"text/css\">\n\t\t.verifactu {\n\t\t\tbreak-inside: avoid;\n\t\t\ttext-align: center;\n\t\t}\n\t\t.verifactu p {\n\t\t\tcolor: #030712;\n\t\t\ttext-align: center;\n\t\t\tfont-family: Inter;\n\t\t\tfont-size: 9pt;\n\t\t\tfont-weight: 600;\n\t\t}\n\t\t.verifactu .label {\n\t\t\tcolor: #4B5563;\n\t\t\tfont-family: monospace;\n\t\t\tfont-size:9pt;\n\t\t\ttext-align: center; \n\t\t}\n\t\t.verifactu img {\n\t\t\twidth: 35mm;\n\t\t\theight: 35mm;\n\t\t\tmargin: 1mm 0;\n\t\t}\n\t</style><section class=\"qr\"><div class=\"verifactu\"><p>QR tributario:</p><div class=\"qr\"><a href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var3 templ.SafeURL
 		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL(qr))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/es/verifactu.templ`, Line: 58, Col: 27}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/es/verifactu.templ`, Line: 56, Col: 27}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {

@@ -698,7 +698,7 @@ func partyExtensions(party *org.Party) templ.Component {
 		ctx = templ.ClearChildren(ctx)
 		for _, k := range party.Ext.Keys() {
 			if txt := mapPartyExtension(ctx, k, party.Ext.Get(k)); txt != "" {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 51, "<div class=\"party-extension\">")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 50, "<div class=\"party-extension\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
