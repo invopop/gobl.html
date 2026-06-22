@@ -1,0 +1,120 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "9b62fd30-3b38-11ef-be56-0242ac120002",
+		"dig": {
+			"alg": "sha256",
+			"val": "72bc2b6e8381fe19256982f87f0ed0cb6b43f7a7d3309ab947a7ffc972ee4b5c"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "AR",
+		"$addons": [
+			"ar-arca-v4"
+		],
+		"uuid": "1c5f531e-d146-c353-b835-6a6068cf5dc3",
+		"type": "standard",
+		"series": "1",
+		"code": "00000001",
+		"issue_date": "2025-02-01",
+		"currency": "ARS",
+		"tax": {
+			"ext": {
+				"ar-arca-concept": "2",
+				"ar-arca-doc-type": "195",
+				"ar-arca-tourism-type": "1"
+			}
+		},
+		"supplier": {
+			"name": "Hotel Patagonia S.A.",
+			"tax_id": {
+				"country": "AR",
+				"code": "30712345671"
+			},
+			"addresses": [
+				{
+					"street": "Av. San Martín 500",
+					"locality": "Bariloche",
+					"region": "Río Negro",
+					"code": "R8400",
+					"country": "AR"
+				}
+			]
+		},
+		"customer": {
+			"name": "John Smith",
+			"identities": [
+				{
+					"code": "AB123456",
+					"ext": {
+						"ar-arca-identity-type": "94"
+					}
+				}
+			],
+			"addresses": [
+				{
+					"street": "123 Main St",
+					"locality": "New York",
+					"region": "NY",
+					"country": "US"
+				}
+			],
+			"ext": {
+				"ar-arca-vat-status": "5"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "3",
+				"item": {
+					"name": "Hotel sin desayuno",
+					"price": "100.00"
+				},
+				"sum": "300.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"ar-arca-tourism-item": "1",
+							"ar-arca-vat-rate": "5"
+						}
+					}
+				],
+				"total": "300.00"
+			}
+		],
+		"totals": {
+			"sum": "300.00",
+			"total": "300.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"ar-arca-tourism-item": "1",
+									"ar-arca-vat-rate": "5"
+								},
+								"base": "300.00",
+								"percent": "21.0%",
+								"amount": "63.00"
+							}
+						],
+						"amount": "63.00"
+					}
+				],
+				"sum": "63.00"
+			},
+			"tax": "63.00",
+			"total_with_tax": "363.00",
+			"payable": "363.00"
+		}
+	}
+}

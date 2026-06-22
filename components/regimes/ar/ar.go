@@ -7,8 +7,11 @@ import (
 
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/addons/ar/arca"
+	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/org"
+	"github.com/invopop/gobl/tax"
 )
 
 // vatStatusLegends maps ar-arca-vat-status codes to their official legend text
@@ -43,13 +46,14 @@ func arcaVATLegend(doc internal.Document, party *org.Party, role string) string 
 	if role == "supplier" {
 		return supplierLegend(doc, cbc.Code(dt.String()))
 	}
-	return customerLegend(party)
+	return customerLegend(party, cbc.Code(dt.String()))
 }
 
 func supplierLegend(_ internal.Document, docType cbc.Code) string {
 	switch {
 	case slices.Contains(arca.DocTypesA, docType),
-		slices.Contains(arca.DocTypesB, docType):
+		slices.Contains(arca.DocTypesB, docType),
+		slices.Contains(arca.DocTypesT, docType):
 		return "IVA RESPONSABLE INSCRIPTO"
 	case slices.Contains(arca.DocTypesC, docType):
 		return "RESPONSABLE MONOTRIBUTO"
@@ -57,7 +61,35 @@ func supplierLegend(_ internal.Document, docType cbc.Code) string {
 	return ""
 }
 
-func customerLegend(party *org.Party) string {
+// tourismRefund returns the VAT refunded to the tourist (importe reintegro): the VAT of the hotel items (tourism codes 1 and 2).
+func tourismRefund(inv *bill.Invoice) num.Amount {
+	refund := num.MakeAmount(0, 2)
+	if inv == nil || inv.Tax == nil || inv.Totals == nil || inv.Totals.Taxes == nil ||
+		!slices.Contains(arca.DocTypesT, cbc.Code(inv.Tax.Ext.Get(arca.ExtKeyDocType).String())) {
+		return refund
+	}
+	for _, cat := range inv.Totals.Taxes.Categories {
+		if cat.Code != tax.CategoryVAT {
+			continue
+		}
+		for _, rate := range cat.Rates {
+			if ti := rate.Ext.Get(arca.ExtKeyTourismItem); ti == "1" || ti == "2" {
+				refund = refund.Add(rate.Amount)
+			}
+		}
+	}
+	return refund
+}
+
+// TourismPayable returns the payable total less the refunded VAT, or the payable unchanged for non-tourism invoices.
+func TourismPayable(inv *bill.Invoice, payable num.Amount) num.Amount {
+	return payable.Subtract(tourismRefund(inv))
+}
+
+func customerLegend(party *org.Party, docType cbc.Code) string {
+	if slices.Contains(arca.DocTypesT, docType) {
+		return "CLIENTE DEL EXTERIOR"
+	}
 	if party.Ext.IsZero() {
 		return ""
 	}
