@@ -1,12 +1,13 @@
 module github.com/invopop/gobl.html
 
-go 1.24.0
+go 1.25.0
 
 require (
 	github.com/a-h/templ v0.3.977
 	github.com/go-resty/resty/v2 v2.12.0
 	github.com/invopop/ctxi18n v0.9.0
-	github.com/invopop/gobl v0.403.0
+	github.com/invopop/gobl v0.501.0
+	github.com/invopop/gobl.sa.zatca v0.0.2
 	github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a
 	github.com/labstack/echo/v4 v4.15.0
 	github.com/piglig/go-qr v0.2.4
@@ -34,7 +35,6 @@ require (
 	github.com/invopop/jsonschema v0.14.0 // indirect
 	github.com/invopop/yaml v0.3.1 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
-	github.com/kr/pretty v0.3.1 // indirect
 	github.com/labstack/gommon v0.4.2 // indirect
 	github.com/magefile/mage v1.15.0 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
@@ -45,10 +45,10 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	go.yaml.in/yaml/v4 v4.0.0-rc.2 // indirect
-	golang.org/x/crypto v0.47.0 // indirect
-	golang.org/x/net v0.48.0 // indirect
-	golang.org/x/sys v0.40.0 // indirect
-	golang.org/x/text v0.34.0 // indirect
+	golang.org/x/crypto v0.53.0 // indirect
+	golang.org/x/net v0.56.0 // indirect
+	golang.org/x/sys v0.46.0 // indirect
+	golang.org/x/text v0.38.0 // indirect
 	golang.org/x/time v0.14.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

@@ -4,11 +4,18 @@
 		"uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
 		"dig": {
 			"alg": "sha256",
-			"val": "06f08895b0f7cf34392a0a17f67fb2f7efe162d0d283137b275c5b8e27228fe8"
-		}
+			"val": "31b900c32da25c7c5bd0363e8dbede8880d5f3a0b11e75d37f160b2acb2261be"
+		},
+		"stamps": [
+			{
+				"prv": "zatca-qr",
+				"val": "AS3Yp9mF2YrZitmF2YjYsyDYp9mE2LnYsdio2YrYqSDZhNmE2YHYudin2YTZitin2Kog2KfZhNiq2LHZgdmK2YfZitipAg8zMTE1ODgxMDcyMDAwMDMDEzIwMjUtMDktMjVUMDA6MDA6MDBaBAY5NDguNzUFBjEyMy43NQ=="
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "SA",
 		"$tags": [
 			"simplified"
 		],
@@ -86,13 +93,13 @@
 		},
 		"notes": [
 			{
-				"text": "\u003cimg src='https://assets.invopop.com/misc/qr.png' width='100'\u003e"
-			},
-			{
 				"key": "legal",
 				"src": "simplified",
 				"text": "Simplified Tax Invoice"
 			}
 		]
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6ImUzNzFjMzBiLTNiMzMtNGNiMC04NzM5LThiOTUzMWM1NWM2NiJ9.eyJ1dWlkIjoiM2E4ZTJhZTEtZWFiOC0xMWVkLWI3MzUtM2U3ZTAwY2U1NjM1IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjA2ZjA4ODk1YjBmN2NmMzQzOTJhMGExN2Y2N2ZiMmY3ZWZlMTYyZDBkMjgzMTM3YjI3NWM1YjhlMjcyMjhmZTgifSwic3RhbXBzIjpbeyJwcnYiOiJ6YXRjYS1xciIsInZhbCI6IkFTM1lwOW1GMllyWml0bUYyWWpZc3lEWXA5bUUyTGppU2RpbzJZclpxU0RaaE5tRTJZUFl1ZGluMllUWml0aW4yS29nMktmWmhOaXEyTGZaZ2RtSzJZZlppdGlwQWc4ek1URTFPRGd4TURjeU1EQXdNRE1ERXpJd01qVXRNRGt0TWpWVU1EQTZNREE2TURCYUJBWTVORGd1TnpVRkJqRXlNeTQzTlE9PSJ9XX0.PLACEHOLDER_SIGNATURE_FOR_EXAMPLE_RENDERING_NOT_CRYPTOGRAPHICALLY_VALIA"
+	]
 }
