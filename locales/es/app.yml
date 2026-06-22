@@ -379,6 +379,8 @@ es:
         "331": "Liquidación Secundaria de Granos"
         "332": "Certificación Electrónica (Granos)"
     co:
+      title:
+        standard: "Factura electrónica de venta"
       cufe: "CUFE: %{cufe}"
       cude: "CUDE: %{cude}"
       preceding_cufe: "CUFE factura anterior: %{cufe}"

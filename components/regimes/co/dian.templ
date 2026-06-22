@@ -6,12 +6,28 @@ import (
 	"github.com/invopop/gobl.html/components/assets"
 	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/addons/co/dian"
 	"github.com/invopop/gobl/bill"
 	"regexp"
 )
 
 var dianQRHTTPRegexp = regexp.MustCompile(`https.+`)
+
+// TitleType renders the Colombian document title (e.g. "Factura Electrónica de
+// Venta") for documents issued under the Colombian regime, falling through to
+// the default title when no Colombia-specific title applies.
+templ TitleType(doc internal.Document) {
+	if isColombian(doc) {
+		@titleType(doc)
+	}
+}
+
+templ titleType(doc internal.Document) {
+	if key := titleKey(doc); key != "" {
+		@t.T("regimes.co.title." + key)
+	}
+}
 
 templ Stylesheets(env *gobl.Envelope) {
 	if dianCUDE(env) != "" {
