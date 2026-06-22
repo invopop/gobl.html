@@ -9,6 +9,7 @@ import (
 	"github.com/invopop/gobl"
 
 	"github.com/invopop/gobl.html/components/regimes/ar"
+	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/regimes/es"
 	"github.com/invopop/gobl.html/components/regimes/gr"
 	"github.com/invopop/gobl.html/components/regimes/mx"
@@ -108,6 +109,7 @@ templ titleType(doc internal.Document) {
 	<h1 class="type">
 		@utils.Coalesce(
 			ar.TitleType(doc),
+			co.TitleType(doc),
 			pt.TitleType(doc),
 			gr.TitleType(doc),
 			untdidTitleType(doc),
