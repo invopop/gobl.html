@@ -256,6 +256,7 @@ es:
 
   regimes:
     ar:
+      vat_refund: "Reintegro de IVA"
       title:
         "1": "Factura A"
         "2": "Nota de Débito A"

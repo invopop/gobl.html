@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/components/regimes/ar"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/currency"
@@ -119,6 +120,8 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 			</td>
 		</tr>
 	}
+	@ar.ARCATourismRefund(inv)
+	{{ payable := ar.TourismPayable(inv, totals.Payable) }}
 	<tr class="payable strong">
 		<th>
 			if inv.Type.In(bill.InvoiceTypeCreditNote) {
@@ -130,7 +133,7 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 			}
 		</th>
 		<td>
-			@t.LM(totals.Payable)
+			@t.LM(payable)
 		</td>
 	</tr>
 	for _, er := range totalExchangeRates(inv) {
@@ -139,7 +142,7 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 				@t.T(".exchange_rate", i18n.M{"to": er.To, "amount": t.Localize(ctx, er.Amount)})
 			</th>
 			<td>
-				@t.LCD(er.Convert(totals.Payable), er.To)
+				@t.LCD(er.Convert(payable), er.To)
 			</td>
 		</tr>
 	}

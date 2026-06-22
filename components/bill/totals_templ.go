@@ -12,6 +12,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/components/regimes/ar"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/currency"
@@ -339,6 +340,11 @@ func totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
+		templ_7745c5c3_Err = ar.ARCATourismRefund(inv).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		payable := ar.TourismPayable(inv, totals.Payable)
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, "<tr class=\"payable strong\"><th>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -362,7 +368,7 @@ func totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = t.LM(totals.Payable).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = t.LM(payable).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -383,7 +389,7 @@ func totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = t.LCD(er.Convert(totals.Payable), er.To).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = t.LCD(er.Convert(payable), er.To).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

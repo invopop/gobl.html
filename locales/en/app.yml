@@ -335,6 +335,7 @@ en:
           5: "Expense adjustment (accounting base)" # "Other expense adjustment/Regularization entries – Accounting base"
           6: "Expense adjustment (tax base)" # "Other expense adjustment/Regularization entries – Tax base"
     ar:
+      vat_refund: "VAT Refund"
       title:
         "1": "Invoice A"
         "2": "Debit Note A"
