@@ -76,6 +76,8 @@ ar:
         no_percent: "—"
         exemption: "إعفاء"
         on_behalf_of: "بالنيابة عن"
+        period: "الفترة"
+        period_range: "%{start} إلى %{end}"
 
       totals: &totals
         sum: "المجموع"

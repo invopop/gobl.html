@@ -2,10 +2,12 @@ package bill
 
 import (
 	"fmt"
+	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/regimes/mx"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/cal"
 	"github.com/invopop/gobl/currency"
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
@@ -111,6 +113,7 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 					</span>
 				}
 			@identities(l.Item.Identities)
+			@linePeriod(l.Period)
 			@lineNotes(l.Notes)
 			@mx.LineExtensions(l)
 			@lineSeller(l.Seller)
@@ -211,6 +214,7 @@ templ breakdownLine(sl *bill.SubLine, ls *lineSupport, st *subtotal) {
 					</span>
 				}
 				@identities(sl.Item.Identities)
+				@linePeriod(sl.Period)
 				@sublineNotes(sl.Notes)
 			</div>
 		</td>
@@ -320,6 +324,21 @@ templ identities(idents []*org.Identity) {
 				</code>
 			</span>
 		}
+	}
+}
+
+templ linePeriod(p *cal.Period) {
+	if p != nil {
+		<span class="subline">
+			<span class="label">
+				if p.Label != "" {
+					{ p.Label }
+				} else {
+					@t.T(".period")
+				}
+			</span>
+			@t.T(".period_range", i18n.M{"start": t.Localize(ctx, p.Start), "end": t.Localize(ctx, p.End)})
+		</span>
 	}
 }
 

@@ -74,6 +74,8 @@ el:
         no_percent: "—"
         exemption: "Απαλλαγή"
         on_behalf_of: "Για λογαριασμό"
+        period: "Περίοδος"
+        period_range: "%{start} έως %{end}"
 
       totals: &totals
         sum: "Άθροισμα"

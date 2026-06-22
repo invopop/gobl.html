@@ -76,6 +76,8 @@ eu:
         no_percent: "—"
         exemption: "Salbuespenea"
         on_behalf_of: "Izenean"
+        period: "Aldia"
+        period_range: "%{start}(e)tik %{end}(e)ra"
 
       totals: &totals
         sum: "Batura"

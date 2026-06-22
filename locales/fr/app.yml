@@ -66,6 +66,8 @@ fr:
         no_percent: "—"
         exemption: "Exonération"
         on_behalf_of: "Pour le compte de"
+        period: "Période"
+        period_range: "%{start} au %{end}"
       totals: &totals
         sum: "Somme"
         discount: "Remise"

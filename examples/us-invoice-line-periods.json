@@ -1,0 +1,137 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "019edb6d-ff71-755b-be8c-e7f7d4f5a3f8",
+		"dig": {
+			"alg": "sha256",
+			"val": "a004484866f9258fc26a5395a0ab542ce1b166d3f9b6aa4e0c7cdbfa43796ea3"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "US",
+		"uuid": "019edb6d-ff71-72f1-ade8-a034b8d98763",
+		"type": "standard",
+		"series": "SUB",
+		"code": "2024-001",
+		"issue_date": "2024-02-01",
+		"currency": "USD",
+		"supplier": {
+			"name": "Invopop Inc.",
+			"tax_id": {
+				"country": "US"
+			},
+			"addresses": [
+				{
+					"num": "1111B",
+					"street": "S Governors Ave #6229",
+					"locality": "Dover",
+					"region": "DE",
+					"code": "19904",
+					"country": "US"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@invopop.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Customer Random Inc.",
+			"tax_id": {
+				"country": "US"
+			},
+			"addresses": [
+				{
+					"label": "Office",
+					"num": "10",
+					"street": "Calle Mayor",
+					"locality": "Madrid",
+					"region": "CA",
+					"code": "28003",
+					"country": "US"
+				}
+			],
+			"emails": [
+				{
+					"addr": "sam@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"period": {
+					"start": "2024-01-01",
+					"end": "2024-01-31"
+				},
+				"item": {
+					"name": "Platform Subscription",
+					"description": "Pro plan monthly subscription",
+					"price": "99.00"
+				},
+				"sum": "99.00",
+				"total": "99.00"
+			},
+			{
+				"i": 2,
+				"quantity": "12",
+				"period": {
+					"label": "Service period",
+					"start": "2024-01-01",
+					"end": "2024-01-31"
+				},
+				"item": {
+					"name": "Premium Support",
+					"description": "Dedicated support hours",
+					"price": "75.00"
+				},
+				"sum": "900.00",
+				"total": "900.00"
+			},
+			{
+				"i": 3,
+				"quantity": "1",
+				"period": {
+					"start": "2024-01-01",
+					"end": "2024-12-31"
+				},
+				"item": {
+					"name": "Annual Maintenance",
+					"description": "Maintenance and updates retainer",
+					"price": "480.00"
+				},
+				"sum": "480.00",
+				"total": "480.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"key": "due-date"
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "GB33BUKB20201555555555",
+						"name": "Invopop Inc."
+					}
+				]
+			}
+		},
+		"totals": {
+			"sum": "1479.00",
+			"total": "1479.00",
+			"tax": "0.00",
+			"total_with_tax": "1479.00",
+			"payable": "1479.00"
+		},
+		"notes": [
+			{
+				"text": "Thank you for your business!"
+			}
+		]
+	}
+}

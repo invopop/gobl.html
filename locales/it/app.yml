@@ -66,6 +66,8 @@ it:
         no_percent: "—"
         exemption: "Esenzione"
         on_behalf_of: "Per conto di"
+        period: "Periodo"
+        period_range: "%{start} a %{end}"
       totals: &totals
         sum: "Somma"
         discount: "Sconto"
