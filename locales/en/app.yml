@@ -270,7 +270,7 @@ en:
       ksef-id: "ID: %{id}"
     co:
       title:
-        standard: "Electronic Sales Invoice"
+        standard: "Electronic sales invoice"
       cufe: "CUFE: %{cufe}"
       cude: "CUDE: %{cude}"
       preceding_cufe: "CUFE previous invoice: %{cufe}"

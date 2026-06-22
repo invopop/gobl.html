@@ -380,7 +380,7 @@ es:
         "332": "Certificación Electrónica (Granos)"
     co:
       title:
-        standard: "Factura Electrónica de Venta"
+        standard: "Factura electrónica de venta"
       cufe: "CUFE: %{cufe}"
       cude: "CUDE: %{cude}"
       preceding_cufe: "CUFE factura anterior: %{cufe}"
