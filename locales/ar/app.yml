@@ -265,6 +265,10 @@ ar:
       country: "(%{country})"
 
   regimes:
+    it:
+      title:
+        documento-commerciale: "Documento Commerciale"
+        documento-commerciale-reso: "Documento Commerciale di Reso"
     pl:
       ksef-id: "المعرف: %{id}"
     co:
