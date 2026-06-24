@@ -1,0 +1,112 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120010",
+		"dig": {
+			"alg": "sha256",
+			"val": "4c67ddbf21040dee593649c3cec2c40a4771eba77d336c65f821e39e25e69530"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"it-ticket-v1"
+		],
+		"uuid": "0190a63a-1a80-7e1e-a868-08c7859b6471",
+		"type": "standard",
+		"series": "DC",
+		"code": "000123",
+		"issue_date": "2026-06-24",
+		"currency": "EUR",
+		"tax": {
+			"prices_include": "VAT"
+		},
+		"supplier": {
+			"name": "Caffè del Corso SRL",
+			"tax_id": {
+				"country": "IT",
+				"code": "12345678903"
+			},
+			"addresses": [
+				{
+					"num": "12",
+					"street": "Corso Vittorio Emanuele",
+					"locality": "Roma",
+					"region": "RM",
+					"code": "00186",
+					"country": "IT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Caffè espresso",
+					"price": "1.20",
+					"ext": {
+						"it-ticket-product": "services"
+					}
+				},
+				"sum": "2.40",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "22.0%"
+					}
+				],
+				"total": "2.40"
+			},
+			{
+				"i": 2,
+				"quantity": "1",
+				"item": {
+					"name": "Cornetto",
+					"price": "1.50",
+					"ext": {
+						"it-ticket-product": "services"
+					}
+				},
+				"sum": "1.50",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "22.0%"
+					}
+				],
+				"total": "1.50"
+			}
+		],
+		"totals": {
+			"sum": "3.90",
+			"tax_included": "0.70",
+			"total": "3.20",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "3.20",
+								"percent": "22.0%",
+								"amount": "0.70"
+							}
+						],
+						"amount": "0.70"
+					}
+				],
+				"sum": "0.70"
+			},
+			"tax": "0.70",
+			"total_with_tax": "3.90",
+			"payable": "3.90"
+		}
+	}
+}

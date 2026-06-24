@@ -5,12 +5,19 @@ import (
 	"strings"
 
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/components/regimes/it"
 	"github.com/invopop/gobl.html/internal"
 )
 
 // DocumentTitle returns the localized document-type label plus series+code, e.g. "Invoice SAMPLE-001".
 func DocumentTitle(ctx context.Context, doc internal.Document) string {
-	label := untdidTitleLabel(ctx, doc)
+	// Italian smart receipts (AdE ticket addon) are "documenti commerciali"
+	// rather than "fatture"; keep the <title> consistent with the rendered
+	// document title resolved in titleType.
+	label := it.TitleLabel(ctx, doc)
+	if label == "" {
+		label = untdidTitleLabel(ctx, doc)
+	}
 	if label == "" {
 		label = invoiceTitleLabel(ctx, doc)
 	}

@@ -12,6 +12,7 @@ import (
 	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/regimes/es"
 	"github.com/invopop/gobl.html/components/regimes/gr"
+	"github.com/invopop/gobl.html/components/regimes/it"
 	"github.com/invopop/gobl.html/components/regimes/mx"
 	"github.com/invopop/gobl.html/components/regimes/pl"
 	"github.com/invopop/gobl.html/components/regimes/pt"
@@ -110,6 +111,7 @@ templ titleType(doc internal.Document) {
 		@utils.Coalesce(
 			ar.TitleType(doc),
 			co.TitleType(doc),
+			it.TitleType(doc),
 			pt.TitleType(doc),
 			gr.TitleType(doc),
 			untdidTitleType(doc),

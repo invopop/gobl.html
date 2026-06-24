@@ -1,0 +1,15 @@
+package it
+
+import (
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal"
+)
+
+// TitleType renders the Italian smart-receipt document title ("Documento
+// Commerciale") for documents issued with the AdE ticket addon, falling
+// through to the default title when no Italy-specific title applies.
+templ TitleType(doc internal.Document) {
+	if key := titleKey(doc); key != "" {
+		@t.T("regimes.it.title." + key)
+	}
+}
