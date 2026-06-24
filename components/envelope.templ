@@ -20,7 +20,7 @@ import (
 templ Envelope(env *gobl.Envelope) {
 	<html data-theme="light" if isRTL(ctx) { dir="rtl" }>
 		<head>
-			<title>GOBL HTML Generator</title>
+			<title>{ documentTitle(ctx, env) }</title>
 			<meta charset="utf-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<link rel="preconnect" href="https://fonts.googleapis.com"/>
