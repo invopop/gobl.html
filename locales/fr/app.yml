@@ -245,7 +245,7 @@ fr:
     co:
       cufe_label: "CUFE"
       cude_label: "CUDE"
-      preceding_cufe_label: "CUFE Facture précédente"
+      preceding_cufe_label: "CUDE Facture précédente"
       provider_label: "Fournisseur"
       nit_label: "NIT"
       software_label: "Software"

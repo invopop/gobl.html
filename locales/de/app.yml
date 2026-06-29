@@ -255,7 +255,7 @@ de:
     co:
       cufe_label: "CUFE"
       cude_label: "CUDE"
-      preceding_cufe_label: "CUFE Vorherige Rechnung"
+      preceding_cufe_label: "CUDE Vorherige Rechnung"
       provider_label: "Anbieter"
       nit_label: "NIT"
       software_label: "Software"
