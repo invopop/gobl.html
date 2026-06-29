@@ -63,31 +63,31 @@ templ generateQR(code, precedingCode, qr string) {
 		<div class="text">
 			<div class="provider">
 				<div class="row">
-					<span class="label">Proveedor</span>
+					<span class="label">Proveedor:</span>
 					<span class="value">{ dianProviderName }</span>
 				</div>
 				<div class="row">
-					<span class="label">NIT</span>
+					<span class="label">NIT:</span>
 					<span class="value">{ dianProviderNIT }</span>
 				</div>
 				<div class="row">
-					<span class="label">Software</span>
+					<span class="label">Software:</span>
 					<span class="value">{ dianProviderSoftware }</span>
 				</div>
 			</div>
 			<div class="codes">
 				if precedingCode != "" {
 					<div class="row">
-						<span class="label">CUDE</span>
+						<span class="label">CUDE:</span>
 						<span class="value">{ code }</span>
 					</div>
 					<div class="row">
-						<span class="label">CUDE anterior</span>
+						<span class="label">CUFE ant:</span>
 						<span class="value">{ precedingCode }</span>
 					</div>
 				} else {
 					<div class="row">
-						<span class="label">CUFE</span>
+						<span class="label">CUFE:</span>
 						<span class="value">{ code }</span>
 					</div>
 				}

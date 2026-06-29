@@ -21,7 +21,7 @@ footer.print {
 }
 
 .dian-qr .image {
-  margin-right: 6mm;
+  margin-right: 4mm;
 }
 
 .dian-qr .text {
@@ -41,9 +41,8 @@ footer.print {
 }
 
 .dian-qr .label {
-  font-weight: bold;
+  font-weight: 550;
   text-transform: uppercase;
-  margin-right: 1ch;
 }
 
 .dian-qr img {

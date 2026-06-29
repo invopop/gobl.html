@@ -239,6 +239,3 @@ it:
     address:
       label: "%{label}:"
       country: "(%{country})"
-
-  regimes:
-    co:

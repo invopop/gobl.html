@@ -267,7 +267,6 @@ ar:
   regimes:
     pl:
       ksef-id: "المعرف: %{id}"
-    co:
     gr:
       title:
         1:

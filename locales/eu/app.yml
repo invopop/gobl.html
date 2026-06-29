@@ -267,7 +267,6 @@ eu:
   regimes:
     pl:
       ksef-id: "ID: %{id}"
-    co:
     gr:
       title:
         1:
