@@ -6,7 +6,8 @@ require (
 	github.com/a-h/templ v0.3.977
 	github.com/go-resty/resty/v2 v2.12.0
 	github.com/invopop/ctxi18n v0.9.0
-	github.com/invopop/gobl v0.501.0
+	github.com/invopop/gobl v0.501.1-0.20260626173928-312f415519ad
+	github.com/invopop/gobl.pt.saft v0.0.0-20260626174146-e64b2c2cf86c
 	github.com/invopop/gobl.sa.zatca v0.0.2
 	github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a
 	github.com/labstack/echo/v4 v4.15.0
