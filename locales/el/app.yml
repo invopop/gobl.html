@@ -260,12 +260,6 @@ el:
     pl:
       ksef-id: "ID: %{id}"
     co:
-      cufe_label: "CUFE"
-      cude_label: "CUDE"
-      preceding_cufe_label: "CUDE Προηγούμενου τιμολογίου"
-      provider_label: "Πάροχος"
-      nit_label: "NIT"
-      software_label: "Software"
     gr:
       title:
         1:

@@ -58,34 +58,36 @@ templ generateQR(code, precedingCode, qr string) {
 				@images.QR(qr)
 			</a>
 		</div>
+		// The DIAN QR block always renders in Spanish: it is a legal
+		// requirement, so the labels are not translated.
 		<div class="text">
 			<div class="provider">
 				<div class="row">
-					<span class="label">@t.T("regimes.co.provider_label")</span>
+					<span class="label">Proveedor</span>
 					<span class="value">{ dianProviderName }</span>
 				</div>
 				<div class="row">
-					<span class="label">@t.T("regimes.co.nit_label")</span>
+					<span class="label">NIT</span>
 					<span class="value">{ dianProviderNIT }</span>
 				</div>
 				<div class="row">
-					<span class="label">@t.T("regimes.co.software_label")</span>
+					<span class="label">Software</span>
 					<span class="value">{ dianProviderSoftware }</span>
 				</div>
 			</div>
 			<div class="codes">
 				if precedingCode != "" {
 					<div class="row">
-						<span class="label">@t.T("regimes.co.cude_label")</span>
+						<span class="label">CUDE</span>
 						<span class="value">{ code }</span>
 					</div>
 					<div class="row">
-						<span class="label">@t.T("regimes.co.preceding_cufe_label")</span>
+						<span class="label">CUDE anterior</span>
 						<span class="value">{ precedingCode }</span>
 					</div>
 				} else {
 					<div class="row">
-						<span class="label">@t.T("regimes.co.cufe_label")</span>
+						<span class="label">CUFE</span>
 						<span class="value">{ code }</span>
 					</div>
 				}

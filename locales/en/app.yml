@@ -271,12 +271,6 @@ en:
     co:
       title:
         standard: "Electronic sales invoice"
-      cufe_label: "CUFE"
-      cude_label: "CUDE"
-      preceding_cufe_label: "Previous CUDE"
-      provider_label: "Provider"
-      nit_label: "NIT"
-      software_label: "Software"
     gr:
       title:
         1:
