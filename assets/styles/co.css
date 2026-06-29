@@ -13,7 +13,7 @@ footer.print {
 .dian-qr {
   display: flex;
   align-items: flex-end;
-  font-family: monospace;
+  font-family: "Geist Mono", monospace;
   font-size: 7pt;
   line-height: 1.45;
   text-align: left;
@@ -22,6 +22,10 @@ footer.print {
 
 .dian-qr .image {
   margin-right: 6mm;
+}
+
+.dian-qr .text {
+  padding-bottom: 0.5mm;
 }
 
 .dian-qr .provider {

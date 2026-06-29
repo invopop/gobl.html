@@ -76,7 +76,7 @@ func generateVerifactuQR(qr string) templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<style type=\"text/css\">\n\t\t.verifactu {\n\t\t\tbreak-inside: avoid;\n\t\t\ttext-align: center;\n\t\t}\n\t\t.verifactu p {\n\t\t\tcolor: #030712;\n\t\t\ttext-align: center;\n\t\t\tfont-family: Inter;\n\t\t\tfont-size: 9pt;\n\t\t\tfont-weight: 600;\n\t\t}\n\t\t.verifactu .label {\n\t\t\tcolor: #4B5563;\n\t\t\tfont-family: monospace;\n\t\t\tfont-size:9pt;\n\t\t\ttext-align: center; \n\t\t}\n\t\t.verifactu img {\n\t\t\twidth: 35mm;\n\t\t\theight: 35mm;\n\t\t\tmargin: 1mm 0;\n\t\t}\n\t</style><section class=\"qr\"><div class=\"verifactu\"><p>QR tributario:</p><div class=\"qr\"><a href=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<style type=\"text/css\">\n\t\t.verifactu {\n\t\t\tbreak-inside: avoid;\n\t\t\ttext-align: center;\n\t\t}\n\t\t.verifactu p {\n\t\t\tcolor: #030712;\n\t\t\ttext-align: center;\n\t\t\tfont-family: Inter;\n\t\t\tfont-size: 9pt;\n\t\t\tfont-weight: 600;\n\t\t}\n\t\t.verifactu .label {\n\t\t\tcolor: #4B5563;\n\t\t\tfont-family: \"Geist Mono\", monospace;\n\t\t\tfont-size:9pt;\n\t\t\ttext-align: center; \n\t\t}\n\t\t.verifactu img {\n\t\t\twidth: 35mm;\n\t\t\theight: 35mm;\n\t\t\tmargin: 1mm 0;\n\t\t}\n\t</style><section class=\"qr\"><div class=\"verifactu\"><p>QR tributario:</p><div class=\"qr\"><a href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

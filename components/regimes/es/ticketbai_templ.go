@@ -80,7 +80,7 @@ func generateTicketBAIQR(code, qr string) templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<style type=\"text/css\">\n\t\t.ticketbai {\n\t\t\tbreak-inside: avoid;\n\t\t\ttext-align: center;\n\t\t\tpadding: 3mm;\n\t\t\tborder: 1px solid #E5E7EB;\n\t\t\twidth: 6cm;\n\t\t}\n\t\t.ticketbai .label {\n\t\t\tfont-family: monospace;\n\t\t\tfont-size: 7pt;\n\t\t\ttext-align: center; \n\t\t\tmargin-bottom: 2mm;\n\t\t}\n\t\t.ticketbai img {\n\t\t\twidth: 25mm;\n\t\t\theight: 25mm;\n\t\t}\n\t</style><section class=\"qr\"><div class=\"ticketbai\"><div class=\"label\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<style type=\"text/css\">\n\t\t.ticketbai {\n\t\t\tbreak-inside: avoid;\n\t\t\ttext-align: center;\n\t\t\tpadding: 3mm;\n\t\t\tborder: 1px solid #E5E7EB;\n\t\t\twidth: 6cm;\n\t\t}\n\t\t.ticketbai .label {\n\t\t\tfont-family: \"Geist Mono\", monospace;\n\t\t\tfont-size: 7pt;\n\t\t\ttext-align: center; \n\t\t\tmargin-bottom: 2mm;\n\t\t}\n\t\t.ticketbai img {\n\t\t\twidth: 25mm;\n\t\t\theight: 25mm;\n\t\t}\n\t</style><section class=\"qr\"><div class=\"ticketbai\"><div class=\"label\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

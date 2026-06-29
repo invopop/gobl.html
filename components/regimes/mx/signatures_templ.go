@@ -37,7 +37,7 @@ func signatures(h *head.Header) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<style type=\"text/css\">\n        .cfdi {\n\t\t\tbreak-inside: avoid;\n            font-size: 7pt;\n\t\t\tline-height: 1.6em;\n        }\n\t\t.cfdi .image {\n\t\t\tfloat: left;\n\t\t\tmargin-right: 6mm;\n\t\t}\n\t\t.cfdi .text {\n\t\t\tmargin-top: auto;\n\t\t}\n        .cfdi img {\n            width: 30mm;\n            height: 30mm;\n        }\n\t\t.cfdi .series::before {\n\t\t\tcontent: \"(\"\n\t\t}\n\t\t.cfdi .series::after {\n\t\t\tcontent: \")\"\n\t\t}\n\t\t.cfdi .value,\n\t\t.cfdi .signature {\n            font-family: monospace;\n\t\t}\n\t\t.cfdi .signature {\n\t\t\tword-break: break-all;\n\t\t\tfont-size: 5pt;\n\t\t}\n    </style><section class=\"cfdi\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<style type=\"text/css\">\n        .cfdi {\n\t\t\tbreak-inside: avoid;\n            font-size: 7pt;\n\t\t\tline-height: 1.6em;\n        }\n\t\t.cfdi .image {\n\t\t\tfloat: left;\n\t\t\tmargin-right: 6mm;\n\t\t}\n\t\t.cfdi .text {\n\t\t\tmargin-top: auto;\n\t\t}\n        .cfdi img {\n            width: 30mm;\n            height: 30mm;\n        }\n\t\t.cfdi .series::before {\n\t\t\tcontent: \"(\"\n\t\t}\n\t\t.cfdi .series::after {\n\t\t\tcontent: \")\"\n\t\t}\n\t\t.cfdi .value,\n\t\t.cfdi .signature {\n            font-family: \"Geist Mono\", monospace;\n\t\t}\n\t\t.cfdi .signature {\n\t\t\tword-break: break-all;\n\t\t\tfont-size: 5pt;\n\t\t}\n    </style><section class=\"cfdi\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
