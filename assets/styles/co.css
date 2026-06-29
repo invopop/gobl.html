@@ -36,6 +36,10 @@ footer.print {
   margin-top: 3mm;
 }
 
+.dian-qr .value {
+  word-break: break-all;
+}
+
 .dian-qr .label {
   font-weight: bold;
   text-transform: uppercase;
