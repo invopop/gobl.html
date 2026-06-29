@@ -242,6 +242,9 @@ it:
 
   regimes:
     co:
-      cufe: "CUFE: %{cufe}"
-      cude: "CUDE: %{cude}"
-      preceding_cufe: "CUFE Fattura precedente: %{cufe}"
+      cufe_label: "CUFE"
+      cude_label: "CUDE"
+      preceding_cufe_label: "CUFE Fattura precedente"
+      provider_label: "Fornitore"
+      nit_label: "NIT"
+      software_label: "Software"

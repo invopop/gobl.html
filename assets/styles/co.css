@@ -12,8 +12,11 @@ footer.print {
 
 .dian-qr {
   display: flex;
+  align-items: flex-end;
   font-family: monospace;
   font-size: 7pt;
+  line-height: 1.45;
+  text-align: left;
   margin-bottom: 4mm;
 }
 
@@ -21,9 +24,18 @@ footer.print {
   margin-right: 6mm;
 }
 
-.dian-qr .text {
-  margin-top: auto;
-  word-break: break-all;
+.dian-qr .provider {
+  text-transform: uppercase;
+}
+
+.dian-qr .codes {
+  margin-top: 3mm;
+}
+
+.dian-qr .label {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 1ch;
 }
 
 .dian-qr img {

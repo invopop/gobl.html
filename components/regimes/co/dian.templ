@@ -1,7 +1,6 @@
 package co
 
 import (
-	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/assets"
 	"github.com/invopop/gobl.html/components/images"
@@ -43,6 +42,15 @@ templ DIANQR(env *gobl.Envelope) {
 	}
 }
 
+// dianProviderName, dianProviderNIT and dianProviderSoftware hold the static
+// DIAN provider details that are always present on the document and never
+// change.
+const (
+	dianProviderName     = "EMPRESA DE DIVULGACIONES Y ASESORIAS ECA SAS"
+	dianProviderNIT      = "860517022"
+	dianProviderSoftware = "Plemsi"
+)
+
 templ generateQR(code, precedingCode, qr string) {
 	<section class="dian-qr">
 		<div class="image">
@@ -51,18 +59,37 @@ templ generateQR(code, precedingCode, qr string) {
 			</a>
 		</div>
 		<div class="text">
-			if precedingCode != "" {
-				<div class="cude">
-					@t.T("regimes.co.cude", i18n.M{"cude": code})
+			<div class="provider">
+				<div class="row">
+					<span class="label">@t.T("regimes.co.provider_label")</span>
+					<span class="value">{ dianProviderName }</span>
 				</div>
-				<div class="cufe">
-					@t.T("regimes.co.preceding_cufe", i18n.M{"cufe": precedingCode})
+				<div class="row">
+					<span class="label">@t.T("regimes.co.nit_label")</span>
+					<span class="value">{ dianProviderNIT }</span>
 				</div>
-			} else {
-				<div class="cufe">
-					@t.T("regimes.co.cufe", i18n.M{"cufe": code})
+				<div class="row">
+					<span class="label">@t.T("regimes.co.software_label")</span>
+					<span class="value">{ dianProviderSoftware }</span>
 				</div>
-			}
+			</div>
+			<div class="codes">
+				if precedingCode != "" {
+					<div class="row">
+						<span class="label">@t.T("regimes.co.cude_label")</span>
+						<span class="value">{ code }</span>
+					</div>
+					<div class="row">
+						<span class="label">@t.T("regimes.co.preceding_cufe_label")</span>
+						<span class="value">{ precedingCode }</span>
+					</div>
+				} else {
+					<div class="row">
+						<span class="label">@t.T("regimes.co.cufe_label")</span>
+						<span class="value">{ code }</span>
+					</div>
+				}
+			</div>
 		</div>
 	</section>
 }

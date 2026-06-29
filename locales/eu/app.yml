@@ -268,9 +268,12 @@ eu:
     pl:
       ksef-id: "ID: %{id}"
     co:
-      cufe: "CUFE: %{cufe}"
-      cude: "CUDE: %{cude}"
-      preceding_cufe: "CUFE aurreko faktura: %{cufe}"
+      cufe_label: "CUFE"
+      cude_label: "CUDE"
+      preceding_cufe_label: "CUFE aurreko faktura"
+      provider_label: "Hornitzailea"
+      nit_label: "NIT"
+      software_label: "Software"
     gr:
       title:
         1:
