@@ -267,10 +267,6 @@ eu:
   regimes:
     pl:
       ksef-id: "ID: %{id}"
-    co:
-      cufe: "CUFE: %{cufe}"
-      cude: "CUDE: %{cude}"
-      preceding_cufe: "CUFE aurreko faktura: %{cufe}"
     gr:
       title:
         1:

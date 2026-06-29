@@ -259,10 +259,6 @@ el:
   regimes:
     pl:
       ksef-id: "ID: %{id}"
-    co:
-      cufe: "CUFE: %{cufe}"
-      cude: "CUDE: %{cude}"
-      preceding_cufe: "CUFE Προηγούμενου τιμολογίου: %{cufe}"
     gr:
       title:
         1:

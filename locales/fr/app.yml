@@ -240,9 +240,3 @@ fr:
     address:
       label: "%{label}"
       country: "(%{country})"
-
-  regimes:
-    co:
-      cufe: "CUFE: %{cufe}"
-      cude: "CUDE: %{cude}"
-      preceding_cufe: "CUFE Facture précédente: %{cufe}"

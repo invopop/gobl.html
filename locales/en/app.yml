@@ -271,9 +271,6 @@ en:
     co:
       title:
         standard: "Electronic sales invoice"
-      cufe: "CUFE: %{cufe}"
-      cude: "CUDE: %{cude}"
-      preceding_cufe: "CUFE previous invoice: %{cufe}"
     gr:
       title:
         1:

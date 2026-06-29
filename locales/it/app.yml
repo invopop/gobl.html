@@ -239,9 +239,3 @@ it:
     address:
       label: "%{label}:"
       country: "(%{country})"
-
-  regimes:
-    co:
-      cufe: "CUFE: %{cufe}"
-      cude: "CUDE: %{cude}"
-      preceding_cufe: "CUFE Fattura precedente: %{cufe}"

@@ -12,18 +12,37 @@ footer.print {
 
 .dian-qr {
   display: flex;
-  font-family: monospace;
+  align-items: flex-end;
+  font-family: "Geist Mono", monospace;
   font-size: 7pt;
+  line-height: 1.45;
+  text-align: left;
   margin-bottom: 4mm;
 }
 
 .dian-qr .image {
-  margin-right: 6mm;
+  margin-right: 4mm;
 }
 
 .dian-qr .text {
-  margin-top: auto;
+  padding-bottom: 0.5mm;
+}
+
+.dian-qr .provider {
+  text-transform: uppercase;
+}
+
+.dian-qr .codes {
+  margin-top: 3mm;
+}
+
+.dian-qr .value {
   word-break: break-all;
+}
+
+.dian-qr .label {
+  font-weight: 550;
+  text-transform: uppercase;
 }
 
 .dian-qr img {

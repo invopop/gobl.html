@@ -382,6 +382,3 @@ es:
     co:
       title:
         standard: "Factura electrónica de venta"
-      cufe: "CUFE: %{cufe}"
-      cude: "CUDE: %{cude}"
-      preceding_cufe: "CUFE factura anterior: %{cufe}"

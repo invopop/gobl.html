@@ -41,7 +41,7 @@ func IAPR(env *gobl.Envelope) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		if hasStamps(env) {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<style type=\"text/css\">\n\t\t\t.iapr {\n\t\t\t\tbreak-inside: avoid;\n\t\t\t\tfont-size: 7pt;\n\t\t\t\tline-height: 1.6em;\n\t\t\t\tdisplay: flex;\n\t\t\t\talign-items: top;\n\t\t\t}\n\t\t\t.iapr .image {\n\t\t\t\tmargin-right: 6mm;\n\t\t\t}\n\t\t\t.iapr img {\n\t\t\t\twidth: 30mm;\n\t\t\t\theight: 30mm;\n\t\t\t}\n\t\t\t.iapr .value {\n\t\t\t\tfont-family: monospace;\n\t\t\t}\n\t\t</style> <section class=\"iapr\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<style type=\"text/css\">\n\t\t\t.iapr {\n\t\t\t\tbreak-inside: avoid;\n\t\t\t\tfont-size: 7pt;\n\t\t\t\tline-height: 1.6em;\n\t\t\t\tdisplay: flex;\n\t\t\t\talign-items: top;\n\t\t\t}\n\t\t\t.iapr .image {\n\t\t\t\tmargin-right: 6mm;\n\t\t\t}\n\t\t\t.iapr img {\n\t\t\t\twidth: 30mm;\n\t\t\t\theight: 30mm;\n\t\t\t}\n\t\t\t.iapr .value {\n\t\t\t\tfont-family: \"Geist Mono\", monospace;\n\t\t\t}\n\t\t</style> <section class=\"iapr\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
