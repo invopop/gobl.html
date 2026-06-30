@@ -13,6 +13,7 @@ pt:
         other: "Documento"
         paid: "Pago"
         void: "Anulado"
+        self-billed: "Autofaturação"
         untdid:
           "325": "Fatura proforma"
           "380": "Fatura"

@@ -13,6 +13,7 @@ pl:
         other: "Dokument"
         paid: "Zapłacono"
         void: "Unieważniony"
+        self-billed: "Samofakturowanie"
         untdid:
           "325": "Faktura proforma"
           "380": "Faktura"
