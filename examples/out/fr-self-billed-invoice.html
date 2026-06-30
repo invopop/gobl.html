@@ -1,7 +1,7 @@
 <html data-theme="light">
   <head>
     <title>
-      Simplified invoice SAMPLE-001
+      Invoice SAMPLE-001
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,15 +36,18 @@
             <section class="title">
               <div class="hero">
                 <div class="alias">
-                  Provide One S.L.
+                  Provide One Inc.
                 </div>
               </div>
               <div class="title-group">
                 <h1 class="type">
-                  Simplified invoice
+                  Invoice
                 </h1>
                 <h2 class="code">
                   SAMPLE-001
+                  <span class="self-billed">
+                    Self-billed
+                  </span>
                 </h2>
               </div>
             </section>
@@ -69,6 +72,14 @@
                     Euro (EUR)
                   </span>
                 </li>
+                <li class="value-date">
+                  <span class="label">
+                    Taxable event date
+                  </span>
+                  <span class="value date">
+                    2022-02-15
+                  </span>
+                </li>
               </ul>
             </section>
           </div>
@@ -80,7 +91,7 @@
                 </h2>
                 <div class="org-party">
                   <div class="name">
-                    Provide One S.L.
+                    Provide One Inc.
                   </div>
                   <div class="org-address">
                     <span>
@@ -91,7 +102,30 @@
                     Email: billing@example.com
                   </div>
                   <div class="tax-id">
-                    NIF: (ES) B98602642
+                    TVA: (FR) 44732829320
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="customer">
+              <div class="party-border">
+                <h2>
+                  Customer
+                </h2>
+                <div class="org-party">
+                  <div class="name">
+                    Sample Consumer
+                  </div>
+                  <div class="org-address">
+                    <span>
+                      Rue Sundacsakn 1, Saint-Germain-En-Laye, 75050
+                    </span>
+                  </div>
+                  <div class="emails">
+                    Email: email@sample.com
+                  </div>
+                  <div class="tax-id">
+                    TVA: (FR) 39356000000
                   </div>
                 </div>
               </div>
@@ -113,6 +147,9 @@
                 </th>
                 <th class="quantity">
                   Qty.
+                </th>
+                <th class="unit">
+                  Unit
                 </th>
                 <th class="price">
                   Price
@@ -136,12 +173,15 @@
                 <td class="description">
                   <div class="limited-height">
                     <span>
-                      Main product
+                      Development services
                     </span>
                   </div>
                 </td>
                 <td class="quantity">
                   20
+                </td>
+                <td class="unit">
+                  h
                 </td>
                 <td class="price">
                   €90,00
@@ -152,35 +192,10 @@
                   </span>
                 </td>
                 <td class="tax">
-                  21,0%
+                  20%
                 </td>
                 <td class="total">
                   €1.620,00
-                </td>
-              </tr>
-              <tr data-subtotal="€1.630,00">
-                <td class="ref">
-                  2
-                </td>
-                <td class="description">
-                  <div class="limited-height">
-                    <span>
-                      Something else
-                    </span>
-                  </div>
-                </td>
-                <td class="quantity">
-                  1
-                </td>
-                <td class="price">
-                  €10,00
-                </td>
-                <td class="discount"></td>
-                <td class="tax">
-                  21,0%
-                </td>
-                <td class="total">
-                  €10,00
                 </td>
               </tr>
             </tbody>
@@ -199,7 +214,7 @@
                       Sum
                     </th>
                     <td>
-                      €1.630,00
+                      €1.620,00
                     </td>
                   </tr>
                   <tr class="tax">
@@ -207,7 +222,7 @@
                       Tax
                     </th>
                     <td>
-                      €342,30
+                      €324,00
                     </td>
                   </tr>
                   <tr class="payable strong">
@@ -215,7 +230,7 @@
                       Total to pay
                     </th>
                     <td>
-                      €1.972,30
+                      €1.944,00
                     </td>
                   </tr>
                 </tbody>
@@ -248,13 +263,13 @@
                       VAT
                     </td>
                     <td class="base">
-                      €1.630,00
+                      €1.620,00
                     </td>
                     <td class="rate">
-                      21,0%
+                      20%
                     </td>
                     <td class="amount">
-                      €342,30
+                      €324,00
                     </td>
                   </tr>
                 </tbody>
@@ -283,15 +298,18 @@
           <section class="title">
             <div class="hero">
               <div class="alias">
-                Provide One S.L.
+                Provide One Inc.
               </div>
             </div>
             <div class="title-group">
               <h1 class="type">
-                Simplified invoice
+                Invoice
               </h1>
               <h2 class="code">
                 SAMPLE-001
+                <span class="self-billed">
+                  Self-billed
+                </span>
               </h2>
             </div>
           </section>

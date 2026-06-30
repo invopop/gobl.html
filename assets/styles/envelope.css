@@ -74,7 +74,7 @@ td {
     break-inside: avoid;
 }
 code {
-    font-family: monospace;
+    font-family: "Geist Mono", monospace;
 }
 section.footer span.page-number:before {
     content: counter(page);

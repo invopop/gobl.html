@@ -1,0 +1,155 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "019f13f7-813b-74f9-ab0a-2c852717190d",
+		"dig": {
+			"alg": "sha256",
+			"val": "350209b50c94bb7317ca54781a974765c019437fd9e790f39bc237408b1b1357"
+		},
+		"stamps": [
+			{
+				"prv": "dian-cude",
+				"val": "ae0d179457215c87268a1b9110a5a977e5ebf3649e0659a1da20d09fcadc1ec41523127b865f34cd172a3519ea212486"
+			},
+			{
+				"prv": "dian-qr",
+				"val": "NumCr: 1030111\nFecCr: 2026-06-10\nNitFac: 901585284\nDocAdq: 901585284\nValFac: 84033.61\nValIva: 15966.39\nValOtroIm: 0.00\nValTotal: 100000.00\nCUDE: ae0d179457215c87268a1b9110a5a977e5ebf3649e0659a1da20d09fcadc1ec41523127b865f34cd172a3519ea212486\nhttps://catalogo-vpfe-hab.dian.gov.co/document/searchqr?documentkey=ae0d179457215c87268a1b9110a5a977e5ebf3649e0659a1da20d09fcadc1ec41523127b865f34cd172a3519ea212486"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "CO",
+		"$addons": [
+			"co-dian-v2"
+		],
+		"uuid": "019eb239-4eb3-7c6a-a565-70bedf87a345",
+		"type": "credit-note",
+		"series": "NCTT",
+		"code": "1030111",
+		"issue_date": "2026-06-10",
+		"currency": "COP",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2026-06-10",
+				"series": "SETT",
+				"code": "1041321",
+				"reason": "Devolución parcial",
+				"stamps": [
+					{
+						"prv": "dian-cude",
+						"val": "c2313ea398288c19a573b261dcbecd021ee03825ea73664974f220c784834c0f42841851c77130eb9f539db683f96d1f"
+					}
+				],
+				"ext": {
+					"co-dian-credit-code": "1"
+				}
+			}
+		],
+		"tax": {
+			"prices_include": "VAT"
+		},
+		"supplier": {
+			"name": "Cyberdyne Sistemas SAS",
+			"tax_id": {
+				"country": "CO",
+				"code": "9015852843",
+				"type": "tin"
+			},
+			"addresses": [
+				{
+					"street": "CRA 8 113 31 OF 703",
+					"locality": "Bogotá",
+					"region": "Bogotá, D.C.",
+					"country": "CO"
+				}
+			],
+			"ext": {
+				"co-dian-fiscal-responsibility": "R-99-PN",
+				"co-dian-municipality": "11001"
+			}
+		},
+		"customer": {
+			"name": "Atlas Organization",
+			"tax_id": {
+				"country": "CO",
+				"code": "9015852843"
+			},
+			"addresses": [
+				{
+					"street": "Carrera 74 4303",
+					"locality": "Medellin",
+					"region": "Medellin",
+					"country": "CO"
+				}
+			],
+			"ext": {
+				"co-dian-fiscal-responsibility": "R-99-PN",
+				"co-dian-municipality": "05001"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"ref": "A",
+					"name": "Basic Plan",
+					"price": "100000.00"
+				},
+				"sum": "100000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "19%"
+					}
+				],
+				"total": "100000.00"
+			}
+		],
+		"ordering": {
+			"code": "ORD-2"
+		},
+		"payment": {
+			"advances": [
+				{
+					"description": "Prepaid",
+					"percent": "100.0%",
+					"amount": "100000.00"
+				}
+			]
+		},
+		"totals": {
+			"sum": "100000.00",
+			"tax_included": "15966.39",
+			"total": "84033.61",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "84033.61",
+								"percent": "19%",
+								"amount": "15966.39"
+							}
+						],
+						"amount": "15966.39"
+					}
+				],
+				"sum": "15966.39"
+			},
+			"tax": "15966.39",
+			"total_with_tax": "100000.00",
+			"payable": "100000.00",
+			"advance": "100000.00",
+			"due": "0.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjZlNzZhYzMzLTVjOWQtNDAxYS04OWRhLTBlNTJlNDQwMjcxOSJ9.eyJ1dWlkIjoiMDE5ZjEzZjctODEzYi03NGY5LWFiMGEtMmM4NTI3MTcxOTBkIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjM1MDIwOWI1MGM5NGJiNzMxN2NhNTQ3ODFhOTc0NzY1YzAxOTQzN2ZkOWU3OTBmMzliYzIzNzQwOGIxYjEzNTcifX0.OCr1sxf1X_DGeAiJObHOrqizDda6bGAUoaqVWDgRAbCMlinwldKA5hbYvfJXrMZF3k62_rDVeyP1h_YVAP8MFA"
+	]
+}

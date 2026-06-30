@@ -13,6 +13,7 @@ de:
         other: "Beleg"
         paid: "Bezahlt"
         void: "Ungültig"
+        self-billed: "Gutschriftverfahren"
         untdid:
           "325": "Proforma-Rechnung"
           "380": "Rechnung"
@@ -250,9 +251,3 @@ de:
     address:
       label: "%{label}:"
       country: "(%{country})"
-
-  regimes:
-    co:
-      cufe: "CUFE: %{cufe}"
-      cude: "CUDE: %{cude}"
-      preceding_cufe: "CUFE Vorherige Rechnung: %{cufe}"

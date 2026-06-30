@@ -14,6 +14,7 @@ gl:
         other: "Documento"
         paid: "Pagado"
         void: "Anulado"
+        self-billed: "Autofacturación"
         untdid:
           "325": "Factura proforma"
           "380": "Factura"

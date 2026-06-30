@@ -13,6 +13,7 @@ el:
         other: "Έγγραφο"
         paid: "Πληρώθηκε"
         void: "Ακυρωμένο"
+        self-billed: "Αυτοτιμολόγηση"
         untdid:
           "325": "Προτιμολόγιο"
           "380": "Τιμολόγιο"
@@ -259,10 +260,6 @@ el:
   regimes:
     pl:
       ksef-id: "ID: %{id}"
-    co:
-      cufe: "CUFE: %{cufe}"
-      cude: "CUDE: %{cude}"
-      preceding_cufe: "CUFE Προηγούμενου τιμολογίου: %{cufe}"
     gr:
       title:
         1:

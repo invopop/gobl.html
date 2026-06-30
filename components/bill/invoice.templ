@@ -23,6 +23,7 @@ import (
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/catalogues/untdid"
 	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/l10n"
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
 )
@@ -157,6 +158,11 @@ templ titleBadges(env *gobl.Envelope, doc internal.Document) {
 			@t.T(".paid")
 		</span>
 	}
+	if isSelfBilled(doc) {
+		<span class="self-billed">
+			@t.T(".self-billed")
+		</span>
+	}
 	if lbl := label(ctx); lbl != "" {
 		<span class="label">
 			{ lbl }
@@ -238,6 +244,22 @@ func label(ctx context.Context) string {
 	opts := internal.Options(ctx)
 
 	return opts.Label
+}
+
+// franceCountry scopes the self-billed badge to French invoices.
+var franceCountry = l10n.FR.Tax()
+
+// isSelfBilled reports whether the document is a French self-billed invoice
+// ("autofacturation"), which is flagged with a label next to the title.
+func isSelfBilled(doc internal.Document) bool {
+	inv, ok := doc.Extract().(*bill.Invoice)
+	if !ok {
+		return false
+	}
+	if doc.GetRegime().Country.Code().Tax() != franceCountry {
+		return false
+	}
+	return inv.HasTags(tax.TagSelfBilled)
 }
 
 func isSimplifiedInvoice(doc internal.Document) bool {

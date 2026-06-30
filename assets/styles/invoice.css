@@ -136,6 +136,7 @@ section.title .arca-doc-type .code {
 }
 section.title span.paid,
 section.title span.void,
+section.title span.self-billed,
 section.title span.label {
     font-size: 9pt;
     font-weight: 400;

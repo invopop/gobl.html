@@ -12,6 +12,7 @@ fr:
         other: "Document"
         paid: "Payé"
         void: "Annulé"
+        self-billed: "Autofacturation"
         untdid:
           "325": "Facture proforma"
           "380": "Facture"
@@ -240,9 +241,3 @@ fr:
     address:
       label: "%{label}"
       country: "(%{country})"
-
-  regimes:
-    co:
-      cufe: "CUFE: %{cufe}"
-      cude: "CUDE: %{cude}"
-      preceding_cufe: "CUFE Facture précédente: %{cufe}"

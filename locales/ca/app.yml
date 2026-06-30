@@ -14,6 +14,7 @@ ca:
         other: "Document"
         paid: "Pagat"
         void: "Anul·lat"
+        self-billed: "Autofacturació"
         untdid:
           "325": "Factura proforma"
           "380": "Factura"
@@ -267,10 +268,6 @@ ca:
   regimes:
     pl:
       ksef-id: "ID: %{id}"
-    co:
-      cufe: "CUFE: %{cufe}"
-      cude: "CUDE: %{cude}"
-      preceding_cufe: "CUFE factura anterior: %{cufe}"
     gr:
       title:
         1:

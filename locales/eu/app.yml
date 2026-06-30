@@ -14,6 +14,7 @@ eu:
         other: "Dokumentua"
         paid: "Ordaindua"
         void: "Ezeztatua"
+        self-billed: "Autofakturazioa"
         untdid:
           "325": "Proforma faktura"
           "380": "Faktura"
@@ -267,10 +268,6 @@ eu:
   regimes:
     pl:
       ksef-id: "ID: %{id}"
-    co:
-      cufe: "CUFE: %{cufe}"
-      cude: "CUDE: %{cude}"
-      preceding_cufe: "CUFE aurreko faktura: %{cufe}"
     gr:
       title:
         1:
