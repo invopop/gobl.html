@@ -1,0 +1,130 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "019f139a-08f4-745d-bf9c-6fa871d1d6c3",
+		"dig": {
+			"alg": "sha256",
+			"val": "905bc6fcb598e024578759ac32c42278b0cad477d84340ea07ea27b750eda0ac"
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJ4252T-5"
+			},
+			{
+				"prv": "at-hash",
+				"val": "BGXN"
+			},
+			{
+				"prv": "at-hash-full",
+				"val": "B4nBO925enGmaoF6KedzXv0CxNiOdDNSiWuBLdmM7W/1/Ct9EvrCGh6HBV/x+kGz9UMM8dka5S2z/BrM1B3XXk3+RxgkHLAxFrpUAmiA4kF7ZUc780W/siBYmg+heE4/D+Vblvdb+920YbDkTUbEiOZOnTuX2HYGiE1zDFnyO8w="
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:545259045*B:514329874*C:PT*D:RC*E:N*F:20250130*G:RC SAMPLE/1*H:AAJFJ4252T-5*I1:PT*I7:100.00*I8:23.00*N:23.00*O:123.00*Q:BGXN*R:0"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "0"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/payment",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"$tags": [
+			"cash-vat"
+		],
+		"uuid": "d7388b17-d35f-4f2e-a33e-9bca2fae9089",
+		"type": "receipt",
+		"series": "RC SAMPLE",
+		"code": "1",
+		"issue_date": "2025-01-30",
+		"currency": "EUR",
+		"ext": {
+			"pt-saft-payment-type": "RC",
+			"pt-saft-source": "P"
+		},
+		"supplier": {
+			"uuid": "9de7584f-ea5c-42a7-b159-5e4c6a280a5c",
+			"name": "Hotelzinho",
+			"tax_id": {
+				"country": "PT",
+				"code": "545259045"
+			},
+			"addresses": [
+				{
+					"street": "Rua do Hotelzinho",
+					"locality": "Lisboa",
+					"code": "1000-000"
+				}
+			]
+		},
+		"customer": {
+			"name": "Maria Santos Silva",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Rua da Maria",
+					"locality": "Lisboa",
+					"code": "1000-000"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"document": {
+					"issue_date": "2025-01-15",
+					"series": "FT SAMPLE",
+					"code": "1",
+					"payable": "123.00"
+				},
+				"payable": "123.00",
+				"amount": "123.00",
+				"due": "0.00",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"ext": {
+										"pt-region": "PT",
+										"pt-saft-tax-rate": "NOR"
+									},
+									"base": "100.00",
+									"percent": "23.0%",
+									"amount": "23.00"
+								}
+							],
+							"amount": "23.00"
+						}
+					],
+					"sum": "23.00"
+				}
+			}
+		],
+		"methods": [
+			{
+				"key": "credit-transfer",
+				"description": "Transferência bancária",
+				"amount": "123.00",
+				"ext": {
+					"pt-saft-payment-means": "TB"
+				}
+			}
+		],
+		"total": "123.00"
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjU2ZDIwN2E5LTc5ZDMtNDRjYy05OTQwLTYwNjczM2JhN2MxMyJ9.eyJ1dWlkIjoiMDE5NGRhNjUtOGU4MC03N2QwLTk4NDMtOTQ0MjExYTBlYjFhIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImFiODQxYTViYzAyNTNiZWM1OTg3Y2Q1ZDY5ODE5ZDk2OTAzZDM3MDc5MDRkZDJmYjE2YjczNzg4OGNlOGZmOGQifX0.VglMwc1bYRGKaxgmkAIRpaq0OX-hhmSJkcbkCXp3rDfDyoNi_KpvsFdsVF8KFA9p2OiiRAC9bNNUsvOKVNwE4Q"
+	]
+}
