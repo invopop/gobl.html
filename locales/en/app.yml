@@ -15,6 +15,7 @@ en:
         other: "Document"
         paid: "Paid"
         void: "Void"
+        self-billed: "Self-billed"
         untdid:
           "325": "Proforma invoice"
           "380": "Invoice"

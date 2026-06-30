@@ -14,6 +14,7 @@ eu:
         other: "Dokumentua"
         paid: "Ordaindua"
         void: "Ezeztatua"
+        self-billed: "Autofakturazioa"
         untdid:
           "325": "Proforma faktura"
           "380": "Faktura"
