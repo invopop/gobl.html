@@ -12,7 +12,7 @@ import (
 	"fmt"
 
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl/addons/mx/cfdi"
+	cfdi "github.com/invopop/gobl.mx.cfdi/addon"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/currency"

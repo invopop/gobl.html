@@ -4,15 +4,16 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "f990def78c7922d9bc752277ab4317d34dee391ed843fcdb3d2e0462f7e373aa"
-		}
+			"val": "3e4a971ade00faa1c3eab81a3f1a1ad437bdc1c1a0d4b953d4f5f2b999cd87d0"
+		},
+		"from": "iso6523-actorid-upis::0225:732829320"
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
 		"$regime": "FR",
 		"$addons": [
 			"eu-en16931-v2017",
-			"fr-ctc-flow2-v1"
+			"fr-ctc-flow10-v1"
 		],
 		"uuid": "d4e5f6a7-8901-23de-f012-456789012abc",
 		"type": "standard",
@@ -26,7 +27,17 @@
 			"ext": {
 				"fr-ctc-billing-mode": "B7",
 				"untdid-document-type": "380"
-			}
+			},
+			"notes": [
+				{
+					"cat": "VAT",
+					"key": "exempt",
+					"text": "Exonération de TVA - Livraison intracommunautaire (article 262 ter, I du CGI).",
+					"ext": {
+						"untdid-tax-category": "E"
+					}
+				}
+			]
 		},
 		"supplier": {
 			"name": "Fournisseur France SARL",
@@ -42,6 +53,11 @@
 					"ext": {
 						"iso-scheme-id": "0002"
 					}
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0225:732829320"
 				}
 			],
 			"inboxes": [
@@ -72,6 +88,15 @@
 				"country": "DE",
 				"code": "111111125"
 			},
+			"identities": [
+				{
+					"scope": "legal",
+					"code": "DE111111125",
+					"ext": {
+						"iso-scheme-id": "0223"
+					}
+				}
+			],
 			"inboxes": [
 				{
 					"email": "buchhaltung@kunde.de"
