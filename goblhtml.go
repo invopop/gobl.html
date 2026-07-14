@@ -11,6 +11,7 @@ import (
 
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
+	_ "github.com/invopop/gobl.dev/bundle" // registers the GOBL-approved addon set
 	"github.com/invopop/gobl.html/components"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/layout"

@@ -10,7 +10,7 @@ import (
 
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/internal"
-	"github.com/invopop/gobl/addons/pt/saft"
+	saft "github.com/invopop/gobl.pt.saft/addon"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/l10n"

@@ -11,7 +11,7 @@ import templruntime "github.com/a-h/templ/runtime"
 import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
-	"github.com/invopop/gobl/addons/mx/cfdi"
+	cfdi "github.com/invopop/gobl.mx.cfdi/addon"
 	"github.com/invopop/gobl/head"
 	"github.com/invopop/gobl/regimes/mx"
 )

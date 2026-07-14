@@ -9,7 +9,7 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
-	"github.com/invopop/gobl/addons/mx/cfdi"
+	cfdi "github.com/invopop/gobl.mx.cfdi/addon"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/org"
 )
