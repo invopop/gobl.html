@@ -9,7 +9,7 @@ require (
 	github.com/invopop/gobl v0.502.2
 	github.com/invopop/gobl.dev v0.500.7
 	github.com/invopop/gobl.mx.cfdi v0.62.0
-	github.com/invopop/gobl.pt.saft v0.0.3
+	github.com/invopop/gobl.pt.saft v0.0.5
 	github.com/invopop/gobl.sa.zatca v0.0.2
 	github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a
 	github.com/labstack/echo/v4 v4.15.0

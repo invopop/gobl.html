@@ -107,6 +107,9 @@ func qrNotes(ctx context.Context, env *gobl.Envelope) []string {
 		if dt != cbc.CodeEmpty && !slices.Contains(invoiceTypes, dt) {
 			notes = append(notes, "Este documento não serve de fatura")
 		}
+		if isCashVAT(d) {
+			notes = append(notes, "IVA - regime de caixa")
+		}
 		if isSandbox(ctx) {
 			notes = append(notes, "Documento emitido para fins de Formação")
 		}
@@ -203,6 +206,15 @@ func docType(doc internal.Document) cbc.Code {
 
 func isPortuguese(doc internal.Document) bool {
 	return doc != nil && doc.GetRegime().Country.Code().Tax() == country
+}
+
+func isCashVAT(doc internal.Document) bool {
+	if doc == nil {
+		return false
+	}
+	ext := doc.GetExt()
+	return ext.Get(saft.ExtKeyCashVAT) == "1" ||
+		ext.Get(saft.ExtKeyPaymentType) == saft.PaymentTypeCash
 }
 
 func isSandbox(ctx context.Context) bool {

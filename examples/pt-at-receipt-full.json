@@ -87,6 +87,20 @@
 				}
 			]
 		},
+		"ordering": {
+			"code": "111-9244735-1237858",
+			"identities": [
+				{
+					"label": "Provider Ref.",
+					"code": "PROV1234"
+				}
+			],
+			"period": {
+				"label": "Service period",
+				"start": "2022-02-01",
+				"end": "2022-02-28"
+			}
+		},
 		"lines": [
 			{
 				"i": 1,
@@ -771,20 +785,6 @@
 				"amount": "3924.75"
 			}
 		],
-		"ordering": {
-			"code": "111-9244735-1237858",
-			"identities": [
-				{
-					"label": "Provider Ref.",
-					"code": "PROV1234"
-				}
-			],
-			"period": {
-				"label": "Service period",
-				"start": "2022-02-01",
-				"end": "2022-02-28"
-			}
-		},
 		"total": "3924.75",
 		"notes": [
 			{
