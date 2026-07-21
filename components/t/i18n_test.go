@@ -16,59 +16,48 @@ import (
 func TestLocalizeCurrency(t *testing.T) {
 	amount := num.MakeAmount(123456, 2)
 
-	tests := []struct {
-		name     string
-		opts     *internal.Opts
-		expected string
-	}{
-		{
-			name:     "currency defaults",
-			opts:     &internal.Opts{},
-			expected: "€1.234,56",
-		},
-		{
-			name: "custom currency template",
-			opts: &internal.Opts{
-				CurrencyTemplate: "%n %u",
-			},
-			expected: "1.234,56 €",
-		},
-		{
-			name: "custom separators",
-			opts: &internal.Opts{
-				ThousandsSeparator: ",",
-				DecimalMark:        ".",
-			},
-			expected: "€1,234.56",
-		},
-		{
-			name: "custom negative template",
-			opts: &internal.Opts{
-				NegativeTemplate: "(%n%u)",
-			},
-			expected: "€1.234,56",
-		},
-	}
-
-	for _, tc := range tests {
-		t.Run(tc.name, func(t *testing.T) {
-			ctx := internal.WithOptions(context.Background(), tc.opts)
-			got := calT.LocalizeCurrency(ctx, amount, currency.EUR)
-			assert.Equal(t, tc.expected, got)
-		})
-	}
-
-	t.Run("negative amount with custom template", func(t *testing.T) {
-		ctx := internal.WithOptions(context.Background(), &internal.Opts{
-			NegativeTemplate: "(%u%n)",
-		})
-		got := calT.LocalizeCurrency(ctx, amount.Negate(), currency.EUR)
-		assert.Equal(t, "(€1.234,56)", got)
-	})
-
 	t.Run("no options in context", func(t *testing.T) {
 		got := calT.LocalizeCurrency(context.Background(), amount, currency.EUR)
 		assert.Equal(t, "€1.234,56", got)
+	})
+
+	t.Run("no formatter in options", func(t *testing.T) {
+		ctx := internal.WithOptions(context.Background(), &internal.Opts{})
+		got := calT.LocalizeCurrency(ctx, amount, currency.EUR)
+		assert.Equal(t, "€1.234,56", got)
+	})
+
+	t.Run("uses document layout with target currency symbol", func(t *testing.T) {
+		// A GBP document formatted with a custom layout, e.g. "3,99 £",
+		// converting an amount to EUR should keep the same layout: "1 234,56 €".
+		nf := currency.GBP.Def().Formatter()
+		nf.Template = "%n %u"
+		nf.ThousandsSeparator = " "
+		nf.DecimalMark = ","
+		ctx := internal.WithOptions(context.Background(), &internal.Opts{
+			NumFormatter: &nf,
+		})
+		got := calT.LocalizeCurrency(ctx, amount, currency.EUR)
+		assert.Equal(t, "1 234,56 €", got)
+	})
+
+	t.Run("negative amounts follow the document layout", func(t *testing.T) {
+		nf := currency.GBP.Def().Formatter()
+		nf.NegativeTemplate = "(%u%n)"
+		ctx := internal.WithOptions(context.Background(), &internal.Opts{
+			NumFormatter: &nf,
+		})
+		got := calT.LocalizeCurrency(ctx, amount.Negate(), currency.EUR)
+		assert.Equal(t, "(€1,234.56)", got)
+	})
+
+	t.Run("disambiguate symbol is preserved", func(t *testing.T) {
+		nf := currency.EUR.Def().Formatter()
+		ctx := internal.WithOptions(context.Background(), &internal.Opts{
+			NumFormatter: &nf,
+		})
+		got := calT.LocalizeCurrency(ctx, amount, currency.USD, currency.WithDisambiguateSymbol())
+		assert.Equal(t, "US$1.234,56", got)
 	})
 }
 
