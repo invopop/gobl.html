@@ -1,0 +1,108 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
+		"dig": {
+			"alg": "sha256",
+			"val": "e5f67dc001d69b246e84509a69f431da02481455be65cf09967f83ea8ad5ccb6"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"it-ticket-v1"
+		],
+		"uuid": "019809b8-c9d3-7a15-8c22-6f3a2b1d4e5f",
+		"type": "corrective",
+		"series": "SAMPLE",
+		"code": "002",
+		"issue_date": "2026-06-15",
+		"currency": "EUR",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2026-06-10",
+				"series": "SAMPLE",
+				"code": "001",
+				"reason": "Reso merce",
+				"stamps": [
+					{
+						"prv": "ade-ref",
+						"val": "0000123456"
+					}
+				]
+			}
+		],
+		"tax": {
+			"prices_include": "VAT"
+		},
+		"supplier": {
+			"name": "Negozio Roma S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "12345678903"
+			},
+			"addresses": [
+				{
+					"num": "12",
+					"street": "Via del Corso",
+					"locality": "Roma",
+					"code": "00186",
+					"country": "IT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Scarpe da corsa",
+					"price": "100.00",
+					"ext": {
+						"it-ticket-product": "goods"
+					}
+				},
+				"sum": "100.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "22.0%"
+					}
+				],
+				"total": "100.00",
+				"ext": {
+					"it-ticket-line-ref": "0000123456"
+				}
+			}
+		],
+		"totals": {
+			"sum": "100.00",
+			"tax_included": "18.03",
+			"total": "81.97",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "81.97",
+								"percent": "22.0%",
+								"amount": "18.03"
+							}
+						],
+						"amount": "18.03"
+					}
+				],
+				"sum": "18.03"
+			},
+			"tax": "18.03",
+			"total_with_tax": "100.00",
+			"payable": "100.00"
+		}
+	}
+}

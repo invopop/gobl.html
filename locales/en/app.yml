@@ -272,6 +272,13 @@ en:
     co:
       title:
         standard: "Electronic sales invoice"
+    it:
+      title:
+        # AdE receipt document names ("documento commerciale"); corrections
+        # keep the commercial document title per Risposta all'interpello
+        # n. 167/2020.
+        ticket: "Commercial document"
+        ticket-corrective: "Cancellation commercial document"
     gr:
       title:
         1:

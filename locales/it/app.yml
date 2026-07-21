@@ -240,3 +240,9 @@ it:
     address:
       label: "%{label}:"
       country: "(%{country})"
+  regimes:
+    it:
+      title:
+        # Nome ufficiale del documento AdE (Risposta all'interpello n. 167/2020).
+        ticket: "Documento commerciale"
+        ticket-corrective: "Documento commerciale di annullamento"

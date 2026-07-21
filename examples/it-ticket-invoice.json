@@ -1,0 +1,114 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
+		"dig": {
+			"alg": "sha256",
+			"val": "e6afda2d2dff6d6985db0545f3ff1efa28445d5788f2e8d91b7e5a7206c6e6de"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"it-ticket-v1"
+		],
+		"uuid": "019809b8-c9d3-7a15-8c22-6f3a2b1d4e60",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "001",
+		"issue_date": "2026-06-10",
+		"currency": "EUR",
+		"tax": {
+			"prices_include": "VAT",
+			"ext": {
+				"it-ticket-lottery": "A1B2C3D4"
+			}
+		},
+		"supplier": {
+			"name": "Negozio Roma S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "12345678903"
+			},
+			"addresses": [
+				{
+					"num": "12",
+					"street": "Via del Corso",
+					"locality": "Roma",
+					"code": "00186",
+					"country": "IT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Scarpe da corsa",
+					"price": "100.00",
+					"ext": {
+						"it-ticket-product": "goods"
+					}
+				},
+				"sum": "100.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "22.0%"
+					}
+				],
+				"total": "100.00"
+			},
+			{
+				"i": 2,
+				"quantity": "2",
+				"item": {
+					"name": "Calzini sportivi",
+					"price": "8.50",
+					"ext": {
+						"it-ticket-product": "goods"
+					}
+				},
+				"sum": "17.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "22.0%"
+					}
+				],
+				"total": "17.00"
+			}
+		],
+		"totals": {
+			"sum": "117.00",
+			"tax_included": "21.10",
+			"total": "95.90",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "95.90",
+								"percent": "22.0%",
+								"amount": "21.10"
+							}
+						],
+						"amount": "21.10"
+					}
+				],
+				"sum": "21.10"
+			},
+			"tax": "21.10",
+			"total_with_tax": "117.00",
+			"payable": "117.00"
+		}
+	}
+}
