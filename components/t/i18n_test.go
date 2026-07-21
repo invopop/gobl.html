@@ -8,9 +8,69 @@ import (
 	calT "github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/cal"
+	"github.com/invopop/gobl/currency"
 	"github.com/invopop/gobl/num"
 	"github.com/stretchr/testify/assert"
 )
+
+func TestLocalizeCurrency(t *testing.T) {
+	amount := num.MakeAmount(123456, 2)
+
+	tests := []struct {
+		name     string
+		opts     *internal.Opts
+		expected string
+	}{
+		{
+			name:     "currency defaults",
+			opts:     &internal.Opts{},
+			expected: "€1.234,56",
+		},
+		{
+			name: "custom currency template",
+			opts: &internal.Opts{
+				CurrencyTemplate: "%n %u",
+			},
+			expected: "1.234,56 €",
+		},
+		{
+			name: "custom separators",
+			opts: &internal.Opts{
+				ThousandsSeparator: ",",
+				DecimalMark:        ".",
+			},
+			expected: "€1,234.56",
+		},
+		{
+			name: "custom negative template",
+			opts: &internal.Opts{
+				NegativeTemplate: "(%n%u)",
+			},
+			expected: "€1.234,56",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			ctx := internal.WithOptions(context.Background(), tc.opts)
+			got := calT.LocalizeCurrency(ctx, amount, currency.EUR)
+			assert.Equal(t, tc.expected, got)
+		})
+	}
+
+	t.Run("negative amount with custom template", func(t *testing.T) {
+		ctx := internal.WithOptions(context.Background(), &internal.Opts{
+			NegativeTemplate: "(%u%n)",
+		})
+		got := calT.LocalizeCurrency(ctx, amount.Negate(), currency.EUR)
+		assert.Equal(t, "(€1.234,56)", got)
+	})
+
+	t.Run("no options in context", func(t *testing.T) {
+		got := calT.LocalizeCurrency(context.Background(), amount, currency.EUR)
+		assert.Equal(t, "€1.234,56", got)
+	})
+}
 
 func TestLocalizeDateTime(t *testing.T) {
 	// 2026-03-25T12:34 – matches the co-dian-invoice example that has both

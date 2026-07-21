@@ -88,8 +88,24 @@ func LocalizeMoney(ctx context.Context, a num.Amount) string {
 }
 
 // LocalizeCurrency will produce a localized string representation of the given
-// amount for the provided currency.
-func LocalizeCurrency(_ context.Context, a num.Amount, cur currency.Code, opts ...currency.FormatOption) string {
+// amount for the provided currency. Any currency layout overrides defined in
+// the rendering options, such as the currency template or separators, take
+// precedence over the currency's own defaults.
+func LocalizeCurrency(ctx context.Context, a num.Amount, cur currency.Code, opts ...currency.FormatOption) string {
 	f := cur.Def().Formatter(opts...)
+	if o := internal.Options(ctx); o != nil {
+		if o.CurrencyTemplate != "" {
+			f.Template = o.CurrencyTemplate
+		}
+		if o.ThousandsSeparator != "" {
+			f.ThousandsSeparator = o.ThousandsSeparator
+		}
+		if o.DecimalMark != "" {
+			f.DecimalMark = o.DecimalMark
+		}
+		if o.NegativeTemplate != "" {
+			f.NegativeTemplate = o.NegativeTemplate
+		}
+	}
 	return f.Amount(a)
 }

@@ -203,10 +203,18 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 			nf = d.GetCurrency().Def().Formatter()
 
 			if d.GetRegime().Country.Code() == l10n.PT {
-				// As required by the Portuguese tax law
-				nf.ThousandsSeparator = " "
-				nf.DecimalMark = ","
-				nf.Template = "%n %u"
+				// As required by the Portuguese tax law. Set as option
+				// overrides so that amounts in other currencies, such as
+				// exchange rate conversions, use the same layout.
+				if o.ThousandsSeparator == "" {
+					o.ThousandsSeparator = " "
+				}
+				if o.DecimalMark == "" {
+					o.DecimalMark = ","
+				}
+				if o.CurrencyTemplate == "" {
+					o.CurrencyTemplate = "%n %u"
+				}
 			}
 		}
 	}
