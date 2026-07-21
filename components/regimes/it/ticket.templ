@@ -1,0 +1,19 @@
+package it
+
+import (
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal"
+)
+
+// TitleType renders the official "Documento commerciale" title for documents
+// issued under the it-ticket-v1 addon, which are always receipts. Corrective
+// documents are titled "Documento commerciale di annullamento": the Agenzia
+// delle Entrate treats corrections as regular commercial documents that
+// reference the original operation (Risposta all'interpello n. 167/2020), so
+// the title must not change to a corrective invoice one. Falls through to the
+// default title when not applicable.
+templ TitleType(doc internal.Document) {
+	if key := ticketTitleKey(doc); key != "" {
+		@t.T("regimes.it.title." + key)
+	}
+}
