@@ -1,0 +1,216 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
+		"dig": {
+			"alg": "sha256",
+			"val": "e588d036427eab5deef69c8855be9be469cb7a95f63be5f90a6ccb87d01926a5"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FR",
+		"uuid": "018f2a4e-9c6b-7c3a-8e2d-5b1f0a9d4c72",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "002",
+		"issue_date": "2022-02-01",
+		"currency": "EUR",
+		"supplier": {
+			"name": "Provide One SARL",
+			"tax_id": {
+				"country": "FR",
+				"code": "44732829320"
+			},
+			"addresses": [
+				{
+					"num": "16",
+					"street": "Rue de la Paix",
+					"locality": "Paris",
+					"code": "75002",
+					"country": "FR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Sample Consumer",
+			"tax_id": {
+				"country": "FR",
+				"code": "39356000000"
+			},
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Rue Sundacsakn",
+					"locality": "Saint-Germain-En-Laye",
+					"code": "75050",
+					"country": "FR"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Développement logiciel",
+					"price": "90.00",
+					"unit": "h"
+				},
+				"sum": "1800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "1800.00"
+			},
+			{
+				"i": 2,
+				"quantity": "2",
+				"item": {
+					"name": "Formation sur site",
+					"price": "600.00",
+					"unit": "day"
+				},
+				"sum": "1200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "1200.00"
+			},
+			{
+				"i": 3,
+				"quantity": "5",
+				"item": {
+					"name": "Maintenance mensuelle",
+					"price": "120.00",
+					"unit": "service"
+				},
+				"sum": "600.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "600.00"
+			},
+			{
+				"i": 4,
+				"quantity": "10",
+				"item": {
+					"name": "Clavier sans fil",
+					"price": "45.50",
+					"unit": "piece"
+				},
+				"sum": "455.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "455.00"
+			},
+			{
+				"i": 5,
+				"quantity": "3",
+				"item": {
+					"name": "Papier A4 (500 feuilles)",
+					"price": "12.00",
+					"unit": "box"
+				},
+				"sum": "36.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "36.00"
+			},
+			{
+				"i": 6,
+				"quantity": "25",
+				"item": {
+					"name": "Café en grains",
+					"price": "9.80",
+					"unit": "kg"
+				},
+				"sum": "245.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "245.00"
+			},
+			{
+				"i": 7,
+				"quantity": "12",
+				"item": {
+					"name": "Eau minérale",
+					"price": "1.20",
+					"unit": "bottle"
+				},
+				"sum": "14.40",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "14.40"
+			}
+		],
+		"totals": {
+			"sum": "4350.40",
+			"total": "4350.40",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "4350.40",
+								"percent": "20%",
+								"amount": "870.08"
+							}
+						],
+						"amount": "870.08"
+					}
+				],
+				"sum": "870.08"
+			},
+			"tax": "870.08",
+			"total_with_tax": "5220.48",
+			"payable": "5220.48"
+		}
+	}
+}
