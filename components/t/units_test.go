@@ -50,4 +50,22 @@ func TestUnitName(t *testing.T) {
 			}
 		}
 	})
+
+	t.Run("every locale translates all symbol-less units", func(t *testing.T) {
+		// Load without the default locale merge so that missing keys in a
+		// locale's own units.yml are not masked by the English fallback.
+		unmerged := new(i18n.Locales)
+		require.NoError(t, unmerged.Load(srclocales.Content))
+
+		for _, code := range []string{"ar", "ca", "de", "el", "en", "es", "eu", "fr", "gl", "it", "pl", "pt"} {
+			l := unmerged.Get(i18n.Code(code))
+			require.NotNil(t, l)
+			for _, def := range org.UnitDefinitions {
+				if def.Symbol != "" {
+					continue
+				}
+				assert.True(t, l.Has("units."+string(def.Unit)), "missing translation for unit %q in locale %q", def.Unit, code)
+			}
+		}
+	})
 }
