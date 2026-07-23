@@ -225,6 +225,8 @@ func showIdentity(ctx context.Context, ident *org.Identity) bool {
 		return true
 	}
 	if ident.Key != "" {
+		// ctxi18n returns "!(MISSING: <key>)" when no translation is
+		// defined, so a "!" prefix means the key has no label to show.
 		label := i18n.T(ctx, fmt.Sprintf(".identity_labels.%s", ident.Key))
 		return !strings.HasPrefix(label, "!")
 	}
