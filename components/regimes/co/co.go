@@ -22,8 +22,11 @@ func titleKey(doc internal.Document) string {
 	if !ok {
 		return ""
 	}
-	if inv.Type == bill.InvoiceTypeStandard {
+	switch inv.Type {
+	case bill.InvoiceTypeStandard:
 		return "standard"
+	case bill.InvoiceTypeCreditNote:
+		return "credit-note"
 	}
 	return ""
 }

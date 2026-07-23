@@ -272,6 +272,7 @@ en:
     co:
       title:
         standard: "Electronic sales invoice"
+        credit-note: "Electronic credit note"
     it:
       title:
         # AdE receipt document names ("documento commerciale"); corrections
