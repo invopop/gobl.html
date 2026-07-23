@@ -461,17 +461,19 @@ func identities(idents []*org.Identity) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		for _, ident := range idents {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "<div class=\"identitiy\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = t.T(".identity", i18n.M{"label": identityLabel(ctx, ident), "code": ident.Code}).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "</div>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
+			if showIdentity(ctx, ident) {
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "<div class=\"identitiy\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = t.T(".identity", i18n.M{"label": identityLabel(ctx, ident), "code": ident.Code}).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "</div>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
 			}
 		}
 		return nil
@@ -532,7 +534,7 @@ func registration(reg *org.Registration) templ.Component {
 					var templ_7745c5c3_Var14 string
 					templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(reg.Office)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 116, Col: 18}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 118, Col: 18}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 					if templ_7745c5c3_Err != nil {
@@ -635,7 +637,7 @@ func registration(reg *org.Registration) templ.Component {
 					var templ_7745c5c3_Var15 string
 					templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(reg.Other)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 151, Col: 17}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 153, Col: 17}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 					if templ_7745c5c3_Err != nil {
@@ -705,7 +707,7 @@ func partyExtensions(party *org.Party) templ.Component {
 				var templ_7745c5c3_Var17 string
 				templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(txt)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 168, Col: 9}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 170, Col: 9}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 				if templ_7745c5c3_Err != nil {
@@ -766,6 +768,17 @@ func identityLabel(ctx context.Context, ident *org.Identity) string {
 		}
 	}
 	return i18n.T(ctx, ".identity_code")
+}
+
+func showIdentity(ctx context.Context, ident *org.Identity) bool {
+	if ident.Label != "" || ident.Type != "" {
+		return true
+	}
+	if ident.Key != "" {
+		label := i18n.T(ctx, fmt.Sprintf(".identity_labels.%s", ident.Key))
+		return !strings.HasPrefix(label, "!")
+	}
+	return false
 }
 
 func showTaxID(party *org.Party) bool {
