@@ -462,7 +462,7 @@ func identities(idents []*org.Identity) templ.Component {
 		ctx = templ.ClearChildren(ctx)
 		for _, ident := range idents {
 			if showIdentity(ctx, ident) {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "<div class=\"identitiy\">")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "<div class=\"identity\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}

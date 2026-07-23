@@ -99,7 +99,7 @@ templ websites(websites []*org.Website) {
 templ identities(idents []*org.Identity) {
 	for _, ident := range idents {
 		if showIdentity(ctx, ident) {
-			<div class="identitiy">
+			<div class="identity">
 				@t.T(".identity", i18n.M{"label": identityLabel(ctx, ident), "code": ident.Code})
 			</div>
 		}
