@@ -98,9 +98,11 @@ templ websites(websites []*org.Website) {
 
 templ identities(idents []*org.Identity) {
 	for _, ident := range idents {
-		<div class="identitiy">
-			@t.T(".identity", i18n.M{"label": identityLabel(ctx, ident), "code": ident.Code})
-		</div>
+		if showIdentity(ctx, ident) {
+			<div class="identity">
+				@t.T(".identity", i18n.M{"label": identityLabel(ctx, ident), "code": ident.Code})
+			</div>
+		}
 	}
 }
 
@@ -216,6 +218,19 @@ func identityLabel(ctx context.Context, ident *org.Identity) string {
 		}
 	}
 	return i18n.T(ctx, ".identity_code")
+}
+
+func showIdentity(ctx context.Context, ident *org.Identity) bool {
+	if ident.Label != "" || ident.Type != "" {
+		return true
+	}
+	if ident.Key != "" {
+		// ctxi18n returns "!(MISSING: <key>)" when no translation is
+		// defined, so a "!" prefix means the key has no label to show.
+		label := i18n.T(ctx, fmt.Sprintf(".identity_labels.%s", ident.Key))
+		return !strings.HasPrefix(label, "!")
+	}
+	return false
 }
 
 func showTaxID(party *org.Party) bool {
