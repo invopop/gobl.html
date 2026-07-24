@@ -301,9 +301,17 @@ func LocalizeMoney(ctx context.Context, a num.Amount) string {
 }
 
 // LocalizeCurrency will produce a localized string representation of the given
-// amount for the provided currency.
-func LocalizeCurrency(_ context.Context, a num.Amount, cur currency.Code, opts ...currency.FormatOption) string {
+// amount for the provided currency. The layout comes from the document's
+// number formatter so that all amounts are presented consistently: only the
+// unit symbol, as prepared by the format options, is taken from the provided
+// currency, and any other effect of the format options is superseded by the
+// document formatter. When no formatter is available in the context, the
+// currency's own defaults and format options are used as-is.
+func LocalizeCurrency(ctx context.Context, a num.Amount, cur currency.Code, opts ...currency.FormatOption) string {
 	f := cur.Def().Formatter(opts...)
+	if o := internal.Options(ctx); o != nil && o.NumFormatter != nil {
+		f = o.NumFormatter.WithUnit(f.Unit)
+	}
 	return f.Amount(a)
 }
 
