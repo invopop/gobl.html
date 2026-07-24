@@ -29,10 +29,11 @@ func TestUnitName(t *testing.T) {
 	})
 
 	t.Run("translates units without symbol", func(t *testing.T) {
-		assert.Equal(t, "Hours", ct.UnitName(ctxFor("en"), org.UnitHour))
-		assert.Equal(t, "Horas", ct.UnitName(ctxFor("es"), org.UnitHour))
+		assert.Equal(t, "hours", ct.UnitName(ctxFor("en"), org.UnitHour))
+		assert.Equal(t, "horas", ct.UnitName(ctxFor("es"), org.UnitHour))
+		// German nouns keep their capitalization.
 		assert.Equal(t, "Stunden", ct.UnitName(ctxFor("de"), org.UnitHour))
-		assert.Equal(t, "Unidades", ct.UnitName(ctxFor("es"), org.UnitUnit))
+		assert.Equal(t, "unidades", ct.UnitName(ctxFor("es"), org.UnitUnit))
 	})
 
 	t.Run("passes through unknown UN/ECE codes", func(t *testing.T) {
