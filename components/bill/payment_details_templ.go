@@ -823,7 +823,7 @@ func showPayments(inv *bill.Invoice) bool {
 func paid(doc internal.Document) bool {
 	switch d := doc.Extract().(type) {
 	case *bill.Invoice:
-		return d.Totals.Due != nil && d.Totals.Due.IsZero()
+		return d.Totals != nil && d.Totals.Due != nil && d.Totals.Due.IsZero()
 	case *bill.Payment:
 		return true
 	default:

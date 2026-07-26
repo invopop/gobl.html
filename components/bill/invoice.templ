@@ -42,10 +42,12 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 			</header>
 			@lines(inv)
 			<div class="tail">
-				<div class="totals">
-					@totals(inv, inv.Totals)
-					@taxes(inv.RegimeDef(), inv.Totals.Taxes)
-				</div>
+				if inv.Totals != nil {
+					<div class="totals">
+						@totals(inv, inv.Totals)
+						@taxes(inv.RegimeDef(), inv.Totals.Taxes)
+					</div>
+				}
 				@paymentDetails(inv)
 				@notes(invoiceNotes(ctx, inv))
 				<div class="extensions">

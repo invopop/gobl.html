@@ -17,10 +17,12 @@ templ Order(env *gobl.Envelope, ord *bill.Order) {
 			</header>
 			@orderLines(ord)
 			<div class="tail">
-				<div class="totals">
-					@orderTotals(ord, ord.Totals)
-					@taxes(ord.RegimeDef(), ord.Totals.Taxes)
-				</div>
+				if ord.Totals != nil {
+					<div class="totals">
+						@orderTotals(ord, ord.Totals)
+						@taxes(ord.RegimeDef(), ord.Totals.Taxes)
+					</div>
+				}
 				@orderPaymentDetails(ord)
 				@notes(ord.Notes)
 				<div class="extensions">

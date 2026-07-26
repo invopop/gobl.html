@@ -6,6 +6,7 @@ package goblhtml
 import (
 	"bytes"
 	"context"
+	"errors"
 	"fmt"
 	"time"
 
@@ -176,9 +177,24 @@ var EnableAdjustmentMode = func(o *internal.Opts) {
 	o.AdjustmentMode = true
 }
 
+// checkCalculated rejects envelopes whose document is missing the calculated
+// fields the templates rely on. Invoice totals are mandatory in GOBL, so an
+// invoice without them is incomplete and would otherwise render as a document
+// with no amounts at all.
+func checkCalculated(env *gobl.Envelope) error {
+	if inv, ok := env.Extract().(*bill.Invoice); ok && inv.Totals == nil {
+		return errors.New("invoice totals are missing, envelope has not been calculated")
+	}
+	return nil
+}
+
 // Render takes the GOBL envelope and attempts to render an HTML document
 // from it.
 func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, error) {
+	if err := checkCalculated(env); err != nil {
+		return nil, err
+	}
+
 	o := new(internal.Opts)
 	for _, opt := range opts {
 		opt(o)
