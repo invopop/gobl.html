@@ -42,7 +42,7 @@ func TestUnitName(t *testing.T) {
 	})
 
 	t.Run("all units resolve to a name in every locale", func(t *testing.T) {
-		for _, code := range []string{"ar", "ca", "de", "el", "en", "es", "eu", "fr", "gl", "it", "pl", "pt"} {
+		for _, code := range []string{"ar", "ca", "da", "de", "el", "en", "es", "eu", "fr", "gl", "it", "nl", "no", "pl", "pt"} {
 			ctx := ctxFor(code)
 			for _, def := range org.UnitDefinitions {
 				name := ct.UnitName(ctx, def.Unit)
@@ -58,7 +58,7 @@ func TestUnitName(t *testing.T) {
 		unmerged := new(i18n.Locales)
 		require.NoError(t, unmerged.Load(srclocales.Content))
 
-		for _, code := range []string{"ar", "ca", "de", "el", "en", "es", "eu", "fr", "gl", "it", "pl", "pt"} {
+		for _, code := range []string{"ar", "ca", "da", "de", "el", "en", "es", "eu", "fr", "gl", "it", "nl", "no", "pl", "pt"} {
 			l := unmerged.Get(i18n.Code(code))
 			require.NotNil(t, l)
 			for _, def := range org.UnitDefinitions {

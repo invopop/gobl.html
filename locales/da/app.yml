@@ -1,0 +1,253 @@
+da:
+  page: "Side %{page} af %{count}"
+
+  billing:
+    invoice: &invoice
+      title:
+        standard: "Faktura"
+        standard-simplified: "Forenklet faktura"
+        proforma: "Proformafaktura"
+        corrective: "Korrektionsfaktura"
+        credit-note: "Kreditnota"
+        debit-note: "Debetnota"
+        other: "Dokument"
+        paid: "Betalt"
+        void: "Annulleret"
+        self-billed: "Selvfakturering"
+        untdid:
+          "325": "Proformafaktura"
+          "380": "Faktura"
+          "381": "Kreditnota"
+          "383": "Debetnota"
+          "384": "Korrektionsfaktura"
+          "326": "Delfaktura"
+          "389": "Selvfaktureret faktura"
+          "261": "Selvfaktureret kreditnota"
+          "386": "Forudbetalingsfaktura"
+          "393": "Factoringfaktura"
+          "396": "Factoringkreditnota"
+
+      summary: &summary
+        title: "Oversigt"
+        issue_date: "Udstedelsesdato"
+        value_date: "Valørdato"
+        taxable_event: "Afgiftspligtig begivenhed"
+        taxable_event_date: "Dato for afgiftspligtig begivenhed"
+        tax_points:
+          issue: "Udstedelsesdato"
+          delivery: "Leveringsdato"
+          payment: "Betalingsdato"
+        operation_date: "Transaktionsdato"
+        currency: "Valuta"
+        currency_value: "%{desc} (%{code})"
+        preceding_document: "Tidligere dokumenter"
+        replaced_documents: "Erstattede dokumenter"
+        corrected_documents: "Korrigerede dokumenter"
+        order: "Ordre"
+        order_period: "Periode"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} til %{end}"
+
+      supplier:
+        title: "Leverandør"
+
+      customer:
+        title: "Kunde"
+
+      receiver:
+        title: "Leveringsadresse"
+        date: "Leveringsdato: %{date}"
+        period: "Leveringsdato: %{start} til %{end}"
+
+      lines: &lines
+        title: "Linjer"
+        i: "#"
+        ref: "Ref."
+        description: "Beskrivelse"
+        quantity: "Antal"
+        unit: "Enhed"
+        price: "Pris"
+        discount: "Rabat"
+        charges: "Gebyrer"
+        total: "I alt"
+        no_percent: "—"
+        exemption: "Fritagelse"
+        on_behalf_of: "På vegne af"
+        period: "Periode"
+        period_range: "%{start} til %{end}"
+
+      totals: &totals
+        sum: "Sum"
+        discount: "Rabat"
+        charge: "Gebyr"
+        title: "Totaler"
+        prices_include: "Inklusive %{tax}"
+        total: "I alt"
+        taxes: "Moms"
+        total_with_tax: "I alt inkl. moms"
+        retained_tax: "Indeholdt skat"
+        rounding: "Afrunding"
+        total_to_pay: "At betale"
+        advance: "Forudbetaling: %{date} %{txt}"
+        advance_sum: "Sum forudbetalinger"
+        due_sum: "Restbeløb"
+        exchange_rate: "Omregnet til %{to} (%{amount})"
+        carried_fwd: "Videreføres"
+        brought_fwd: "Overført"
+
+      taxes:
+        title: "Moms"
+        category: "Moms"
+        base: "Grundlag"
+        rate: "Sats"
+        amount: "Beløb"
+        exemption: "Fritagelse"
+        no_percent: "—"
+
+      payment: &payment
+        title: "Betaling"
+        instructions: &payment_instructions
+          method: "Betalingsmetode"
+          ref: "Reference"
+          ref_line: "Reference: %{ref}"
+          amount: "Beløb"
+          description: "Beskrivelse"
+          bank_data: "Instruktioner til bankoverførsel"
+          card: "Kortbetaling"
+          card_detail: "Betaling foretaget med kort, der ender på %{last4}, tilhørende %{holder}"
+          direct_debit: "Direkte debitering"
+          mandate_ref: "Mandat: %{ref}"
+          creditor: "Kreditor-ID: %{creditor}"
+          observations: "Bemærkninger til betaling"
+          bank_name: "Bank: %{name}"
+          iban: "IBAN: %{iban}"
+          account_number: "Kontonummer: %{num}"
+          bic: "BIC: %{bic}"
+          online: "Betalingslink"
+          methods:
+            card: "Betalingskort"
+            card+credit: "Kreditkort"
+            card+debit: "Debetkort"
+            credit-transfer: "Bankoverførsel"
+            cash: "Kontant"
+            direct-debit: "Direkte debitering"
+            online: "Online"
+            cheque: "Check"
+        terms:
+          key: "Betalingsbetingelser"
+          notes: "Bemærkninger til betalingsbetingelser"
+          due_dates:
+            one: "Forfaldsdato"
+            other: "Forfaldsdatoer"
+          keys:
+            na: "Ikke angivet"
+            end_of_month: "Ved månedens udgang"
+            due_date: "På forfaldsdatoen"
+            deferred: "Efter forfaldsdato"
+            proximo: "Næste måned"
+            instant: "Ved levering af faktura"
+            elective: "Valgt af kunden"
+            pending: "Fastsættes af leverandøren"
+            advanced: "Betalt"
+            delivery: "Ved levering"
+
+      notes:
+        title: "Bemærkninger"
+
+    payment:
+      <<: *invoice
+      title:
+        request: "Betalingsanmodning"
+        advice: "Betalingsadvisering"
+        receipt: "Betalingskvittering"
+        paid: "Betalt"
+        void: "Annulleret"
+
+      lines:
+        <<: *lines
+        document: "Dokument"
+
+      methods:
+        title: "Metoder"
+        date: "Dato"
+        amount: "Beløb"
+        total: "Betalt i alt"
+        instructions: *payment_instructions
+
+    delivery:
+      <<: *invoice
+      title:
+        advice: "Leveringsadvisering"
+        note: "Følgeseddel"
+        waybill: "Fragtbrev"
+        receipt: "Leveringskvittering"
+
+      summary:
+        <<: *summary
+        despatch_date: "Afsendelsesdato"
+        receive_date: "Modtagelsesdato"
+        preceding_document: "Tidligere dokument"
+
+      despatcher:
+        title: "Afsender"
+
+      receiver:
+        title: "Modtager"
+
+      courier:
+        title: "Kurer"
+
+      tracking:
+        title: "Sporingsoplysninger"
+        code: "Sporingskode"
+        website: "Sporingslink"
+
+    order:
+      <<: *invoice
+      title:
+        purchase: "Indkøbsordre"
+        sale: "Salgsordre"
+        quote: "Tilbud"
+
+      summary:
+        <<: *summary
+        preceding_document: "Tidligere dokument"
+        contract: "Kontrakt"
+        period: "Periode"
+
+      buyer:
+        title: "Køber"
+
+      seller:
+        title: "Sælger"
+
+  org:
+    party:
+      tax_id: "%{label}: (%{country}) %{code}"
+      tel: "Tlf.: %{num}"
+      tel_label: "Tlf.: %{num} (%{label})"
+      email:
+        one: "E-mail: %{addr}"
+        other: "E-mails: %{addr}"
+      email_label: "%{addr} (%{label})"
+      identity: "%{label}: %{code}"
+      identity_code: "Identifikationskode"
+      po_box: "Postboks %{po_box}"
+      labels:
+        default: "Momsnr."
+      ext: "%{label}: %{value}"
+      ext_map:
+        # Sørg for, at denne liste er opdateret på alle sprog!
+        co-dian-municipality: "Kommune"
+      reg:
+        capital: "Selskabskapital: %{amount}"
+        registration: "Registrering:"
+        book: "Bog %{id}"
+        volume: "Bind %{id}"
+        sheet: "Blad %{id}"
+        section: "Afsnit %{id}"
+        page: "Side %{id}"
+        entry: "Indførsel %{id}"
+    address:
+      label: "%{label}:"
+      country: "(%{country})"

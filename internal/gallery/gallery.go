@@ -46,6 +46,12 @@ func LocaleForExample(base string) string {
 		return "pt"
 	case "de":
 		return "de"
+	case "dk":
+		return "da"
+	case "no":
+		return "no"
+	case "nl":
+		return "nl"
 	case "pl":
 		return "pl"
 	case "it":

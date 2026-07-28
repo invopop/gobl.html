@@ -1,0 +1,253 @@
+nl:
+  page: "Pagina %{page} van %{count}"
+
+  billing:
+    invoice: &invoice
+      title:
+        standard: "Factuur"
+        standard-simplified: "Vereenvoudigde factuur"
+        proforma: "Pro-formafactuur"
+        corrective: "Correctiefactuur"
+        credit-note: "Creditnota"
+        debit-note: "Debetnota"
+        other: "Document"
+        paid: "Betaald"
+        void: "Geannuleerd"
+        self-billed: "Zelffacturering"
+        untdid:
+          "325": "Pro-formafactuur"
+          "380": "Factuur"
+          "381": "Creditnota"
+          "383": "Debetnota"
+          "384": "Correctiefactuur"
+          "326": "Deelfactuur"
+          "389": "Zelf uitgereikte factuur"
+          "261": "Zelf uitgereikte creditnota"
+          "386": "Vooruitbetalingsfactuur"
+          "393": "Factoringfactuur"
+          "396": "Factoringcreditnota"
+
+      summary: &summary
+        title: "Overzicht"
+        issue_date: "Uitgiftedatum"
+        value_date: "Valutadatum"
+        taxable_event: "Belastbaar feit"
+        taxable_event_date: "Datum belastbaar feit"
+        tax_points:
+          issue: "Uitgiftedatum"
+          delivery: "Leveringsdatum"
+          payment: "Betaaldatum"
+        operation_date: "Transactiedatum"
+        currency: "Valuta"
+        currency_value: "%{desc} (%{code})"
+        preceding_document: "Voorgaande documenten"
+        replaced_documents: "Vervangen documenten"
+        corrected_documents: "Gecorrigeerde documenten"
+        order: "Bestelling"
+        order_period: "Periode"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} tot %{end}"
+
+      supplier:
+        title: "Leverancier"
+
+      customer:
+        title: "Klant"
+
+      receiver:
+        title: "Afleveradres"
+        date: "Leveringsdatum: %{date}"
+        period: "Leveringsdatum: %{start} tot %{end}"
+
+      lines: &lines
+        title: "Regels"
+        i: "#"
+        ref: "Ref."
+        description: "Omschrijving"
+        quantity: "Aantal"
+        unit: "Eenheid"
+        price: "Prijs"
+        discount: "Korting"
+        charges: "Toeslagen"
+        total: "Totaal"
+        no_percent: "—"
+        exemption: "Vrijstelling"
+        on_behalf_of: "Namens"
+        period: "Periode"
+        period_range: "%{start} tot %{end}"
+
+      totals: &totals
+        sum: "Subtotaal"
+        discount: "Korting"
+        charge: "Toeslag"
+        title: "Totalen"
+        prices_include: "Inclusief %{tax}"
+        total: "Totaal"
+        taxes: "Btw"
+        total_with_tax: "Totaal incl. btw"
+        retained_tax: "Ingehouden belasting"
+        rounding: "Afronding"
+        total_to_pay: "Te betalen"
+        advance: "Vooruitbetaling: %{date} %{txt}"
+        advance_sum: "Som vooruitbetalingen"
+        due_sum: "Openstaand bedrag"
+        exchange_rate: "Omgerekend naar %{to} (%{amount})"
+        carried_fwd: "Transporteren"
+        brought_fwd: "Transport"
+
+      taxes:
+        title: "Btw"
+        category: "Btw"
+        base: "Grondslag"
+        rate: "Tarief"
+        amount: "Bedrag"
+        exemption: "Vrijstelling"
+        no_percent: "—"
+
+      payment: &payment
+        title: "Betaling"
+        instructions: &payment_instructions
+          method: "Betaalmethode"
+          ref: "Referentie"
+          ref_line: "Referentie: %{ref}"
+          amount: "Bedrag"
+          description: "Omschrijving"
+          bank_data: "Instructies voor bankoverschrijving"
+          card: "Kaartbetaling"
+          card_detail: "Betaling met kaart eindigend op %{last4} van %{holder}"
+          direct_debit: "Automatische incasso"
+          mandate_ref: "Mandaat: %{ref}"
+          creditor: "Incassant-ID: %{creditor}"
+          observations: "Betalingsopmerkingen"
+          bank_name: "Bank: %{name}"
+          iban: "IBAN: %{iban}"
+          account_number: "Rekeningnummer: %{num}"
+          bic: "BIC: %{bic}"
+          online: "Betaallink"
+          methods:
+            card: "Betaalkaart"
+            card+credit: "Creditcard"
+            card+debit: "Debetkaart"
+            credit-transfer: "Bankoverschrijving"
+            cash: "Contant"
+            direct-debit: "Automatische incasso"
+            online: "Online"
+            cheque: "Cheque"
+        terms:
+          key: "Betalingsvoorwaarden"
+          notes: "Opmerkingen bij betalingsvoorwaarden"
+          due_dates:
+            one: "Vervaldatum"
+            other: "Vervaldata"
+          keys:
+            na: "Niet gespecificeerd"
+            end_of_month: "Einde van de maand"
+            due_date: "Op de vervaldatum"
+            deferred: "Na de vervaldatum"
+            proximo: "Volgende maand"
+            instant: "Bij levering van de factuur"
+            elective: "Gekozen door de klant"
+            pending: "Te bepalen door de leverancier"
+            advanced: "Betaald"
+            delivery: "Bij levering"
+
+      notes:
+        title: "Opmerkingen"
+
+    payment:
+      <<: *invoice
+      title:
+        request: "Betalingsverzoek"
+        advice: "Betalingsadvies"
+        receipt: "Betalingsbewijs"
+        paid: "Betaald"
+        void: "Geannuleerd"
+
+      lines:
+        <<: *lines
+        document: "Document"
+
+      methods:
+        title: "Methoden"
+        date: "Datum"
+        amount: "Bedrag"
+        total: "Totaal betaald"
+        instructions: *payment_instructions
+
+    delivery:
+      <<: *invoice
+      title:
+        advice: "Leveringsadvies"
+        note: "Pakbon"
+        waybill: "Vrachtbrief"
+        receipt: "Ontvangstbewijs"
+
+      summary:
+        <<: *summary
+        despatch_date: "Verzenddatum"
+        receive_date: "Ontvangstdatum"
+        preceding_document: "Voorgaand document"
+
+      despatcher:
+        title: "Verzender"
+
+      receiver:
+        title: "Ontvanger"
+
+      courier:
+        title: "Koerier"
+
+      tracking:
+        title: "Trackinginformatie"
+        code: "Trackingcode"
+        website: "Trackinglink"
+
+    order:
+      <<: *invoice
+      title:
+        purchase: "Inkooporder"
+        sale: "Verkooporder"
+        quote: "Offerte"
+
+      summary:
+        <<: *summary
+        preceding_document: "Voorgaand document"
+        contract: "Contract"
+        period: "Periode"
+
+      buyer:
+        title: "Koper"
+
+      seller:
+        title: "Verkoper"
+
+  org:
+    party:
+      tax_id: "%{label}: (%{country}) %{code}"
+      tel: "Tel.: %{num}"
+      tel_label: "Tel.: %{num} (%{label})"
+      email:
+        one: "E-mail: %{addr}"
+        other: "E-mails: %{addr}"
+      email_label: "%{addr} (%{label})"
+      identity: "%{label}: %{code}"
+      identity_code: "Identificatiecode"
+      po_box: "Postbus %{po_box}"
+      labels:
+        default: "Btw-nr."
+      ext: "%{label}: %{value}"
+      ext_map:
+        # Zorg ervoor dat deze lijst in alle talen actueel blijft!
+        co-dian-municipality: "Gemeente"
+      reg:
+        capital: "Maatschappelijk kapitaal: %{amount}"
+        registration: "Registratie:"
+        book: "Boek %{id}"
+        volume: "Deel %{id}"
+        sheet: "Blad %{id}"
+        section: "Sectie %{id}"
+        page: "Pagina %{id}"
+        entry: "Inschrijving %{id}"
+    address:
+      label: "%{label}:"
+      country: "(%{country})"
