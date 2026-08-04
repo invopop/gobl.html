@@ -47,6 +47,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 					@taxes(inv.RegimeDef(), inv.Totals.Taxes)
 				</div>
 				@paymentDetails(inv)
+				@ar.ARCAFiscalTransparency(inv)
 				@notes(invoiceNotes(ctx, inv))
 				<div class="extensions">
 					// Region specific information

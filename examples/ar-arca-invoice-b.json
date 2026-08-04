@@ -1,0 +1,175 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120003",
+		"dig": {
+			"alg": "sha256",
+			"val": "36477b23a1b21e5437ad0452c25426863d510552776979ae32a2ae51f91bfde7"
+		},
+		"stamps": [
+			{
+				"prv": "arca-cae",
+				"val": "1234567891"
+			},
+			{
+				"prv": "arca-cae-expiry",
+				"val": "2025-01-15"
+			},
+			{
+				"prv": "arca-qr",
+				"val": "https://www.afip.gob.ar/fe/qr/conceptos-generales.asp"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "AR",
+		"$addons": [
+			"ar-arca-v4"
+		],
+		"uuid": "3aea7b56-59d8-4beb-90bd-f8f280d852a1",
+		"type": "standard",
+		"series": "2",
+		"code": "00000456",
+		"issue_date": "2025-01-15",
+		"currency": "ARS",
+		"tax": {
+			"prices_include": "VAT",
+			"ext": {
+				"ar-arca-concept": "1",
+				"ar-arca-doc-type": "6"
+			}
+		},
+		"supplier": {
+			"name": "Proveedor Ejemplo S.A.",
+			"tax_id": {
+				"country": "AR",
+				"code": "30712345671"
+			},
+			"addresses": [
+				{
+					"street": "Av. Corrientes 1234",
+					"locality": "Buenos Aires",
+					"region": "Ciudad Autónoma de Buenos Aires",
+					"code": "C1043",
+					"country": "AR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "ventas@proveedorejemplo.com.ar"
+				}
+			],
+			"registration": {
+				"other": "Inicio de actividades 2016-03-01"
+			}
+		},
+		"customer": {
+			"name": "Juana Pérez",
+			"identities": [
+				{
+					"code": "12345678",
+					"ext": {
+						"ar-arca-identity-type": "96"
+					}
+				}
+			],
+			"addresses": [
+				{
+					"street": "Calle Falsa 123",
+					"locality": "Buenos Aires",
+					"region": "Ciudad Autónoma de Buenos Aires",
+					"code": "C1425",
+					"country": "AR"
+				}
+			],
+			"ext": {
+				"ar-arca-vat-status": "5"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"key": "goods",
+					"name": "Botella de vino tinto reserva",
+					"currency": "ARS",
+					"price": "6050.00"
+				},
+				"sum": "12100.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"ar-arca-vat-rate": "5"
+						}
+					}
+				],
+				"total": "12100.00"
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"key": "tax",
+				"reason": "Impuestos internos",
+				"percent": "3%",
+				"amount": "363.00",
+				"ext": {
+					"ar-arca-tax-type": "4"
+				}
+			},
+			{
+				"i": 2,
+				"key": "tax",
+				"reason": "Tasa municipal de seguridad e higiene",
+				"percent": "1.5%",
+				"amount": "181.50",
+				"ext": {
+					"ar-arca-tax-type": "3"
+				}
+			}
+		],
+		"totals": {
+			"sum": "12100.00",
+			"charge": "544.50",
+			"tax_included": "2100.00",
+			"total": "10544.50",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"ar-arca-vat-rate": "5"
+								},
+								"base": "10000.00",
+								"percent": "21.0%",
+								"amount": "2100.00"
+							}
+						],
+						"amount": "2100.00"
+					}
+				],
+				"sum": "2100.00"
+			},
+			"tax": "2100.00",
+			"total_with_tax": "12644.50",
+			"payable": "12644.50"
+		},
+		"notes": [
+			{
+				"text": "XXX"
+			}
+		]
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6ImUzNzFjMzBiLTNiMzMtNGNiMC04NzM5LThiOTUzMWM1NWM2NiJ9.eyJ1dWlkIjoiMDE5MDJhZGMtMDVjOC03MDAwLTg3MDMtNjBjOGRjZjg3YmQ2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjhlZWJmNThlYjhiNTlkYTA0Y2ZlZmQxODVkZDkyYTk1YWU2NzhiYmU5YjYzMTUwOTUxYTMwODRkNDllNjRmNmMifSwic3RhbXBzIjpbeyJwcnYiOiJhdC1hdGN1ZCIsInZhbCI6IkFBSkZKM0pZRFAtMjcifSx7InBydiI6ImF0LXFyIiwidmFsIjoiQTo1MDgwMjUzMzgqQjo5OTk5OTk5OTAqQzpQVCpEOkZUKkU6TipGOjIwMjQwNjE4Kkc6RlQgSVhURVNULTAxLzI3Kkg6QUFKRkozSllEUC0yNypJMTpQVCpJMjoxMDAuMDAqTjowLjAwKk86MTAwLjAwKlE6dlZXaipSOjE5MiJ9LHsicHJ2IjoiYXQtaGFzaCIsInZhbCI6InZWV2oifSx7InBydiI6ImF0LWFwcC1pZCIsInZhbCI6IjE5MiJ9XX0.CTWcw5_36Y3LrwXbX1KpNUqgRWzu2-HNDDJXubCBeiODJ55TsU5oQ1gq_azpImfn3c0CPzPo1k1X-n84TgG5Og"
+	]
+}
