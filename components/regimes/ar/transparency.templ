@@ -1,0 +1,109 @@
+package ar
+
+import (
+	"context"
+	"slices"
+	"strings"
+
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/addons/ar/arca"
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/num"
+	"github.com/invopop/gobl/tax"
+)
+
+// ar-arca-tax-type codes counted towards each amount of the fiscal
+// transparency block. Codes 1 (national) and 4 (internal) are national
+// indirect taxes; code 3 covers municipal taxes, which provinces and
+// municipalities are invited to disclose under the same regime.
+var (
+	transparencyNationalTaxTypes  = []cbc.Code{"1", "4"}
+	transparencyMunicipalTaxTypes = []cbc.Code{"3"}
+)
+
+// ARCAFiscalTransparency renders the "Régimen de Transparencia Fiscal al
+// Consumidor" block required by Ley 27.743 and ARCA RG 5614/2024 on Class B
+// (final consumer) documents. The labels are legal text fixed by the
+// resolution and are intentionally not translated.
+templ ARCAFiscalTransparency(inv *bill.Invoice) {
+	if ft := newFiscalTransparency(inv); ft != nil {
+		<section class="arca-transparency">
+			<h2>Régimen de transparencia fiscal al consumidor (Ley 27.743)</h2>
+			<p>{ ft.line(ctx) }</p>
+		</section>
+	}
+}
+
+// fiscalTransparency holds the amounts shown in the transparency block.
+// otherNational and municipal are nil when the invoice carries no charges
+// of the matching tax types, in which case the label is omitted.
+type fiscalTransparency struct {
+	vat           num.Amount
+	otherNational *num.Amount
+	municipal     *num.Amount
+}
+
+// line composes the single sentence with each label and its amount.
+func (ft *fiscalTransparency) line(ctx context.Context) string {
+	parts := []string{
+		"IVA Contenido: " + t.LocalizeMoney(ctx, ft.vat),
+	}
+	if ft.otherNational != nil {
+		parts = append(parts, "Otros impuestos nacionales indirectos: "+t.LocalizeMoney(ctx, *ft.otherNational))
+	}
+	if ft.municipal != nil {
+		parts = append(parts, "Impuestos municipales: "+t.LocalizeMoney(ctx, *ft.municipal))
+	}
+	return strings.Join(parts, ". ") + "."
+}
+
+func newFiscalTransparency(inv *bill.Invoice) *fiscalTransparency {
+	if inv == nil || inv.Tax == nil || inv.Totals == nil {
+		return nil
+	}
+	dt := cbc.Code(inv.Tax.Ext.Get(arca.ExtKeyDocType).String())
+	if !slices.Contains(arca.DocTypesB, dt) {
+		return nil
+	}
+	ft := &fiscalTransparency{
+		vat: containedVAT(inv.Totals.Taxes),
+	}
+	ft.otherNational = sumTaxCharges(inv.Charges, transparencyNationalTaxTypes)
+	ft.municipal = sumTaxCharges(inv.Charges, transparencyMunicipalTaxTypes)
+	return ft
+}
+
+func containedVAT(tt *tax.Total) num.Amount {
+	vat := num.MakeAmount(0, 2)
+	if tt == nil {
+		return vat
+	}
+	for _, cat := range tt.Categories {
+		if cat.Code != tax.CategoryVAT || cat.Retained || cat.Informative {
+			continue
+		}
+		vat = vat.MatchPrecision(cat.Amount).Add(cat.Amount)
+	}
+	return vat
+}
+
+func sumTaxCharges(charges []*bill.Charge, taxTypes []cbc.Code) *num.Amount {
+	var sum *num.Amount
+	for _, c := range charges {
+		if c == nil || !c.Key.Has(bill.ChargeKeyTax) {
+			continue
+		}
+		if !c.Ext.Get(arca.ExtKeyTaxType).In(taxTypes...) {
+			continue
+		}
+		if sum == nil {
+			a := c.Amount
+			sum = &a
+		} else {
+			a := sum.MatchPrecision(c.Amount).Add(c.Amount)
+			sum = &a
+		}
+	}
+	return sum
+}

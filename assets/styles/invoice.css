@@ -394,6 +394,10 @@ section.taxes th.category,
 section.taxes td.category {
     text-align: left;
 }
+section.arca-transparency {
+    padding-top: 6mm;
+    break-inside: avoid;
+}
 section.payment {
     border-bottom: 0.5px solid #e5e7eb;
     padding: 6mm 0mm;
