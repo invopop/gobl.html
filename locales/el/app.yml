@@ -124,6 +124,7 @@ el:
           bank_name: "Τράπεζα: %{name}"
           iban: "IBAN: %{iban}"
           account_number: "Αριθμός λογαριασμού: %{num}"
+          clearing: "Κωδικός εκκαθάρισης: %{code}"
           bic: "BIC: %{bic}"
           online: "Σύνδεσμος πληρωμής"
           methods:

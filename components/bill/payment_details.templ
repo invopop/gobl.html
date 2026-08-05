@@ -169,6 +169,11 @@ templ paymentCreditTransferRow(ct *pay.CreditTransfer) {
 				@t.T(".account_number", i18n.M{"num": ct.Number})
 			</div>
 		}
+		if ct.Clearing != "" {
+			<div class="clearing nowrap">
+				@t.T(".clearing", i18n.M{"code": ct.Clearing})
+			</div>
+		}
 		if ct.BIC != "" {
 			<div class="bic nowrap">
 				@t.T(".bic", i18n.M{"bic": ct.BIC})

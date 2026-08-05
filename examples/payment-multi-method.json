@@ -4,7 +4,7 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120009",
 		"dig": {
 			"alg": "sha256",
-			"val": "73fa42f6d60560c0392c621a69a0c371a9398e8a8bd79a925e9f5c5052c9f760"
+			"val": "7efbec5be5619c5b4f5ce83ba3d45490e18d54a13dc25c4031486b43cef972c2"
 		}
 	},
 	"doc": {
@@ -85,6 +85,7 @@
 				"amount": "62.00",
 				"credit_transfer": {
 					"iban": "ES7921000813610123456789",
+					"clearing": "1234",
 					"name": "Banco Sample"
 				}
 			},

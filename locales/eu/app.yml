@@ -126,6 +126,7 @@ eu:
           bank_name: "Bankua: %{name}"
           iban: "IBAN: %{iban}"
           account_number: "Kontu zenbakia: %{num}"
+          clearing: "Konpentsazio-kodea: %{code}"
           bic: "BIC: %{bic}"
           online: "Ordainketa esteka"
           methods:

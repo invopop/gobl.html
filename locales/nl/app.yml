@@ -122,6 +122,7 @@ nl:
           bank_name: "Bank: %{name}"
           iban: "IBAN: %{iban}"
           account_number: "Rekeningnummer: %{num}"
+          clearing: "Clearingcode: %{code}"
           bic: "BIC: %{bic}"
           online: "Betaallink"
           methods:

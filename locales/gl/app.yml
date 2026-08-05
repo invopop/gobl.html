@@ -126,6 +126,7 @@ gl:
           bank_name: "Banco: %{name}"
           iban: "IBAN: %{iban}"
           account_number: "Número de conta: %{num}"
+          clearing: "Código de compensación: %{code}"
           bic: "BIC: %{bic}"
           online: "Ligazón de pagamento"
           methods:
