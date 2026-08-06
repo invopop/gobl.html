@@ -229,6 +229,7 @@ en:
   org:
     party:
       tax_id: "%{label}: (%{country}) %{code}"
+      tax_id_no_country: "%{label}: %{code}"
       person: "%{name}"
       person_label: "%{label}: %{name}"
       tel: "Tel: %{num}"

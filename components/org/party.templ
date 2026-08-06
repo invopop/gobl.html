@@ -41,7 +41,11 @@ templ Party(party *org.Party) {
 templ taxID(party *org.Party) {
 	if showTaxID(party) {
 		<div class="tax-id">
-			@t.T(".tax_id", i18n.M{"label": taxIDLabel(ctx, party), "country": party.TaxID.Country.String(), "code": taxIDCode(party)})
+			if taxIDCodeIncludesCountry(party) {
+				@t.T(".tax_id_no_country", i18n.M{"label": taxIDLabel(ctx, party), "code": taxIDCode(party)})
+			} else {
+				@t.T(".tax_id", i18n.M{"label": taxIDLabel(ctx, party), "country": party.TaxID.Country.String(), "code": taxIDCode(party)})
+			}
 		</div>
 	}
 }
@@ -247,6 +251,8 @@ func taxIDLabel(ctx context.Context, party *org.Party) string {
 	switch tID.Country {
 	case "AR":
 		return "CUIT"
+	case "DE":
+		return "USt-IdNr."
 	case "ES":
 		return "NIF"
 	case "CO":
@@ -271,8 +277,19 @@ func taxIDCode(party *org.Party) string {
 	case "CO":
 		return co.FormatTaxIDCode(code)
 	default:
-		return tID.Code.String()
+		if taxIDCodeIncludesCountry(party) {
+			return tID.Country.String() + code
+		}
+		return code
 	}
+}
+
+// taxIDCodeIncludesCountry reports whether the country prefix is an
+// integral part of the tax ID code, in which case it is prepended to
+// the code and not shown separately in parentheses. The German
+// USt-IdNr., for example, is only valid with the "DE" prefix.
+func taxIDCodeIncludesCountry(party *org.Party) bool {
+	return party.TaxID.Country == "DE"
 }
 
 func mapPartyExtension(ctx context.Context, k cbc.Key, v cbc.Code) string {
