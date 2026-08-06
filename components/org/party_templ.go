@@ -461,7 +461,7 @@ func identities(idents []*org.Identity) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		for _, ident := range idents {
-			if showIdentity(ctx, ident) {
+			if showIdentity(ident) {
 				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "<div class=\"identity\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -766,21 +766,13 @@ func identityLabel(ctx context.Context, ident *org.Identity) string {
 		if !strings.HasPrefix(label, "!") {
 			return label
 		}
+		return ident.Key.String()
 	}
 	return i18n.T(ctx, ".identity_code")
 }
 
-func showIdentity(ctx context.Context, ident *org.Identity) bool {
-	if ident.Label != "" || ident.Type != "" {
-		return true
-	}
-	if ident.Key != "" {
-		// ctxi18n returns "!(MISSING: <key>)" when no translation is
-		// defined, so a "!" prefix means the key has no label to show.
-		label := i18n.T(ctx, fmt.Sprintf(".identity_labels.%s", ident.Key))
-		return !strings.HasPrefix(label, "!")
-	}
-	return false
+func showIdentity(ident *org.Identity) bool {
+	return ident.Label != "" || ident.Type != "" || ident.Key != ""
 }
 
 func showTaxID(party *org.Party) bool {
