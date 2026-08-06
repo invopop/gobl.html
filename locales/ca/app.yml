@@ -244,8 +244,6 @@ ca:
       identity: "%{label}: %{code}"
       identity_code: "Codi d'identitat"
       identity_labels:
-        it-fiscal-code: "Codice fiscale"
-        de-tax-number: "St. -Nr."
         passport: "Passaport"
       ext: "%{label}: %{value}"
       ext_map:

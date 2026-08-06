@@ -233,8 +233,6 @@ da:
       identity: "%{label}: %{code}"
       identity_code: "Identifikationskode"
       identity_labels:
-        it-fiscal-code: "Codice fiscale"
-        de-tax-number: "St. -Nr."
         passport: "Pas"
       po_box: "Postboks %{po_box}"
       labels:

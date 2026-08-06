@@ -223,8 +223,6 @@ fr:
       identity: "%{label}: %{code}"
       identity_code: "Code d'identité"
       identity_labels:
-        it-fiscal-code: "Codice fiscale"
-        de-tax-number: "St. -Nr."
         passport: "Passeport"
       po_box: "Boîte postale %{po_box}"
       labels:

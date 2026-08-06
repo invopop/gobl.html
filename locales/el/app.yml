@@ -236,8 +236,6 @@ el:
       identity: "%{label}: %{code}"
       identity_code: "Κωδικός Ταυτότητας"
       identity_labels:
-        it-fiscal-code: "Codice fiscale"
-        de-tax-number: "St. -Nr."
         passport: "Διαβατήριο"
       po_box: "Τ.Θ. %{po_box}"
       labels:

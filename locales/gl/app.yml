@@ -244,8 +244,6 @@ gl:
       identity: "%{label}: %{code}"
       identity_code: "Código de identidade"
       identity_labels:
-        it-fiscal-code: "Codice fiscale"
-        de-tax-number: "St. -Nr."
         passport: "Pasaporte"
       ext: "%{label}: %{value}"
       ext_map:

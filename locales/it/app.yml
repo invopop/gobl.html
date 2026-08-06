@@ -222,8 +222,6 @@ it:
       identity: "%{label}: %{code}"
       identity_code: "Codice Identità"
       identity_labels:
-        it-fiscal-code: "Codice fiscale"
-        de-tax-number: "St. -Nr."
         passport: "Passaporto"
       po_box: "C.P. %{po_box}"
       labels:
