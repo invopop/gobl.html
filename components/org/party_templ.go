@@ -13,6 +13,8 @@ import (
 	"fmt"
 	"slices"
 	"strings"
+	"unicode"
+	"unicode/utf8"
 
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/regimes/co"
@@ -66,7 +68,7 @@ func Party(party *org.Party) templ.Component {
 				var templ_7745c5c3_Var3 string
 				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(party.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 20, Col: 34}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 22, Col: 34}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 				if templ_7745c5c3_Err != nil {
@@ -89,7 +91,7 @@ func Party(party *org.Party) templ.Component {
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(party.Alias)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 23, Col: 36}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 25, Col: 36}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
@@ -534,7 +536,7 @@ func registration(reg *org.Registration) templ.Component {
 					var templ_7745c5c3_Var14 string
 					templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(reg.Office)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 118, Col: 18}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 120, Col: 18}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 					if templ_7745c5c3_Err != nil {
@@ -637,7 +639,7 @@ func registration(reg *org.Registration) templ.Component {
 					var templ_7745c5c3_Var15 string
 					templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(reg.Other)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 153, Col: 17}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 155, Col: 17}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 					if templ_7745c5c3_Err != nil {
@@ -707,7 +709,7 @@ func partyExtensions(party *org.Party) templ.Component {
 				var templ_7745c5c3_Var17 string
 				templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(txt)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 170, Col: 9}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 172, Col: 9}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 				if templ_7745c5c3_Err != nil {
@@ -766,9 +768,20 @@ func identityLabel(ctx context.Context, ident *org.Identity) string {
 		if !strings.HasPrefix(label, "!") {
 			return label
 		}
-		return ident.Key.String()
+		return identityKeyLabel(ident.Key)
 	}
 	return i18n.T(ctx, ".identity_code")
+}
+
+// identityKeyLabel converts an identity key into a presentable label
+// in sentence case, e.g. "internal-ref" becomes "Internal ref".
+func identityKeyLabel(key cbc.Key) string {
+	label := strings.NewReplacer("-", " ", "+", " ").Replace(key.String())
+	r, size := utf8.DecodeRuneInString(label)
+	if r == utf8.RuneError {
+		return label
+	}
+	return string(unicode.ToUpper(r)) + label[size:]
 }
 
 func showIdentity(ident *org.Identity) bool {

@@ -232,6 +232,10 @@ no:
       email_label: "%{addr} (%{label})"
       identity: "%{label}: %{code}"
       identity_code: "Identifikasjonskode"
+      identity_labels:
+        it-fiscal-code: "Codice fiscale"
+        de-tax-number: "St. -Nr."
+        passport: "Pass"
       po_box: "Postboks %{po_box}"
       labels:
         default: "Mva-nr."

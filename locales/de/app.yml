@@ -232,6 +232,10 @@ de:
       email_label: "%{addr} (%{label})"
       identity: "%{label}: %{code}"
       identity_code: "Identitätscode"
+      identity_labels:
+        it-fiscal-code: "Codice fiscale"
+        de-tax-number: "St. -Nr."
+        passport: "Reisepass"
       po_box: "Postfach %{po_box}"
       labels:
         default: "Umsatzsteuer"
