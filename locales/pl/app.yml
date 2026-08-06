@@ -223,6 +223,7 @@ pl:
   org:
     party:
       tax_id: "%{label}: (%{country}) %{code}"
+      tax_id_no_country: "%{label}: %{code}"
       tel: "Tel: %{num}"
       tel_label: "Tel: %{num} (%{label})"
       email:
