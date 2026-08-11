@@ -39,7 +39,7 @@ func titleKey(doc internal.Document) string {
 		// invoice, and under self-billing it is the recipient who issues
 		// the tax invoice, so the supplier's own document is a plain
 		// invoice.
-		return "billing.invoice.title.standard"
+		return "regimes.sg.title.invoice"
 	case inv.HasTags(tax.TagSimplified):
 		return "regimes.sg.title.simplified-tax-invoice"
 	case inv.HasTags(tax.TagReverseCharge):
