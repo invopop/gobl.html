@@ -126,6 +126,7 @@ ar:
           bank_name: "البنك: %{name}"
           iban: "IBAN: %{iban}"
           account_number: "رقم الحساب: %{num}"
+          clearing: "رمز المقاصة: %{code}"
           bic: "BIC: %{bic}"
           online: "رابط الدفع"
           methods:
@@ -357,4 +358,3 @@ ar:
         CS: "تخصيص المشارك في التأمين"
         LD: "تخصيص المشارك الرئيسي في التأمين"
         RA: "إعادة التأمين المقبولة"
-

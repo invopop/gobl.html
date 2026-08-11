@@ -127,6 +127,7 @@ en:
           bank_name: "Bank: %{name}"
           iban: "IBAN: %{iban}"
           account_number: "Account number: %{num}"
+          clearing: "Clearing code: %{code}"
           bic: "BIC: %{bic}"
           online: "Payment link"
           methods:

@@ -126,6 +126,7 @@ ca:
           bank_name: "Banc: %{name}"
           iban: "IBAN: %{iban}"
           account_number: "Número de compte: %{num}"
+          clearing: "Codi de compensació: %{code}"
           bic: "BIC: %{bic}"
           online: "Enllaç de pagament"
           methods:

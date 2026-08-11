@@ -113,6 +113,7 @@ fr:
           bank_name: "Banque: %{name}"
           iban: "IBAN: %{iban}"
           account_number: "Numéro de compte: %{num}"
+          clearing: "Code de compensation : %{code}"
           bic: "BIC: %{bic}"
           online: "Lien de paiement"
           methods:

@@ -6,7 +6,7 @@ require (
 	github.com/a-h/templ v0.3.1001
 	github.com/go-resty/resty/v2 v2.12.0
 	github.com/invopop/ctxi18n v0.9.0
-	github.com/invopop/gobl v0.502.2
+	github.com/invopop/gobl v0.504.0
 	github.com/invopop/gobl.dev v0.500.7
 	github.com/invopop/gobl.mx.cfdi v0.62.0
 	github.com/invopop/gobl.pt.saft v0.0.5

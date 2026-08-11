@@ -122,6 +122,7 @@ da:
           bank_name: "Bank: %{name}"
           iban: "IBAN: %{iban}"
           account_number: "Kontonummer: %{num}"
+          clearing: "Registreringsnummer: %{code}"
           bic: "BIC: %{bic}"
           online: "Betalingslink"
           methods:
