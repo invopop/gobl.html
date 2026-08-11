@@ -1,0 +1,22 @@
+package sg
+
+import (
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal"
+)
+
+// TitleType renders the IRAS document title (e.g. "Tax Invoice", "Simplified
+// Tax Invoice") for standard invoices issued under the Singaporean regime,
+// falling through to the default title when no Singapore-specific title
+// applies.
+templ TitleType(doc internal.Document) {
+	if isSingaporean(doc) {
+		@titleType(doc)
+	}
+}
+
+templ titleType(doc internal.Document) {
+	if key := titleKey(doc); key != "" {
+		@t.T(key)
+	}
+}
