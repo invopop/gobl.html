@@ -222,6 +222,8 @@ it:
       email_label: "%{addr} (%{label})"
       identity: "%{label}: %{code}"
       identity_code: "Codice Identità"
+      identity_labels:
+        passport: "Passaporto"
       po_box: "C.P. %{po_box}"
       labels:
         default: "Identità Fiscale"

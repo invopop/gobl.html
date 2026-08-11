@@ -233,6 +233,8 @@ da:
       email_label: "%{addr} (%{label})"
       identity: "%{label}: %{code}"
       identity_code: "Identifikationskode"
+      identity_labels:
+        passport: "Pas"
       po_box: "Postboks %{po_box}"
       labels:
         default: "Momsnr."

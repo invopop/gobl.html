@@ -245,8 +245,7 @@ eu:
       identity: "%{label}: %{code}"
       identity_code: "Identitate kodea"
       identity_labels:
-        it-fiscal-code: "Codice fiscale"
-        de-tax-number: "St. -Nr."
+        passport: "Pasaportea"
       ext: "%{label}: %{value}"
       ext_map:
         co-dian-municipality: "Udalerria"

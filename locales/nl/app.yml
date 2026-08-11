@@ -233,6 +233,8 @@ nl:
       email_label: "%{addr} (%{label})"
       identity: "%{label}: %{code}"
       identity_code: "Identificatiecode"
+      identity_labels:
+        passport: "Paspoort"
       po_box: "Postbus %{po_box}"
       labels:
         default: "Btw-nr."

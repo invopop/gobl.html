@@ -248,6 +248,7 @@ en:
       identity_labels:
         it-fiscal-code: "Codice fiscale"
         de-tax-number: "St. -Nr."
+        passport: "Passport"
       ext: "%{label}: %{value}"
       ext_map:
         co-dian-municipality: "Municipality"

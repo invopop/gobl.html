@@ -236,6 +236,8 @@ el:
       website_label: "%{label}: %{url}"
       identity: "%{label}: %{code}"
       identity_code: "Κωδικός Ταυτότητας"
+      identity_labels:
+        passport: "Διαβατήριο"
       po_box: "Τ.Θ. %{po_box}"
       labels:
         default: "Φορολογικός Κωδικός"

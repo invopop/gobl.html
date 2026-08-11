@@ -233,6 +233,8 @@ no:
       email_label: "%{addr} (%{label})"
       identity: "%{label}: %{code}"
       identity_code: "Identifikasjonskode"
+      identity_labels:
+        passport: "Pass"
       po_box: "Postboks %{po_box}"
       labels:
         default: "Mva-nr."

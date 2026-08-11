@@ -246,7 +246,7 @@ ar:
       identity_code: "رمز الهوية"
       identity_labels:
         it-fiscal-code: "الرمز الضريبي"
-        de-tax-number: "St. -Nr."
+        passport: "جواز السفر"
       ext: "%{label}: %{value}"
       ext_map:
         co-dian-municipality: "البلدية"

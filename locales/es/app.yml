@@ -237,6 +237,8 @@ es:
       email_label: "%{addr} (%{label})"
       identity: "%{label}: %{code}"
       identity_code: "Código de identidad"
+      identity_labels:
+        passport: "Pasaporte"
       po_box: "Apartado postal %{po_box}"
       labels:
         default: "Código fiscal"

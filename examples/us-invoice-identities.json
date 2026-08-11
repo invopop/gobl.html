@@ -1,0 +1,142 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "3a8e2ae1-eab8-11ed-b735-3e7e00ce5635",
+		"dig": {
+			"alg": "sha256",
+			"val": "e1367a98e2fecb53a515702feddc5b42f7351eaa47f0532b3459c641f639f8b7"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "US",
+		"uuid": "018f57cc-cc50-7289-a654-a2507af6c889",
+		"type": "standard",
+		"series": "FAKE",
+		"code": "0001",
+		"issue_date": "2024-05-08",
+		"currency": "USD",
+		"supplier": {
+			"name": "Invopop Inc.",
+			"tax_id": {
+				"country": "US"
+			},
+			"addresses": [
+				{
+					"num": "1111B",
+					"street": "S Governors Ave #6229",
+					"locality": "Dover",
+					"region": "DE",
+					"code": "19904",
+					"country": "US"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@invopop.com"
+				}
+			],
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+				}
+			]
+		},
+		"customer": {
+			"name": "Jean Ferran",
+			"tax_id": {
+				"country": "US"
+			},
+			"identities": [
+				{
+					"key": "passport",
+					"code": "25HE94294"
+				},
+				{
+					"key": "it-fiscal-code",
+					"code": "RSSGNN60R30H501U"
+				},
+				{
+					"key": "internal-ref",
+					"code": "REF-2024-456"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Office",
+					"po_box": "20",
+					"num": "10",
+					"street": "Calle Mayor",
+					"locality": "Madrid",
+					"region": "CA",
+					"code": "28003",
+					"country": "US"
+				}
+			],
+			"emails": [
+				{
+					"addr": "sam@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Development Day Rate",
+					"description": "Development services for the month of February 2022",
+					"price": "200.00"
+				},
+				"sum": "4000.00",
+				"discounts": [
+					{
+						"reason": "Just because",
+						"percent": "5%",
+						"amount": "200.00"
+					}
+				],
+				"total": "3800.00"
+			},
+			{
+				"i": 2,
+				"quantity": "10",
+				"item": {
+					"name": "Something random",
+					"price": "100.00"
+				},
+				"sum": "1000.00",
+				"total": "1000.00"
+			}
+		],
+		"payment": {
+			"instructions": {
+				"key": "card+credit",
+				"card": {
+					"last4": "1234",
+					"holder": "Customer Random Inc."
+				}
+			}
+		},
+		"totals": {
+			"sum": "4800.00",
+			"total": "4800.00",
+			"tax": "0.00",
+			"total_with_tax": "4800.00",
+			"payable": "4800.00"
+		},
+		"notes": [
+			{
+				"text": "Thank you for your business!"
+			},
+			{
+				"key": "legal",
+				"text": "Please pay within 30 days according to some random law in the country we sell from that you should comply with because we want to be paid sooner.",
+				"meta": {
+					"position": "footer"
+				}
+			}
+		]
+	}
+}

@@ -13,6 +13,8 @@ import (
 	"fmt"
 	"slices"
 	"strings"
+	"unicode"
+	"unicode/utf8"
 
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/regimes/co"
@@ -67,7 +69,7 @@ func Party(party *org.Party) templ.Component {
 				var templ_7745c5c3_Var3 string
 				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(party.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 21, Col: 34}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 22, Col: 34}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 				if templ_7745c5c3_Err != nil {
@@ -90,7 +92,7 @@ func Party(party *org.Party) templ.Component {
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(party.Alias)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 24, Col: 36}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 25, Col: 36}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
@@ -777,9 +779,20 @@ func identityLabel(ctx context.Context, party *org.Party, ident *org.Identity) s
 		if !strings.HasPrefix(label, "!") {
 			return label
 		}
-		return ident.Key.String()
+		return identityKeyLabel(ident.Key)
 	}
 	return i18n.T(ctx, ".identity_code")
+}
+
+// identityKeyLabel converts an identity key into a presentable label
+// in sentence case, e.g. "internal-ref" becomes "Internal ref".
+func identityKeyLabel(key cbc.Key) string {
+	label := strings.NewReplacer("-", " ", "+", " ").Replace(key.String())
+	r, size := utf8.DecodeRuneInString(label)
+	if r == utf8.RuneError {
+		return label
+	}
+	return string(unicode.ToUpper(r)) + label[size:]
 }
 
 func showIdentity(ident *org.Identity) bool {
