@@ -495,3 +495,10 @@ en:
         CS: "Co-insurer allocation"
         LD: "Lead co-insurer allocation"
         RA: "Accepted reinsurance"
+    sg:
+      title:
+        # IRAS requires the words "tax invoice" in a prominent place; the
+        # headings are legally significant and thus not translated.
+        tax-invoice: "Tax Invoice"
+        simplified-tax-invoice: "Simplified Tax Invoice"
+        customer-accounting-tax-invoice: "Customer Accounting Tax Invoice"

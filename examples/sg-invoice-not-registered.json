@@ -1,0 +1,72 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
+		"dig": {
+			"alg": "sha256",
+			"val": "3b9449052a52aab2845d61eaecd7102b2bfda677831d24086f673cbe8dc20a33"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "SG",
+		"uuid": "019565d5-9f24-734f-a459-3b9db4408f63",
+		"type": "standard",
+		"series": "KC",
+		"code": "55",
+		"issue_date": "2026-05-14",
+		"currency": "SGD",
+		"supplier": {
+			"name": "Kampong Crafts LLP",
+			"tax_id": {
+				"country": "SG"
+			},
+			"identities": [
+				{
+					"type": "UEN",
+					"code": "T08LL1234A"
+				}
+			],
+			"addresses": [
+				{
+					"num": "23",
+					"street": "Joo Chiat Road",
+					"locality": "Singapore",
+					"code": "427359",
+					"country": "SG"
+				}
+			]
+		},
+		"customer": {
+			"name": "Harbourfront Events Pte Ltd",
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Harbourfront Walk",
+					"locality": "Singapore",
+					"code": "098585",
+					"country": "SG"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "15",
+				"item": {
+					"name": "Handmade souvenir set",
+					"price": "12.00"
+				},
+				"sum": "180.00",
+				"total": "180.00"
+			}
+		],
+		"totals": {
+			"sum": "180.00",
+			"total": "180.00",
+			"tax": "0.00",
+			"total_with_tax": "180.00",
+			"payable": "180.00"
+		}
+	}
+}
