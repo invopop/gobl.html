@@ -1,0 +1,89 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
+		"dig": {
+			"alg": "sha256",
+			"val": "193a1f0495750fc6c61389814d53df10655020ed94d5b7cd1a7449981e3c23bb"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "SG",
+		"$tags": [
+			"simplified"
+		],
+		"uuid": "019565d5-9f24-734f-a459-3b9db4408f60",
+		"type": "standard",
+		"series": "SGC-DCS",
+		"code": "27",
+		"issue_date": "2026-05-14",
+		"currency": "SGD",
+		"supplier": {
+			"name": "Defence Collective Singapore Ltd",
+			"tax_id": {
+				"country": "SG",
+				"code": "199307558M"
+			},
+			"identities": [
+				{
+					"type": "UEN",
+					"code": "199307558M"
+				}
+			],
+			"addresses": [
+				{
+					"num": "66",
+					"street": "Tanah Merah Coast Road",
+					"locality": "Singapore",
+					"code": "498789",
+					"country": "SG"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Museum admission ticket",
+					"price": "20.00"
+				},
+				"sum": "40.00",
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "standard",
+						"rate": "general",
+						"percent": "9%"
+					}
+				],
+				"total": "40.00"
+			}
+		],
+		"totals": {
+			"sum": "40.00",
+			"total": "40.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "GST",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "40.00",
+								"percent": "9%",
+								"amount": "3.60"
+							}
+						],
+						"amount": "3.60"
+					}
+				],
+				"sum": "3.60"
+			},
+			"tax": "3.60",
+			"total_with_tax": "43.60",
+			"payable": "43.60"
+		}
+	}
+}

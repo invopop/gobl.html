@@ -1,0 +1,102 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
+		"dig": {
+			"alg": "sha256",
+			"val": "fa0de6f96893f6c4fb832b51ca790d3fe9a73f081025ccfcfa681c1a4f0a4d6c"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "SG",
+		"uuid": "019565d5-9f24-734f-a459-3b9db4408f61",
+		"type": "standard",
+		"series": "SGC-DCS",
+		"code": "28",
+		"issue_date": "2026-05-14",
+		"currency": "SGD",
+		"supplier": {
+			"name": "Defence Collective Singapore Ltd",
+			"tax_id": {
+				"country": "SG",
+				"code": "199307558M"
+			},
+			"identities": [
+				{
+					"type": "UEN",
+					"code": "199307558M"
+				}
+			],
+			"addresses": [
+				{
+					"num": "66",
+					"street": "Tanah Merah Coast Road",
+					"locality": "Singapore",
+					"code": "498789",
+					"country": "SG"
+				}
+			]
+		},
+		"customer": {
+			"name": "Harbourfront Events Pte Ltd",
+			"tax_id": {
+				"country": "SG",
+				"code": "200312345A"
+			},
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Harbourfront Walk",
+					"locality": "Singapore",
+					"code": "098585",
+					"country": "SG"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "40",
+				"item": {
+					"name": "Group experience programme",
+					"price": "35.00"
+				},
+				"sum": "1400.00",
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "standard",
+						"rate": "general",
+						"percent": "9%"
+					}
+				],
+				"total": "1400.00"
+			}
+		],
+		"totals": {
+			"sum": "1400.00",
+			"total": "1400.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "GST",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "1400.00",
+								"percent": "9%",
+								"amount": "126.00"
+							}
+						],
+						"amount": "126.00"
+					}
+				],
+				"sum": "126.00"
+			},
+			"tax": "126.00",
+			"total_with_tax": "1526.00",
+			"payable": "1526.00"
+		}
+	}
+}

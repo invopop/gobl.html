@@ -17,6 +17,7 @@ import (
 	"github.com/invopop/gobl.html/components/regimes/pl"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/regimes/sa"
+	"github.com/invopop/gobl.html/components/regimes/sg"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl.html/internal"
@@ -116,6 +117,7 @@ templ titleType(doc internal.Document) {
 			pt.TitleType(doc),
 			gr.TitleType(doc),
 			it.TitleType(doc),
+			sg.TitleType(doc),
 			untdidTitleType(doc),
 			defaultTitleType(doc),
 		)

@@ -18,6 +18,7 @@ import (
 
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/regimes/co"
+	"github.com/invopop/gobl.html/components/regimes/sg"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
@@ -162,7 +163,7 @@ func Party(party *org.Party) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = identities(party.Identities).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = identities(party).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -448,7 +449,7 @@ func websites(websites []*org.Website) templ.Component {
 	})
 }
 
-func identities(idents []*org.Identity) templ.Component {
+func identities(party *org.Party) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -469,13 +470,13 @@ func identities(idents []*org.Identity) templ.Component {
 			templ_7745c5c3_Var11 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		for _, ident := range idents {
-			if showIdentity(ident) {
+		for _, ident := range party.Identities {
+			if showIdentity(ident) && !sg.HideIdentity(party, ident) {
 				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "<div class=\"identity\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = t.T(".identity", i18n.M{"label": identityLabel(ctx, ident), "code": ident.Code}).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = t.T(".identity", i18n.M{"label": identityLabel(ctx, party, ident), "code": ident.Code}).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -543,7 +544,7 @@ func registration(reg *org.Registration) templ.Component {
 					var templ_7745c5c3_Var14 string
 					templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(reg.Office)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 122, Col: 18}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 123, Col: 18}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 					if templ_7745c5c3_Err != nil {
@@ -646,7 +647,7 @@ func registration(reg *org.Registration) templ.Component {
 					var templ_7745c5c3_Var15 string
 					templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(reg.Other)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 157, Col: 17}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 158, Col: 17}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 					if templ_7745c5c3_Err != nil {
@@ -716,7 +717,7 @@ func partyExtensions(party *org.Party) templ.Component {
 				var templ_7745c5c3_Var17 string
 				templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(txt)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 174, Col: 9}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 175, Col: 9}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 				if templ_7745c5c3_Err != nil {
@@ -763,9 +764,12 @@ func emailAddress(ctx context.Context, email *org.Email) string {
 	return email.Address
 }
 
-func identityLabel(ctx context.Context, ident *org.Identity) string {
+func identityLabel(ctx context.Context, party *org.Party, ident *org.Identity) string {
 	if ident.Label != "" {
 		return ident.Label
+	}
+	if lbl := sg.IdentityLabel(party, ident); lbl != "" {
+		return lbl
 	}
 	if ident.Type != "" {
 		return ident.Type.String()
@@ -804,6 +808,8 @@ func taxIDLabel(ctx context.Context, party *org.Party) string {
 	switch tID.Country {
 	case "AR":
 		return "CUIT"
+	case "SG":
+		return "GST Reg No."
 	case "DE":
 		return "USt-IdNr."
 	case "ES":
