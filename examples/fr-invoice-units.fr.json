@@ -4,7 +4,7 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "e588d036427eab5deef69c8855be9be469cb7a95f63be5f90a6ccb87d01926a5"
+			"val": "9c9d0b43c26dc5f4a0d36089b7bcd78657b1eab4172119da39b6f167578cd39d"
 		}
 	},
 	"doc": {
@@ -155,7 +155,10 @@
 				"item": {
 					"name": "Café en grains",
 					"price": "9.80",
-					"unit": "kg"
+					"unit": "kg",
+					"ext": {
+						"untdid-unit": "KGM"
+					}
 				},
 				"sum": "245.00",
 				"taxes": [
@@ -174,7 +177,9 @@
 				"item": {
 					"name": "Eau minérale",
 					"price": "1.20",
-					"unit": "bottle"
+					"ext": {
+						"untdid-unit": "XBO"
+					}
 				},
 				"sum": "14.40",
 				"taxes": [
