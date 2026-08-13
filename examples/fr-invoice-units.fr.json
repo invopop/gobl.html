@@ -4,7 +4,7 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "9c9d0b43c26dc5f4a0d36089b7bcd78657b1eab4172119da39b6f167578cd39d"
+			"val": "5169c45e6bb7dc8ba4e49f960ac5a2b0718beb4b0a6b258e90916aee1dabb63b"
 		}
 	},
 	"doc": {
@@ -177,9 +177,7 @@
 				"item": {
 					"name": "Eau minérale",
 					"price": "1.20",
-					"ext": {
-						"untdid-unit": "XBO"
-					}
+					"unit": "bottle"
 				},
 				"sum": "14.40",
 				"taxes": [
@@ -191,11 +189,32 @@
 					}
 				],
 				"total": "14.40"
+			},
+			{
+				"i": 8,
+				"quantity": "1",
+				"item": {
+					"name": "Prestation avec unité UNTDID",
+					"price": "10.00",
+					"ext": {
+						"untdid-unit": "E48"
+					}
+				},
+				"sum": "10.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "10.00"
 			}
 		],
 		"totals": {
-			"sum": "4350.40",
-			"total": "4350.40",
+			"sum": "4360.40",
+			"total": "4360.40",
 			"taxes": {
 				"categories": [
 					{
@@ -203,19 +222,19 @@
 						"rates": [
 							{
 								"key": "standard",
-								"base": "4350.40",
+								"base": "4360.40",
 								"percent": "20%",
-								"amount": "870.08"
+								"amount": "872.08"
 							}
 						],
-						"amount": "870.08"
+						"amount": "872.08"
 					}
 				],
-				"sum": "870.08"
+				"sum": "872.08"
 			},
-			"tax": "870.08",
-			"total_with_tax": "5220.48",
-			"payable": "5220.48"
+			"tax": "872.08",
+			"total_with_tax": "5232.48",
+			"payable": "5232.48"
 		}
 	}
 }
