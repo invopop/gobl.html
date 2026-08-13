@@ -1,6 +1,7 @@
 package bill
 
 import (
+	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
@@ -31,7 +32,7 @@ func prepareLineSupport(reg *tax.RegimeDef, lines []*bill.Line, dss []*bill.Disc
 		if len(l.Charges) > 0 {
 			ls.charges = true
 		}
-		if l.Item.Unit != "" {
+		if t.ItemHasUnit(l.Item) {
 			ls.units = true
 		}
 		if l.Item.Price != nil {
