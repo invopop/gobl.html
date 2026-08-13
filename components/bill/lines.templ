@@ -124,8 +124,8 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 		</td>
 		if ls.units {
 			<td class="unit">
-				if l.Item.Unit != "" {
-					{ t.UnitName(ctx, l.Item.Unit) }
+				if t.ItemHasUnit(l.Item) {
+					{ t.ItemUnitName(ctx, l.Item) }
 				} else {
 					<!-- empty -->
 				}
@@ -223,8 +223,8 @@ templ breakdownLine(sl *bill.SubLine, ls *lineSupport, st *subtotal) {
 		</td>
 		if ls.units {
 			<td class="unit">
-				if sl.Item.Unit != "" {
-					{ t.UnitName(ctx, sl.Item.Unit) }
+				if t.ItemHasUnit(sl.Item) {
+					{ t.ItemUnitName(ctx, sl.Item) }
 				} else {
 					<!-- empty -->
 				}

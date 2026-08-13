@@ -8,6 +8,7 @@ import (
 	ct "github.com/invopop/gobl.html/components/t"
 	srclocales "github.com/invopop/gobl.html/locales"
 	"github.com/invopop/gobl/org"
+	"github.com/invopop/gobl/tax"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -69,4 +70,48 @@ func TestUnitName(t *testing.T) {
 			}
 		}
 	})
+}
+
+func TestItemUnitName(t *testing.T) {
+	locales := new(i18n.Locales)
+	require.NoError(t, locales.LoadWithDefault(srclocales.Content, "en"))
+	ctx := locales.Get("en").WithContext(context.Background())
+
+	tests := []struct {
+		name string
+		item *org.Item
+		want string
+	}{
+		{name: "nil item", want: ""},
+		{name: "empty item", item: &org.Item{}, want: ""},
+		{name: "GOBL unit", item: &org.Item{Unit: org.UnitKilogram}, want: "kg"},
+		{
+			name: "GOBL and UNTDID units",
+			item: &org.Item{
+				Unit: org.UnitKilogram,
+				Ext:  tax.MakeExtensions().Set("untdid-unit", "KGM"),
+			},
+			want: "kg (KGM)",
+		},
+		{
+			name: "translated GOBL and UNTDID units",
+			item: &org.Item{
+				Unit: org.UnitHour,
+				Ext:  tax.MakeExtensions().Set("untdid-unit", "HUR"),
+			},
+			want: "hours (HUR)",
+		},
+		{
+			name: "UNTDID unit only",
+			item: &org.Item{Ext: tax.MakeExtensions().Set("untdid-unit", "E48")},
+			want: "E48",
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			assert.Equal(t, test.want, ct.ItemUnitName(ctx, test.item))
+			assert.Equal(t, test.want != "", ct.ItemHasUnit(test.item))
+		})
+	}
 }
