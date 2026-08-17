@@ -1,0 +1,168 @@
+fi:
+  currencies:
+    AED: Arabiemiirikuntien dirham
+    AFN: Afgaani
+    ALL: Lek
+    AMD: Armenian dram
+    ANG: Alankomaiden Antillien guldeni
+    AOA: Kwanza
+    ARS: Argentiinan peso
+    AUD: Australian dollari
+    AWG: Aruban floriini
+    AZN: Azerbaidžanin manat
+    BAM: Vaihdettava markka
+    BBD: Barbadosin dollari
+    BDT: Taka
+    BGN: Bulgarian lev
+    BHD: Bahrainin dinaari
+    BIF: Burundin frangi
+    BMD: Bermudan dollari
+    BND: Brunein dollari
+    BOB: Boliviano
+    BOV: Mvdol
+    BRL: Brasilian real
+    BSD: Bahaman dollari
+    BTN: Ngultrum
+    BWP: Pula
+    BYN: Valko-Venäjän rupla
+    BZD: Belizen dollari
+    CAD: Kanadan dollari
+    CDF: Kongon frangi
+    CHE: WIR-euro
+    CHF: Sveitsin frangi
+    CHW: WIR-frangi
+    CLF: Unidad de Fomento
+    CLP: Chilen peso
+    CNY: Kiinan yuan
+    COP: Kolumbian peso
+    COU: Unidad de Valor Real
+    CRC: Costa Rican colón
+    CUC: Kuuban vaihdettava peso
+    CUP: Kuuban peso
+    CVE: Kap Verden escudo
+    CZK: Tšekin koruna
+    DJF: Djiboutin frangi
+    DKK: Tanskan kruunu
+    DOP: Dominikaanisen tasavallan peso
+    DZD: Algerian dinaari
+    EGP: Egyptin punta
+    ERN: Nakfa
+    ETB: Birr
+    EUR: Euro
+    FJD: Fidžin dollari
+    FKP: Falklandinsaarten punta
+    GBP: Englannin punta
+    GEL: Georgian lari
+    GHS: Ghanan cedi
+    GIP: Gibraltarin punta
+    GMD: Dalasi
+    GNF: Guinean frangi
+    GTQ: Quetzal
+    GYD: Guyanan dollari
+    HKD: Hongkongin dollari
+    HNL: Lempira
+    HRK: Kroatian kuna
+    HTG: Gourde
+    HUF: Unkarin forintti
+    IDR: Indonesian rupia
+    ILS: Israelin sekeli
+    INR: Intian rupia
+    IQD: Irakin dinaari
+    IRR: Iranin rial
+    ISK: Islannin kruunu
+    JMD: Jamaikan dollari
+    JOD: Jordanian dinaari
+    JPY: Jeni
+    KES: Kenian shillinki
+    KGS: Som
+    KHR: Riel
+    KMF: Komorien frangi
+    KPW: Pohjois-Korean won
+    KRW: Etelä-Korean won
+    KWD: Kuwaitin dinaari
+    KYD: Caymansaarten dollari
+    KZT: Tenge
+    LAK: Laosin kip
+    LBP: Libanonin punta
+    LKR: Sri Lankan rupia
+    LRD: Liberian dollari
+    LSL: Loti
+    LYD: Libyan dinaari
+    MAD: Marokon dirham
+    MDL: Moldovan leu
+    MGA: Ariary
+    MKD: Denaari
+    MMK: Kyat
+    MNT: Tugrik
+    MOP: Pataca
+    MRU: Ouguiya
+    MUR: Mauritiuksen rupia
+    MVR: Rufiyaa
+    MWK: Malawin kwacha
+    MXN: Meksikon peso
+    MXV: Meksikon Unidad de Inversion (UDI)
+    MYR: Malesian ringgit
+    MZN: Mosambikin metical
+    NAD: Namibian dollari
+    NGN: Naira
+    NIO: Córdoba oro
+    NOK: Norjan kruunu
+    NPR: Nepalin rupia
+    NZD: Uuden-Seelannin dollari
+    OMR: Omanin rial
+    PAB: Balboa
+    PEN: Sol
+    PGK: Kina
+    PHP: Filippiinien peso
+    PKR: Pakistanin rupia
+    PLN: Złoty
+    PYG: Guaraní
+    QAR: Qatarin rial
+    RON: Romanian leu
+    RSD: Serbian dinaari
+    RUB: Venäjän rupla
+    RWF: Ruandan frangi
+    SAR: Saudi-Arabian rial
+    SBD: Salomonsaarten dollari
+    SCR: Seychellien rupia
+    SDG: Sudanin punta
+    SEK: Ruotsin kruunu
+    SGD: Singaporen dollari
+    SHP: Saint Helenan punta
+    SLL: Leone
+    SOS: Somalian shillinki
+    SRD: Surinamen dollari
+    SSP: Etelä-Sudanin punta
+    STN: Dobra
+    SVC: El Salvadorin colón
+    SYP: Syyrian punta
+    SZL: Lilangeni
+    THB: Baht
+    TJS: Somoni
+    TMT: Turkmenistanin manat
+    TND: Tunisian dinaari
+    TOP: Paʻanga
+    TRY: Turkin liira
+    TTD: Trinidadin ja Tobagon dollari
+    TWD: Uusi Taiwanin dollari
+    TZS: Tansanian shillinki
+    UAH: Hryvnia
+    UGX: Ugandan shillinki
+    USD: Yhdysvaltain dollari
+    USN: Yhdysvaltain dollari (seuraava päivä)
+    UYI: Uruguayn peso (indeksoidut yksiköt)
+    UYU: Uruguayn peso
+    UYW: Uruguayn nimellinen palkkaindeksiyksikkö
+    UZS: Sum
+    VES: Venezuelan bolívar
+    VND: Dong
+    VUV: Vatu
+    WST: Tala
+    XAF: CFA-frangi (BEAC)
+    XCD: Itä-Karibian dollari
+    XOF: CFA-frangi (BCEAO)
+    XPF: CFP-frangi
+    YER: Jemenin rial
+    ZAR: Etelä-Afrikan randi
+    ZMW: Sambian kwacha
+    ZWL: Zimbabwen dollari
