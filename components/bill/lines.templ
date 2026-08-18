@@ -5,6 +5,7 @@ import (
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/regimes/mx"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/taxid"
 	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cal"
@@ -303,7 +304,7 @@ templ defaultLineSeller(seller *org.Party) {
 		{ seller.Name }
 		if seller.TaxID != nil && seller.TaxID.Code != "" {
 			{ " · " }
-			<code>{ seller.TaxID.Code.String() }</code>
+			<code>{ taxid.Format(ctx, seller.TaxID).Code }</code>
 		}
 	</span>
 }
