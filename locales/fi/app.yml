@@ -1,0 +1,257 @@
+fi:
+  page: "Sivu %{page} / %{count}"
+
+  billing:
+    invoice: &invoice
+      title:
+        standard: "Lasku"
+        standard-simplified: "Yksinkertaistettu lasku"
+        proforma: "Proformalasku"
+        corrective: "Korjauslasku"
+        credit-note: "Hyvityslasku"
+        debit-note: "Veloituslasku"
+        other: "Asiakirja"
+        paid: "Maksettu"
+        void: "Mitätöity"
+        self-billed: "Itselaskutus"
+        untdid:
+          "325": "Proformalasku"
+          "380": "Lasku"
+          "381": "Hyvityslasku"
+          "383": "Veloituslasku"
+          "384": "Korjauslasku"
+          "326": "Osalasku"
+          "389": "Itselaskutettu lasku"
+          "261": "Itselaskutettu hyvityslasku"
+          "386": "Ennakkolasku"
+          "393": "Factoring-lasku"
+          "396": "Factoring-hyvityslasku"
+
+      summary: &summary
+        title: "Yhteenveto"
+        issue_date: "Päiväys"
+        value_date: "Arvopäivä"
+        taxable_event: "Verollinen tapahtuma"
+        taxable_event_date: "Verollisen tapahtuman päivä"
+        tax_points:
+          issue: "Päiväys"
+          delivery: "Toimituspäivä"
+          payment: "Maksupäivä"
+        operation_date: "Tapahtumapäivä"
+        currency: "Valuutta"
+        currency_value: "%{desc} (%{code})"
+        preceding_document: "Aiemmat asiakirjat"
+        replaced_documents: "Korvatut asiakirjat"
+        corrected_documents: "Korjatut asiakirjat"
+        order: "Tilaus"
+        order_period: "Jakso"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} – %{end}"
+
+      supplier:
+        title: "Myyjä"
+
+      customer:
+        title: "Asiakas"
+
+      receiver:
+        title: "Toimitusosoite"
+        date: "Toimituspäivä: %{date}"
+        period: "Toimituspäivä: %{start} – %{end}"
+
+      lines: &lines
+        title: "Rivit"
+        i: "#"
+        ref: "Viite"
+        description: "Kuvaus"
+        quantity: "Määrä"
+        unit: "Yksikkö"
+        price: "Hinta"
+        discount: "Alennus"
+        charges: "Lisämaksut"
+        total: "Yhteensä"
+        no_percent: "—"
+        exemption: "Verovapaus"
+        on_behalf_of: "Puolesta"
+        period: "Jakso"
+        period_range: "%{start} – %{end}"
+
+      totals: &totals
+        sum: "Summa"
+        discount: "Alennus"
+        charge: "Lisämaksu"
+        title: "Summat"
+        prices_include: "Sisältää %{tax}"
+        total: "Yhteensä"
+        taxes: "Vero"
+        total_with_tax: "Yhteensä veroineen"
+        retained_tax: "Pidätetty vero"
+        rounding: "Pyöristys"
+        total_to_pay: "Maksettava yhteensä"
+        advance: "Ennakkomaksu: %{date} %{txt}"
+        advance_sum: "Ennakkomaksut yhteensä"
+        due_sum: "Maksamatta"
+        exchange_rate: "Muunnettuna valuuttaan %{to} (%{amount})"
+        carried_fwd: "Siirto seuraavalle sivulle"
+        brought_fwd: "Siirto edelliseltä sivulta"
+
+      taxes:
+        title: "Verot"
+        category: "Vero"
+        base: "Peruste"
+        rate: "Verokanta"
+        amount: "Summa"
+        exemption: "Verovapaus"
+        no_percent: "—"
+
+      payment: &payment
+        title: "Maksu"
+        instructions: &payment_instructions
+          method: "Maksutapa"
+          ref: "Viite"
+          ref_line: "Viite: %{ref}"
+          amount: "Summa"
+          description: "Kuvaus"
+          bank_data: "Tilisiirron tiedot"
+          card: "Korttimaksu"
+          card_detail: "Maksu suoritettu kortilla, jonka numero päättyy %{last4} ja haltija on %{holder}"
+          direct_debit: "Suoraveloitus"
+          mandate_ref: "Valtakirja: %{ref}"
+          creditor: "Velkojatunnus: %{creditor}"
+          observations: "Maksua koskevat huomautukset"
+          bank_name: "Pankki: %{name}"
+          iban: "IBAN: %{iban}"
+          account_number: "Tilinumero: %{num}"
+          clearing: "Clearing-koodi: %{code}"
+          bic: "BIC: %{bic}"
+          online: "Maksulinkki"
+          methods:
+            card: "Maksukortti"
+            card+credit: "Luottokortti"
+            card+debit: "Debit-kortti"
+            credit-transfer: "Tilisiirto"
+            cash: "Käteinen"
+            direct-debit: "Suoraveloitus"
+            online: "Verkkomaksu"
+            cheque: "Šekki"
+        terms:
+          key: "Maksuehdot"
+          notes: "Maksuehtojen huomautukset"
+          due_dates:
+            one: "Eräpäivä"
+            other: "Eräpäivät"
+          keys:
+            na: "Ei määritelty"
+            end_of_month: "Kuukauden lopussa"
+            due_date: "Eräpäivänä"
+            deferred: "Eräpäivän jälkeen"
+            proximo: "Seuraava kuukausi"
+            instant: "Laskun toimituksen yhteydessä"
+            elective: "Asiakkaan valinnan mukaan"
+            pending: "Toimittajan määritettävä"
+            advanced: "Maksettu"
+            delivery: "Toimituksen yhteydessä"
+
+      notes:
+        title: "Huomautukset"
+
+    payment:
+      <<: *invoice
+      title:
+        request: "Maksupyyntö"
+        advice: "Maksuilmoitus"
+        receipt: "Maksukuitti"
+        paid: "Maksettu"
+        void: "Mitätöity"
+
+      lines:
+        <<: *lines
+        document: "Asiakirja"
+
+      methods:
+        title: "Maksutavat"
+        date: "Päivämäärä"
+        amount: "Summa"
+        total: "Maksettu yhteensä"
+        instructions: *payment_instructions
+
+    delivery:
+      <<: *invoice
+      title:
+        advice: "Toimitusilmoitus"
+        note: "Lähetysluettelo"
+        waybill: "Rahtikirja"
+        receipt: "Toimituskuitti"
+
+      summary:
+        <<: *summary
+        despatch_date: "Lähetyspäivä"
+        receive_date: "Vastaanottopäivä"
+        preceding_document: "Aiempi asiakirja"
+
+      despatcher:
+        title: "Lähettäjä"
+
+      receiver:
+        title: "Vastaanottaja"
+
+      courier:
+        title: "Kuljetusliike"
+
+      tracking:
+        title: "Seurantatiedot"
+        code: "Seurantakoodi"
+        website: "Seurantalinkki"
+
+    order:
+      <<: *invoice
+      title:
+        purchase: "Ostotilaus"
+        sale: "Myyntitilaus"
+        quote: "Tarjous"
+
+      summary:
+        <<: *summary
+        preceding_document: "Aiempi asiakirja"
+        contract: "Sopimus"
+        period: "Jakso"
+
+      buyer:
+        title: "Ostaja"
+
+      seller:
+        title: "Myyjä"
+
+  org:
+    party:
+      tax_id: "%{label}: (%{country}) %{code}"
+      tax_id_no_country: "%{label}: %{code}"
+      tel: "Puh.: %{num}"
+      tel_label: "Puh.: %{num} (%{label})"
+      email:
+        one: "Sähköposti: %{addr}"
+        other: "Sähköpostit: %{addr}"
+      email_label: "%{addr} (%{label})"
+      identity: "%{label}: %{code}"
+      identity_code: "Tunnistekoodi"
+      identity_labels:
+        passport: "Passi"
+      po_box: "PL %{po_box}"
+      labels:
+        default: "ALV-tunnus"
+      ext: "%{label}: %{value}"
+      ext_map:
+        # Varmista, että tämä luettelo pidetään ajan tasalla kaikilla kielillä!
+        co-dian-municipality: "Kunta"
+      reg:
+        capital: "Osakepääoma: %{amount}"
+        registration: "Rekisteröinti:"
+        book: "Kirja %{id}"
+        volume: "Nide %{id}"
+        sheet: "Lehti %{id}"
+        section: "Osasto %{id}"
+        page: "Sivu %{id}"
+        entry: "Merkintä %{id}"
+    address:
+      label: "%{label}:"
+      country: "(%{country})"
