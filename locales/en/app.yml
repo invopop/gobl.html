@@ -244,6 +244,15 @@ en:
       po_box: "P.O. box %{po_box}"
       labels:
         default: "TIN"
+        ar: "CUIT"
+        co: "NIT"
+        de: "USt-IdNr."
+        es: "NIF"
+        fr: "TVA"
+        it: "P.IVA"
+        mx: "RFC"
+        pt: "NIF"
+        sg: "GST Reg No."
       identity: "%{label}: %{code}"
       identity_code: "Identity code"
       identity_labels:
