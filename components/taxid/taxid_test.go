@@ -13,6 +13,13 @@ import (
 	"github.com/invopop/gobl/tax"
 )
 
+// The Spanish identity is reused across the cases below, in both its
+// national and its intra-community form.
+const (
+	esCode = "B98602642"
+	esTIN  = "ES" + esCode
+)
+
 // localized prepares a context with the locales loaded the same way as
 // goblhtml does, with "en" merged into every other locale.
 func localized(t *testing.T, code string) context.Context {
@@ -38,9 +45,9 @@ func TestFormat(t *testing.T) {
 	}{
 		{
 			name:    "national identifier without prefix",
-			id:      &tax.Identity{Country: "ES", Code: "B98602642"},
+			id:      &tax.Identity{Country: "ES", Code: esCode},
 			label:   "NIF",
-			code:    "B98602642",
+			code:    esCode,
 			country: "ES",
 		},
 		{
@@ -132,28 +139,28 @@ func TestFormatIntraCommunity(t *testing.T) {
 	}
 
 	t.Run("supply between member states", func(t *testing.T) {
-		ctx := invoice("ESB98602642", "NL000099995B57")
-		if f := Format(ctx, mustParse(t, "ESB98602642")); f.Code != "ESB98602642" || f.Country != "" {
+		ctx := invoice(esTIN, "NL000099995B57")
+		if f := Format(ctx, mustParse(t, esTIN)); f.Code != esTIN || f.Country != "" {
 			t.Errorf("got %+v", f)
 		}
 	})
 
 	t.Run("domestic supply keeps the national format", func(t *testing.T) {
-		ctx := invoice("ESB98602642", "ESB63272603")
-		if f := Format(ctx, mustParse(t, "ESB98602642")); f.Code != "B98602642" || f.Country != "ES" {
+		ctx := invoice(esTIN, "ESB63272603")
+		if f := Format(ctx, mustParse(t, esTIN)); f.Code != esCode || f.Country != "ES" {
 			t.Errorf("got %+v", f)
 		}
 	})
 
 	t.Run("export outside the union keeps the national format", func(t *testing.T) {
-		ctx := invoice("ESB98602642", "US123456789")
-		if f := Format(ctx, mustParse(t, "ESB98602642")); f.Code != "B98602642" || f.Country != "ES" {
+		ctx := invoice(esTIN, "US123456789")
+		if f := Format(ctx, mustParse(t, esTIN)); f.Code != esCode || f.Country != "ES" {
 			t.Errorf("got %+v", f)
 		}
 	})
 
 	t.Run("third party outside the union keeps the national format", func(t *testing.T) {
-		ctx := invoice("ESB98602642", "NL000099995B57")
+		ctx := invoice(esTIN, "NL000099995B57")
 		if f := Format(ctx, &tax.Identity{Country: "SG", Code: "199307558M"}); f.Country != "SG" {
 			t.Errorf("got %+v", f)
 		}
