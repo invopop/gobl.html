@@ -230,6 +230,12 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 
 	ctx = internal.WithOptions(ctx, o)
 
+	// Make the document available to components that only receive a part of
+	// it, such as the party details.
+	if d := internal.ExtractDocumentFrom(env); d != nil {
+		ctx = internal.WithDocument(ctx, d)
+	}
+
 	if o.AdjustmentMode {
 		switch doc := env.Extract().(type) {
 		case *bill.Invoice:

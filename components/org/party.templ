@@ -9,9 +9,9 @@ import (
 	"unicode/utf8"
 
 	"github.com/invopop/ctxi18n/i18n"
-	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/regimes/sg"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/taxid"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
 )
@@ -41,11 +41,12 @@ templ Party(party *org.Party) {
 
 templ taxID(party *org.Party) {
 	if showTaxID(party) {
+		{{ tID := taxid.Format(ctx, party.TaxID) }}
 		<div class="tax-id">
-			if taxIDCodeIncludesCountry(party) {
-				@t.T(".tax_id_no_country", i18n.M{"label": taxIDLabel(ctx, party), "code": taxIDCode(party)})
+			if tID.Country == "" {
+				@t.T(".tax_id_no_country", i18n.M{"label": tID.Label, "code": tID.Code})
 			} else {
-				@t.T(".tax_id", i18n.M{"label": taxIDLabel(ctx, party), "country": party.TaxID.Country.String(), "code": taxIDCode(party)})
+				@t.T(".tax_id", i18n.M{"label": tID.Label, "country": tID.Country, "code": tID.Code})
 			}
 		</div>
 	}
@@ -248,54 +249,6 @@ func showIdentity(ident *org.Identity) bool {
 
 func showTaxID(party *org.Party) bool {
 	return party.TaxID != nil && party.TaxID.Code != cbc.CodeEmpty
-}
-
-func taxIDLabel(ctx context.Context, party *org.Party) string {
-	tID := party.TaxID
-	switch tID.Country {
-	case "AR":
-		return "CUIT"
-	case "SG":
-		return "GST Reg No."
-	case "DE":
-		return "USt-IdNr."
-	case "ES":
-		return "NIF"
-	case "CO":
-		return "NIT"
-	case "MX":
-		return "RFC"
-	case "FR":
-		return "TVA"
-	case "PT":
-		return "NIF"
-	case "IT":
-		return "P.IVA"
-	default:
-		return i18n.T(ctx, ".labels.default")
-	}
-}
-
-func taxIDCode(party *org.Party) string {
-	tID := party.TaxID
-	code := tID.Code.String()
-	switch tID.Country {
-	case "CO":
-		return co.FormatTaxIDCode(code)
-	default:
-		if taxIDCodeIncludesCountry(party) {
-			return tID.Country.String() + code
-		}
-		return code
-	}
-}
-
-// taxIDCodeIncludesCountry reports whether the country prefix is an
-// integral part of the tax ID code, in which case it is prepended to
-// the code and not shown separately in parentheses. The German
-// USt-IdNr., for example, is only valid with the "DE" prefix.
-func taxIDCodeIncludesCountry(party *org.Party) bool {
-	return party.TaxID.Country == "DE"
 }
 
 func mapPartyExtension(ctx context.Context, k cbc.Key, v cbc.Code) string {
