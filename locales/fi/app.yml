@@ -8,6 +8,7 @@ fi:
         standard-simplified: "Yksinkertaistettu lasku"
         proforma: "Proformalasku"
         corrective: "Korjauslasku"
+        adjustment: "Oikaisulasku"
         credit-note: "Hyvityslasku"
         debit-note: "Veloituslasku"
         other: "Asiakirja"
@@ -31,8 +32,8 @@ fi:
         title: "Yhteenveto"
         issue_date: "Päiväys"
         value_date: "Arvopäivä"
-        taxable_event: "Verollinen tapahtuma"
-        taxable_event_date: "Verollisen tapahtuman päivä"
+        taxable_event: "Verotettava tapahtuma"
+        taxable_event_date: "Verotettavan tapahtuman päivä"
         tax_points:
           issue: "Päiväys"
           delivery: "Toimituspäivä"
@@ -133,7 +134,7 @@ fi:
             cash: "Käteinen"
             direct-debit: "Suoraveloitus"
             online: "Verkkomaksu"
-            cheque: "Šekki"
+            cheque: "Sekki"
         terms:
           key: "Maksuehdot"
           notes: "Maksuehtojen huomautukset"
@@ -226,12 +227,16 @@ fi:
     party:
       tax_id: "%{label}: (%{country}) %{code}"
       tax_id_no_country: "%{label}: %{code}"
+      person: "%{name}"
+      person_label: "%{label}: %{name}"
       tel: "Puh.: %{num}"
       tel_label: "Puh.: %{num} (%{label})"
       email:
         one: "Sähköposti: %{addr}"
         other: "Sähköpostit: %{addr}"
       email_label: "%{addr} (%{label})"
+      website: "Verkkosivu: %{url}"
+      website_label: "%{label}: %{url}"
       identity: "%{label}: %{code}"
       identity_code: "Tunnistekoodi"
       identity_labels:
