@@ -2,6 +2,7 @@ package locales_test
 
 import (
 	"path"
+	"slices"
 	"strings"
 	"testing"
 
@@ -16,6 +17,14 @@ import (
 // no `currencies.yml`, so currency codes are compared against the union of what
 // all the locales translate.
 const referenceCode = "en"
+
+// The files each locale is made up of.
+const (
+	appFile        = "app.yml"
+	countriesFile  = "countries.yml"
+	currenciesFile = "currencies.yml"
+	unitsFile      = "units.yml"
+)
 
 // exemptKeys are English strings that are meant to stay as they are in every
 // locale, either because they belong to a specific tax regime or because they
@@ -33,126 +42,82 @@ func exemptKey(key string) bool {
 		strings.HasSuffix(key, "identity_labels.de-tax-number"):
 		// "Codice fiscale" and "St. -Nr." are not translated.
 		return true
+	case strings.HasPrefix(key, "org.party.labels.") && key != "org.party.labels.default":
+		// Country tax ID abbreviations such as NIF, RFC and P.IVA are used as
+		// they are in every language. Only the generic label is translated.
+		return true
 	}
 	return false
 }
+
+// Gaps shared by several locales, named so that the table below stays readable
+// and each key is written exactly once.
+var (
+	// personLabels and websiteLabels were added to English after most of the
+	// locales were written.
+	personLabels  = []string{"org.party.person", "org.party.person_label"}
+	websiteLabels = []string{"org.party.website", "org.party.website_label"}
+
+	// adjustmentTitle is the title used when rendering in adjustment mode.
+	adjustmentTitle = []string{"billing.*.title.adjustment"}
+
+	// chequePayment is reachable both through the payment instructions and
+	// through the payment methods block, so it goes missing in pairs.
+	chequePayment = []string{
+		"billing.*.payment.instructions.methods.cheque",
+		"billing.*.methods.instructions.methods.cheque",
+	}
+
+	// dueDatesPlural is the "other" plural form of the due date label. The
+	// locales below define "many" instead, which the templates never ask for.
+	dueDatesPlural = []string{"billing.*.payment.terms.due_dates.other"}
+
+	// currencyTail is where these locales' currency lists stop, at UYU.
+	currencyTail = []string{
+		"currencies.UYW", "currencies.UZS", "currencies.VES", "currencies.VND",
+		"currencies.VUV", "currencies.WST", "currencies.XAF", "currencies.XCD",
+		"currencies.XOF", "currencies.XPF", "currencies.YER", "currencies.ZAR",
+		"currencies.ZMW", "currencies.ZWL",
+	}
+)
 
 // knownGaps lists the keys a locale does not translate yet and which therefore
 // fall back to English when rendered. They all pre-date this test.
 //
 // New locales must ship without any entry here, so please translate the key
-// rather than adding to this list.
+// rather than adding to this list. Removing the last gap from a locale is what
+// "complete" looks like: ar, ca, eu, fi and gl have no entry.
 //
 // Keys under `billing` are normalised to `billing.*.` because the same block is
 // merged into the invoice, payment, delivery and order documents.
 var knownGaps = map[string][]string{
-	"da": {
-		"billing.*.title.adjustment",
-		"org.party.person",
-		"org.party.person_label",
-		"org.party.website",
-		"org.party.website_label",
-	},
-	"de": {
-		"billing.*.title.adjustment",
-		"country_names.AW",
-		"org.party.person",
-		"org.party.person_label",
-		"org.party.website",
-		"org.party.website_label",
-	},
-	"el": {
-		"billing.*.methods.instructions.methods.cheque",
-		"billing.*.payment.instructions.methods.cheque",
-		"billing.*.payment.terms.due_dates.other",
-		"billing.*.title.adjustment",
-		"org.party.person",
-		"org.party.person_label",
-	},
-	"es": {
-		"billing.*.payment.terms.due_dates.other",
-		"org.party.person",
-		"org.party.person_label",
-		"org.party.website",
-		"org.party.website_label",
-	},
-	"fr": {
-		// The four `terms.keys` below are spelt with hyphens in fr/app.yml
-		// ("due-date", "end-of-month", "advance"), so they never match.
-		"billing.*.payment.terms.due_dates.other",
+	"da": slices.Concat(adjustmentTitle, personLabels, websiteLabels),
+	"de": append(slices.Concat(adjustmentTitle, personLabels, websiteLabels),
+		"country_names.AW"),
+	"el": slices.Concat(adjustmentTitle, chequePayment, dueDatesPlural, personLabels),
+	"es": slices.Concat(dueDatesPlural, personLabels, websiteLabels),
+	// The three `terms.keys` below are spelt with hyphens in fr/app.yml
+	// ("due-date", "end-of-month", "advance"), so they never match.
+	"fr": append(slices.Concat(adjustmentTitle, dueDatesPlural, personLabels, websiteLabels),
 		"billing.*.payment.terms.keys.advanced",
 		"billing.*.payment.terms.keys.due_date",
-		"billing.*.payment.terms.keys.end_of_month",
-		"billing.*.title.adjustment",
-		"org.party.person",
-		"org.party.person_label",
-		"org.party.website",
-		"org.party.website_label",
-	},
-	"it": {
-		"billing.*.methods.instructions.methods.cheque",
-		"billing.*.payment.instructions.methods.cheque",
-		"billing.*.title.adjustment",
-		"country_names.KY",
-		"org.party.person",
-		"org.party.person_label",
-		"org.party.website",
-		"org.party.website_label",
-		// Currency list stops at UYU.
-		"currencies.UYW", "currencies.UZS", "currencies.VES", "currencies.VND",
-		"currencies.VUV", "currencies.WST", "currencies.XAF", "currencies.XCD",
-		"currencies.XOF", "currencies.XPF", "currencies.YER", "currencies.ZAR",
-		"currencies.ZMW", "currencies.ZWL",
-	},
-	"nl": {
-		"billing.*.title.adjustment",
-		"org.party.person",
-		"org.party.person_label",
-		"org.party.website",
-		"org.party.website_label",
-	},
-	"no": {
-		"billing.*.title.adjustment",
-		"org.party.person",
-		"org.party.person_label",
-		"org.party.website",
-		"org.party.website_label",
-	},
-	"pl": {
-		// `prices_include` is spelt `prices_include_tax` in pl/app.yml.
-		"billing.*.methods.instructions.methods.cheque",
-		"billing.*.payment.instructions.methods.cheque",
-		"billing.*.payment.terms.due_dates.other",
-		"billing.*.title.adjustment",
+		"billing.*.payment.terms.keys.end_of_month"),
+	"it": append(slices.Concat(adjustmentTitle, chequePayment, personLabels, websiteLabels, currencyTail),
+		"country_names.KY"),
+	"nl": slices.Concat(adjustmentTitle, personLabels, websiteLabels),
+	"no": slices.Concat(adjustmentTitle, personLabels, websiteLabels),
+	// `prices_include` is spelt `prices_include_tax` in pl/app.yml.
+	"pl": append(slices.Concat(adjustmentTitle, chequePayment, dueDatesPlural, personLabels, websiteLabels, currencyTail),
 		"billing.*.totals.prices_include",
 		"country_names.KY",
-		"org.party.ext_map.co-dian-municipality",
-		"org.party.person",
-		"org.party.person_label",
-		"org.party.website",
-		"org.party.website_label",
-		// Currency list stops at UYU.
-		"currencies.UYW", "currencies.UZS", "currencies.VES", "currencies.VND",
-		"currencies.VUV", "currencies.WST", "currencies.XAF", "currencies.XCD",
-		"currencies.XOF", "currencies.XPF", "currencies.YER", "currencies.ZAR",
-		"currencies.ZMW", "currencies.ZWL",
-	},
-	"pt": {
-		"billing.*.methods.instructions.methods.cheque",
-		"billing.*.payment.instructions.methods.cheque",
-		"billing.*.payment.terms.due_dates.other",
-		"billing.*.title.adjustment",
-		"org.party.ext_map.co-dian-municipality",
-		"org.party.person",
-		"org.party.person_label",
-		"org.party.website",
-		"org.party.website_label",
-	},
+		"org.party.ext_map.co-dian-municipality"),
+	"pt": append(slices.Concat(adjustmentTitle, chequePayment, dueDatesPlural, personLabels, websiteLabels),
+		"org.party.ext_map.co-dian-municipality"),
 }
 
 // localeFiles are the files every locale is expected to provide, except for
 // English which has no currency names of its own.
-var localeFiles = []string{"app.yml", "countries.yml", "currencies.yml", "units.yml"}
+var localeFiles = []string{appFile, countriesFile, currenciesFile, unitsFile}
 
 func TestLocaleCodes(t *testing.T) {
 	codes := locales.Codes()
@@ -166,7 +131,7 @@ func TestLocaleCodes(t *testing.T) {
 func TestLocaleFilesUseOwnCode(t *testing.T) {
 	for _, code := range locales.Codes() {
 		for _, name := range localeFiles {
-			if code == referenceCode && name == "currencies.yml" {
+			if code == referenceCode && name == currenciesFile {
 				continue // English intentionally has no currency names.
 			}
 			data, err := locales.Content.ReadFile(path.Join(code, name))
@@ -185,13 +150,13 @@ func TestLocaleFilesUseOwnCode(t *testing.T) {
 // the reference locale, so that a new language cannot ship with keys that
 // silently render in English.
 func TestLocaleKeyCoverage(t *testing.T) {
-	required := keysOf(t, referenceCode, "app.yml")
-	for k, v := range keysOf(t, referenceCode, "countries.yml") {
+	required := keysOf(t, referenceCode, appFile)
+	for k, v := range keysOf(t, referenceCode, countriesFile) {
 		required[k] = v
 	}
 	// English has no currencies.yml, so take every currency any locale names.
 	for _, code := range locales.Codes() {
-		for k, v := range keysOf(t, code, "currencies.yml") {
+		for k, v := range keysOf(t, code, currenciesFile) {
 			required[k] = v
 		}
 	}
@@ -206,8 +171,8 @@ func TestLocaleKeyCoverage(t *testing.T) {
 				gaps[k] = true
 			}
 
-			have := keysOf(t, code, "app.yml")
-			for _, name := range []string{"countries.yml", "currencies.yml"} {
+			have := keysOf(t, code, appFile)
+			for _, name := range []string{countriesFile, currenciesFile} {
 				for k, v := range keysOf(t, code, name) {
 					have[k] = v
 				}
