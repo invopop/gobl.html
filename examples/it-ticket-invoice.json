@@ -5,7 +5,13 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "e6afda2d2dff6d6985db0545f3ff1efa28445d5788f2e8d91b7e5a7206c6e6de"
-		}
+		},
+		"stamps": [
+			{
+				"prv": "ade-ref",
+				"val": "0000789012"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -110,5 +116,8 @@
 			"total_with_tax": "117.00",
 			"payable": "117.00"
 		}
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6ImM0NWQyZDM0LWIzMjItNDc0MS1hMjRlLTZmYzNjMGEwOTJmMCJ9.eyJ1dWlkIjoiOGE1MWZkMzAtMmEyNy0xMWVlLWJlNTYtMDI0MmFjMTIwMDAyIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImU2YWZkYTJkMmRmZjZkNjk4NWRiMDU0NWYzZmYxZWZhMjg0NDVkNTc4OGYyZThkOTFiN2U1YTcyMDZjNmU2ZGUifX0.eZEWFBDKwo_WtApbUBbZL898n06mkjoRCsVaTZ2KjgnC5WKKWfX5c4K8McF7Rr07KZSNtMTWK4nM7tYOWD61yg"
+	]
 }
