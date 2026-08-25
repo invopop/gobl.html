@@ -131,6 +131,7 @@ fi:
             card+credit: "Luottokortti"
             card+debit: "Debit-kortti"
             credit-transfer: "Tilisiirto"
+            debit-transfer: "Debit-siirto"
             cash: "Käteinen"
             direct-debit: "Suoraveloitus"
             online: "Verkkomaksu"
