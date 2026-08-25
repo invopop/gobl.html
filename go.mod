@@ -22,6 +22,7 @@ require (
 	github.com/yuin/goldmark v1.4.13
 	github.com/ziflex/lecho/v3 v3.7.0
 	gitlab.com/flimzy/testy v0.14.0
+	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (
@@ -56,7 +57,6 @@ require (
 	golang.org/x/sys v0.46.0 // indirect
 	golang.org/x/text v0.38.0 // indirect
 	golang.org/x/time v0.14.0 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
 //replace github.com/invopop/gobl => ../gobl
