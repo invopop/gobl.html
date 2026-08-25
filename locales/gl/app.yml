@@ -134,6 +134,7 @@ gl:
             card+credit: "Tarxeta de crédito"
             card+debit: "Tarxeta de débito"
             credit-transfer: "Transferencia bancaria"
+            debit-transfer: "Transferencia de débito"
             cash: "Efectivo"
             direct-debit: "Domiciliación bancaria"
             online: "En liña"

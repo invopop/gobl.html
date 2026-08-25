@@ -130,6 +130,7 @@ de:
             card+credit: "Kreditkarte"
             card+debit: "Debitkarte"
             credit-transfer: "Banküberweisung"
+            debit-transfer: "Debitüberweisung"
             cash: "Bargeld"
             direct-debit: "Lastschrift"
             online: "Online"

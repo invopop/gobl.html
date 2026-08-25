@@ -134,6 +134,7 @@ ar:
             card+credit: "بطاقة ائتمانية"
             card+debit: "بطاقة خصم"
             credit-transfer: "تحويل بنكي"
+            debit-transfer: "تحويل خصم"
             cash: "نقد"
             direct-debit: "خصم مباشر"
             online: "عبر الإنترنت"

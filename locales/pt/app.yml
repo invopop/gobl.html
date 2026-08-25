@@ -130,6 +130,7 @@ pt:
             card+credit: "Cartão de crédito"
             card+debit: "Cartão de débito"
             credit-transfer: "Transferência bancária"
+            debit-transfer: "Transferência de débito"
             cash: "Dinheiro"
             direct-debit: "Débito direto"
             online: "Online"

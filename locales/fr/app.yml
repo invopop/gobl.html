@@ -121,6 +121,7 @@ fr:
             card+credit: "Carte de crédit"
             card+debit: "Carte de débit"
             credit-transfer: "Virement bancaire"
+            debit-transfer: "Virement de débit"
             cash: "Espèces"
             direct-debit: "Prélèvement automatique"
             online: "En ligne"
