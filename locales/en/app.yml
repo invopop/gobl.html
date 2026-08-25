@@ -287,6 +287,9 @@ en:
         standard: "Electronic sales invoice"
         credit-note: "Electronic credit note"
     it:
+      # Reference assigned by the AdE when the commercial document is
+      # accepted; it must be printed on the ticket.
+      ade-ref: "AdE reference"
       title:
         # AdE receipt document names ("documento commerciale"); corrections
         # keep the commercial document title per Risposta all'interpello

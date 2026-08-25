@@ -247,6 +247,9 @@ it:
       country: "(%{country})"
   regimes:
     it:
+      # Riferimento assegnato dall'AdE all'accettazione del documento
+      # commerciale; deve essere stampato sullo scontrino.
+      ade-ref: "Riferimento AdE"
       title:
         # Nome ufficiale del documento AdE (Risposta all'interpello n. 167/2020).
         ticket: "Documento commerciale"
