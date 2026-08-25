@@ -12,7 +12,7 @@ require (
 	github.com/invopop/gobl.pt.saft v0.0.5
 	github.com/invopop/gobl.sa.zatca v0.0.2
 	github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a
-	github.com/labstack/echo/v4 v4.15.0
+	github.com/labstack/echo/v4 v4.15.3
 	github.com/piglig/go-qr v0.2.4
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2
 	github.com/rs/zerolog v1.33.0
@@ -42,10 +42,10 @@ require (
 	github.com/invopop/jsonschema v0.14.0 // indirect
 	github.com/invopop/yaml v0.3.1 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
-	github.com/labstack/gommon v0.4.2 // indirect
+	github.com/labstack/gommon v0.5.0 // indirect
 	github.com/magefile/mage v1.17.2 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
-	github.com/mattn/go-isatty v0.0.20 // indirect
+	github.com/mattn/go-isatty v0.0.22 // indirect
 	github.com/pb33f/ordered-map/v2 v2.3.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/spf13/pflag v1.0.6 // indirect
@@ -56,7 +56,7 @@ require (
 	golang.org/x/net v0.56.0 // indirect
 	golang.org/x/sys v0.46.0 // indirect
 	golang.org/x/text v0.38.0 // indirect
-	golang.org/x/time v0.14.0 // indirect
+	golang.org/x/time v0.15.0 // indirect
 )
 
 //replace github.com/invopop/gobl => ../gobl
