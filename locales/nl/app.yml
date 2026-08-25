@@ -130,6 +130,7 @@ nl:
             card+credit: "Creditcard"
             card+debit: "Debetkaart"
             credit-transfer: "Bankoverschrijving"
+            debit-transfer: "Debetoverboeking"
             cash: "Contant"
             direct-debit: "Automatische incasso"
             online: "Online"

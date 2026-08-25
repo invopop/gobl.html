@@ -134,6 +134,7 @@ es:
             card+credit: "Tarjeta de crédito"
             card+debit: "Tarjeta de débito"
             credit-transfer: "Transferencia bancaria"
+            debit-transfer: "Transferencia de débito"
             cash: "Efectivo"
             direct-debit: "Domiciliación bancaria"
             online: "En línea"

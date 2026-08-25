@@ -134,6 +134,7 @@ ca:
             card+credit: "Targeta de crèdit"
             card+debit: "Targeta de dèbit"
             credit-transfer: "Transferència bancària"
+            debit-transfer: "Transferència de dèbit"
             cash: "Efectiu"
             direct-debit: "Domiciliació bancària"
             online: "En línia"

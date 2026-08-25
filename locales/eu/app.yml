@@ -134,6 +134,7 @@ eu:
             card+credit: "Kreditu txartela"
             card+debit: "Debitu txartela"
             credit-transfer: "Banku transferentzia"
+            debit-transfer: "Debitu transferentzia"
             cash: "Dirutan"
             direct-debit: "Banku domiziliazioa"
             online: "Linean"

@@ -130,6 +130,7 @@ no:
             card+credit: "Kredittkort"
             card+debit: "Debetkort"
             credit-transfer: "Bankoverføring"
+            debit-transfer: "Debetoverføring"
             cash: "Kontant"
             direct-debit: "Direkte debitering"
             online: "Online"

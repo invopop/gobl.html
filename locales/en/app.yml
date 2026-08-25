@@ -135,6 +135,7 @@ en:
             card+credit: "Credit card"
             card+debit: "Debit card"
             credit-transfer: "Bank transfer"
+            debit-transfer: "Debit transfer"
             cash: "Cash"
             direct-debit: "Direct debit"
             online: "Online"

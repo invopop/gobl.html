@@ -121,6 +121,7 @@ it:
             card+credit: "Carta di credito"
             card+debit: "Carta di debito"
             credit-transfer: "Bonifico bancario"
+            debit-transfer: "Trasferimento di debito"
             cash: "Contanti"
             direct-debit: "Addebito diretto"
             online: "Online"

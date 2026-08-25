@@ -132,6 +132,7 @@ el:
             card+credit: "Πιστωτική κάρτα"
             card+debit: "Χρεωστική κάρτα"
             credit-transfer: "Τραπεζική μεταφορά"
+            debit-transfer: "Χρεωστική μεταφορά"
             cash: "Μετρητά"
             direct-debit: "Άμεση πίστωση"
             online: "Διαδικτυακά"
