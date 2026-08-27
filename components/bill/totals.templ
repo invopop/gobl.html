@@ -170,14 +170,16 @@ templ totalsDueRows(inv *bill.Invoice, totals *bill.Totals) {
 				</td>
 			</tr>
 		}
-		<tr class="due strong">
-			<th>
-				@t.T(".due_sum")
-			</th>
-			<td>
-				@t.LM(*totals.Due)
-			</td>
-		</tr>
+		if totals.Due != nil {
+			<tr class="due strong">
+				<th>
+					@t.T(".due_sum")
+				</th>
+				<td>
+					@t.LM(*totals.Due)
+				</td>
+			</tr>
+		}
 	}
 }
 
