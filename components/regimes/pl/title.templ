@@ -1,0 +1,41 @@
+package pl
+
+import (
+	"context"
+	"strings"
+
+	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/internal"
+	"github.com/invopop/gobl/addons/pl/favat"
+)
+
+// TitleType renders the official KSeF document title for invoices issued
+// under the pl-favat addon, based on the FA_VAT "RodzajFaktury" code carried
+// in the pl-favat-invoice-type extension (VAT, ZAL, ROZ, UPR, KOR, KOR_ZAL,
+// KOR_ROZ). Polish law has no separate credit note document: all corrections
+// are a "faktura korygująca", so credit notes must not be titled "nota
+// kredytowa". Falls through to the default title when the extension is not
+// present.
+templ TitleType(doc internal.Document) {
+	if lbl := titleLabel(ctx, doc); lbl != "" {
+		{ lbl }
+	}
+}
+
+// titleLabel looks up the translated title for the KSeF invoice type code,
+// returning empty when the extension is absent or the code has no
+// translation registered.
+func titleLabel(ctx context.Context, doc internal.Document) string {
+	if doc == nil {
+		return ""
+	}
+	code := doc.GetExt().Get(favat.ExtKeyInvoiceType)
+	if code.IsEmpty() {
+		return ""
+	}
+	label := i18n.T(ctx, "regimes.pl.title."+code.String())
+	if strings.HasPrefix(label, "!") {
+		return ""
+	}
+	return label
+}

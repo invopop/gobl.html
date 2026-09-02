@@ -282,6 +282,17 @@ en:
   regimes:
     pl:
       ksef-id: "ID: %{id}"
+      title:
+        # Official KSeF FA_VAT document types ("RodzajFaktury"). Polish law
+        # has no separate credit note document: all corrections are a
+        # "faktura korygująca" (corrective invoice).
+        VAT: "Invoice"
+        ZAL: "Prepayment invoice"
+        ROZ: "Settlement invoice"
+        UPR: "Simplified invoice"
+        KOR: "Corrective invoice"
+        KOR_ZAL: "Prepayment corrective invoice"
+        KOR_ROZ: "Settlement corrective invoice"
     co:
       title:
         standard: "Electronic sales invoice"
