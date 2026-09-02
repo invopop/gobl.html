@@ -8,12 +8,8 @@
 		},
 		"stamps": [
 			{
-				"prv": "favat-id",
+				"prv": "favat-ksef-number",
 				"val": "1234567788-20240404-D1984449A6BC-02"
-			},
-			{
-				"prv": "favat-hash",
-				"val": "8KCfB1Sa5Jc4Gg6ctK4HKdwnRwK+dxT1ScymF6m5d18="
 			},
 			{
 				"prv": "favat-qr",
