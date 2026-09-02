@@ -252,6 +252,7 @@ en:
         fr: "TVA"
         it: "P.IVA"
         mx: "RFC"
+        pl: "NIP"
         pt: "NIF"
         sg: "GST Reg No."
       identity: "%{label}: %{code}"
