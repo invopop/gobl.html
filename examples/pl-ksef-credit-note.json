@@ -1,0 +1,131 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "0195662a-9144-7112-a2b2-11b3fa4a0815",
+		"dig": {
+			"alg": "sha256",
+			"val": "1adde9ac092524ffe27b0f6c8eee08191d670a5c4bdb24a7f2ee114222a472a0"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "PL",
+		"$addons": [
+			"pl-favat-v3"
+		],
+		"uuid": "0195662a-b25e-7a41-bd52-a674c7a5eb3a",
+		"type": "credit-note",
+		"series": "KOR",
+		"code": "SAMPLE-002",
+		"issue_date": "2024-04-20",
+		"currency": "PLN",
+		"preceding": [
+			{
+				"issue_date": "2023-12-20",
+				"code": "SAMPLE-001",
+				"reason": "Discount agreed after issue",
+				"stamps": [
+					{
+						"prv": "favat-ksef-number",
+						"val": "1234567788-20240404-D1984449A6BC-02"
+					}
+				]
+			}
+		],
+		"tax": {
+			"ext": {
+				"pl-favat-invoice-type": "KOR"
+			}
+		},
+		"supplier": {
+			"name": "Provide One S.L.",
+			"tax_id": {
+				"country": "PL",
+				"code": "1234567788"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "00-015",
+					"country": "PL"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Sample Consumer",
+			"tax_id": {
+				"country": "PL",
+				"code": "1234567788"
+			},
+			"addresses": [
+				{
+					"num": "43",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "00-015",
+					"country": "PL"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Development services",
+					"price": "90.00",
+					"unit": "h"
+				},
+				"sum": "180.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "23.0%",
+						"ext": {
+							"pl-favat-tax-category": "1"
+						}
+					}
+				],
+				"total": "180.00"
+			}
+		],
+		"totals": {
+			"sum": "180.00",
+			"total": "180.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pl-favat-tax-category": "1"
+								},
+								"base": "180.00",
+								"percent": "23.0%",
+								"amount": "41.40"
+							}
+						],
+						"amount": "41.40"
+					}
+				],
+				"sum": "41.40"
+			},
+			"tax": "41.40",
+			"total_with_tax": "221.40",
+			"payable": "221.40"
+		}
+	}
+}

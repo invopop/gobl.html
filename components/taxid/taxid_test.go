@@ -80,6 +80,13 @@ func TestFormat(t *testing.T) {
 			country: "CO",
 		},
 		{
+			name:    "Polish NIP",
+			id:      &tax.Identity{Country: "PL", Code: "9512381607"},
+			label:   "NIP",
+			code:    "9512381607",
+			country: "PL",
+		},
+		{
 			name:    "Greek identities use the EL tax country code",
 			id:      &tax.Identity{Country: "EL", Code: "177472438"},
 			code:    "177472438",
@@ -125,6 +132,13 @@ func TestFormatLabelLocalized(t *testing.T) {
 	named := &tax.Identity{Country: "DE", Code: "111111125"}
 	if l := Format(localized(t, "es"), named).Label; l != "USt-IdNr." {
 		t.Errorf("es: got %q", l)
+	}
+
+	// A Polish identity keeps its official name when the document itself is
+	// rendered in Polish, rather than the generic label.
+	nip := &tax.Identity{Country: "PL", Code: "9512381607"}
+	if l := Format(localized(t, "pl"), nip).Label; l != "NIP" {
+		t.Errorf("pl: got %q", l)
 	}
 }
 

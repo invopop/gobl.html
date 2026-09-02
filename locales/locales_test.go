@@ -107,7 +107,7 @@ var knownGaps = map[string][]string{
 	"nl": slices.Concat(adjustmentTitle, personLabels, websiteLabels),
 	"no": slices.Concat(adjustmentTitle, personLabels, websiteLabels),
 	// `prices_include` is spelt `prices_include_tax` in pl/app.yml.
-	"pl": append(slices.Concat(adjustmentTitle, chequePayment, dueDatesPlural, personLabels, websiteLabels, currencyTail),
+	"pl": append(slices.Concat(chequePayment, dueDatesPlural, personLabels, websiteLabels, currencyTail),
 		"billing.*.totals.prices_include",
 		"country_names.KY",
 		"org.party.ext_map.co-dian-municipality"),

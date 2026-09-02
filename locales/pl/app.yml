@@ -5,11 +5,15 @@ pl:
     invoice: &invoice
       title:
         standard: "Faktura"
-        standard-simplified: "Uproszczona faktura"
+        standard-simplified: "Faktura uproszczona"
         proforma: "Faktura proforma"
         corrective: "Faktura korygująca"
-        credit-note: "Nota kredytowa"
-        debit-note: "Nota debetowa"
+        # Polish law has no separate credit or debit note documents for VAT:
+        # all corrections are issued as a "faktura korygująca" (corrective
+        # invoice), per art. 106j of the VAT act.
+        credit-note: "Faktura korygująca"
+        debit-note: "Nota obciążeniowa"
+        adjustment: "Faktura korygująca"
         other: "Dokument"
         paid: "Zapłacono"
         void: "Unieważniony"
@@ -17,12 +21,12 @@ pl:
         untdid:
           "325": "Faktura proforma"
           "380": "Faktura"
-          "381": "Nota kredytowa"
-          "383": "Nota debetowa"
+          "381": "Faktura korygująca"
+          "383": "Nota obciążeniowa"
           "384": "Faktura korygująca"
           "326": "Faktura częściowa"
           "389": "Faktura samofakturowana"
-          "261": "Nota kredytowa samofakturowana"
+          "261": "Faktura korygująca (samofakturowanie)"
           "386": "Faktura zaliczkowa"
           "393": "Faktura scedowana (faktoring)"
           "396": "Faktura korygująca scedowana (faktoring)"
@@ -255,6 +259,18 @@ pl:
       country: "(%{country})"
 
   regimes:
+    pl:
+      ksef-id: "Numer KSeF: %{id}"
+      title:
+        # Official KSeF FA_VAT document types ("RodzajFaktury") per the
+        # FA(3) schema and art. 106 of the VAT act.
+        VAT: "Faktura"
+        ZAL: "Faktura zaliczkowa"
+        ROZ: "Faktura rozliczeniowa"
+        UPR: "Faktura uproszczona"
+        KOR: "Faktura korygująca"
+        KOR_ZAL: "Faktura korygująca fakturę zaliczkową"
+        KOR_ROZ: "Faktura korygująca fakturę rozliczeniową"
     co:
       cufe: "CUFE: %{cufe}"
       cude: "CUDE: %{cude}"
