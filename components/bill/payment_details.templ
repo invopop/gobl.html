@@ -8,6 +8,7 @@ import (
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/pay"
 )
 
@@ -22,7 +23,7 @@ templ paymentDetails(inv *bill.Invoice) {
 					@paymentInstructions(inv.Payment.Instructions)
 				}
 				if inv.Payment.Terms != nil {
-					@paymentTerms(inv.Payment.Terms)
+					@paymentTerms(inv.Payment.Terms, inv.Totals)
 				}
 			</section>
 		}
@@ -182,7 +183,7 @@ templ paymentCreditTransferRow(ct *pay.CreditTransfer) {
 	</div>
 }
 
-templ paymentTerms(terms *pay.Terms) {
+templ paymentTerms(terms *pay.Terms, totals *bill.Totals) {
 	@t.Scope(".terms") {
 		<ul class="terms">
 			if terms.Key != "" {
@@ -211,7 +212,7 @@ templ paymentTerms(terms *pay.Terms) {
 						@t.N(".due_dates", len(terms.DueDates))
 					</span>
 					<span class="value">
-						@paymentDueDates(terms)
+						@paymentDueDates(terms, totals)
 					</span>
 				</li>
 			}
@@ -219,10 +220,10 @@ templ paymentTerms(terms *pay.Terms) {
 	}
 }
 
-templ paymentDueDates(terms *pay.Terms) {
+templ paymentDueDates(terms *pay.Terms, totals *bill.Totals) {
 	<table class="due-dates">
 		<tbody>
-			for _, dd := range terms.DueDates {
+			for _, dd := range displayDueDates(terms, totals) {
 				<tr>
 					<td class="date">
 						if dd.Date != nil {
@@ -244,6 +245,23 @@ templ paymentDueDates(terms *pay.Terms) {
 			}
 		</tbody>
 	</table>
+}
+
+// displayDueDates returns the due dates to render, assuming a single due date
+// without an explicit amount or percent covers 100% of the payable total.
+func displayDueDates(terms *pay.Terms, totals *bill.Totals) []*pay.DueDate {
+	dds := terms.DueDates
+	if len(dds) != 1 || dds[0] == nil || totals == nil {
+		return dds
+	}
+	dd := dds[0]
+	if !dd.Amount.IsZero() || dd.Percent != nil {
+		return dds
+	}
+	full := *dd
+	full.Percent = num.NewPercentage(1, 0)
+	full.Amount = totals.Payable
+	return []*pay.DueDate{&full}
 }
 
 func showPayments(inv *bill.Invoice) bool {
