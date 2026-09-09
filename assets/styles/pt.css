@@ -1,21 +1,43 @@
 .at {
+  /*
+    Portaria 195/2020: the ATCUD text sits immediately above the QR code, and
+    the code is at least 30mm x 30mm with a 0.25cm quiet zone (both baked into
+    the 35mm image). The certification notes sit beside the code to keep the
+    block short so totals and QR fit together on the last page.
+  */
   break-inside: avoid;
-  text-align: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  column-gap: 3mm;
+}
+
+.at .code {
+  text-align: left;
 }
 
 .at .label {
   font-family: "Geist Mono", monospace;
   font-size: 7pt;
-  margin-bottom: 2mm;
+  line-height: 1.2;
 }
 
+/*
+  The image carries a 2.5mm quiet zone, so it is pulled into the page margin
+  to keep the code itself flush with the left edge of the content.
+*/
 .at img {
-  width: 30mm;
-  height: 30mm;
+  display: block;
+  width: 35mm;
+  height: 35mm;
+  margin: 0 0 -2.5mm -2.5mm;
 }
 
+/* Offset the descender so the note's baseline sits on the code's bottom edge. */
 .at .notes {
-  margin: 2mm 0;
+  text-align: left;
+  line-height: 1;
+  margin-bottom: 0.7mm;
 }
 
 .mp-footer .at .qr {
@@ -28,8 +50,15 @@
 }
 
 .mp-footer .at {
+  display: block;
   margin-top: 5mm;
   margin-bottom: -5mm;
+  text-align: center;
+}
+
+.mp-footer .at .code,
+.mp-footer .at .notes {
+  text-align: center;
 }
 
 .tail {
