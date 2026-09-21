@@ -11,6 +11,7 @@ import (
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/org"
+	"github.com/invopop/gobl/pay"
 	"github.com/invopop/gobl/tax"
 )
 
@@ -84,6 +85,16 @@ func tourismRefund(inv *bill.Invoice) num.Amount {
 // TourismPayable returns the payable total less the refunded VAT, or the payable unchanged for non-tourism invoices.
 func TourismPayable(inv *bill.Invoice, payable num.Amount) num.Amount {
 	return payable.Subtract(tourismRefund(inv))
+}
+
+// CalculateDuePayable subtracts a due date's share of the reintegro, mirroring TourismPayable.
+func CalculateDuePayable(inv *bill.Invoice, dd *pay.DueDate) num.Amount {
+	refund := tourismRefund(inv)
+	if refund.IsZero() || inv.Totals == nil || inv.Totals.Payable.IsZero() {
+		return dd.Amount
+	}
+	share := refund.Multiply(dd.Amount).Divide(inv.Totals.Payable)
+	return dd.Amount.Subtract(share)
 }
 
 func customerLegend(party *org.Party, docType cbc.Code) string {
