@@ -310,7 +310,7 @@ div.totals {
     display: flex;
     flex-wrap: row;
     width: 100%;
-    padding-top: 6mm;
+    padding-top: 4mm;
     border-bottom: 0.5px solid #e5e7eb;
     padding-bottom: 4mm;
 }
@@ -320,7 +320,9 @@ div.totals th {
 }
 section.totals {
     order: 2;
-    flex: 1;
+    /* Slightly wider than the taxes column so long labels such as advance
+       payments keep to a single line. */
+    flex: 1.2;
 }
 section.totals h2 {
     display: none;
@@ -336,6 +338,7 @@ section.totals th {
     text-align: right;
     border-top: 0.5px solid #e5e7eb;
     font-weight: normal;
+    padding-left: 0;
 }
 section.totals td {
     text-align: right;
@@ -372,7 +375,7 @@ section.taxes table {
     padding-right: 1cm;
     padding-left: 1cm;
     margin-left: 0;
-    width: 90%;
+    width: 95%;
 }
 section.taxes th,
 section.taxes td {
@@ -395,12 +398,12 @@ section.taxes td.category {
     text-align: left;
 }
 section.arca-transparency {
-    padding-top: 6mm;
+    padding-top: 4mm;
     break-inside: avoid;
 }
 section.payment {
     border-bottom: 0.5px solid #e5e7eb;
-    padding: 6mm 0mm;
+    padding: 4mm 0mm;
     order: 10;
     display: flex;
     flex-flow: row;
@@ -446,7 +449,7 @@ section.payment .due-dates td.amount {
 }
 section.payment {
     border-bottom: 0.5px solid #e5e7eb;
-    padding: 6mm 0mm;
+    padding: 4mm 0mm;
     order: 10;
     display: flex;
     flex-flow: row;
@@ -524,8 +527,8 @@ section.tracking span.value {
     display: block;
 }
 section.notes {
-    padding-top: 6mm;
-    padding-bottom: 6mm;
+    padding-top: 4mm;
+    padding-bottom: 4mm;
     border-bottom: 0.5px solid #e5e7eb;
     break-inside: avoid;
 }
@@ -534,12 +537,19 @@ section.notes .note {
 }
 .extensions section {
     break-inside: avoid;
-    padding-top: 6mm;
-    padding-bottom: 6mm;
+    padding-top: 4mm;
+    padding-bottom: 4mm;
     border-bottom: 0.5px solid #e5e7eb;
 }
 .extensions:empty {
     display: none;
+}
+/* The last block of the tail has nothing below it, so drop its closing rule
+   and padding to keep the document as short as possible. */
+.tail .extensions section:last-child,
+.tail > section:last-of-type:has(+ .extensions:empty) {
+    border-bottom: none;
+    padding-bottom: 0;
 }
 .org-party .name {
     font-weight: 600;
