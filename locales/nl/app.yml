@@ -47,6 +47,7 @@ nl:
         order_period: "Periode"
         order_period_label: "%{label}"
         order_period_range: "%{start} tot %{end}"
+        contract: "Contract"
 
       supplier:
         title: "Leverancier"

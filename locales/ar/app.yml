@@ -48,6 +48,7 @@ ar:
         order_period: "الفترة"
         order_period_label: "%{label}"
         order_period_range: "%{start} إلى %{end}"
+        contract: "العقد"
         ext_map:
           mx-cfdi-issue-place: "مكان الإصدار"
           mx-cfdi-payment-method: "طريقة الدفع"

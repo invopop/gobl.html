@@ -48,6 +48,7 @@ eu:
         order_period: "Aldia"
         order_period_label: "%{label}"
         order_period_range: "%{start}(e)tik %{end}(e)ra"
+        contract: "Kontratua"
         ext_map:
           mx-cfdi-issue-place: "Jaulkitze lekua"
           mx-cfdi-payment-method: "Ordainketa metodoa"

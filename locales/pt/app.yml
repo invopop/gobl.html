@@ -47,6 +47,7 @@ pt:
         order_period: "Período"
         order_period_label: "%{label}"
         order_period_range: "%{start} a %{end}"
+        contract: "Contrato"
 
       supplier:
         title: "Fornecedor"

@@ -51,6 +51,7 @@ pl:
         order_period: "Okres"
         order_period_label: "%{label}"
         order_period_range: "%{start} do %{end}"
+        contract: "Umowa"
 
       supplier:
         title: "Dostawca"

@@ -45,6 +45,7 @@ fr:
         order_period: "Période"
         order_period_label: "%{label}"
         order_period_range: "%{start} au %{end}"
+        contract: "Contrat"
       supplier:
         title: "Fournisseur"
       customer:

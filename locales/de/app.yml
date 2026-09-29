@@ -47,6 +47,7 @@ de:
         order_period: "Zeitraum"
         order_period_label: "%{label}"
         order_period_range: "%{start} bis %{end}"
+        contract: "Vertrag"
 
       supplier:
         title: "Lieferant"
