@@ -161,6 +161,26 @@ templ summaryOrderingRows(ord *bill.Ordering) {
 			}
 		</li>
 	}
+	if len(ord.Contracts) > 0 {
+		<li class="ordering-contracts">
+			<span class="label">
+				@t.T(".contract")
+			</span>
+			for _, contract := range ord.Contracts {
+				if contract != nil {
+					<span class="value">
+						{ contract.Series.Join(contract.Code).String() }
+						if contract.IssueDate != nil {
+							{ " · " }
+							<span class="date">
+								@t.L(contract.IssueDate)
+							</span>
+						}
+					</span>
+				}
+			}
+		</li>
+	}
 }
 
 templ summaryTaxExtRows(ext tax.Extensions) {

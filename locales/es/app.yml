@@ -48,6 +48,7 @@ es:
         order_period: "Periodo"
         order_period_label: "%{label}"
         order_period_range: "%{start} a %{end}"
+        contract: "Contrato"
         ext_map:
           mx-cfdi-issue-place: "Lugar de expedición"
           mx-cfdi-payment-method: "Método de pago"
