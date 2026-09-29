@@ -87,7 +87,12 @@ func generateQR(qrval string) string {
 		return ""
 	}
 
-	conf := go_qr.NewQrCodeImgConfig(10, 4)
+	// The AT spec requires a quiet zone of 0.25cm around a code of at least
+	// 30mm x 30mm. go-qr adds the border in raw SVG units rather than in
+	// modules, so with a scale of 12 and a border equal to the module count
+	// the quiet zone is exactly 1/12 of the code on each side. The stylesheet
+	// renders the image at 35mm so the code itself is 30mm with 2.5mm margins.
+	conf := go_qr.NewQrCodeImgConfig(12, qr.GetSize())
 
 	buf := new(bytes.Buffer)
 	if err := qr.WriteAsSVG(conf, buf, "#FFFFFF", "#000000"); err != nil {
