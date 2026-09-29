@@ -69,8 +69,8 @@ func ARCAVATLegend(doc internal.Document, party *org.Party, role string) templ.C
 	})
 }
 
-// ARCATourismRefund renders the refunded VAT row (importe reintegro) on Type T invoices, and nothing otherwise.
-func ARCATourismRefund(inv *bill.Invoice) templ.Component {
+// ARCAVATRefund renders the tourism VAT refund row (importe reintegro) on Type T invoices, and nothing otherwise.
+func ARCAVATRefund(inv *bill.Invoice) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -91,7 +91,7 @@ func ARCATourismRefund(inv *bill.Invoice) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if refund := tourismRefund(inv); !refund.IsZero() {
+		if refund := VATRefund(inv); refund != nil {
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<tr class=\"arca-reintegro\"><th>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -104,7 +104,7 @@ func ARCATourismRefund(inv *bill.Invoice) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = t.LM(refund.Negate()).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = t.LM(refund.Amount).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

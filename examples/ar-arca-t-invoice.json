@@ -4,7 +4,7 @@
 		"uuid": "9b62fd30-3b38-11ef-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "72bc2b6e8381fe19256982f87f0ed0cb6b43f7a7d3309ab947a7ffc972ee4b5c"
+			"val": "a0eed71b400a04781d2825892bc4299508ff85b5cd8eb9d1eb8f2dff574a145d"
 		}
 	},
 	"doc": {
@@ -88,9 +88,18 @@
 				"total": "300.00"
 			}
 		],
+		"charges": [
+			{
+				"i": 1,
+				"key": "vat-refund",
+				"reason": "Reintegro de IVA",
+				"amount": "-63.00"
+			}
+		],
 		"totals": {
 			"sum": "300.00",
-			"total": "300.00",
+			"charge": "-63.00",
+			"total": "237.00",
 			"taxes": {
 				"categories": [
 					{
@@ -113,8 +122,8 @@
 				"sum": "63.00"
 			},
 			"tax": "63.00",
-			"total_with_tax": "363.00",
-			"payable": "363.00"
+			"total_with_tax": "300.00",
+			"payable": "300.00"
 		}
 	}
 }

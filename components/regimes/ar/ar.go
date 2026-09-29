@@ -9,11 +9,12 @@ import (
 	"github.com/invopop/gobl/addons/ar/arca"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
-	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/org"
-	"github.com/invopop/gobl/pay"
-	"github.com/invopop/gobl/tax"
 )
+
+// chargeKeyVATRefund is the ar-arca-v4 addon's tourism refund charge
+// (ChargeKeyVATRefund in gobl.ar.arca).
+const chargeKeyVATRefund cbc.Key = "vat-refund"
 
 // vatStatusLegends maps ar-arca-vat-status codes to their official legend text
 // as defined by RG 1415.
@@ -62,41 +63,6 @@ func supplierLegend(_ internal.Document, docType cbc.Code) string {
 	return ""
 }
 
-// tourismRefund returns the VAT refunded to the tourist (importe reintegro): the VAT of the hotel items (tourism codes 1 and 2).
-func tourismRefund(inv *bill.Invoice) num.Amount {
-	refund := num.MakeAmount(0, 2)
-	if inv == nil || inv.Tax == nil || inv.Totals == nil || inv.Totals.Taxes == nil ||
-		!slices.Contains(arca.DocTypesT, cbc.Code(inv.Tax.Ext.Get(arca.ExtKeyDocType).String())) {
-		return refund
-	}
-	for _, cat := range inv.Totals.Taxes.Categories {
-		if cat.Code != tax.CategoryVAT {
-			continue
-		}
-		for _, rate := range cat.Rates {
-			if ti := rate.Ext.Get(arca.ExtKeyTourismItem); ti == "1" || ti == "2" {
-				refund = refund.Add(rate.Amount)
-			}
-		}
-	}
-	return refund
-}
-
-// TourismPayable returns the payable total less the refunded VAT, or the payable unchanged for non-tourism invoices.
-func TourismPayable(inv *bill.Invoice, payable num.Amount) num.Amount {
-	return payable.Subtract(tourismRefund(inv))
-}
-
-// CalculateDuePayable subtracts a due date's share of the reintegro, mirroring TourismPayable.
-func CalculateDuePayable(inv *bill.Invoice, dd *pay.DueDate) num.Amount {
-	refund := tourismRefund(inv)
-	if refund.IsZero() || inv.Totals == nil || inv.Totals.Payable.IsZero() {
-		return dd.Amount
-	}
-	share := refund.Multiply(dd.Amount).Divide(inv.Totals.Payable)
-	return dd.Amount.Subtract(share)
-}
-
 func customerLegend(party *org.Party, docType cbc.Code) string {
 	if slices.Contains(arca.DocTypesT, docType) {
 		return "CLIENTE DEL EXTERIOR"
@@ -109,4 +75,47 @@ func customerLegend(party *org.Party, docType cbc.Code) string {
 		return ""
 	}
 	return vatStatusLegends[vs.String()]
+}
+
+func isVATRefund(c *bill.Charge) bool {
+	return c != nil && c.Key == chargeKeyVATRefund
+}
+
+// VATRefund returns the tourism VAT refund charge (importe reintegro) of a Type T invoice, or nil.
+func VATRefund(inv *bill.Invoice) *bill.Charge {
+	if inv.Tax == nil || !slices.Contains(arca.DocTypesT, inv.Tax.GetExt(arca.ExtKeyDocType)) {
+		return nil
+	}
+	if i := slices.IndexFunc(inv.Charges, isVATRefund); i >= 0 {
+		return inv.Charges[i]
+	}
+	return nil
+}
+
+// Charges returns the charges to list with the lines; the VAT refund is shown in the totals instead.
+func Charges(inv *bill.Invoice) []*bill.Charge {
+	if VATRefund(inv) == nil {
+		return inv.Charges
+	}
+	return slices.DeleteFunc(slices.Clone(inv.Charges), isVATRefund)
+}
+
+// Totals returns a copy of the totals with the VAT refund taken out of the charges and added back
+// to the total and total with tax, so it is shown on its own row just before the payable.
+func Totals(inv *bill.Invoice, totals *bill.Totals) *bill.Totals {
+	refund := VATRefund(inv)
+	if refund == nil || totals == nil {
+		return totals
+	}
+	t := *totals
+	t.Total = t.Total.Subtract(refund.Amount)
+	t.TotalWithTax = t.TotalWithTax.Subtract(refund.Amount)
+	if t.Charge != nil {
+		if charge := t.Charge.Subtract(refund.Amount); charge.IsZero() {
+			t.Charge = nil
+		} else {
+			t.Charge = &charge
+		}
+	}
+	return &t
 }

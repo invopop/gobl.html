@@ -12,6 +12,7 @@ import (
 )
 
 templ totals(inv *bill.Invoice, totals *bill.Totals) {
+	{{ totals = ar.Totals(inv, totals) }}
 	<section class="totals">
 		@t.Scope(".totals") {
 			<h2>
@@ -120,8 +121,7 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 			</td>
 		</tr>
 	}
-	@ar.ARCATourismRefund(inv)
-	{{ payable := ar.TourismPayable(inv, totals.Payable) }}
+	@ar.ARCAVATRefund(inv)
 	<tr class="payable strong">
 		<th>
 			if inv.Type.In(bill.InvoiceTypeCreditNote) {
@@ -133,7 +133,7 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 			}
 		</th>
 		<td>
-			@t.LM(payable)
+			@t.LM(totals.Payable)
 		</td>
 	</tr>
 	for _, er := range totalExchangeRates(inv) {
@@ -142,7 +142,7 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 				@t.T(".exchange_rate", i18n.M{"to": er.To, "amount": t.Localize(ctx, er.Amount)})
 			</th>
 			<td>
-				@t.LCD(er.Convert(payable), er.To)
+				@t.LCD(er.Convert(totals.Payable), er.To)
 			</td>
 		</tr>
 	}

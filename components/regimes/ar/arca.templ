@@ -23,15 +23,15 @@ templ ARCAVATLegend(doc internal.Document, party *org.Party, role string) {
 	}
 }
 
-// ARCATourismRefund renders the refunded VAT row (importe reintegro) on Type T invoices, and nothing otherwise.
-templ ARCATourismRefund(inv *bill.Invoice) {
-	if refund := tourismRefund(inv); !refund.IsZero() {
+// ARCAVATRefund renders the tourism VAT refund row (importe reintegro) on Type T invoices, and nothing otherwise.
+templ ARCAVATRefund(inv *bill.Invoice) {
+	if refund := VATRefund(inv); refund != nil {
 		<tr class="arca-reintegro">
 			<th>
 				@t.T("regimes.ar.vat_refund")
 			</th>
 			<td>
-				@t.LM(refund.Negate())
+				@t.LM(refund.Amount)
 			</td>
 		</tr>
 	}

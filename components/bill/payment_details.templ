@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/internal"
-	"github.com/invopop/gobl.html/components/regimes/ar"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/pay"
@@ -23,7 +22,7 @@ templ paymentDetails(inv *bill.Invoice) {
 					@paymentInstructions(inv.Payment.Instructions)
 				}
 				if inv.Payment.Terms != nil {
-					@paymentTerms(inv, inv.Payment.Terms)
+					@paymentTerms(inv.Payment.Terms)
 				}
 			</section>
 		}
@@ -183,7 +182,7 @@ templ paymentCreditTransferRow(ct *pay.CreditTransfer) {
 	</div>
 }
 
-templ paymentTerms(inv *bill.Invoice, terms *pay.Terms) {
+templ paymentTerms(terms *pay.Terms) {
 	@t.Scope(".terms") {
 		<ul class="terms">
 			if terms.Key != "" {
@@ -212,7 +211,7 @@ templ paymentTerms(inv *bill.Invoice, terms *pay.Terms) {
 						@t.N(".due_dates", len(terms.DueDates))
 					</span>
 					<span class="value">
-						@paymentDueDates(inv, terms)
+						@paymentDueDates(terms)
 					</span>
 				</li>
 			}
@@ -220,7 +219,7 @@ templ paymentTerms(inv *bill.Invoice, terms *pay.Terms) {
 	}
 }
 
-templ paymentDueDates(inv *bill.Invoice, terms *pay.Terms) {
+templ paymentDueDates(terms *pay.Terms) {
 	<table class="due-dates">
 		<tbody>
 			for _, dd := range terms.DueDates {
@@ -239,7 +238,7 @@ templ paymentDueDates(inv *bill.Invoice, terms *pay.Terms) {
 						}
 					</td>
 					<td class="amount">
-						@t.LM(ar.CalculateDuePayable(inv, dd))
+						@t.LM(dd.Amount)
 					</td>
 				</tr>
 			}

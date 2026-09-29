@@ -3,6 +3,7 @@ package bill
 import (
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/components/regimes/ar"
 	"github.com/invopop/gobl.html/components/regimes/mx"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/taxid"
@@ -16,7 +17,7 @@ import (
 
 templ lines(inv *bill.Invoice) {
 	@t.Scope(".lines") {
-		@linesWithSupport(inv.RegimeDef(), inv.Lines, inv.Discounts, inv.Charges)
+		@linesWithSupport(inv.RegimeDef(), inv.Lines, inv.Discounts, ar.Charges(inv))
 	}
 }
 
