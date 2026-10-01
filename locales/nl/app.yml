@@ -89,8 +89,6 @@ nl:
         retained_tax: "Ingehouden belasting"
         rounding: "Afronding"
         total_to_pay: "Te betalen"
-        advance: "Vooruitbetaling: %{date} %{txt}"
-        advance_sum: "Som vooruitbetalingen"
         due_sum: "Openstaand bedrag"
         exchange_rate: "Omgerekend naar %{to} (%{amount})"
         carried_fwd: "Transporteren"

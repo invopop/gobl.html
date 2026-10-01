@@ -5,11 +5,10 @@ import (
 	"slices"
 
 	"github.com/invopop/gobl"
+	arca "github.com/invopop/gobl.ar.arca/addon"
 	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal"
-	"github.com/invopop/gobl/addons/ar/arca"
-	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
@@ -20,20 +19,6 @@ import (
 templ ARCAVATLegend(doc internal.Document, party *org.Party, role string) {
 	if legend := arcaVATLegend(doc, party, role); legend != "" {
 		<div class="arca-vat-legend">{ legend }</div>
-	}
-}
-
-// ARCATourismRefund renders the refunded VAT row (importe reintegro) on Type T invoices, and nothing otherwise.
-templ ARCATourismRefund(inv *bill.Invoice) {
-	if refund := tourismRefund(inv); !refund.IsZero() {
-		<tr class="arca-reintegro">
-			<th>
-				@t.T("regimes.ar.vat_refund")
-			</th>
-			<td>
-				@t.LM(refund.Negate())
-			</td>
-		</tr>
 	}
 }
 

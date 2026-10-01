@@ -4,7 +4,7 @@
 		"uuid": "0194020a-1f2e-7000-9ede-4ad7c0a9810f",
 		"dig": {
 			"alg": "sha256",
-			"val": "a78b807ec2a92e6e5ee51e8b2d75c3d2376b45b3242c0d019053c247d3c94f41"
+			"val": "ff35b2843b97b471dae87c790a73b6040ef248cdd4ff6639f8f9d80553644914"
 		},
 		"stamps": [
 			{
@@ -48,6 +48,7 @@
 		"currency": "EUR",
 		"tax": {
 			"ext": {
+				"pt-saft-source": "P",
 				"pt-saft-work-type": "NE"
 			}
 		},

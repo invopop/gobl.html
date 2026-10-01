@@ -89,8 +89,6 @@ da:
         retained_tax: "Indeholdt skat"
         rounding: "Afrunding"
         total_to_pay: "At betale"
-        advance: "Forudbetaling: %{date} %{txt}"
-        advance_sum: "Sum forudbetalinger"
         due_sum: "Restbeløb"
         exchange_rate: "Omregnet til %{to} (%{amount})"
         carried_fwd: "Videreføres"

@@ -5,14 +5,10 @@ package ar
 import (
 	"slices"
 
+	arca "github.com/invopop/gobl.ar.arca/addon"
 	"github.com/invopop/gobl.html/internal"
-	"github.com/invopop/gobl/addons/ar/arca"
-	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
-	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/org"
-	"github.com/invopop/gobl/pay"
-	"github.com/invopop/gobl/tax"
 )
 
 // vatStatusLegends maps ar-arca-vat-status codes to their official legend text
@@ -60,41 +56,6 @@ func supplierLegend(_ internal.Document, docType cbc.Code) string {
 		return "RESPONSABLE MONOTRIBUTO"
 	}
 	return ""
-}
-
-// tourismRefund returns the VAT refunded to the tourist (importe reintegro): the VAT of the hotel items (tourism codes 1 and 2).
-func tourismRefund(inv *bill.Invoice) num.Amount {
-	refund := num.MakeAmount(0, 2)
-	if inv == nil || inv.Tax == nil || inv.Totals == nil || inv.Totals.Taxes == nil ||
-		!slices.Contains(arca.DocTypesT, cbc.Code(inv.Tax.Ext.Get(arca.ExtKeyDocType).String())) {
-		return refund
-	}
-	for _, cat := range inv.Totals.Taxes.Categories {
-		if cat.Code != tax.CategoryVAT {
-			continue
-		}
-		for _, rate := range cat.Rates {
-			if ti := rate.Ext.Get(arca.ExtKeyTourismItem); ti == "1" || ti == "2" {
-				refund = refund.Add(rate.Amount)
-			}
-		}
-	}
-	return refund
-}
-
-// TourismPayable returns the payable total less the refunded VAT, or the payable unchanged for non-tourism invoices.
-func TourismPayable(inv *bill.Invoice, payable num.Amount) num.Amount {
-	return payable.Subtract(tourismRefund(inv))
-}
-
-// CalculateDuePayable subtracts a due date's share of the reintegro, mirroring TourismPayable.
-func CalculateDuePayable(inv *bill.Invoice, dd *pay.DueDate) num.Amount {
-	refund := tourismRefund(inv)
-	if refund.IsZero() || inv.Totals == nil || inv.Totals.Payable.IsZero() {
-		return dd.Amount
-	}
-	share := refund.Multiply(dd.Amount).Divide(inv.Totals.Payable)
-	return dd.Amount.Subtract(share)
 }
 
 func customerLegend(party *org.Party, docType cbc.Code) string {

@@ -90,8 +90,6 @@ fi:
         retained_tax: "Pidätetty vero"
         rounding: "Pyöristys"
         total_to_pay: "Maksettava yhteensä"
-        advance: "Ennakkomaksu: %{date} %{txt}"
-        advance_sum: "Ennakkomaksut yhteensä"
         due_sum: "Maksamatta"
         exchange_rate: "Muunnettuna valuuttaan %{to} (%{amount})"
         carried_fwd: "Siirto seuraavalle sivulle"
