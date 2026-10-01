@@ -93,8 +93,6 @@ eu:
         retained_tax: "Atxikitako zergak"
         rounding: "Biribiltzea"
         total_to_pay: "Ordaintzeko guztira"
-        advance: "Aurrerapen: %{date} %{txt}"
-        advance_sum: "Aurrerakinen batura"
         due_sum: "Zor den guztira"
         exchange_rate: "%{to}(e)rako aldaketa (%{amount})"
         carried_fwd: "Garraiatzea"

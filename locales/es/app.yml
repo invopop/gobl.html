@@ -93,8 +93,6 @@ es:
         retained_tax: "Impuestos retenidos"
         rounding: "Redondeo"
         total_to_pay: "Total a pagar"
-        advance: "Anticipo: %{date} %{txt}"
-        advance_sum: "Suma anticipos"
         due_sum: "Total adeudado"
         exchange_rate: "Cambio a %{to} (%{amount})"
         carried_fwd: "A transportar"
@@ -263,7 +261,6 @@ es:
 
   regimes:
     ar:
-      vat_refund: "Reintegro de IVA"
       title:
         "1": "Factura A"
         "2": "Nota de Débito A"

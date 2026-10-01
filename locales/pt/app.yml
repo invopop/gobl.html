@@ -89,8 +89,6 @@ pt:
         retained_tax: "Impostos retidos"
         rounding: "Arredondamento"
         total_to_pay: "Total a pagar"
-        advance: "Pagamento: %{date} %{txt}"
-        advance_sum: "Soma dos pagamentos"
         due_sum: "Total em Dívida"
         exchange_rate: "Câmbio para %{to} (%{amount})"
         carried_fwd: "Valor a transportar"
