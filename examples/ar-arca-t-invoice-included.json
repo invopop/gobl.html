@@ -4,7 +4,7 @@
 		"uuid": "9b62fd30-3b38-11ef-be56-0242ac120003",
 		"dig": {
 			"alg": "sha256",
-			"val": "1019b31ee1c01749ca0d70ac2d572d61c85416ef54d9dff43dbf7fb22def5078"
+			"val": "cadb6965ac5e71002322e7bdadef2539a535abeab67e34aac4928f1b5dd3befc"
 		}
 	},
 	"doc": {
@@ -89,6 +89,29 @@
 				"total": "300.00"
 			}
 		],
+		"payment": {
+			"advances": [
+				{
+					"waiver": "vat-refund",
+					"description": "Reintegro de IVA",
+					"taxes": [
+						{
+							"cat": "VAT",
+							"ext": {
+								"ar-arca-tourism-item": "1"
+							}
+						},
+						{
+							"cat": "VAT",
+							"ext": {
+								"ar-arca-tourism-item": "2"
+							}
+						}
+					],
+					"amount": "52.07"
+				}
+			]
+		},
 		"totals": {
 			"sum": "300.00",
 			"tax_included": "52.07",
@@ -116,7 +139,9 @@
 			},
 			"tax": "52.07",
 			"total_with_tax": "300.00",
-			"payable": "300.00"
+			"payable": "300.00",
+			"advance": "52.07",
+			"due": "247.93"
 		}
 	}
 }

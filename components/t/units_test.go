@@ -7,6 +7,7 @@ import (
 	"github.com/invopop/ctxi18n/i18n"
 	ct "github.com/invopop/gobl.html/components/t"
 	srclocales "github.com/invopop/gobl.html/locales"
+	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -38,16 +39,16 @@ func TestUnitName(t *testing.T) {
 
 	t.Run("passes through unknown UN/ECE codes", func(t *testing.T) {
 		ctx := ctxFor("en")
-		assert.Equal(t, "E48", ct.UnitName(ctx, org.Unit("E48")))
+		assert.Equal(t, "E48", ct.UnitName(ctx, cbc.Key("E48")))
 	})
 
 	t.Run("all units resolve to a name in every locale", func(t *testing.T) {
 		for _, code := range srclocales.Codes() {
 			ctx := ctxFor(code)
 			for _, def := range org.UnitDefinitions {
-				name := ct.UnitName(ctx, def.Unit)
-				assert.NotEmpty(t, name, "unit %q in locale %q", def.Unit, code)
-				assert.NotContains(t, name, "!(MISSING", "unit %q in locale %q", def.Unit, code)
+				name := ct.UnitName(ctx, def.Key)
+				assert.NotEmpty(t, name, "unit %q in locale %q", def.Key, code)
+				assert.NotContains(t, name, "!(MISSING", "unit %q in locale %q", def.Key, code)
 			}
 		}
 	})
@@ -62,10 +63,10 @@ func TestUnitName(t *testing.T) {
 			l := unmerged.Get(i18n.Code(code))
 			require.NotNil(t, l)
 			for _, def := range org.UnitDefinitions {
-				if def.Symbol != "" {
+				if def.Meta[org.UnitMetaKeySymbol] != "" {
 					continue
 				}
-				assert.True(t, l.Has("units."+string(def.Unit)), "missing translation for unit %q in locale %q", def.Unit, code)
+				assert.True(t, l.Has("units."+string(def.Key)), "missing translation for unit %q in locale %q", def.Key, code)
 			}
 		}
 	})

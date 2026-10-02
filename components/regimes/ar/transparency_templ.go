@@ -13,8 +13,8 @@ import (
 	"slices"
 	"strings"
 
+	arca "github.com/invopop/gobl.ar.arca/addon"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl/addons/ar/arca"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/num"

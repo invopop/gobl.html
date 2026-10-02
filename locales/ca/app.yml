@@ -93,8 +93,6 @@ ca:
         retained_tax: "Impostos retinguts"
         rounding: "Arrodoniment"
         total_to_pay: "Total a pagar"
-        advance: "Avançament: %{date} %{txt}"
-        advance_sum: "Suma d'avançaments"
         due_sum: "Total degut"
         exchange_rate: "Canvi a %{to} (%{amount})"
         carried_fwd: "A transportar"

@@ -14,7 +14,7 @@ import (
 
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/internal"
-	"github.com/invopop/gobl/addons/pl/favat"
+	favat "github.com/invopop/gobl.pl.ksef/addon"
 )
 
 // TitleType renders the official KSeF document title for invoices issued

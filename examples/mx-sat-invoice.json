@@ -140,9 +140,6 @@
 			}
 		],
 		"payment": {
-			"terms": {
-				"notes": "Pago a 30 días."
-			},
 			"advances": [
 				{
 					"key": "credit-transfer",
@@ -150,7 +147,10 @@
 					"percent": "100%",
 					"amount": "296.79"
 				}
-			]
+			],
+			"terms": {
+				"notes": "Pago a 30 días."
+			}
 		},
 		"totals": {
 			"sum": "310.80",

@@ -4,7 +4,7 @@
 		"uuid": "c82905b0-061b-11ef-9fc5-12007b149b55",
 		"dig": {
 			"alg": "sha256",
-			"val": "9de64fc9f3a7a0e8c734f339279297aa359650d2e180f209d4d63571fb974741"
+			"val": "6bd49e87602e9b518c3abd4811951dd2c5124b53ffceecf2d231706fc86689c0"
 		},
 		"stamps": [
 			{
@@ -88,9 +88,9 @@
 				"item": {
 					"name": "Dispersión de Despensa",
 					"price": "0.02",
-					"unit": "E48",
 					"ext": {
-						"mx-cfdi-prod-serv": "84141602"
+						"mx-cfdi-prod-serv": "84141602",
+						"untdid-unit": "E48"
 					}
 				},
 				"sum": "0.02",

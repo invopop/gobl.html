@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
-	"github.com/invopop/gobl.html/components/regimes/ar"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/currency"
@@ -120,8 +119,6 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 			</td>
 		</tr>
 	}
-	@ar.ARCATourismRefund(inv)
-	{{ payable := ar.TourismPayable(inv, totals.Payable) }}
 	<tr class="payable strong">
 		<th>
 			if inv.Type.In(bill.InvoiceTypeCreditNote) {
@@ -133,7 +130,7 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 			}
 		</th>
 		<td>
-			@t.LM(payable)
+			@t.LM(totals.Payable)
 		</td>
 	</tr>
 	for _, er := range totalExchangeRates(inv) {
@@ -142,7 +139,7 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 				@t.T(".exchange_rate", i18n.M{"to": er.To, "amount": t.Localize(ctx, er.Amount)})
 			</th>
 			<td>
-				@t.LCD(er.Convert(payable), er.To)
+				@t.LCD(er.Convert(totals.Payable), er.To)
 			</td>
 		</tr>
 	}
@@ -153,20 +150,10 @@ templ totalsDueRows(inv *bill.Invoice, totals *bill.Totals) {
 		for _, adv := range inv.Payment.Advances {
 			<tr class="advance">
 				<th>
-					@t.T(".advance", advanceMap(adv))
+					{ advanceText(adv) }
 				</th>
 				<td>
 					@t.LM(adv.Amount)
-				</td>
-			</tr>
-		}
-		if len(inv.Payment.Advances) > 1 {
-			<tr class="advance-sum">
-				<th>
-					@t.T(".advance_sum")
-				</th>
-				<td>
-					@t.LM(*totals.Advances)
 				</td>
 			</tr>
 		}
@@ -205,15 +192,14 @@ func totalExchangeRates(inv *bill.Invoice) []*currency.ExchangeRate {
 	return list
 }
 
-func advanceMap(adv *pay.Record) i18n.M {
+func advanceText(adv *pay.Record) string {
 	txt := adv.Description
 	if adv.Ref != "" {
 		txt = fmt.Sprintf("%s (%s)", txt, adv.Ref)
 	}
-	date := ""
 	if adv.Date != nil {
 		// TODO: add date formatting
-		date = adv.Date.String()
+		txt = fmt.Sprintf("%s %s", adv.Date.String(), txt)
 	}
-	return i18n.M{"date": date, "txt": txt}
+	return txt
 }

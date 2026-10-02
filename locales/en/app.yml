@@ -94,8 +94,6 @@ en:
         retained_tax: "Tax withheld"
         rounding: "Rounding"
         total_to_pay: "Total to pay"
-        advance: "Advance: %{date} %{txt}"
-        advance_sum: "Sum advances"
         due_sum: "Total due"
         exchange_rate: "Exchange to %{to} (%{amount})"
         carried_fwd: "Carried forward"
@@ -370,7 +368,6 @@ en:
           5: "Expense adjustment (accounting base)" # "Other expense adjustment/Regularization entries – Accounting base"
           6: "Expense adjustment (tax base)" # "Other expense adjustment/Regularization entries – Tax base"
     ar:
-      vat_refund: "VAT Refund"
       title:
         "1": "Invoice A"
         "2": "Debit Note A"

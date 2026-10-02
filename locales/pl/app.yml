@@ -93,8 +93,6 @@ pl:
         retained_tax: "Podatek zatrzymany"
         rounding: "Zaokrąglenie"
         total_to_pay: "Suma do zapłaty"
-        advance: "Zaliczka: %{date} %{txt}"
-        advance_sum: "Suma zaliczek"
         due_sum: "Suma należności"
         exchange_rate: "Kurs wymiany na %{to} (%{amount})"
         carried_fwd: "Do przeniesienia"

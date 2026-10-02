@@ -91,8 +91,6 @@ el:
         retained_tax: "Φόρος παρακράτησης"
         rounding: "Στρογγυλοποίηση"
         total_to_pay: "Σύνολο προς πληρωμή"
-        advance: "Προκαταβολή: %{date} %{txt}"
-        advance_sum: "Άθροισμα προκαταβολών"
         due_sum: "Σύνολο οφειλόμενου"
         exchange_rate: "Ισοτιμία προς %{to} (%{amount})"
         carried_fwd: "Προς μεταφορά"
