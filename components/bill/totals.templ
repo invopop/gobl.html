@@ -176,7 +176,7 @@ templ totalsDueRows(inv *bill.Invoice, totals *bill.Totals) {
 					@t.T(".due_sum")
 				</th>
 				<td>
-					@t.LM(*totals.Due)
+					@t.LM(ar.TourismPayable(inv, *totals.Due))
 				</td>
 			</tr>
 		}
