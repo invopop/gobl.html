@@ -4,7 +4,7 @@
 		"uuid": "019d23bb-a9a6-7000-acf3-3271e5bf5902",
 		"dig": {
 			"alg": "sha256",
-			"val": "726511212f500d132986958ae82aa555df19a3d7c97dc10916454d837593edcd"
+			"val": "261a75f764a5b3fd8fde6423ff5a4146d5373bc050c7f127d2ddf89e193deb21"
 		},
 		"stamps": [
 			{
@@ -95,7 +95,8 @@
 			],
 			"ext": {
 				"co-dian-fiscal-responsibility": "R-99-PN",
-				"co-dian-municipality": "05001"
+				"co-dian-municipality": "05001",
+				"co-dian-tax-scheme": "ZZ"
 			}
 		},
 		"lines": [
