@@ -89,6 +89,7 @@ no:
         retained_tax: "Tilbakeholdt skatt"
         rounding: "Avrunding"
         total_to_pay: "Å betale"
+        advance: "Forskudd"
         due_sum: "Restbeløp"
         exchange_rate: "Vekslet til %{to} (%{amount})"
         carried_fwd: "Videreføres"

@@ -93,6 +93,7 @@ es:
         retained_tax: "Impuestos retenidos"
         rounding: "Redondeo"
         total_to_pay: "Total a pagar"
+        advance: "Anticipo"
         due_sum: "Total adeudado"
         exchange_rate: "Cambio a %{to} (%{amount})"
         carried_fwd: "A transportar"

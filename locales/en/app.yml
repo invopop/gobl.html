@@ -94,6 +94,7 @@ en:
         retained_tax: "Tax withheld"
         rounding: "Rounding"
         total_to_pay: "Total to pay"
+        advance: "Advance"
         due_sum: "Total due"
         exchange_rate: "Exchange to %{to} (%{amount})"
         carried_fwd: "Carried forward"

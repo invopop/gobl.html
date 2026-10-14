@@ -82,6 +82,7 @@ it:
         retained_tax: "Tasse trattenute"
         rounding: "Arrotondamento"
         total_to_pay: "Totale da pagare"
+        advance: "Anticipo"
         due_sum: "Totale dovuto"
         exchange_rate: "Cambio in %{to} (%{amount})"
         carried_fwd: "Da riportare"

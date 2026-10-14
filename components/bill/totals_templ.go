@@ -424,9 +424,9 @@ func totalsDueRows(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var6 string
-				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(advanceText(adv))
+				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(advanceText(ctx, adv))
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/totals.templ`, Line: 153, Col: 23}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/totals.templ`, Line: 153, Col: 28}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 				if templ_7745c5c3_Err != nil {
@@ -498,8 +498,13 @@ func totalExchangeRates(inv *bill.Invoice) []*currency.ExchangeRate {
 	return list
 }
 
-func advanceText(adv *pay.Record) string {
+// advanceText builds the label of an advance row from its description, reference and date,
+// falling back to a generic translated label when the advance has no description.
+func advanceText(ctx context.Context, adv *pay.Record) string {
 	txt := adv.Description
+	if txt == "" {
+		txt = i18n.T(ctx, ".advance")
+	}
 	if adv.Ref != "" {
 		txt = fmt.Sprintf("%s (%s)", txt, adv.Ref)
 	}

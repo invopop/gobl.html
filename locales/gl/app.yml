@@ -93,6 +93,7 @@ gl:
         retained_tax: "Impostos retidos"
         rounding: "Redondeo"
         total_to_pay: "Total a pagar"
+        advance: "Anticipo"
         due_sum: "Total debido"
         exchange_rate: "Cambio a %{to} (%{amount})"
         carried_fwd: "A transportar"

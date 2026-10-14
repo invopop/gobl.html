@@ -150,7 +150,7 @@ templ totalsDueRows(inv *bill.Invoice, totals *bill.Totals) {
 		for _, adv := range inv.Payment.Advances {
 			<tr class="advance">
 				<th>
-					{ advanceText(adv) }
+					{ advanceText(ctx, adv) }
 				</th>
 				<td>
 					@t.LM(adv.Amount)
@@ -192,8 +192,13 @@ func totalExchangeRates(inv *bill.Invoice) []*currency.ExchangeRate {
 	return list
 }
 
-func advanceText(adv *pay.Record) string {
+// advanceText builds the label of an advance row from its description, reference and date,
+// falling back to a generic translated label when the advance has no description.
+func advanceText(ctx context.Context, adv *pay.Record) string {
 	txt := adv.Description
+	if txt == "" {
+		txt = i18n.T(ctx, ".advance")
+	}
 	if adv.Ref != "" {
 		txt = fmt.Sprintf("%s (%s)", txt, adv.Ref)
 	}

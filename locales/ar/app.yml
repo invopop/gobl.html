@@ -93,6 +93,7 @@ ar:
         retained_tax: "الضريبة المقتطعة"
         rounding: "التقريب"
         total_to_pay: "المبلغ المستحق"
+        advance: "دفعة مقدمة"
         due_sum: "المبلغ المستحق"
         exchange_rate: "سعر الصرف إلى %{to} (%{amount})"
         carried_fwd: "منقول للأمام"
