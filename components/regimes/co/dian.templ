@@ -8,6 +8,8 @@ import (
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/addons/co/dian"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/head"
 	"regexp"
 )
 
@@ -29,29 +31,28 @@ templ titleType(doc internal.Document) {
 }
 
 templ Stylesheets(env *gobl.Envelope) {
-	if dianCUDE(env) != "" {
+	if stampValue(env.Head.Stamps, dian.StampCUDE) != "" {
 		@assets.Stylesheet("co.css")
 	}
 }
 
 templ DIANQR(env *gobl.Envelope) {
-	if cude := dianCUDE(env); cude != "" {
-		if qr := dianQR(env); qr != "" {
-			@generateQR(cude, dianPrecedingCUDE(env), qr)
+	if cude := stampValue(env.Head.Stamps, dian.StampCUDE); cude != "" {
+		if qr := stampValue(env.Head.Stamps, dian.StampQR); qr != "" {
+			@generateQR(env, cude, dianPrecedingCUDE(env), qr)
 		}
 	}
 }
 
-// dianProviderName, dianProviderNIT and dianProviderSoftware hold the static
-// DIAN provider details that are always present on the document and never
-// change.
+// Stamps carrying the DIAN software provider details, set by the app that
+// issued the document.
 const (
-	dianProviderName     = "EMPRESA DE DIVULGACIONES Y ASESORIAS ECA SAS"
-	dianProviderNIT      = "860517022"
-	dianProviderSoftware = "Plemsi"
+	stampDIANProvider    cbc.Key = "dian-provider"
+	stampDIANProviderNIT cbc.Key = "dian-provider-nit"
+	stampDIANSoftware    cbc.Key = "dian-software"
 )
 
-templ generateQR(code, precedingCode, qr string) {
+templ generateQR(env *gobl.Envelope, code, precedingCode, qr string) {
 	<section class="dian-qr">
 		<div class="image">
 			<a href={ templ.URL(dianURL(qr)) }>
@@ -64,15 +65,15 @@ templ generateQR(code, precedingCode, qr string) {
 			<div class="provider">
 				<div class="row">
 					<span class="label">Proveedor:</span>
-					<span class="value">{ dianProviderName }</span>
+					<span class="value">{ stampValue(env.Head.Stamps, stampDIANProvider) }</span>
 				</div>
 				<div class="row">
 					<span class="label">NIT:</span>
-					<span class="value">{ dianProviderNIT }</span>
+					<span class="value">{ stampValue(env.Head.Stamps, stampDIANProviderNIT) }</span>
 				</div>
 				<div class="row">
 					<span class="label">Software:</span>
-					<span class="value">{ dianProviderSoftware }</span>
+					<span class="value">{ stampValue(env.Head.Stamps, stampDIANSoftware) }</span>
 				</div>
 			</div>
 			<div class="codes">
@@ -100,36 +101,19 @@ func dianURL(qr string) string {
 	return dianQRHTTPRegexp.FindString(qr)
 }
 
-func dianCUDE(env *gobl.Envelope) string {
-	for _, stamp := range env.Head.Stamps {
-		switch stamp.Provider {
-		case dian.StampCUDE:
-			return stamp.Value
-		}
-	}
-	return ""
-}
-
 func dianPrecedingCUDE(env *gobl.Envelope) string {
 	inv, ok := env.Extract().(*bill.Invoice)
 	if !ok || len(inv.Preceding) == 0 {
 		return ""
 	}
-	for _, stamp := range inv.Preceding[0].Stamps {
-		switch stamp.Provider {
-		case dian.StampCUDE:
-			return stamp.Value
-		}
-	}
-	return ""
+	return stampValue(inv.Preceding[0].Stamps, dian.StampCUDE)
 }
 
-func dianQR(env *gobl.Envelope) string {
-	for _, stamp := range env.Head.Stamps {
-		switch stamp.Provider {
-		case dian.StampQR:
-			return stamp.Value
-		}
+// stampValue returns the value of the stamp with the given provider, or empty
+// when absent.
+func stampValue(stamps []*head.Stamp, key cbc.Key) string {
+	if st := head.GetStamp(stamps, key); st != nil {
+		return st.Value
 	}
 	return ""
 }

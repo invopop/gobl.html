@@ -18,6 +18,18 @@
 			{
 				"prv": "email-subject",
 				"val": "9015852843;Cyberdyne Sistemas SAS;SETT1041282;01;Cyberdyne Sistemas SAS"
+			},
+			{
+				"prv": "dian-provider",
+				"val": "EMPRESA DE DIVULGACIONES Y ASESORIAS ECA SAS"
+			},
+			{
+				"prv": "dian-provider-nit",
+				"val": "860517022"
+			},
+			{
+				"prv": "dian-software",
+				"val": "PLEMSI"
 			}
 		]
 	},
