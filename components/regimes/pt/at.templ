@@ -21,15 +21,19 @@ templ ATQR(env *gobl.Envelope) {
 		if qr := atQR(env); qr != "" {
 			<section class="pt">
 				<div class="at">
-					<div class="label">
-						ATCUD: { atcud }
-						if docCode := atDocCode(env); docCode != "" {
-							<br/>
-							@t.T("regimes.pt.at.doc_code"): { docCode }
-						}
-					</div>
-					<div class="qr">
-						<img src={ generateQR(qr) }/>
+					// Portaria 195/2020 requires the ATCUD text immediately above the QR code.
+					<div class="code">
+						<div class="label">
+							// Article 4(1) of Portaria 195/2020 fixes the format as ATCUD:Code-Number.
+							ATCUD:{ atcud }
+							if docCode := atDocCode(env); docCode != "" {
+								<br/>
+								@t.T("regimes.pt.at.doc_code"): { docCode }
+							}
+						</div>
+						<div class="qr">
+							<img src={ generateQR(qr) }/>
+						</div>
 					</div>
 					if notes := qrNotes(ctx, env); len(notes) > 0 {
 						<div class="notes">
