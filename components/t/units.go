@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
 )
 
@@ -29,4 +30,28 @@ func UnitName(ctx context.Context, u org.Unit) string {
 		return def.Symbol
 	}
 	return i18n.T(ctx, "units."+string(u), i18n.Default(def.Name))
+}
+
+// untdidUnitExtension is the key of the UN/ECE unit code extension that GOBL
+// stores raw unit codes in. The key is declared locally so that this package
+// does not depend on a GOBL version that exposes it from the UNTDID catalogue.
+const untdidUnitExtension cbc.Key = "untdid-unit"
+
+// ItemUnitName provides the display name for an item's unit. The GOBL unit
+// is used when present, otherwise the UN/ECE code from the item's
+// "untdid-unit" extension is shown as-is.
+func ItemUnitName(ctx context.Context, item *org.Item) string {
+	if item == nil {
+		return ""
+	}
+	if item.Unit != "" {
+		return UnitName(ctx, item.Unit)
+	}
+	return item.Ext.Get(untdidUnitExtension).String()
+}
+
+// ItemHasUnit reports whether an item has a GOBL unit or a UN/ECE unit code
+// extension that can be displayed.
+func ItemHasUnit(item *org.Item) bool {
+	return item != nil && (item.Unit != "" || item.Ext.Has(untdidUnitExtension))
 }
