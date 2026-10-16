@@ -9,10 +9,6 @@
     color: #030712;
     font-weight: 400;
 }
-@page Letter {
-    size: letter portrait;
-    margin: 1in;
-}
 body {
     font-family: "Inter", sans-serif;
     font-size: 9pt;
@@ -20,9 +16,6 @@ body {
     margin: 0;
     margin-bottom: 0mm;
     color: #030712;
-}
-body.letter {
-    page: Letter;
 }
 @media screen {
     body {
