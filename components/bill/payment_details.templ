@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/internal"
-	"github.com/invopop/gobl.html/components/regimes/ar"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/pay"
 )
 
@@ -239,12 +239,27 @@ templ paymentDueDates(inv *bill.Invoice, terms *pay.Terms) {
 						}
 					</td>
 					<td class="amount">
-						@t.LM(ar.CalculateDuePayable(inv, dd))
+						@t.LM(dueDateAmount(inv, dd))
 					</td>
 				</tr>
 			}
 		</tbody>
 	</table>
+}
+
+// dueDateAmount returns a due date's amount. When the regime takes something
+// off the total, percentages are worked out on what is still owed without it,
+// while fixed amounts are left as provided.
+func dueDateAmount(inv *bill.Invoice, dd *pay.DueDate) num.Amount {
+	deduction := payableDeduction(inv)
+	if deduction.IsZero() || dd.Percent == nil || dd.Percent.IsZero() {
+		return dd.Amount
+	}
+	owed := inv.Totals.Payable
+	if inv.Totals.Due != nil {
+		owed = *inv.Totals.Due
+	}
+	return dd.Percent.Of(owed.Subtract(deduction)).Rescale(dd.Amount.Exp())
 }
 
 func showPayments(inv *bill.Invoice) bool {
@@ -260,7 +275,7 @@ func showPayments(inv *bill.Invoice) bool {
 func paid(doc internal.Document) bool {
 	switch d := doc.Extract().(type) {
 	case *bill.Invoice:
-		return d.Totals.Due != nil && d.Totals.Due.IsZero()
+		return d.Totals.Due != nil && d.Totals.Due.Subtract(payableDeduction(d)).IsZero()
 	case *bill.Payment:
 		return true
 	default:

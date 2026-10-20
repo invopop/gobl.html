@@ -91,7 +91,7 @@ func ARCATourismRefund(inv *bill.Invoice) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if refund := tourismRefund(inv); !refund.IsZero() {
+		if refund := TourismRefund(inv); !refund.IsZero() {
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<tr class=\"arca-reintegro\"><th>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err

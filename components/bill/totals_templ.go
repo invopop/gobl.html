@@ -16,6 +16,8 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/currency"
+	"github.com/invopop/gobl/l10n"
+	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/pay"
 )
 
@@ -344,7 +346,7 @@ func totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		payable := ar.TourismPayable(inv, totals.Payable)
+		payable := totals.Payable.Subtract(payableDeduction(inv))
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, "<tr class=\"payable strong\"><th>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -489,7 +491,7 @@ func totalsDueRows(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = t.LM(ar.TourismPayable(inv, *totals.Due)).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = t.LM(totals.Due.Subtract(payableDeduction(inv))).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -501,6 +503,16 @@ func totalsDueRows(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 		}
 		return nil
 	})
+}
+
+// payableDeduction is the part of the total the customer doesn't pay the
+// supplier, according to the invoice's regime.
+func payableDeduction(inv *bill.Invoice) num.Amount {
+	switch inv.GetRegime() {
+	case l10n.AR.Tax():
+		return ar.TourismRefund(inv) // VAT refunded to the tourist
+	}
+	return num.MakeAmount(0, 2)
 }
 
 func totalPricesIncludeTax(ctx context.Context, inv *bill.Invoice) string {

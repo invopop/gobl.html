@@ -8,6 +8,8 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/currency"
+	"github.com/invopop/gobl/l10n"
+	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/pay"
 )
 
@@ -121,7 +123,7 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 		</tr>
 	}
 	@ar.ARCATourismRefund(inv)
-	{{ payable := ar.TourismPayable(inv, totals.Payable) }}
+	{{ payable := totals.Payable.Subtract(payableDeduction(inv)) }}
 	<tr class="payable strong">
 		<th>
 			if inv.Type.In(bill.InvoiceTypeCreditNote) {
@@ -176,11 +178,21 @@ templ totalsDueRows(inv *bill.Invoice, totals *bill.Totals) {
 					@t.T(".due_sum")
 				</th>
 				<td>
-					@t.LM(ar.TourismPayable(inv, *totals.Due))
+					@t.LM(totals.Due.Subtract(payableDeduction(inv)))
 				</td>
 			</tr>
 		}
 	}
+}
+
+// payableDeduction is the part of the total the customer doesn't pay the
+// supplier, according to the invoice's regime.
+func payableDeduction(inv *bill.Invoice) num.Amount {
+	switch inv.GetRegime() {
+	case l10n.AR.Tax():
+		return ar.TourismRefund(inv) // VAT refunded to the tourist
+	}
+	return num.MakeAmount(0, 2)
 }
 
 func totalPricesIncludeTax(ctx context.Context, inv *bill.Invoice) string {

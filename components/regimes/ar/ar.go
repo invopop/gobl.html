@@ -11,7 +11,6 @@ import (
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/org"
-	"github.com/invopop/gobl/pay"
 	"github.com/invopop/gobl/tax"
 )
 
@@ -65,9 +64,9 @@ func supplierLegend(_ internal.Document, docType cbc.Code) string {
 // vatRefundDescription is the description of the refund advance the ARCA addon adds once GOBL supports it.
 const vatRefundDescription = "Reintegro de IVA"
 
-// tourismRefund returns the VAT refunded to the tourist (importe reintegro): the VAT of the hotel items (tourism codes 1 and 2).
+// TourismRefund returns the VAT refunded to the tourist (importe reintegro): the VAT of the hotel items (tourism codes 1 and 2).
 // It is zero when the invoice already carries the refund as an advance, so it is not subtracted twice.
-func tourismRefund(inv *bill.Invoice) num.Amount {
+func TourismRefund(inv *bill.Invoice) num.Amount {
 	refund := num.MakeAmount(0, 2)
 	if inv == nil || inv.Tax == nil || inv.Totals == nil || inv.Totals.Taxes == nil ||
 		!slices.Contains(arca.DocTypesT, cbc.Code(inv.Tax.Ext.Get(arca.ExtKeyDocType).String())) {
@@ -91,25 +90,6 @@ func tourismRefund(inv *bill.Invoice) num.Amount {
 		}
 	}
 	return refund
-}
-
-// TourismPayable returns a payable or due amount less the refunded VAT, or the amount unchanged for non-tourism invoices.
-func TourismPayable(inv *bill.Invoice, amount num.Amount) num.Amount {
-	return amount.Subtract(tourismRefund(inv))
-}
-
-// CalculateDuePayable returns a due date's amount. Percentages are taken from the amount due less the
-// reintegro, while fixed amounts are left as provided.
-func CalculateDuePayable(inv *bill.Invoice, dd *pay.DueDate) num.Amount {
-	refund := tourismRefund(inv)
-	if refund.IsZero() || dd.Percent == nil || dd.Percent.IsZero() {
-		return dd.Amount
-	}
-	due := inv.Totals.Payable
-	if inv.Totals.Due != nil {
-		due = *inv.Totals.Due
-	}
-	return dd.Percent.Of(due.Subtract(refund)).Rescale(dd.Amount.Exp())
 }
 
 func customerLegend(party *org.Party, docType cbc.Code) string {
