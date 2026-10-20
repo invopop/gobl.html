@@ -1,0 +1,171 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "019a0b6e-6c1f-7a52-9d2e-3f4a5b6c7d8e",
+		"dig": {
+			"alg": "sha256",
+			"val": "f0623c7a785231445f65fc80544a4fd317adca883663605999a528240c125bed"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"it-sdi-v1"
+		],
+		"uuid": "019a0b6e-6c1f-7a52-9d2e-4b5c6d7e8f90",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "003",
+		"issue_date": "2026-10-19",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"it-sdi-document-type": "TD01",
+				"it-sdi-format": "FPR12"
+			}
+		},
+		"supplier": {
+			"name": "Esempio Software S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "12345678903"
+			},
+			"addresses": [
+				{
+					"num": "16",
+					"street": "Via Torino",
+					"locality": "Milano",
+					"region": "MI",
+					"code": "20123",
+					"country": "IT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			],
+			"ext": {
+				"it-sdi-fiscal-regime": "RF01"
+			}
+		},
+		"customer": {
+			"name": "Comune di Esempio",
+			"tax_id": {
+				"country": "IT",
+				"code": "00000010215"
+			},
+			"inboxes": [
+				{
+					"key": "it-sdi-code",
+					"code": "UFY9MH"
+				}
+			],
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Piazza del Municipio",
+					"locality": "Roma",
+					"region": "RM",
+					"code": "00184",
+					"country": "IT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Treasury platform subscription",
+					"price": "11968.35"
+				},
+				"sum": "11968.35",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "22.0%",
+						"ext": {
+							"it-sdi-vat-liability": "S"
+						}
+					}
+				],
+				"total": "11968.35"
+			},
+			{
+				"i": 2,
+				"quantity": "1",
+				"item": {
+					"name": "Platform fee",
+					"price": "2807.40"
+				},
+				"sum": "2807.40",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "22.0%",
+						"ext": {
+							"it-sdi-vat-liability": "S"
+						}
+					}
+				],
+				"total": "2807.40"
+			}
+		],
+		"payment": {
+			"terms": {
+				"due_dates": [
+					{
+						"date": "2026-12-03",
+						"amount": "18026.42",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "IT60X0542811101000000123456",
+						"name": "Banca Esempio"
+					}
+				],
+				"ext": {
+					"it-sdi-payment-means": "MP05"
+				}
+			}
+		},
+		"totals": {
+			"sum": "14775.75",
+			"total": "14775.75",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"it-sdi-vat-liability": "S"
+								},
+								"base": "14775.75",
+								"percent": "22.0%",
+								"amount": "3250.67"
+							}
+						],
+						"amount": "3250.67"
+					}
+				],
+				"sum": "3250.67"
+			},
+			"tax": "3250.67",
+			"total_with_tax": "18026.42",
+			"payable": "18026.42"
+		}
+	}
+}

@@ -13,6 +13,7 @@ import (
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/regimes/ar"
+	"github.com/invopop/gobl.html/components/regimes/it"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/currency"
@@ -346,6 +347,10 @@ func totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
+		templ_7745c5c3_Err = it.SplitPaymentVATRow(inv).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
 		payable := totals.Payable.Subtract(payableDeduction(inv))
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, "<tr class=\"payable strong\"><th>")
 		if templ_7745c5c3_Err != nil {
@@ -511,6 +516,8 @@ func payableDeduction(inv *bill.Invoice) num.Amount {
 	switch inv.GetRegime() {
 	case l10n.AR.Tax():
 		return ar.TourismRefund(inv) // VAT refunded to the tourist
+	case l10n.IT.Tax():
+		return it.SplitPaymentVAT(inv) // VAT the customer pays the tax authority
 	}
 	return num.MakeAmount(0, 2)
 }

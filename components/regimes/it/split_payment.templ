@@ -1,0 +1,49 @@
+package it
+
+import (
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/addons/it/sdi"
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/num"
+	"github.com/invopop/gobl/tax"
+)
+
+// extCodeVATLiabilitySplitPayment marks VAT that the customer pays directly
+// to the tax authority instead of to the supplier (scissione dei pagamenti,
+// art. 17-ter DPR 633/72).
+const extCodeVATLiabilitySplitPayment cbc.Code = "S" // TODO: Replace with sdi.ExtCodeVATLiabilitySplitPayment from gobl.it.sdi once on gobl v0.505.0 or later
+
+// SplitPaymentVATRow renders the split payment VAT as a deduction, and
+// nothing when the invoice has none.
+templ SplitPaymentVATRow(inv *bill.Invoice) {
+	if vat := SplitPaymentVAT(inv); !vat.IsZero() {
+		<tr class="it-split-payment">
+			<th>
+				@t.T("regimes.it.split_payment_vat")
+			</th>
+			<td>
+				@t.LM(vat.Negate())
+			</td>
+		</tr>
+	}
+}
+
+// SplitPaymentVAT adds up the VAT the customer pays directly to the tax
+// authority instead of to the supplier.
+func SplitPaymentVAT(inv *bill.Invoice) num.Amount {
+	if inv == nil || inv.Totals == nil {
+		return num.MakeAmount(0, 2)
+	}
+	sum := num.MakeAmount(0, inv.Totals.Payable.Exp())
+	cat := inv.Totals.Taxes.Category(tax.CategoryVAT)
+	if cat == nil {
+		return sum
+	}
+	for _, rt := range cat.Rates {
+		if rt.Ext.Get(sdi.ExtKeyVATLiability) == extCodeVATLiabilitySplitPayment {
+			sum = sum.Add(rt.Amount)
+		}
+	}
+	return sum
+}

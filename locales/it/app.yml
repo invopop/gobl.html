@@ -251,6 +251,7 @@ it:
       # Riferimento assegnato dall'AdE all'accettazione del documento
       # commerciale; deve essere stampato sullo scontrino.
       ade-ref: "Riferimento AdE"
+      split_payment_vat: "IVA in scissione dei pagamenti (art. 17-ter)"
       title:
         # Nome ufficiale del documento AdE (Risposta all'interpello n. 167/2020).
         ticket: "Documento commerciale"

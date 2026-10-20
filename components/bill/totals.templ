@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/regimes/ar"
+	"github.com/invopop/gobl.html/components/regimes/it"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/currency"
@@ -123,6 +124,7 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 		</tr>
 	}
 	@ar.ARCATourismRefund(inv)
+	@it.SplitPaymentVATRow(inv)
 	{{ payable := totals.Payable.Subtract(payableDeduction(inv)) }}
 	<tr class="payable strong">
 		<th>
@@ -191,6 +193,8 @@ func payableDeduction(inv *bill.Invoice) num.Amount {
 	switch inv.GetRegime() {
 	case l10n.AR.Tax():
 		return ar.TourismRefund(inv) // VAT refunded to the tourist
+	case l10n.IT.Tax():
+		return it.SplitPaymentVAT(inv) // VAT the customer pays the tax authority
 	}
 	return num.MakeAmount(0, 2)
 }
