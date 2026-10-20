@@ -4,7 +4,7 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "fa0de6f96893f6c4fb832b51ca790d3fe9a73f081025ccfcfa681c1a4f0a4d6c"
+			"val": "ae81b0e0be6dda62a7820eb98fb69b32033345511626028c66b872cdfe5ea214"
 		}
 	},
 	"doc": {
@@ -42,7 +42,7 @@
 			"name": "Harbourfront Events Pte Ltd",
 			"tax_id": {
 				"country": "SG",
-				"code": "200312345A"
+				"code": "199912345R"
 			},
 			"addresses": [
 				{

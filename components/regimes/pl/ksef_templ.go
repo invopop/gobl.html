@@ -15,7 +15,7 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/gobl.html/components/t"
-	"github.com/invopop/gobl/addons/pl/favat"
+	favat "github.com/invopop/gobl.pl.ksef/addon"
 )
 
 var dianQRHTTPRegexp = regexp.MustCompile(`https.+`)
