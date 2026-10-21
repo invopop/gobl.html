@@ -230,7 +230,7 @@ templ orderPaymentDetails(ord *bill.Order) {
 					@paymentInstructions(ord.Payment.Instructions)
 				}
 				if ord.Payment.Terms != nil {
-					@paymentTerms(ord.Payment.Terms)
+					@paymentTerms(ord.Payment.Terms, ord.Totals)
 				}
 			</section>
 		}
