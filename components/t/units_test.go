@@ -7,6 +7,8 @@ import (
 	"github.com/invopop/ctxi18n/i18n"
 	ct "github.com/invopop/gobl.html/components/t"
 	srclocales "github.com/invopop/gobl.html/locales"
+	"github.com/invopop/gobl/catalogues/untdid"
+	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
 	"github.com/stretchr/testify/assert"
@@ -39,16 +41,16 @@ func TestUnitName(t *testing.T) {
 
 	t.Run("passes through unknown UN/ECE codes", func(t *testing.T) {
 		ctx := ctxFor("en")
-		assert.Equal(t, "E48", ct.UnitName(ctx, org.Unit("E48")))
+		assert.Equal(t, "E48", ct.UnitName(ctx, cbc.Key("E48")))
 	})
 
 	t.Run("all units resolve to a name in every locale", func(t *testing.T) {
-		for _, code := range []string{"ar", "ca", "da", "de", "el", "en", "es", "eu", "fr", "gl", "it", "nl", "no", "pl", "pt"} {
+		for _, code := range srclocales.Codes() {
 			ctx := ctxFor(code)
 			for _, def := range org.UnitDefinitions {
-				name := ct.UnitName(ctx, def.Unit)
-				assert.NotEmpty(t, name, "unit %q in locale %q", def.Unit, code)
-				assert.NotContains(t, name, "!(MISSING", "unit %q in locale %q", def.Unit, code)
+				name := ct.UnitName(ctx, def.Key)
+				assert.NotEmpty(t, name, "unit %q in locale %q", def.Key, code)
+				assert.NotContains(t, name, "!(MISSING", "unit %q in locale %q", def.Key, code)
 			}
 		}
 	})
@@ -59,14 +61,14 @@ func TestUnitName(t *testing.T) {
 		unmerged := new(i18n.Locales)
 		require.NoError(t, unmerged.Load(srclocales.Content))
 
-		for _, code := range []string{"ar", "ca", "da", "de", "el", "en", "es", "eu", "fr", "gl", "it", "nl", "no", "pl", "pt"} {
+		for _, code := range srclocales.Codes() {
 			l := unmerged.Get(i18n.Code(code))
 			require.NotNil(t, l)
 			for _, def := range org.UnitDefinitions {
-				if def.Symbol != "" {
+				if def.Meta[org.UnitMetaKeySymbol] != "" {
 					continue
 				}
-				assert.True(t, l.Has("units."+string(def.Unit)), "missing translation for unit %q in locale %q", def.Unit, code)
+				assert.True(t, l.Has("units."+string(def.Key)), "missing translation for unit %q in locale %q", def.Key, code)
 			}
 		}
 	})
@@ -89,7 +91,7 @@ func TestItemUnitName(t *testing.T) {
 			name: "GOBL and UNTDID units",
 			item: &org.Item{
 				Unit: org.UnitKilogram,
-				Ext:  tax.MakeExtensions().Set("untdid-unit", "KGM"),
+				Ext:  tax.MakeExtensions().Set(untdid.ExtKeyUnit, "KGM"),
 			},
 			want: "kg (KGM)",
 		},
@@ -97,13 +99,13 @@ func TestItemUnitName(t *testing.T) {
 			name: "translated GOBL and UNTDID units",
 			item: &org.Item{
 				Unit: org.UnitHour,
-				Ext:  tax.MakeExtensions().Set("untdid-unit", "HUR"),
+				Ext:  tax.MakeExtensions().Set(untdid.ExtKeyUnit, "HUR"),
 			},
 			want: "hours (HUR)",
 		},
 		{
 			name: "UNTDID unit only",
-			item: &org.Item{Ext: tax.MakeExtensions().Set("untdid-unit", "E48")},
+			item: &org.Item{Ext: tax.MakeExtensions().Set(untdid.ExtKeyUnit, "E48")},
 			want: "E48",
 		},
 	}

@@ -3,6 +3,8 @@ package bill
 import (
 	"context"
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/components/regimes/it"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
@@ -13,13 +15,14 @@ import (
 	"strings"
 )
 
-templ summary(inv *bill.Invoice) {
+templ summary(env *gobl.Envelope, inv *bill.Invoice) {
 	<section class="summary">
 		@t.Scope(".summary") {
 			<h2 class="title">
 				@t.T(".title")
 			</h2>
 			<ul>
+				@it.RefSummaryRow(env)
 				<li class="issue-date">
 					<span class="label">
 						@t.T(".issue_date")
@@ -151,6 +154,26 @@ templ summaryOrderingRows(ord *bill.Ordering) {
 							{ " · " }
 							<span class="date">
 								@t.L(purchase.IssueDate)
+							</span>
+						}
+					</span>
+				}
+			}
+		</li>
+	}
+	if len(ord.Contracts) > 0 {
+		<li class="ordering-contracts">
+			<span class="label">
+				@t.T(".contract")
+			</span>
+			for _, contract := range ord.Contracts {
+				if contract != nil {
+					<span class="value">
+						{ contract.Series.Join(contract.Code).String() }
+						if contract.IssueDate != nil {
+							{ " · " }
+							<span class="date">
+								@t.L(contract.IssueDate)
 							</span>
 						}
 					</span>

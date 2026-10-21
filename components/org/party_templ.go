@@ -17,9 +17,9 @@ import (
 	"unicode/utf8"
 
 	"github.com/invopop/ctxi18n/i18n"
-	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/regimes/sg"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/taxid"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/org"
 )
@@ -69,7 +69,7 @@ func Party(party *org.Party) templ.Component {
 				var templ_7745c5c3_Var3 string
 				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(party.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 22, Col: 34}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 23, Col: 34}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 				if templ_7745c5c3_Err != nil {
@@ -92,7 +92,7 @@ func Party(party *org.Party) templ.Component {
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(party.Alias)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 25, Col: 36}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 26, Col: 36}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
@@ -215,17 +215,18 @@ func taxID(party *org.Party) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		if showTaxID(party) {
+			tID := taxid.Format(ctx, party.TaxID)
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "<div class=\"tax-id\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			if taxIDCodeIncludesCountry(party) {
-				templ_7745c5c3_Err = t.T(".tax_id_no_country", i18n.M{"label": taxIDLabel(ctx, party), "code": taxIDCode(party)}).Render(ctx, templ_7745c5c3_Buffer)
+			if tID.Country == "" {
+				templ_7745c5c3_Err = t.T(".tax_id_no_country", i18n.M{"label": tID.Label, "code": tID.Code}).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			} else {
-				templ_7745c5c3_Err = t.T(".tax_id", i18n.M{"label": taxIDLabel(ctx, party), "country": party.TaxID.Country.String(), "code": taxIDCode(party)}).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = t.T(".tax_id", i18n.M{"label": tID.Label, "country": tID.Country, "code": tID.Code}).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -544,7 +545,7 @@ func registration(reg *org.Registration) templ.Component {
 					var templ_7745c5c3_Var14 string
 					templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(reg.Office)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 123, Col: 18}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 126, Col: 18}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 					if templ_7745c5c3_Err != nil {
@@ -647,7 +648,7 @@ func registration(reg *org.Registration) templ.Component {
 					var templ_7745c5c3_Var15 string
 					templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(reg.Other)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 158, Col: 17}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 161, Col: 17}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 					if templ_7745c5c3_Err != nil {
@@ -717,7 +718,7 @@ func partyExtensions(party *org.Party) templ.Component {
 				var templ_7745c5c3_Var17 string
 				templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(txt)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 175, Col: 9}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/org/party.templ`, Line: 178, Col: 9}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 				if templ_7745c5c3_Err != nil {
@@ -801,54 +802,6 @@ func showIdentity(ident *org.Identity) bool {
 
 func showTaxID(party *org.Party) bool {
 	return party.TaxID != nil && party.TaxID.Code != cbc.CodeEmpty
-}
-
-func taxIDLabel(ctx context.Context, party *org.Party) string {
-	tID := party.TaxID
-	switch tID.Country {
-	case "AR":
-		return "CUIT"
-	case "SG":
-		return "GST Reg No."
-	case "DE":
-		return "USt-IdNr."
-	case "ES":
-		return "NIF"
-	case "CO":
-		return "NIT"
-	case "MX":
-		return "RFC"
-	case "FR":
-		return "TVA"
-	case "PT":
-		return "NIF"
-	case "IT":
-		return "P.IVA"
-	default:
-		return i18n.T(ctx, ".labels.default")
-	}
-}
-
-func taxIDCode(party *org.Party) string {
-	tID := party.TaxID
-	code := tID.Code.String()
-	switch tID.Country {
-	case "CO":
-		return co.FormatTaxIDCode(code)
-	default:
-		if taxIDCodeIncludesCountry(party) {
-			return tID.Country.String() + code
-		}
-		return code
-	}
-}
-
-// taxIDCodeIncludesCountry reports whether the country prefix is an
-// integral part of the tax ID code, in which case it is prepended to
-// the code and not shown separately in parentheses. The German
-// USt-IdNr., for example, is only valid with the "DE" prefix.
-func taxIDCodeIncludesCountry(party *org.Party) bool {
-	return party.TaxID.Country == "DE"
 }
 
 func mapPartyExtension(ctx context.Context, k cbc.Key, v cbc.Code) string {

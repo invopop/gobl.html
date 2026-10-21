@@ -238,7 +238,9 @@ templ paymentDueDates(terms *pay.Terms) {
 						}
 					</td>
 					<td class="amount">
-						@t.LM(dd.Amount)
+						if dd.Amount != nil {
+							@t.LM(*dd.Amount)
+						}
 					</td>
 				</tr>
 			}

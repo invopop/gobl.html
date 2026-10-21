@@ -1,6 +1,8 @@
 package internal
 
 import (
+	"context"
+
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cal"
@@ -23,6 +25,24 @@ type Document interface {
 	GetCurrency() currency.Code
 	GetExt() tax.Extensions
 	GetPreceding() []*org.DocumentRef
+}
+
+type documentKey string
+
+const docKey documentKey = "doc"
+
+// WithDocument stores the document being rendered in the context so that
+// components which only receive a fragment of it, such as the party details,
+// can still take the document as a whole into account.
+func WithDocument(ctx context.Context, doc Document) context.Context {
+	return context.WithValue(ctx, docKey, doc)
+}
+
+// DocumentFrom provides the document being rendered from the context, and
+// nil when there is none, as happens when a component is rendered on its own.
+func DocumentFrom(ctx context.Context) Document {
+	doc, _ := ctx.Value(docKey).(Document)
+	return doc
 }
 
 // DocumentFor returns a Document interface for the given document.

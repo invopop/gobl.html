@@ -117,6 +117,7 @@ templ titleType(doc internal.Document) {
 			pt.TitleType(doc),
 			gr.TitleType(doc),
 			it.TitleType(doc),
+			pl.TitleType(doc),
 			sg.TitleType(doc),
 			untdidTitleType(doc),
 			defaultTitleType(doc),
@@ -179,7 +180,7 @@ templ defaultHeader(env *gobl.Envelope, inv *bill.Invoice) {
 	{{ doc := internal.DocumentFor(inv) }}
 	<div class="details">
 		@title(env, doc)
-		@summary(inv)
+		@summary(env, inv)
 	</div>
 	// Spanish QRs
 	@es.VerifactuQR(env)
@@ -199,7 +200,7 @@ templ din5008Header(env *gobl.Envelope, inv *bill.Invoice) {
 		@deliveryReceiver(inv.Delivery)
 	</div>
 	<div>
-		@summary(inv)
+		@summary(env, inv)
 		@supplier(doc)
 	</div>
 }

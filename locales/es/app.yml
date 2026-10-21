@@ -48,6 +48,7 @@ es:
         order_period: "Periodo"
         order_period_label: "%{label}"
         order_period_range: "%{start} a %{end}"
+        contract: "Contrato"
         ext_map:
           mx-cfdi-issue-place: "Lugar de expedición"
           mx-cfdi-payment-method: "Método de pago"
@@ -92,8 +93,7 @@ es:
         retained_tax: "Impuestos retenidos"
         rounding: "Redondeo"
         total_to_pay: "Total a pagar"
-        advance: "Anticipo: %{date} %{txt}"
-        advance_sum: "Suma anticipos"
+        advance: "Anticipo"
         due_sum: "Total adeudado"
         exchange_rate: "Cambio a %{to} (%{amount})"
         carried_fwd: "A transportar"
@@ -134,6 +134,7 @@ es:
             card+credit: "Tarjeta de crédito"
             card+debit: "Tarjeta de débito"
             credit-transfer: "Transferencia bancaria"
+            debit-transfer: "Transferencia de débito"
             cash: "Efectivo"
             direct-debit: "Domiciliación bancaria"
             online: "En línea"
@@ -261,7 +262,6 @@ es:
 
   regimes:
     ar:
-      vat_refund: "Reintegro de IVA"
       title:
         "1": "Factura A"
         "2": "Nota de Débito A"

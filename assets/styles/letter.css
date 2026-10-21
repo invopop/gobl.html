@@ -1,0 +1,10 @@
+/*
+  US Letter layout. Only the page size changes; margins are shared with every
+  other layout via the default @page rule in envelope.css. This overrides the
+  default @page rule rather than using a named page (`page: Letter`): named
+  pages confuse the page counting that multipage.js relies on in Prince and
+  produce blank pages.
+*/
+@page {
+    size: letter portrait;
+}

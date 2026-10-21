@@ -47,6 +47,7 @@ de:
         order_period: "Zeitraum"
         order_period_label: "%{label}"
         order_period_range: "%{start} bis %{end}"
+        contract: "Vertrag"
 
       supplier:
         title: "Lieferant"
@@ -88,8 +89,7 @@ de:
         retained_tax: "Einbehaltene Steuer"
         rounding: "Rundung"
         total_to_pay: "Gesamt zu zahlen"
-        advance: "Vorauszahlung: %{date} %{txt}"
-        advance_sum: "Summe der Vorauszahlungen"
+        advance: "Vorauszahlung"
         due_sum: "Gesamtbetrag fällig"
         exchange_rate: "Umtausch in %{to} (%{amount})"
         carried_fwd: "Übertrag"
@@ -130,6 +130,7 @@ de:
             card+credit: "Kreditkarte"
             card+debit: "Debitkarte"
             credit-transfer: "Banküberweisung"
+            debit-transfer: "Debitüberweisung"
             cash: "Bargeld"
             direct-debit: "Lastschrift"
             online: "Online"

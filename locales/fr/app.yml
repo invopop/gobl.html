@@ -45,6 +45,7 @@ fr:
         order_period: "Période"
         order_period_label: "%{label}"
         order_period_range: "%{start} au %{end}"
+        contract: "Contrat"
       supplier:
         title: "Fournisseur"
       customer:
@@ -81,8 +82,7 @@ fr:
         retained_tax: "Taxe retenue"
         rounding: "Rounding"
         total_to_pay: "Total à payer"
-        advance: "Avance: %{date} %{txt}"
-        advance_sum: "Somme des avances"
+        advance: "Avance"
         due_sum: "Total dû"
         exchange_rate: "Échange en %{to} (%{amount})"
         carried_fwd: "À reporter"
@@ -121,6 +121,7 @@ fr:
             card+credit: "Carte de crédit"
             card+debit: "Carte de débit"
             credit-transfer: "Virement bancaire"
+            debit-transfer: "Virement de débit"
             cash: "Espèces"
             direct-debit: "Prélèvement automatique"
             online: "En ligne"

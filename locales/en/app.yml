@@ -49,6 +49,7 @@ en:
         order_period: "Period"
         order_period_label: "%{label}"
         order_period_range: "%{start} to %{end}"
+        contract: "Contract"
         ext_map:
           mx-cfdi-issue-place: "Place of issue"
           mx-cfdi-payment-method: "Payment Method"
@@ -93,8 +94,7 @@ en:
         retained_tax: "Tax withheld"
         rounding: "Rounding"
         total_to_pay: "Total to pay"
-        advance: "Advance: %{date} %{txt}"
-        advance_sum: "Sum advances"
+        advance: "Advance"
         due_sum: "Total due"
         exchange_rate: "Exchange to %{to} (%{amount})"
         carried_fwd: "Carried forward"
@@ -135,6 +135,7 @@ en:
             card+credit: "Credit card"
             card+debit: "Debit card"
             credit-transfer: "Bank transfer"
+            debit-transfer: "Debit transfer"
             cash: "Cash"
             direct-debit: "Direct debit"
             online: "Online"
@@ -244,6 +245,16 @@ en:
       po_box: "P.O. box %{po_box}"
       labels:
         default: "TIN"
+        ar: "CUIT"
+        co: "NIT"
+        de: "USt-IdNr."
+        es: "NIF"
+        fr: "TVA"
+        it: "P.IVA"
+        mx: "RFC"
+        pl: "NIP"
+        pt: "NIF"
+        sg: "GST Reg No."
       identity: "%{label}: %{code}"
       identity_code: "Identity code"
       identity_labels:
@@ -272,11 +283,25 @@ en:
   regimes:
     pl:
       ksef-id: "ID: %{id}"
+      title:
+        # Official KSeF FA_VAT document types ("RodzajFaktury"). Polish law
+        # has no separate credit note document: all corrections are a
+        # "faktura korygująca" (corrective invoice).
+        VAT: "Invoice"
+        ZAL: "Prepayment invoice"
+        ROZ: "Settlement invoice"
+        UPR: "Simplified invoice"
+        KOR: "Corrective invoice"
+        KOR_ZAL: "Prepayment corrective invoice"
+        KOR_ROZ: "Settlement corrective invoice"
     co:
       title:
         standard: "Electronic sales invoice"
         credit-note: "Electronic credit note"
     it:
+      # Reference assigned by the AdE when the commercial document is
+      # accepted; it must be printed on the ticket.
+      ade-ref: "AdE reference"
       title:
         # AdE receipt document names ("documento commerciale"); corrections
         # keep the commercial document title per Risposta all'interpello
@@ -344,7 +369,6 @@ en:
           5: "Expense adjustment (accounting base)" # "Other expense adjustment/Regularization entries – Accounting base"
           6: "Expense adjustment (tax base)" # "Other expense adjustment/Regularization entries – Tax base"
     ar:
-      vat_refund: "VAT Refund"
       title:
         "1": "Invoice A"
         "2": "Debit Note A"

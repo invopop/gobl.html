@@ -1,8 +1,10 @@
 package it
 
 import (
+	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal"
+	"github.com/invopop/gobl/addons/it/ticket"
 )
 
 // TitleType renders the official "Documento commerciale" title for documents
@@ -16,4 +18,33 @@ templ TitleType(doc internal.Document) {
 	if key := ticketTitleKey(doc); key != "" {
 		@t.T("regimes.it.title." + key)
 	}
+}
+
+// RefSummaryRow renders a summary row with the reference assigned by the
+// AdE when the commercial document was accepted, carried as an "ade-ref"
+// stamp on the envelope header. The AdE requires this code to be printed
+// on the ticket. Renders nothing when the stamp is not present.
+templ RefSummaryRow(env *gobl.Envelope) {
+	if ref := ticketRef(env); ref != "" {
+		<li class="ade-ref">
+			<span class="label">
+				@t.T("regimes.it.ade-ref")
+			</span>
+			<span class="value">
+				{ ref }
+			</span>
+		</li>
+	}
+}
+
+func ticketRef(env *gobl.Envelope) string {
+	if env == nil || env.Head == nil {
+		return ""
+	}
+	for _, stamp := range env.Head.Stamps {
+		if stamp.Provider == ticket.StampRef {
+			return stamp.Value
+		}
+	}
+	return ""
 }

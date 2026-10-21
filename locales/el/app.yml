@@ -47,6 +47,7 @@ el:
         order_period: "Περίοδος"
         order_period_label: "%{label}"
         order_period_range: "%{start} έως %{end}"
+        contract: "Συμβόλαιο"
         ext_map:
           mx-cfdi-issue-place: "Τόπος Έκδοσης"
 
@@ -90,8 +91,7 @@ el:
         retained_tax: "Φόρος παρακράτησης"
         rounding: "Στρογγυλοποίηση"
         total_to_pay: "Σύνολο προς πληρωμή"
-        advance: "Προκαταβολή: %{date} %{txt}"
-        advance_sum: "Άθροισμα προκαταβολών"
+        advance: "Προκαταβολή"
         due_sum: "Σύνολο οφειλόμενου"
         exchange_rate: "Ισοτιμία προς %{to} (%{amount})"
         carried_fwd: "Προς μεταφορά"
@@ -132,6 +132,7 @@ el:
             card+credit: "Πιστωτική κάρτα"
             card+debit: "Χρεωστική κάρτα"
             credit-transfer: "Τραπεζική μεταφορά"
+            debit-transfer: "Χρεωστική μεταφορά"
             cash: "Μετρητά"
             direct-debit: "Άμεση πίστωση"
             online: "Διαδικτυακά"

@@ -47,6 +47,7 @@ da:
         order_period: "Periode"
         order_period_label: "%{label}"
         order_period_range: "%{start} til %{end}"
+        contract: "Kontrakt"
 
       supplier:
         title: "Leverandør"
@@ -88,8 +89,7 @@ da:
         retained_tax: "Indeholdt skat"
         rounding: "Afrunding"
         total_to_pay: "At betale"
-        advance: "Forudbetaling: %{date} %{txt}"
-        advance_sum: "Sum forudbetalinger"
+        advance: "Forudbetaling"
         due_sum: "Restbeløb"
         exchange_rate: "Omregnet til %{to} (%{amount})"
         carried_fwd: "Videreføres"
@@ -130,6 +130,7 @@ da:
             card+credit: "Kreditkort"
             card+debit: "Debetkort"
             credit-transfer: "Bankoverførsel"
+            debit-transfer: "Debetoverførsel"
             cash: "Kontant"
             direct-debit: "Direkte debitering"
             online: "Online"

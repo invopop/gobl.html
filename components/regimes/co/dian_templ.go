@@ -10,12 +10,14 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import (
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.co.dian/addon"
 	"github.com/invopop/gobl.html/components/assets"
 	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal"
-	"github.com/invopop/gobl/addons/co/dian"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/head"
 	"regexp"
 )
 
@@ -107,7 +109,7 @@ func Stylesheets(env *gobl.Envelope) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if dianCUDE(env) != "" {
+		if stampValue(env.Head.Stamps, dian.StampCUDE) != "" {
 			templ_7745c5c3_Err = assets.Stylesheet("co.css").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -138,9 +140,9 @@ func DIANQR(env *gobl.Envelope) templ.Component {
 			templ_7745c5c3_Var4 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if cude := dianCUDE(env); cude != "" {
-			if qr := dianQR(env); qr != "" {
-				templ_7745c5c3_Err = generateQR(cude, dianPrecedingCUDE(env), qr).Render(ctx, templ_7745c5c3_Buffer)
+		if cude := stampValue(env.Head.Stamps, dian.StampCUDE); cude != "" {
+			if qr := stampValue(env.Head.Stamps, dian.StampQR); qr != "" {
+				templ_7745c5c3_Err = generateQR(env, cude, dianPrecedingCUDE(env), qr).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -150,16 +152,15 @@ func DIANQR(env *gobl.Envelope) templ.Component {
 	})
 }
 
-// dianProviderName, dianProviderNIT and dianProviderSoftware hold the static
-// DIAN provider details that are always present on the document and never
-// change.
+// Stamps carrying the DIAN software provider details, set by the app that
+// issued the document.
 const (
-	dianProviderName     = "EMPRESA DE DIVULGACIONES Y ASESORIAS ECA SAS"
-	dianProviderNIT      = "860517022"
-	dianProviderSoftware = "Plemsi"
+	stampDIANProvider    cbc.Key = "dian-provider"
+	stampDIANProviderNIT cbc.Key = "dian-provider-nit"
+	stampDIANSoftware    cbc.Key = "dian-software"
 )
 
-func generateQR(code, precedingCode, qr string) templ.Component {
+func generateQR(env *gobl.Envelope, code, precedingCode, qr string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -187,7 +188,7 @@ func generateQR(code, precedingCode, qr string) templ.Component {
 		var templ_7745c5c3_Var6 templ.SafeURL
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL(dianURL(qr)))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/co/dian.templ`, Line: 57, Col: 35}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/co/dian.templ`, Line: 58, Col: 35}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -206,9 +207,9 @@ func generateQR(code, precedingCode, qr string) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var7 string
-		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(dianProviderName)
+		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(stampValue(env.Head.Stamps, stampDIANProvider))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/co/dian.templ`, Line: 67, Col: 43}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/co/dian.templ`, Line: 68, Col: 73}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -219,9 +220,9 @@ func generateQR(code, precedingCode, qr string) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var8 string
-		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(dianProviderNIT)
+		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(stampValue(env.Head.Stamps, stampDIANProviderNIT))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/co/dian.templ`, Line: 71, Col: 42}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/co/dian.templ`, Line: 72, Col: 76}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -232,9 +233,9 @@ func generateQR(code, precedingCode, qr string) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var9 string
-		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(dianProviderSoftware)
+		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(stampValue(env.Head.Stamps, stampDIANSoftware))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/co/dian.templ`, Line: 75, Col: 47}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/co/dian.templ`, Line: 76, Col: 73}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
@@ -252,7 +253,7 @@ func generateQR(code, precedingCode, qr string) templ.Component {
 			var templ_7745c5c3_Var10 string
 			templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(code)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/co/dian.templ`, Line: 82, Col: 32}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/co/dian.templ`, Line: 83, Col: 32}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 			if templ_7745c5c3_Err != nil {
@@ -265,7 +266,7 @@ func generateQR(code, precedingCode, qr string) templ.Component {
 			var templ_7745c5c3_Var11 string
 			templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(precedingCode)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/co/dian.templ`, Line: 86, Col: 41}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/co/dian.templ`, Line: 87, Col: 41}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 			if templ_7745c5c3_Err != nil {
@@ -283,7 +284,7 @@ func generateQR(code, precedingCode, qr string) templ.Component {
 			var templ_7745c5c3_Var12 string
 			templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(code)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/co/dian.templ`, Line: 91, Col: 32}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/co/dian.templ`, Line: 92, Col: 32}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 			if templ_7745c5c3_Err != nil {
@@ -306,36 +307,19 @@ func dianURL(qr string) string {
 	return dianQRHTTPRegexp.FindString(qr)
 }
 
-func dianCUDE(env *gobl.Envelope) string {
-	for _, stamp := range env.Head.Stamps {
-		switch stamp.Provider {
-		case dian.StampCUDE:
-			return stamp.Value
-		}
-	}
-	return ""
-}
-
 func dianPrecedingCUDE(env *gobl.Envelope) string {
 	inv, ok := env.Extract().(*bill.Invoice)
 	if !ok || len(inv.Preceding) == 0 {
 		return ""
 	}
-	for _, stamp := range inv.Preceding[0].Stamps {
-		switch stamp.Provider {
-		case dian.StampCUDE:
-			return stamp.Value
-		}
-	}
-	return ""
+	return stampValue(inv.Preceding[0].Stamps, dian.StampCUDE)
 }
 
-func dianQR(env *gobl.Envelope) string {
-	for _, stamp := range env.Head.Stamps {
-		switch stamp.Provider {
-		case dian.StampQR:
-			return stamp.Value
-		}
+// stampValue returns the value of the stamp with the given provider, or empty
+// when absent.
+func stampValue(stamps []*head.Stamp, key cbc.Key) string {
+	if st := head.GetStamp(stamps, key); st != nil {
+		return st.Value
 	}
 	return ""
 }

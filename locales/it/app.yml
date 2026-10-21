@@ -45,6 +45,7 @@ it:
         order_period: "Periodo"
         order_period_label: "%{label}"
         order_period_range: "%{start} a %{end}"
+        contract: "Contratto"
       supplier:
         title: "Fornitore"
       customer:
@@ -81,8 +82,7 @@ it:
         retained_tax: "Tasse trattenute"
         rounding: "Arrotondamento"
         total_to_pay: "Totale da pagare"
-        advance: "Anticipo: %{date} %{txt}"
-        advance_sum: "Somma anticipi"
+        advance: "Anticipo"
         due_sum: "Totale dovuto"
         exchange_rate: "Cambio in %{to} (%{amount})"
         carried_fwd: "Da riportare"
@@ -121,6 +121,7 @@ it:
             card+credit: "Carta di credito"
             card+debit: "Carta di debito"
             credit-transfer: "Bonifico bancario"
+            debit-transfer: "Trasferimento di debito"
             cash: "Contanti"
             direct-debit: "Addebito diretto"
             online: "Online"
@@ -246,6 +247,9 @@ it:
       country: "(%{country})"
   regimes:
     it:
+      # Riferimento assegnato dall'AdE all'accettazione del documento
+      # commerciale; deve essere stampato sullo scontrino.
+      ade-ref: "Riferimento AdE"
       title:
         # Nome ufficiale del documento AdE (Risposta all'interpello n. 167/2020).
         ticket: "Documento commerciale"
