@@ -119,20 +119,16 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 			</td>
 		</tr>
 	}
-	<tr class="payable strong">
-		<th>
-			if inv.Type.In(bill.InvoiceTypeCreditNote) {
-				// Credit notes aren't necessarily payable.
-				// Use a generic term for the total label
-				@t.T(".total")
-			} else {
-				@t.T(".total_to_pay")
-			}
-		</th>
-		<td>
-			@t.LM(totals.Payable)
-		</td>
-	</tr>
+	if label := payableLabel(inv, totals); label != "" {
+		<tr class="payable strong">
+			<th>
+				@t.T(label)
+			</th>
+			<td>
+				@t.LM(totals.Payable)
+			</td>
+		</tr>
+	}
 	for _, er := range totalExchangeRates(inv) {
 		<tr class="exchange-rate">
 			<th>
@@ -180,6 +176,26 @@ func totalPricesIncludeTax(ctx context.Context, inv *bill.Invoice) string {
 		return inv.Tax.PricesInclude.String()
 	}
 	return category.Name.In(t.Lang(ctx))
+}
+
+// payableLabel names the payable total, which is only what's left to pay when
+// nothing comes off it. With advances, what's left to pay is the amount due
+// below them, so the payable is just the invoice's total. It returns an empty
+// label when the row isn't worth showing.
+func payableLabel(inv *bill.Invoice, totals *bill.Totals) string {
+	switch {
+	case inv.Type.In(bill.InvoiceTypeCreditNote):
+		// Credit notes aren't necessarily payable.
+		return ".total"
+	case totals.Due == nil:
+		return ".total_to_pay"
+	case totals.TotalWithTax.Equals(totals.Payable):
+		return ".total_with_tax"
+	default:
+		// Retained taxes or rounding already lead from the total with tax,
+		// shown on its own row above, to the advances and the amount due.
+		return ""
+	}
 }
 
 func totalExchangeRates(inv *bill.Invoice) []*currency.ExchangeRate {
