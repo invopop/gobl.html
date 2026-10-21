@@ -121,13 +121,7 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 	}
 	<tr class="payable strong">
 		<th>
-			if inv.Type.In(bill.InvoiceTypeCreditNote) {
-				// Credit notes aren't necessarily payable.
-				// Use a generic term for the total label
-				@t.T(".total")
-			} else {
-				@t.T(".total_to_pay")
-			}
+			@t.T(payableLabel(inv, totals))
 		</th>
 		<td>
 			@t.LM(totals.Payable)
@@ -180,6 +174,25 @@ func totalPricesIncludeTax(ctx context.Context, inv *bill.Invoice) string {
 		return inv.Tax.PricesInclude.String()
 	}
 	return category.Name.In(t.Lang(ctx))
+}
+
+// payableLabel names the payable total, which is only what's left to pay when
+// nothing comes off it. With advances, what's left to pay is the amount due
+// below them, so the payable is just the invoice's total.
+func payableLabel(inv *bill.Invoice, totals *bill.Totals) string {
+	switch {
+	case inv.Type.In(bill.InvoiceTypeCreditNote):
+		// Credit notes aren't necessarily payable.
+		return ".total"
+	case totals.Due == nil:
+		return ".total_to_pay"
+	case totals.TotalWithTax.Equals(totals.Payable):
+		return ".total_with_tax"
+	default:
+		// Retained taxes or rounding make the payable differ from the
+		// total with tax, which is then shown on its own row above.
+		return ".total"
+	}
 }
 
 func totalExchangeRates(inv *bill.Invoice) []*currency.ExchangeRate {
