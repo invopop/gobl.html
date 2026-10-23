@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"net/url"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/components/images"
@@ -35,6 +36,24 @@ templ paymentDetails(inv *bill.Invoice) {
 // is still something left to pay.
 func showPaymentOnlineQRs(inst *pay.Instructions, totals *bill.Totals) bool {
 	return inst != nil && inst.Key.Has(pay.MeansKeyOnline) && paymentPending(totals)
+}
+
+// paymentOnlineQRURL returns true when the link is an absolute web URL,
+// the only kind worth linking to and encoding as a QR code.
+func paymentOnlineQRURL(u string) bool {
+	pu, err := url.Parse(u)
+	if err != nil || pu.Host == "" {
+		return false
+	}
+	return pu.Scheme == "https" || pu.Scheme == "http"
+}
+
+// paymentOnlineName provides the accessible name of an online payment link.
+func paymentOnlineName(ol *pay.Online) string {
+	if ol.Label != "" {
+		return ol.Label
+	}
+	return ol.URL
 }
 
 templ paymentInstructions(inst *pay.Instructions, totals *bill.Totals) {
@@ -100,8 +119,8 @@ templ paymentInstructions(inst *pay.Instructions, totals *bill.Totals) {
 					for _, ol := range inst.Online {
 						<span class="value">
 							@paymentOnlineRow(ol)
-							if ol.URL != "" && showPaymentOnlineQRs(inst, totals) {
-								<a class="qr" href={ templ.SafeURL(ol.URL) }>
+							if paymentOnlineQRURL(ol.URL) && showPaymentOnlineQRs(inst, totals) {
+								<a class="qr" href={ templ.URL(ol.URL) } aria-label={ paymentOnlineName(ol) }>
 									@images.QR(ol.URL)
 								</a>
 							}
@@ -273,6 +292,11 @@ func showPayments(inv *bill.Invoice) bool {
 
 // paymentPending returns true when the document still has a positive
 // amount left to pay, using the amount due after advances if present.
+//
+// Every document that paid() reports as paid has nothing pending, but
+// the reverse is intentionally not true: zero or negative totals (such as
+// credit notes) have nothing to pay without having been paid, so they get
+// neither payment QR codes nor the paid badge.
 func paymentPending(totals *bill.Totals) bool {
 	if totals == nil {
 		return false

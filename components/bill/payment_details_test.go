@@ -3,6 +3,7 @@ package bill
 import (
 	"testing"
 
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/pay"
@@ -63,4 +64,34 @@ func TestShowPaymentOnlineQRs(t *testing.T) {
 	t.Run("hidden without instructions", func(t *testing.T) {
 		assert.False(t, showPaymentOnlineQRs(nil, payable(10000)))
 	})
+
+	t.Run("hidden whenever the invoice is shown as paid", func(t *testing.T) {
+		inv := &bill.Invoice{Totals: due(0)}
+		assert.True(t, paid(internal.DocumentFor(inv)))
+		assert.False(t, showPaymentOnlineQRs(online(), inv.Totals))
+	})
+
+	t.Run("nothing to pay is not shown as paid", func(t *testing.T) {
+		for _, totals := range []*bill.Totals{payable(0), payable(-5000), due(-1000)} {
+			inv := &bill.Invoice{Totals: totals}
+			assert.False(t, paid(internal.DocumentFor(inv)))
+			assert.False(t, showPaymentOnlineQRs(online(), inv.Totals))
+		}
+	})
+}
+
+func TestPaymentOnlineQRURL(t *testing.T) {
+	assert.True(t, paymentOnlineQRURL("https://pay.example.com/i/1?method=card"))
+	assert.True(t, paymentOnlineQRURL("http://pay.example.com/i/1"))
+	assert.False(t, paymentOnlineQRURL(""))
+	assert.False(t, paymentOnlineQRURL("javascript:alert(1)"))
+	assert.False(t, paymentOnlineQRURL("data:text/html,hello"))
+	assert.False(t, paymentOnlineQRURL("mailto:billing@example.com"))
+	assert.False(t, paymentOnlineQRURL("/relative/path"))
+	assert.False(t, paymentOnlineQRURL("https://"))
+}
+
+func TestPaymentOnlineName(t *testing.T) {
+	assert.Equal(t, "PayPal", paymentOnlineName(&pay.Online{Label: "PayPal", URL: "https://www.paypal.com/pay"}))
+	assert.Equal(t, "https://www.paypal.com/pay", paymentOnlineName(&pay.Online{URL: "https://www.paypal.com/pay"}))
 }
