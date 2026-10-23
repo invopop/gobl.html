@@ -39,7 +39,8 @@ func showPaymentOnlineQRs(inst *pay.Instructions, totals *bill.Totals) bool {
 }
 
 // paymentOnlineQRURL returns true when the link is an absolute web URL,
-// the only kind worth linking to and encoding as a QR code.
+// the only kind worth linking to and encoding as a QR code. url.Parse
+// lowercases the scheme, so mixed-case schemes like "HTTPS" are accepted.
 func paymentOnlineQRURL(u string) bool {
 	pu, err := url.Parse(u)
 	if err != nil || pu.Host == "" {

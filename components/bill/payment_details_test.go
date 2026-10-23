@@ -85,6 +85,8 @@ func TestShowPaymentOnlineQRs(t *testing.T) {
 func TestPaymentOnlineQRURL(t *testing.T) {
 	assert.True(t, paymentOnlineQRURL("https://pay.example.com/i/1?method=card"))
 	assert.True(t, paymentOnlineQRURL("http://pay.example.com/i/1"))
+	assert.True(t, paymentOnlineQRURL("HTTPS://pay.example.com/i/1"), "schemes are case-insensitive")
+	assert.True(t, paymentOnlineQRURL("Http://pay.example.com/i/1"), "schemes are case-insensitive")
 	assert.False(t, paymentOnlineQRURL(""))
 	assert.False(t, paymentOnlineQRURL("javascript:alert(1)"))
 	assert.False(t, paymentOnlineQRURL("data:text/html,hello"))
