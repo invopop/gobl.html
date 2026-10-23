@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/internal"
+	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/pay"
@@ -19,7 +20,7 @@ templ paymentDetails(inv *bill.Invoice) {
 					@t.T(".title")
 				</h2>
 				if inv.Payment.Instructions != nil {
-					@paymentInstructions(inv.Payment.Instructions)
+					@paymentInstructions(inv.Payment.Instructions, inv.Totals)
 				}
 				if inv.Payment.Terms != nil {
 					@paymentTerms(inv.Payment.Terms)
@@ -29,7 +30,14 @@ templ paymentDetails(inv *bill.Invoice) {
 	}
 }
 
-templ paymentInstructions(inst *pay.Instructions) {
+// showPaymentOnlineQRs returns true when the online payment links should
+// include QR codes: the instructions use the online payment means and there
+// is still something left to pay.
+func showPaymentOnlineQRs(inst *pay.Instructions, totals *bill.Totals) bool {
+	return inst != nil && inst.Key.Has(pay.MeansKeyOnline) && paymentPending(totals)
+}
+
+templ paymentInstructions(inst *pay.Instructions, totals *bill.Totals) {
 	@t.Scope(".instructions") {
 		<ul class="instructions">
 			if pm := paymentInstrMethodName(ctx, inst); pm != "" {
@@ -92,6 +100,11 @@ templ paymentInstructions(inst *pay.Instructions) {
 					for _, ol := range inst.Online {
 						<span class="value">
 							@paymentOnlineRow(ol)
+							if ol.URL != "" && showPaymentOnlineQRs(inst, totals) {
+								<a class="qr" href={ templ.SafeURL(ol.URL) }>
+									@images.QR(ol.URL)
+								</a>
+							}
 						</span>
 					}
 				</li>
@@ -256,6 +269,18 @@ func showPayments(inv *bill.Invoice) bool {
 		return false
 	}
 	return true
+}
+
+// paymentPending returns true when the document still has a positive
+// amount left to pay, using the amount due after advances if present.
+func paymentPending(totals *bill.Totals) bool {
+	if totals == nil {
+		return false
+	}
+	if totals.Due != nil {
+		return totals.Due.IsPositive()
+	}
+	return totals.Payable.IsPositive()
 }
 
 func paid(doc internal.Document) bool {

@@ -227,7 +227,7 @@ templ orderPaymentDetails(ord *bill.Order) {
 					@t.T(".title")
 				</h2>
 				if ord.Payment.Instructions != nil {
-					@paymentInstructions(ord.Payment.Instructions)
+					@paymentInstructions(ord.Payment.Instructions, ord.Totals)
 				}
 				if ord.Payment.Terms != nil {
 					@paymentTerms(ord.Payment.Terms)

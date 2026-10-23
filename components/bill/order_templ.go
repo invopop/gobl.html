@@ -739,7 +739,7 @@ func orderPaymentDetails(ord *bill.Order) templ.Component {
 					return templ_7745c5c3_Err
 				}
 				if ord.Payment.Instructions != nil {
-					templ_7745c5c3_Err = paymentInstructions(ord.Payment.Instructions).Render(ctx, templ_7745c5c3_Buffer)
+					templ_7745c5c3_Err = paymentInstructions(ord.Payment.Instructions, ord.Totals).Render(ctx, templ_7745c5c3_Buffer)
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
