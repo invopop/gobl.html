@@ -417,6 +417,15 @@ section.payment ul {
 section.payment ul.instructions {
     margin-right: 6mm;
 }
+section.payment li.online a.qr {
+    display: block;
+    margin: 1mm 0 2mm;
+}
+section.payment li.online a.qr img {
+    display: block;
+    width: 20mm;
+    height: 20mm;
+}
 section.payment li {
     margin-bottom: 3mm;
 }

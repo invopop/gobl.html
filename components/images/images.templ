@@ -2,7 +2,7 @@ package images
 
 // QR generates a QR Code image inside an HTML img tag.
 templ QR(code string) {
-	if qr := generateQR(code); qr != "" {
+	if qr := QRSource(code); qr != "" {
 		<img src={ qr }/>
 	}
 }
