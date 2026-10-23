@@ -43,7 +43,7 @@ func showPaymentOnlineQRs(inst *pay.Instructions, totals *bill.Totals) bool {
 // lowercases the scheme, so mixed-case schemes like "HTTPS" are accepted.
 func paymentOnlineQRURL(u string) bool {
 	pu, err := url.Parse(u)
-	if err != nil || pu.Host == "" {
+	if err != nil || pu.Hostname() == "" {
 		return false
 	}
 	return pu.Scheme == "https" || pu.Scheme == "http"

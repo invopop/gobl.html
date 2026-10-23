@@ -8,7 +8,7 @@ import (
 	go_qr "github.com/piglig/go-qr"
 )
 
-// QRSource generates a QR code suitable to included
+// QRSource generates a QR code suitable for inclusion
 // inside the src attribute of an HTML img tag.
 // Will fail silently, returning an empty string, if the QR code
 // cannot be generated.

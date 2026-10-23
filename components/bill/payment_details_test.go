@@ -93,6 +93,9 @@ func TestPaymentOnlineQRURL(t *testing.T) {
 	assert.False(t, paymentOnlineQRURL("mailto:billing@example.com"))
 	assert.False(t, paymentOnlineQRURL("/relative/path"))
 	assert.False(t, paymentOnlineQRURL("https://"))
+	assert.False(t, paymentOnlineQRURL("https://:443/pay"), "port without a hostname")
+	assert.False(t, paymentOnlineQRURL("https://user@/pay"), "user info without a hostname")
+	assert.False(t, paymentOnlineQRURL("https://pay example.com/"), "invalid hostname")
 }
 
 func TestPaymentOnlineName(t *testing.T) {
