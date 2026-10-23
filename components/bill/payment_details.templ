@@ -120,9 +120,11 @@ templ paymentInstructions(inst *pay.Instructions, totals *bill.Totals) {
 						<span class="value">
 							@paymentOnlineRow(ol)
 							if paymentOnlineQRURL(ol.URL) && showPaymentOnlineQRs(inst, totals) {
-								<a class="qr" href={ templ.URL(ol.URL) } aria-label={ paymentOnlineName(ol) }>
-									@images.QR(ol.URL)
-								</a>
+								if qr := images.QRSource(ol.URL); qr != "" {
+									<a class="qr" href={ templ.URL(ol.URL) } aria-label={ paymentOnlineName(ol) }>
+										<img src={ qr }/>
+									</a>
+								}
 							}
 						</span>
 					}

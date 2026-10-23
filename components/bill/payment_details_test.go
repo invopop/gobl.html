@@ -10,13 +10,15 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+const paypalURL = "https://www.paypal.com/pay"
+
 func TestShowPaymentOnlineQRs(t *testing.T) {
 	online := func() *pay.Instructions {
 		return &pay.Instructions{
 			Key: pay.MeansKeyOnline,
 			Online: []*pay.Online{
 				{Label: "Pay by card", URL: "https://pay.example.com/card"},
-				{Label: "PayPal", URL: "https://www.paypal.com/pay"},
+				{Label: "PayPal", URL: paypalURL},
 			},
 		}
 	}
@@ -92,6 +94,6 @@ func TestPaymentOnlineQRURL(t *testing.T) {
 }
 
 func TestPaymentOnlineName(t *testing.T) {
-	assert.Equal(t, "PayPal", paymentOnlineName(&pay.Online{Label: "PayPal", URL: "https://www.paypal.com/pay"}))
-	assert.Equal(t, "https://www.paypal.com/pay", paymentOnlineName(&pay.Online{URL: "https://www.paypal.com/pay"}))
+	assert.Equal(t, "PayPal", paymentOnlineName(&pay.Online{Label: "PayPal", URL: paypalURL}))
+	assert.Equal(t, paypalURL, paymentOnlineName(&pay.Online{URL: paypalURL}))
 }

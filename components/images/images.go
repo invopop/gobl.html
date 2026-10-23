@@ -8,6 +8,12 @@ import (
 	go_qr "github.com/piglig/go-qr"
 )
 
+// QRSource provides the image source of a QR code for the provided value,
+// or an empty string if the QR code cannot be generated.
+func QRSource(code string) string {
+	return generateQR(code)
+}
+
 // generateQR generates a QR code suitable to included
 // inside the src attribute of an HTML img tag.
 // Will fail silently if the QR code cannot be generated.
