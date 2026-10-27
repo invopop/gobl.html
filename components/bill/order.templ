@@ -226,12 +226,14 @@ templ orderPaymentDetails(ord *bill.Order) {
 				<h2 class="title">
 					@t.T(".title")
 				</h2>
-				if ord.Payment.Instructions != nil {
-					@paymentInstructions(ord.Payment.Instructions, ord.Totals)
-				}
 				if ord.Payment.Terms != nil {
 					@paymentTerms(ord.Payment.Terms)
 				}
+				{{ qrs := paymentOnlineQRCodes(ord.Payment.Instructions, ord.Totals) }}
+				if ord.Payment.Instructions != nil {
+					@paymentInstructions(ord.Payment.Instructions, qrs)
+				}
+				@paymentOnlineQRs(qrs)
 			</section>
 		}
 	}

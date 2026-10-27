@@ -738,17 +738,22 @@ func orderPaymentDetails(ord *bill.Order) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				if ord.Payment.Instructions != nil {
-					templ_7745c5c3_Err = paymentInstructions(ord.Payment.Instructions, ord.Totals).Render(ctx, templ_7745c5c3_Buffer)
-					if templ_7745c5c3_Err != nil {
-						return templ_7745c5c3_Err
-					}
-				}
 				if ord.Payment.Terms != nil {
 					templ_7745c5c3_Err = paymentTerms(ord.Payment.Terms).Render(ctx, templ_7745c5c3_Buffer)
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
+				}
+				qrs := paymentOnlineQRCodes(ord.Payment.Instructions, ord.Totals)
+				if ord.Payment.Instructions != nil {
+					templ_7745c5c3_Err = paymentInstructions(ord.Payment.Instructions, qrs).Render(ctx, templ_7745c5c3_Buffer)
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+				}
+				templ_7745c5c3_Err = paymentOnlineQRs(qrs).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
 				}
 				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 58, "</section>")
 				if templ_7745c5c3_Err != nil {

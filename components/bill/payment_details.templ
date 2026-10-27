@@ -20,22 +20,87 @@ templ paymentDetails(inv *bill.Invoice) {
 				<h2 class="title">
 					@t.T(".title")
 				</h2>
-				if inv.Payment.Instructions != nil {
-					@paymentInstructions(inv.Payment.Instructions, inv.Totals)
-				}
 				if inv.Payment.Terms != nil {
 					@paymentTerms(inv.Payment.Terms)
 				}
+				{{ qrs := paymentOnlineQRCodes(inv.Payment.Instructions, inv.Totals) }}
+				if inv.Payment.Instructions != nil {
+					@paymentInstructions(inv.Payment.Instructions, qrs)
+				}
+				@paymentOnlineQRs(qrs)
 			</section>
 		}
 	}
 }
 
-// showPaymentOnlineQRs returns true when the online payment links should
-// include QR codes: the instructions use the online payment means and there
-// is still something left to pay.
-func showPaymentOnlineQRs(inst *pay.Instructions, totals *bill.Totals) bool {
-	return inst != nil && inst.Key.Has(pay.MeansKeyOnline) && paymentPending(totals)
+// paymentOnlineQRs adds a column with a QR code and a button for each online
+// payment link that has a QR code.
+templ paymentOnlineQRs(qrs []*paymentOnlineQR) {
+	if len(qrs) > 0 {
+		@t.Scope(".instructions") {
+			<ul class="online-qrs">
+				<li>
+					<span class="label">
+						@t.T(".online")
+					</span>
+					for _, qr := range qrs {
+						<span class="value">
+							<a class="online-qr" href={ templ.URL(qr.online.URL) }>
+								<img src={ qr.src } alt=""/>
+								<span class="button">{ paymentOnlineName(qr.online) }</span>
+							</a>
+						</span>
+					}
+				</li>
+			</ul>
+		}
+	}
+}
+
+// paymentOnlineLinks provides the online payment links to list in the
+// instructions, leaving out those already shown with a QR code.
+func paymentOnlineLinks(inst *pay.Instructions, qrs []*paymentOnlineQR) []*pay.Online {
+	var links []*pay.Online
+	for _, ol := range inst.Online {
+		if ol == nil || paymentOnlineHasQR(ol, qrs) {
+			continue
+		}
+		links = append(links, ol)
+	}
+	return links
+}
+
+func paymentOnlineHasQR(ol *pay.Online, qrs []*paymentOnlineQR) bool {
+	for _, qr := range qrs {
+		if qr.online == ol {
+			return true
+		}
+	}
+	return false
+}
+
+type paymentOnlineQR struct {
+	online *pay.Online
+	src    string
+}
+
+// paymentOnlineQRCodes generates the QR codes for the online payment links,
+// as long as there is still something left to pay. Links that aren't web
+// URLs, or whose QR code can't be generated, are skipped.
+func paymentOnlineQRCodes(inst *pay.Instructions, totals *bill.Totals) []*paymentOnlineQR {
+	if inst == nil || !paymentPending(totals) {
+		return nil
+	}
+	var qrs []*paymentOnlineQR
+	for _, ol := range inst.Online {
+		if ol == nil || !paymentOnlineQRURL(ol.URL) {
+			continue
+		}
+		if src := images.QRSource(ol.URL); src != "" {
+			qrs = append(qrs, &paymentOnlineQR{online: ol, src: src})
+		}
+	}
+	return qrs
 }
 
 // paymentOnlineQRURL returns true when the link is an absolute web URL,
@@ -57,7 +122,7 @@ func paymentOnlineName(ol *pay.Online) string {
 	return ol.URL
 }
 
-templ paymentInstructions(inst *pay.Instructions, totals *bill.Totals) {
+templ paymentInstructions(inst *pay.Instructions, qrs []*paymentOnlineQR) {
 	@t.Scope(".instructions") {
 		<ul class="instructions">
 			if pm := paymentInstrMethodName(ctx, inst); pm != "" {
@@ -112,21 +177,14 @@ templ paymentInstructions(inst *pay.Instructions, totals *bill.Totals) {
 					</span>
 				</li>
 			}
-			if len(inst.Online) > 0 {
+			if links := paymentOnlineLinks(inst, qrs); len(links) > 0 {
 				<li class="online">
 					<span class="label">
 						@t.T(".online")
 					</span>
-					for _, ol := range inst.Online {
+					for _, ol := range links {
 						<span class="value">
 							@paymentOnlineRow(ol)
-							if paymentOnlineQRURL(ol.URL) && showPaymentOnlineQRs(inst, totals) {
-								if qr := images.QRSource(ol.URL); qr != "" {
-									<a class="qr" href={ templ.URL(ol.URL) } aria-label={ paymentOnlineName(ol) }>
-										<img src={ qr }/>
-									</a>
-								}
-							}
 						</span>
 					}
 				</li>

@@ -4,7 +4,7 @@
 		"uuid": "92be0222-1d7d-11ed-8719-b24117999d50",
 		"dig": {
 			"alg": "sha256",
-			"val": "191141aa8145fdb844eb776f356986d3965624e31db8233ce08857432945539b"
+			"val": "d3501187ed48ae57e51a8bf5214015cb5a1f84631775ecc1cb288130f51d6f11"
 		},
 		"stamps": [
 			{
@@ -113,17 +113,12 @@
 			},
 			"instructions": {
 				"key": "online",
-				"detail": "Pay online by card or PayPal",
+				"detail": "Pay online by card",
 				"online": [
 					{
 						"key": "card",
 						"label": "Pay by card",
 						"url": "https://pay.example.com/i/SAMPLE-002?method=card"
-					},
-					{
-						"key": "paypal",
-						"label": "PayPal",
-						"url": "https://www.paypal.com/pay?ref=SAMPLE-002"
 					}
 				],
 				"notes": "Payment links expire on the due date."
@@ -155,6 +150,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTE2N2ZhLTcxZWMtNzgwZS1hMDU2LWFjZTI1NWU3MTViZSJ9.eyJ1dWlkIjoiOTJiZTAyMjItMWQ3ZC0xMWVkLTg3MTktYjI0MTE3OTk5ZDUwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjE5MTE0MWFhODE0NWZkYjg0NGViNzc2ZjM1Njk4NmQzOTY1NjI0ZTMxZGI4MjMzY2UwODg1NzQzMjk0NTUzOWIifSwiaWF0IjoxNzkyNzQ1ODI4fQ.AKP4QwTVkI4HR7s7TYMZMGmeTuCMeV5SrPGonwhKazR8wr9TPF3CoxligllEPp51ZEpaxCNPayOncGARTmt9rQ"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTE3Y2VmLTNjYjYtN2JkZi04NWMxLTA5N2FmMDNiY2MyZCJ9.eyJ1dWlkIjoiOTJiZTAyMjItMWQ3ZC0xMWVkLTg3MTktYjI0MTE3OTk5ZDUwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImQzNTAxMTg3ZWQ0OGFlNTdlNTFhOGJmNTIxNDAxNWNiNWExZjg0NjMxNzc1ZWNjMWNiMjg4MTMwZjUxZDZmMTEifSwiaWF0IjoxNzkzMDk3NDE1fQ.19ABLAGoJACJKY50CbdlO7lxxNkitjOGzaELuPu1YQ21fYpjY6L1J61fAc4jMhoq27ADQak6QrqN9Zw35v-Izg"
 	]
 }
