@@ -1,6 +1,7 @@
 package bill
 
 import (
+	"strings"
 	"testing"
 
 	"github.com/invopop/gobl.html/internal"
@@ -118,7 +119,8 @@ func TestPaymentOnlineQRURL(t *testing.T) {
 
 func TestPaymentOnlineName(t *testing.T) {
 	assert.Equal(t, paypalLabel, paymentOnlineName(&pay.Online{Label: paypalLabel, URL: paypalURL}))
-	assert.Equal(t, paypalURL, paymentOnlineName(&pay.Online{URL: paypalURL}))
+	assert.Equal(t, "www.paypal.com", paymentOnlineName(&pay.Online{URL: paypalURL + "?ref=" + strings.Repeat("x", 200)}))
+	assert.Equal(t, "not a url", paymentOnlineName(&pay.Online{URL: "not a url"}))
 }
 
 func TestPaymentOnlineLinks(t *testing.T) {

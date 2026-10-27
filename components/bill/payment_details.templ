@@ -114,10 +114,14 @@ func paymentOnlineQRURL(u string) bool {
 	return pu.Scheme == "https" || pu.Scheme == "http"
 }
 
-// paymentOnlineName provides the accessible name of an online payment link.
+// paymentOnlineName provides the button text of an online payment link,
+// falling back to the URL's host name so long URLs stay short.
 func paymentOnlineName(ol *pay.Online) string {
 	if ol.Label != "" {
 		return ol.Label
+	}
+	if pu, err := url.Parse(ol.URL); err == nil && pu.Hostname() != "" {
+		return pu.Hostname()
 	}
 	return ol.URL
 }

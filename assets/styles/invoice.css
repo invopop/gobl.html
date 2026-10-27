@@ -448,7 +448,8 @@ section.payment ul.online-qrs span.button {
     color: #030712;
     font-size: 7pt;
     line-height: 1.5;
-    white-space: nowrap;
+    max-width: 30mm;
+    overflow-wrap: anywhere;
 }
 section.payment li {
     margin-bottom: 3mm;
