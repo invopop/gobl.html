@@ -45,7 +45,7 @@ templ paymentOnlineQRs(qrs []*paymentOnlineQR) {
 					</span>
 					for _, qr := range qrs {
 						<span class="value">
-							<a class="online-qr" href={ templ.URL(qr.online.URL) }>
+							<a class="online-qr" href={ templ.URL(qr.online.URL) } aria-label={ paymentOnlineName(qr.online) }>
 								<img src={ qr.src } alt=""/>
 								<span class="button">{ paymentOnlineName(qr.online) }</span>
 							</a>
