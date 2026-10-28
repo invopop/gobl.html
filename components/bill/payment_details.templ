@@ -5,27 +5,35 @@ import (
 	"context"
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
-	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
+	"github.com/invopop/gobl.html/display"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/pay"
 )
 
 templ paymentDetails(inv *bill.Invoice) {
-	@t.Scope(".payment") {
-		if showPayments(inv) {
-			<section class="payment">
-				<h2 class="title">
-					@t.T(".title")
-				</h2>
-				if inv.Payment.Instructions != nil {
-					@paymentInstructions(inv.Payment.Instructions)
-				}
-				if inv.Payment.Terms != nil {
-					@paymentTerms(inv.Payment.Terms, inv.Totals)
-				}
-			</section>
+	@utils.Section(display.KeyPayment) {
+		@t.Scope(".payment") {
+			if showPayments(ctx, inv) {
+				<section class="payment">
+					<h2 class="title">
+						@t.T(".title")
+					</h2>
+					@utils.Section(display.KeyPaymentInstructions) {
+						if inv.Payment != nil && inv.Payment.Instructions != nil {
+							@paymentInstructions(inv.Payment.Instructions)
+						}
+					}
+					@utils.Section(display.KeyPaymentTerms) {
+						if inv.Payment != nil && inv.Payment.Terms != nil {
+							@paymentTerms(inv.Payment.Terms, inv.Totals)
+						}
+					}
+				</section>
+			}
 		}
 	}
 }
@@ -53,17 +61,19 @@ templ paymentInstructions(inst *pay.Instructions) {
 					</span>
 				</li>
 			}
-			if len(inst.CreditTransfer) > 0 {
-				<li class="bank-data">
-					<span class="label">
-						@t.T(".bank_data")
-					</span>
-					for _, ct := range inst.CreditTransfer {
-						<span class="value">
-							@paymentCreditTransferRow(ct)
+			@utils.Section(display.KeyPaymentBankData) {
+				if len(inst.CreditTransfer) > 0 {
+					<li class="bank-data">
+						<span class="label">
+							@t.T(".bank_data")
 						</span>
-					}
-				</li>
+						for _, ct := range inst.CreditTransfer {
+							<span class="value">
+								@paymentCreditTransferRow(ct)
+							</span>
+						}
+					</li>
+				}
 			}
 			if inst.Card != nil {
 				<li class="card">
@@ -85,17 +95,19 @@ templ paymentInstructions(inst *pay.Instructions) {
 					</span>
 				</li>
 			}
-			if len(inst.Online) > 0 {
-				<li class="online">
-					<span class="label">
-						@t.T(".online")
-					</span>
-					for _, ol := range inst.Online {
-						<span class="value">
-							@paymentOnlineRow(ol)
+			@utils.Section(display.KeyPaymentOnline) {
+				if len(inst.Online) > 0 {
+					<li class="online">
+						<span class="label">
+							@t.T(".online")
 						</span>
-					}
-				</li>
+						for _, ol := range inst.Online {
+							<span class="value">
+								@paymentOnlineRow(ol)
+							</span>
+						}
+					</li>
+				}
 			}
 			if inst.Notes != "" {
 				<li class="notes">
@@ -267,14 +279,24 @@ func displayDueDates(terms *pay.Terms, totals *bill.Totals) []*pay.DueDate {
 	return []*pay.DueDate{&full}
 }
 
-func showPayments(inv *bill.Invoice) bool {
+// showPayments determines if the payment section should be rendered, either
+// because the invoice contains visible payment instructions or terms, or
+// custom HTML snippets have been placed inside it.
+func showPayments(ctx context.Context, inv *bill.Invoice) bool {
+	d := internal.Display(ctx)
+	if d.HasSnippets(display.KeyPaymentInstructions) || d.HasSnippets(display.KeyPaymentTerms) {
+		return true
+	}
 	if inv.Payment == nil {
 		return false
 	}
-	if inv.Payment.Instructions == nil && inv.Payment.Terms == nil {
-		return false
+	if inv.Payment.Instructions != nil && !d.Hidden(display.KeyPaymentInstructions) {
+		return true
 	}
-	return true
+	if inv.Payment.Terms != nil && !d.Hidden(display.KeyPaymentTerms) {
+		return true
+	}
+	return false
 }
 
 func paid(doc internal.Document) bool {

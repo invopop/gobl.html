@@ -6,6 +6,9 @@ import (
 	"fmt"
 
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
+	"github.com/invopop/gobl.html/display"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
@@ -44,8 +47,11 @@ templ notes(notes []*org.Note) {
 	}
 }
 
+// lineNotes renders the notes of a line, unless hidden by the display options
+// alongside the rest of the item notes. Custom snippets for the item notes
+// are rendered with the line references instead.
 templ lineNotes(notes []*org.Note) {
-	if len(notes) > 0 {
+	if len(notes) > 0 && !internal.Display(ctx).Suppressed(display.KeyLinesItemNotes) {
 		<span class="subline">
 			for _, n := range notes {
 				@note(n)
@@ -60,9 +66,32 @@ templ note(note *org.Note) {
 	</div>
 }
 
-// invoiceNotes converts tax notes to org notes (with bold category prefix)
-// and prepends them to the invoice's regular notes.
-func invoiceNotes(ctx context.Context, inv *bill.Invoice) []*org.Note {
+// invoiceNotesSection renders the invoice's tax notes, which are always
+// shown, followed by the regular notes, which may be hidden or replaced
+// using the display options.
+templ invoiceNotesSection(inv *bill.Invoice) {
+	{{ taxNotes := invoiceTaxNotes(ctx, inv) }}
+	if len(taxNotes) > 0 || showGeneralNotes(ctx, inv) {
+		<section class="notes">
+			@t.Scope(".notes") {
+				<h2>
+					@t.T(".title")
+				</h2>
+				for _, n := range taxNotes {
+					@note(n)
+				}
+				@utils.Section(display.KeyNotesGeneral) {
+					for _, n := range inv.Notes {
+						@note(n)
+					}
+				}
+			}
+		</section>
+	}
+}
+
+// invoiceTaxNotes converts tax notes to org notes (with bold category prefix).
+func invoiceTaxNotes(ctx context.Context, inv *bill.Invoice) []*org.Note {
 	var result []*org.Note
 	if inv.Tax != nil {
 		r := inv.RegimeDef()
@@ -72,8 +101,17 @@ func invoiceNotes(ctx context.Context, inv *bill.Invoice) []*org.Note {
 			})
 		}
 	}
-	result = append(result, inv.Notes...)
 	return result
+}
+
+// showGeneralNotes determines if the invoice's regular notes, or snippets
+// placed at their anchor, should be rendered.
+func showGeneralNotes(ctx context.Context, inv *bill.Invoice) bool {
+	d := internal.Display(ctx)
+	if d.HasSnippets(display.KeyNotesGeneral) {
+		return true
+	}
+	return len(inv.Notes) > 0 && !d.Hidden(display.KeyNotesGeneral)
 }
 
 // renderTaxNoteText returns formatted markdown text for a tax note,

@@ -6,6 +6,8 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/regimes/it"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cal"
@@ -72,8 +74,10 @@ templ summary(env *gobl.Envelope, inv *bill.Invoice) {
 				if len(inv.Preceding) > 0 {
 					@summaryPrecedingRows(inv)
 				}
-				if inv.Ordering != nil {
-					@summaryOrderingRows(inv.Ordering)
+				@utils.Section(display.KeyHeaderSummaryOrdering) {
+					if inv.Ordering != nil {
+						@summaryOrderingRows(inv.Ordering)
+					}
 				}
 				if inv.Tax != nil {
 					@summaryTaxExtRows(inv.Tax.Ext)
