@@ -103,6 +103,7 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 					<br/>
 					<small>{ l.Item.Description }</small>
 				}
+				@lineIdentifier(l.Identifier)
 				if l.Item.Ref != "" {
 					<span class="subline">
 						<span class="label">
@@ -204,6 +205,7 @@ templ breakdownLine(sl *bill.SubLine, ls *lineSupport, st *subtotal) {
 					<br/>
 					<small>{ sl.Item.Description }</small>
 				}
+				@lineIdentifier(sl.Identifier)
 				if sl.Item.Ref != "" {
 					<span class="subline">
 						<span class="label">
@@ -307,6 +309,14 @@ templ defaultLineSeller(seller *org.Party) {
 			<code>{ taxid.Format(ctx, seller.TaxID).Code }</code>
 		}
 	</span>
+}
+
+// lineIdentifier renders the line identifier's code using the same markup as the item description.
+templ lineIdentifier(id *org.Identity) {
+	if id != nil && id.Code != "" {
+		<br/>
+		<small>{ id.Code.String() }</small>
+	}
 }
 
 templ identities(idents []*org.Identity) {
