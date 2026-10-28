@@ -257,12 +257,13 @@ func displayDueDates(terms *pay.Terms, totals *bill.Totals) []*pay.DueDate {
 		return dds
 	}
 	dd := dds[0]
-	if !dd.Amount.IsZero() || dd.Percent != nil {
+	if (dd.Amount != nil && !dd.Amount.IsZero()) || dd.Percent != nil {
 		return dds
 	}
 	full := *dd
 	full.Percent = num.NewPercentage(1, 0)
-	full.Amount = totals.Payable
+	payable := totals.Payable
+	full.Amount = &payable
 	return []*pay.DueDate{&full}
 }
 
