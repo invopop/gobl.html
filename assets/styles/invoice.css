@@ -414,8 +414,42 @@ section.payment ul {
     margin: 0;
     padding: 0;
 }
+section.payment ul.terms,
 section.payment ul.instructions {
     margin-right: 6mm;
+}
+section.payment ul.online-qrs {
+    margin-left: 4mm;
+    text-align: center;
+}
+section.payment ul.online-qrs span.value {
+    margin-top: 1mm;
+}
+section.payment ul.online-qrs span.value + span.value {
+    margin-top: 4mm;
+}
+section.payment ul.online-qrs a.online-qr {
+    display: block;
+    text-decoration: none;
+}
+section.payment ul.online-qrs a.online-qr img {
+    display: block;
+    width: 20mm;
+    height: 20mm;
+    margin: 0 auto;
+}
+section.payment ul.online-qrs span.button {
+    display: inline-block;
+    margin-top: 2mm;
+    padding: 0.5mm 2mm;
+    border-radius: 1mm;
+    background-color: #f3f4f6;
+    border: 0.5px solid #e5e7eb;
+    color: #030712;
+    font-size: 7pt;
+    line-height: 1.5;
+    max-width: 30mm;
+    overflow-wrap: anywhere;
 }
 section.payment li {
     margin-bottom: 3mm;
