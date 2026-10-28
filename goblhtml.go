@@ -13,6 +13,7 @@ import (
 	"github.com/invopop/gobl"
 	_ "github.com/invopop/gobl.dev/bundle" // registers the GOBL-approved addon set
 	"github.com/invopop/gobl.html/components"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/layout"
 	srclocales "github.com/invopop/gobl.html/locales"
@@ -166,6 +167,16 @@ func WithWatermark(watermark string) Option {
 func WithLabel(label string) Option {
 	return func(o *internal.Opts) {
 		o.Label = label
+	}
+}
+
+// WithDisplay sets the options that determine which sections of the
+// document are hidden, and the custom HTML snippets to inject. Unknown keys
+// are ignored while rendering; use display.Options.Validate to check the
+// options strictly beforehand. Snippets are trusted and rendered as is.
+func WithDisplay(d *display.Options) Option {
+	return func(o *internal.Opts) {
+		o.Display = d
 	}
 }
 

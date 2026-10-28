@@ -1,0 +1,36 @@
+package utils
+
+import (
+	"github.com/invopop/gobl.html/display"
+	"github.com/invopop/gobl.html/internal"
+)
+
+// Section wraps a section of the document identified by its display key,
+// so that it can be hidden, replaced, or surrounded by custom HTML snippets.
+// Nothing is rendered if an ancestor of the key is hidden or replaced.
+// Snippets placed before or after the key are rendered even if the key
+// itself is hidden, or its native content is empty.
+templ Section(key display.Key) {
+	{{ d := internal.Display(ctx) }}
+	if !d.AncestorHidden(key) {
+		for _, s := range d.Before(key) {
+			@customHTML(key, display.ModeBefore, s)
+		}
+		if s, ok := d.Replacement(key); ok {
+			@customHTML(key, display.ModeReplace, s)
+		} else if !d.Hidden(key) {
+			{ children... }
+		}
+		for _, s := range d.After(key) {
+			@customHTML(key, display.ModeAfter, s)
+		}
+	}
+}
+
+// customHTML renders a trusted, raw HTML snippet provided in the display
+// options.
+templ customHTML(key display.Key, mode display.Mode, content string) {
+	<div class={ "custom-html", "custom-" + string(mode) } data-at={ string(key) }>
+		@templ.Raw(content)
+	</div>
+}

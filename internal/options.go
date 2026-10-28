@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl.html/layout"
 	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/org"
@@ -62,6 +63,9 @@ type Opts struct {
 	// or similar should be rendered as adjustments to the original invoice, as
 	// required in certain jurisdictions.
 	AdjustmentMode bool
+	// Display determines which sections to hide and the custom HTML
+	// snippets to inject.
+	Display *display.Options
 }
 
 // WithOptions prepares the context with the options to use.
@@ -75,6 +79,36 @@ func Options(ctx context.Context) *Opts {
 		return opts
 	}
 	return nil
+}
+
+// Display provides the display options in the context, which may be nil.
+// All display.Options methods are safe to call on a nil value.
+func Display(ctx context.Context) *display.Options {
+	if opts := Options(ctx); opts != nil {
+		return opts.Display
+	}
+	return nil
+}
+
+// Hidden returns true when the section's key or any of its ancestors is
+// hidden, or an ancestor has been replaced.
+func Hidden(ctx context.Context, key display.Key) bool {
+	return Display(ctx).Hidden(key)
+}
+
+// Replacement provides the replace snippet defined exactly at the key.
+func Replacement(ctx context.Context, key display.Key) (string, bool) {
+	return Display(ctx).Replacement(key)
+}
+
+// Before provides the snippets to render before the key, in order.
+func Before(ctx context.Context, key display.Key) []string {
+	return Display(ctx).Before(key)
+}
+
+// After provides the snippets to render after the key, in order.
+func After(ctx context.Context, key display.Key) []string {
+	return Display(ctx).After(key)
 }
 
 // CalFormatter defines a simple date and time formatter. Date and time

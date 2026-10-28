@@ -13,6 +13,7 @@ import (
 
 	"github.com/invopop/gobl"
 	goblhtml "github.com/invopop/gobl.html"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl.html/internal/gallery"
 	"github.com/pmezard/go-difflib/difflib"
 	"github.com/stretchr/testify/require"
@@ -103,6 +104,9 @@ func convertExample(name string) ([]byte, error) {
 	if strings.Contains(name, ".adjustment.") {
 		opts = append(opts, goblhtml.EnableAdjustmentMode)
 	}
+	if strings.Contains(name, ".display.") {
+		opts = append(opts, goblhtml.WithDisplay(exampleDisplay))
+	}
 	if strings.Contains(name, ".es.") {
 		opts = append(opts, goblhtml.WithLocale("es"))
 	}
@@ -115,6 +119,31 @@ func convertExample(name string) ([]byte, error) {
 
 	ctx := context.Background()
 	return goblhtml.Render(ctx, env, opts...)
+}
+
+// exampleDisplay is applied to examples with ".display." in their name.
+var exampleDisplay = &display.Options{
+	Hide: []display.Key{
+		display.KeyPaymentBankData,
+		display.KeyFooterBranding,
+	},
+	HTML: []*display.HTML{
+		{
+			At:      display.KeyPaymentBankData,
+			Mode:    display.ModeAfter,
+			Content: `<li class="custom-bank"><span class="label">Bank</span><span class="value">See your customer portal</span></li>`,
+		},
+		{
+			At:      display.KeyNotesGeneral,
+			Mode:    display.ModeReplace,
+			Content: `<p>Thanks for choosing us. Questions? <a href="mailto:billing@example.com">billing@example.com</a></p>`,
+		},
+		{
+			At:      display.KeyTaxes,
+			Mode:    display.ModeAfter,
+			Content: `<p class="custom-tax-note">Prices include all applicable taxes.</p>`,
+		},
+	},
 }
 
 func loadExample(name string) (*gobl.Envelope, error) {

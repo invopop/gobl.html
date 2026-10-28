@@ -7,6 +7,7 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/taxid"
 	"github.com/invopop/gobl.html/components/utils"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cal"
 	"github.com/invopop/gobl/currency"
@@ -104,17 +105,19 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 					<small>{ l.Item.Description }</small>
 				}
 				@lineIdentifier(l.Identifier)
-				if l.Item.Ref != "" {
-					<span class="subline">
-						<span class="label">
-							@t.T(".ref")
+				@utils.Section(display.KeyLinesItemNotes) {
+					if l.Item.Ref != "" {
+						<span class="subline">
+							<span class="label">
+								@t.T(".ref")
+							</span>
+							<code>
+								{ l.Item.Ref.String() }
+							</code>
 						</span>
-						<code>
-							{ l.Item.Ref.String() }
-						</code>
-					</span>
+					}
+					@identities(l.Item.Identities)
 				}
-			@identities(l.Item.Identities)
 			@linePeriod(l.Period)
 			@lineNotes(l.Notes)
 			@mx.LineExtensions(l)
@@ -206,17 +209,19 @@ templ breakdownLine(sl *bill.SubLine, ls *lineSupport, st *subtotal) {
 					<small>{ sl.Item.Description }</small>
 				}
 				@lineIdentifier(sl.Identifier)
-				if sl.Item.Ref != "" {
-					<span class="subline">
-						<span class="label">
-							@t.T(".ref")
+				@utils.Section(display.KeyLinesItemNotes) {
+					if sl.Item.Ref != "" {
+						<span class="subline">
+							<span class="label">
+								@t.T(".ref")
+							</span>
+							<code>
+								{ sl.Item.Ref.String() }
+							</code>
 						</span>
-						<code>
-							{ sl.Item.Ref.String() }
-						</code>
-					</span>
+					}
+					@identities(sl.Item.Identities)
 				}
-				@identities(sl.Item.Identities)
 				@linePeriod(sl.Period)
 				@sublineNotes(sl.Notes)
 			</div>
