@@ -4,7 +4,7 @@
 		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "1c0f999dd3d50e19c450e80b361cb475f96053add3e1444877323534f452e90c"
+			"val": "09485047202a748b9e5a0ba20e206dd540a83776134fadd27be5dd7eab118191"
 		},
 		"from": "iso6523-actorid-upis::0225:732829320",
 		"to": "iso6523-actorid-upis::0225:356000000"
@@ -130,6 +130,13 @@
 			{
 				"i": 1,
 				"quantity": "10",
+				"identifier": {
+					"code": "SN-0000001",
+					"ext": {
+						"untdid-reference": "SE"
+					}
+				},
+				"order": "PO-LINE-1",
 				"item": {
 					"name": "Services de conseil",
 					"price": "100.00",
