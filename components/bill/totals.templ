@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/currency"
@@ -209,7 +210,8 @@ func totalExchangeRates(inv *bill.Invoice) []*currency.ExchangeRate {
 }
 
 // advanceText builds the label of an advance row from its description, reference and date,
-// falling back to a generic translated label when the advance has no description.
+// falling back to a generic translated label when the advance has no description. Portuguese
+// invoices also say how the advance was paid, which the AT expects to see on the document.
 func advanceText(ctx context.Context, adv *pay.Record) string {
 	txt := adv.Description
 	if txt == "" {
@@ -221,6 +223,9 @@ func advanceText(ctx context.Context, adv *pay.Record) string {
 	if adv.Date != nil {
 		// TODO: add date formatting
 		txt = fmt.Sprintf("%s %s", adv.Date.String(), txt)
+	}
+	if means := pt.AdvanceMeans(ctx, adv); means != "" {
+		txt = fmt.Sprintf("%s (%s)", txt, means)
 	}
 	return txt
 }
