@@ -6,8 +6,10 @@ import (
 
 	"github.com/invopop/ctxi18n/i18n"
 	srclocales "github.com/invopop/gobl.html/locales"
+	saft "github.com/invopop/gobl.pt.saft/addon"
 	"github.com/invopop/gobl/cal"
 	"github.com/invopop/gobl/pay"
+	"github.com/invopop/gobl/tax"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -33,6 +35,12 @@ func TestAdvanceText(t *testing.T) {
 		assert.Equal(t, "Advance", advanceText(ctxFor("en"), &pay.Record{Key: pay.MeansKeyCard}))
 		assert.Equal(t, "Anticipo", advanceText(ctxFor("es"), &pay.Record{}))
 		assert.Equal(t, "2026-01-02 Advance (DEP-1)", advanceText(ctxFor("en"), &pay.Record{Ref: "DEP-1", Date: &date}))
+	})
+
+	t.Run("names the payment means of Portuguese advances", func(t *testing.T) {
+		adv := &pay.Record{Description: "Deposit", Date: &date, Key: pay.MeansKeyCash, Ext: tax.Extensions{}.Set(saft.ExtKeyPaymentMeans, "NU")}
+		assert.Equal(t, "2026-01-02 Deposit (cash)", advanceText(ctxFor("en"), adv))
+		assert.Equal(t, "2026-01-02 Deposit (numerário)", advanceText(ctxFor("pt"), adv))
 	})
 
 	t.Run("fallback label exists in every locale", func(t *testing.T) {
