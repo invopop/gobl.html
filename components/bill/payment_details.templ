@@ -267,32 +267,6 @@ func displayDueDates(terms *pay.Terms, totals *bill.Totals) []*pay.DueDate {
 	return []*pay.DueDate{&full}
 }
 
-// invoiceAdvances lists the payments already made against the invoice, with
-// the method of each one, in the same table used by payment documents. The
-// labels come from the payment document scope so both read the same.
-templ invoiceAdvances(inv *bill.Invoice) {
-	if inv.Payment != nil && len(inv.Payment.Advances) > 0 {
-		@t.Scope("billing.payment.methods") {
-			@paymentMethodsTable(inv.Payment.Advances, advancesTotal(inv))
-		}
-	}
-}
-
-// advancesTotal sums the advances of the invoice, preferring the total the
-// calculator already worked out.
-func advancesTotal(inv *bill.Invoice) num.Amount {
-	if inv.Totals != nil && inv.Totals.Advances != nil {
-		return *inv.Totals.Advances
-	}
-	total := inv.Currency.Def().Zero()
-	for _, adv := range inv.Payment.Advances {
-		if adv != nil {
-			total = total.Add(adv.Amount)
-		}
-	}
-	return total
-}
-
 func showPayments(inv *bill.Invoice) bool {
 	if inv.Payment == nil {
 		return false
