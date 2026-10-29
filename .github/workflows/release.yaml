@@ -57,7 +57,7 @@ jobs:
           ENDPOINT: https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
           PREFIX: gobl.html/${{ steps.bump.outputs.new_tag }}
         run: |
-          set -o pipefail
+          set -euo pipefail
           if aws s3api head-object --endpoint-url "$ENDPOINT" --bucket assets --key "$PREFIX/manifest.txt" >/dev/null 2>&1; then
             echo "$PREFIX is already published."
             exit 0
