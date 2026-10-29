@@ -29,6 +29,11 @@ templ Page(entries []catalog.Entry) {
 		@popui.Header(props.Header{Title: search()}) {
 			<span class="text-sm text-foreground-default-secondary tabular-nums whitespace-nowrap" x-text="countLabel()"></span>
 			@popui.Select(props.Select{
+				Class:      "w-44",
+				Options:    LocaleOptions(),
+				Attributes: templ.Attributes{"x-model": "params.locale", "title": "Rendering locale; default keeps the example's own"},
+			})
+			@popui.Select(props.Select{
 				Class: "w-36",
 				Options: []props.SelectOption{
 					{Value: "", Label: "A4"},
@@ -269,7 +274,6 @@ templ options() {
 			@popui.TitleGroup(props.TitleGroup{Title: "Options", Description: "Rendering parameters are sent to the renderer; paper settings only affect the preview."})
 			@popui.Fieldset(props.Fieldset{Legend: "Document", Variant: props.FieldsetVariantCard}) {
 				<div class="grid grid-cols-2 gap-3">
-					@popui.Input(props.Input{Label: "Locale", Placeholder: "en", Attributes: templ.Attributes{"x-model": "params.locale"}})
 					@popui.Input(props.Input{Label: "Date format", Placeholder: "%d/%m/%Y", Attributes: templ.Attributes{"x-model": "params.date_format"}})
 					@popui.Input(props.Input{Label: "Label", Attributes: templ.Attributes{"x-model": "params.label"}})
 					@popui.Input(props.Input{Label: "Watermark", Attributes: templ.Attributes{"x-model": "params.watermark"}})

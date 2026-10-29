@@ -9,6 +9,8 @@ import (
 	"strings"
 
 	"github.com/invopop/gobl.html/internal/catalog"
+	"github.com/invopop/gobl.html/locales"
+	"github.com/invopop/popui.go/props"
 )
 
 // Script is the Alpine component behind the page, served at /previewer.js.
@@ -91,4 +93,40 @@ func Groups(entries []catalog.Entry) []Group {
 		collect("addon", "Addon", func(e catalog.Entry) []string { return e.Addons }, func(s string) string { return s }),
 		collect("tag", "Content", func(e catalog.Entry) []string { return e.Tags }, func(s string) string { return s }),
 	}
+}
+
+// localeNames gives each shipped locale its own name for the selector.
+var localeNames = map[string]string{
+	"ar": "العربية",
+	"ca": "Català",
+	"da": "Dansk",
+	"de": "Deutsch",
+	"el": "Ελληνικά",
+	"en": "English",
+	"es": "Español",
+	"eu": "Euskara",
+	"fi": "Suomi",
+	"fr": "Français",
+	"gl": "Galego",
+	"it": "Italiano",
+	"nl": "Nederlands",
+	"no": "Norsk",
+	"pl": "Polski",
+	"pt": "Português",
+}
+
+// LocaleOptions lists the locales embedded in the renderer for the header
+// selector, after an entry that keeps each example's own locale.
+func LocaleOptions() []props.SelectOption {
+	codes := locales.Codes()
+	opts := make([]props.SelectOption, 0, len(codes)+1)
+	opts = append(opts, props.SelectOption{Value: "", Label: "Locale: default"})
+	for _, c := range codes {
+		name := localeNames[c]
+		if name == "" {
+			name = strings.ToUpper(c)
+		}
+		opts = append(opts, props.SelectOption{Value: c, Label: name + " (" + c + ")"})
+	}
+	return opts
 }

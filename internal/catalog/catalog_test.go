@@ -52,6 +52,11 @@ func TestScan(t *testing.T) {
 	logo := byFile["ar-arca-invoice-logo.json"]
 	assert.Contains(t, logo.Tags, "logo")
 
+	usd := byFile["es-verifactu-invoice-usd.json"]
+	assert.Contains(t, usd.Tags, "currency", "foreign currency with exchange rates")
+	assert.NotContains(t, byFile["es-verifactu-invoice.json"].Tags, "currency", "home currency")
+	assert.Contains(t, byFile["pt-at-order-full.json"].Tags, "currency", "exchange rates in the regime's currency")
+
 	void := byFile["pt-at-invoice.void.json"]
 	assert.True(t, void.Void)
 	assert.Contains(t, void.Tags, "void")

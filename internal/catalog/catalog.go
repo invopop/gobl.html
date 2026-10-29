@@ -15,6 +15,7 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/currency"
 	"github.com/invopop/gobl/note"
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
@@ -34,8 +35,9 @@ type Entry struct {
 	// Addons lists the tax addons the document declares.
 	Addons []string `json:"addons,omitempty"`
 	// Tags describe notable content: qr, payment, logo, discounts, charges,
-	// delivery, notes, attachments, preceding, prices-include, multipage, and
-	// the states void, sandbox and adjustment.
+	// delivery, notes, attachments, preceding, prices-include, currency (a
+	// currency other than the regime's own, or exchange rates), multipage,
+	// and the states void, sandbox and adjustment.
 	Tags []string `json:"tags,omitempty"`
 	// Currency is the document currency, if any.
 	Currency string `json:"currency,omitempty"`
@@ -125,7 +127,7 @@ func describe(ctx context.Context, path string, render Renderer) (Entry, error) 
 		add(len(doc.Attachments) > 0, "attachments")
 		add(len(doc.Preceding) > 0, "preceding")
 		add(doc.Tax != nil && doc.Tax.PricesInclude != "", "prices-include")
-		add(len(doc.ExchangeRates) > 0, "exchange-rates")
+		add(currencySensitive(doc.Regime, doc.Currency, len(doc.ExchangeRates)), "currency")
 	case *bill.Order:
 		e.Kind = "order"
 		e.Country = country(doc.Regime)
@@ -137,6 +139,7 @@ func describe(ctx context.Context, path string, render Renderer) (Entry, error) 
 		add(doc.Payment != nil, "payment")
 		add(doc.Delivery != nil, "delivery")
 		add(len(doc.Notes) > 0, "notes")
+		add(currencySensitive(doc.Regime, doc.Currency, len(doc.ExchangeRates)), "currency")
 	case *bill.Delivery:
 		e.Kind = "delivery"
 		e.Country = country(doc.Regime)
@@ -146,6 +149,7 @@ func describe(ctx context.Context, path string, render Renderer) (Entry, error) 
 		e.Lines = len(doc.Lines)
 		add(hasLogo(doc.Supplier), "logo")
 		add(len(doc.Notes) > 0, "notes")
+		add(currencySensitive(doc.Regime, doc.Currency, len(doc.ExchangeRates)), "currency")
 	case *bill.Payment:
 		e.Kind = "payment"
 		e.Country = country(doc.Regime)
@@ -156,6 +160,7 @@ func describe(ctx context.Context, path string, render Renderer) (Entry, error) 
 		add(hasLogo(doc.Supplier), "logo")
 		add(len(doc.Notes) > 0, "notes")
 		add(len(doc.Methods) > 0, "payment")
+		add(currencySensitive(doc.Regime, doc.Currency, len(doc.ExchangeRates)), "currency")
 	case *org.Party:
 		e.Kind = "party"
 		if doc.TaxID != nil {
@@ -194,6 +199,17 @@ func kindForInvoice(t cbc.Key) string {
 	default:
 		return "invoice"
 	}
+}
+
+// currencySensitive reports whether currency handling matters for the
+// document: it is issued in a currency other than the regime's own, or it
+// carries exchange rates.
+func currencySensitive(r tax.Regime, cur currency.Code, rates int) bool {
+	if rates > 0 {
+		return true
+	}
+	def := r.RegimeDef()
+	return def != nil && cur != "" && def.GetCurrency() != cur
 }
 
 func country(r tax.Regime) string {
