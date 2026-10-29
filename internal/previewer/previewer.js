@@ -198,9 +198,20 @@ function previewer() {
       if (e.adjustment_mode) p.adjustment_mode = true;
       return p;
     },
+    // benchParams are the parameters both sides render with: the example's
+    // own state, and assets embedded on the server too, as goblRender
+    // embeds them by default, so the two do the same work.
+    benchParams(e) {
+      return { ...this.entryParams(e), embed_assets: true };
+    },
     requestParams() {
       const p = {};
       for (const [k, v] of Object.entries(this.params)) if (v) p[k] = v;
+      // The server applies the state an example's file name implies unless
+      // the request names it, so a switch turned off against that default
+      // is sent as an explicit false.
+      const e = this.current;
+      if (e) for (const k of ["void", "sandbox", "adjustment_mode"]) if (e[k] && !this.params[k]) p[k] = false;
       return p;
     },
     serverURL(file, ext, p = this.requestParams()) {
@@ -328,8 +339,7 @@ function previewer() {
         if (!force && now - lastPaint < 400) return;
         lastPaint = now;
         r.frame.srcdoc = wasmHTML;
-        // The server's links are relative; a base makes them resolve inside srcdoc.
-        r.frame2.srcdoc = nativeHTML.replace(/<head>/i, `<head><base href="${location.origin}/">`);
+        r.frame2.srcdoc = nativeHTML;
       };
       try {
         const rounds = Math.max(1, Number(this.rounds) || 1);
@@ -342,14 +352,14 @@ function previewer() {
         // Warm up both sides once so JIT and caches don't skew round one.
         for (const row of rows) {
           this.meta = `warming up: ${row.e.file}`;
-          const res = goblRender(sources[row.e.file], this.entryParams(row.e));
-          const html = await fetch(this.serverURL(row.e.file, "html", this.entryParams(row.e))).then((x) => x.text());
+          const res = goblRender(sources[row.e.file], this.benchParams(row.e));
+          const html = await fetch(this.serverURL(row.e.file, "html", this.benchParams(row.e))).then((x) => x.text());
           paint(res.html ?? "", html, false);
         }
         for (let round = 1; round <= rounds; round++) {
           for (const row of rows) {
             this.meta = `round ${round}/${rounds} · ${row.e.file}`;
-            const p = this.entryParams(row.e);
+            const p = this.benchParams(row.e);
             const t0 = performance.now();
             const res = goblRender(sources[row.e.file], p);
             row.wasm.push(performance.now() - t0);
@@ -479,7 +489,7 @@ function previewer() {
       <tr class="payable strong"><th>WASM over native</th><td>${esc(t.ratio)}</td></tr>
     </tbody></table></section></div>
     <section class="notes"><h2>Notes</h2>
-      <div class="note"><p>Both sides rendered the same documents with the same parameters, after one warm-up pass. Native times exclude request parsing and transfer; the round trip column is the full fetch from the browser.</p></div>
+      <div class="note"><p>Both sides rendered the same documents with the same parameters, assets embedded, after one warm-up pass. Native times exclude request parsing and transfer; the round trip column is the full fetch from the browser.</p></div>
     </section>
   </div>
 </article></article></body></html>`;

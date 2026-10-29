@@ -56,18 +56,19 @@ jobs:
           ENDPOINT: https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
           PREFIX: gobl.html/${{ steps.bump.outputs.new_tag }}
         run: |
+          set -o pipefail
           if aws s3api head-object --endpoint-url "$ENDPOINT" --bucket assets --key "$PREFIX/gobl.html.wasm" >/dev/null 2>&1; then
             echo "$PREFIX is already published."
             exit 0
           fi
-          for file in dist/*; do
+          find dist -type f | sort | while read -r file; do
             case "$file" in
               *.wasm) type=application/wasm ;;
               *.js) type="text/javascript; charset=utf-8" ;;
               *.css) type="text/css; charset=utf-8" ;;
               *) echo "No content type for $file" >&2; exit 1 ;;
             esac
-            aws s3 cp "$file" "s3://assets/$PREFIX/$(basename "$file")" \
+            aws s3 cp "$file" "s3://assets/$PREFIX/${file#dist/}" \
               --endpoint-url "$ENDPOINT" \
               --content-type "$type" \
               --cache-control "public, max-age=31536000, immutable"

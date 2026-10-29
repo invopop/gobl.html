@@ -158,7 +158,7 @@ func (s *serveOpts) generate(c echo.Context) error {
 	if ext == ".pdf" {
 		req.EmbedAssets = true
 	}
-	applyExampleParams(fn, &req.Params)
+	applyExampleParams(fn, &req.Params, c.QueryParams().Has)
 	data, err := s.render(c, req, env, opts)
 	if err != nil {
 		return err
@@ -194,15 +194,16 @@ func (s *serveOpts) renderPDF(c echo.Context, ed, data []byte) error {
 }
 
 // applyExampleParams sets the parameters that an example file's name implies,
-// such as ".void." or ".adjustment.", unless the request already set them.
-func applyExampleParams(fn string, p *goblhtml.Params) {
-	if strings.Contains(fn, ".void.") {
+// such as ".void." or ".adjustment.", unless the request names them: an
+// explicit value, including false, always wins over the file name.
+func applyExampleParams(fn string, p *goblhtml.Params, requested func(string) bool) {
+	if strings.Contains(fn, ".void.") && !requested("void") {
 		p.Void = true
 	}
-	if strings.Contains(fn, ".sandbox.") {
+	if strings.Contains(fn, ".sandbox.") && !requested("sandbox") {
 		p.Sandbox = true
 	}
-	if strings.Contains(fn, ".adjustment.") {
+	if strings.Contains(fn, ".adjustment.") && !requested("adjustment_mode") {
 		p.AdjustmentMode = true
 	}
 }
