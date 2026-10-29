@@ -147,6 +147,11 @@ templ totalsDueRows(inv *bill.Invoice, totals *bill.Totals) {
 			<tr class="advance">
 				<th>
 					{ advanceText(ctx, adv) }
+					if method := advanceMethod(ctx, adv); method != "" {
+						<div class="method">
+							{ method }
+						</div>
+					}
 				</th>
 				<td>
 					@t.LM(adv.Amount)
@@ -223,4 +228,24 @@ func advanceText(ctx context.Context, adv *pay.Record) string {
 		txt = fmt.Sprintf("%s %s", adv.Date.String(), txt)
 	}
 	return txt
+}
+
+// advanceMethod names the payment method of an advance from its key, reusing
+// the labels of the payment methods table so wording matches across document
+// types. It falls back to the GOBL definition of the key, then to the key
+// itself, and returns an empty string when the advance has no key.
+func advanceMethod(ctx context.Context, adv *pay.Record) string {
+	if adv.Key == "" {
+		return ""
+	}
+	key := "billing.invoice.payment.instructions.methods." + string(adv.Key)
+	if i18n.Has(ctx, key) {
+		return i18n.T(ctx, key)
+	}
+	for _, def := range pay.MeansKeyDefinitions {
+		if def.Key == adv.Key {
+			return def.Name.In(t.Lang(ctx))
+		}
+	}
+	return string(adv.Key)
 }

@@ -1,0 +1,161 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a18762-6408-72e2-af1f-6df8683475ce",
+		"dig": {
+			"alg": "sha256",
+			"val": "c152861477c14d969a0806e3d7a191c682d009c953a21f1f088bde0c63f7718f"
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJ3JYDP-12"
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:770013813*B:514329874*C:PT*D:FR*E:N*F:20261029*G:FR SERIES-A/12*H:AAJFJ3JYDP-12*I1:PT*I7:200.00*I8:46.00*N:46.00*O:246.00*Q:vVWj*R:192"
+			},
+			{
+				"prv": "at-hash",
+				"val": "vVWj"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "192"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"uuid": "019a2c5e-7d3a-7000-8b1f-3c6e5a2f9d41",
+		"type": "standard",
+		"series": "FR SERIES-A",
+		"code": "12",
+		"issue_date": "2026-10-29",
+		"value_date": "2026-10-29",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"pt-saft-invoice-type": "FR",
+				"pt-saft-source": "P"
+			}
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "770013813"
+			},
+			"addresses": [
+				{
+					"street": "Rua das Flores 200 3º Esquerdo",
+					"locality": "Porto",
+					"code": "4050-265",
+					"country": "PT"
+				}
+			]
+		},
+		"customer": {
+			"name": "Gusto Unipessoal Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Avenida da Liberdade 152 2º Direito",
+					"locality": "Lisboa",
+					"code": "1250-146",
+					"country": "PT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Room night",
+					"price": "100.00",
+					"unit": "h",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "200.00"
+			}
+		],
+		"payment": {
+			"advances": [
+				{
+					"date": "2026-10-20",
+					"key": "card",
+					"description": "Card deposit",
+					"amount": "100.00",
+					"ext": {
+						"pt-saft-payment-means": "CC"
+					}
+				},
+				{
+					"date": "2026-10-29",
+					"key": "cash",
+					"description": "Cash at checkout",
+					"amount": "146.00",
+					"ext": {
+						"pt-saft-payment-means": "NU"
+					}
+				}
+			]
+		},
+		"totals": {
+			"sum": "200.00",
+			"total": "200.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "NOR"
+								},
+								"base": "200.00",
+								"percent": "23.0%",
+								"amount": "46.00"
+							}
+						],
+						"amount": "46.00"
+					}
+				],
+				"sum": "46.00"
+			},
+			"tax": "46.00",
+			"total_with_tax": "246.00",
+			"payable": "246.00",
+			"advance": "246.00",
+			"due": "0.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTE4NzYyLWU1ZGYtN2JmNi1hYjkyLWQ0NTAwNzY0ZDkwYyJ9.eyJ1dWlkIjoiMDFhMTg3NjItNjQwOC03MmUyLWFmMWYtNmRmODY4MzQ3NWNlIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImMxNTI4NjE0NzdjMTRkOTY5YTA4MDZlM2Q3YTE5MWM2ODJkMDA5Yzk1M2EyMWYxZjA4OGJkZTBjNjNmNzcxOGYifSwiaWF0IjoxNzkzMjcyNzY3fQ.Axsvj_9EtrweqYkHJ_IccgObe8hRFM_tR9I_JYvUzo2mtpM6IFRIHVwt8pUH39EXcwp1ZCJ2c4zKC7dMlESEWw"
+	]
+}

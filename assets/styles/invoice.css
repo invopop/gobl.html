@@ -357,6 +357,10 @@ section.totals tr.exchange-rate th,
 section.totals tr.exchange-rate td {
     color: #4b5563;
 }
+section.totals tr.advance div.method {
+    color: #4b5563;
+    font-weight: 300;
+}
 article.payment section.totals tr.strong th,
 article.payment section.totals tr.strong td {
     font-weight: 400;
