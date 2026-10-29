@@ -32,8 +32,9 @@ jobs:
       # Publishes the WebAssembly renderer for the new version to
       # https://assets.invopop.com/gobl.html/<version>/ (the "assets" R2
       # bucket). This runs here because tags pushed with GITHUB_TOKEN don't
-      # start other workflows. Published versions are immutable and never
-      # overwritten.
+      # start other workflows. A version is complete once its manifest.txt,
+      # uploaded last, exists; complete versions are immutable and never
+      # overwritten, while a partial upload is finished by the next run.
       - name: Set up Go
         if: steps.bump.outputs.new_tag != ''
         uses: actions/setup-go@v5
@@ -57,20 +58,27 @@ jobs:
           PREFIX: gobl.html/${{ steps.bump.outputs.new_tag }}
         run: |
           set -o pipefail
-          if aws s3api head-object --endpoint-url "$ENDPOINT" --bucket assets --key "$PREFIX/gobl.html.wasm" >/dev/null 2>&1; then
+          if aws s3api head-object --endpoint-url "$ENDPOINT" --bucket assets --key "$PREFIX/manifest.txt" >/dev/null 2>&1; then
             echo "$PREFIX is already published."
             exit 0
           fi
-          find dist -type f | sort | while read -r file; do
-            case "$file" in
+          # The manifest lists every file in the bundle and goes up last, so
+          # its presence means the whole version is there.
+          (cd dist && find . -type f | sed 's|^\./||' | sort) > manifest.txt
+          upload() {
+            aws s3 cp "$1" "s3://assets/$PREFIX/$2" \
+              --endpoint-url "$ENDPOINT" \
+              --content-type "$3" \
+              --cache-control "public, max-age=31536000, immutable"
+          }
+          while read -r rel; do
+            case "$rel" in
               *.wasm) type=application/wasm ;;
               *.js) type="text/javascript; charset=utf-8" ;;
               *.css) type="text/css; charset=utf-8" ;;
-              *) echo "No content type for $file" >&2; exit 1 ;;
+              *) echo "No content type for $rel" >&2; exit 1 ;;
             esac
-            aws s3 cp "$file" "s3://assets/$PREFIX/${file#dist/}" \
-              --endpoint-url "$ENDPOINT" \
-              --content-type "$type" \
-              --cache-control "public, max-age=31536000, immutable"
-          done
+            upload "dist/$rel" "$rel" "$type"
+          done < manifest.txt
+          upload manifest.txt manifest.txt "text/plain; charset=utf-8"
           echo "Published https://assets.invopop.com/$PREFIX/"

@@ -74,7 +74,9 @@ the templ version from `go.mod`:
 
 ```bash
 go run github.com/a-h/templ/cmd/templ generate -path internal/previewer
-``` The `wasm` package test builds the module and checks,
+```
+
+The `wasm` package test builds the module and checks,
 through Node, that every example renders byte-identically to the native
 renderer.
 
