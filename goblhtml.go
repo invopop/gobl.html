@@ -1,6 +1,4 @@
 // Package goblhtml provides a simple way to render HTML documents from GOBL envelopes.
-//
-//go:generate go run ./cmd/gobl.html generate-index
 package goblhtml
 
 import (

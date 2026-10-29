@@ -42,6 +42,38 @@ templ generate --watch --cmd="go run ./cmd/gobl.html serve --pdf prince"
 
 Before uploading changes to git, be sure to re-run the regular `templ generate` command, as the live version makes temporary modifications to files that need to be replaced.
 
+### WebAssembly
+
+The renderer also compiles to WebAssembly so a browser can render a GOBL
+envelope without a server round trip. The `wasm` package exposes:
+
+```js
+goblRender(envelopeJSON, { locale: "es", watermark: "DRAFT" }) // → { html } or { error }
+goblVersion()                                                  // → { version, gobl }
+```
+
+Parameters use the same names as pdf.go's task configuration (see `Params` in
+`params.go`). Documents are rendered as given, without calculation, and assets
+are embedded unless `embed_assets` is false.
+
+Build it with:
+
+```bash
+scripts/cdn-dist.sh dist
+```
+
+The development server (`go run ./cmd/gobl.html serve`) opens a previewer
+at `/` that lists the examples with filters for country, document kind, addon
+and content (QR codes, payment details, logos, …) and renders the selected one
+in the browser through the WebAssembly build, with links to the server HTML
+and PDF. A benchmark button renders the listed examples both ways and
+compares the times. The `wasm` package test builds the module and checks,
+through Node, that every example renders byte-identically to the native
+renderer.
+
+Each release publishes the build to
+`https://assets.invopop.com/gobl.html/<version>/`.
+
 ### Testing
 
 Tests are currently pretty limited. To ensure the basics are covered, the contents of the `examples` directory are converted to HTML, pretty printed, and output to the `examples/out` directory. The tests will ensure the output matches what's expected. To update the output test data run:
