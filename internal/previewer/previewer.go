@@ -1,11 +1,94 @@
 // Package previewer holds the page the development server serves at /: a
 // filterable catalog of the examples rendered in the browser through the
-// WebAssembly build, with the server render a click away.
+// WebAssembly build, built with PopUI and driven by Alpine.
 package previewer
 
-import _ "embed"
+import (
+	_ "embed"
+	"sort"
+	"strings"
 
-// IndexHTML is the previewer page.
+	"github.com/invopop/gobl.html/internal/catalog"
+)
+
+// Script is the Alpine component behind the page, served at /previewer.js.
 //
-//go:embed index.html
-var IndexHTML []byte
+//go:embed previewer.js
+var Script []byte
+
+// Group is one facet group in the sidebar.
+type Group struct {
+	Key    string
+	Title  string
+	Facets []Facet
+}
+
+// Facet is one selectable value within a group.
+type Facet struct {
+	Value string
+	Label string
+}
+
+var kindLabels = map[string]string{
+	"invoice":     "Invoice",
+	"credit-note": "Credit note",
+	"debit-note":  "Debit note",
+	"proforma":    "Proforma",
+	"corrective":  "Corrective",
+	"order":       "Order",
+	"delivery":    "Delivery",
+	"payment":     "Payment",
+	"party":       "Party",
+	"message":     "Message",
+}
+
+// KindLabel returns the readable name of a document kind.
+func KindLabel(kind string) string {
+	if l, ok := kindLabels[kind]; ok {
+		return l
+	}
+	return kind
+}
+
+// KindStatus maps a document kind to a TagStatus color.
+func KindStatus(kind string) string {
+	switch kind {
+	case "invoice":
+		return "blue"
+	case "credit-note", "debit-note", "corrective":
+		return "orange"
+	case "order", "proforma":
+		return "purple"
+	case "delivery":
+		return "teal"
+	case "payment":
+		return "green"
+	default:
+		return "grey"
+	}
+}
+
+// Groups derives the facet groups from the catalog entries.
+func Groups(entries []catalog.Entry) []Group {
+	collect := func(key, title string, of func(catalog.Entry) []string, label func(string) string) Group {
+		seen := map[string]bool{}
+		g := Group{Key: key, Title: title}
+		for _, e := range entries {
+			for _, v := range of(e) {
+				if v == "" || seen[v] {
+					continue
+				}
+				seen[v] = true
+				g.Facets = append(g.Facets, Facet{Value: v, Label: label(v)})
+			}
+		}
+		sort.Slice(g.Facets, func(i, j int) bool { return g.Facets[i].Label < g.Facets[j].Label })
+		return g
+	}
+	return []Group{
+		collect("country", "Country", func(e catalog.Entry) []string { return []string{e.Country} }, strings.ToUpper),
+		collect("kind", "Document", func(e catalog.Entry) []string { return []string{e.Kind} }, KindLabel),
+		collect("addon", "Addon", func(e catalog.Entry) []string { return e.Addons }, func(s string) string { return s }),
+		collect("tag", "Content", func(e catalog.Entry) []string { return e.Tags }, func(s string) string { return s }),
+	}
+}

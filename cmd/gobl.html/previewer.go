@@ -14,6 +14,7 @@ import (
 	goblhtml "github.com/invopop/gobl.html"
 	"github.com/invopop/gobl.html/internal/catalog"
 	"github.com/invopop/gobl.html/internal/previewer"
+	"github.com/invopop/popui.go"
 	"github.com/labstack/echo/v4"
 )
 
@@ -37,7 +38,11 @@ func newPreviewer() *previewerHandler {
 }
 
 func (p *previewerHandler) register(e *echo.Echo) {
+	e.StaticFS(popui.AssetPath, popui.Assets)
 	e.GET("/", p.index)
+	e.GET("/previewer.js", func(c echo.Context) error {
+		return c.Blob(http.StatusOK, "text/javascript; charset=utf-8", previewer.Script)
+	})
 	e.GET("/api/catalog", p.catalog)
 	e.GET("/api/examples/:filename", p.example)
 	e.GET("/wasm/gobl.html.wasm", p.wasm)
@@ -45,12 +50,13 @@ func (p *previewerHandler) register(e *echo.Echo) {
 }
 
 func (p *previewerHandler) index(c echo.Context) error {
-	return c.HTMLBlob(http.StatusOK, previewer.IndexHTML)
+	c.Response().Header().Set(echo.HeaderContentType, echo.MIMETextHTMLCharsetUTF8)
+	return previewer.Page(p.scan(c)).Render(c.Request().Context(), c.Response())
 }
 
-// catalog describes the examples once per process; rendering each one to
+// scan describes the examples once per process; rendering each one to
 // detect QR codes takes well under a second for the whole set.
-func (p *previewerHandler) catalog(c echo.Context) error {
+func (p *previewerHandler) scan(c echo.Context) []catalog.Entry {
 	p.catalogOnce.Do(func() {
 		render := func(ctx context.Context, env *gobl.Envelope) ([]byte, error) {
 			return goblhtml.Render(ctx, env)
@@ -61,7 +67,11 @@ func (p *previewerHandler) catalog(c echo.Context) error {
 		}
 		p.entries = entries
 	})
-	return c.JSON(http.StatusOK, p.entries)
+	return p.entries
+}
+
+func (p *previewerHandler) catalog(c echo.Context) error {
+	return c.JSON(http.StatusOK, p.scan(c))
 }
 
 func (p *previewerHandler) example(c echo.Context) error {

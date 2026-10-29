@@ -1,0 +1,165 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a18738-52a6-7845-ad52-3c7fd6ba5aaf",
+		"dig": {
+			"alg": "sha256",
+			"val": "3087f2927adb1a6cccd260b9fdbc9ddf1d38414b57dafe65a423c53110b26e0f"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"uuid": "01a18738-52a6-7850-b5c6-46869bed8afb",
+		"type": "standard",
+		"series": "FR SERIES-A",
+		"issue_date": "2026-10-29",
+		"value_date": "2026-10-29",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"pt-saft-invoice-type": "FR",
+				"pt-saft-source": "P"
+			}
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "504614240"
+			},
+			"addresses": [
+				{
+					"num": "156",
+					"street": "Avenida da República",
+					"locality": "Lisboa",
+					"code": "1050-045",
+					"country": "PT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "maria@example.com"
+				}
+			],
+			"registration": {
+				"capital": "150000.00",
+				"office": "CRC Lisboa",
+				"other": "sob NIF 770013813"
+			}
+		},
+		"customer": {
+			"name": "Gusto Unipessoal Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Avenida da Liberdade 152 2º Direito",
+					"locality": "Lisboa",
+					"code": "1250-146",
+					"country": "PT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "gusto@example.com"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://gusto.example.com"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+351912345678"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Room night",
+					"price": "100.00",
+					"unit": "h",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "200.00"
+			}
+		],
+		"payment": {
+			"advances": [
+				{
+					"date": "2026-10-20",
+					"key": "card",
+					"description": "Deposit",
+					"amount": "100.00",
+					"ext": {
+						"pt-saft-payment-means": "CC"
+					}
+				},
+				{
+					"date": "2026-10-29",
+					"key": "cash",
+					"description": "Balance at checkout",
+					"amount": "146.00",
+					"ext": {
+						"pt-saft-payment-means": "NU"
+					}
+				}
+			]
+		},
+		"totals": {
+			"sum": "200.00",
+			"total": "200.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "NOR"
+								},
+								"base": "200.00",
+								"percent": "23.0%",
+								"amount": "46.00"
+							}
+						],
+						"amount": "46.00"
+					}
+				],
+				"sum": "46.00"
+			},
+			"tax": "46.00",
+			"total_with_tax": "246.00",
+			"payable": "246.00",
+			"advance": "246.00",
+			"due": "0.00"
+		}
+	}
+}

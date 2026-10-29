@@ -63,11 +63,18 @@ scripts/cdn-dist.sh dist
 ```
 
 The development server (`go run ./cmd/gobl.html serve`) opens a previewer
-at `/` that lists the examples with filters for country, document kind, addon
-and content (QR codes, payment details, logos, …) and renders the selected one
-in the browser through the WebAssembly build, with links to the server HTML
-and PDF. A benchmark button renders the listed examples both ways and
-compares the times. The `wasm` package test builds the module and checks,
+at `/`, built with [PopUI](https://github.com/invopop/popui.go), that lists
+the examples with filters for country, document kind, addon and content (QR
+codes, payment details, logos, …) and renders the selected one in the browser
+through the WebAssembly build on a true-ratio sheet, with page breaks, an
+optional DIN 5008 envelope window and links to the server HTML and PDF. A
+benchmark button renders the listed examples both ways and compares the
+times. After editing `internal/previewer/previewer.templ`, regenerate with
+the templ version from `go.mod`:
+
+```bash
+go run github.com/a-h/templ/cmd/templ generate -path internal/previewer
+``` The `wasm` package test builds the module and checks,
 through Node, that every example renders byte-identically to the native
 renderer.
 
