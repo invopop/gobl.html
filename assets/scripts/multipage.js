@@ -1,5 +1,8 @@
-Prince.trackBoxes = true;
-Prince.registerPostLayoutFunc(insertPageBreaks(1));
+// Only Prince paginates; browsers showing the HTML on screen skip this.
+if (typeof Prince !== "undefined") {
+  Prince.trackBoxes = true;
+  Prince.registerPostLayoutFunc(insertPageBreaks(1));
+}
 
 const headerTemplate = document.getElementById("mp-header-templ");
 const footerTemplate = document.getElementById("mp-footer-templ");
