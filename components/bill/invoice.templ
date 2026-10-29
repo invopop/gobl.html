@@ -47,6 +47,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 					@totals(inv, inv.Totals)
 					@taxes(inv.RegimeDef(), inv.Totals.Taxes)
 				</div>
+				@invoiceAdvances(inv)
 				@paymentDetails(inv)
 				@ar.ARCAFiscalTransparency(inv)
 				@notes(invoiceNotes(ctx, inv))

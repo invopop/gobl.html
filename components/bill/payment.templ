@@ -3,10 +3,11 @@ package bill
 import (
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
-	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/pay"
 	"github.com/invopop/gobl/tax"
 )
@@ -84,49 +85,57 @@ templ paymentTotals(pmt *bill.Payment, tt *tax.Total) {
 templ paymentMethods(pmt *bill.Payment) {
 	@t.Scope(".methods") {
 		if len(pmt.Methods) > 0 {
-			{{ ms := prepareMethodSupport(pmt.Methods) }}
-			<section class="methods">
-				<table>
-					<thead>
-						<tr>
-							<th>
-								@t.T(".title")
-							</th>
-							if ms.dates {
-								<th>
-									@t.T(".date")
-								</th>
-							}
-							<th class="num">
-								@t.T(".amount")
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						for _, rec := range pmt.Methods {
-							@paymentMethod(ms, rec)
-						}
-					</tbody>
-					<tfoot>
-						<tr>
-							if ms.dates {
-								<th colspan="2">
-									@t.T(".total")
-								</th>
-							} else {
-								<th>
-									@t.T(".total")
-								</th>
-							}
-							<td class="num">
-								@t.LM(pmt.Total)
-							</td>
-						</tr>
-					</tfoot>
-				</table>
-			</section>
+			@paymentMethodsTable(pmt.Methods, pmt.Total)
 		}
 	}
+}
+
+// paymentMethodsTable renders a list of payment records with their method,
+// date and amount, closed by the total paid. It expects the "methods" scope
+// of the payment document to be set, so that invoices showing their advances
+// share the same labels and translations.
+templ paymentMethodsTable(methods []*pay.Record, total num.Amount) {
+	{{ ms := prepareMethodSupport(methods) }}
+	<section class="methods">
+		<table>
+			<thead>
+				<tr>
+					<th>
+						@t.T(".title")
+					</th>
+					if ms.dates {
+						<th>
+							@t.T(".date")
+						</th>
+					}
+					<th class="num">
+						@t.T(".amount")
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				for _, rec := range methods {
+					@paymentMethod(ms, rec)
+				}
+			</tbody>
+			<tfoot>
+				<tr>
+					if ms.dates {
+						<th colspan="2">
+							@t.T(".total")
+						</th>
+					} else {
+						<th>
+							@t.T(".total")
+						</th>
+					}
+					<td class="num">
+						@t.LM(total)
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</section>
 }
 
 // paymentMethod renders a single payment record as a table row.
@@ -134,9 +143,11 @@ templ paymentMethod(ms *methodSupport, rec *pay.Record) {
 	@t.Scope(".instructions") {
 		<tr>
 			<td class="method">
-				<div class="method-name">
-					@t.T(".methods." + string(rec.Key))
-				</div>
+				if name := paymentMethodName(ctx, rec); name != "" {
+					<div class="method-name">
+						{ name }
+					</div>
+				}
 				if rec.Description != "" {
 					<div class="description">
 						{ rec.Description }
