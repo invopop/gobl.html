@@ -302,6 +302,9 @@ en:
       # Reference assigned by the AdE when the commercial document is
       # accepted; it must be printed on the ticket.
       ade-ref: "AdE reference"
+      # Reference assigned by the AdE when the commercial document is
+      # voided; it must be printed on the ticket of the annulled document.
+      ade-void-ref: "AdE annulment reference"
       title:
         # AdE receipt document names ("documento commerciale"); corrections
         # keep the commercial document title per Risposta all'interpello

@@ -250,6 +250,9 @@ it:
       # Riferimento assegnato dall'AdE all'accettazione del documento
       # commerciale; deve essere stampato sullo scontrino.
       ade-ref: "Riferimento AdE"
+      # Riferimento assegnato dall'AdE all'annullamento del documento
+      # commerciale; deve essere stampato sullo scontrino annullato.
+      ade-void-ref: "Riferimento annullamento AdE"
       title:
         # Nome ufficiale del documento AdE (Risposta all'interpello n. 167/2020).
         ticket: "Documento commerciale"
