@@ -5,6 +5,7 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/addons/it/ticket"
+	"github.com/invopop/gobl/cbc"
 )
 
 // TitleType renders the official "Documento commerciale" title for documents
@@ -20,12 +21,14 @@ templ TitleType(doc internal.Document) {
 	}
 }
 
-// RefSummaryRow renders a summary row with the reference assigned by the
-// AdE when the commercial document was accepted, carried as an "ade-ref"
-// stamp on the envelope header. The AdE requires this code to be printed
-// on the ticket. Renders nothing when the stamp is not present.
+// RefSummaryRow renders summary rows with the references assigned by the
+// AdE for the commercial document, carried as stamps on the envelope header.
+// The "ade-ref" stamp is the reference assigned when the document was
+// accepted, and the "ade-void-ref" stamp is the annulment reference assigned
+// when it was voided. The AdE requires both codes to be printed on the
+// ticket. Renders nothing when the stamps are not present.
 templ RefSummaryRow(env *gobl.Envelope) {
-	if ref := ticketRef(env); ref != "" {
+	if ref := ticketStamp(env, ticket.StampRef); ref != "" {
 		<li class="ade-ref">
 			<span class="label">
 				@t.T("regimes.it.ade-ref")
@@ -35,14 +38,24 @@ templ RefSummaryRow(env *gobl.Envelope) {
 			</span>
 		</li>
 	}
+	if ref := ticketStamp(env, ticket.StampVoidRef); ref != "" {
+		<li class="ade-void-ref">
+			<span class="label">
+				@t.T("regimes.it.ade-void-ref")
+			</span>
+			<span class="value">
+				{ ref }
+			</span>
+		</li>
+	}
 }
 
-func ticketRef(env *gobl.Envelope) string {
+func ticketStamp(env *gobl.Envelope, key cbc.Key) string {
 	if env == nil || env.Head == nil {
 		return ""
 	}
 	for _, stamp := range env.Head.Stamps {
-		if stamp.Provider == ticket.StampRef {
+		if stamp.Provider == key {
 			return stamp.Value
 		}
 	}
