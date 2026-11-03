@@ -51,8 +51,10 @@ type Params struct {
 	// Sandbox marks the document as a sandbox test.
 	Sandbox bool `json:"sandbox,omitempty" query:"sandbox"`
 	// EmbedAssets inlines the stylesheets and scripts instead of linking them,
-	// so the HTML is self-contained.
-	EmbedAssets bool `json:"embed_assets,omitempty" query:"embed_assets"`
+	// so the HTML is self-contained. It is never omitted from JSON: the
+	// WebAssembly entry point embeds assets when the key is absent, so a
+	// marshalled false must reach it as an explicit false.
+	EmbedAssets bool `json:"embed_assets" query:"embed_assets"`
 }
 
 // dateReplacer maps strftime-style date directives to Go's reference layout.

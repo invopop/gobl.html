@@ -54,3 +54,11 @@ func TestParamsOptions(t *testing.T) {
 		assert.NotContains(t, string(got), `href="styles/`)
 	})
 }
+
+func TestParamsEmbedAssetsFalseSurvivesJSON(t *testing.T) {
+	// The WebAssembly entry point defaults embed_assets to true when the key
+	// is absent, so a marshalled false must keep the key.
+	b, err := json.Marshal(&goblhtml.Params{EmbedAssets: false})
+	require.NoError(t, err)
+	assert.Contains(t, string(b), `"embed_assets":false`)
+}
