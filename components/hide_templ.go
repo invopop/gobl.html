@@ -22,7 +22,7 @@ var hideSelectors = map[string]string{
 	"header.logo":                    ".hero .alias",
 	"header.title.badges":            ".title .code .void, .title .code .paid, .title .code .self-billed, .title .code .label",
 	"header.summary.ordering":        ".summary [class^='ordering-']",
-	"header.contacts.delivery":       ".contacts .receiver",
+	"header.contacts.delivery":       "header .receiver",
 	"lines.sublines":                 "section.lines .subline",
 	"taxes":                          "section.taxes",
 	"payment":                        "section.payment",
