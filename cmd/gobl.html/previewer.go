@@ -55,13 +55,15 @@ func (p *previewerHandler) index(c echo.Context) error {
 }
 
 // scan describes the examples once per process; rendering each one to
-// detect QR codes takes well under a second for the whole set.
+// detect QR codes takes well under a second for the whole set. The scan
+// runs under its own context rather than the first request's, so a client
+// that disconnects mid-scan cannot leave a partial catalog cached.
 func (p *previewerHandler) scan(c echo.Context) []catalog.Entry {
 	p.catalogOnce.Do(func() {
 		render := func(ctx context.Context, env *gobl.Envelope) ([]byte, error) {
 			return goblhtml.Render(ctx, env)
 		}
-		entries, errs := catalog.Scan(c.Request().Context(), examplesDir, render)
+		entries, errs := catalog.Scan(context.Background(), examplesDir, render)
 		for _, err := range errs {
 			c.Logger().Warnf("catalog: %v", err)
 		}

@@ -342,7 +342,10 @@ function previewer() {
         r.frame2.srcdoc = nativeHTML;
       };
       try {
-        const rounds = Math.max(1, Number(this.rounds) || 1);
+        // The input advertises 1..20; clamp here too so a typed value cannot
+        // start an unbounded synchronous loop.
+        const rounds = Math.min(20, Math.max(1, Math.floor(Number(this.rounds)) || 1));
+        this.rounds = rounds;
         const rows = this.visible.map((e) => ({ e, wasm: [], native: [], trip: [], bytes: 0 }));
         if (!rows.length) throw new Error("nothing to benchmark");
         for (const row of rows) {
