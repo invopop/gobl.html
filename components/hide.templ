@@ -1,0 +1,59 @@
+package components
+
+import (
+	"slices"
+	"strings"
+
+	"github.com/invopop/gobl.html/internal"
+)
+
+// hideSelectors maps each supported hide key to the CSS selector of the
+// section it hides. Keys are hierarchical, so hiding "payment" naturally
+// hides "payment.terms" as the parent element is no longer displayed.
+var hideSelectors = map[string]string{
+	"header.logo":                    ".hero .alias",
+	"header.title.badges":            ".title .code .void, .title .code .paid, .title .code .self-billed, .title .code .label",
+	"header.summary.ordering":        ".summary [class^='ordering-']",
+	"header.contacts.delivery":       ".contacts .receiver",
+	"lines.sublines":                 "section.lines .subline",
+	"taxes":                          "section.taxes",
+	"payment":                        "section.payment",
+	"payment.instructions":           "section.payment .instructions",
+	"payment.instructions.bank-data": "section.payment .instructions .bank-data",
+	"payment.instructions.online":    "section.payment .instructions .online",
+	"payment.terms":                  "section.payment .terms",
+	"notes":                          "section.notes",
+	"footer.branding":                "footer .gobl-logo",
+}
+
+// HideKeys provides the sorted list of keys supported by the hide option.
+func HideKeys() []string {
+	keys := make([]string, 0, len(hideSelectors))
+	for k := range hideSelectors {
+		keys = append(keys, k)
+	}
+	slices.Sort(keys)
+	return keys
+}
+
+// hideCSS builds the stylesheet that hides the requested sections, or
+// returns an empty string if there is nothing to hide.
+func hideCSS(keys []string) string {
+	var rules []string
+	for _, k := range keys {
+		if sel, ok := hideSelectors[k]; ok {
+			rules = append(rules, sel+" { display: none !important; }")
+		}
+	}
+	return strings.Join(rules, "\n")
+}
+
+// hideStyles renders an inline stylesheet hiding the sections listed in the
+// options.
+templ hideStyles() {
+	if opts := internal.Options(ctx); opts != nil && len(opts.Hide) > 0 {
+		if css := hideCSS(opts.Hide); css != "" {
+			@templ.Raw(`<style type="text/css">` + css + `</style>`)
+		}
+	}
+}

@@ -163,6 +163,9 @@ func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opt
 	if req.Negative != "" {
 		opts = append(opts, goblhtml.WithNegativeTemplate(req.Negative))
 	}
+	if req.Hide != "" {
+		opts = append(opts, goblhtml.WithHide(strings.Split(req.Hide, ",")...))
+	}
 
 	out, err := goblhtml.Render(ctx, env, opts...)
 	if err != nil {
@@ -188,6 +191,7 @@ type options struct {
 	Decimals       string      `query:"decimals"`
 	Negative       string      `query:"negative"`
 	Currency       string      `query:"currency"`
+	Hide           string      `query:"hide"`
 }
 
 func (s *serveOpts) generate(c echo.Context) error {
