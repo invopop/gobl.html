@@ -103,6 +103,14 @@ func convertExample(name string) ([]byte, error) {
 	if strings.Contains(name, ".adjustment.") {
 		opts = append(opts, goblhtml.EnableAdjustmentMode)
 	}
+	if strings.Contains(name, ".hidden.") {
+		opts = append(opts, goblhtml.WithHide(
+			"header.summary.ordering",
+			"payment.instructions.bank-data",
+			"notes",
+			"footer.branding",
+		))
+	}
 	if strings.Contains(name, ".es.") {
 		opts = append(opts, goblhtml.WithLocale("es"))
 	}
