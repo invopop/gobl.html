@@ -55,6 +55,9 @@ type Params struct {
 	// WebAssembly entry point embeds assets when the key is absent, so a
 	// marshalled false must reach it as an explicit false.
 	EmbedAssets bool `json:"embed_assets" query:"embed_assets"`
+	// Hide lists, separated by commas, the document sections to hide; see
+	// HideKeys for the supported keys.
+	Hide string `json:"hide,omitempty" query:"hide"`
 }
 
 // dateReplacer maps strftime-style date directives to Go's reference layout.
@@ -136,6 +139,9 @@ func (p *Params) Options() []Option {
 	}
 	if p.EmbedAssets {
 		opts = append(opts, WithEmbeddedAssets())
+	}
+	if p.Hide != "" {
+		opts = append(opts, WithHide(strings.Split(p.Hide, ",")...))
 	}
 	return opts
 }

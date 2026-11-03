@@ -167,6 +167,21 @@ func WithLabel(label string) Option {
 	}
 }
 
+// WithHide hides the document sections identified by the provided keys
+// using CSS. Hiding a key also hides all of its descendants, so hiding
+// "payment" also hides "payment.terms". Unknown keys are ignored. See
+// HideKeys for the complete list.
+func WithHide(keys ...string) Option {
+	return func(o *internal.Opts) {
+		o.Hide = append(o.Hide, keys...)
+	}
+}
+
+// HideKeys provides the list of section keys supported by WithHide.
+func HideKeys() []string {
+	return components.HideKeys()
+}
+
 // EnableAdjustmentMode indicates that invoice types credit-note and debit-note
 // or similar should be rendered as adjustments to the original invoice, as
 // required in certain jurisdictions. By default, this mode is disabled.
