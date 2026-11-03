@@ -4,8 +4,10 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/a-h/templ"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/pay"
 	"github.com/stretchr/testify/assert"
@@ -63,6 +65,35 @@ func TestPaymentOnlineQRCodes(t *testing.T) {
 		}
 	})
 
+	t.Run("uses the default size without qr-size meta", func(t *testing.T) {
+		qrs := paymentOnlineQRCodes(online(), payable(10000))
+		if assert.Len(t, qrs, 2) {
+			assert.Equal(t, float64(PaymentOnlineQRDefaultSize), qrs[0].size)
+			assert.Equal(t, templ.SafeCSS("width: 20mm; height: 20mm;"), qrs[0].style())
+		}
+	})
+
+	t.Run("skips links with a qr-size of zero", func(t *testing.T) {
+		inst := online()
+		inst.Online[0].Meta = cbc.Meta{PaymentOnlineMetaKeyQRSize: "0"}
+		qrs := paymentOnlineQRCodes(inst, payable(10000))
+		if assert.Len(t, qrs, 1) {
+			assert.Equal(t, paypalLabel, qrs[0].online.Label)
+		}
+		assert.Equal(t, []*pay.Online{inst.Online[0]}, paymentOnlineLinks(inst, qrs))
+	})
+
+	t.Run("sizes the QR code from qr-size meta", func(t *testing.T) {
+		inst := online()
+		inst.Online[0].Meta = cbc.Meta{PaymentOnlineMetaKeyQRSize: "32.5"}
+		qrs := paymentOnlineQRCodes(inst, payable(10000))
+		if assert.Len(t, qrs, 2) {
+			assert.Equal(t, 32.5, qrs[0].size)
+			assert.Equal(t, templ.SafeCSS("width: 32.5mm; height: 32.5mm;"), qrs[0].style())
+			assert.Equal(t, float64(PaymentOnlineQRDefaultSize), qrs[1].size)
+		}
+	})
+
 	t.Run("none without online links", func(t *testing.T) {
 		inst := online()
 		inst.Online = nil
@@ -99,6 +130,35 @@ func TestPaymentOnlineQRCodes(t *testing.T) {
 			assert.Empty(t, paymentOnlineQRCodes(online(), inv.Totals))
 		}
 	})
+}
+
+func TestPaymentOnlineQRSize(t *testing.T) {
+	tests := []struct {
+		name string
+		meta cbc.Meta
+		want float64
+	}{
+		{"no meta", nil, PaymentOnlineQRDefaultSize},
+		{"other meta", cbc.Meta{"foo": "bar"}, PaymentOnlineQRDefaultSize},
+		{"empty value", cbc.Meta{PaymentOnlineMetaKeyQRSize: ""}, PaymentOnlineQRDefaultSize},
+		{"not a number", cbc.Meta{PaymentOnlineMetaKeyQRSize: "big"}, PaymentOnlineQRDefaultSize},
+		{"with units", cbc.Meta{PaymentOnlineMetaKeyQRSize: "25mm"}, PaymentOnlineQRDefaultSize},
+		{"not a number (NaN)", cbc.Meta{PaymentOnlineMetaKeyQRSize: "NaN"}, PaymentOnlineQRDefaultSize},
+		{"zero hides", cbc.Meta{PaymentOnlineMetaKeyQRSize: "0"}, 0},
+		{"negative hides", cbc.Meta{PaymentOnlineMetaKeyQRSize: "-5"}, 0},
+		{"whitespace around", cbc.Meta{PaymentOnlineMetaKeyQRSize: " 25 "}, 25},
+		{"within range", cbc.Meta{PaymentOnlineMetaKeyQRSize: "30"}, 30},
+		{"decimal", cbc.Meta{PaymentOnlineMetaKeyQRSize: "12.5"}, 12.5},
+		{"too small is raised to the minimum", cbc.Meta{PaymentOnlineMetaKeyQRSize: "3"}, PaymentOnlineQRMinSize},
+		{"too large is capped at the maximum", cbc.Meta{PaymentOnlineMetaKeyQRSize: "200"}, PaymentOnlineQRMaxSize},
+		{"infinite is capped at the maximum", cbc.Meta{PaymentOnlineMetaKeyQRSize: "Inf"}, PaymentOnlineQRMaxSize},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			ol := &pay.Online{URL: paypalURL, Meta: tt.meta}
+			assert.Equal(t, tt.want, paymentOnlineQRSize(ol))
+		})
+	}
 }
 
 func TestPaymentOnlineQRURL(t *testing.T) {

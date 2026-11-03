@@ -5,13 +5,33 @@ import (
 	"context"
 	"fmt"
 	"net/url"
+	"math"
+	"strconv"
+	"strings"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/pay"
+)
+
+const (
+	// PaymentOnlineMetaKeyQRSize is the meta key on an online payment link
+	// that sets the width of its QR code in millimetres. "0" leaves the QR
+	// code out and lists the link in the instructions instead. Other values
+	// are kept within PaymentOnlineQRMinSize and PaymentOnlineQRMaxSize so
+	// the code stays scannable and the section fits on the page.
+	PaymentOnlineMetaKeyQRSize cbc.Key = "qr-size"
+	// PaymentOnlineQRDefaultSize is the QR code width in millimetres used
+	// when the link has no valid qr-size meta.
+	PaymentOnlineQRDefaultSize = 20
+	// PaymentOnlineQRMinSize is the smallest QR code width in millimetres.
+	PaymentOnlineQRMinSize = 10
+	// PaymentOnlineQRMaxSize is the largest QR code width in millimetres.
+	PaymentOnlineQRMaxSize = 40
 )
 
 templ paymentDetails(inv *bill.Invoice) {
@@ -47,7 +67,7 @@ templ paymentOnlineQRs(qrs []*paymentOnlineQR) {
 					for _, qr := range qrs {
 						<span class="value">
 							<a class="online-qr" href={ templ.URL(qr.online.URL) } aria-label={ paymentOnlineName(qr.online) }>
-								<img src={ qr.src } alt=""/>
+								<img src={ qr.src } alt="" style={ qr.style() }/>
 								<span class="button">{ paymentOnlineName(qr.online) }</span>
 							</a>
 						</span>
@@ -83,11 +103,43 @@ func paymentOnlineHasQR(ol *pay.Online, qrs []*paymentOnlineQR) bool {
 type paymentOnlineQR struct {
 	online *pay.Online
 	src    string
+	size   float64 // width and height in millimetres
+}
+
+// style sizes the QR code image, as the size can be set per link.
+func (qr *paymentOnlineQR) style() templ.SafeCSS {
+	w := strconv.FormatFloat(qr.size, 'f', -1, 64) + "mm"
+	return templ.SafeCSS("width: " + w + "; height: " + w + ";")
+}
+
+// paymentOnlineQRSize provides the QR code width in millimetres for an
+// online payment link from its qr-size meta, clamped to the supported
+// range. It returns 0 when the link asks for no QR code. Missing or
+// unparsable values give the default size.
+func paymentOnlineQRSize(ol *pay.Online) float64 {
+	v, ok := ol.Meta[PaymentOnlineMetaKeyQRSize]
+	if !ok {
+		return PaymentOnlineQRDefaultSize
+	}
+	size, err := strconv.ParseFloat(strings.TrimSpace(v), 64)
+	if err != nil || math.IsNaN(size) {
+		return PaymentOnlineQRDefaultSize
+	}
+	switch {
+	case size <= 0:
+		return 0
+	case size < PaymentOnlineQRMinSize:
+		return PaymentOnlineQRMinSize
+	case size > PaymentOnlineQRMaxSize:
+		return PaymentOnlineQRMaxSize
+	}
+	return size
 }
 
 // paymentOnlineQRCodes generates the QR codes for the online payment links,
 // as long as there is still something left to pay. Links that aren't web
-// URLs, or whose QR code can't be generated, are skipped.
+// URLs, that ask for no QR code with a qr-size of 0, or whose QR code
+// can't be generated, are skipped.
 func paymentOnlineQRCodes(inst *pay.Instructions, totals *bill.Totals) []*paymentOnlineQR {
 	if inst == nil || !paymentPending(totals) {
 		return nil
@@ -97,8 +149,12 @@ func paymentOnlineQRCodes(inst *pay.Instructions, totals *bill.Totals) []*paymen
 		if ol == nil || !paymentOnlineQRURL(ol.URL) {
 			continue
 		}
+		size := paymentOnlineQRSize(ol)
+		if size == 0 {
+			continue
+		}
 		if src := images.QRSource(ol.URL); src != "" {
-			qrs = append(qrs, &paymentOnlineQR{online: ol, src: src})
+			qrs = append(qrs, &paymentOnlineQR{online: ol, src: src, size: size})
 		}
 	}
 	return qrs

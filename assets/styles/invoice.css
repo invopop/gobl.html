@@ -434,8 +434,6 @@ section.payment ul.online-qrs a.online-qr {
 }
 section.payment ul.online-qrs a.online-qr img {
     display: block;
-    width: 20mm;
-    height: 20mm;
     margin: 0 auto;
 }
 section.payment ul.online-qrs span.button {
