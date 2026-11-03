@@ -50,6 +50,10 @@ func TestApplyExampleParams(t *testing.T) {
 	applyExampleParams("es-verifactu-invoice-full.hidden.json", p, none)
 	assert.Equal(t, strings.Join(catalog.HiddenKeys, ","), p.Hide, "file name implies the hidden sections")
 
+	p = new(goblhtml.Params) // hide= in the query
+	applyExampleParams("es-verifactu-invoice-full.hidden.json", p, func(k string) bool { return k == "hide" })
+	assert.Empty(t, p.Hide, "an explicit empty hide keeps the file name from hiding anything")
+
 	p = &goblhtml.Params{AdjustmentMode: true}
 	applyExampleParams("plain.json", p, none)
 	assert.True(t, p.AdjustmentMode, "request values survive when the file name implies nothing")

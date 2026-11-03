@@ -210,10 +210,10 @@ function previewer() {
       const p = {};
       for (const [k, v] of Object.entries(this.params)) if (v) p[k] = v;
       // The server applies the state an example's file name implies unless
-      // the request names it, so a switch turned off against that default
-      // is sent as an explicit false.
+      // the request names it, so a switch turned off or a hide list cleared
+      // against that default is sent explicitly, as false or empty.
       const e = this.current;
-      if (e) for (const k of ["void", "sandbox", "adjustment_mode"]) if (e[k] && !this.params[k]) p[k] = false;
+      if (e) for (const k of ["void", "sandbox", "adjustment_mode", "hide"]) if (e[k] && !this.params[k]) p[k] = typeof e[k] === "boolean" ? false : "";
       return p;
     },
     serverURL(file, ext, p = this.requestParams()) {
