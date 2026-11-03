@@ -13,6 +13,7 @@ import (
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/addons/it/ticket"
+	"github.com/invopop/gobl/cbc"
 )
 
 // TitleType renders the official "Documento commerciale" title for documents
@@ -53,10 +54,12 @@ func TitleType(doc internal.Document) templ.Component {
 	})
 }
 
-// RefSummaryRow renders a summary row with the reference assigned by the
-// AdE when the commercial document was accepted, carried as an "ade-ref"
-// stamp on the envelope header. The AdE requires this code to be printed
-// on the ticket. Renders nothing when the stamp is not present.
+// RefSummaryRow renders summary rows with the references assigned by the
+// AdE for the commercial document, carried as stamps on the envelope header.
+// The "ade-ref" stamp is the reference assigned when the document was
+// accepted, and the "ade-void-ref" stamp is the annulment reference assigned
+// when it was voided. The AdE requires both codes to be printed on the
+// ticket. Renders nothing when the stamps are not present.
 func RefSummaryRow(env *gobl.Envelope) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
@@ -78,7 +81,7 @@ func RefSummaryRow(env *gobl.Envelope) templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		if ref := ticketRef(env); ref != "" {
+		if ref := ticketStamp(env, ticket.StampRef); ref != "" {
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<li class=\"ade-ref\"><span class=\"label\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -94,7 +97,7 @@ func RefSummaryRow(env *gobl.Envelope) templ.Component {
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(ref)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/regimes/it/ticket.templ`, Line: 34, Col: 9}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `ticket.templ`, Line: 37, Col: 9}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -105,16 +108,43 @@ func RefSummaryRow(env *gobl.Envelope) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
+		if ref := ticketStamp(env, ticket.StampVoidRef); ref != "" {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<li class=\"ade-void-ref\"><span class=\"label\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = t.T("regimes.it.ade-void-ref").Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</span> <span class=\"value\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var4 string
+			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(ref)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `ticket.templ`, Line: 47, Col: 9}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</span></li>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
 		return nil
 	})
 }
 
-func ticketRef(env *gobl.Envelope) string {
+func ticketStamp(env *gobl.Envelope, key cbc.Key) string {
 	if env == nil || env.Head == nil {
 		return ""
 	}
 	for _, stamp := range env.Head.Stamps {
-		if stamp.Provider == ticket.StampRef {
+		if stamp.Provider == key {
 			return stamp.Value
 		}
 	}
