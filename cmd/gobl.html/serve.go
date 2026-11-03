@@ -112,16 +112,21 @@ func prepareEcho() *echo.Echo {
 	return e
 }
 
-func (s *serveOpts) render(c echo.Context, req *options, env *gobl.Envelope, opts []goblhtml.Option) ([]byte, error) {
+// render parses the envelope and renders it, reporting the time both took
+// in the X-Render-Ms header so the previewer's benchmark can compare it with
+// goblRender in the browser, which also parses the envelope it is given.
+func (s *serveOpts) render(c echo.Context, req *options, ed []byte, opts []goblhtml.Option) ([]byte, error) {
 	ctx := c.Request().Context()
 	opts = append(opts, req.Options()...)
 	start := time.Now()
+	env := new(gobl.Envelope)
+	if err := json.Unmarshal(ed, env); err != nil {
+		return nil, fmt.Errorf("unmarshalling file: %w", err)
+	}
 	out, err := goblhtml.Render(ctx, env, opts...)
 	if err != nil {
 		return nil, fmt.Errorf("generating html: %w", err)
 	}
-	// Report the native render time, excluding parsing and transfer, so the
-	// WASM playground can compare it with the in-browser render.
 	ms := float64(time.Since(start).Microseconds()) / 1000
 	c.Response().Header().Set("X-Render-Ms", strconv.FormatFloat(ms, 'f', 3, 64))
 	c.Response().Header().Set("Server-Timing", "render;dur="+strconv.FormatFloat(ms, 'f', 3, 64))
@@ -149,17 +154,12 @@ func (s *serveOpts) generate(c echo.Context) error {
 		return fmt.Errorf("loading file: %w", err)
 	}
 
-	env := new(gobl.Envelope)
-	if err := json.Unmarshal(ed, env); err != nil {
-		return fmt.Errorf("unmarshalling file: %w", err)
-	}
-
 	opts := make([]goblhtml.Option, 0)
 	if ext == ".pdf" {
 		req.EmbedAssets = true
 	}
 	applyExampleParams(fn, &req.Params, c.QueryParams().Has)
-	data, err := s.render(c, req, env, opts)
+	data, err := s.render(c, req, ed, opts)
 	if err != nil {
 		return err
 	}

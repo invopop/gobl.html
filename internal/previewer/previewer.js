@@ -322,7 +322,8 @@ function previewer() {
     // ---- Benchmark ---------------------------------------------------
     // Renders the listed examples through WASM in the browser and natively
     // in the server for several rounds and compares. The native time comes
-    // from the X-Render-Ms header, so it excludes parsing and transfer. Both
+    // from the X-Render-Ms header, which covers envelope parsing and
+    // rendering like goblRender does, but not transfer. Both
     // renders are shown side by side as they happen, from the same bytes the
     // timings were taken on.
     async runBenchmark() {
@@ -492,7 +493,7 @@ function previewer() {
       <tr class="payable strong"><th>WASM over native</th><td>${esc(t.ratio)}</td></tr>
     </tbody></table></section></div>
     <section class="notes"><h2>Notes</h2>
-      <div class="note"><p>Both sides rendered the same documents with the same parameters, assets embedded, after one warm-up pass. Native times exclude request parsing and transfer; the round trip column is the full fetch from the browser.</p></div>
+      <div class="note"><p>Both sides rendered the same documents with the same parameters, assets embedded, after one warm-up pass. Both times cover parsing the envelope JSON and rendering it; native excludes request handling and transfer, which the round trip column shows as the full fetch from the browser.</p></div>
     </section>
   </div>
 </article></article></body></html>`;
