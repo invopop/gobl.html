@@ -2,6 +2,7 @@ package catalog_test
 
 import (
 	"context"
+	"strings"
 	"testing"
 
 	"github.com/invopop/gobl"
@@ -60,4 +61,8 @@ func TestScan(t *testing.T) {
 	void := byFile["pt-at-invoice.void.json"]
 	assert.True(t, void.Void)
 	assert.Contains(t, void.Tags, "void")
+
+	hidden := byFile["es-verifactu-invoice-full.hidden.json"]
+	assert.Equal(t, strings.Join(catalog.HiddenKeys, ","), hidden.Hide)
+	assert.Contains(t, hidden.Tags, "hidden")
 }

@@ -277,6 +277,7 @@ templ options() {
 					@popui.Input(props.Input{Label: "Date format", Placeholder: "%d/%m/%Y", Attributes: templ.Attributes{"x-model": "params.date_format"}})
 					@popui.Input(props.Input{Label: "Label", Attributes: templ.Attributes{"x-model": "params.label"}})
 					@popui.Input(props.Input{Label: "Watermark", Attributes: templ.Attributes{"x-model": "params.watermark"}})
+					@popui.Input(props.Input{Label: "Hide", Placeholder: "notes,footer.branding", Attributes: templ.Attributes{"x-model": "params.hide"}})
 				</div>
 				@popui.OptionGroup() {
 					@popui.Checkbox(props.Checkbox{Variant: props.CheckboxVariantSwitch, Name: "void", Label: "Void", Attributes: templ.Attributes{"x-model": "params.void"}})

@@ -3,9 +3,11 @@ package main
 import (
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 
 	goblhtml "github.com/invopop/gobl.html"
+	"github.com/invopop/gobl.html/internal/catalog"
 	"github.com/invopop/gobl.html/layout"
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
@@ -43,6 +45,10 @@ func TestApplyExampleParams(t *testing.T) {
 	p = new(goblhtml.Params) // void=false in the query
 	applyExampleParams("pt-at-invoice.void.json", p, func(k string) bool { return k == "void" })
 	assert.False(t, p.Void, "an explicit false keeps the file name from forcing void")
+
+	p = new(goblhtml.Params)
+	applyExampleParams("es-verifactu-invoice-full.hidden.json", p, none)
+	assert.Equal(t, strings.Join(catalog.HiddenKeys, ","), p.Hide, "file name implies the hidden sections")
 
 	p = &goblhtml.Params{AdjustmentMode: true}
 	applyExampleParams("plain.json", p, none)

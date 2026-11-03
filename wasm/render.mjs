@@ -44,6 +44,8 @@ function paramsFor(name) {
   if (name.includes(".void.")) p.void = true;
   if (name.includes(".sandbox.")) p.sandbox = true;
   if (name.includes(".adjustment.")) p.adjustment_mode = true;
+  // Same list as catalog.HiddenKeys.
+  if (name.includes(".hidden.")) p.hide = "header.summary.ordering,payment.instructions.bank-data,notes,footer.branding";
   for (const locale of ["es", "fr", "pl"]) {
     if (name.includes(`.${locale}.`)) p.locale = locale;
   }

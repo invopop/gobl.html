@@ -16,7 +16,8 @@ function previewer() {
     addon: (e) => e.addons ?? [],
     tag: (e) => e.tags ?? [],
   };
-  const PER_EXAMPLE = ["locale", "void", "sandbox", "adjustment_mode"];
+  const PER_EXAMPLE = ["locale", "void", "sandbox", "adjustment_mode", "hide"];
+  let shown = 0; // generation of the latest show() call
   const median = (xs) => {
     const s = [...xs].sort((a, b) => a - b);
     return s.length ? s[Math.floor(s.length / 2)] : 0;
@@ -30,7 +31,7 @@ function previewer() {
     filters: { country: [], kind: [], addon: [], tag: [] },
     q: "",
     selected: null,
-    params: { locale: "", layout: "", label: "", watermark: "", date_format: "", void: false, sandbox: false, adjustment_mode: false },
+    params: { locale: "", layout: "", label: "", watermark: "", date_format: "", hide: "", void: false, sandbox: false, adjustment_mode: false },
     window: "",
     zoom: "fit",
     margins: false,
@@ -196,6 +197,7 @@ function previewer() {
       if (e.void) p.void = true;
       if (e.sandbox) p.sandbox = true;
       if (e.adjustment_mode) p.adjustment_mode = true;
+      if (e.hide) p.hide = e.hide;
       return p;
     },
     // benchParams are the parameters both sides render with: the example's
@@ -235,6 +237,7 @@ function previewer() {
         this.lastShown = e.file;
       }
       const p = this.requestParams();
+      const gen = ++shown;
       if (!this.ready) {
         // Until the WASM is up the server renders, so browsing isn't blocked.
         frame.removeAttribute("srcdoc");
@@ -243,7 +246,7 @@ function previewer() {
         return;
       }
       if (!sources[e.file]) sources[e.file] = await (await fetch("/api/examples/" + e.file)).text();
-      if (this.selected !== e.file) return; // moved on while fetching
+      if (gen !== shown) return; // a newer show() took over while fetching
       const t = performance.now();
       const res = goblRender(sources[e.file], p);
       const ms = performance.now() - t;

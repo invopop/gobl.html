@@ -16,6 +16,7 @@ import (
 	"github.com/invopop/gobl"
 	goblhtml "github.com/invopop/gobl.html"
 	"github.com/invopop/gobl.html/assets"
+	"github.com/invopop/gobl.html/internal/catalog"
 	"github.com/invopop/gobl.html/pkg/pdf"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -205,5 +206,8 @@ func applyExampleParams(fn string, p *goblhtml.Params, requested func(string) bo
 	}
 	if strings.Contains(fn, ".adjustment.") && !requested("adjustment_mode") {
 		p.AdjustmentMode = true
+	}
+	if strings.Contains(fn, ".hidden.") && !requested("hide") {
+		p.Hide = strings.Join(catalog.HiddenKeys, ",")
 	}
 }

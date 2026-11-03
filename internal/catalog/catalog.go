@@ -21,6 +21,16 @@ import (
 	"github.com/invopop/gobl/tax"
 )
 
+// HiddenKeys are the sections an example whose name contains ".hidden."
+// is rendered without, on every path that renders the examples: the output
+// tests, the development server, the previewer and the WebAssembly test.
+var HiddenKeys = []string{
+	"header.summary.ordering",
+	"payment.instructions.bank-data",
+	"notes",
+	"footer.branding",
+}
+
 // Entry describes one example file.
 type Entry struct {
 	// File is the example's file name, such as "es-verifactu-invoice.json".
@@ -47,6 +57,9 @@ type Entry struct {
 	Lines int `json:"lines,omitempty"`
 	// Locale is the rendering locale the example name implies, if any.
 	Locale string `json:"locale,omitempty"`
+	// Hide lists, separated by commas, the sections a ".hidden." example
+	// name hides; see HiddenKeys.
+	Hide string `json:"hide,omitempty"`
 	// Void, Sandbox and AdjustmentMode are the states the example name implies.
 	Void           bool `json:"void,omitempty"`
 	Sandbox        bool `json:"sandbox,omitempty"`
@@ -96,6 +109,9 @@ func describe(ctx context.Context, path string, render Renderer) (Entry, error) 
 		Void:           strings.Contains(name, ".void."),
 		Sandbox:        strings.Contains(name, ".sandbox."),
 		AdjustmentMode: strings.Contains(name, ".adjustment."),
+	}
+	if strings.Contains(name, ".hidden.") {
+		e.Hide = strings.Join(HiddenKeys, ",")
 	}
 	for _, l := range []string{"es", "fr", "pl"} {
 		if strings.Contains(name, "."+l+".") {
@@ -178,6 +194,7 @@ func describe(ctx context.Context, path string, render Renderer) (Entry, error) 
 	add(e.Void, "void")
 	add(e.Sandbox, "sandbox")
 	add(e.AdjustmentMode, "adjustment")
+	add(e.Hide != "", "hidden")
 
 	if render != nil {
 		out, err := render(ctx, env)

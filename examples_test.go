@@ -13,6 +13,7 @@ import (
 
 	"github.com/invopop/gobl"
 	goblhtml "github.com/invopop/gobl.html"
+	"github.com/invopop/gobl.html/internal/catalog"
 	"github.com/pmezard/go-difflib/difflib"
 	"github.com/stretchr/testify/require"
 	"github.com/yosssi/gohtml"
@@ -98,12 +99,7 @@ func convertExample(name string) ([]byte, error) {
 		opts = append(opts, goblhtml.EnableAdjustmentMode)
 	}
 	if strings.Contains(name, ".hidden.") {
-		opts = append(opts, goblhtml.WithHide(
-			"header.summary.ordering",
-			"payment.instructions.bank-data",
-			"notes",
-			"footer.branding",
-		))
+		opts = append(opts, goblhtml.WithHide(catalog.HiddenKeys...))
 	}
 	if strings.Contains(name, ".es.") {
 		opts = append(opts, goblhtml.WithLocale("es"))
