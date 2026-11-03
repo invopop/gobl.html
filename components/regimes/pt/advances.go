@@ -7,6 +7,7 @@ import (
 
 	"github.com/invopop/gobl.html/components/t"
 	saft "github.com/invopop/gobl.pt.saft/addon"
+	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/pay"
 	"github.com/invopop/gobl/tax"
 )
@@ -14,10 +15,10 @@ import (
 // AdvanceMeans names the payment means of an advance in Portuguese
 // invoices, from the SAF-T payment means extension the pt-saft addon sets
 // on it, so the totals can say how each advance was paid. It returns an
-// empty string for advances without the extension, which keeps every other
-// regime untouched.
-func AdvanceMeans(ctx context.Context, adv *pay.Record) string {
-	if adv == nil || !adv.Ext.Has(saft.ExtKeyPaymentMeans) {
+// empty string unless the invoice uses the pt-saft addon and the advance
+// carries the extension, which keeps every other regime untouched.
+func AdvanceMeans(ctx context.Context, inv *bill.Invoice, adv *pay.Record) string {
+	if !usesSAFT(inv) || adv == nil || !adv.Ext.Has(saft.ExtKeyPaymentMeans) {
 		return ""
 	}
 	code := adv.Ext.Get(saft.ExtKeyPaymentMeans)
@@ -30,6 +31,19 @@ func AdvanceMeans(ctx context.Context, adv *pay.Record) string {
 		return code.String()
 	}
 	return lowerFirst(val.Name.In(t.Lang(ctx)))
+}
+
+// usesSAFT reports whether the invoice declares the pt-saft addon.
+func usesSAFT(inv *bill.Invoice) bool {
+	if inv == nil {
+		return false
+	}
+	for _, key := range inv.GetAddons() {
+		if key == saft.V1 {
+			return true
+		}
+	}
+	return false
 }
 
 // lowerFirst lowers the first letter so the means reads as an aside after
