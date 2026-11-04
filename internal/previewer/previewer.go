@@ -113,6 +113,7 @@ var localeNames = map[string]string{
 	"no": "Norsk",
 	"pl": "Polski",
 	"pt": "Português",
+	"ro": "Română",
 }
 
 // LocaleOptions lists the locales embedded in the renderer for the header

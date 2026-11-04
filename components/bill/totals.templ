@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/regimes/pt"
+	"github.com/invopop/gobl.html/components/regimes/ro"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/currency"
@@ -140,6 +141,7 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 			</td>
 		</tr>
 	}
+	@ro.TaxInAccountingCurrency(inv)
 }
 
 templ totalsDueRows(inv *bill.Invoice, totals *bill.Totals) {

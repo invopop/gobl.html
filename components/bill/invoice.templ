@@ -252,17 +252,19 @@ func label(ctx context.Context) string {
 	return opts.Label
 }
 
-// franceCountry scopes the self-billed badge to French invoices.
-var franceCountry = l10n.FR.Tax()
+// selfBilledCountries are the regimes whose law asks for a self-billing
+// mention on the invoice itself: France ("autofacturation") and Romania
+// ("autofactură", Fiscal Code art. 319 alin. (20) lit. k)).
+var selfBilledCountries = []l10n.TaxCountryCode{l10n.FR.Tax(), l10n.RO.Tax()}
 
-// isSelfBilled reports whether the document is a French self-billed invoice
-// ("autofacturation"), which is flagged with a label next to the title.
+// isSelfBilled reports whether the document is a self-billed invoice of a
+// regime that flags it with a label next to the title.
 func isSelfBilled(doc internal.Document) bool {
 	inv, ok := doc.Extract().(*bill.Invoice)
 	if !ok {
 		return false
 	}
-	if doc.GetRegime().Country.Code().Tax() != franceCountry {
+	if !doc.GetRegime().Country.Code().Tax().In(selfBilledCountries...) {
 		return false
 	}
 	return inv.HasTags(tax.TagSelfBilled)
