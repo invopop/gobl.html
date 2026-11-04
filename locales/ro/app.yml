@@ -63,7 +63,7 @@ ro:
       receiver:
         title: "Adresa de livrare"
         date: "Data livrării: %{date}"
-        period: "Data livrării: %{start} – %{end}"
+        period: "Perioada livrării: %{start} – %{end}"
 
       lines: &lines
         title: "Linii"
