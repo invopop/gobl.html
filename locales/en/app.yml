@@ -254,6 +254,7 @@ en:
         mx: "RFC"
         pl: "NIP"
         pt: "NIF"
+        ro: "CIF"
         sg: "GST Reg No."
       identity: "%{label}: %{code}"
       identity_code: "Identity code"
