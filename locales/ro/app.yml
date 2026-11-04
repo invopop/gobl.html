@@ -83,12 +83,12 @@ ro:
         period_range: "%{start} – %{end}"
 
       totals: &totals
-        sum: "Sumă"
+        sum: "Total fără TVA"
         discount: "Reducere"
         charge: "Supliment"
         title: "Totaluri"
         prices_include: "Include %{tax}"
-        total: "Total fără TVA"
+        total: "Total"
         taxes: "TVA"
         total_with_tax: "Total cu TVA"
         retained_tax: "Impozit reținut"
@@ -262,7 +262,14 @@ ro:
         sheet: "Fila %{id}"
         section: "Secțiunea %{id}"
         page: "Pagina %{id}"
-        entry: "Înregistrarea %{id}"
+        entry: "Nr. %{id}"
     address:
       label: "%{label}:"
       country: "(%{country})"
+
+  regimes:
+    ro:
+      # Fiscal Code art. 319 alin. (20) lit. j): the VAT amount must be
+      # expressed in lei, so invoices issued in another currency also show
+      # the converted VAT total.
+      vat_in_currency: "TVA în %{to}"

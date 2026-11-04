@@ -13,6 +13,7 @@ import (
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/regimes/pt"
+	"github.com/invopop/gobl.html/components/regimes/ro"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/currency"
@@ -384,6 +385,10 @@ func totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
+		templ_7745c5c3_Err = ro.TaxInAccountingCurrency(inv).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
 		return nil
 	})
 }
@@ -418,7 +423,7 @@ func totalsDueRows(inv *bill.Invoice, totals *bill.Totals) templ.Component {
 				var templ_7745c5c3_Var6 string
 				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(advanceText(ctx, inv, adv))
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/totals.templ`, Line: 150, Col: 33}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/totals.templ`, Line: 152, Col: 33}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 				if templ_7745c5c3_Err != nil {
