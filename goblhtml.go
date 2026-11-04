@@ -223,6 +223,13 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 				nf.DecimalMark = ","
 				nf.Template = "%n %u"
 			}
+			if d.GetRegime().Country.Code() == l10n.RO {
+				// Romanian convention: dot for thousands, comma for decimals
+				// and the currency after the amount (1.234,56 Lei, 1.234,56 €).
+				nf.ThousandsSeparator = "."
+				nf.DecimalMark = ","
+				nf.Template = "%n %u"
+			}
 		}
 	}
 	if o.CurrencyTemplate != "" {
