@@ -1,0 +1,124 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "2b4f1c3e-b9e1-11f1-9f2a-92000739e901",
+		"dig": {
+			"alg": "sha256",
+			"val": "8948accd6815e9340649d2da8b90668f28ba6ff7e64d0b5f2afa280513833627"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$addons": [
+			"eu-en16931-v2017"
+		],
+		"uuid": "01a177de-77f4-786e-a1e0-69bee98543e5",
+		"type": "standard",
+		"series": "FCT",
+		"code": "0001",
+		"issue_date": "2026-10-26",
+		"currency": "RON",
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Exemplu Digital SRL",
+			"tax_id": {
+				"country": "RO",
+				"code": "12345674"
+			},
+			"addresses": [
+				{
+					"num": "10",
+					"street": "Strada Exemplu",
+					"locality": "SECTOR1",
+					"region": "RO-B",
+					"state": "B",
+					"code": "010101",
+					"country": "RO"
+				}
+			],
+			"emails": [
+				{
+					"addr": "facturare@exemplu.ro"
+				}
+			]
+		},
+		"customer": {
+			"name": "Client Test SRL",
+			"tax_id": {
+				"country": "RO",
+				"code": "34567892"
+			},
+			"addresses": [
+				{
+					"num": "25",
+					"street": "Strada Memorandumului",
+					"locality": "Cluj-Napoca",
+					"region": "RO-CJ",
+					"state": "CJ",
+					"code": "400114",
+					"country": "RO"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "10",
+				"item": {
+					"name": "Servicii de dezvoltare software",
+					"price": "150.00",
+					"unit": "h"
+				},
+				"sum": "1500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "21%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "1500.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Plata in 30 de zile"
+			}
+		},
+		"totals": {
+			"sum": "1500.00",
+			"total": "1500.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "1500.00",
+								"percent": "21%",
+								"amount": "315.00"
+							}
+						],
+						"amount": "315.00"
+					}
+				],
+				"sum": "315.00"
+			},
+			"tax": "315.00",
+			"total_with_tax": "1815.00",
+			"payable": "1815.00"
+		}
+	}
+}
