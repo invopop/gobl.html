@@ -4,8 +4,18 @@
 		"uuid": "01a1ab50-6d51-7ed0-ba02-9087bafece51",
 		"dig": {
 			"alg": "sha256",
-			"val": "90db5fb31b3511cbe65061e245acf8330dbbb6dfee5cb2683e110983721de2ad"
-		}
+			"val": "2e7eadaf426786db1e20f2d502f8849a4049094bc52908e729f820ca04972fd4"
+		},
+		"stamps": [
+			{
+				"prv": "tbai-code",
+				"val": "TBAI-A99805194-080726-LrNMp23wKPLjx-112"
+			},
+			{
+				"prv": "tbai-qr",
+				"val": "https://batuz.eus/QRTBAI/?id=TBAI-A99805194-080726-LrNMp23wKPLjx-112\u0026s=F1\u0026nf=0001\u0026i=2178.00\u0026cr=027"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -16,6 +26,7 @@
 		"uuid": "01a1ab50-6d51-7ed4-8282-014ae264209d",
 		"type": "standard",
 		"series": "F1",
+		"code": "0001",
 		"issue_date": "2026-07-08",
 		"currency": "EUR",
 		"tax": {
@@ -126,5 +137,8 @@
 				"text": "Invoice for development services"
 			}
 		]
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4ZWItN2EyOS04Zjk5LWUzNWM3ZGVjMDYxNSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1MS03ZWQwLWJhMDItOTA4N2JhZmVjZTUxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjJlN2VhZGFmNDI2Nzg2ZGIxZTIwZjJkNTAyZjg4NDlhNDA0OTA5NGJjNTI5MDhlNzI5ZjgyMGNhMDQ5NzJmZDQifSwiaWF0IjoxNzkzODc3MTc0fQ.L4yWBa2o6J6C6iZW4b2vJ6Vzbml8T4mMjib__Qt-gXQIBoMHthOIn_kgTLRYPU26Gq0elxEaCh6iiM3HWLHaKA"
+	]
 }

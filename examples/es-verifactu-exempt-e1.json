@@ -5,7 +5,13 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "4df1b0adf44fe7769c6d8554e94d982beb171ce40481a43e49dd262f90a6e224"
-		}
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-004\u0026fecha=13-11-2024\u0026importe=1800.00"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -104,5 +110,8 @@
 				"text": "This is a sample invoice with a exempt tax"
 			}
 		]
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MDYtNzZiZS1hMDVkLWZkYzIxZDY4ZTg1NCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1Yy03YzUwLWIzMGUtNTgyZTEzYTNkNWY2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjRkZjFiMGFkZjQ0ZmU3NzY5YzZkODU1NGU5NGQ5ODJiZWIxNzFjZTQwNDgxYTQzZTQ5ZGQyNjJmOTBhNmUyMjQifSwiaWF0IjoxNzkzODc3MTc0fQ.9_TxcMfZ97q8w6BLOXa2pFDqEO--bHs77zxzQqnptyrGP_rF6KOY9wGX44yVT889gkui15iWZ9qkQn5XIaZVdQ"
+	]
 }

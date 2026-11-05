@@ -5,7 +5,41 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "fecbe6ae9916f22e26e3eebad867e8bf942f8aa5dc5715b95f1207eda7d4c9f4"
-		}
+		},
+		"stamps": [
+			{
+				"prv": "sat-uuid",
+				"val": "01a1ab50-6da4-7bdb-877b-28199dafceca"
+			},
+			{
+				"prv": "cfdi-sig",
+				"val": "Qk+hftgbpSYMqcc7BoBzGOctcNbDypP4IiHfzgf4mJuraxGEFbo8JEfS6BOzfqXojVLbRxPkXE83fqzWdnowOhOmi0Mvk3CdlTZNZ9i2i7hJv6cwfHXMTPpeOxfptuv2AzhFX7O14gS2szeai5yJIcT+d8/W6H0zN6b/2S12GkMdik0tyF8XRtQQat4Q1jxQzslOp46brROc0Xuobc7/jogq2ib7oaJEu7qDKhjYAkH7BHMaLMJgeC6eVeHUkkrr7RVTkH75H4wteKZNuP85E/F12nCkbMSQq7uplzRuLyO6YEkyIWxpT+0Gqtcb6pziYk8wqwP1pVsVZZ4Q0PPOsw=="
+			},
+			{
+				"prv": "cfdi-serial",
+				"val": "30001000000500003416"
+			},
+			{
+				"prv": "sat-sig",
+				"val": "MQWzFEvDEWag8sM8OWjlCS1DmrZWe+/1VtGsxDz8ycSH1yh8aoUGV3lKezQy190TnB2mncusGvFoUpbDhrk0tlRpTGT2+68/43yb0RZ+yWTVCrd09sCzRk/Dct+oyUKWr2AYYxA0Jt7ECyR4DQfPQYbPF4shsmcerMWxsbMUKqR43shvsb5QTxk/yA6CiWx3z/+uSxvJitUoUihAtFeBBdiNnKVBcG7ifWNJaoaBL03UOm1Ro77rGvUfYuxqqI02Fav98iv9eS//YmGzUTpz0Uvc9Lut+MRqkBvs3G/PBiJvO5Yi6I2PhzNo0O7z9SD6P9WnmufmVI9JFCbHVk+PNg=="
+			},
+			{
+				"prv": "sat-serial",
+				"val": "30001000000500003456"
+			},
+			{
+				"prv": "sat-timestamp",
+				"val": "2026-07-08T07:16:10"
+			},
+			{
+				"prv": "sat-chain",
+				"val": "||1.1|01a1ab50-6da4-7bdb-877b-28199dafceca|2026-07-08T07:16:10|SPR190613I52|Qk+hftgbpSYMqcc7BoBzGOctcNbDypP4IiHfzgf4mJuraxGEFbo8JEfS6BOzfqXojVLbRxPkXE83fqzWdnowOhOmi0Mvk3CdlTZNZ9i2i7hJv6cwfHXMTPpeOxfptuv2AzhFX7O14gS2szeai5yJIcT+d8/W6H0zN6b/2S12GkMdik0tyF8XRtQQat4Q1jxQzslOp46brROc0Xuobc7/jogq2ib7oaJEu7qDKhjYAkH7BHMaLMJgeC6eVeHUkkrr7RVTkH75H4wteKZNuP85E/F12nCkbMSQq7uplzRuLyO6YEkyIWxpT+0Gqtcb6pziYk8wqwP1pVsVZZ4Q0PPOsw==|30001000000500003456||"
+			},
+			{
+				"prv": "sat-url",
+				"val": "https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=01a1ab50-6da4-7bdb-877b-28199dafceca\u0026re=EKU9003173C9\u0026tt=232.00\u0026fe=0PPOsw=="
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -114,5 +148,8 @@
 			"total_with_tax": "232.00",
 			"payable": "232.00"
 		}
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LWNjOWMtNzBlYS04NDkwLTJmOWFmZTM3ODQwYyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhNC03YmRiLTg3N2ItMjgxOTlkYWZjZWNhIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImZlY2JlNmFlOTkxNmYyMmUyNmUzZWViYWQ4NjdlOGJmOTQyZjhhYTVkYzU3MTViOTVmMTIwN2VkYTdkNGM5ZjQifSwiaWF0IjoxNzkzODc3MjAwfQ.HEHTz6bD1mkuBUwjB2EX8XBc0E0osXj1JlD-U_GLU1N_ZS9vFxVwvL4Nlr0nO39h1LmY0ITMHEmoQ3Knx-dDKQ"
+	]
 }

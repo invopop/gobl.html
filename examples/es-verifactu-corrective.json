@@ -4,8 +4,14 @@
 		"uuid": "01a1ab50-6d5a-7afc-bdd7-050999e76516",
 		"dig": {
 			"alg": "sha256",
-			"val": "e48cfe10165b9f1e2cb7b8d694036d82d6156c3af7a567f22a48ca8568898499"
-		}
+			"val": "9353c28fceb967bc6f82112ff271de1ed35e08dafa84e1c32d30645e9601f9e9"
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=CO-0001\u0026fecha=29-05-2025\u0026importe=2178.00"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -16,6 +22,7 @@
 		"uuid": "01a1ab50-6d5a-7b00-9dd5-2b8464395b52",
 		"type": "corrective",
 		"series": "CO",
+		"code": "0001",
 		"issue_date": "2025-05-29",
 		"currency": "EUR",
 		"preceding": [
@@ -131,5 +138,8 @@
 			"total_with_tax": "2178.00",
 			"payable": "2178.00"
 		}
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MDItNzkwNC1hNmNkLTVkMzA4YjAzYzU3OSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1YS03YWZjLWJkZDctMDUwOTk5ZTc2NTE2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjkzNTNjMjhmY2ViOTY3YmM2ZjgyMTEyZmYyNzFkZTFlZDM1ZTA4ZGFmYTg0ZTFjMzJkMzA2NDVlOTYwMWY5ZTkifSwiaWF0IjoxNzkzODc3MTc0fQ.Udx9to9nHa1AO6VavHY2blWUYfsss80XDiaD3p4RTk8U62UT2f4cLq3p1KTpfvSS6Zt0C5QvhNwX07h8p3U0hw"
+	]
 }

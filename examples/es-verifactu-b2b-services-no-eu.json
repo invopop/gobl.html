@@ -5,7 +5,13 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "f8b5a8a9c239be99b8e57e70bf381f31d0e5f5fd66cee9747adeedd79b1ad42b"
-		}
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-sett/000002\u0026fecha=17-11-2025\u0026importe=1800.00"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -104,5 +110,8 @@
 				"text": "This is a sample invoice with a outside-scope tax"
 			}
 		]
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4ZjgtNzhhYS05YTBmLWQxYTM4MjFkMTBiNCJ9.eyJ1dWlkIjoiMDFhMWFiNWUtNWRlMC03NjI2LWEwNzMtYzcwMjBkZGZjNjJhIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImY4YjVhOGE5YzIzOWJlOTliOGU1N2U3MGJmMzgxZjMxZDBlNWY1ZmQ2NmNlZTk3NDdhZGVlZGQ3OWIxYWQ0MmIifSwiaWF0IjoxNzkzODc3MTc0fQ.1IIY1o7tJ69r67EPdG3teeCPwhkiKC3qakJqrKYfJ8is4Jywlnhh8nh1QYrt43mQKg0pHuymosXH1wvpCBcoNQ"
+	]
 }

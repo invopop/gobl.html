@@ -4,8 +4,30 @@
 		"uuid": "01a1ab50-6d85-7288-ab9e-b15130bac552",
 		"dig": {
 			"alg": "sha256",
-			"val": "4b5631e088bba7176a2fcd956703c71b24120e941144852387be58312f39f995"
-		}
+			"val": "355f022642b1fcfae312fe91080b1f577a062104d1ee0b2d343c83b8e8e5f3c8"
+		},
+		"stamps": [
+			{
+				"prv": "iapr-qr",
+				"val": "https://test.vs.gr/iv/invoice/10cc0a7d90a1c9470190a634ec19073e"
+			},
+			{
+				"prv": "iapr-hash",
+				"val": "792F62ADE1B5E4CCBC8FFA787258CC68E90B817B"
+			},
+			{
+				"prv": "iapr-mark",
+				"val": "400001929816893"
+			},
+			{
+				"prv": "iapr-provider",
+				"val": "ΙΛΥΔΑ ΠΛΗΡΟΦΟΡΙΚΗ Α.Ε. — https://test.vs.gr"
+			},
+			{
+				"prv": "iapr-uid",
+				"val": "EB1CF2137764B0D534885F361365C39A32C0205A"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -20,6 +42,7 @@
 		"uuid": "01a1ab50-6d85-7289-b979-d8d145a5dd76",
 		"type": "standard",
 		"series": "XXGR",
+		"code": "0001",
 		"issue_date": "2026-07-08",
 		"currency": "EUR",
 		"tax": {
@@ -151,5 +174,8 @@
 			"total_with_tax": "650.63",
 			"payable": "650.63"
 		}
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MjAtN2NhZS1iMjYxLWJhOTRkNGI5ZWRiMSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ4NS03Mjg4LWFiOWUtYjE1MTMwYmFjNTUyIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjM1NWYwMjI2NDJiMWZjZmFlMzEyZmU5MTA4MGIxZjU3N2EwNjIxMDRkMWVlMGIyZDM0M2M4M2I4ZThlNWYzYzgifSwiaWF0IjoxNzkzODc3MTc0fQ.nLrxz29j_7vabofCc4zyNX0QoZJAdjIHkLCz2Bsg2pn8sAtcrAlHZcqHHr0Dz8LHRUYaOWaZP0SWh8kFHZpdHw"
+	]
 }

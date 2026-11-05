@@ -4,8 +4,30 @@
 		"uuid": "01a1ab50-6dd4-790c-a771-5ac41825937d",
 		"dig": {
 			"alg": "sha256",
-			"val": "b65d663d6859f30cd606cf2367064c301aff70816c7a2dedd6f206879ee10db4"
-		}
+			"val": "e8bbf39400e535dadddd4d8dee472bd692c3cd70194b22d1e931a02e2a16cc8d"
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJR2KW4-2"
+			},
+			{
+				"prv": "at-hash",
+				"val": "0vot"
+			},
+			{
+				"prv": "at-hash-full",
+				"val": "0WMEHADswWv5aavY+2VboOclMpPyoQtl7neqfA/7PPvhayQR1OQMok5fFr8N4vi6TGm8ymmHSpfX4QG28jeDJqNuO92v5TbRH78/4lPbcryEmVIgG0x9jXtYPX6RehwYYuUZg1q1XSEYrEGg+zQoPN8VZetI5PxGRWqrkIe8G5w="
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:770013813*B:999999990*C:PT*D:FT*E:N*F:20260402*G:GR SERIES-A 0001*H:AAJFJR2KW4-2*I1:PT*I7:61.50*N:0.00*O:61.50*Q:0vot*R:0"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "0"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/delivery",
@@ -16,6 +38,7 @@
 		"uuid": "01a1ab50-6dd4-7910-8fcf-493a3503baaf",
 		"type": "note",
 		"series": "GR SERIES-A",
+		"code": "0001",
 		"issue_date": "2026-04-02",
 		"currency": "EUR",
 		"preceding": [
@@ -149,5 +172,8 @@
 				"text": "Stop delivery from global waybill GT SERIES-A/1"
 			}
 		]
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5OGItNzMyNC05ZmZlLTM3MDkzN2RiZDBjZiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRkNC03OTBjLWE3NzEtNWFjNDE4MjU5MzdkIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImU4YmJmMzk0MDBlNTM1ZGFkZGRkNGQ4ZGVlNDcyYmQ2OTJjM2NkNzAxOTRiMjJkMWU5MzFhMDJlMmExNmNjOGQifSwiaWF0IjoxNzkzODc3MTc0fQ.odib3Xcu2vm-8yZE-OySoN3iTK8n1iuoZEmw74iakg9ZWkELvybCAPVxqiV4wPdHh7rK8OyQJgqe2rSUMBFS4g"
+	]
 }

@@ -4,7 +4,7 @@
 		"uuid": "01a1ab50-6dbc-769f-8be3-95087bc064de",
 		"dig": {
 			"alg": "sha256",
-			"val": "b47f77815ad515b827ef2713203600e4b2ad8be196ec77597861518ccf2c28d1"
+			"val": "7862eda94bb398d93a0271cea537b5c99331b22319cbe870618f38d35de7d3e8"
 		}
 	},
 	"doc": {
@@ -16,6 +16,7 @@
 		"uuid": "01a1ab50-6dbc-76a3-803c-7effa805dc09",
 		"type": "sale",
 		"series": "OU SERIES-A",
+		"code": "0001",
 		"issue_date": "2024-12-23",
 		"value_date": "2024-12-23",
 		"currency": "EUR",

@@ -4,8 +4,18 @@
 		"uuid": "01a1ab50-6d53-754f-94c9-372a27e1351c",
 		"dig": {
 			"alg": "sha256",
-			"val": "63f452943133f153157d42f9b918e1f95a6abd73a4a98fc19cd086c0eb5e13aa"
-		}
+			"val": "1e1199e429c53e0032961c359a27efc3af77f5a625eab08c093dc492dc83ff55"
+		},
+		"stamps": [
+			{
+				"prv": "tbai-code",
+				"val": "TBAI-A99805194-080726-LrNMp23wKPLjx-112"
+			},
+			{
+				"prv": "tbai-qr",
+				"val": "https://batuz.eus/QRTBAI/?id=TBAI-A99805194-080726-LrNMp23wKPLjx-112\u0026s=FS1\u0026nf=0001\u0026i=25.10\u0026cr=027"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -19,6 +29,7 @@
 		"uuid": "01a1ab50-6d53-7553-aa61-f67f91932d7d",
 		"type": "standard",
 		"series": "FS1",
+		"code": "0001",
 		"issue_date": "2026-07-08",
 		"currency": "EUR",
 		"tax": {
@@ -112,5 +123,8 @@
 				"text": "In person sale"
 			}
 		]
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4ZWQtN2VmOC1iOWMzLWY4ZTYwNjA3ODNmMyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1My03NTRmLTk0YzktMzcyYTI3ZTEzNTFjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjFlMTE5OWU0MjljNTNlMDAzMjk2MWMzNTlhMjdlZmMzYWY3N2Y1YTYyNWVhYjA4YzA5M2RjNDkyZGM4M2ZmNTUifSwiaWF0IjoxNzkzODc3MTc0fQ.62Byy-6SamGO9KoLVm3Djo6gBsylMoA1MNiU2T3PoTJA4ppHKQifZcJ4OHidMv5oZP7UnVJYolHBUGqaZgy07Q"
+	]
 }

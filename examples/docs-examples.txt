@@ -162,6 +162,11 @@ pt-payment.json	snippets/payments/pt/payment.mdx
 pt-return-from-global.json	snippets/deliveries/pt/return-from-global.mdx
 pt-return.json	snippets/deliveries/pt/return.mdx
 pt-waybill-global.json	snippets/deliveries/pt/waybill-global.mdx
+ro-efactura-b2c.json	snippets/invoices/ro/efactura-b2c.mdx
+ro-efactura-corrective.json	snippets/invoices/ro/efactura-corrective.mdx
+ro-efactura-credit-note.json	snippets/invoices/ro/efactura-credit-note.mdx
+ro-efactura-self-billed.json	snippets/invoices/ro/efactura-self-billed.mdx
+ro-efactura-standard.json	snippets/invoices/ro/efactura-standard.mdx
 sa-credit-note-summary.json	snippets/invoices/sa/credit-note-summary.mdx
 sa-simplified-credit-note.json	snippets/invoices/sa/simplified-credit-note.mdx
 sa-simplified-debit-note.json	snippets/invoices/sa/simplified-debit-note.mdx

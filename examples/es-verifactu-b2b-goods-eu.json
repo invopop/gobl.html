@@ -5,7 +5,13 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "ebbf33a495b5c27c572cfa2761cbba631001b7984d27b6d51140f0e8104d9ff2"
-		}
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-sett/000003\u0026fecha=13-11-2024\u0026importe=1800.00"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -103,5 +109,8 @@
 				"text": "This is a sample invoice with a intra-community"
 			}
 		]
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4ZjEtN2UwMS1hYWE2LWU3MzI4YzA0YmYzMyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1NC03MmNhLWI4ODItNzA0MmUyMjRlYTYxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImViYmYzM2E0OTViNWMyN2M1NzJjZmEyNzYxY2JiYTYzMTAwMWI3OTg0ZDI3YjZkNTExNDBmMGU4MTA0ZDlmZjIifSwiaWF0IjoxNzkzODc3MTc0fQ.7E02STxMfm3tq2ycffCevfoPZcjXcVGZbWOCXmwov9uAy1W67W1rHnpJEXGl0GO2vRt_K_a4MCFs13HI7fJ63A"
+	]
 }

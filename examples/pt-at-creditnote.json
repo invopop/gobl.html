@@ -4,8 +4,30 @@
 		"uuid": "01a1ab50-6db4-7b94-a726-610d954378c9",
 		"dig": {
 			"alg": "sha256",
-			"val": "dbfca2e61f25dc3b766c48f0674ad184e8fdb00e96412269e8e5ed5c4433263c"
-		}
+			"val": "cf04a8ca77826c2dbd6e61a5523b4788d948b7d38161e6271317b40d58f4f487"
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJR2KW4-2"
+			},
+			{
+				"prv": "at-hash",
+				"val": "0vot"
+			},
+			{
+				"prv": "at-hash-full",
+				"val": "0WMEHADswWv5aavY+2VboOclMpPyoQtl7neqfA/7PPvhayQR1OQMok5fFr8N4vi6TGm8ymmHSpfX4QG28jeDJqNuO92v5TbRH78/4lPbcryEmVIgG0x9jXtYPX6RehwYYuUZg1q1XSEYrEGg+zQoPN8VZetI5PxGRWqrkIe8G5w="
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:770013813*B:999999990*C:PT*D:FT*E:N*F:20241223*G:NC SERIES-A 0001*H:AAJFJR2KW4-2*I1:PT*I7:61.50*N:0.00*O:61.50*Q:0vot*R:0"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "0"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -16,6 +38,7 @@
 		"uuid": "01a1ab50-6db4-7b95-9890-72b667192251",
 		"type": "credit-note",
 		"series": "NC SERIES-A",
+		"code": "0001",
 		"issue_date": "2024-12-23",
 		"value_date": "2024-12-23",
 		"currency": "EUR",
@@ -139,5 +162,8 @@
 			"total_with_tax": "61.50",
 			"payable": "61.50"
 		}
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5NTMtNzZjZS1iNzZjLWMwNTA1NjlmOGE3YyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRiNC03Yjk0LWE3MjYtNjEwZDk1NDM3OGM5IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImNmMDRhOGNhNzc4MjZjMmRiZDZlNjFhNTUyM2I0Nzg4ZDk0OGI3ZDM4MTYxZTYyNzEzMTdiNDBkNThmNGY0ODcifSwiaWF0IjoxNzkzODc3MTc0fQ.zua73oFwpzhO0ncfE8d4YRMQbLK2tQSejeZxbwJMNxzkmrkka_iObpNXY0FR4YzmReob2r5hkFB_sBv-JqVzMQ"
+	]
 }

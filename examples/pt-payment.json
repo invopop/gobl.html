@@ -4,7 +4,7 @@
 		"uuid": "01a1ab50-6dd3-7562-a305-ea23a4a3dc83",
 		"dig": {
 			"alg": "sha256",
-			"val": "9a5580ce23c81c77d0aa974cbd6f9556516979f8169cc49b717fbf5c6632c9e7"
+			"val": "e6b1d8d2fece18db57cba480334f4536b4d41d6762e7e379baea0d3af4f80db8"
 		}
 	},
 	"doc": {
@@ -16,6 +16,7 @@
 		"uuid": "01a1ab50-6dd3-7563-af30-977d50e35898",
 		"type": "receipt",
 		"series": "RG SERIES-A",
+		"code": "0001",
 		"issue_date": "2024-12-23",
 		"currency": "EUR",
 		"ext": {

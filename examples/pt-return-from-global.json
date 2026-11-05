@@ -4,8 +4,30 @@
 		"uuid": "01a1ab50-6dd6-7e34-a73b-47cc057b4410",
 		"dig": {
 			"alg": "sha256",
-			"val": "c65ed9d9f21d02485f53b2edcb65fd2652cd8caff62a70fed5b60d928365b659"
-		}
+			"val": "12be5a8d831c5f74ef498695439e8c47d5abe742d050d6d97959fe64edce79bf"
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJR2KW4-2"
+			},
+			{
+				"prv": "at-hash",
+				"val": "0vot"
+			},
+			{
+				"prv": "at-hash-full",
+				"val": "0WMEHADswWv5aavY+2VboOclMpPyoQtl7neqfA/7PPvhayQR1OQMok5fFr8N4vi6TGm8ymmHSpfX4QG28jeDJqNuO92v5TbRH78/4lPbcryEmVIgG0x9jXtYPX6RehwYYuUZg1q1XSEYrEGg+zQoPN8VZetI5PxGRWqrkIe8G5w="
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:770013813*B:999999990*C:PT*D:FT*E:N*F:20260403*G:GD SERIES-A 0001*H:AAJFJR2KW4-2*I1:PT*I7:12.30*N:0.00*O:12.30*Q:0vot*R:0"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "0"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/delivery",
@@ -19,6 +41,7 @@
 		"uuid": "01a1ab50-6dd6-7e35-88e7-2ee430e24542",
 		"type": "note",
 		"series": "GD SERIES-A",
+		"code": "0001",
 		"issue_date": "2026-04-03",
 		"currency": "EUR",
 		"preceding": [
@@ -136,5 +159,8 @@
 				"text": "Surplus from global waybill GT SERIES-A/1 returned to depot."
 			}
 		]
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5OTAtN2M0NC04YjE5LTZhYTMyZmE1NDg5NiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRkNi03ZTM0LWE3M2ItNDdjYzA1N2I0NDEwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjEyYmU1YThkODMxYzVmNzRlZjQ5ODY5NTQzOWU4YzQ3ZDVhYmU3NDJkMDUwZDZkOTc5NTlmZTY0ZWRjZTc5YmYifSwiaWF0IjoxNzkzODc3MTc0fQ.vFSIhXYMLPCY-Mey9kKGACCxveod39Nn2HXckDZklN8QwEKTkqiS-ato7gbJDV3r-NIe-h-CYVe4Hx-NNcpbnw"
+	]
 }

@@ -102,7 +102,11 @@ here, writes `examples/<country>-<name>.json`, records what it imported in
 `examples/docs-examples.txt` and removes imports the docs dropped. It skips a
 docs example whose name an example of gobl.html's own already uses, and
 reports one the current gobl rules reject, so both show up as work for the
-docs.
+docs. A document whose addon has the tax agency stamp it (VERI\*FACTU,
+TicketBAI, AT, SAT, KSeF, ZATCA, myDATA, DIAN, ARCA, Smart Receipts) gets
+sample stamps shaped like the real ones, a code if it has none, and a
+signature from a throwaway key, so the previewer shows the QR codes and
+references the final PDF carries.
 
 ### Testing
 

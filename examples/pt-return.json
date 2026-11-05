@@ -4,8 +4,30 @@
 		"uuid": "01a1ab50-6dd8-764d-94a9-e4ab1d8f21c1",
 		"dig": {
 			"alg": "sha256",
-			"val": "fa543d8e052b4f7e8673fdf483d6568fc2b3ec47137d56ad6f2a04117e9a529d"
-		}
+			"val": "ab27884a11079bbf62df87408b7ef3f3f79e8520abf48566fd0fcb9248e3f7f0"
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJR2KW4-2"
+			},
+			{
+				"prv": "at-hash",
+				"val": "0vot"
+			},
+			{
+				"prv": "at-hash-full",
+				"val": "0WMEHADswWv5aavY+2VboOclMpPyoQtl7neqfA/7PPvhayQR1OQMok5fFr8N4vi6TGm8ymmHSpfX4QG28jeDJqNuO92v5TbRH78/4lPbcryEmVIgG0x9jXtYPX6RehwYYuUZg1q1XSEYrEGg+zQoPN8VZetI5PxGRWqrkIe8G5w="
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:770013813*B:999999990*C:PT*D:FT*E:N*F:20260403*G:GD SERIES-A 0001*H:AAJFJR2KW4-2*I1:PT*I7:18.45*N:0.00*O:18.45*Q:0vot*R:0"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "0"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/delivery",
@@ -19,6 +41,7 @@
 		"uuid": "01a1ab50-6dd8-7651-b2f5-b0c071ab69ee",
 		"type": "note",
 		"series": "GD SERIES-A",
+		"code": "0001",
 		"issue_date": "2026-04-03",
 		"currency": "EUR",
 		"despatch_date": "2026-04-03",
@@ -145,5 +168,8 @@
 				"text": "Goods returned by the customer."
 			}
 		]
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5OTItN2U5ZS05ZGU4LTk1NTU4MjhmMzJkYiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRkOC03NjRkLTk0YTktZTRhYjFkOGYyMWMxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImFiMjc4ODRhMTEwNzliYmY2MmRmODc0MDhiN2VmM2YzZjc5ZTg1MjBhYmY0ODU2NmZkMGZjYjkyNDhlM2Y3ZjAifSwiaWF0IjoxNzkzODc3MTc0fQ.KRrt9dza8ya6oGBW9qm3Pg7zuwSa0CWnqz8uxHHmcmbNjzw3w3pRuzHKGdTT8n3M-5hV3Hwz3Yt_eOetz9aO1w"
+	]
 }

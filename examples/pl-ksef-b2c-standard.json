@@ -5,7 +5,17 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "89b4c3a94dc5ecefe202bb55dbf377646af9d0fa1f21f0e321b38c8b0569e6ee"
-		}
+		},
+		"stamps": [
+			{
+				"prv": "favat-ksef-number",
+				"val": "9551893317-20260204-D1984449A6BC-02"
+			},
+			{
+				"prv": "favat-qr",
+				"val": "https://ksef-test.mf.gov.pl/web/verify/9551893317-20260204-D1984449A6BC-02/8KCfB1Sa5Jc4Gg6ctK4HKdwnRwK%2BdxT1ScymF6m5d18%3D"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -144,5 +154,8 @@
 			"total_with_tax": "2040.00",
 			"payable": "2040.00"
 		}
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5NGMtNzg5Yi05MGJlLTE0OTQyYmMwODQ3OSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhZi03NzhkLWFhNWItN2NhMjkzZTU3NTk5IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6Ijg5YjRjM2E5NGRjNWVjZWZlMjAyYmI1NWRiZjM3NzY0NmFmOWQwZmExZjIxZjBlMzIxYjM4YzhiMDU2OWU2ZWUifSwiaWF0IjoxNzkzODc3MTc0fQ.pG93ozM9HkEiFcfFJtzNGM3QhgPWaqoCLRDMoT9EXMetu_Wa8TzLERq99w_axYaycW9ND8lw4J-7kBV0VzUBCg"
+	]
 }

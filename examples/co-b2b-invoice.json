@@ -5,7 +5,29 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "985064b993ca9c276f0eb9f293c58c458f1f84dcddfaed0bb5414b9eff9147a9"
-		}
+		},
+		"stamps": [
+			{
+				"prv": "dian-cude",
+				"val": "50d06ed88fb3f4f2d4a903c613db4d7b8bc550df7087d35091860dcf78a4a920846b2d16dd15ef4b8438e66f4857b887"
+			},
+			{
+				"prv": "dian-qr",
+				"val": "NumFac: 990001001\nFecFac: 2026-10-13\nNitFac: 9005590882\nValTotal: 238000.00\nCUFE: 50d06ed88fb3f4f2d4a903c613db4d7b8bc550df7087d35091860dcf78a4a920846b2d16dd15ef4b8438e66f4857b887\nhttps://catalogo-vpfe-hab.dian.gov.co/document/searchqr?documentkey=50d06ed88fb3f4f2d4a903c613db4d7b8bc550df7087d35091860dcf78a4a920846b2d16dd15ef4b8438e66f4857b887"
+			},
+			{
+				"prv": "dian-provider",
+				"val": "EMPRESA DE DIVULGACIONES Y ASESORIAS ECA SAS"
+			},
+			{
+				"prv": "dian-provider-nit",
+				"val": "860517022"
+			},
+			{
+				"prv": "dian-software",
+				"val": "PLEMSI"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -124,5 +146,8 @@
 			"total_with_tax": "238000.00",
 			"payable": "238000.00"
 		}
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4YmItNzk4MS1iM2I3LTdiN2I1NjI1OGUyNiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQxNC03NTM3LThjN2MtOWZhNTk2YTU4NmEzIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6Ijk4NTA2NGI5OTNjYTljMjc2ZjBlYjlmMjkzYzU4YzQ1OGYxZjg0ZGNkZGZhZWQwYmI1NDE0YjllZmY5MTQ3YTkifSwiaWF0IjoxNzkzODc3MTc0fQ.4Baj39TJSlerBk9oyrIZZuhoxEMt9WmSOZ7X6eLh45clX-JWFWfNbdn7ZuKiB4Ykl_nivAzVZvnnBtuHYHTrQg"
+	]
 }

@@ -5,7 +5,29 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "6ce25496d24cf77272407b7bc662ac4e87f03cb50fce52794dadb9e9a85399cb"
-		}
+		},
+		"stamps": [
+			{
+				"prv": "iapr-qr",
+				"val": "https://test.vs.gr/iv/invoice/10cc0a7d90a1c9470190a634ec19073e"
+			},
+			{
+				"prv": "iapr-hash",
+				"val": "792F62ADE1B5E4CCBC8FFA787258CC68E90B817B"
+			},
+			{
+				"prv": "iapr-mark",
+				"val": "400001929816893"
+			},
+			{
+				"prv": "iapr-provider",
+				"val": "ΙΛΥΔΑ ΠΛΗΡΟΦΟΡΙΚΗ Α.Ε. — https://test.vs.gr"
+			},
+			{
+				"prv": "iapr-uid",
+				"val": "EB1CF2137764B0D534885F361365C39A32C0205A"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -119,5 +141,8 @@
 			"total_with_tax": "285.20",
 			"payable": "285.20"
 		}
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MWYtNzAxMy05NWExLWQ4ZmM5ODhjNGE1OCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ4NC03MTY3LTg3YWEtNmVkMDhhOWJkMTAxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjZjZTI1NDk2ZDI0Y2Y3NzI3MjQwN2I3YmM2NjJhYzRlODdmMDNjYjUwZmNlNTI3OTRkYWRiOWU5YTg1Mzk5Y2IifSwiaWF0IjoxNzkzODc3MTc0fQ.3UeWpu7HuTIAq95Q-4wuidESv7P6Rdz5Fe8dQcEZk05yEUjITph_rQsQyXqrBGP5Du2bgHxuskd7kn-XNMXuig"
+	]
 }

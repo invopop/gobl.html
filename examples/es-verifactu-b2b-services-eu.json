@@ -5,7 +5,13 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "a33e2b1062d6cd4edb0b22ed8c331b3c478c26bc2683950b46bde67567637e66"
-		}
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-sett/000001\u0026fecha=13-11-2024\u0026importe=1800.00"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -104,5 +110,8 @@
 				"text": "This is a sample invoice with reverse charge"
 			}
 		]
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4ZjYtNzI1OS1hNzc3LTg1YWJlZDRkMDgwNCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1NS03ZTIxLWJhYjEtOGRmMzdjYTVmMDZmIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImEzM2UyYjEwNjJkNmNkNGVkYjBiMjJlZDhjMzMxYjNjNDc4YzI2YmMyNjgzOTUwYjQ2YmRlNjc1Njc2MzdlNjYifSwiaWF0IjoxNzkzODc3MTc0fQ.Atl6m5OlDwH-KmLY6BFsGN_RfHUAKOe_jggKuhSon8Imrqy9lp-wYzI7Fgv3ziSTt4SvFWwjaHk2ZIl2DTKV1w"
+	]
 }

@@ -5,7 +5,17 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "577056a862f0b4caf018137fa4c8767bd7a55bb2a326127520ef79d1a3458fa1"
-		}
+		},
+		"stamps": [
+			{
+				"prv": "favat-ksef-number",
+				"val": "9876543210-20260215-D1984449A6BC-02"
+			},
+			{
+				"prv": "favat-qr",
+				"val": "https://ksef-test.mf.gov.pl/web/verify/9876543210-20260215-D1984449A6BC-02/8KCfB1Sa5Jc4Gg6ctK4HKdwnRwK%2BdxT1ScymF6m5d18%3D"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -145,5 +155,8 @@
 			"advance": "615.00",
 			"due": "615.00"
 		}
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5NDctN2U1MC1iZGU0LTRjMzFlZDY0ZmJkOCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhZC03MmFiLWE3NzgtN2FkMzZmZjVkNzYzIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjU3NzA1NmE4NjJmMGI0Y2FmMDE4MTM3ZmE0Yzg3NjdiZDdhNTViYjJhMzI2MTI3NTIwZWY3OWQxYTM0NThmYTEifSwiaWF0IjoxNzkzODc3MTc0fQ.Gw-LoawAF95TxkaA8bxlGTZ2YnWG55x99cYKr86jqrHkSnywg5hIwar0zcSBKW1nndTdnlzGNXo8CX3VeHAIJA"
+	]
 }

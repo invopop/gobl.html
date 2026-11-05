@@ -4,8 +4,14 @@
 		"uuid": "01a1ab50-6d5e-7f2a-9843-cea31e3d660c",
 		"dig": {
 			"alg": "sha256",
-			"val": "82ac2301a88a505ff32d60507dfbc808abc8e77986805bccd62338542d9f9b3a"
-		}
+			"val": "abdf52f7a4e329538a61de41d66bd4a53356a31f61c1fca38964dfc823f9cf9f"
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B24830515\u0026numserie=FC-0001\u0026fecha=26-02-2026\u0026importe=605.00"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -19,6 +25,7 @@
 		"uuid": "01a1ab50-6d5e-7f2e-a7a4-0aca82a72dd8",
 		"type": "standard",
 		"series": "FC",
+		"code": "0001",
 		"issue_date": "2026-02-26",
 		"currency": "EUR",
 		"preceding": [
@@ -110,5 +117,8 @@
 			"total_with_tax": "605.00",
 			"payable": "605.00"
 		}
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MGEtNzAwYi1iMDdkLTgyNjVlNjljMWY4ZSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1ZS03ZjJhLTk4NDMtY2VhMzFlM2Q2NjBjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImFiZGY1MmY3YTRlMzI5NTM4YTYxZGU0MWQ2NmJkNGE1MzM1NmEzMWY2MWMxZmNhMzg5NjRkZmM4MjNmOWNmOWYifSwiaWF0IjoxNzkzODc3MTc0fQ.ktOPLcianqjyT5mNTRHs3C2ZSfuz4829pGjAHAzBblPl12tY6VBlJOJKDVj_Gzk2j3dax0N6BIkHv92czimO7w"
+	]
 }

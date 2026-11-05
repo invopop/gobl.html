@@ -5,7 +5,13 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "dbb58d166a8cd01a6946ff255a58bc546fb886a2c8f4fc2f64c765c8061af9b7"
-		}
+		},
+		"stamps": [
+			{
+				"prv": "zatca-qr",
+				"val": "AS3Yp9mF2YrZitmF2YjYsyDYp9mE2LnYsdio2YrYqSDZhNmE2YHYudin2YTZitin2Kog2KfZhNiq2LHZgdmK2YfZitipAg8zMTE1ODgxMDcyMDAwMDMDEzIwMjUtMDktMjVUMDA6MDA6MDBaBAY5NDguNzUFBjEyMy43NQ=="
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -140,5 +146,8 @@
 			"total_with_tax": "2070.00",
 			"payable": "2070.00"
 		}
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5N2ItNzFiOS04YzBmLThkMmUzMDcyYTRlMSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRjOC03ZGZlLWE2OGYtZDY5Y2ZkMjYxNzY0IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImRiYjU4ZDE2NmE4Y2QwMWE2OTQ2ZmYyNTVhNThiYzU0NmZiODg2YTJjOGY0ZmMyZjY0Yzc2NWM4MDYxYWY5YjcifSwiaWF0IjoxNzkzODc3MTc0fQ.e9owtVUFdly_6DA_4XkrAar_go3eYzQgVbVmUxEfbMVqDA2kA6n-24HTlmF18e7FL8UsvyJZpTQY_PYw7f63Wg"
+	]
 }

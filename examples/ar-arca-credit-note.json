@@ -4,8 +4,22 @@
 		"uuid": "01a1ab50-6cf2-7c35-8c75-8453e2e4ed35",
 		"dig": {
 			"alg": "sha256",
-			"val": "15d7d4903f03ceb665d490c5175b5a77caf0eda9dd2d87d7fd76e8119d27487f"
-		}
+			"val": "574151150f05cf8e644097206e9cb0157ba492956b525927083552325e89ec34"
+		},
+		"stamps": [
+			{
+				"prv": "arca-cae",
+				"val": "1234567891"
+			},
+			{
+				"prv": "arca-cae-expiry",
+				"val": "2025-01-22"
+			},
+			{
+				"prv": "arca-qr",
+				"val": "https://www.afip.gob.ar/fe/qr/conceptos-generales.asp"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -16,6 +30,7 @@
 		"uuid": "3aea7b56-59d8-4beb-90bd-f8f280d852a1",
 		"type": "credit-note",
 		"series": "1",
+		"code": "0001",
 		"issue_date": "2025-01-22",
 		"currency": "ARS",
 		"preceding": [
@@ -135,5 +150,8 @@
 			"total_with_tax": "1089000.00",
 			"payable": "1089000.00"
 		}
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4OWQtNzllZS1iZGIwLTU5YmRmODI2NzAwYyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmNmMi03YzM1LThjNzUtODQ1M2UyZTRlZDM1IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjU3NDE1MTE1MGYwNWNmOGU2NDQwOTcyMDZlOWNiMDE1N2JhNDkyOTU2YjUyNTkyNzA4MzU1MjMyNWU4OWVjMzQifSwiaWF0IjoxNzkzODc3MTc0fQ.iiXoEXQrg9SNVpKg76EtyCYqrG3is7nmU7s_CN70oardblxUgRXELEyqzGx1WqRoN9_Apnl1mjXUyQb1IkcXjw"
+	]
 }

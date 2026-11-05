@@ -6,6 +6,12 @@
 			"alg": "sha256",
 			"val": "912a2741b24d3dbee4fc044665cbd57d7e7bcdc69f57eb4c931ee96516c771a5"
 		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=INV-PP000003\u0026fecha=03-04-2025\u0026importe=1740.00"
+			}
+		],
 		"from": "iso6523-actorid-upis::9920:ESB85905495",
 		"to": "iso6523-actorid-upis::0208:0316597904"
 	},
@@ -155,5 +161,8 @@
 			"total_with_tax": "1740.00",
 			"payable": "1740.00"
 		}
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4ZGMtNzQ5Zi05ZDY5LWMyZjQ0ZTBjZmE5OCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQzZS03MmU2LTg3MGMtNzYxMzYzNWVkN2ExIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjkxMmEyNzQxYjI0ZDNkYmVlNGZjMDQ0NjY1Y2JkNTdkN2U3YmNkYzY5ZjU3ZWI0YzkzMWVlOTY1MTZjNzcxYTUifSwiaWF0IjoxNzkzODc3MTc0fQ.zEICr_LdnPaBgNBGPkOhhSeKD97I8QNCLv3mhGPhAUb-eCI7yuU_q6uC3BJ9JH30RJwEWxgQVoT6HmV1qwKYPA"
+	]
 }

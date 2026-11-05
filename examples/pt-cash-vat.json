@@ -4,7 +4,7 @@
 		"uuid": "01a1ab50-6dd2-74de-8da6-3dc65b72e768",
 		"dig": {
 			"alg": "sha256",
-			"val": "2bedb1eea86cb3ea8238830f9c9728cc779dcbf1659dd4f58a68168286b5b6b1"
+			"val": "324bf95a8055defce7e1a8f15242ec7fd7dd78f47c2a7a3dc903f7ca69661aec"
 		}
 	},
 	"doc": {
@@ -19,6 +19,7 @@
 		"uuid": "01a1ab50-6dd2-74e2-8db0-ed70e5b06055",
 		"type": "receipt",
 		"series": "RC SERIES-A",
+		"code": "0001",
 		"issue_date": "2024-12-23",
 		"currency": "EUR",
 		"ext": {

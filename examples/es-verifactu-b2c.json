@@ -4,8 +4,14 @@
 		"uuid": "01a1ab50-6d59-77eb-94cf-17bc12edec34",
 		"dig": {
 			"alg": "sha256",
-			"val": "72cec7a19c29093ff16c8669678f1e4295866a4bca2e9d16c2bc3330a1a567f9"
-		}
+			"val": "7389a6383a2fc31bb77a7e29e704b6d5caa59f15774a6cd395a76a442dd7a980"
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-0001\u0026fecha=13-11-2024\u0026importe=2178.00"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -19,6 +25,7 @@
 		"uuid": "01a1ab50-6d59-77ef-b2f2-f94d537469d1",
 		"type": "standard",
 		"series": "SAMPLE",
+		"code": "0001",
 		"issue_date": "2024-11-13",
 		"currency": "EUR",
 		"tax": {
@@ -102,5 +109,8 @@
 				"text": "This is a sample invoice with a standard tax"
 			}
 		]
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MDAtNzUyOC1iNmMwLTJlZjhjOTFjOTIzNyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1OS03N2ViLTk0Y2YtMTdiYzEyZWRlYzM0IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjczODlhNjM4M2EyZmMzMWJiNzdhN2UyOWU3MDRiNmQ1Y2FhNTlmMTU3NzRhNmNkMzk1YTc2YTQ0MmRkN2E5ODAifSwiaWF0IjoxNzkzODc3MTc0fQ.lEJkwT12RkR5HTkThudUTUuGohJbO_qA1w0mK3j2Sqvmkng_Q1FSAQXDt2PUIimbHTl_jj5ghG6t8-2BQ870xg"
+	]
 }

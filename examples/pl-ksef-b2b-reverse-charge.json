@@ -5,7 +5,17 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "b66d6c6075940d383d5f99a89752726b2929c78c371b6e4c624177f8c9b270fc"
-		}
+		},
+		"stamps": [
+			{
+				"prv": "favat-ksef-number",
+				"val": "9876543210-20260120-D1984449A6BC-02"
+			},
+			{
+				"prv": "favat-qr",
+				"val": "https://ksef-test.mf.gov.pl/web/verify/9876543210-20260120-D1984449A6BC-02/8KCfB1Sa5Jc4Gg6ctK4HKdwnRwK%2BdxT1ScymF6m5d18%3D"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -111,5 +121,8 @@
 				"text": "Reverse charge mechanism applies - VAT to be accounted for by the customer."
 			}
 		]
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5NDYtNzMxNS05NjJjLTUxYmZiOTVhZjc5OCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhYy03MGQ2LWE5NWUtYjc2NjUxZjlhNmU0IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImI2NmQ2YzYwNzU5NDBkMzgzZDVmOTlhODk3NTI3MjZiMjkyOWM3OGMzNzFiNmU0YzYyNDE3N2Y4YzliMjcwZmMifSwiaWF0IjoxNzkzODc3MTc0fQ.MAkjydDCR5EPYr6w1mTm5UPNw0Simcrjeu4CEKQBYWqheJ4TE379YLcEmc5_iL2U9Xp5oXrUnhbu_VhSRaJoeg"
+	]
 }

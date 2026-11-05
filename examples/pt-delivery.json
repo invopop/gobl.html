@@ -4,8 +4,30 @@
 		"uuid": "01a1ab50-6dd5-7b4a-b9ff-2a5accd0f102",
 		"dig": {
 			"alg": "sha256",
-			"val": "bd041db2f032b633ff752e3fe51331d04021b7e54c5a8a15d3aa821e59885a70"
-		}
+			"val": "99eb30f9eace8404335c9b0c473ce2cca3ab2989d964fd5fe9ac95b0ff722be8"
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJR2KW4-2"
+			},
+			{
+				"prv": "at-hash",
+				"val": "0vot"
+			},
+			{
+				"prv": "at-hash-full",
+				"val": "0WMEHADswWv5aavY+2VboOclMpPyoQtl7neqfA/7PPvhayQR1OQMok5fFr8N4vi6TGm8ymmHSpfX4QG28jeDJqNuO92v5TbRH78/4lPbcryEmVIgG0x9jXtYPX6RehwYYuUZg1q1XSEYrEGg+zQoPN8VZetI5PxGRWqrkIe8G5w="
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:770013813*B:999999990*C:PT*D:FT*E:N*F:20260401*G:GR SERIES-A 0001*H:AAJFJR2KW4-2*I1:PT*I7:61.50*N:0.00*O:61.50*Q:0vot*R:0"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "0"
+			}
+		]
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/delivery",
@@ -16,6 +38,7 @@
 		"uuid": "01a1ab50-6dd5-7b4e-b76b-5ecdb929c76c",
 		"type": "note",
 		"series": "GR SERIES-A",
+		"code": "0001",
 		"issue_date": "2026-04-01",
 		"currency": "EUR",
 		"despatch_date": "2026-04-02",
@@ -142,5 +165,8 @@
 				"text": "Delivery note for products"
 			}
 		]
-	}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5OGUtNzI4NC1iZGRjLTA0YmY2NzkxZGRiNSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRkNS03YjRhLWI5ZmYtMmE1YWNjZDBmMTAyIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6Ijk5ZWIzMGY5ZWFjZTg0MDQzMzVjOWIwYzQ3M2NlMmNjYTNhYjI5ODlkOTY0ZmQ1ZmU5YWM5NWIwZmY3MjJiZTgifSwiaWF0IjoxNzkzODc3MTc0fQ.kCKPcHizpzbarRQ0Pn_oLBACJdfi3PMK17MYUWO2kDDsFHSjPskM7kxdBVkf-UJbO3ckF9BfDrNWKjQAj-NjMw"
+	]
 }
