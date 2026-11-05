@@ -219,6 +219,7 @@ section.lines {
     order: 5;
     padding-top: 6mm;
     padding-bottom: 0mm;
+    line-height: 1.3;
 }
 section.lines h2 {
     display: none;
@@ -271,6 +272,7 @@ section.lines .label {
 section.lines .subline {
     display: block;
     font-size: 0.85em;
+    color: #6b7280;
 }
 section.lines .subline .label {
     font-weight: 400;
@@ -303,7 +305,6 @@ section.lines .charge-content .reason {
     max-width: 28mm;
     margin-left: auto;
     white-space: normal;
-    overflow-wrap: anywhere;
     font-size: 0.85em;
     font-weight: 450;
     color: #6b7280;
