@@ -1,0 +1,169 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab5e-5daf-7be2-93ec-fa38f27f0add",
+		"dig": {
+			"alg": "sha256",
+			"val": "c2bdfb78953ce2f8c65edd8f763b4e439cffccae88685321ed397170428ed883"
+		},
+		"from": "iso6523-actorid-upis::0184:16356700",
+		"to": "iso6523-actorid-upis::0088:5798009883735"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "DK",
+		"$addons": [
+			"eu-en16931-v2017",
+			"dk-oioubl-v2"
+		],
+		"uuid": "01a1ab5e-5daf-7be3-b53c-d80f11b4ca1c",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "0042",
+		"issue_date": "2026-08-01",
+		"currency": "DKK",
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Nordlys Software ApS",
+			"tax_id": {
+				"country": "DK",
+				"code": "16356700"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"code": "16356700"
+				}
+			],
+			"people": [
+				{
+					"name": {
+						"given": "Mette",
+						"surname": "Kristensen"
+					},
+					"role": "Director"
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0184:16356700"
+				}
+			],
+			"addresses": [
+				{
+					"num": "24",
+					"street": "Vesterbrogade",
+					"locality": "København V",
+					"code": "1620",
+					"country": "DK"
+				}
+			],
+			"emails": [
+				{
+					"addr": "faktura@nordlys.dk"
+				}
+			]
+		},
+		"customer": {
+			"name": "Den Lille Skole",
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0088:5798009883735"
+				}
+			],
+			"addresses": [
+				{
+					"num": "10",
+					"street": "Fredericiavej",
+					"locality": "Helsingør",
+					"code": "3000",
+					"country": "DK"
+				}
+			],
+			"emails": [
+				{
+					"addr": "faktura@dls.dk"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Software licence",
+					"price": "150.00",
+					"unit": "item"
+				},
+				"sum": "3000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "25.0%"
+					}
+				],
+				"total": "3000.00"
+			}
+		],
+		"ordering": {
+			"purchases": [
+				{
+					"code": "5002701"
+				}
+			]
+		},
+		"payment": {
+			"terms": {
+				"due_dates": [
+					{
+						"date": "2026-08-31",
+						"amount": "3750.00",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer+sepa",
+				"credit_transfer": [
+					{
+						"iban": "DK5000400440116243"
+					}
+				],
+				"ext": {
+					"untdid-payment-means": "58"
+				}
+			}
+		},
+		"totals": {
+			"sum": "3000.00",
+			"total": "3000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "3000.00",
+								"percent": "25.0%",
+								"amount": "750.00"
+							}
+						],
+						"amount": "750.00"
+					}
+				],
+				"sum": "750.00"
+			},
+			"tax": "750.00",
+			"total_with_tax": "3750.00",
+			"payable": "3750.00"
+		}
+	}
+}

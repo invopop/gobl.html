@@ -35,6 +35,13 @@ de-peppol-zero-rate.json	snippets/invoices/de/peppol-zero-rate.mdx
 de-peppol-zugferd-b2b.json	snippets/invoices/de/peppol-zugferd-b2b.mdx
 de-zugferd-b2b-additional.json	snippets/invoices/de/zugferd-b2b-additional.mdx
 de-zugferd-b2c.json	snippets/invoices/de/zugferd-b2c.mdx
+dk-b2b-invoice.json	snippets/invoices/dk/b2b-invoice.mdx
+dk-b2g-invoice.json	snippets/invoices/dk/b2g-invoice.mdx
+dk-credit-note.json	snippets/invoices/dk/credit-note.mdx
+dk-export.json	snippets/invoices/dk/export.mdx
+dk-intra-community.json	snippets/invoices/dk/intra-community.mdx
+dk-reverse-charge.json	snippets/invoices/dk/reverse-charge.mdx
+dk-zero-rate.json	snippets/invoices/dk/zero-rate.mdx
 es-facturae-b2g.json	snippets/invoices/es/facturae-b2g.mdx
 es-facturae-credit-note.json	snippets/invoices/es/facturae-credit-note.mdx
 es-facturae-face.json	snippets/invoices/es/facturae-face.mdx
@@ -46,8 +53,10 @@ es-peppol-vf-reverse-charge.json	snippets/invoices/es/peppol-vf-reverse-charge.m
 es-peppol-vf-standard.json	snippets/invoices/es/peppol-vf-standard.mdx
 es-peppol-zero-rate.json	snippets/invoices/es/peppol-zero-rate.mdx
 es-sii-b2b-goods-eu.json	snippets/invoices/es/sii-b2b-goods-eu.mdx
+es-sii-b2b-goods-no-eu.json	snippets/invoices/es/sii-b2b-goods-no-eu.mdx
 es-sii-b2b-received.json	snippets/invoices/es/sii-b2b-received.mdx
 es-sii-b2b-services-eu.json	snippets/invoices/es/sii-b2b-services-eu.mdx
+es-sii-b2b-services-no-eu.json	snippets/invoices/es/sii-b2b-services-no-eu.mdx
 es-sii-b2b.json	snippets/invoices/es/sii-b2b.mdx
 es-sii-b2c-oss.json	snippets/invoices/es/sii-b2c-oss.mdx
 es-sii-b2c.json	snippets/invoices/es/sii-b2c.mdx
@@ -59,7 +68,9 @@ es-sii-replacement.json	snippets/invoices/es/sii-replacement.mdx
 es-ticketbai-b2b.json	snippets/invoices/es/ticketbai-b2b.mdx
 es-ticketbai-b2c.json	snippets/invoices/es/ticketbai-b2c.mdx
 es-verifactu-b2b-goods-eu.json	snippets/invoices/es/verifactu-b2b-goods-eu.mdx
+es-verifactu-b2b-goods-no-eu.json	snippets/invoices/es/verifactu-b2b-goods-no-eu.mdx
 es-verifactu-b2b-services-eu.json	snippets/invoices/es/verifactu-b2b-services-eu.mdx
+es-verifactu-b2b-services-no-eu.json	snippets/invoices/es/verifactu-b2b-services-no-eu.mdx
 es-verifactu-b2b.json	snippets/invoices/es/verifactu-b2b.mdx
 es-verifactu-b2c-oss.json	snippets/invoices/es/verifactu-b2c-oss.mdx
 es-verifactu-b2c.json	snippets/invoices/es/verifactu-b2c.mdx

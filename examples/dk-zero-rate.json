@@ -1,0 +1,162 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab5e-5db6-796e-984d-38371e981822",
+		"dig": {
+			"alg": "sha256",
+			"val": "064cf40811dbf773f2f14a81a29187cb0a02590981f2afdb0e5e43618984ce8e"
+		},
+		"from": "iso6523-actorid-upis::0184:16356700",
+		"to": "iso6523-actorid-upis::0184:12345674"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "DK",
+		"$addons": [
+			"eu-en16931-v2017",
+			"dk-oioubl-v2"
+		],
+		"uuid": "01a1ab5e-5db6-7971-81db-9641b61494e6",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "0045",
+		"issue_date": "2026-08-01",
+		"currency": "DKK",
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Nordlys Software ApS",
+			"tax_id": {
+				"country": "DK",
+				"code": "16356700"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"code": "16356700"
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0184:16356700"
+				}
+			],
+			"addresses": [
+				{
+					"num": "24",
+					"street": "Vesterbrogade",
+					"locality": "København V",
+					"code": "1620",
+					"country": "DK"
+				}
+			],
+			"emails": [
+				{
+					"addr": "faktura@nordlys.dk"
+				}
+			]
+		},
+		"customer": {
+			"name": "Havnens Byggemarked A/S",
+			"tax_id": {
+				"country": "DK",
+				"code": "12345674"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"code": "12345674"
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0184:12345674"
+				}
+			],
+			"addresses": [
+				{
+					"num": "3",
+					"street": "Havnegade",
+					"locality": "Aarhus C",
+					"code": "8000",
+					"country": "DK"
+				}
+			],
+			"emails": [
+				{
+					"addr": "faktura@havnens-byggemarked.dk"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "250",
+				"item": {
+					"name": "Morgenavisen daily newspaper",
+					"price": "12.00",
+					"unit": "item"
+				},
+				"sum": "3000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "zero",
+						"percent": "0%"
+					}
+				],
+				"total": "3000.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"due_dates": [
+					{
+						"date": "2026-08-31",
+						"amount": "3000.00",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer+sepa",
+				"credit_transfer": [
+					{
+						"iban": "DK5000400440116243"
+					}
+				],
+				"ext": {
+					"untdid-payment-means": "58"
+				}
+			}
+		},
+		"totals": {
+			"sum": "3000.00",
+			"total": "3000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "zero",
+								"base": "3000.00",
+								"percent": "0%",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "3000.00",
+			"payable": "3000.00"
+		}
+	}
+}

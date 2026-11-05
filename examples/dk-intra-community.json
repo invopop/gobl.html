@@ -1,0 +1,160 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab5e-5db3-758d-ad02-f481ff30854f",
+		"dig": {
+			"alg": "sha256",
+			"val": "3d5a7676949d9b7ed8c11b88eef25912aa02aa05f879f17e04d235ea6be404a9"
+		},
+		"from": "iso6523-actorid-upis::0184:16356700",
+		"to": "iso6523-actorid-upis::0088:4304984000008"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "DK",
+		"$addons": [
+			"eu-en16931-v2017",
+			"dk-oioubl-v2"
+		],
+		"uuid": "01a1ab5e-5db3-758e-a469-ceb5314b9f25",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "0047",
+		"issue_date": "2026-08-01",
+		"currency": "DKK",
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Nordlys Software ApS",
+			"tax_id": {
+				"country": "DK",
+				"code": "16356700"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"code": "16356700"
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0184:16356700"
+				}
+			],
+			"addresses": [
+				{
+					"num": "24",
+					"street": "Vesterbrogade",
+					"locality": "København V",
+					"code": "1620",
+					"country": "DK"
+				}
+			],
+			"emails": [
+				{
+					"addr": "faktura@nordlys.dk"
+				}
+			]
+		},
+		"customer": {
+			"name": "Rheinwerk Handel GmbH",
+			"tax_id": {
+				"country": "DE",
+				"code": "111111125"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0088:4304984000008"
+				}
+			],
+			"addresses": [
+				{
+					"num": "18",
+					"street": "Speditionstraße",
+					"locality": "Düsseldorf",
+					"code": "40221",
+					"country": "DE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "rechnung@rheinwerk-handel.de"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "40",
+				"item": {
+					"name": "Industrial valves",
+					"price": "320.00",
+					"unit": "item"
+				},
+				"sum": "12800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "intra-community",
+						"ext": {
+							"cef-vatex": "VATEX-EU-IC"
+						}
+					}
+				],
+				"total": "12800.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"due_dates": [
+					{
+						"date": "2026-08-31",
+						"amount": "12800.00",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer+sepa",
+				"credit_transfer": [
+					{
+						"iban": "DK5000400440116243"
+					}
+				],
+				"ext": {
+					"untdid-payment-means": "58"
+				}
+			}
+		},
+		"totals": {
+			"sum": "12800.00",
+			"total": "12800.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "intra-community",
+								"ext": {
+									"cef-vatex": "VATEX-EU-IC"
+								},
+								"base": "12800.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "12800.00",
+			"payable": "12800.00"
+		}
+	}
+}
