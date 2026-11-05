@@ -11,7 +11,7 @@ import (
 )
 
 func TestParamsOptions(t *testing.T) {
-	env, err := loadExample("es-ticketbai-invoice.json")
+	env, err := loadExample("es-tbai-invoice.json")
 	require.NoError(t, err)
 
 	t.Run("nil params render defaults", func(t *testing.T) {

@@ -1,25 +1,11 @@
 {
 	"$schema": "https://gobl.org/draft-0/envelope",
 	"head": {
-		"uuid": "01a1ab50-6cf9-74c2-bbd2-7a2cf286be43",
+		"uuid": "9b62fd30-3b38-11ef-be56-0242ac120002",
 		"dig": {
 			"alg": "sha256",
-			"val": "8da51718e226f9b4cc523c92f20499c1fdc57b84fce4ee52867fd8da315a61de"
-		},
-		"stamps": [
-			{
-				"prv": "arca-cae",
-				"val": "1234567891"
-			},
-			{
-				"prv": "arca-cae-expiry",
-				"val": "2025-02-01"
-			},
-			{
-				"prv": "arca-qr",
-				"val": "https://www.afip.gob.ar/fe/qr/conceptos-generales.asp"
-			}
-		]
+			"val": "77f7c58c54c4f51d56cada73d0a5379c678bd7bbbf27ba708ae913d7cd46d39c"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -27,10 +13,10 @@
 		"$addons": [
 			"ar-arca-v4"
 		],
-		"uuid": "5cfa9d78-7be0-6dfd-b2df-0a0402fa074c",
+		"uuid": "1c5f531e-d146-c353-b835-6a6068cf5dc3",
 		"type": "standard",
 		"series": "1",
-		"code": "0001",
+		"code": "00000001",
 		"issue_date": "2025-02-01",
 		"currency": "ARS",
 		"tax": {
@@ -54,15 +40,7 @@
 					"code": "R8400",
 					"country": "AR"
 				}
-			],
-			"emails": [
-				{
-					"addr": "reservas@hotelpatagonia.com.ar"
-				}
-			],
-			"registration": {
-				"other": "Inicio de actividades: 2016-03-01"
-			}
+			]
 		},
 		"customer": {
 			"name": "John Smith",
@@ -89,13 +67,12 @@
 		"lines": [
 			{
 				"i": 1,
-				"quantity": "1",
+				"quantity": "3",
 				"item": {
-					"key": "services",
 					"name": "Hotel sin desayuno",
 					"price": "100.00"
 				},
-				"sum": "100.00",
+				"sum": "300.00",
 				"taxes": [
 					{
 						"cat": "VAT",
@@ -108,7 +85,7 @@
 						}
 					}
 				],
-				"total": "100.00"
+				"total": "300.00"
 			}
 		],
 		"payment": {
@@ -130,13 +107,13 @@
 							}
 						}
 					],
-					"amount": "21.00"
+					"amount": "63.00"
 				}
 			]
 		},
 		"totals": {
-			"sum": "100.00",
-			"total": "100.00",
+			"sum": "300.00",
+			"total": "300.00",
 			"taxes": {
 				"categories": [
 					{
@@ -148,24 +125,21 @@
 									"ar-arca-tourism-item": "1",
 									"ar-arca-vat-rate": "5"
 								},
-								"base": "100.00",
+								"base": "300.00",
 								"percent": "21.0%",
-								"amount": "21.00"
+								"amount": "63.00"
 							}
 						],
-						"amount": "21.00"
+						"amount": "63.00"
 					}
 				],
-				"sum": "21.00"
+				"sum": "63.00"
 			},
-			"tax": "21.00",
-			"total_with_tax": "121.00",
-			"payable": "121.00",
-			"advance": "21.00",
-			"due": "100.00"
+			"tax": "63.00",
+			"total_with_tax": "363.00",
+			"payable": "363.00",
+			"advance": "63.00",
+			"due": "300.00"
 		}
-	},
-	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4YWQtN2QyNy04ODliLWIzNDgzMzlmZmFlZCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmNmOS03NGMyLWJiZDItN2EyY2YyODZiZTQzIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjhkYTUxNzE4ZTIyNmY5YjRjYzUyM2M5MmYyMDQ5OWMxZmRjNTdiODRmY2U0ZWU1Mjg2N2ZkOGRhMzE1YTYxZGUifSwiaWF0IjoxNzkzODc3MTc0fQ.M-egmyf0jg5ira1ZJlRertwXn6MSFLZzhK9wRC36s3nRe0v3Q5etan21wdRkxhj_zihV3t_Q6AUsmt5c4pdqsA"
-	]
+	}
 }

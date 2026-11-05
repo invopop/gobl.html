@@ -25,8 +25,8 @@ func TestScan(t *testing.T) {
 		byFile[e.File] = e
 	}
 
-	inv := byFile["es-ticketbai-invoice.json"]
-	assert.Equal(t, "ticketbai invoice", inv.Title)
+	inv := byFile["es-tbai-invoice.json"]
+	assert.Equal(t, "tbai invoice", inv.Title)
 	assert.Equal(t, "es", inv.Country)
 	assert.Equal(t, "invoice", inv.Kind)
 	assert.Empty(t, inv.Addons)
@@ -34,7 +34,7 @@ func TestScan(t *testing.T) {
 	assert.Equal(t, "EUR", inv.Currency)
 	assert.NotZero(t, inv.Lines)
 
-	cn := byFile["es-ticketbai-credit-note.adjustment.es.json"]
+	cn := byFile["es-tbai-credit-note.adjustment.es.json"]
 	assert.Equal(t, "credit-note", cn.Kind)
 	assert.Equal(t, "es", cn.Locale)
 	assert.True(t, cn.AdjustmentMode)
@@ -46,7 +46,7 @@ func TestScan(t *testing.T) {
 	assert.Equal(t, "party", party.Kind)
 	assert.Equal(t, "es", party.Country)
 
-	pay := byFile["payment-multi-method.json"]
+	pay := byFile["es-receipt-payment-multi-method.json"]
 	assert.Equal(t, "payment", pay.Kind)
 	assert.NotEmpty(t, pay.Country, "country comes from the regime, not the file name")
 
@@ -65,7 +65,7 @@ func TestScan(t *testing.T) {
 	ro := byFile["ro-efactura-invoice.ro.json"]
 	assert.Equal(t, "ro", ro.Locale, "file name implies the Romanian locale")
 	assert.Equal(t, "ro", catalog.LocaleFromName("ro-efactura-invoice.ro.json"))
-	assert.Equal(t, "", catalog.LocaleFromName("es-ticketbai-invoice.json"), "a country prefix is not a locale")
+	assert.Equal(t, "", catalog.LocaleFromName("es-tbai-invoice.json"), "a country prefix is not a locale")
 
 	hidden := byFile["es-verifactu-invoice-full.hidden.json"]
 	assert.Equal(t, strings.Join(catalog.HiddenKeys, ","), hidden.Hide)

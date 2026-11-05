@@ -83,6 +83,18 @@ renderer.
 Each release publishes the build to
 `https://assets.invopop.com/gobl.html/<version>/`.
 
+### Examples
+
+Every file in `examples/` is named `<country>-<format>-<kind>[-<variant>]`,
+with states and locales as dotted infixes: the regime's country, the agency
+or format the addon targets (`verifactu`, `sat`, `at`, `sdi`, `peppol`…),
+the document kind (`invoice`, `credit-note`, `debit-note`, `corrective`,
+`proforma`, `order`, `delivery`, `receipt`, `party`…) and what else sets
+the example apart, as in `es-verifactu-invoice-full` or
+`mx-sat-invoice-b2c.hidden`. `scripts/build-examples.go` derives the name
+from the document, and `-rename` moves every example, with its output,
+source and manifest entry, to its canonical name.
+
 ### Docs examples
 
 Most of `examples/` comes from the GOBL examples published on

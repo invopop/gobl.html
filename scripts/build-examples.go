@@ -45,6 +45,7 @@ import (
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/dsig"
 	"github.com/invopop/gobl/head"
+	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/uuid"
 )
 
@@ -60,10 +61,16 @@ const srcDir = "examples/src"
 func main() {
 	docs := flag.String("docs", "", "checkout of the docs repository to import examples from")
 	prune := flag.Bool("prune", false, "with -docs, remove examples the docs no longer have (kept and reported otherwise)")
+	rename := flag.Bool("rename", false, "rename every example (with its output, source and manifest entry) to its canonical name, then exit")
 	flag.Usage = func() {
 		fmt.Fprintln(os.Stderr, "usage: go run scripts/build-examples.go [-docs DIR] [examples/src/NAME.json ...]")
 	}
 	flag.Parse()
+
+	if *rename {
+		exit(renameAll())
+		return
+	}
 
 	failed := 0
 	if flag.NArg() > 0 {
@@ -82,6 +89,9 @@ func main() {
 	sort.Strings(own)
 	for _, src := range own {
 		out := filepath.Join(examplesDir, filepath.Base(src))
+		if want := canonicalFile(src); want != "" && want != filepath.Base(src) {
+			fmt.Printf("~ %s should be named %s (run with -rename)\n", src, want)
+		}
 		if err := importOne(src, out, jsonSource); err != nil {
 			fmt.Printf("✗ %s: %v\n", src, err)
 			failed++
@@ -118,8 +128,13 @@ func importDocs(docs string, prune bool) int {
 			if !strings.HasPrefix(name, cc+"-") {
 				name = cc + "-" + name
 			}
-			out := name + ".json"
 			rel, _ := filepath.Rel(docs, f)
+			out := name + ".json"
+			if data, err := extractJSON(f); err == nil {
+				if doc, err := gobl.Parse(data); err == nil {
+					out = nameFor(doc, nil, name) + ".json"
+				}
+			}
 			if _, mine := previous[out]; !mine {
 				if _, err := os.Stat(filepath.Join(examplesDir, out)); err == nil {
 					fmt.Printf("≠ %s: %s is gobl.html's own, kept\n", rel, out)
@@ -205,6 +220,261 @@ func importOne(src, dst string, read func(string) ([]byte, error)) error {
 	out = append(out, '\n')
 	fmt.Printf("✓ %s\n", dst)
 	return os.WriteFile(dst, out, 0o644)
+}
+
+// ---- Naming ---------------------------------------------------------
+//
+// Every example is named <country>-<format>-<kind>[-<variant>][.<state>]:
+// the country of the regime, the agency or format the addon targets
+// (verifactu, sat, at, sdi, peppol…), the document kind (invoice,
+// credit-note, debit-note, corrective, proforma, order, delivery, receipt,
+// party…) and whatever else the source name said, e.g.
+// es-verifactu-invoice-full or mx-sat-invoice-b2c. States and locales keep
+// their dotted infixes (.hidden., .void., .es.).
+
+// formatAddons maps addons to the format word, most specific first.
+var formatAddons = []struct {
+	addon  cbc.Key
+	format string
+}{
+	{"fr-facturx-v1", "facturx"}, {"fr-choruspro-v1", "chorus-pro"}, {"de-xrechnung-v3", "xrechnung"},
+	{"de-zugferd-v2", "zugferd"}, {"es-verifactu-v1", "verifactu"}, {"es-tbai-v1", "tbai"},
+	{"es-sii-v1", "sii"}, {"es-facturae-v3", "facturae"}, {"mx-cfdi-v4", "sat"}, {"pt-saft-v1", "at"},
+	{"it-sdi-v1", "sdi"}, {"it-ticket-v1", "ticket"}, {"pl-favat-v3", "ksef"}, {"ar-arca-v4", "arca"},
+	{"co-dian-v2", "dian"}, {"br-nfe-v4", "nfe"}, {"br-nfse-v1", "nfse"}, {"gr-mydata-v1", "mydata"},
+	{"sa-zatca-v1", "zatca"}, {"dk-oioubl-v2", "oioubl"}, {"fi-finvoice-v3", "finvoice"},
+	{"fr-ctc-flow2-v1", "ctc"}, {"fr-ctc-flow10-v1", "ctc"}, {"ro-efactura-v1", "efactura"},
+	{"eu-en16931-v2017", "peppol"},
+}
+
+// formatStamps names the format from the agency's stamp, for documents
+// that predate addons.
+var formatStamps = map[cbc.Key]string{
+	"verifactu-qr": "verifactu", "tbai-code": "tbai", "sat-uuid": "sat", "favat-ksef-number": "ksef",
+	"at-atcud": "at", "ade-ref": "ticket", "iapr-mark": "mydata", "dian-cude": "dian",
+	"arca-cae": "arca", "zatca-qr": "zatca",
+}
+
+// formatWords maps the words source names use for a format to the format
+// word, so they can be recognised and dropped from the variant.
+var formatWords = map[string]string{
+	"verifactu": "verifactu", "vf": "verifactu", "ticketbai": "tbai", "tbai": "tbai", "sii": "sii",
+	"facturae": "facturae", "sat": "sat", "cfdi": "sat", "at": "at", "saft": "at", "sdi": "sdi",
+	"ticket": "ticket", "ksef": "ksef", "favat": "ksef", "arca": "arca", "dian": "dian", "dfe": "nfe",
+	"nfe": "nfe", "nfse": "nfse", "iapr": "mydata", "mydata": "mydata", "zatca": "zatca",
+	"xrechnung": "xrechnung", "zugferd": "zugferd", "oioubl": "oioubl", "nemhandel": "oioubl",
+	"finvoice": "finvoice", "pa": "ctc", "ctc": "ctc", "choruspro": "chorus-pro", "chorus": "chorus-pro",
+	"pro": "chorus-pro", "facturx": "facturx", "efactura": "efactura", "peppol": "peppol",
+}
+
+// canonicalFile returns the canonical file name for a bare document source,
+// or "" when it cannot be read.
+func canonicalFile(src string) string {
+	data, err := os.ReadFile(src)
+	if err != nil {
+		return ""
+	}
+	doc, err := gobl.Parse(data)
+	if err != nil {
+		return ""
+	}
+	base := strings.TrimSuffix(filepath.Base(src), ".json")
+	return nameFor(doc, nil, base) + ".json"
+}
+
+// nameFor builds the canonical name (without extension) of a document from
+// what it is and the name it had, whose words beyond country, format and
+// kind become the variant.
+func nameFor(doc any, stamps []*head.Stamp, stem string) string {
+	var (
+		cc     string
+		kind   string
+		addons []cbc.Key
+	)
+	country := func(p *org.Party) string {
+		if p != nil && p.TaxID != nil {
+			return strings.ToLower(p.TaxID.Country.String())
+		}
+		return ""
+	}
+	switch d := doc.(type) {
+	case *bill.Invoice:
+		cc, addons = strings.ToLower(d.Regime.Country.String()), d.GetAddons()
+		if cc == "" {
+			cc = country(d.Supplier)
+		}
+		switch d.Type {
+		case "", bill.InvoiceTypeStandard, bill.InvoiceTypeOther:
+			kind = "invoice"
+		default:
+			kind = d.Type.String()
+		}
+	case *bill.Order:
+		cc, addons, kind = strings.ToLower(d.Regime.Country.String()), d.GetAddons(), "order"
+		if cc == "" {
+			cc = country(d.Supplier)
+		}
+	case *bill.Delivery:
+		cc, addons = strings.ToLower(d.Regime.Country.String()), d.GetAddons()
+		if cc == "" {
+			cc = country(d.Supplier)
+		}
+		switch d.Type {
+		case bill.DeliveryTypeNote:
+			kind = "delivery-note"
+		case bill.DeliveryTypeWaybill:
+			kind = "waybill"
+		case bill.DeliveryTypeReceipt:
+			kind = "delivery-receipt"
+		default:
+			kind = "delivery"
+		}
+	case *bill.Payment:
+		cc, addons = strings.ToLower(d.Regime.Country.String()), d.GetAddons()
+		if cc == "" {
+			cc = country(d.Supplier)
+		}
+		switch d.Type {
+		case bill.PaymentTypeRequest:
+			kind = "payment-request"
+		case bill.PaymentTypeAdvice:
+			kind = "payment-advice"
+		default:
+			kind = "receipt"
+		}
+	case *org.Party:
+		cc, kind = country(d), "party"
+	default:
+		return stem
+	}
+	if cc == "el" {
+		cc = "gr" // Greece: the tax code is EL, the files say gr
+	}
+
+	// The format: from the addon, else the agency's stamp, else the name.
+	format := ""
+	for _, fa := range formatAddons {
+		for _, a := range addons {
+			if a == fa.addon {
+				format = fa.format
+				break
+			}
+		}
+		if format != "" {
+			break
+		}
+	}
+	if format == "" {
+		for _, st := range stamps {
+			if f, ok := formatStamps[st.Provider]; ok {
+				format = f
+				break
+			}
+		}
+	}
+	base, infix, _ := strings.Cut(stem, ".")
+	words := strings.Split(base, "-")
+	if format == "" {
+		for _, w := range words {
+			if f, ok := formatWords[w]; ok && f != "peppol" {
+				format = f
+				break
+			}
+		}
+	}
+
+	// The variant: the name's words minus country, format and kind.
+	drop := map[string]bool{cc: true, "gr": cc == "gr", "el": cc == "gr", "invoice": true}
+	for _, w := range strings.Split(kind, "-") {
+		drop[w] = true
+	}
+	if kind == "credit-note" {
+		drop["creditnote"] = true
+	}
+	var variant []string
+	for _, w := range words {
+		if w == "" || drop[w] {
+			continue
+		}
+		if f, ok := formatWords[w]; ok && f == format {
+			continue
+		}
+		variant = append(variant, w)
+	}
+	parts := []string{cc, format, kind}
+	parts = append(parts, variant...)
+	name := strings.Join(compact(parts), "-")
+	if infix != "" {
+		name += "." + infix
+	}
+	return name
+}
+
+func compact(ss []string) []string {
+	out := ss[:0]
+	for _, s := range ss {
+		if s != "" {
+			out = append(out, s)
+		}
+	}
+	return out
+}
+
+// renameAll moves every example, with its output, source and manifest
+// entry, to its canonical name. A name two examples would share is left
+// alone and reported.
+func renameAll() int {
+	manifest := readManifest()
+	files, _ := filepath.Glob(filepath.Join(examplesDir, "*.json"))
+	sort.Strings(files)
+	targets := map[string]string{} // canonical -> current
+	failed := 0
+	for _, f := range files {
+		data, err := os.ReadFile(f)
+		if err != nil {
+			continue
+		}
+		env := new(gobl.Envelope)
+		if json.Unmarshal(data, env) != nil || env.Document == nil {
+			fmt.Printf("? %s: not an envelope, left alone\n", f)
+			continue
+		}
+		cur := filepath.Base(f)
+		want := nameFor(env.Extract(), env.Head.Stamps, strings.TrimSuffix(cur, ".json")) + ".json"
+		if prev, ok := targets[want]; ok {
+			fmt.Printf("≠ %s and %s would both be %s, left alone\n", prev, cur, want)
+			failed++
+			continue
+		}
+		targets[want] = cur
+		if want == cur {
+			continue
+		}
+		if _, err := os.Stat(filepath.Join(examplesDir, want)); err == nil {
+			fmt.Printf("≠ %s wants %s, which exists, left alone\n", cur, want)
+			failed++
+			continue
+		}
+		move := func(from, to string) {
+			if _, err := os.Stat(from); err == nil {
+				if err := os.Rename(from, to); err != nil {
+					fmt.Printf("✗ %s -> %s: %v\n", from, to, err)
+					failed++
+				}
+			}
+		}
+		stemCur, stemWant := strings.TrimSuffix(cur, ".json"), strings.TrimSuffix(want, ".json")
+		move(f, filepath.Join(examplesDir, want))
+		move(filepath.Join(examplesDir, "out", stemCur+".html"), filepath.Join(examplesDir, "out", stemWant+".html"))
+		move(filepath.Join(srcDir, cur), filepath.Join(srcDir, want))
+		if src, ok := manifest[cur]; ok {
+			delete(manifest, cur)
+			manifest[want] = src
+		}
+		fmt.Printf("→ %s -> %s\n", cur, want)
+	}
+	writeManifest(manifest)
+	return failed
 }
 
 func sameDigest(a, b *gobl.Envelope) bool {
