@@ -55,6 +55,8 @@ templ Page(entries []catalog.Entry) {
 			})
 			@popui.Button(props.Button{
 				Variant:       props.ButtonVariantSecondary,
+				Size:          props.ButtonSizeLarge,
+				Class:         "min-h-8.5", // the selects' height
 				PopoverTarget: "options",
 			}) {
 				@icons.Sliders()
@@ -62,7 +64,7 @@ templ Page(entries []catalog.Entry) {
 			}
 			@popui.Button(props.Button{
 				Variant:    props.ButtonVariantSecondary,
-				Size:       props.ButtonSizeIcon,
+				Size:       props.ButtonSizeIconLarge,
 				Attributes: templ.Attributes{"@click": "runBenchmark()", ":disabled": "!ready || running", "title": "Benchmark: render the listed examples through WASM and natively side by side"},
 			}) {
 				@icons.Dashboard()
@@ -124,8 +126,27 @@ templ sidebar(groups []Group) {
 		@popui.SidebarContent() {
 			for _, g := range groups {
 				@popui.SidebarSection(props.SidebarSection{Title: g.Title}) {
-					for _, f := range g.Facets {
+					if g.Key == "country" {
 						<li>
+							<a
+								href="#"
+								@click.prevent="toggle('country', '')"
+								:class="{ 'bg-background-selected text-foreground-selected': isOn('country', '') }"
+							>
+								<span class="w-3.5 h-2.5 shrink-0 text-foreground-default-tertiary">
+									@icons.World()
+								</span>
+								<span>All countries</span>
+								<span class="ml-auto text-sm tabular-nums text-foreground-default-tertiary" x-text="count('country', '')"></span>
+							</a>
+						</li>
+					}
+					for _, f := range g.Facets {
+						<li
+							if g.Key != "country" {
+								x-show={ "available('" + g.Key + "', '" + f.Value + "')" }
+							}
+						>
 							<a
 								href="#"
 								@click.prevent={ "toggle('" + g.Key + "', '" + f.Value + "')" }

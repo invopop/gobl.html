@@ -86,6 +86,7 @@ function previewer() {
       const u = new URLSearchParams(location.search);
       this.q = u.get("q") ?? "";
       for (const k of Object.keys(GROUPS)) this.filters[k] = (u.get(k) ?? "").split(",").filter(Boolean);
+      this.filters.country = this.filters.country.slice(0, 1);
       this.selected = u.get("file");
     },
     writeURL() {
@@ -122,16 +123,29 @@ function previewer() {
     // what each click would leave.
     count(key, value) {
       let n = 0;
-      for (const e of this.entries) if (this.matches(e, key) && GROUPS[key](e).includes(value)) n++;
+      for (const e of this.entries) if (this.matches(e, key) && (value === "" || GROUPS[key](e).includes(value))) n++;
       return n;
     },
     isOn(key, value) {
-      return this.filters[key].includes(value);
+      return value === "" ? this.filters[key].length === 0 : this.filters[key].includes(value);
+    },
+    // The country is a single choice that drives the groups below: they
+    // only list the documents, addons and content its examples have.
+    // "All countries" (the empty value) clears it.
+    available(key, value) {
+      return this.entries.some((e) => this.matchesGroup(e, "country") && GROUPS[key](e).includes(value));
     },
     toggle(key, value) {
-      const i = this.filters[key].indexOf(value);
-      if (i >= 0) this.filters[key].splice(i, 1);
-      else this.filters[key].push(value);
+      if (key === "country") {
+        this.filters.country = value ? [value] : [];
+        for (const k of Object.keys(GROUPS)) {
+          if (k !== "country") this.filters[k] = this.filters[k].filter((v) => this.available(k, v));
+        }
+      } else {
+        const i = this.filters[key].indexOf(value);
+        if (i >= 0) this.filters[key].splice(i, 1);
+        else this.filters[key].push(value);
+      }
       this.filtersChanged();
     },
     hasFilters() {
