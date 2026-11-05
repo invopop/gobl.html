@@ -1,0 +1,269 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ac53-361d-7d32-ba5b-c1f4a19dbb45",
+		"dig": {
+			"alg": "sha256",
+			"val": "20b4eedfc36c15aabcc7b3760689a20312cd317b8459835527baa1efa56b74cf"
+		},
+		"stamps": [
+			{
+				"prv": "dian-cude",
+				"val": "50d06ed88fb3f4f2d4a903c613db4d7b8bc550df7087d35091860dcf78a4a920846b2d16dd15ef4b8438e66f4857b887"
+			},
+			{
+				"prv": "dian-qr",
+				"val": "NumFac: 2026118\nFecFac: 2026-03-10\nNitFac: 9015852843\nValTotal: 19159000.00\nCUFE: 50d06ed88fb3f4f2d4a903c613db4d7b8bc550df7087d35091860dcf78a4a920846b2d16dd15ef4b8438e66f4857b887\nhttps://catalogo-vpfe-hab.dian.gov.co/document/searchqr?documentkey=50d06ed88fb3f4f2d4a903c613db4d7b8bc550df7087d35091860dcf78a4a920846b2d16dd15ef4b8438e66f4857b887"
+			},
+			{
+				"prv": "dian-provider",
+				"val": "EMPRESA DE DIVULGACIONES Y ASESORIAS ECA SAS"
+			},
+			{
+				"prv": "dian-provider-nit",
+				"val": "860517022"
+			},
+			{
+				"prv": "dian-software",
+				"val": "PLEMSI"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "CO",
+		"$addons": [
+			"co-dian-v2"
+		],
+		"uuid": "01a1ac53-361d-7d36-8549-99c133ae564d",
+		"type": "proforma",
+		"series": "PRO",
+		"code": "2026118",
+		"issue_date": "2026-03-10",
+		"currency": "COP",
+		"supplier": {
+			"name": "Cyberdyne Sistemas SAS",
+			"tax_id": {
+				"country": "CO",
+				"code": "9015852843",
+				"type": "tin"
+			},
+			"addresses": [
+				{
+					"street": "CRA 8 113 31 OF 703",
+					"locality": "Bogotá",
+					"region": "Bogotá, D.C.",
+					"code": "110111",
+					"country": "CO"
+				}
+			],
+			"emails": [
+				{
+					"addr": "facturacion@cyberdyne.co"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+57 601 555 1234"
+				}
+			],
+			"ext": {
+				"co-dian-fiscal-responsibility": "O-13",
+				"co-dian-municipality": "11001",
+				"co-dian-tax-scheme": "01"
+			}
+		},
+		"customer": {
+			"name": "Atlas Organization SAS",
+			"tax_id": {
+				"country": "CO",
+				"code": "9015852843"
+			},
+			"people": [
+				{
+					"name": {
+						"given": "Diego",
+						"surname": "López"
+					},
+					"emails": [
+						{
+							"addr": "diego.lopez@atlas.com"
+						}
+					]
+				}
+			],
+			"addresses": [
+				{
+					"street": "Carrera 74 43 03",
+					"street_extra": "Torre B, piso 5",
+					"locality": "Medellín",
+					"region": "Antioquia",
+					"code": "050037",
+					"country": "CO"
+				}
+			],
+			"emails": [
+				{
+					"addr": "cuentasporpagar@atlas.com"
+				}
+			],
+			"ext": {
+				"co-dian-fiscal-responsibility": "O-23",
+				"co-dian-municipality": "05001",
+				"co-dian-tax-scheme": "01"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "40",
+				"item": {
+					"ref": "81111500",
+					"name": "Consultoría técnica en infraestructura",
+					"description": "Horas de consultor senior estimadas para la migración a la nube",
+					"price": "350000.00",
+					"unit": "h",
+					"ext": {
+						"co-dian-item-identification": "001"
+					}
+				},
+				"sum": "14000000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "14000000.00"
+			},
+			{
+				"i": 2,
+				"quantity": "5",
+				"item": {
+					"ref": "LIC-ERP-M",
+					"name": "Licencia de software ERP",
+					"description": "Suscripción mensual por usuario, 5 usuarios",
+					"price": "180000.00",
+					"unit": "mon",
+					"ext": {
+						"co-dian-item-identification": "999"
+					}
+				},
+				"sum": "900000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "900000.00"
+			},
+			{
+				"i": 3,
+				"quantity": "1",
+				"item": {
+					"ref": "CAP-ADM",
+					"name": "Capacitación de administradores",
+					"description": "Jornada de capacitación presencial en Medellín",
+					"price": "1200000.00",
+					"unit": "day",
+					"ext": {
+						"co-dian-item-identification": "999"
+					}
+				},
+				"sum": "1200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "1200000.00"
+			}
+		],
+		"ordering": {
+			"identities": [
+				{
+					"label": "Cotización",
+					"code": "COT-2026-0118"
+				}
+			]
+		},
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-04-09",
+						"notes": "Anticipo a la aceptación de la cotización",
+						"amount": "9579500.00",
+						"percent": "50%"
+					},
+					{
+						"date": "2026-05-09",
+						"notes": "Saldo contra entrega",
+						"amount": "9579500.00",
+						"percent": "50%"
+					}
+				],
+				"notes": "50 % de anticipo y 50 % contra entrega. La factura electrónica de venta se emitirá al recibir el anticipo."
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"label": "Cuenta de ahorros Bancolombia",
+						"number": "031-456789-01",
+						"name": "Cyberdyne Sistemas SAS"
+					}
+				]
+			}
+		},
+		"totals": {
+			"sum": "16100000.00",
+			"total": "16100000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "16100000.00",
+								"percent": "19.0%",
+								"amount": "3059000.00"
+							}
+						],
+						"amount": "3059000.00"
+					}
+				],
+				"sum": "3059000.00"
+			},
+			"tax": "3059000.00",
+			"total_with_tax": "19159000.00",
+			"payable": "19159000.00"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Factura proforma emitida a partir de la cotización COT-2026-0118. Este documento no es una factura electrónica de venta, no tiene validez fiscal y no se reporta a la DIAN; presenta el valor estimado del proyecto para su aprobación. Válida hasta el 2026-04-09."
+			},
+			{
+				"key": "legal",
+				"text": "Los valores están expresados en pesos colombianos e incluyen IVA al 19 %. Las retenciones aplicables se practicarán sobre la factura electrónica de venta definitiva.",
+				"meta": {
+					"position": "footer"
+				}
+			}
+		]
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzUzLTM2MWUtNzA1NS05MmQ4LWE2MDYzZWExN2I4MyJ9.eyJ1dWlkIjoiMDFhMWFjNTMtMzYxZC03ZDMyLWJhNWItYzFmNGExOWRiYjQ1IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjIwYjRlZWRmYzM2YzE1YWFiY2M3YjM3NjA2ODlhMjAzMTJjZDMxN2I4NDU5ODM1NTI3YmFhMWVmYTU2Yjc0Y2YifSwiaWF0IjoxNzkzODkyNDk2fQ.sT-Gd7468RTOccSkmPAwwv2u01eDACx9ft5dQWaro5nIRI18rYpHxuK43mGbSa-uQ1ztLb6XY5DVU2ZBq0FJIA"
+	]
+}

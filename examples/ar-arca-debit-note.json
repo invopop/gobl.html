@@ -1,0 +1,225 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ac51-120f-7cb9-adfd-1f864bce77ad",
+		"dig": {
+			"alg": "sha256",
+			"val": "043d6f2e7737e8ecd1b54d0494c4a96a86ba6cd036394df64ebe20866e21ee77"
+		},
+		"stamps": [
+			{
+				"prv": "arca-cae",
+				"val": "1234567891"
+			},
+			{
+				"prv": "arca-cae-expiry",
+				"val": "2025-02-03"
+			},
+			{
+				"prv": "arca-qr",
+				"val": "https://www.afip.gob.ar/fe/qr/conceptos-generales.asp"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "AR",
+		"$addons": [
+			"ar-arca-v4"
+		],
+		"uuid": "01a1ac51-120f-7ce0-adc8-63461d86df99",
+		"type": "debit-note",
+		"series": "1",
+		"code": "0002",
+		"issue_date": "2025-02-03",
+		"currency": "ARS",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2025-01-15",
+				"series": "1",
+				"code": "00001234",
+				"reason": "Intereses por mora y gastos de envío no facturados",
+				"ext": {
+					"ar-arca-doc-type": "1"
+				}
+			}
+		],
+		"tax": {
+			"ext": {
+				"ar-arca-concept": "1",
+				"ar-arca-doc-type": "2"
+			}
+		},
+		"supplier": {
+			"name": "Proveedor Ejemplo S.A.",
+			"tax_id": {
+				"country": "AR",
+				"code": "30712345671"
+			},
+			"addresses": [
+				{
+					"street": "Av. Corrientes 1234",
+					"locality": "Buenos Aires",
+					"region": "Ciudad Autónoma de Buenos Aires",
+					"code": "C1043",
+					"country": "AR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "ventas@proveedorejemplo.com.ar"
+				}
+			],
+			"registration": {
+				"other": "Inicio de actividades: 2016-03-01"
+			}
+		},
+		"customer": {
+			"name": "Cliente Comercial S.R.L.",
+			"tax_id": {
+				"country": "AR",
+				"code": "30987654321"
+			},
+			"addresses": [
+				{
+					"street": "Av. Santa Fe 2500",
+					"locality": "Buenos Aires",
+					"region": "Ciudad Autónoma de Buenos Aires",
+					"code": "C1123",
+					"country": "AR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "compras@clientecomercial.com.ar"
+				}
+			],
+			"ext": {
+				"ar-arca-vat-status": "1"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"key": "goods",
+					"name": "Intereses por mora sobre Factura A 0001-00001234",
+					"description": "15 días de atraso al 3% mensual sobre el saldo pendiente",
+					"price": "67500.00"
+				},
+				"sum": "67500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"ar-arca-vat-rate": "5"
+						}
+					}
+				],
+				"total": "67500.00"
+			},
+			{
+				"i": 2,
+				"quantity": "10",
+				"item": {
+					"key": "goods",
+					"name": "Flete y seguro de transporte",
+					"description": "Envío a sucursal no incluido en la factura original",
+					"price": "12000.00"
+				},
+				"sum": "120000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"ar-arca-vat-rate": "5"
+						}
+					}
+				],
+				"total": "120000.00"
+			},
+			{
+				"i": 3,
+				"quantity": "2",
+				"item": {
+					"key": "goods",
+					"name": "Fundas de transporte para notebook",
+					"description": "Entregadas con el pedido pero omitidas en la factura",
+					"price": "25000.00"
+				},
+				"sum": "50000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"ar-arca-vat-rate": "5"
+						}
+					}
+				],
+				"total": "50000.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"key": "end-of-month",
+				"notes": "Pago a fin de mes por transferencia bancaria"
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"number": "0170001740000012345678",
+						"name": "Proveedor Ejemplo S.A."
+					}
+				]
+			}
+		},
+		"totals": {
+			"sum": "237500.00",
+			"total": "237500.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"ar-arca-vat-rate": "5"
+								},
+								"base": "237500.00",
+								"percent": "21.0%",
+								"amount": "49875.00"
+							}
+						],
+						"amount": "49875.00"
+					}
+				],
+				"sum": "49875.00"
+			},
+			"tax": "49875.00",
+			"total_with_tax": "287375.00",
+			"payable": "287375.00"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Nota de débito complementaria de la Factura A 0001-00001234 del 15/01/2025."
+			}
+		]
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzUxLTEyMTAtNzI4Yy1iM2MzLWQxNjBhZTZmZmEzMCJ9.eyJ1dWlkIjoiMDFhMWFjNTEtMTIwZi03Y2I5LWFkZmQtMWY4NjRiY2U3N2FkIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjA0M2Q2ZjJlNzczN2U4ZWNkMWI1NGQwNDk0YzRhOTZhODZiYTZjZDAzNjM5NGRmNjRlYmUyMDg2NmUyMWVlNzcifSwiaWF0IjoxNzkzODkyMzU2fQ.Y8WMeyfoaA7N9ObBqP2RSoLlLdmtiUUvrpA7P0cszqsaxLC4Fez_mO-NMsQRitcwPJlM8bnn1cKVxexXLRIfFA"
+	]
+}

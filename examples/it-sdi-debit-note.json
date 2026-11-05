@@ -1,0 +1,239 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ac52-292c-7aec-9f33-e480497d53fe",
+		"dig": {
+			"alg": "sha256",
+			"val": "243ffdf21e0695bc39f20ee564610f9668a6ad85fabedd7d5219f3d8b6e8dbb0"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"it-sdi-v1"
+		],
+		"uuid": "01a1ac52-292c-7aed-9518-7d6794153dcd",
+		"type": "debit-note",
+		"series": "ND",
+		"code": "001",
+		"issue_date": "2023-06-15",
+		"currency": "EUR",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2023-05-21",
+				"series": "SAMPLE",
+				"code": "002",
+				"reason": "Servizi aggiuntivi non inclusi nella fattura originale"
+			}
+		],
+		"tax": {
+			"prices_include": "VAT",
+			"ext": {
+				"it-sdi-document-type": "TD05",
+				"it-sdi-format": "FPR12"
+			}
+		},
+		"supplier": {
+			"name": "Hotel California",
+			"tax_id": {
+				"country": "IT",
+				"code": "12345678903"
+			},
+			"addresses": [
+				{
+					"num": "102",
+					"street": "Via California",
+					"locality": "Palermo",
+					"region": "PA",
+					"code": "33213",
+					"country": "IT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "amministrazione@hotelcalifornia.example"
+				}
+			],
+			"registration": {
+				"capital": "50000.00",
+				"currency": "EUR",
+				"office": "RM",
+				"entry": "123456"
+			},
+			"ext": {
+				"it-sdi-fiscal-regime": "RF01"
+			}
+		},
+		"customer": {
+			"name": "Mela S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "13029381004"
+			},
+			"inboxes": [
+				{
+					"key": "it-sdi-code",
+					"code": "M5UXCR5"
+				}
+			],
+			"addresses": [
+				{
+					"num": "23",
+					"street": "Via dei Mille",
+					"locality": "Firenze",
+					"region": "FI",
+					"code": "00100",
+					"country": "IT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Notte aggiuntiva - Camera Matrimoniale",
+					"description": "Prolungamento del soggiorno dal 23 al 25 maggio, non incluso nella fattura SAMPLE-002",
+					"price": "125.00"
+				},
+				"sum": "250.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "intermediate",
+						"percent": "10.0%"
+					}
+				],
+				"total": "250.00"
+			},
+			{
+				"i": 2,
+				"quantity": "2",
+				"item": {
+					"name": "Tassa di Soggiorno - notti aggiuntive",
+					"price": "1.00"
+				},
+				"sum": "2.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "exempt",
+						"ext": {
+							"it-sdi-exempt": "N4"
+						}
+					}
+				],
+				"total": "2.00"
+			},
+			{
+				"i": 3,
+				"quantity": "1",
+				"item": {
+					"name": "Consumazioni minibar",
+					"price": "18.50"
+				},
+				"sum": "18.50",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "intermediate",
+						"percent": "10.0%"
+					}
+				],
+				"total": "18.50"
+			},
+			{
+				"i": 4,
+				"quantity": "1",
+				"item": {
+					"name": "Parcheggio custodito",
+					"description": "2 giorni",
+					"price": "30.00"
+				},
+				"sum": "30.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "22.0%"
+					}
+				],
+				"total": "30.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2023-07-15",
+						"amount": "300.50",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "IT60X0542811101000000123456",
+						"name": "Hotel California"
+					}
+				],
+				"ext": {
+					"it-sdi-payment-means": "MP05"
+				}
+			}
+		},
+		"totals": {
+			"sum": "300.50",
+			"tax_included": "29.82",
+			"total": "270.68",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "244.09",
+								"percent": "10.0%",
+								"amount": "24.41"
+							},
+							{
+								"key": "exempt",
+								"ext": {
+									"it-sdi-exempt": "N4"
+								},
+								"base": "2.00",
+								"amount": "0.00"
+							},
+							{
+								"key": "standard",
+								"base": "24.59",
+								"percent": "22.0%",
+								"amount": "5.41"
+							}
+						],
+						"amount": "29.82"
+					}
+				],
+				"sum": "29.82"
+			},
+			"tax": "29.82",
+			"total_with_tax": "300.50",
+			"payable": "300.50"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Nota di debito a integrazione della fattura SAMPLE-002 del 21/05/2023: servizi fruiti dopo l'emissione della fattura originale."
+			}
+		]
+	}
+}

@@ -1,0 +1,154 @@
+{
+	"$schema": "https://gobl.org/draft-0/bill/invoice",
+	"$regime": "ES",
+	"$addons": [
+		"es-verifactu-v1"
+	],
+	"type": "debit-note",
+	"series": "DN",
+	"code": "0001",
+	"issue_date": "2025-06-12",
+	"currency": "EUR",
+	"preceding": [
+		{
+			"type": "standard",
+			"issue_date": "2025-05-13",
+			"series": "SAMPLE",
+			"code": "004",
+			"reason": "Horas adicionales y gastos no incluidos en la factura original"
+		}
+	],
+	"tax": {
+		"ext": {
+			"es-verifactu-doc-type": "R1"
+		}
+	},
+	"supplier": {
+		"name": "Invopop S.L.",
+		"tax_id": {
+			"country": "ES",
+			"code": "B85905495"
+		},
+		"addresses": [
+			{
+				"num": "42",
+				"street": "Calle Pradillo",
+				"locality": "Madrid",
+				"region": "Madrid",
+				"code": "28002",
+				"country": "ES"
+			}
+		],
+		"emails": [
+			{
+				"addr": "billing@invopop.com"
+			}
+		]
+	},
+	"customer": {
+		"name": "Sample Consumer",
+		"tax_id": {
+			"country": "ES",
+			"code": "B63272603"
+		},
+		"addresses": [
+			{
+				"num": "12",
+				"street": "Calle Mayor",
+				"locality": "Madrid",
+				"region": "Madrid",
+				"code": "28013",
+				"country": "ES"
+			}
+		]
+	},
+	"lines": [
+		{
+			"quantity": "6",
+			"item": {
+				"name": "Development services - additional hours",
+				"description": "Scope change requested on 2025-05-20, not covered by invoice SAMPLE-004",
+				"price": "90.00",
+				"unit": "h"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "standard",
+					"rate": "general",
+					"percent": "21.0%",
+					"ext": {
+						"es-verifactu-op-class": "S1",
+						"es-verifactu-regime": "01"
+					}
+				}
+			]
+		},
+		{
+			"quantity": "1",
+			"item": {
+				"name": "Out of hours support call-out",
+				"description": "Incident on 2025-05-24, outside the agreed support window",
+				"price": "120.00"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "standard",
+					"rate": "general",
+					"percent": "21.0%",
+					"ext": {
+						"es-verifactu-op-class": "S1",
+						"es-verifactu-regime": "01"
+					}
+				}
+			]
+		},
+		{
+			"quantity": "1",
+			"item": {
+				"name": "Travel expenses - on-site visit",
+				"description": "Return train Madrid to Bilbao, 2025-05-27",
+				"price": "86.50"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "standard",
+					"rate": "general",
+					"percent": "21.0%",
+					"ext": {
+						"es-verifactu-op-class": "S1",
+						"es-verifactu-regime": "01"
+					}
+				}
+			]
+		}
+	],
+	"payment": {
+		"terms": {
+			"key": "due-date",
+			"due_dates": [
+				{
+					"date": "2025-07-12",
+					"percent": "100%"
+				}
+			]
+		},
+		"instructions": {
+			"key": "credit-transfer",
+			"credit_transfer": [
+				{
+					"iban": "ES0600810001880001032781",
+					"name": "Invopop S.L."
+				}
+			]
+		}
+	},
+	"notes": [
+		{
+			"key": "general",
+			"text": "Factura rectificativa por diferencias (nota de débito) que complementa la factura SAMPLE-004 de 13/05/2025. Importes a sumar al documento original."
+		}
+	]
+}

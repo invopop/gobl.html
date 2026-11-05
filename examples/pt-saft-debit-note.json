@@ -1,0 +1,247 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ac53-360e-7efb-a82d-179e81dd1af3",
+		"dig": {
+			"alg": "sha256",
+			"val": "da611f31032e8ab7fd17b6038c64af55197c9f9657c4d8889b9e74032e0eb2be"
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJR2KW4-2"
+			},
+			{
+				"prv": "at-hash",
+				"val": "0vot"
+			},
+			{
+				"prv": "at-hash-full",
+				"val": "0WMEHADswWv5aavY+2VboOclMpPyoQtl7neqfA/7PPvhayQR1OQMok5fFr8N4vi6TGm8ymmHSpfX4QG28jeDJqNuO92v5TbRH78/4lPbcryEmVIgG0x9jXtYPX6RehwYYuUZg1q1XSEYrEGg+zQoPN8VZetI5PxGRWqrkIe8G5w="
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:504614240*B:999999990*C:PT*D:FT*E:N*F:20260402*G:ND INVOPOP-2026 0007*H:AAJFJR2KW4-2*I1:PT*I7:1845.00*N:0.00*O:1845.00*Q:0vot*R:0"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "0"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"uuid": "01a1ac53-360f-702a-979b-b346158866f1",
+		"type": "debit-note",
+		"series": "ND INVOPOP-2026",
+		"code": "0007",
+		"issue_date": "2026-04-02",
+		"value_date": "2026-04-02",
+		"currency": "EUR",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2026-03-16",
+				"series": "FT INVOPOP-2026",
+				"code": "0042",
+				"reason": "Horas adicionais e despesas de deslocação não incluídas na fatura original"
+			}
+		],
+		"tax": {
+			"ext": {
+				"pt-saft-invoice-type": "ND",
+				"pt-saft-source": "P"
+			}
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "504614240"
+			},
+			"addresses": [
+				{
+					"num": "156",
+					"street": "Avenida da República",
+					"street_extra": "Piso 4, Fração C",
+					"locality": "Lisboa",
+					"region": "Lisboa",
+					"code": "1050-045",
+					"country": "PT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "faturacao@innovatech.example.pt"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+351 210 123 456"
+				}
+			],
+			"registration": {
+				"capital": "150000.00",
+				"currency": "EUR",
+				"office": "CRC Lisboa",
+				"entry": "504614240"
+			}
+		},
+		"customer": {
+			"name": "Gusto Unipessoal Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"num": "152",
+					"street": "Avenida da Liberdade",
+					"street_extra": "2.º Direito",
+					"locality": "Lisboa",
+					"region": "Lisboa",
+					"code": "1250-146",
+					"country": "PT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "contabilidade@gusto.example.pt"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "12",
+				"item": {
+					"ref": "CONS-SENIOR",
+					"name": "Consultoria sénior em arquitetura de sistemas",
+					"description": "Horas adicionais prestadas em março de 2026, acordadas após a emissão da FT INVOPOP-2026/0042",
+					"price": "95.00",
+					"unit": "h",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "1140.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "1140.00"
+			},
+			{
+				"i": 2,
+				"quantity": "2",
+				"item": {
+					"ref": "DESL-LX",
+					"name": "Deslocação ao cliente",
+					"description": "Visitas às instalações do cliente em 20 e 27 de março de 2026",
+					"price": "180.00",
+					"unit": "item",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "360.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "360.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-05-02",
+						"amount": "1845.00",
+						"percent": "100%"
+					}
+				],
+				"notes": "Pagamento a 30 dias, juntamente com a fatura original."
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"ref": "ND INVOPOP-2026/0007",
+				"credit_transfer": [
+					{
+						"iban": "PT50 0002 0123 1234 5678 9015 4",
+						"bic": "BPIPTPL",
+						"name": "Innovatech Lda"
+					}
+				],
+				"ext": {
+					"pt-saft-payment-means": "TB"
+				}
+			}
+		},
+		"totals": {
+			"sum": "1500.00",
+			"total": "1500.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "NOR"
+								},
+								"base": "1500.00",
+								"percent": "23.0%",
+								"amount": "345.00"
+							}
+						],
+						"amount": "345.00"
+					}
+				],
+				"sum": "345.00"
+			},
+			"tax": "345.00",
+			"total_with_tax": "1845.00",
+			"payable": "1845.00"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Nota de débito à fatura FT INVOPOP-2026/0042 de 16/03/2026: acresce ao valor faturado as horas adicionais e as deslocações aprovadas pelo cliente após a emissão da fatura. A fatura original mantém-se válida."
+			},
+			{
+				"key": "legal",
+				"text": "Processado por programa certificado n.º 0000/AT. Em caso de atraso no pagamento são devidos juros de mora à taxa legal em vigor.",
+				"meta": {
+					"position": "footer"
+				}
+			}
+		]
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzUzLTM2MTAtNzJiZi1iNDJjLTNmODYzZjNkZDliMyJ9.eyJ1dWlkIjoiMDFhMWFjNTMtMzYwZS03ZWZiLWE4MmQtMTc5ZTgxZGQxYWYzIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImRhNjExZjMxMDMyZThhYjdmZDE3YjYwMzhjNjRhZjU1MTk3YzlmOTY1N2M0ZDg4ODliOWU3NDAzMmUwZWIyYmUifSwiaWF0IjoxNzkzODkyNDk2fQ.8W1F-q0lOOHuMnqutW5IG4FDcXk-dW1DhuvwwEkoAPujyojXTi_mdnuL0VcJaXo_UF33OuH1tFWblkUMNG7SBA"
+	]
+}

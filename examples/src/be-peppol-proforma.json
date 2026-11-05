@@ -1,0 +1,209 @@
+{
+	"$schema": "https://gobl.org/draft-0/bill/invoice",
+	"$regime": "BE",
+	"$addons": [
+		"eu-en16931-v2017"
+	],
+	"type": "proforma",
+	"series": "PF-2026",
+	"code": "00061",
+	"issue_date": "2026-04-28",
+	"currency": "EUR",
+	"tax": {
+		"ext": {
+			"untdid-document-type": "325"
+		}
+	},
+	"supplier": {
+		"name": "Benelux Industries SA/NV",
+		"tax_id": {
+			"country": "BE",
+			"code": "0316597904"
+		},
+		"identities": [
+			{
+				"type": "BCE",
+				"code": "0316597904"
+			}
+		],
+		"endpoints": [
+			{
+				"uri": "iso6523-actorid-upis::0208:0316597904"
+			}
+		],
+		"inboxes": [
+			{
+				"key": "peppol",
+				"scheme": "0208",
+				"code": "0316597904"
+			}
+		],
+		"addresses": [
+			{
+				"num": "42",
+				"street": "Rue de la Loi",
+				"locality": "Brussels",
+				"region": "Brussels-Capital",
+				"code": "1040",
+				"country": "BE"
+			}
+		],
+		"emails": [
+			{
+				"addr": "invoices@benelux-industries.example"
+			}
+		],
+		"telephones": [
+			{
+				"num": "+32 2 123 45 00"
+			}
+		]
+	},
+	"customer": {
+		"name": "Ardennes Logistics BV",
+		"tax_id": {
+			"country": "BE",
+			"code": "0859536301"
+		},
+		"identities": [
+			{
+				"type": "BCE",
+				"code": "0859536301"
+			}
+		],
+		"endpoints": [
+			{
+				"uri": "iso6523-actorid-upis::0208:0859536301"
+			}
+		],
+		"inboxes": [
+			{
+				"key": "peppol",
+				"scheme": "0208",
+				"code": "0859536301"
+			}
+		],
+		"addresses": [
+			{
+				"num": "127",
+				"street": "Avenue Louise",
+				"locality": "Ixelles",
+				"region": "Brussels-Capital",
+				"code": "1050",
+				"country": "BE"
+			}
+		],
+		"emails": [
+			{
+				"addr": "ap@ardennes-logistics.example"
+			}
+		]
+	},
+	"ordering": {
+		"identities": [
+			{
+				"label": "Quotation",
+				"code": "Q-2026-0061"
+			}
+		],
+		"tender": [
+			{
+				"code": "RFQ-ARD-2026-07"
+			}
+		]
+	},
+	"lines": [
+		{
+			"quantity": "64",
+			"item": {
+				"ref": "ENG-AUTO",
+				"name": "Automation engineering",
+				"description": "Conveyor control integration at the Liège hub, estimated effort",
+				"price": "110.00",
+				"unit": "h"
+			},
+			"discounts": [
+				{
+					"key": "special-agreement",
+					"reason": "Framework agreement rate",
+					"percent": "10%"
+				}
+			],
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "8",
+			"item": {
+				"ref": "SEN-PLC-01",
+				"name": "PLC controller module",
+				"description": "16 DI / 8 DO, Profinet, DIN rail mount",
+				"identities": [
+					{
+						"type": "EAN",
+						"code": "5410013001234"
+					}
+				],
+				"price": "640.00",
+				"unit": "piece"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "1",
+			"item": {
+				"ref": "COMM-LGG",
+				"name": "Commissioning and acceptance test",
+				"description": "Two-day on-site commissioning with signed acceptance report",
+				"price": "2400.00",
+				"unit": "service"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		}
+	],
+	"payment": {
+		"terms": {
+			"key": "advanced",
+			"notes": "A 30% deposit is payable on acceptance of this proforma; the balance is invoiced on delivery with 30 days net."
+		},
+		"instructions": {
+			"key": "credit-transfer+sepa",
+			"ref": "+++026/0061/20212+++",
+			"credit_transfer": [
+				{
+					"iban": "BE68 5390 0754 7034",
+					"bic": "GKCCBEBB",
+					"name": "Benelux Industries SA/NV",
+					"label": "Belfius"
+				}
+			]
+		}
+	},
+	"notes": [
+		{
+			"key": "general",
+			"text": "Proforma invoice issued against quotation Q-2026-0061 ahead of the Liège hub automation order. This document is not a VAT invoice and does not create a VAT liability; a commercial invoice follows on delivery. Prices are valid until 2026-05-28."
+		},
+		{
+			"key": "legal",
+			"text": "Benelux Industries SA/NV · RPM Bruxelles 0316.597.904 · TVA BE 0316.597.904 · Siège social: Rue de la Loi 42, 1040 Bruxelles",
+			"meta": {
+				"position": "footer"
+			}
+		}
+	]
+}

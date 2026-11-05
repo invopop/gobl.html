@@ -1,0 +1,207 @@
+{
+	"$schema": "https://gobl.org/draft-0/bill/invoice",
+	"$regime": "BE",
+	"$addons": [
+		"eu-en16931-v2017"
+	],
+	"type": "debit-note",
+	"series": "DN-2026",
+	"code": "00019",
+	"issue_date": "2026-06-05",
+	"currency": "EUR",
+	"preceding": [
+		{
+			"type": "standard",
+			"series": "INV-2026",
+			"code": "00352",
+			"issue_date": "2026-05-22",
+			"reason": "Additional commissioning hours and spare modules supplied after invoicing"
+		}
+	],
+	"tax": {
+		"ext": {
+			"untdid-document-type": "383"
+		}
+	},
+	"supplier": {
+		"name": "Benelux Industries SA/NV",
+		"tax_id": {
+			"country": "BE",
+			"code": "0316597904"
+		},
+		"identities": [
+			{
+				"type": "BCE",
+				"code": "0316597904"
+			}
+		],
+		"endpoints": [
+			{
+				"uri": "iso6523-actorid-upis::0208:0316597904"
+			}
+		],
+		"inboxes": [
+			{
+				"key": "peppol",
+				"scheme": "0208",
+				"code": "0316597904"
+			}
+		],
+		"addresses": [
+			{
+				"num": "42",
+				"street": "Rue de la Loi",
+				"locality": "Brussels",
+				"region": "Brussels-Capital",
+				"code": "1040",
+				"country": "BE"
+			}
+		],
+		"emails": [
+			{
+				"addr": "invoices@benelux-industries.example"
+			}
+		],
+		"telephones": [
+			{
+				"num": "+32 2 123 45 00"
+			}
+		]
+	},
+	"customer": {
+		"name": "Ardennes Logistics BV",
+		"tax_id": {
+			"country": "BE",
+			"code": "0859536301"
+		},
+		"identities": [
+			{
+				"type": "BCE",
+				"code": "0859536301"
+			}
+		],
+		"endpoints": [
+			{
+				"uri": "iso6523-actorid-upis::0208:0859536301"
+			}
+		],
+		"inboxes": [
+			{
+				"key": "peppol",
+				"scheme": "0208",
+				"code": "0859536301"
+			}
+		],
+		"addresses": [
+			{
+				"num": "127",
+				"street": "Avenue Louise",
+				"locality": "Ixelles",
+				"region": "Brussels-Capital",
+				"code": "1050",
+				"country": "BE"
+			}
+		],
+		"emails": [
+			{
+				"addr": "ap@ardennes-logistics.example"
+			}
+		]
+	},
+	"ordering": {
+		"code": "PO-ARD-2026-0177"
+	},
+	"lines": [
+		{
+			"quantity": "16",
+			"item": {
+				"ref": "ENG-AUTO",
+				"name": "Automation engineering",
+				"description": "Extra commissioning hours at the Liège hub on 2026-05-28 and 2026-05-29, approved by the customer on site",
+				"price": "110.00",
+				"unit": "h"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "2",
+			"item": {
+				"ref": "SEN-PLC-01",
+				"name": "PLC controller module",
+				"description": "Spare modules left on site at the customer's request",
+				"identities": [
+					{
+						"type": "EAN",
+						"code": "5410013001234"
+					}
+				],
+				"price": "640.00",
+				"unit": "piece"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "1",
+			"item": {
+				"ref": "TRV-LGG",
+				"name": "Travel and subsistence",
+				"description": "Two engineer round trips Brussels - Liège, flat rate",
+				"price": "180.00",
+				"unit": "service"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		}
+	],
+	"payment": {
+		"terms": {
+			"key": "due-date",
+			"due_dates": [
+				{
+					"date": "2026-07-05",
+					"percent": "100%"
+				}
+			],
+			"notes": "Payment within 30 days net. Late payment interest as per the Belgian Act of 2 August 2002."
+		},
+		"instructions": {
+			"key": "credit-transfer+sepa",
+			"ref": "+++026/0019/20244+++",
+			"credit_transfer": [
+				{
+					"iban": "BE68 5390 0754 7034",
+					"bic": "GKCCBEBB",
+					"name": "Benelux Industries SA/NV",
+					"label": "Belfius"
+				}
+			]
+		}
+	},
+	"notes": [
+		{
+			"key": "general",
+			"text": "Debit note to invoice INV-2026/00352 of 2026-05-22. It adds the extra commissioning hours, two spare PLC modules and travel costs agreed after the original invoice was issued. The original invoice remains due in full."
+		},
+		{
+			"key": "legal",
+			"text": "Benelux Industries SA/NV · RPM Bruxelles 0316.597.904 · TVA BE 0316.597.904 · Siège social: Rue de la Loi 42, 1040 Bruxelles",
+			"meta": {
+				"position": "footer"
+			}
+		}
+	]
+}
