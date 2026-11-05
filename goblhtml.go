@@ -9,7 +9,8 @@ import (
 
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
-	_ "github.com/invopop/gobl.dev/bundle" // registers the GOBL-approved addon set
+	_ "github.com/invopop/gobl.dev/bundle"     // registers the GOBL-approved addon set
+	_ "github.com/invopop/gobl.ro.anaf/addon" // ro-efactura-v1, not yet in the bundle
 	"github.com/invopop/gobl.html/components"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/layout"
