@@ -85,7 +85,10 @@ templ pageStyle() {
 	<style>
 		[data-row][data-selected] { background: var(--color-background-selected-default); }
 		[data-row]:hover { background: var(--color-background-default-secondary); }
-		[data-row][data-selected]:hover { background: var(--color-background-selected-default-hover); }
+		[data-row][data-selected]:hover { background: var(--color-background-selected-default); }
+		/* A chosen facet keeps its colour under the pointer; PopUI's section
+		   hover would otherwise paint it grey. */
+		[data-facet][data-on]:hover { background: var(--color-background-selected-default); }
 		.pv-canvas { display: flex; justify-content: center; align-items: flex-start; gap: 28px; padding: 28px 28px 56px; min-height: 100%; }
 		.pv-stack { display: flex; flex-direction: column; align-items: center; gap: 8px; }
 		.pv-caption { font-size: 12px; font-weight: 500; color: var(--color-foreground-default-secondary); }
@@ -131,7 +134,9 @@ templ sidebar(groups []Group) {
 					<li>
 						<a
 							href="#"
+							data-facet
 							@click.prevent={ "choose('" + g.Key + "', '')" }
+							:data-on={ "isOn('" + g.Key + "', '') ? '' : null" }
 							:class={ "{ 'bg-background-selected text-foreground-selected': isOn('" + g.Key + "', '') }" }
 						>
 							if g.Key == "country" {
@@ -151,7 +156,9 @@ templ sidebar(groups []Group) {
 						>
 							<a
 								href="#"
+								data-facet
 								@click.prevent={ "choose('" + g.Key + "', '" + f.Value + "')" }
+								:data-on={ "isOn('" + g.Key + "', '" + f.Value + "') ? '' : null" }
 								:class={ "{ 'bg-background-selected text-foreground-selected': isOn('" + g.Key + "', '" + f.Value + "'), 'text-foreground-default-tertiary': !isOn('" + g.Key + "', '" + f.Value + "') && count('" + g.Key + "', '" + f.Value + "') === 0 }" }
 							>
 								if g.Key == "country" {
