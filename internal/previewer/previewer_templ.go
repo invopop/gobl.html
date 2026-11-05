@@ -708,7 +708,7 @@ func list(entries []catalog.Entry) templ.Component {
 			templ_7745c5c3_Var27 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 36, "<div class=\"w-80 shrink-0 border-r border-border bg-background overflow-y-auto flex flex-col\" :style=\"bench ? 'display:none' : ''\"><div class=\"sticky top-0 h-10 px-4 flex items-center gap-2 text-sm text-foreground-default-secondary border-b border-border bg-background shrink-0\"><span x-text=\"visible.length + ' of ' + entries.length + ' examples'\"></span> <span class=\"ml-auto\"><kbd>↑</kbd> <kbd>↓</kbd></span></div><div :class=\"visible.length === 0 ? '' : 'hidden'\" x-cloak>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 36, "<div class=\"w-80 shrink-0 border-r border-border bg-background overflow-y-auto flex flex-col\" :style=\"bench ? 'display:none' : ''\"><div class=\"sticky top-0 h-10 px-4 flex items-center gap-2 text-sm text-foreground-default-secondary border-b border-border bg-background shrink-0\"><span x-text=\"visible.length + ' of ' + entries.length + ' examples'\"></span> <a href=\"#\" class=\"text-foreground-selected hover:underline whitespace-nowrap\" x-show=\"hasFilters()\" x-cloak @click.prevent=\"clearAll()\">Remove filter</a> <span class=\"ml-auto\"><kbd>↑</kbd> <kbd>↓</kbd></span></div><div :class=\"visible.length === 0 ? '' : 'hidden'\" x-cloak>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -728,7 +728,7 @@ func list(entries []catalog.Entry) templ.Component {
 			var templ_7745c5c3_Var28 string
 			templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(e.File)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `previewer.templ`, Line: 205, Col: 24}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `previewer.templ`, Line: 206, Col: 24}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var28))
 			if templ_7745c5c3_Err != nil {
@@ -741,7 +741,7 @@ func list(entries []catalog.Entry) templ.Component {
 			var templ_7745c5c3_Var29 string
 			templ_7745c5c3_Var29, templ_7745c5c3_Err = templ.JoinStringErrs("isVisible('" + e.File + "') ? '' : 'hidden'")
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `previewer.templ`, Line: 207, Col: 60}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `previewer.templ`, Line: 208, Col: 60}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var29))
 			if templ_7745c5c3_Err != nil {
@@ -754,7 +754,7 @@ func list(entries []catalog.Entry) templ.Component {
 			var templ_7745c5c3_Var30 string
 			templ_7745c5c3_Var30, templ_7745c5c3_Err = templ.JoinStringErrs("selected === '" + e.File + "' ? '' : null")
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `previewer.templ`, Line: 208, Col: 66}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `previewer.templ`, Line: 209, Col: 66}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var30))
 			if templ_7745c5c3_Err != nil {
@@ -767,7 +767,7 @@ func list(entries []catalog.Entry) templ.Component {
 			var templ_7745c5c3_Var31 string
 			templ_7745c5c3_Var31, templ_7745c5c3_Err = templ.JoinStringErrs("select('" + e.File + "')")
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `previewer.templ`, Line: 209, Col: 49}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `previewer.templ`, Line: 210, Col: 49}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var31))
 			if templ_7745c5c3_Err != nil {
@@ -790,7 +790,7 @@ func list(entries []catalog.Entry) templ.Component {
 			var templ_7745c5c3_Var32 string
 			templ_7745c5c3_Var32, templ_7745c5c3_Err = templ.JoinStringErrs(Title(e.Title))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `previewer.templ`, Line: 215, Col: 58}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `previewer.templ`, Line: 216, Col: 58}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var32))
 			if templ_7745c5c3_Err != nil {
@@ -803,7 +803,7 @@ func list(entries []catalog.Entry) templ.Component {
 			var templ_7745c5c3_Var33 string
 			templ_7745c5c3_Var33, templ_7745c5c3_Err = templ.JoinStringErrs(e.File)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `previewer.templ`, Line: 217, Col: 88}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `previewer.templ`, Line: 218, Col: 88}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var33))
 			if templ_7745c5c3_Err != nil {

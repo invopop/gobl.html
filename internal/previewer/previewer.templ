@@ -191,6 +191,7 @@ templ list(entries []catalog.Entry) {
 	<div class="w-80 shrink-0 border-r border-border bg-background overflow-y-auto flex flex-col" :style="bench ? 'display:none' : ''">
 		<div class="sticky top-0 h-10 px-4 flex items-center gap-2 text-sm text-foreground-default-secondary border-b border-border bg-background shrink-0">
 			<span x-text="visible.length + ' of ' + entries.length + ' examples'"></span>
+			<a href="#" class="text-foreground-selected hover:underline whitespace-nowrap" x-show="hasFilters()" x-cloak @click.prevent="clearAll()">Remove filter</a>
 			<span class="ml-auto"><kbd>↑</kbd> <kbd>↓</kbd></span>
 		</div>
 		<div :class="visible.length === 0 ? '' : 'hidden'" x-cloak>
