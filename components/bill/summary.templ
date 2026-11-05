@@ -6,6 +6,8 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/regimes/it"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cal"
@@ -72,9 +74,7 @@ templ summary(env *gobl.Envelope, inv *bill.Invoice) {
 				if len(inv.Preceding) > 0 {
 					@summaryPrecedingRows(inv)
 				}
-				if inv.Ordering != nil {
-					@summaryOrderingRows(inv.Ordering)
-				}
+				@summaryOrderingRows(inv.Ordering)
 				if inv.Tax != nil {
 					@summaryTaxExtRows(inv.Tax.Ext)
 				}
@@ -115,71 +115,77 @@ templ summaryPrecedingRows(obj any) {
 	</li>
 }
 
+// summaryOrderingRows renders the ordering details, if any, inside the
+// "header.summary.ordering" anchor, which is shared by every document kind.
 templ summaryOrderingRows(ord *bill.Ordering) {
-	if ord.Code != "" {
-		<li class="ordering-code">
-			<span class="label">
-				@t.T(".order")
-			</span>
-			<span class="value">
-				{ ord.Code.String() }
-			</span>
-		</li>
-	}
-	if ord.Period != nil {
-		@summaryOrderPeriodRows(ord.Period)
-	}
-	for _, ident := range ord.Identities {
-		if ident.Label != "" {
-			<li class="ordering-ident">
-				<span class="label">
-					{ ident.Label }
-				</span>
-				<span class="value">
-					{ ident.Code.String() }
-				</span>
-			</li>
+	@utils.ListSection(display.KeyHeaderSummaryOrdering) {
+		if ord != nil {
+			if ord.Code != "" {
+				<li class="ordering-code">
+					<span class="label">
+						@t.T(".order")
+					</span>
+					<span class="value">
+						{ ord.Code.String() }
+					</span>
+				</li>
+			}
+			if ord.Period != nil {
+				@summaryOrderPeriodRows(ord.Period)
+			}
+			for _, ident := range ord.Identities {
+				if ident.Label != "" {
+					<li class="ordering-ident">
+						<span class="label">
+							{ ident.Label }
+						</span>
+						<span class="value">
+							{ ident.Code.String() }
+						</span>
+					</li>
+				}
+			}
+			if len(ord.Purchases) > 0 {
+				<li class="ordering-purchases">
+					<span class="label">
+						@t.T("billing.order.title.purchase")
+					</span>
+					for _, purchase := range ord.Purchases {
+						if purchase != nil {
+							<span class="value">
+								{ purchase.Series.Join(purchase.Code).String() }
+								if purchase.IssueDate != nil {
+									{ " · " }
+									<span class="date">
+										@t.L(purchase.IssueDate)
+									</span>
+								}
+							</span>
+						}
+					}
+				</li>
+			}
+			if len(ord.Contracts) > 0 {
+				<li class="ordering-contracts">
+					<span class="label">
+						@t.T(".contract")
+					</span>
+					for _, contract := range ord.Contracts {
+						if contract != nil {
+							<span class="value">
+								{ contract.Series.Join(contract.Code).String() }
+								if contract.IssueDate != nil {
+									{ " · " }
+									<span class="date">
+										@t.L(contract.IssueDate)
+									</span>
+								}
+							</span>
+						}
+					}
+				</li>
+			}
 		}
-	}
-	if len(ord.Purchases) > 0 {
-		<li class="ordering-purchases">
-			<span class="label">
-				@t.T("billing.order.title.purchase")
-			</span>
-			for _, purchase := range ord.Purchases {
-				if purchase != nil {
-					<span class="value">
-						{ purchase.Series.Join(purchase.Code).String() }
-						if purchase.IssueDate != nil {
-							{ " · " }
-							<span class="date">
-								@t.L(purchase.IssueDate)
-							</span>
-						}
-					</span>
-				}
-			}
-		</li>
-	}
-	if len(ord.Contracts) > 0 {
-		<li class="ordering-contracts">
-			<span class="label">
-				@t.T(".contract")
-			</span>
-			for _, contract := range ord.Contracts {
-				if contract != nil {
-					<span class="value">
-						{ contract.Series.Join(contract.Code).String() }
-						if contract.IssueDate != nil {
-							{ " · " }
-							<span class="date">
-								@t.L(contract.IssueDate)
-							</span>
-						}
-					</span>
-				}
-			}
-		</li>
 	}
 }
 

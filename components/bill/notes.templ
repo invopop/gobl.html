@@ -6,6 +6,9 @@ import (
 	"fmt"
 
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
+	"github.com/invopop/gobl.html/display"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
@@ -30,18 +33,41 @@ func init() {
 }
 
 templ notes(notes []*org.Note) {
-	if len(notes) > 0 {
+	@notesSection(nil, notes)
+}
+
+// notesSection renders the notes of a document at the "notes" anchor: the
+// fixed notes always, the regular notes where a snippet can replace them.
+// An invoice's tax notes are fixed, as they carry the regime's legal
+// mentions. Snippets before and after the anchor sit outside the section,
+// so they stay when WithHide hides it.
+templ notesSection(fixed, notes []*org.Note) {
+	@utils.Before(display.KeyNotes)
+	if len(fixed) > 0 || showNotes(ctx, notes) {
 		<section class="notes">
 			@t.Scope(".notes") {
 				<h2>
 					@t.T(".title")
 				</h2>
-				for _, n := range notes {
+				for _, n := range fixed {
 					@note(n)
+				}
+				@utils.Replaceable(display.KeyNotes) {
+					for _, n := range notes {
+						@note(n)
+					}
 				}
 			}
 		</section>
 	}
+	@utils.After(display.KeyNotes)
+}
+
+// showNotes determines if the regular notes, or a snippet replacing them,
+// give the section something to show.
+func showNotes(ctx context.Context, notes []*org.Note) bool {
+	_, replaced := internal.Snippets(ctx).Replacement(display.KeyNotes)
+	return len(notes) > 0 || replaced
 }
 
 templ lineNotes(notes []*org.Note) {
@@ -60,9 +86,9 @@ templ note(note *org.Note) {
 	</div>
 }
 
-// invoiceNotes converts tax notes to org notes (with bold category prefix)
-// and prepends them to the invoice's regular notes.
-func invoiceNotes(ctx context.Context, inv *bill.Invoice) []*org.Note {
+// invoiceTaxNotes converts the invoice's tax notes to org notes (with bold
+// category prefix).
+func invoiceTaxNotes(ctx context.Context, inv *bill.Invoice) []*org.Note {
 	var result []*org.Note
 	if inv.Tax != nil {
 		r := inv.RegimeDef()
@@ -72,7 +98,6 @@ func invoiceNotes(ctx context.Context, inv *bill.Invoice) []*org.Note {
 			})
 		}
 	}
-	result = append(result, inv.Notes...)
 	return result
 }
 

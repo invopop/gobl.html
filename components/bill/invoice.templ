@@ -20,6 +20,7 @@ import (
 	"github.com/invopop/gobl.html/components/regimes/sg"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/utils"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/layout"
 	"github.com/invopop/gobl/bill"
@@ -47,9 +48,9 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 					@totals(inv, inv.Totals)
 					@taxes(inv.RegimeDef(), inv.Totals.Taxes)
 				</div>
-				@paymentDetails(inv)
+				@paymentSection(inv.Payment, inv.Totals)
 				@ar.ARCAFiscalTransparency(inv)
-				@notes(invoiceNotes(ctx, inv))
+				@notesSection(invoiceTaxNotes(ctx, inv), inv.Notes)
 				@attachments(inv.Attachments)
 				<div class="extensions">
 					// Region specific information
@@ -75,7 +76,9 @@ templ title(env *gobl.Envelope, doc internal.Document) {
 				{ " " }
 				<h2 class="code">
 					@titleCode(doc)
-					@titleBadges(env, doc)
+					@utils.Section(display.KeyHeaderTitleBadges) {
+						@titleBadges(env, doc)
+					}
 				</h2>
 			</div>
 		</section>
@@ -84,13 +87,15 @@ templ title(env *gobl.Envelope, doc internal.Document) {
 
 templ titleHero(doc internal.Document) {
 	<div class="hero">
-		<div class="alias">
-			if img := supplierLogo(ctx, doc.GetSupplier()); img != nil {
-				<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
-			} else {
-				{ supplierAlias(doc.GetSupplier()) }
-			}
-		</div>
+		@utils.Section(display.KeyHeaderLogo) {
+			<div class="alias">
+				if img := supplierLogo(ctx, doc.GetSupplier()); img != nil {
+					<img src={ img.URL } alt={ img.Label } height={ logoHeight(img) }/>
+				} else {
+					{ supplierAlias(doc.GetSupplier()) }
+				}
+			</div>
+		}
 		@ar.ARCADocTypeLetter(doc)
 	</div>
 }

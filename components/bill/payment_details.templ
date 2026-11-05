@@ -12,6 +12,8 @@ import (
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/num"
@@ -34,24 +36,43 @@ const (
 	PaymentOnlineQRMaxSize = 40
 )
 
-templ paymentDetails(inv *bill.Invoice) {
-	@t.Scope(".payment") {
-		if showPayments(inv) {
-			<section class="payment">
-				<h2 class="title">
-					@t.T(".title")
-				</h2>
-				if inv.Payment.Terms != nil {
-					@paymentTerms(inv.Payment.Terms, inv.Totals)
-				}
-				{{ qrs := paymentOnlineQRCodes(inv.Payment.Instructions, inv.Totals) }}
-				if inv.Payment.Instructions != nil {
-					@paymentInstructions(inv.Payment.Instructions, qrs)
-				}
-				@paymentOnlineQRs(qrs)
-			</section>
+// paymentSection renders the payment details of an invoice or an order,
+// with the "payment", "payment.terms" and "payment.instructions" anchors.
+// The online payment QR codes belong to the instructions, so they go when
+// the instructions are replaced, and when the "payment.instructions.online"
+// anchor is replaced the links are not rendered as QR codes either.
+templ paymentSection(payment *bill.PaymentDetails, totals *bill.Totals) {
+	@utils.Section(display.KeyPayment) {
+		@t.Scope(".payment") {
+			if showPayments(ctx, payment) {
+				<section class="payment">
+					<h2 class="title">
+						@t.T(".title")
+					</h2>
+					@utils.Section(display.KeyPaymentTerms) {
+						if payment != nil && payment.Terms != nil {
+							@paymentTerms(payment.Terms, totals)
+						}
+					}
+					@utils.Section(display.KeyPaymentInstructions) {
+						{{ qrs := paymentOnlineQRCodes(ctx, paymentInstructionsOf(payment), totals) }}
+						if payment != nil && payment.Instructions != nil {
+							@paymentInstructions(payment.Instructions, qrs)
+						}
+						@paymentOnlineQRs(qrs)
+					}
+				</section>
+			}
 		}
 	}
+}
+
+// paymentInstructionsOf provides the payment instructions, or nil.
+func paymentInstructionsOf(payment *bill.PaymentDetails) *pay.Instructions {
+	if payment == nil {
+		return nil
+	}
+	return payment.Instructions
 }
 
 // paymentOnlineQRs adds a column with a QR code and a button for each online
@@ -139,9 +160,13 @@ func paymentOnlineQRSize(ol *pay.Online) float64 {
 // paymentOnlineQRCodes generates the QR codes for the online payment links,
 // as long as there is still something left to pay. Links that aren't web
 // URLs, that ask for no QR code with a qr-size of 0, or whose QR code
-// can't be generated, are skipped.
-func paymentOnlineQRCodes(inst *pay.Instructions, totals *bill.Totals) []*paymentOnlineQR {
+// can't be generated, are skipped, as are all of them when a snippet
+// replaces the online links.
+func paymentOnlineQRCodes(ctx context.Context, inst *pay.Instructions, totals *bill.Totals) []*paymentOnlineQR {
 	if inst == nil || !paymentPending(totals) {
+		return nil
+	}
+	if _, ok := internal.Snippets(ctx).Replacement(display.KeyPaymentOnline); ok {
 		return nil
 	}
 	var qrs []*paymentOnlineQR
@@ -206,17 +231,19 @@ templ paymentInstructions(inst *pay.Instructions, qrs []*paymentOnlineQR) {
 					</span>
 				</li>
 			}
-			if len(inst.CreditTransfer) > 0 {
-				<li class="bank-data">
-					<span class="label">
-						@t.T(".bank_data")
-					</span>
-					for _, ct := range inst.CreditTransfer {
-						<span class="value">
-							@paymentCreditTransferRow(ct)
+			@utils.ListSection(display.KeyPaymentBankData) {
+				if len(inst.CreditTransfer) > 0 {
+					<li class="bank-data">
+						<span class="label">
+							@t.T(".bank_data")
 						</span>
-					}
-				</li>
+						for _, ct := range inst.CreditTransfer {
+							<span class="value">
+								@paymentCreditTransferRow(ct)
+							</span>
+						}
+					</li>
+				}
 			}
 			if inst.Card != nil {
 				<li class="card">
@@ -238,17 +265,19 @@ templ paymentInstructions(inst *pay.Instructions, qrs []*paymentOnlineQR) {
 					</span>
 				</li>
 			}
-			if links := paymentOnlineLinks(inst, qrs); len(links) > 0 {
-				<li class="online">
-					<span class="label">
-						@t.T(".online")
-					</span>
-					for _, ol := range links {
-						<span class="value">
-							@paymentOnlineRow(ol)
+			@utils.ListSection(display.KeyPaymentOnline) {
+				if links := paymentOnlineLinks(inst, qrs); len(links) > 0 {
+					<li class="online">
+						<span class="label">
+							@t.T(".online")
 						</span>
-					}
-				</li>
+						for _, ol := range links {
+							<span class="value">
+								@paymentOnlineRow(ol)
+							</span>
+						}
+					</li>
+				}
 			}
 			if inst.Notes != "" {
 				<li class="notes">
@@ -420,14 +449,17 @@ func displayDueDates(terms *pay.Terms, totals *bill.Totals) []*pay.DueDate {
 	return []*pay.DueDate{&full}
 }
 
-func showPayments(inv *bill.Invoice) bool {
-	if inv.Payment == nil {
+// showPayments determines if the payment section has something to show:
+// payment terms or instructions, or snippets anchored inside it.
+func showPayments(ctx context.Context, payment *bill.PaymentDetails) bool {
+	s := internal.Snippets(ctx)
+	if s.Has(display.KeyPaymentTerms) || s.Has(display.KeyPaymentInstructions) {
+		return true
+	}
+	if payment == nil {
 		return false
 	}
-	if inv.Payment.Instructions == nil && inv.Payment.Terms == nil {
-		return false
-	}
-	return true
+	return payment.Instructions != nil || payment.Terms != nil
 }
 
 // paymentPending returns true when the document still has a positive

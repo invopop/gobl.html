@@ -1,0 +1,88 @@
+package utils
+
+import (
+	"github.com/invopop/gobl.html/display"
+	"github.com/invopop/gobl.html/internal"
+)
+
+// Section wraps a part of the document identified by its display key so
+// that snippets can be placed before it, after it, or in its place. A
+// replacement leaves the children out entirely, so snippets anchored to
+// keys inside them are never rendered either. Snippets before or after the
+// key render even when the children are empty for this document, or
+// hidden with WithHide.
+templ Section(key display.Key) {
+	@section(key, false) {
+		{ children... }
+	}
+}
+
+// ListSection is Section for anchors inside a list, where the snippets
+// are wrapped in list items so the markup stays valid.
+templ ListSection(key display.Key) {
+	@section(key, true) {
+		{ children... }
+	}
+}
+
+templ section(key display.Key, item bool) {
+	@before(key, item)
+	@replaceable(key, item) {
+		{ children... }
+	}
+	@after(key, item)
+}
+
+// Before renders the snippets placed before the key, on their own, for a
+// section whose container must stay between the snippets and the
+// replaceable content.
+templ Before(key display.Key) {
+	@before(key, false)
+}
+
+// After renders the snippets placed after the key, on their own.
+templ After(key display.Key) {
+	@after(key, false)
+}
+
+// Replaceable renders the replacement snippet at the key, or the children
+// when there is none, without the before and after snippets.
+templ Replaceable(key display.Key) {
+	@replaceable(key, false) {
+		{ children... }
+	}
+}
+
+templ before(key display.Key, item bool) {
+	for _, h := range internal.Snippets(ctx).Before(key) {
+		@snippet(key, display.ModeBefore, h, item)
+	}
+}
+
+templ after(key display.Key, item bool) {
+	for _, h := range internal.Snippets(ctx).After(key) {
+		@snippet(key, display.ModeAfter, h, item)
+	}
+}
+
+templ replaceable(key display.Key, item bool) {
+	if h, ok := internal.Snippets(ctx).Replacement(key); ok {
+		@snippet(key, display.ModeReplace, h, item)
+	} else {
+		{ children... }
+	}
+}
+
+// snippet writes one rendered snippet. The HTML is trusted, with its
+// variables already escaped by the display package.
+templ snippet(key display.Key, mode display.Mode, html string, item bool) {
+	if item {
+		<li class={ "snippet", "snippet-" + string(mode) } data-at={ string(key) }>
+			@templ.Raw(html)
+		</li>
+	} else {
+		<div class={ "snippet", "snippet-" + string(mode) } data-at={ string(key) }>
+			@templ.Raw(html)
+		</div>
+	}
+}

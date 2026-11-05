@@ -86,6 +86,9 @@ func renderNative(t *testing.T, path string) []byte {
 	if strings.Contains(name, ".hidden.") {
 		p.Hide = strings.Join(catalog.HiddenKeys, ",")
 	}
+	if strings.Contains(name, ".snippets.") {
+		p.Snippets = catalog.ExampleSnippets
+	}
 	p.Locale = i18n.Code(catalog.LocaleFromName(name))
 
 	out, err := goblhtml.Render(context.Background(), env, p.Options()...)

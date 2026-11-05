@@ -11,6 +11,7 @@ import (
 	"github.com/invopop/gobl"
 	_ "github.com/invopop/gobl.dev/bundle" // registers the GOBL-approved addon set
 	"github.com/invopop/gobl.html/components"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/layout"
 	srclocales "github.com/invopop/gobl.html/locales"
@@ -183,6 +184,19 @@ func HideKeys() []string {
 	return components.HideKeys()
 }
 
+// WithSnippets places the trusted HTML snippets at the document's anchors.
+// Each snippet names an anchor key (see display.Keys), a mode (before,
+// after or replace) and an html/template whose variables come from
+// display.Vars, filled in with the document's data and escaped for their
+// context. Call Snippets.Validate when taking the configuration in: Render
+// ignores unknown keys and modes, but fails on a snippet that does not
+// parse, refers to an unknown variable or exceeds the size limits.
+func WithSnippets(snippets display.Snippets) Option {
+	return func(o *internal.Opts) {
+		o.Snippets = append(o.Snippets, snippets...)
+	}
+}
+
 // EnableAdjustmentMode indicates that invoice types credit-note and debit-note
 // or similar should be rendered as adjustments to the original invoice, as
 // required in certain jurisdictions. By default, this mode is disabled.
@@ -266,6 +280,14 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 				}
 			}
 		}
+	}
+
+	if len(o.Snippets) > 0 {
+		r, err := o.Snippets.Render(snippetVars(ctx, env))
+		if err != nil {
+			return nil, err
+		}
+		o.Rendered = r
 	}
 
 	out := components.Envelope(env)

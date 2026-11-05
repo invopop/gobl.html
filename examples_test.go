@@ -101,6 +101,9 @@ func convertExample(name string) ([]byte, error) {
 	if strings.Contains(name, ".hidden.") {
 		opts = append(opts, goblhtml.WithHide(catalog.HiddenKeys...))
 	}
+	if strings.Contains(name, ".snippets.") {
+		opts = append(opts, goblhtml.WithSnippets(catalog.ExampleSnippets))
+	}
 	if strings.Contains(name, ".es.") {
 		opts = append(opts, goblhtml.WithLocale("es"))
 	}
