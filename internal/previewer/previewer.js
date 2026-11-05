@@ -16,7 +16,10 @@ function previewer() {
     addon: (e) => e.addons ?? [],
     tag: (e) => e.tags ?? [],
   };
-  const PER_EXAMPLE = ["locale", "void", "sandbox", "adjustment_mode", "hide"];
+  // Parameters an example's own state resets when it is shown. The locale
+  // is not among them: a locale chosen in the header applies to every
+  // example, and "default" falls back to each example's own.
+  const PER_EXAMPLE = ["void", "sandbox", "adjustment_mode", "hide"];
   let shown = 0; // generation of the latest show() call
   const median = (xs) => {
     const s = [...xs].sort((a, b) => a - b);
@@ -213,7 +216,8 @@ function previewer() {
       // the request names it, so a switch turned off or a hide list cleared
       // against that default is sent explicitly, as false or empty.
       const e = this.current;
-      if (e) for (const k of ["void", "sandbox", "adjustment_mode", "hide"]) if (e[k] && !this.params[k]) p[k] = typeof e[k] === "boolean" ? false : "";
+      if (e) for (const k of PER_EXAMPLE) if (e[k] && !this.params[k]) p[k] = typeof e[k] === "boolean" ? false : "";
+      if (e && e.locale && !this.params.locale) p.locale = e.locale;
       return p;
     },
     serverURL(file, ext, p = this.requestParams()) {
@@ -376,7 +380,10 @@ function previewer() {
             const x = await fetch(this.serverURL(row.e.file, "html", p));
             const html = await x.text();
             row.trip.push(performance.now() - t1);
-            row.native.push(Number(x.headers.get("X-Render-Ms")) || NaN);
+            if (!x.ok) throw new Error(`${row.e.file}: server responded ${x.status}`);
+            const native = Number(x.headers.get("X-Render-Ms"));
+            if (!(native > 0)) throw new Error(`${row.e.file}: no X-Render-Ms header in the server response`);
+            row.native.push(native);
             paint(res.html, html, round === rounds && row === rows[rows.length - 1]);
           }
         }
@@ -385,10 +392,12 @@ function previewer() {
         this.meta = `${rows.length} examples × ${rounds} rounds · WASM ${this.bench.total.wasmMed} ms · native ${this.bench.total.nativeMed} ms · ${this.bench.total.ratio}`;
         r.frame.srcdoc = await this.reportHTML(this.bench);
       } catch (err) {
-        this.error = String(err);
         this.running = false;
         this.bench = null;
-        this.show();
+        // Restore the preview first: a successful show() clears the error,
+        // and the benchmark's failure must stay visible.
+        await this.show();
+        this.error = String(err);
       }
     },
     closeBenchmark() {
