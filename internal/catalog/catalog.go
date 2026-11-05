@@ -57,9 +57,10 @@ type Entry struct {
 	Kind string `json:"kind"`
 	// Addons lists the tax addons the document declares.
 	Addons []string `json:"addons,omitempty"`
-	// Tags describe notable content: qr, payment, logo, discounts, charges,
-	// delivery, notes, attachments, preceding, prices-include, currency (a
-	// currency other than the regime's own, or exchange rates), multipage,
+	// Tags describe notable content: qr, payment-terms, payment-instructions,
+	// advances, logo, discounts, charges, delivery, notes, attachments,
+	// preceding, prices-include, currency (a currency other than the
+	// regime's own, or exchange rates), multipage,
 	// and the states void, sandbox and adjustment.
 	Tags []string `json:"tags,omitempty"`
 	// Currency is the document currency, if any.
@@ -143,7 +144,7 @@ func describe(ctx context.Context, path string, render Renderer) (Entry, error) 
 		e.Currency = doc.Currency.String()
 		e.Supplier = partyName(doc.Supplier)
 		e.Lines = len(doc.Lines)
-		add(doc.Payment != nil && (doc.Payment.Instructions != nil || doc.Payment.Terms != nil || len(doc.Payment.Advances) > 0), "payment")
+		paymentTags(add, doc.Payment)
 		add(hasLogo(doc.Supplier), "logo")
 		add(len(doc.Discounts) > 0, "discounts")
 		add(len(doc.Charges) > 0, "charges")
@@ -161,7 +162,7 @@ func describe(ctx context.Context, path string, render Renderer) (Entry, error) 
 		e.Supplier = partyName(doc.Supplier)
 		e.Lines = len(doc.Lines)
 		add(hasLogo(doc.Supplier), "logo")
-		add(doc.Payment != nil, "payment")
+		paymentTags(add, doc.Payment)
 		add(doc.Delivery != nil, "delivery")
 		add(len(doc.Notes) > 0, "notes")
 		add(currencySensitive(doc.Regime, doc.Currency, len(doc.ExchangeRates)), "currency")
@@ -184,7 +185,6 @@ func describe(ctx context.Context, path string, render Renderer) (Entry, error) 
 		e.Lines = len(doc.Lines)
 		add(hasLogo(doc.Supplier), "logo")
 		add(len(doc.Notes) > 0, "notes")
-		add(len(doc.Methods) > 0, "payment")
 		add(currencySensitive(doc.Regime, doc.Currency, len(doc.ExchangeRates)), "currency")
 	case *org.Party:
 		e.Kind = "party"
@@ -225,6 +225,18 @@ func kindForInvoice(t cbc.Key) string {
 	default:
 		return "invoice"
 	}
+}
+
+// paymentTags tells apart the ways a document talks about payment: the
+// terms (due dates, notes), the instructions (bank details, cards, online
+// links) and advances already received.
+func paymentTags(add func(bool, string), p *bill.PaymentDetails) {
+	if p == nil {
+		return
+	}
+	add(p.Terms != nil, "payment-terms")
+	add(p.Instructions != nil, "payment-instructions")
+	add(len(p.Advances) > 0, "advances")
 }
 
 // currencySensitive reports whether currency handling matters for the
