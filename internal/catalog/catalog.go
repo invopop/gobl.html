@@ -13,6 +13,7 @@ import (
 	"strings"
 
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/locales"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/currency"
@@ -20,6 +21,18 @@ import (
 	"github.com/invopop/gobl/org"
 	"github.com/invopop/gobl/tax"
 )
+
+// LocaleFromName returns the locale an example's file name implies with a
+// ".<code>." segment, such as "ro-efactura-invoice.ro.json", for any of the
+// shipped locales, or "" when the name implies none.
+func LocaleFromName(name string) string {
+	for _, l := range locales.Codes() {
+		if strings.Contains(name, "."+l+".") {
+			return l
+		}
+	}
+	return ""
+}
 
 // HiddenKeys are the sections an example whose name contains ".hidden."
 // is rendered without, on every path that renders the examples: the output
@@ -113,11 +126,7 @@ func describe(ctx context.Context, path string, render Renderer) (Entry, error) 
 	if strings.Contains(name, ".hidden.") {
 		e.Hide = strings.Join(HiddenKeys, ",")
 	}
-	for _, l := range []string{"es", "fr", "pl"} {
-		if strings.Contains(name, "."+l+".") {
-			e.Locale = l
-		}
-	}
+	e.Locale = LocaleFromName(name)
 
 	var tags []string
 	add := func(cond bool, tag string) {

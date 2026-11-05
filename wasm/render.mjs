@@ -14,6 +14,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { performance } from "node:perf_hooks";
 import { createRequire } from "node:module";
+import { fileURLToPath } from "node:url";
 
 const [, , wasmPath, examplesDir, outDir, paramsPath] = process.argv;
 if (!wasmPath || !examplesDir || !outDir) {
@@ -38,6 +39,13 @@ console.log(`version: ${JSON.stringify(globalThis.goblVersion())}`);
 
 const base = paramsPath ? JSON.parse(fs.readFileSync(paramsPath, "utf8")) : {};
 
+// LOCALES are the shipped locales, one directory each, so a ".<code>."
+// file name segment maps to a locale the same way catalog.LocaleFromName does.
+const LOCALES = fs
+  .readdirSync(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../locales"), { withFileTypes: true })
+  .filter((d) => d.isDirectory())
+  .map((d) => d.name);
+
 // paramsFor mirrors examples_test.go: the file name carries the state.
 function paramsFor(name) {
   const p = { ...base };
@@ -46,7 +54,7 @@ function paramsFor(name) {
   if (name.includes(".adjustment.")) p.adjustment_mode = true;
   // Same list as catalog.HiddenKeys.
   if (name.includes(".hidden.")) p.hide = "header.summary.ordering,payment.instructions.bank-data,notes,footer.branding";
-  for (const locale of ["es", "fr", "pl"]) {
+  for (const locale of LOCALES) {
     if (name.includes(`.${locale}.`)) p.locale = locale;
   }
   return p;

@@ -62,6 +62,11 @@ func TestScan(t *testing.T) {
 	assert.True(t, void.Void)
 	assert.Contains(t, void.Tags, "void")
 
+	ro := byFile["ro-efactura-invoice.ro.json"]
+	assert.Equal(t, "ro", ro.Locale, "file name implies the Romanian locale")
+	assert.Equal(t, "ro", catalog.LocaleFromName("ro-efactura-invoice.ro.json"))
+	assert.Equal(t, "", catalog.LocaleFromName("es-ticketbai-invoice.json"), "a country prefix is not a locale")
+
 	hidden := byFile["es-verifactu-invoice-full.hidden.json"]
 	assert.Equal(t, strings.Join(catalog.HiddenKeys, ","), hidden.Hide)
 	assert.Contains(t, hidden.Tags, "hidden")
