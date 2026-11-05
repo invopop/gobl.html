@@ -11,7 +11,11 @@
 				"prv": "zatca-qr",
 				"val": "AS3Yp9mF2YrZitmF2YjYsyDYp9mE2LnYsdio2YrYqSDZhNmE2YHYudin2YTZitin2Kog2KfZhNiq2LHZgdmK2YfZitipAg8zMTE1ODgxMDcyMDAwMDMDEzIwMjUtMDktMjVUMDA6MDA6MDBaBAY5NDguNzUFBjEyMy43NQ=="
 			}
-		]
+		],
+		"meta": {
+			"description": "A credit note reducing a previously reported simplified invoice.",
+			"title": "Simplified credit note"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -153,6 +157,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5NjktN2I5OC05ZTA4LTc2NDYxMDFmNjhkYSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRiZi03YTE5LTgwMTAtMmU3Njc0NDUzYzQ5IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjUxZjg3ZmNkNWUwZDU1YjRmMGRlODAzOWNhMWUwOTQ0ODI2NzVkMzUxZmE1ZjgzMjI1OWZhYWQxNDM2YTg5MDUifSwiaWF0IjoxNzkzODc3MTc0fQ.HM4BOG2LXE0YdT3trJzc8wwt5SNVk8cwnFtDl56Hu24g6IrSNUm-SfViuOhxwkGzCu5eGr-FWW1vhmoABIZtLQ"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc2LTI5NjEtNzUxYy05MzU4LTAzMmJjNWY2NDYxZSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRiZi03YTE5LTgwMTAtMmU3Njc0NDUzYzQ5IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjUxZjg3ZmNkNWUwZDU1YjRmMGRlODAzOWNhMWUwOTQ0ODI2NzVkMzUxZmE1ZjgzMjI1OWZhYWQxNDM2YTg5MDUifSwiaWF0IjoxNzkzODk0Nzg3fQ.JWtREW1McfLAELJmgi2AF64qpiJktsVgW1dJxjIAuq7L67aQ2wDIkIdfLGNPyAbtqUE1eltBhY7_ym5of2J7Dg"
 	]
 }

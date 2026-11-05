@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "1899473fb1e19a448915a9331608783aa041f27c07f06d1f06106e5f8c43535b"
+		},
+		"meta": {
+			"description": "The customer integrates a reverse-charge invoice received from the supplier, issuer type CC.",
+			"title": "SDI customer-issued integration (TD16)"
 		}
 	},
 	"doc": {

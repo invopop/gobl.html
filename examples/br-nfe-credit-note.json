@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "078bc5ab1b16473d69d18d45b02720cf595e38014ce03d02ae2d63f7df318a9a"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a NF-e that fully returns the goods of a previously issued B2B product invoice — a _devolução total_ under the pre-reform (pre-RTC) rules.",
+			"title": "Example NF-e for a full goods return"
 		}
 	},
 	"doc": {

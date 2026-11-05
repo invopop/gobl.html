@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "7e4344a6230392f279d365f2ac07dd570bd22558b7371bdf63b956657826c4c8"
 		},
+		"meta": {
+			"description": "Consumer invoice to a private person without a tax ID, routed through a consumer e-invoice address.",
+			"title": "Simplified Finvoice invoice"
+		},
 		"from": "iso6523-actorid-upis::0216:003726174164",
 		"to": "iso6523-actorid-upis::0216:FI4950001520000081"
 	},

@@ -27,7 +27,11 @@
 				"prv": "iapr-uid",
 				"val": "EB1CF2137764B0D534885F361365C39A32C0205A"
 			}
-		]
+		],
+		"meta": {
+			"description": "In this example, we're issuing a standalone climate fee invoice (no lines) from a Greek supplier to another Greek business customer. This is an example of how special records and other document types can be used in Greece.",
+			"title": "Example climate fee standalone invoice (B2B)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -117,6 +121,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MWEtN2MyMS1hMWFkLTE1MDBkZTM5ODZkYyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ4Mi03MjVkLThiMTUtNmMzNzVjOTkxMjMwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjNkOGYxMjEzMjA3OGFiN2E5MjU4MjY1NTE1NDRiMzEwYWVlNTNhNDdlYmRhZWI4Y2MyNmVkNWI1NDdhYWU4ZTYifSwiaWF0IjoxNzkzODc3MTc0fQ.kM1eRuLJC5-X6vSFMShCEyMQ1RBdAbbd_Qvlnc8SRhrp9NcnaDJp6Pr4rD1J49cUo1LqTF4e1WR7cVLDZGEXhA"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2YWUtNzg1MC1hMDE4LTQ4Yzk4MjJkZWJmNSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ4Mi03MjVkLThiMTUtNmMzNzVjOTkxMjMwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjNkOGYxMjEzMjA3OGFiN2E5MjU4MjY1NTE1NDRiMzEwYWVlNTNhNDdlYmRhZWI4Y2MyNmVkNWI1NDdhYWU4ZTYifSwiaWF0IjoxNzkzODk0Njg4fQ.vg590KTkMohNBQaL5v3GwnXzFb-HNxm6GKaLUMta9dZ7EloxJsM3wEykCHIp9SvPqtESvoYmutdDqCWONaCmgg"
 	]
 }

@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "c2bdfb78953ce2f8c65edd8f763b4e439cffccae88685321ed397170428ed883"
 		},
+		"meta": {
+			"description": "In this example, we're invoicing a Danish public institution, the segment where e-invoicing is mandatory.",
+			"title": "Example B2G invoice"
+		},
 		"from": "iso6523-actorid-upis::0184:16356700",
 		"to": "iso6523-actorid-upis::0088:5798009883735"
 	},

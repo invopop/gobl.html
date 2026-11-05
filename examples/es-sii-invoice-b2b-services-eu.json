@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "3405d4c159dc2d5df4353bb979892e465332774237eb7a48a285e232b1a4244b"
+		},
+		"meta": {
+			"description": "Reverse charge invoices are used for B2B services provided to customers in other EU member states. Reverse charge must be applied when:",
+			"title": "B2B Services EU Client (Reverse Charge)"
 		}
 	},
 	"doc": {

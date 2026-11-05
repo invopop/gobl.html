@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "044420bfe251e514607fbd20abccb28174ab0945b56c29aea29e1bee5eccb0ee"
 		},
+		"meta": {
+			"description": "Until recently and outside specific international trade scenarios, Germany did not broadly apply a domestic zero VAT rate on typical goods like food, books, or medicines as some countries do. However, since 1 January 2023, Germany introduced a specific zero-rating rule in its VAT Act:",
+			"title": "Peppol Germany - B2B zero rated goods invoice"
+		},
 		"from": "iso6523-actorid-upis::9930:DE879558966",
 		"to": "iso6523-actorid-upis::9930:DE993930191"
 	},

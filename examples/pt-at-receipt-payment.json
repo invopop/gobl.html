@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "e6b1d8d2fece18db57cba480334f4536b4d41d6762e7e379baea0d3af4f80db8"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a payment receipt from a Portuguese supplier to another Portuguese business.",
+			"title": "AT payment receipt"
 		}
 	},
 	"doc": {

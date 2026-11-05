@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "d486a07659d5592d466aefd089e410b15a1b66018afc497f87a706597256a701"
 		},
+		"meta": {
+			"description": "A debit note that is subject to VAT and carries all the mandatory invoice information, such as re-invoicing shared site costs to a joint-venture partner, must be sent as a regular e-invoice. Issue it as a standard invoice.",
+			"title": "PA B2B debit note (treated as invoice)"
+		},
 		"from": "iso6523-actorid-upis::0225:732829320",
 		"to": "iso6523-actorid-upis::0225:356000000"
 	},

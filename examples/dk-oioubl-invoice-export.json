@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "bc6515bd26c95ac43091a3da6de2fe72afb297505352aa1ebd96917a24f3a94e"
 		},
+		"meta": {
+			"description": "In this example, we're invoicing a customer outside the EU — an export of goods, zero-rated under Momslovens §34.",
+			"title": "Example export invoice"
+		},
 		"from": "iso6523-actorid-upis::0184:16356700",
 		"to": "iso6523-actorid-upis::0088:7080000000000"
 	},

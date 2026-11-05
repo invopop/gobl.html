@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "96b01431ac997aa4528bda2b3bd8000b2af7dd19c3617135d61bf7ce83bdc57e"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a simple service invoice (NFS-e) from a Brazilian supplier to another Brazilian business customer.",
+			"title": "Example B2B service invoice (NFS-e)"
 		}
 	},
 	"doc": {

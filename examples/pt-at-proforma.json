@@ -27,7 +27,11 @@
 				"prv": "at-app-id",
 				"val": "0"
 			}
-		]
+		],
+		"meta": {
+			"description": "In this example, we're issuing a proforma (_pró-forma_): a non-fiscal document sent to a customer to request payment in advance of the final invoice.",
+			"title": "AT proforma invoice"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -163,6 +167,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5NWEtN2UyNS05NzY5LWE5NDU1OGU1MzM3YSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRiOC03YTBlLTk0ZDMtMzc3YzljODRhYmE2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjFjMGVlOTc0OTJmNWY5MDY5NmFhYTQ2Nzg0ZjVlNWMwY2JhNWJjOTI1NmZmOGFiMmNhNmRiYzFhYjhhMDdhNGIifSwiaWF0IjoxNzkzODc3MTc0fQ.oDkN0y56o5uf4_zRDFfhpIAx6Lx8qtAND09l6irAGM_446VOvenjCfoQ1buTkOxFGRjsCJ8dWa5VaL1VeTHPmA"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE3MDEtN2JhOC1hY2RmLTE2NGExZmMzMGNmMSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRiOC03YTBlLTk0ZDMtMzc3YzljODRhYmE2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjFjMGVlOTc0OTJmNWY5MDY5NmFhYTQ2Nzg0ZjVlNWMwY2JhNWJjOTI1NmZmOGFiMmNhNmRiYzFhYjhhMDdhNGIifSwiaWF0IjoxNzkzODk0Njg4fQ.kbGShXnVUejpTKx-Xx0agXDBLA6Z2jtxHGlIlYVR9ftQ9ml9NQH4mgo9Sou_pbtoHLgifSDSRr-PQN6LJwSl2w"
 	]
 }

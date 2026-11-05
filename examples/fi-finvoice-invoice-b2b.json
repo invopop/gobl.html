@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "72644a7192497345e06caced6b0f12c14368cbcd7a8be4158a0cb7f06c3e1771"
 		},
+		"meta": {
+			"description": "In this example, we're issuing a B2B invoice from a Finnish supplier to another Finnish business.",
+			"title": "Example B2B invoice"
+		},
 		"from": "iso6523-actorid-upis::0216:003726174164",
 		"to": "iso6523-actorid-upis::0216:003711223349"
 	},

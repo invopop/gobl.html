@@ -11,7 +11,11 @@
 				"prv": "zatca-qr",
 				"val": "AS3Yp9mF2YrZitmF2YjYsyDYp9mE2LnYsdio2YrYqSDZhNmE2YHYudin2YTZitin2Kog2KfZhNiq2LHZgdmK2YfZitipAg8zMTE1ODgxMDcyMDAwMDMDEzIwMjUtMDktMjVUMDA6MDA6MDBaBAY5NDguNzUFBjEyMy43NQ=="
 			}
-		]
+		],
+		"meta": {
+			"description": "Bilingual Arabic and English names, CRN identities, 15%, zero, exempt and out-of-scope lines with their VATEX codes, document discount and charge, delivery, advances, notes and attachments; line discounts only, as ZATCA forbids line charges.",
+			"title": "ZATCA standard invoice with every feature"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -560,6 +564,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYmE1LWVjNzctN2E4Yi1hMWM5LWQ4NzRhODZhMDM2ZiJ9.eyJ1dWlkIjoiMDFhMWFiYTUtZWM3Ni03YWFhLWJmMzItYzRkNGUwNzk5NzUzIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImU1Y2UzZDJiNWQ5Y2NkZmRlZDhlZWY1YmRlNjFiOTIwMzNiMWRkNGNkZDdkODcwYTRkYmQ4ZGJhMTJiZWFlOTQifSwiaWF0IjoxNzkzODgxMTQwfQ.yl-pv9S6eED5uuUH-nFnKDoHkIgVcOqE6PN4F6vgo1e0UTsqxgfQIBm07aVjHLC1yfUJI28F1ImEvxo0C43Q5g"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc1LWU3NDMtNzliOC05ZmJlLTNiZDRkZGU5YjA0NSJ9.eyJ1dWlkIjoiMDFhMWFiYTUtZWM3Ni03YWFhLWJmMzItYzRkNGUwNzk5NzUzIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImU1Y2UzZDJiNWQ5Y2NkZmRlZDhlZWY1YmRlNjFiOTIwMzNiMWRkNGNkZDdkODcwYTRkYmQ4ZGJhMTJiZWFlOTQifSwiaWF0IjoxNzkzODk0NzcwfQ.9BNuk6c8Cuv7Fju_1nWI50qvjPvu0r0lSmBc_bL_GY6xBzekpQ37fzKfDv36WaeeLiAOS0nWjpEbyPBywJR-YA"
 	]
 }

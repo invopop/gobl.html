@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "064cf40811dbf773f2f14a81a29187cb0a02590981f2afdb0e5e43618984ce8e"
 		},
+		"meta": {
+			"description": "In this example, we're issuing a domestic invoice for a zero-rated supply — newspapers, one of the few zero-rated categories under Momslovens §34.",
+			"title": "Example zero-rated invoice"
+		},
 		"from": "iso6523-actorid-upis::0184:16356700",
 		"to": "iso6523-actorid-upis::0184:12345674"
 	},

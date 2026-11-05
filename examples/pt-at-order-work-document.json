@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "7862eda94bb398d93a0271cea537b5c99331b22319cbe870618f38d35de7d3e8"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a work document (_documento de conferência_): a non-fiscal document presented to a customer for checking goods or services before the final invoice.",
+			"title": "AT work document"
 		}
 	},
 	"doc": {

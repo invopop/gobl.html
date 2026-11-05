@@ -11,7 +11,11 @@
 				"prv": "ade-ref",
 				"val": "0000654321"
 			}
-		]
+		],
+		"meta": {
+			"description": "After the AdE (Agenzia delle Entrate) accepts the invoice, they add a reference to each line item. This reference, stored in the it-ticket-line-ref extension, is essential for processing refunds.",
+			"title": "B2C Invoice Complete"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -121,6 +125,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MmQtN2EzMS04YWU2LWE2N2Q2YjlkNGI2YiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ5YS03ZThhLTk4M2QtZDA1ZGMxYzJhMjEzIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImJmZTY1Y2E4MDY1ZTdmMDU3MDFjOTJkMjllMTg1OGI0YTAyOTAxZjk5MmNhOTYyNzg3ZTJhNzgzNjlkNWYyMjIifSwiaWF0IjoxNzkzODc3MTc0fQ.Te1mi7QFk7ghf3YaMLLN-R6BE8k9xT-4gM3nHc18awhQoJprzDfDBvDE5_wCNNmvAK2tmOcwOXY0jVdXtM_pkg"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZDItN2U4Mi1hNTFlLWNjN2VjNzVjNTIzNiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ5YS03ZThhLTk4M2QtZDA1ZGMxYzJhMjEzIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImJmZTY1Y2E4MDY1ZTdmMDU3MDFjOTJkMjllMTg1OGI0YTAyOTAxZjk5MmNhOTYyNzg3ZTJhNzgzNjlkNWYyMjIifSwiaWF0IjoxNzkzODk0Njg4fQ.RDcd-cVdiGcOW5DILGxoRwvkliIYYyiJBOw_bG0tsECXKEVfv_KF_OLirylQsXxh6Iqzb2H2dmXPIiaF9yNZdw"
 	]
 }

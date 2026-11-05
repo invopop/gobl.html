@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "ef18e049452dbeeceebe9a4bd6288274049c163617d57c2e35b1a895c7d586b4"
 		},
+		"meta": {
+			"description": "A domestic B2B invoice destined for Factur-X output — a human-readable PDF with the UN/CEFACT CII XML embedded (the French implementation of the same specification as ZUGFeRD). It combines the fr-facturx-v1 add-on for the Factur-X format with fr-ctc-flow2-v1, so the same document is also valid for the PA e-invoicing flow.",
+			"title": "Factur-X B2B invoice"
+		},
 		"from": "iso6523-actorid-upis::0225:498927917",
 		"to": "iso6523-actorid-upis::0225:356000000"
 	},

@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "86494cd80d6fe365164cec9395b435c9d5094c552da23faf939ae6048eb90a6b"
+		},
+		"meta": {
+			"description": "This is a payment receipt (_comprobante de pago_, or REP) issued when collecting a payment against one or more invoices that were issued with the PPD (_Pago en Parcialidades o Diferido_) payment method. It is modelled as a GOBL bill.Payment document rather than an invoice, and must be processed through the SAT issue payment workflow.",
+			"title": "Payment receipt (Comprobante de Pago)"
 		}
 	},
 	"doc": {

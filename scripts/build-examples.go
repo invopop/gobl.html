@@ -35,6 +35,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 
@@ -76,7 +77,7 @@ func main() {
 	if flag.NArg() > 0 {
 		for _, src := range flag.Args() {
 			out := filepath.Join(examplesDir, filepath.Base(src))
-			if err := importOne(src, out, jsonSource); err != nil {
+			if err := importOne(src, out, jsonSource, meta{}); err != nil {
 				fmt.Printf("✗ %s: %v\n", src, err)
 				failed++
 			}
@@ -92,7 +93,7 @@ func main() {
 		if want := canonicalFile(src); want != "" && want != filepath.Base(src) {
 			fmt.Printf("~ %s should be named %s (run with -rename)\n", src, want)
 		}
-		if err := importOne(src, out, jsonSource); err != nil {
+		if err := importOne(src, out, jsonSource, meta{}); err != nil {
 			fmt.Printf("✗ %s: %v\n", src, err)
 			failed++
 		}
@@ -114,6 +115,7 @@ func exit(failed int) {
 func importDocs(docs string, prune bool) int {
 	previous := readManifest()
 	current := map[string]string{} // example file -> snippet path
+	metas := docsMetas(docs)
 	failed := 0
 	for _, tree := range trees {
 		files, _ := filepath.Glob(filepath.Join(docs, "snippets", tree, "*", "*.mdx"))
@@ -141,7 +143,7 @@ func importDocs(docs string, prune bool) int {
 					continue
 				}
 			}
-			if err := importOne(f, filepath.Join(examplesDir, out), extractJSON); err != nil {
+			if err := importOne(f, filepath.Join(examplesDir, out), extractJSON, metas[rel]); err != nil {
 				fmt.Printf("✗ %s: %v\n", rel, err)
 				failed++
 				continue
@@ -169,13 +171,77 @@ func importDocs(docs string, prune bool) int {
 	return failed
 }
 
+// docsMetas reads the title and description the docs give each example:
+// every accordion in snippets/ imports the built snippets it shows and
+// wraps each in <Accordion title="…"> followed by a paragraph. Keyed by
+// the snippet's path relative to the docs checkout.
+func docsMetas(docs string) map[string]meta {
+	out := map[string]meta{}
+	importRe := regexp.MustCompile(`(?m)^import\s+(\w+)\s+from\s+'/(snippets/[^']+\.mdx)';?`)
+	accordionRe := regexp.MustCompile(`(?s)<Accordion\s+title="([^"]*)"[^>]*>(.*?)</Accordion>`)
+	useRe := regexp.MustCompile(`<(\w+)\s*/>`)
+	linkRe := regexp.MustCompile(`\[([^\]]+)\]\([^)]*\)`)
+	files, _ := filepath.Glob(filepath.Join(docs, "snippets", "*", "*", "*.mdx"))
+	pages, _ := filepath.Glob(filepath.Join(docs, "guides", "*.mdx"))
+	files = append(files, pages...)
+	for _, f := range files {
+		raw, err := os.ReadFile(f)
+		if err != nil || !strings.Contains(string(raw), "<Accordion") {
+			continue
+		}
+		text := string(raw)
+		imports := map[string]string{}
+		for _, m := range importRe.FindAllStringSubmatch(text, -1) {
+			if !strings.HasSuffix(m[2], ".min.mdx") {
+				imports[m[1]] = m[2]
+			}
+		}
+		for _, a := range accordionRe.FindAllStringSubmatch(text, -1) {
+			title, body := a[1], a[2]
+			// The description is the first paragraph of prose.
+			desc := ""
+			for _, para := range strings.Split(body, "\n\n") {
+				para = strings.TrimSpace(para)
+				if para == "" || strings.HasPrefix(para, "<") || strings.HasPrefix(para, "-") {
+					continue
+				}
+				if i := strings.Index(para, "<"); i >= 0 {
+					para = para[:i] // a component right after the prose
+				}
+				desc = linkRe.ReplaceAllString(strings.Join(strings.Fields(para), " "), "$1")
+				desc = strings.ReplaceAll(desc, "`", "")
+				break
+			}
+			for _, u := range useRe.FindAllStringSubmatch(body, -1) {
+				if path, ok := imports[u[1]]; ok {
+					if _, seen := out[path]; !seen {
+						out[path] = meta{title: title, description: desc}
+					}
+				}
+			}
+		}
+	}
+	return out
+}
+
 // jsonSource reads a bare document from a .json file.
 func jsonSource(path string) ([]byte, error) { return os.ReadFile(path) }
 
-func importOne(src, dst string, read func(string) ([]byte, error)) error {
+// meta is what an example says about itself: a title and a description,
+// carried in the envelope head's meta, which the digest does not cover.
+type meta struct{ title, description string }
+
+func importOne(src, dst string, read func(string) ([]byte, error), m meta) error {
 	data, err := read(src)
 	if err != nil {
 		return err
+	}
+	data, own := splitSource(data)
+	if own.title != "" {
+		m.title = own.title
+	}
+	if own.description != "" {
+		m.description = own.description
 	}
 	old, _ := os.ReadFile(dst)
 	if data, err = keepUUID(data, old); err != nil {
@@ -198,8 +264,17 @@ func importOne(src, dst string, read func(string) ([]byte, error)) error {
 		env.Head.UUID = prev.Head.UUID // keep the envelope's identity
 	}
 	env.Head.Stamps = sampleStamps(env)
+	if m.title != "" || m.description != "" {
+		env.Head.Meta = cbc.Meta{}
+		if m.title != "" {
+			env.Head.Meta["title"] = m.title
+		}
+		if m.description != "" {
+			env.Head.Meta["description"] = m.description
+		}
+	}
 	if old != nil && prev.Head != nil {
-		if sameDigest(prev, env) && sameStamps(prev, env) && (len(prev.Signatures) > 0) == (len(env.Head.Stamps) > 0) {
+		if sameDigest(prev, env) && sameStamps(prev, env) && sameMeta(prev, env) && (len(prev.Signatures) > 0) == (len(env.Head.Stamps) > 0) {
 			return nil // unchanged: keep the file and its signature
 		}
 	}
@@ -274,6 +349,7 @@ func canonicalFile(src string) string {
 	if err != nil {
 		return ""
 	}
+	data, _ = splitSource(data)
 	doc, err := gobl.Parse(data)
 	if err != nil {
 		return ""
@@ -479,6 +555,28 @@ func renameAll() int {
 
 func sameDigest(a, b *gobl.Envelope) bool {
 	return a.Head.Digest != nil && b.Head.Digest != nil && a.Head.Digest.Value == b.Head.Digest.Value
+}
+
+func sameMeta(a, b *gobl.Envelope) bool {
+	x, _ := json.Marshal(a.Head.Meta)
+	y, _ := json.Marshal(b.Head.Meta)
+	return string(x) == string(y)
+}
+
+// splitSource takes a hand-authored source apart: either a bare document,
+// or {"head": {"meta": {"title": …, "description": …}}, "doc": {…}} when
+// the author wants to say what the example shows.
+func splitSource(data []byte) ([]byte, meta) {
+	var wrapper struct {
+		Head struct {
+			Meta map[string]string `json:"meta"`
+		} `json:"head"`
+		Doc json.RawMessage `json:"doc"`
+	}
+	if json.Unmarshal(data, &wrapper) != nil || len(wrapper.Doc) == 0 {
+		return data, meta{}
+	}
+	return wrapper.Doc, meta{title: wrapper.Head.Meta["title"], description: wrapper.Head.Meta["description"]}
 }
 
 func sameStamps(a, b *gobl.Envelope) bool {

@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "d76fd9da04a9632432b897a8e2307a1f4cbf97c8a87f464b9f50a9b8ed294504"
 		},
+		"meta": {
+			"description": "In this example, we're issuing a domestic reverse charge invoice for copper scrap — one of the supplies (along with certain metals and electronics) where Denmark shifts the VAT liability to the buyer.",
+			"title": "Example reverse charge invoice"
+		},
 		"from": "iso6523-actorid-upis::0184:16356700",
 		"to": "iso6523-actorid-upis::0184:12345674"
 	},

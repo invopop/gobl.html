@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "6210fb56f8cfd305b0d1a40d9d65468c832a5512e64f524a84540cc01878cf58"
+		},
+		"meta": {
+			"description": "22%, 10% and 4% rates with N4 exempt and N6.7 reverse-charge lines, IRPEF ritenuta, cassa previdenziale with its fund type, stamp duty, PEC and SDI code inboxes, delivery, advances, pagoPA, notes and attachments.",
+			"title": "SDI invoice with every feature"
 		}
 	},
 	"doc": {

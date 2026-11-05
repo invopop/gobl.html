@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "08ec304c83f9931e03237df98a51ae20110ccdad7adc6c5f2f97a3ac07ec39d0"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a consumer invoice (NFC-e) from a supplier enrolled in the _Simples Nacional_ tax regime.",
+			"title": "Example B2C consumer invoice for a Simples Nacional issuer (NFC-e)"
 		}
 	},
 	"doc": {

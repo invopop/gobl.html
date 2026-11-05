@@ -12,6 +12,10 @@
 				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=INV-PP000003\u0026fecha=03-04-2025\u0026importe=2105.40"
 			}
 		],
+		"meta": {
+			"description": "Regular invoices are used for B2B transactions. Regular invoices must be issued when:",
+			"title": "Peppol Spain - B2B standard invoice"
+		},
 		"from": "iso6523-actorid-upis::9920:ESB85905495",
 		"to": "iso6523-actorid-upis::9920:ESB48994131"
 	},
@@ -164,6 +168,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4ZGUtNzZhYi1iZWE2LWE5NzE1NmIxM2FmMyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQzZi03ODQxLWIxZDQtYThhNGYyY2M5N2YwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjA0NTZjZTljOTUzYWJhYmM0NDIxNjFjOTFjNjU4MjVkNjY4MTZlN2QzMTE5MmU4ZmMyOTgyOWYxYzQyZDkwOWYifSwiaWF0IjoxNzkzODc3MTc0fQ.4SafEtLIaxf9R_gPF0fIA3YbdPcqywW25V4ADn1dDAPAdiukutNfBzBGxAj9aPoVDTtPPv19_K0IqNN0CDgJYQ"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NTMtNzljYi1hNDk1LTE2OWEwOGFhZGY4ZSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQzZi03ODQxLWIxZDQtYThhNGYyY2M5N2YwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjA0NTZjZTljOTUzYWJhYmM0NDIxNjFjOTFjNjU4MjVkNjY4MTZlN2QzMTE5MmU4ZmMyOTgyOWYxYzQyZDkwOWYifSwiaWF0IjoxNzkzODk0Njg4fQ.TrcJtOp9gxPFHzjWLsiJUYeWe9k4ekb7C6KJ-1rnBirD55DUXrSJ_bquJuc2XkwKgc88yd5_HjEoStE39afn-Q"
 	]
 }

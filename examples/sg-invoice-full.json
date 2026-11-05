@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "0ef718a74fd2d0c3529c16f450e0627e91f13cda12ebad0605196159e56770ce"
+		},
+		"meta": {
+			"description": "GST-registered supplier with UEN, 9% standard, zero-rated and exempt lines, line and document discounts and charges, PayNow advance, local bank transfer, card and online payment, notes and attachments.",
+			"title": "Singapore GST invoice with every feature"
 		}
 	},
 	"doc": {

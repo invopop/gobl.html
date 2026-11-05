@@ -1,161 +1,169 @@
 {
-	"$schema": "https://gobl.org/draft-0/bill/invoice",
-	"$regime": "AR",
-	"$addons": [
-		"ar-arca-v4"
-	],
-	"type": "debit-note",
-	"series": "1",
-	"code": "0002",
-	"issue_date": "2025-02-03",
-	"currency": "ARS",
-	"preceding": [
-		{
-			"type": "standard",
-			"issue_date": "2025-01-15",
-			"series": "1",
-			"code": "00001234",
-			"reason": "Intereses por mora y gastos de envío no facturados",
+	"head": {
+		"meta": {
+			"title": "Nota de Débito A",
+			"description": "Debit note adding late-payment interest, freight and omitted items to a prior Factura A, with the preceding reference ARCA requires."
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "AR",
+		"$addons": [
+			"ar-arca-v4"
+		],
+		"type": "debit-note",
+		"series": "1",
+		"code": "0002",
+		"issue_date": "2025-02-03",
+		"currency": "ARS",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2025-01-15",
+				"series": "1",
+				"code": "00001234",
+				"reason": "Intereses por mora y gastos de envío no facturados",
+				"ext": {
+					"ar-arca-doc-type": "1"
+				}
+			}
+		],
+		"tax": {
 			"ext": {
-				"ar-arca-doc-type": "1"
+				"ar-arca-concept": "1",
+				"ar-arca-doc-type": "2"
 			}
-		}
-	],
-	"tax": {
-		"ext": {
-			"ar-arca-concept": "1",
-			"ar-arca-doc-type": "2"
-		}
-	},
-	"supplier": {
-		"name": "Proveedor Ejemplo S.A.",
-		"tax_id": {
-			"country": "AR",
-			"code": "30712345671"
 		},
-		"addresses": [
-			{
-				"street": "Av. Corrientes 1234",
-				"locality": "Buenos Aires",
-				"region": "Ciudad Autónoma de Buenos Aires",
-				"code": "C1043",
-				"country": "AR"
-			}
-		],
-		"emails": [
-			{
-				"addr": "ventas@proveedorejemplo.com.ar"
-			}
-		],
-		"registration": {
-			"other": "Inicio de actividades: 2016-03-01"
-		}
-	},
-	"customer": {
-		"name": "Cliente Comercial S.R.L.",
-		"tax_id": {
-			"country": "AR",
-			"code": "30987654321"
-		},
-		"addresses": [
-			{
-				"street": "Av. Santa Fe 2500",
-				"locality": "Buenos Aires",
-				"region": "Ciudad Autónoma de Buenos Aires",
-				"code": "C1123",
-				"country": "AR"
-			}
-		],
-		"emails": [
-			{
-				"addr": "compras@clientecomercial.com.ar"
-			}
-		],
-		"ext": {
-			"ar-arca-vat-status": "1"
-		}
-	},
-	"lines": [
-		{
-			"quantity": "1",
-			"item": {
-				"key": "goods",
-				"name": "Intereses por mora sobre Factura A 0001-00001234",
-				"description": "15 días de atraso al 3% mensual sobre el saldo pendiente",
-				"price": "67500.00"
+		"supplier": {
+			"name": "Proveedor Ejemplo S.A.",
+			"tax_id": {
+				"country": "AR",
+				"code": "30712345671"
 			},
-			"taxes": [
+			"addresses": [
 				{
-					"cat": "VAT",
-					"key": "standard",
-					"rate": "general",
-					"percent": "21.0%",
-					"ext": {
-						"ar-arca-vat-rate": "5"
-					}
+					"street": "Av. Corrientes 1234",
+					"locality": "Buenos Aires",
+					"region": "Ciudad Autónoma de Buenos Aires",
+					"code": "C1043",
+					"country": "AR"
 				}
-			]
+			],
+			"emails": [
+				{
+					"addr": "ventas@proveedorejemplo.com.ar"
+				}
+			],
+			"registration": {
+				"other": "Inicio de actividades: 2016-03-01"
+			}
 		},
-		{
-			"quantity": "10",
-			"item": {
-				"key": "goods",
-				"name": "Flete y seguro de transporte",
-				"description": "Envío a sucursal no incluido en la factura original",
-				"price": "12000.00"
+		"customer": {
+			"name": "Cliente Comercial S.R.L.",
+			"tax_id": {
+				"country": "AR",
+				"code": "30987654321"
 			},
-			"taxes": [
+			"addresses": [
 				{
-					"cat": "VAT",
-					"key": "standard",
-					"rate": "general",
-					"percent": "21.0%",
-					"ext": {
-						"ar-arca-vat-rate": "5"
-					}
+					"street": "Av. Santa Fe 2500",
+					"locality": "Buenos Aires",
+					"region": "Ciudad Autónoma de Buenos Aires",
+					"code": "C1123",
+					"country": "AR"
 				}
-			]
+			],
+			"emails": [
+				{
+					"addr": "compras@clientecomercial.com.ar"
+				}
+			],
+			"ext": {
+				"ar-arca-vat-status": "1"
+			}
 		},
-		{
-			"quantity": "2",
-			"item": {
-				"key": "goods",
-				"name": "Fundas de transporte para notebook",
-				"description": "Entregadas con el pedido pero omitidas en la factura",
-				"price": "25000.00"
+		"lines": [
+			{
+				"quantity": "1",
+				"item": {
+					"key": "goods",
+					"name": "Intereses por mora sobre Factura A 0001-00001234",
+					"description": "15 días de atraso al 3% mensual sobre el saldo pendiente",
+					"price": "67500.00"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"ar-arca-vat-rate": "5"
+						}
+					}
+				]
 			},
-			"taxes": [
-				{
-					"cat": "VAT",
-					"key": "standard",
-					"rate": "general",
-					"percent": "21.0%",
-					"ext": {
-						"ar-arca-vat-rate": "5"
+			{
+				"quantity": "10",
+				"item": {
+					"key": "goods",
+					"name": "Flete y seguro de transporte",
+					"description": "Envío a sucursal no incluido en la factura original",
+					"price": "12000.00"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"ar-arca-vat-rate": "5"
+						}
 					}
-				}
-			]
-		}
-	],
-	"payment": {
-		"terms": {
-			"key": "end-of-month",
-			"notes": "Pago a fin de mes por transferencia bancaria"
+				]
+			},
+			{
+				"quantity": "2",
+				"item": {
+					"key": "goods",
+					"name": "Fundas de transporte para notebook",
+					"description": "Entregadas con el pedido pero omitidas en la factura",
+					"price": "25000.00"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"ar-arca-vat-rate": "5"
+						}
+					}
+				]
+			}
+		],
+		"payment": {
+			"terms": {
+				"key": "end-of-month",
+				"notes": "Pago a fin de mes por transferencia bancaria"
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"number": "0170001740000012345678",
+						"name": "Proveedor Ejemplo S.A."
+					}
+				]
+			}
 		},
-		"instructions": {
-			"key": "credit-transfer",
-			"credit_transfer": [
-				{
-					"number": "0170001740000012345678",
-					"name": "Proveedor Ejemplo S.A."
-				}
-			]
-		}
-	},
-	"notes": [
-		{
-			"key": "general",
-			"text": "Nota de débito complementaria de la Factura A 0001-00001234 del 15/01/2025."
-		}
-	]
+		"notes": [
+			{
+				"key": "general",
+				"text": "Nota de débito complementaria de la Factura A 0001-00001234 del 15/01/2025."
+			}
+		]
+	}
 }

@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "f42d29432c5b02af8177deeeebc666214cf7e7d4e28c9cf8a0b270d99d782b79"
+		},
+		"meta": {
+			"description": "In this example, we're issuing an invoice for goods or services that are exempt from VAT (IVA).",
+			"title": "VAT Exempt Invoice"
 		}
 	},
 	"doc": {

@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "1810bf6f9204d1e58d239645b1c879e9dad7b52c7bc8591bc97434730213b9c7"
 		},
+		"meta": {
+			"description": "Regular invoices are used for B2B transactions. Regular invoices must be issued when:",
+			"title": "Peppol Belgium - B2B standard invoice"
+		},
 		"from": "iso6523-actorid-upis::0208:0316597904",
 		"to": "iso6523-actorid-upis::0208:0859536301"
 	},

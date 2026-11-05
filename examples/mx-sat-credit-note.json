@@ -39,7 +39,11 @@
 				"prv": "sat-url",
 				"val": "https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=01a1ab50-6da0-7b4a-85a4-9dc90a7e38ff\u0026re=EKU9003173C9\u0026tt=232.23\u0026fe=0PPOsw=="
 			}
-		]
+		],
+		"meta": {
+			"description": "The credit note (_nota de crédito_) is used to correct, cancel, or refund a previously issued invoice.",
+			"title": "Credit note"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -168,6 +172,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LWNjOTQtN2VjZC05ZDVlLTkzN2Q1YzNjNDQ2YiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhMC03YjRhLTg1YTQtOWRjOTBhN2UzOGZmIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjYwZWUwOWUxYjk0MzkyMTAzMjc0YzJjMmQzMThhZWY2Y2Y2OTQyNDU5YWJmMmNmOGU3ZDU5NzY5OGM4MWNhMTIifSwiaWF0IjoxNzkzODc3MjAwfQ.2PBCCAJ2SmK0I6bFKvYEI3wl8gN9VbYFNyHQlbo8ehfLGwZiFg6Opme1bs6R4h2Ztrmjncrg96joEYBx8ddrjQ"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZGQtNzZjMi1hOTM3LWY2ODAwY2VmMmI5MyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhMC03YjRhLTg1YTQtOWRjOTBhN2UzOGZmIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjYwZWUwOWUxYjk0MzkyMTAzMjc0YzJjMmQzMThhZWY2Y2Y2OTQyNDU5YWJmMmNmOGU3ZDU5NzY5OGM4MWNhMTIifSwiaWF0IjoxNzkzODk0Njg4fQ.Q-sUupPU5wqt37jqn6JYVrF3dBvZpilTwnQAauf8v2oDeN04RjCrU8lE0VnYn3ZfAY8EKxCr-HgzUF5qfSByPg"
 	]
 }

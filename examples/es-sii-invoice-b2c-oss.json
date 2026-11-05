@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "72bbbd1c1c2641cc10a8d298f4edae3de4f28f08792190f8f39c9169725a561b"
+		},
+		"meta": {
+			"description": "One-Stop-Shop (OSS) invoices are used for B2C distance sales of goods and services to consumers in other EU member states when the supplier is registered under the OSS scheme.",
+			"title": "B2C One-Stop-Shop Invoice"
 		}
 	},
 	"doc": {

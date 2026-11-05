@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "7c80bda19fdcdd5fc617f35939e1f7d25b361a1facb61cd06a79596b82366c5e"
 		},
+		"meta": {
+			"description": "Intra-community supply invoices are used for B2B goods delivered to customers in other EU member states. Intra-community supplies must be applied when:",
+			"title": "B2B goods invoice France → EU customer (Intra-Community)"
+		},
 		"from": "iso6523-actorid-upis::0088:FR44257623119",
 		"to": "iso6523-actorid-upis::9920:ESB85905495"
 	},

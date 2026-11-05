@@ -11,7 +11,11 @@
 				"prv": "verifactu-qr",
 				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-sett/000002\u0026fecha=17-11-2025\u0026importe=1800.00"
 			}
-		]
+		],
+		"meta": {
+			"description": "Outside scope invoices are used for B2B services provided to customers outside the EU.",
+			"title": "B2B Services International Client (Outside Scope)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -112,6 +116,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4ZjgtNzhhYS05YTBmLWQxYTM4MjFkMTBiNCJ9.eyJ1dWlkIjoiMDFhMWFiNWUtNWRlMC03NjI2LWEwNzMtYzcwMjBkZGZjNjJhIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImY4YjVhOGE5YzIzOWJlOTliOGU1N2U3MGJmMzgxZjMxZDBlNWY1ZmQ2NmNlZTk3NDdhZGVlZGQ3OWIxYWQ0MmIifSwiaWF0IjoxNzkzODc3MTc0fQ.1IIY1o7tJ69r67EPdG3teeCPwhkiKC3qakJqrKYfJ8is4Jywlnhh8nh1QYrt43mQKg0pHuymosXH1wvpCBcoNQ"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NzAtNzYzOS1iOTg1LTEwOGE2MzY4Y2I5MyJ9.eyJ1dWlkIjoiMDFhMWFiNWUtNWRlMC03NjI2LWEwNzMtYzcwMjBkZGZjNjJhIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImY4YjVhOGE5YzIzOWJlOTliOGU1N2U3MGJmMzgxZjMxZDBlNWY1ZmQ2NmNlZTk3NDdhZGVlZGQ3OWIxYWQ0MmIifSwiaWF0IjoxNzkzODk0Njg4fQ.AoqPU6DNAY0BzEo2FkXb2tRueQfpFTK3_SMOOyFgF8KwXPtQJOXdpwl_TPnqjnq4VTpOAYkdKcSXI54PxolphQ"
 	]
 }

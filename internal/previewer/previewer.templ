@@ -202,7 +202,7 @@ templ list(entries []catalog.Entry) {
 						if e.Country != "" {
 							@popui.Image(props.Image{Src: FlagURL(e.Country), Alt: strings.ToUpper(e.Country), Class: "w-3.5 h-2.5 rounded-[1.5px] shrink-0"})
 						}
-						<span class="font-medium truncate">{ Title(e.Title) }</span>
+						<span class="truncate">{ Title(e.Title) }</span>
 					</a>
 				</li>
 			}
@@ -257,6 +257,9 @@ templ preview(entries []catalog.Entry) {
 		<div class="px-4 py-1.5 flex items-center gap-2 border-b border-border bg-background shrink-0 text-sm" x-show="current && !bench" x-cloak>
 			for _, e := range entries {
 				<span class="flex flex-wrap items-center gap-1 min-w-0" :class={ "selected === '" + e.File + "' ? '' : 'hidden'" }>
+					if e.Description != "" {
+						<span class="basis-full text-foreground-default-secondary mb-0.5">{ e.Description }</span>
+					}
 					<span class="font-mono text-xs text-foreground-default-tertiary mr-2">{ e.File }</span>
 					@popui.TagStatus(props.TagStatus{Label: KindLabel(e.Kind), Status: KindStatus(e.Kind)})
 					for _, a := range e.Addons {

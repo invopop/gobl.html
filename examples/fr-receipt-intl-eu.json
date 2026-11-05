@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "fe208b56118aa33f8182cea9837ffb639c171b24b043d69baa041ee449feef53"
+		},
+		"meta": {
+			"description": "A cross-border B2B payment settling a previously issued invoice — here, Bistrot Lyon SAS cashing in from German customer Müller GmbH. International B2B payments report per-payment detail and require the counterparty identification plus a link to the underlying invoice.",
+			"title": "International B2B payment"
 		}
 	},
 	"doc": {

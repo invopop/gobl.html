@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "853a307511a41b2d3c2a67178a7e3c1d12dabebbf7b829eed2b41aeb8b8b4ad8"
 		},
+		"meta": {
+			"description": "Goods and services that are subject to VAT but taxed at a 0% rate. Zero rated goods in France are:",
+			"title": "B2B zero rated goods invoice France"
+		},
 		"from": "iso6523-actorid-upis::0088:FR44257623119",
 		"to": "iso6523-actorid-upis::0088:FR66093885154"
 	},

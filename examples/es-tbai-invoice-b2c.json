@@ -15,7 +15,11 @@
 				"prv": "tbai-qr",
 				"val": "https://batuz.eus/QRTBAI/?id=TBAI-A99805194-080726-LrNMp23wKPLjx-112\u0026s=FS1\u0026nf=0001\u0026i=25.10\u0026cr=027"
 			}
-		]
+		],
+		"meta": {
+			"description": "In this example, we're issuing a simplified B2C invoice from a Basque supplier for an in-person sale.",
+			"title": "B2C Simplified Invoice"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -125,6 +129,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4ZWQtN2VmOC1iOWMzLWY4ZTYwNjA3ODNmMyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1My03NTRmLTk0YzktMzcyYTI3ZTEzNTFjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjFlMTE5OWU0MjljNTNlMDAzMjk2MWMzNTlhMjdlZmMzYWY3N2Y1YTYyNWVhYjA4YzA5M2RjNDkyZGM4M2ZmNTUifSwiaWF0IjoxNzkzODc3MTc0fQ.62Byy-6SamGO9KoLVm3Djo6gBsylMoA1MNiU2T3PoTJA4ppHKQifZcJ4OHidMv5oZP7UnVJYolHBUGqaZgy07Q"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NjgtNzNiNS04NDcyLTA5MjMyNzMyYTdhZCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1My03NTRmLTk0YzktMzcyYTI3ZTEzNTFjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjFlMTE5OWU0MjljNTNlMDAzMjk2MWMzNTlhMjdlZmMzYWY3N2Y1YTYyNWVhYjA4YzA5M2RjNDkyZGM4M2ZmNTUifSwiaWF0IjoxNzkzODk0Njg4fQ.gWBR3SEQZkC9M4clVk9YZpqQJsSisBgL-MVEgPSPb4c-Mn9QcbYovOiroPFb0w2G5gs6Je-QviLDSKpc9VkFcw"
 	]
 }

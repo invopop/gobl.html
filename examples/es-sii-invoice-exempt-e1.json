@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "d4200b308eb446c05a3b69142f6cc1f36f8b293c1accf541b7546abacf9d5195"
+		},
+		"meta": {
+			"description": "Exempt E1 invoices are used for B2B transactions that are exempt from VAT pursuant to Artículo 20 Ley de IVA, which covers exemptions in internal operations.",
+			"title": "B2B Exempt E1 Invoice"
 		}
 	},
 	"doc": {

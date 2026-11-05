@@ -27,7 +27,11 @@
 				"prv": "dian-software",
 				"val": "PLEMSI"
 			}
-		]
+		],
+		"meta": {
+			"description": "Non-fiscal estimate from a quotation with a 50% advance and the balance on delivery.",
+			"title": "DIAN proforma"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -264,6 +268,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzUzLTM2MWUtNzA1NS05MmQ4LWE2MDYzZWExN2I4MyJ9.eyJ1dWlkIjoiMDFhMWFjNTMtMzYxZC03ZDMyLWJhNWItYzFmNGExOWRiYjQ1IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjIwYjRlZWRmYzM2YzE1YWFiY2M3YjM3NjA2ODlhMjAzMTJjZDMxN2I4NDU5ODM1NTI3YmFhMWVmYTU2Yjc0Y2YifSwiaWF0IjoxNzkzODkyNDk2fQ.sT-Gd7468RTOccSkmPAwwv2u01eDACx9ft5dQWaro5nIRI18rYpHxuK43mGbSa-uQ1ztLb6XY5DVU2ZBq0FJIA"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc1LWU2ZTMtN2E2MC1iYWI4LWRlNTA4NjFjZDFlZiJ9.eyJ1dWlkIjoiMDFhMWFjNTMtMzYxZC03ZDMyLWJhNWItYzFmNGExOWRiYjQ1IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjIwYjRlZWRmYzM2YzE1YWFiY2M3YjM3NjA2ODlhMjAzMTJjZDMxN2I4NDU5ODM1NTI3YmFhMWVmYTU2Yjc0Y2YifSwiaWF0IjoxNzkzODk0NzcwfQ.a3awX73YT2TW9krShFswbQGLVRvBgqNnkYTUSk-h6bxWDMemMqll2nd9rckdVE_sauPyk9pyIIPDU90Iqf-HVw"
 	]
 }

@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "791463681178a1369316c8ba8dd02bb4687d32c2de41a49d9b268a28560b2d8a"
+		},
+		"meta": {
+			"description": "EIN identities, two supplier addresses, sales tax at state and city rates with untaxed service and resale lines, taxed freight, document discount, ACH and card advances, routing and account numbers, notes and attachments.",
+			"title": "US sales tax invoice with every feature"
 		}
 	},
 	"doc": {

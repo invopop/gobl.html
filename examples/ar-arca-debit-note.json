@@ -19,7 +19,11 @@
 				"prv": "arca-qr",
 				"val": "https://www.afip.gob.ar/fe/qr/conceptos-generales.asp"
 			}
-		]
+		],
+		"meta": {
+			"description": "Debit note adding late-payment interest, freight and omitted items to a prior Factura A, with the preceding reference ARCA requires.",
+			"title": "Nota de Débito A"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -220,6 +224,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzUxLTEyMTAtNzI4Yy1iM2MzLWQxNjBhZTZmZmEzMCJ9.eyJ1dWlkIjoiMDFhMWFjNTEtMTIwZi03Y2I5LWFkZmQtMWY4NjRiY2U3N2FkIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjA0M2Q2ZjJlNzczN2U4ZWNkMWI1NGQwNDk0YzRhOTZhODZiYTZjZDAzNjM5NGRmNjRlYmUyMDg2NmUyMWVlNzcifSwiaWF0IjoxNzkzODkyMzU2fQ.Y8WMeyfoaA7N9ObBqP2RSoLlLdmtiUUvrpA7P0cszqsaxLC4Fez_mO-NMsQRitcwPJlM8bnn1cKVxexXLRIfFA"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc1LWU2YWMtN2Q5OC1iMGZkLWJiMmIxOTgxMDk3YiJ9.eyJ1dWlkIjoiMDFhMWFjNTEtMTIwZi03Y2I5LWFkZmQtMWY4NjRiY2U3N2FkIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjA0M2Q2ZjJlNzczN2U4ZWNkMWI1NGQwNDk0YzRhOTZhODZiYTZjZDAzNjM5NGRmNjRlYmUyMDg2NmUyMWVlNzcifSwiaWF0IjoxNzkzODk0NzcwfQ.9zQG_bQBAXbSLGceImqRyfOQg4sglE29ATfqNK0U8Yyo4dDEaHDOliOqAwuFQdKxW-oBt2RqoDZBm9VLGluqAg"
 	]
 }

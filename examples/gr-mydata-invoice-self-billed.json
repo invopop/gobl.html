@@ -27,7 +27,11 @@
 				"prv": "iapr-uid",
 				"val": "EB1CF2137764B0D534885F361365C39A32C0205A"
 			}
-		]
+		],
+		"meta": {
+			"description": "Sale on behalf of a third party (invoice type 1.4) issued by the customer under ν. 4308/2014 art. 8 §5.",
+			"title": "Self-billed myDATA invoice"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -252,6 +256,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYmE0LThiZWItNzE2Ny04YTRkLTRhNzc0MmEwNzQxNCJ9.eyJ1dWlkIjoiMDFhMWFiYTQtOGJlYS03YmVlLWFiNGMtMzU3ZjVmYWZlMmQ1IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImFkMDY2NmU5MTFkNDA2ZWQ0YzViOGE3NDJmYTI0NWVhMzFhNjk1ZjQwNjU4M2MzYTk5NGY3ZmExMjViOWUyMDkifSwiaWF0IjoxNzkzODgxMDUwfQ.-Z5asZDr5AZOZiaK0Xlus3sABEtd_BzsA8qScCfpGLeTj9KwOfyvKtTfFpV97wezpFNqMa9bQMzgceasjNeJGw"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc1LWU3MTQtNzQ4OC05YWU4LTE3MzMyM2M4YTAzZSJ9.eyJ1dWlkIjoiMDFhMWFiYTQtOGJlYS03YmVlLWFiNGMtMzU3ZjVmYWZlMmQ1IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImFkMDY2NmU5MTFkNDA2ZWQ0YzViOGE3NDJmYTI0NWVhMzFhNjk1ZjQwNjU4M2MzYTk5NGY3ZmExMjViOWUyMDkifSwiaWF0IjoxNzkzODk0NzcwfQ._oVAEzDUfRp7vt3VDu546OkghB9TbSMo6jZbrQ2DwSsSsA0TPq_4WH2JH2St-uoTdToHprBFO7tXsytT7WEiRQ"
 	]
 }

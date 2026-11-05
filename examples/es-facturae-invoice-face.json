@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "a6d2daa65497bb6048095b1cf9f21b2899c466b5a54f06ccf604d9588f37890e"
+		},
+		"meta": {
+			"description": "An invoice addressed to a public administration via the FACe platform, including the three required DIR3 administrative centers.",
+			"title": "Facturae FACe Invoice (with Administrative Centers)"
 		}
 	},
 	"doc": {

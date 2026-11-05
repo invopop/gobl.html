@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "7f99adda352fe01beb5fd60a07a83d69d20c7243921ac04f4d898c57fe3756fd"
 		},
+		"meta": {
+			"description": "Outside scope invoices are used for B2B services provided to customers outside the EU.",
+			"title": "B2B services invoice France → international customer (Outside Scope)"
+		},
 		"from": "iso6523-actorid-upis::0088:FR44257623119",
 		"to": "iso6523-actorid-upis::0195:SGUEN199904785Z"
 	},

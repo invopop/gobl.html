@@ -1,253 +1,261 @@
 {
-	"$schema": "https://gobl.org/draft-0/bill/invoice",
-	"$regime": "DE",
-	"$addons": [
-		"eu-en16931-v2017",
-		"de-xrechnung-v3"
-	],
-	"type": "corrective",
-	"series": "RK-2026",
-	"code": "00004",
-	"issue_date": "2026-06-24",
-	"currency": "EUR",
-	"preceding": [
-		{
-			"type": "standard",
-			"series": "RE-2026",
-			"code": "00417",
-			"issue_date": "2026-06-15",
-			"reason": "Falsche Stundenzahl und Leitweg-ID auf der Originalrechnung"
-		}
-	],
-	"tax": {
-		"ext": {
-			"untdid-document-type": "384"
+	"head": {
+		"meta": {
+			"title": "XRechnung corrective invoice",
+			"description": "Full replacement (UNTDID 384) of a prior invoice correcting the hours and the Leitweg-ID, with the preceding reference BR-DE-26 requires."
 		}
 	},
-	"supplier": {
-		"name": "Rheinland Technologies GmbH",
-		"tax_id": {
-			"country": "DE",
-			"code": "879558966"
-		},
-		"identities": [
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "DE",
+		"$addons": [
+			"eu-en16931-v2017",
+			"de-xrechnung-v3"
+		],
+		"type": "corrective",
+		"series": "RK-2026",
+		"code": "00004",
+		"issue_date": "2026-06-24",
+		"currency": "EUR",
+		"preceding": [
 			{
-				"key": "de-tax-number",
-				"code": "21/815/08150"
-			},
-			{
-				"label": "Handelsregister",
-				"code": "HRB 123456 B"
+				"type": "standard",
+				"series": "RE-2026",
+				"code": "00417",
+				"issue_date": "2026-06-15",
+				"reason": "Falsche Stundenzahl und Leitweg-ID auf der Originalrechnung"
 			}
 		],
-		"people": [
-			{
-				"name": {
-					"given": "Anna",
-					"surname": "Schneider"
+		"tax": {
+			"ext": {
+				"untdid-document-type": "384"
+			}
+		},
+		"supplier": {
+			"name": "Rheinland Technologies GmbH",
+			"tax_id": {
+				"country": "DE",
+				"code": "879558966"
+			},
+			"identities": [
+				{
+					"key": "de-tax-number",
+					"code": "21/815/08150"
 				},
-				"role": "Rechnungsstelle",
-				"emails": [
+				{
+					"label": "Handelsregister",
+					"code": "HRB 123456 B"
+				}
+			],
+			"people": [
+				{
+					"name": {
+						"given": "Anna",
+						"surname": "Schneider"
+					},
+					"role": "Rechnungsstelle",
+					"emails": [
+						{
+							"addr": "anna.schneider@rheinland-tech.de"
+						}
+					],
+					"telephones": [
+						{
+							"num": "+49 30 1234 5678"
+						}
+					]
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9930:DE879558966"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9930",
+					"code": "DE879558966"
+				}
+			],
+			"addresses": [
+				{
+					"num": "27",
+					"street": "Friedrichstraße",
+					"locality": "Berlin",
+					"region": "BE",
+					"code": "10117",
+					"country": "DE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "rechnung@rheinland-tech.de"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+49 30 1234 5600"
+				}
+			]
+		},
+		"customer": {
+			"name": "Deutsche Bahn AG",
+			"tax_id": {
+				"country": "DE",
+				"code": "811569869"
+			},
+			"identities": [
+				{
+					"label": "Kundennummer",
+					"code": "KD-2026-0931"
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9930:DE811569869"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9930",
+					"code": "DE811569869"
+				}
+			],
+			"addresses": [
+				{
+					"num": "15",
+					"street": "Marienplatz",
+					"locality": "München",
+					"region": "BY",
+					"code": "80331",
+					"country": "DE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "rechnungseingang@example.de"
+				}
+			]
+		},
+		"ordering": {
+			"code": "04011000-12345-67",
+			"identities": [
+				{
+					"label": "Leitweg-ID",
+					"code": "04011000-12345-67"
+				}
+			],
+			"period": {
+				"label": "Leistungszeitraum",
+				"start": "2026-06-01",
+				"end": "2026-06-30"
+			},
+			"purchases": [
+				{
+					"code": "PO-2026-5519",
+					"issue_date": "2026-05-12"
+				}
+			]
+		},
+		"lines": [
+			{
+				"quantity": "104",
+				"item": {
+					"ref": "DEV-SENIOR",
+					"name": "Senior software development",
+					"description": "Backend development for the ticketing platform, June 2026 (corrected from 120 to 104 hours per approved timesheet)",
+					"price": "95.00",
+					"unit": "h"
+				},
+				"discounts": [
 					{
-						"addr": "anna.schneider@rheinland-tech.de"
+						"key": "special-agreement",
+						"reason": "Framework agreement rate",
+						"percent": "10%"
 					}
 				],
-				"telephones": [
+				"taxes": [
 					{
-						"num": "+49 30 1234 5678"
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "3",
+				"item": {
+					"ref": "SRV-LIC-ENT",
+					"name": "Enterprise platform licence",
+					"description": "Annual subscription, up to 500 named users",
+					"price": "2400.00",
+					"unit": "yr"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "2",
+				"item": {
+					"ref": "TRAIN-DAY",
+					"name": "On-site training day",
+					"description": "Administrator training in Frankfurt, 2026-06-22 and 2026-06-23",
+					"price": "1500.00",
+					"unit": "day"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
 					}
 				]
 			}
 		],
-		"endpoints": [
-			{
-				"uri": "iso6523-actorid-upis::9930:DE879558966"
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-07-24",
+						"percent": "100%"
+					}
+				],
+				"notes": "Zahlbar innerhalb von 30 Tagen ohne Abzug."
+			},
+			"instructions": {
+				"key": "credit-transfer+sepa",
+				"ref": "RK-2026-00004",
+				"detail": "SEPA credit transfer, please quote the invoice number",
+				"credit_transfer": [
+					{
+						"iban": "DE89 3704 0044 0532 0130 00",
+						"bic": "COBADEFFXXX",
+						"name": "Rheinland Technologies GmbH",
+						"label": "Commerzbank"
+					}
+				],
+				"ext": {
+					"untdid-payment-means": "58"
+				}
 			}
-		],
-		"inboxes": [
+		},
+		"notes": [
 			{
-				"key": "peppol",
-				"scheme": "9930",
-				"code": "DE879558966"
-			}
-		],
-		"addresses": [
+				"key": "general",
+				"text": "Rechnungskorrektur zu Rechnung RE-2026/00417 vom 15.06.2026. Diese Rechnung ersetzt die Originalrechnung vollständig: die Entwicklungsstunden wurden gemäß freigegebenem Stundenzettel von 120 auf 104 korrigiert und die Leitweg-ID berichtigt. Bitte zahlen Sie nur den Betrag dieser Rechnung."
+			},
 			{
-				"num": "27",
-				"street": "Friedrichstraße",
-				"locality": "Berlin",
-				"region": "BE",
-				"code": "10117",
-				"country": "DE"
-			}
-		],
-		"emails": [
-			{
-				"addr": "rechnung@rheinland-tech.de"
-			}
-		],
-		"telephones": [
-			{
-				"num": "+49 30 1234 5600"
+				"key": "legal",
+				"text": "Rheinland Technologies GmbH · Sitz Berlin · Amtsgericht Charlottenburg HRB 123456 B · Geschäftsführerin: Anna Schneider · USt-IdNr. DE879558966",
+				"meta": {
+					"position": "footer"
+				}
 			}
 		]
-	},
-	"customer": {
-		"name": "Deutsche Bahn AG",
-		"tax_id": {
-			"country": "DE",
-			"code": "811569869"
-		},
-		"identities": [
-			{
-				"label": "Kundennummer",
-				"code": "KD-2026-0931"
-			}
-		],
-		"endpoints": [
-			{
-				"uri": "iso6523-actorid-upis::9930:DE811569869"
-			}
-		],
-		"inboxes": [
-			{
-				"key": "peppol",
-				"scheme": "9930",
-				"code": "DE811569869"
-			}
-		],
-		"addresses": [
-			{
-				"num": "15",
-				"street": "Marienplatz",
-				"locality": "München",
-				"region": "BY",
-				"code": "80331",
-				"country": "DE"
-			}
-		],
-		"emails": [
-			{
-				"addr": "rechnungseingang@example.de"
-			}
-		]
-	},
-	"ordering": {
-		"code": "04011000-12345-67",
-		"identities": [
-			{
-				"label": "Leitweg-ID",
-				"code": "04011000-12345-67"
-			}
-		],
-		"period": {
-			"label": "Leistungszeitraum",
-			"start": "2026-06-01",
-			"end": "2026-06-30"
-		},
-		"purchases": [
-			{
-				"code": "PO-2026-5519",
-				"issue_date": "2026-05-12"
-			}
-		]
-	},
-	"lines": [
-		{
-			"quantity": "104",
-			"item": {
-				"ref": "DEV-SENIOR",
-				"name": "Senior software development",
-				"description": "Backend development for the ticketing platform, June 2026 (corrected from 120 to 104 hours per approved timesheet)",
-				"price": "95.00",
-				"unit": "h"
-			},
-			"discounts": [
-				{
-					"key": "special-agreement",
-					"reason": "Framework agreement rate",
-					"percent": "10%"
-				}
-			],
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "general"
-				}
-			]
-		},
-		{
-			"quantity": "3",
-			"item": {
-				"ref": "SRV-LIC-ENT",
-				"name": "Enterprise platform licence",
-				"description": "Annual subscription, up to 500 named users",
-				"price": "2400.00",
-				"unit": "yr"
-			},
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "general"
-				}
-			]
-		},
-		{
-			"quantity": "2",
-			"item": {
-				"ref": "TRAIN-DAY",
-				"name": "On-site training day",
-				"description": "Administrator training in Frankfurt, 2026-06-22 and 2026-06-23",
-				"price": "1500.00",
-				"unit": "day"
-			},
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "general"
-				}
-			]
-		}
-	],
-	"payment": {
-		"terms": {
-			"key": "due-date",
-			"due_dates": [
-				{
-					"date": "2026-07-24",
-					"percent": "100%"
-				}
-			],
-			"notes": "Zahlbar innerhalb von 30 Tagen ohne Abzug."
-		},
-		"instructions": {
-			"key": "credit-transfer+sepa",
-			"ref": "RK-2026-00004",
-			"detail": "SEPA credit transfer, please quote the invoice number",
-			"credit_transfer": [
-				{
-					"iban": "DE89 3704 0044 0532 0130 00",
-					"bic": "COBADEFFXXX",
-					"name": "Rheinland Technologies GmbH",
-					"label": "Commerzbank"
-				}
-			],
-			"ext": {
-				"untdid-payment-means": "58"
-			}
-		}
-	},
-	"notes": [
-		{
-			"key": "general",
-			"text": "Rechnungskorrektur zu Rechnung RE-2026/00417 vom 15.06.2026. Diese Rechnung ersetzt die Originalrechnung vollständig: die Entwicklungsstunden wurden gemäß freigegebenem Stundenzettel von 120 auf 104 korrigiert und die Leitweg-ID berichtigt. Bitte zahlen Sie nur den Betrag dieser Rechnung."
-		},
-		{
-			"key": "legal",
-			"text": "Rheinland Technologies GmbH · Sitz Berlin · Amtsgericht Charlottenburg HRB 123456 B · Geschäftsführerin: Anna Schneider · USt-IdNr. DE879558966",
-			"meta": {
-				"position": "footer"
-			}
-		}
-	]
+	}
 }

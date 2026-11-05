@@ -1,257 +1,265 @@
 {
-	"$schema": "https://gobl.org/draft-0/bill/invoice",
-	"$regime": "FR",
-	"$addons": [
-		"eu-en16931-v2017",
-		"fr-ctc-flow2-v1"
-	],
-	"type": "corrective",
-	"series": "FR",
-	"code": "2026-0007",
-	"issue_date": "2026-03-30",
-	"currency": "EUR",
-	"preceding": [
-		{
-			"type": "standard",
-			"series": "FAC",
-			"code": "2026-0042",
-			"issue_date": "2026-03-16",
-			"reason": "Erreur de quantité sur la ligne de conseil et taux de remise incorrect"
-		}
-	],
-	"tax": {
-		"rounding": "currency",
-		"ext": {
-			"fr-ctc-billing-mode": "M1",
-			"untdid-document-type": "384"
+	"head": {
+		"meta": {
+			"title": "French CTC corrective invoice",
+			"description": "Replaces the original in full (UNTDID 384) with fewer hours and a smaller discount; exactly one preceding reference as BR-FR-CO-04 requires."
 		}
 	},
-	"supplier": {
-		"name": "Innovatech SARL",
-		"tax_id": {
-			"country": "FR",
-			"code": "44732829320"
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FR",
+		"$addons": [
+			"eu-en16931-v2017",
+			"fr-ctc-flow2-v1"
+		],
+		"type": "corrective",
+		"series": "FR",
+		"code": "2026-0007",
+		"issue_date": "2026-03-30",
+		"currency": "EUR",
+		"preceding": [
+			{
+				"type": "standard",
+				"series": "FAC",
+				"code": "2026-0042",
+				"issue_date": "2026-03-16",
+				"reason": "Erreur de quantité sur la ligne de conseil et taux de remise incorrect"
+			}
+		],
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"fr-ctc-billing-mode": "M1",
+				"untdid-document-type": "384"
+			}
 		},
-		"identities": [
-			{
-				"scope": "legal",
-				"type": "SIREN",
-				"code": "732829320",
-				"ext": {
-					"iso-scheme-id": "0002"
-				}
+		"supplier": {
+			"name": "Innovatech SARL",
+			"tax_id": {
+				"country": "FR",
+				"code": "44732829320"
 			},
-			{
-				"type": "SIRET",
-				"code": "73282932000074",
-				"ext": {
-					"iso-scheme-id": "0009"
-				}
-			}
-		],
-		"endpoints": [
-			{
-				"uri": "iso6523-actorid-upis::0225:732829320"
-			}
-		],
-		"inboxes": [
-			{
-				"key": "peppol",
-				"scheme": "0225",
-				"code": "732829320"
-			}
-		],
-		"addresses": [
-			{
-				"num": "123",
-				"street": "Rue de la Paix",
-				"locality": "Paris",
-				"region": "Île-de-France",
-				"code": "75001",
-				"country": "FR"
-			}
-		],
-		"emails": [
-			{
-				"addr": "facturation@innovatech.example.fr"
-			}
-		],
-		"telephones": [
-			{
-				"num": "+33100200300"
-			}
-		],
-		"registration": {
-			"capital": "150000.00",
-			"currency": "EUR",
-			"office": "RCS Paris",
-			"entry": "732 829 320"
-		}
-	},
-	"customer": {
-		"name": "Gusto Commerce SAS",
-		"tax_id": {
-			"country": "FR",
-			"code": "39356000000"
-		},
-		"identities": [
-			{
-				"scope": "legal",
-				"type": "SIREN",
-				"code": "356000000",
-				"ext": {
-					"iso-scheme-id": "0002"
-				}
-			}
-		],
-		"endpoints": [
-			{
-				"uri": "iso6523-actorid-upis::0225:356000000"
-			}
-		],
-		"inboxes": [
-			{
-				"key": "peppol",
-				"scheme": "0225",
-				"code": "356000000"
-			}
-		],
-		"addresses": [
-			{
-				"num": "456",
-				"street": "Avenue des Champs-Élysées",
-				"locality": "Paris",
-				"region": "Île-de-France",
-				"code": "75008",
-				"country": "FR"
-			}
-		],
-		"emails": [
-			{
-				"addr": "comptabilite@gusto.example.fr"
-			}
-		]
-	},
-	"ordering": {
-		"code": "PO-2026-0317"
-	},
-	"lines": [
-		{
-			"quantity": "36",
-			"item": {
-				"ref": "CONS-SENIOR",
-				"name": "Conseil senior en architecture logicielle",
-				"description": "Conception de la nouvelle plateforme de facturation, mars 2026 (36 heures au lieu de 40 facturées par erreur)",
-				"price": "95.00",
-				"unit": "h"
-			},
-			"discounts": [
+			"identities": [
 				{
-					"reason": "Remise sur volume (5 % contractuels, 10 % appliqués par erreur)",
-					"percent": "5%",
+					"scope": "legal",
+					"type": "SIREN",
+					"code": "732829320",
 					"ext": {
-						"untdid-allowance": "95"
+						"iso-scheme-id": "0002"
+					}
+				},
+				{
+					"type": "SIRET",
+					"code": "73282932000074",
+					"ext": {
+						"iso-scheme-id": "0009"
 					}
 				}
 			],
-			"taxes": [
+			"endpoints": [
 				{
-					"cat": "VAT",
-					"rate": "general"
-				}
-			]
-		},
-		{
-			"quantity": "3",
-			"item": {
-				"ref": "LIC-ERP-M",
-				"name": "Licence mensuelle ERP Cloud",
-				"description": "Abonnement 10 utilisateurs, de mars à mai 2026",
-				"price": "320.00",
-				"unit": "mon"
-			},
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "general"
-				}
-			]
-		},
-		{
-			"quantity": "2",
-			"item": {
-				"ref": "FORM-J",
-				"name": "Journée de formation sur site",
-				"description": "Formation des administrateurs, 24 et 25 mars 2026",
-				"price": "1200.00",
-				"unit": "day"
-			},
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "general"
-				}
-			]
-		}
-	],
-	"payment": {
-		"terms": {
-			"key": "due-date",
-			"due_dates": [
-				{
-					"date": "2026-04-29",
-					"percent": "100%"
+					"uri": "iso6523-actorid-upis::0225:732829320"
 				}
 			],
-			"notes": "Paiement à 30 jours date de facture."
-		},
-		"instructions": {
-			"key": "credit-transfer",
-			"ref": "FR-2026-0007",
-			"credit_transfer": [
+			"inboxes": [
 				{
-					"iban": "FR7630006000011234567890189",
-					"bic": "AGRIFRPP",
-					"name": "Innovatech SARL"
+					"key": "peppol",
+					"scheme": "0225",
+					"code": "732829320"
 				}
 			],
-			"ext": {
-				"untdid-payment-means": "30"
-			}
-		}
-	},
-	"notes": [
-		{
-			"key": "general",
-			"text": "Facture rectificative annulant et remplaçant intégralement la facture FAC-2026-0042 du 16/03/2026 : la quantité d'heures de conseil est ramenée de 40 à 36 et la remise sur volume corrigée à 5 % conformément au contrat. Seul le montant de la présente facture est dû."
-		},
-		{
-			"key": "payment",
-			"text": "Une indemnité forfaitaire de 40 EUR pour frais de recouvrement sera appliquée en cas de retard de paiement (art. L441-10 C. com.).",
-			"ext": {
-				"untdid-text-subject": "PMT"
-			}
-		},
-		{
-			"key": "payment-method",
-			"text": "Des pénalités de retard au taux de 3 fois le taux d'intérêt légal s'appliquent conformément à nos conditions générales de vente.",
-			"ext": {
-				"untdid-text-subject": "PMD"
-			}
-		},
-		{
-			"key": "payment-term",
-			"text": "Aucun escompte n'est accordé pour paiement anticipé.",
-			"ext": {
-				"untdid-text-subject": "AAB"
+			"addresses": [
+				{
+					"num": "123",
+					"street": "Rue de la Paix",
+					"locality": "Paris",
+					"region": "Île-de-France",
+					"code": "75001",
+					"country": "FR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "facturation@innovatech.example.fr"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+33100200300"
+				}
+			],
+			"registration": {
+				"capital": "150000.00",
+				"currency": "EUR",
+				"office": "RCS Paris",
+				"entry": "732 829 320"
 			}
 		},
-		{
-			"key": "legal",
-			"text": "SARL au capital de 150 000 EUR - RCS Paris 732 829 320 - TVA intracommunautaire FR44732829320.",
-			"meta": {
-				"position": "footer"
+		"customer": {
+			"name": "Gusto Commerce SAS",
+			"tax_id": {
+				"country": "FR",
+				"code": "39356000000"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"type": "SIREN",
+					"code": "356000000",
+					"ext": {
+						"iso-scheme-id": "0002"
+					}
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0225:356000000"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0225",
+					"code": "356000000"
+				}
+			],
+			"addresses": [
+				{
+					"num": "456",
+					"street": "Avenue des Champs-Élysées",
+					"locality": "Paris",
+					"region": "Île-de-France",
+					"code": "75008",
+					"country": "FR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "comptabilite@gusto.example.fr"
+				}
+			]
+		},
+		"ordering": {
+			"code": "PO-2026-0317"
+		},
+		"lines": [
+			{
+				"quantity": "36",
+				"item": {
+					"ref": "CONS-SENIOR",
+					"name": "Conseil senior en architecture logicielle",
+					"description": "Conception de la nouvelle plateforme de facturation, mars 2026 (36 heures au lieu de 40 facturées par erreur)",
+					"price": "95.00",
+					"unit": "h"
+				},
+				"discounts": [
+					{
+						"reason": "Remise sur volume (5 % contractuels, 10 % appliqués par erreur)",
+						"percent": "5%",
+						"ext": {
+							"untdid-allowance": "95"
+						}
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "3",
+				"item": {
+					"ref": "LIC-ERP-M",
+					"name": "Licence mensuelle ERP Cloud",
+					"description": "Abonnement 10 utilisateurs, de mars à mai 2026",
+					"price": "320.00",
+					"unit": "mon"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "2",
+				"item": {
+					"ref": "FORM-J",
+					"name": "Journée de formation sur site",
+					"description": "Formation des administrateurs, 24 et 25 mars 2026",
+					"price": "1200.00",
+					"unit": "day"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
 			}
-		}
-	]
+		],
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-04-29",
+						"percent": "100%"
+					}
+				],
+				"notes": "Paiement à 30 jours date de facture."
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"ref": "FR-2026-0007",
+				"credit_transfer": [
+					{
+						"iban": "FR7630006000011234567890189",
+						"bic": "AGRIFRPP",
+						"name": "Innovatech SARL"
+					}
+				],
+				"ext": {
+					"untdid-payment-means": "30"
+				}
+			}
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Facture rectificative annulant et remplaçant intégralement la facture FAC-2026-0042 du 16/03/2026 : la quantité d'heures de conseil est ramenée de 40 à 36 et la remise sur volume corrigée à 5 % conformément au contrat. Seul le montant de la présente facture est dû."
+			},
+			{
+				"key": "payment",
+				"text": "Une indemnité forfaitaire de 40 EUR pour frais de recouvrement sera appliquée en cas de retard de paiement (art. L441-10 C. com.).",
+				"ext": {
+					"untdid-text-subject": "PMT"
+				}
+			},
+			{
+				"key": "payment-method",
+				"text": "Des pénalités de retard au taux de 3 fois le taux d'intérêt légal s'appliquent conformément à nos conditions générales de vente.",
+				"ext": {
+					"untdid-text-subject": "PMD"
+				}
+			},
+			{
+				"key": "payment-term",
+				"text": "Aucun escompte n'est accordé pour paiement anticipé.",
+				"ext": {
+					"untdid-text-subject": "AAB"
+				}
+			},
+			{
+				"key": "legal",
+				"text": "SARL au capital de 150 000 EUR - RCS Paris 732 829 320 - TVA intracommunautaire FR44732829320.",
+				"meta": {
+					"position": "footer"
+				}
+			}
+		]
+	}
 }

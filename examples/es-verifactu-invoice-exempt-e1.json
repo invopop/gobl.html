@@ -11,7 +11,11 @@
 				"prv": "verifactu-qr",
 				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-004\u0026fecha=13-11-2024\u0026importe=1800.00"
 			}
-		]
+		],
+		"meta": {
+			"description": "Exempt E1 invoices are used for B2B transactions that are exempt from VAT pursuant to Artículo 20 Ley de IVA, which covers exemptions in internal operations.",
+			"title": "B2B Exempt E1 Invoice"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -112,6 +116,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MDYtNzZiZS1hMDVkLWZkYzIxZDY4ZTg1NCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1Yy03YzUwLWIzMGUtNTgyZTEzYTNkNWY2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjRkZjFiMGFkZjQ0ZmU3NzY5YzZkODU1NGU5NGQ5ODJiZWIxNzFjZTQwNDgxYTQzZTQ5ZGQyNjJmOTBhNmUyMjQifSwiaWF0IjoxNzkzODc3MTc0fQ.9_TxcMfZ97q8w6BLOXa2pFDqEO--bHs77zxzQqnptyrGP_rF6KOY9wGX44yVT889gkui15iWZ9qkQn5XIaZVdQ"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2N2ItN2Q2NS05NjQ3LTNlZTMzY2Q1MzU1YiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1Yy03YzUwLWIzMGUtNTgyZTEzYTNkNWY2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjRkZjFiMGFkZjQ0ZmU3NzY5YzZkODU1NGU5NGQ5ODJiZWIxNzFjZTQwNDgxYTQzZTQ5ZGQyNjJmOTBhNmUyMjQifSwiaWF0IjoxNzkzODk0Njg4fQ.hzS_GIrLRcg2pEhDSXOXkGnvmZ9vgYf4WpXEOv36T-Hu70EEErNIGCdqdXxO8ehohvP_l8SrosBPQes7_Atyzw"
 	]
 }

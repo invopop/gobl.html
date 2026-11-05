@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "c1bad3752e321c2b98b945d77eae95ee8b9e0d6df5b0f85ca91c430d71655a44"
 		},
+		"meta": {
+			"description": "The final invoice that closes out the advance example above: the full contract is invoiced, and the down payment already billed (FAC 2024-AV-001) is netted off the total.",
+			"title": "PA B2B final invoice (after down payment)"
+		},
 		"from": "iso6523-actorid-upis::0225:732829320",
 		"to": "iso6523-actorid-upis::0225:356000000"
 	},

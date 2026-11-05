@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "db105cf97a3f64eebe1d5fee3731e7cd477349ff1ba9aa273c2e521d373ad317"
 		},
+		"meta": {
+			"description": "Replaces the original in full (UNTDID 384) with fewer hours and a smaller discount; exactly one preceding reference as BR-FR-CO-04 requires.",
+			"title": "French CTC corrective invoice"
+		},
 		"from": "iso6523-actorid-upis::0225:732829320",
 		"to": "iso6523-actorid-upis::0225:356000000"
 	},

@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "3d5a7676949d9b7ed8c11b88eef25912aa02aa05f879f17e04d235ea6be404a9"
 		},
+		"meta": {
+			"description": "In this example, we're invoicing a VAT-registered business in another EU member state — an intra-Community supply of goods, zero-rated under Momslovens §34.",
+			"title": "Example intra-community invoice"
+		},
 		"from": "iso6523-actorid-upis::0184:16356700",
 		"to": "iso6523-actorid-upis::0088:4304984000008"
 	},

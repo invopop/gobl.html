@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "1a68a14141d182413404b881b2e32fa868d3accaabf1428fcf9fe5f00296408e"
 		},
+		"meta": {
+			"description": "Exempt invoices are used for B2B transactions that are exempt from VAT, which also covers exemptions in internal operations.",
+			"title": "Peppol Germany - B2B exempt invoice"
+		},
 		"from": "iso6523-actorid-upis::9930:DE993930191",
 		"to": "iso6523-actorid-upis::9930:DE879558966"
 	},

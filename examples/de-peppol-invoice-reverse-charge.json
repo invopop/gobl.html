@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "c234e0b1e8d555ff88e7b19f9c647f4c80abc68c46d3f4871d8f4d8012489619"
 		},
+		"meta": {
+			"description": "Reverse charge invoices are used for B2B services provided to customers in other EU member states. Reverse charge must be applied when:",
+			"title": "Peppol Germany - B2B services → EU customer (Reverse Charge)"
+		},
 		"from": "iso6523-actorid-upis::9930:DE879558966",
 		"to": "iso6523-actorid-upis::9920:ESB85905495"
 	},

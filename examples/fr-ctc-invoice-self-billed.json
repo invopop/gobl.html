@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "70ae3d39be2d21f0627d31e0348203fe9cfe44fb6b2e17ac3aac9c0665ad23b2"
 		},
+		"meta": {
+			"description": "A domestic B2B invoice issued by the customer on behalf of the supplier under a self-billing (autofacturation) agreement. Self-billed invoices between two French parties still travel through the PA e-invoicing flow (fr-ctc-flow2-v1).",
+			"title": "PA B2B self-billed invoice (autofacturation)"
+		},
 		"from": "iso6523-actorid-upis::0225:732829320",
 		"to": "iso6523-actorid-upis::0225:303265045"
 	},

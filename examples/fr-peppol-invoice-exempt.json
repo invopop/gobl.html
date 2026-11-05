@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "442a381ac6c3030b34d9af9636896e48230bdfab5b24ef3b6d61b72c4c7a629f"
 		},
+		"meta": {
+			"description": "Exempt invoices are used for B2B transactions that are exempt from VAT, which also covers exemptions in internal operations.",
+			"title": "B2B exempt invoice France"
+		},
 		"from": "iso6523-actorid-upis::0088:FR66093885154",
 		"to": "iso6523-actorid-upis::0088:FR44257623119"
 	},

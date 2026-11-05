@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "2bfe516f3bb5981e52182d7fa89299fb83b946811edb732087fae114df4ed5dc"
 		},
+		"meta": {
+			"description": "Intra-community supply invoices are used for B2B goods delivered to customers in other EU member states. Intra-community supplies must be applied when:",
+			"title": "Peppol Italy - B2B goods → EU customer (Intra-Community)"
+		},
 		"from": "iso6523-actorid-upis::0205:IT00159560366",
 		"to": "iso6523-actorid-upis::9920:ESB85905495"
 	},

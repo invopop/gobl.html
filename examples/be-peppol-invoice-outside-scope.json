@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "c251aec8c621870123ea67c77a4c02c9a198e1c0570e099d5943c66e8c2213b9"
 		},
+		"meta": {
+			"description": "Outside scope invoices are used for B2B services provided to customers outside the EU.",
+			"title": "Peppol Belgium - B2B services → international customer (Outside Scope)"
+		},
 		"from": "iso6523-actorid-upis::0208:0316597904",
 		"to": "iso6523-actorid-upis::0195:SGUEN199904785Z"
 	},

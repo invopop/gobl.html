@@ -19,7 +19,11 @@
 				"prv": "arca-qr",
 				"val": "https://www.afip.gob.ar/fe/qr/conceptos-generales.asp"
 			}
-		]
+		],
+		"meta": {
+			"description": "Credit notes (notas de crédito) reverse all or part of a previously authorized invoice — for returns, discounts, or billing errors. The credit note class (A, B, or C) follows the class of the invoice it corrects.",
+			"title": "Nota de Crédito A - Credit note correcting a Factura A"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -152,6 +156,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4OWQtNzllZS1iZGIwLTU5YmRmODI2NzAwYyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmNmMi03YzM1LThjNzUtODQ1M2UyZTRlZDM1IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjU3NDE1MTE1MGYwNWNmOGU2NDQwOTcyMDZlOWNiMDE1N2JhNDkyOTU2YjUyNTkyNzA4MzU1MjMyNWU4OWVjMzQifSwiaWF0IjoxNzkzODc3MTc0fQ.iiXoEXQrg9SNVpKg76EtyCYqrG3is7nmU7s_CN70oardblxUgRXELEyqzGx1WqRoN9_Apnl1mjXUyQb1IkcXjw"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE1ZjktNzAwYi04OGY1LTI3Njk3MmI0YWIxYyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmNmMi03YzM1LThjNzUtODQ1M2UyZTRlZDM1IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjU3NDE1MTE1MGYwNWNmOGU2NDQwOTcyMDZlOWNiMDE1N2JhNDkyOTU2YjUyNTkyNzA4MzU1MjMyNWU4OWVjMzQifSwiaWF0IjoxNzkzODk0Njg4fQ.0Jb9PZMR_sGPaV8tQk7U5aQnDGng4qgev6xAJGMibGEDNAJslLR1ygOoJshl50ULSmgoqR8lBbc3m_WQ4PbjmQ"
 	]
 }

@@ -194,6 +194,13 @@ the example apart, as in `es-verifactu-invoice-full` or
 from the document, and `-rename` moves every example, with its output,
 source and manifest entry, to its canonical name.
 
+An example can say what it shows: the envelope head's `meta` carries a
+`title` and a `description`, which the previewer lists and which the
+digest does not cover. The docs import takes them from the accordion
+each snippet appears in; a source under `examples/src/` gives them by
+wrapping the document as `{"head": {"meta": {"title": …, "description":
+…}}, "doc": {…}}`.
+
 ### Docs examples
 
 Most of `examples/` comes from the GOBL examples published on

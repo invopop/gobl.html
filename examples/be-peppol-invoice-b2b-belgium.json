@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "c6cf5f82e81c128ce7e465428f64f7661be075f0682f4f8792b1c4f9d398dcbb"
 		},
+		"meta": {
+			"description": "A Belgian B2B invoice with VAT-inclusive prices and two different VAT rates.",
+			"title": "Peppol B2B invoice with tax-inclusive prices (Belgium)"
+		},
 		"from": "iso6523-actorid-upis::0208:0735585741",
 		"to": "iso6523-actorid-upis::0208:0699912507"
 	},

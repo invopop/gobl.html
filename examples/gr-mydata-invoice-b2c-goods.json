@@ -27,7 +27,11 @@
 				"prv": "iapr-uid",
 				"val": "EB1CF2137764B0D534885F361365C39A32C0205A"
 			}
-		]
+		],
+		"meta": {
+			"description": "In this example, we're issuing a simple goods invoice from a Greek supplier to a Greek final consumer.",
+			"title": "Example retail sales receipt (B2C)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -176,6 +180,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MjAtN2NhZS1iMjYxLWJhOTRkNGI5ZWRiMSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ4NS03Mjg4LWFiOWUtYjE1MTMwYmFjNTUyIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjM1NWYwMjI2NDJiMWZjZmFlMzEyZmU5MTA4MGIxZjU3N2EwNjIxMDRkMWVlMGIyZDM0M2M4M2I4ZThlNWYzYzgifSwiaWF0IjoxNzkzODc3MTc0fQ.nLrxz29j_7vabofCc4zyNX0QoZJAdjIHkLCz2Bsg2pn8sAtcrAlHZcqHHr0Dz8LHRUYaOWaZP0SWh8kFHZpdHw"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2YjUtNzU2Mi1hMDM2LTIyZGY2NGY3ODg5MSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ4NS03Mjg4LWFiOWUtYjE1MTMwYmFjNTUyIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjM1NWYwMjI2NDJiMWZjZmFlMzEyZmU5MTA4MGIxZjU3N2EwNjIxMDRkMWVlMGIyZDM0M2M4M2I4ZThlNWYzYzgifSwiaWF0IjoxNzkzODk0Njg4fQ.mNybqNgM_6Hl3BmlAW0xWfbluOyZza8CRmCKMIFLL97w06r9HNUL-ZCWPRYYTkDEmD97ZAcRFGGmHc6HvfFs-Q"
 	]
 }

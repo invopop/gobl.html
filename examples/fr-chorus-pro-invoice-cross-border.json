@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "7c75515657e2e5a2fcea972e7391d67ff3f2e42abe4d0bb739adca5150e084c6"
+		},
+		"meta": {
+			"description": "A non-French supplier invoicing a French public sector entity through Chorus Pro. Chorus Pro accepts foreign suppliers — the customer's SIRET is what anchors the document to the right administration.",
+			"title": "Chorus Pro cross-border invoice (DE → FR)"
 		}
 	},
 	"doc": {

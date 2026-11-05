@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "243ffdf21e0695bc39f20ee564610f9668a6ad85fabedd7d5219f3d8b6e8dbb0"
+		},
+		"meta": {
+			"description": "Extra nights, tourist tax, minibar and parking added to a prior hotel invoice, prices including VAT.",
+			"title": "SDI debit note (TD05)"
 		}
 	},
 	"doc": {

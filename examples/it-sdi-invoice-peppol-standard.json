@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "9e078632c2cc4220153cc2498f23454dd015baaa8704c94150675a2b25449870"
 		},
+		"meta": {
+			"description": "Regular invoices are used for B2B transactions. Regular invoices must be issued when the customer is a registered business (has a tax identification number). To create a regular invoice, include the eu-en16931-v2017 and it-sdi-v1 addons. The addons will automatically set the document type to 380 when the silo entry is built (which happens automatically when saving a silo entry through the API or console).",
+			"title": "Peppol Italy - B2B standard invoice"
+		},
 		"from": "iso6523-actorid-upis::0205:IT00159560366",
 		"to": "iso6523-actorid-upis::0205:IT05140920017"
 	},

@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "a3a2391517ad4b7fadd4c1c3bc8a09dfe66e9c10cea14175be83a668c721e6a7"
+		},
+		"meta": {
+			"description": "A replacement invoice (factura de canje) substitutes one or more previously issued simplified invoices with a full invoice — typically when a consumer later asks for a complete invoice with their tax details.",
+			"title": "Replacement Invoice (Factura de canje)"
 		}
 	},
 	"doc": {

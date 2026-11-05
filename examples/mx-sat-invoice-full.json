@@ -39,7 +39,11 @@
 				"prv": "sat-url",
 				"val": "https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=01a1aba7-7133-7df2-baf3-1dc310b74f78\u0026re=EKU9003173C9\u0026tt=1036710.40\u0026fe=0PPOsw=="
 			}
-		]
+		],
+		"meta": {
+			"description": "Issue place, fiscal regimes and CFDI use, ClaveProdServ on every line, 16% VAT with zero and exempt lines, IEPS, retained VAT and ISR, advances with their payment means, CLABE accounts, card, direct debit and CoDi, delivery with carta porte, notes and attachments; line-level discounts only, as the addon requires.",
+			"title": "CFDI with every feature"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -688,6 +692,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYmE3LTcxMzQtNzZlNS05MmM4LTU5ZTI5MDdlNzg4MCJ9.eyJ1dWlkIjoiMDFhMWFiYTctNzEzMy03ZGYyLWJhZjMtMWRjMzEwYjc0Zjc4IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjY1YTkyNDBlZjdkM2M2ODgyOGJlMmNhNGE0ZDZiMTg3MjIzNzVhM2E1ZDg0N2FiZTUxYmY1ZWM1Y2E5OGVmMjgifSwiaWF0IjoxNzkzODgxMjM5fQ.rC4qHwiGv0If0p11yyCtbmTzaXlxnxGoAL-1oLs6-oHNYlJ435KsdSbR4sKmbG9yMF1u5A6va37s3DoKR1KNJg"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc1LWU3MjEtN2U5Mi04OWFiLWY2YmNhYTc2NzU3NyJ9.eyJ1dWlkIjoiMDFhMWFiYTctNzEzMy03ZGYyLWJhZjMtMWRjMzEwYjc0Zjc4IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjY1YTkyNDBlZjdkM2M2ODgyOGJlMmNhNGE0ZDZiMTg3MjIzNzVhM2E1ZDg0N2FiZTUxYmY1ZWM1Y2E5OGVmMjgifSwiaWF0IjoxNzkzODk0NzcwfQ.W07Ua0Y1_WfKBKru-BTu1S_Yl5depo6uQR66zI5TAcavTbXj4leAj-9Oj7iRKAuWR2okbURVo2lhjDFQPJoK0w"
 	]
 }

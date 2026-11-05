@@ -11,7 +11,11 @@
 				"prv": "zatca-qr",
 				"val": "AS3Yp9mF2YrZitmF2YjYsyDYp9mE2LnYsdio2YrYqSDZhNmE2YHYudin2YTZitin2Kog2KfZhNiq2LHZgdmK2YfZitipAg8zMTE1ODgxMDcyMDAwMDMDEzIwMjUtMDktMjVUMDA6MDA6MDBaBAY5NDguNzUFBjEyMy43NQ=="
 			}
-		]
+		],
+		"meta": {
+			"description": "A simplified invoice on zero-rated supplies, carrying explanatory tax notes for the applied rate.",
+			"title": "Simplified zero-rated invoice"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -169,6 +173,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5NzAtN2VlOC04MzJhLWZmYmQ4MzY4N2M4NSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRjMy03OWU3LTlmOWItNzdhYTE5Y2QxOGFjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImJiOTIzMDBjYWE4MTAzYjMzNzY1Mjc1NWY1ZjIwZDUxNjFjYzBiMWQyZmViMjI5MTZjOTg1Y2E2MWIwNzVjOGUifSwiaWF0IjoxNzkzODc3MTc0fQ.gAjDI9_Oa9YrvhmE38PSswZrKo10e9o3FTX9lcMu519UpQ4qC7lgpsFjJKzyuWqBtAkhiLR0821zotSo47WEpg"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc2LTI5NjYtN2MzNS05ZDNiLWE2Mzg4MmU4MzAzMyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRjMy03OWU3LTlmOWItNzdhYTE5Y2QxOGFjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImJiOTIzMDBjYWE4MTAzYjMzNzY1Mjc1NWY1ZjIwZDUxNjFjYzBiMWQyZmViMjI5MTZjOTg1Y2E2MWIwNzVjOGUifSwiaWF0IjoxNzkzODk0Nzg3fQ.S4Rgr9eNxIuZQ1IfAcW4hCKDwuw_pzLQMpGK8UlFRvu_f7wGjcPTv0PZnIi592oG-1Z2C44GQWmlFXgsukJ8HQ"
 	]
 }

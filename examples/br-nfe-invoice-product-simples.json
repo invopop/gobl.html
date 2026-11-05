@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "979a8f93b8c949e427b3a9deee24cdee11e0321f9eca831ecc97f5d0ce3e57d3"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a product invoice (NF-e) from a supplier enrolled in the _Simples Nacional_ tax regime.",
+			"title": "Example B2B product invoice for a Simples Nacional issuer (NF-e)"
 		}
 	},
 	"doc": {

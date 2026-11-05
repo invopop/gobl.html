@@ -12,6 +12,10 @@
 				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B71353213\u0026numserie=INV-PP000003\u0026fecha=03-04-2025\u0026importe=120.00"
 			}
 		],
+		"meta": {
+			"description": "Exempt invoices are used for B2B transactions that are exempt from VAT, which also covers exemptions in internal operations.",
+			"title": "Peppol Spain - B2B exempt invoice"
+		},
 		"from": "iso6523-actorid-upis::9920:ESB71353213",
 		"to": "iso6523-actorid-upis::9920:ESB85905495"
 	},
@@ -163,6 +167,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4ZDYtNzQ3MC04NWUzLWY1NzIyZTI5MWI2YiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQzOC03YWQ1LWE3NzEtOTZhMzU3Y2RhODg2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjUwNjUxZmZiYjczZmEzZDEyZTZkOTg5NjIzM2M1ODE1ZjU3ZDFkZmRkMWFhZTY0YWU3M2VjMjJlZTE4MGE2YzAifSwiaWF0IjoxNzkzODc3MTc0fQ.MGLvMdFXVxtoH_9ta1yQ8KwKFQJUZEQutGGBZYYWCCzu5B9JlzLNhGxRIuaIw4O6ojjMEFhrPTu1NyUBK6c4Fg"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NDktNzdjNC1hNDFmLWRjMTZjYjI3ODE3MSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQzOC03YWQ1LWE3NzEtOTZhMzU3Y2RhODg2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjUwNjUxZmZiYjczZmEzZDEyZTZkOTg5NjIzM2M1ODE1ZjU3ZDFkZmRkMWFhZTY0YWU3M2VjMjJlZTE4MGE2YzAifSwiaWF0IjoxNzkzODk0Njg4fQ.4x8PZb3s2osadwrGkvZaqLXaiv34JOuxkMzLUQIYeWWQ3StGpD-Bi6RTJeH3VJz_TtnpknEVh-7JyGrKLG-HJw"
 	]
 }

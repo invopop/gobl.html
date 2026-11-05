@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "634477f25319f7142520fe6d2996b43989682c94d2aa9006b8e299a974dfc32f"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a credit note (nota di credito) to correct or refund a previously issued invoice.",
+			"title": "Credit Note"
 		}
 	},
 	"doc": {

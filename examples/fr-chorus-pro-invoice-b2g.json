@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "c1c4a5c14cb60921f3ab61b1cbfa15d32aa635f2cda2ee1f66104655dead16ae"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a Chorus Pro invoice for business-to-government transactions in France. Chorus Pro is the mandatory platform for submitting invoices to French public sector entities.",
+			"title": "Chorus Pro B2G Invoice"
 		}
 	},
 	"doc": {

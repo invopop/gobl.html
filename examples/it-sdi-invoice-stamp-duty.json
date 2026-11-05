@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "cfb91eb314716ac74aedf2fa0d217829cf65fab02617ebb6a3166fe6afc73169"
+		},
+		"meta": {
+			"description": "This example matches the **B2B invoice** above but adds a **€2.00 Marca da bollo** (stamp duty) as a document-level charge.",
+			"title": "Stamp Duty Invoice (Marca da Bollo)"
 		}
 	},
 	"doc": {

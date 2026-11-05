@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "7a79ffa1a74f31db891d7b94f21ebbea9825d2ca3001e6d4e710e5481e3059cc"
 		},
+		"meta": {
+			"description": "ZUGFeRD invoices are used for B2B and B2C transactions in Germany. ZUGFeRD combines a standard PDF/A-3 invoice with an embedded XML file containing structured data, making it ideal for B2B transactions as it allows both people and accounting software to work with the same document. ZUGFeRD invoices must be issued when the invoice needs to comply with the ZUGFeRD standard for electronic invoicing in Germany. To create a ZUGFeRD invoice, include both the eu-en16931-v2017 and de-zugferd-v2 addons and ensure the parties contain valid tax identification details. The addons will automatically set the document type to 380 when the silo entry is built (which happens automatically when saving a silo entry through the API or console).",
+			"title": "Peppol Germany - B2B standard ZUGFeRD invoice"
+		},
 		"from": "iso6523-actorid-upis::9930:DE879558966",
 		"to": "iso6523-actorid-upis::9930:DE993930191"
 	},

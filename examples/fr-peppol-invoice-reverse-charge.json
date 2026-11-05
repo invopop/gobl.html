@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "213a1956a2e8ea23664c3abce9ce5e7713d8230ec97989be51bea444ffdb412e"
 		},
+		"meta": {
+			"description": "Reverse charge invoices are used for B2B services provided to customers in other EU member states. Reverse charge must be applied when:",
+			"title": "B2B services invoice France → EU customer (Reverse Charge)"
+		},
 		"from": "iso6523-actorid-upis::0088:FR44257623119",
 		"to": "iso6523-actorid-upis::9920:ESB85905495"
 	},

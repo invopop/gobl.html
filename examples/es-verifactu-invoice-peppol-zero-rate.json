@@ -12,6 +12,10 @@
 				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=INV-PP000003\u0026fecha=03-04-2025\u0026importe=2.00"
 			}
 		],
+		"meta": {
+			"description": "Zero-rated invoices are used for goods and services that are subject to VAT but taxed at a 0% rate.",
+			"title": "Peppol Spain - B2B zero-rated invoice"
+		},
 		"from": "iso6523-actorid-upis::9920:ESB85905495",
 		"to": "iso6523-actorid-upis::9920:ESB03176864"
 	},
@@ -163,6 +167,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4ZTEtNzFlYy1iNTk2LWViZWRjNTdlMzVkMCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ0MC03OWNmLTliZGEtZmMyNGFiYmU2NjFhIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjhiY2IyOTg3N2RkYTVmYTdhMzVhMTUyZGQ5ZmM3ZjM2NzkwYWY1ODYyNDBlZTRiNzdjMzUwZmI2NTQzNTc4MmIifSwiaWF0IjoxNzkzODc3MTc0fQ.NQ_ZK-cPxjY16jJ0PZvuNIrCr7hHwc-r6JQbrEdLCRXaQ05ULVrtImO8uDmnatMI8X7PyoYjXdSYttAIT7Vx7A"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NTUtN2I0Ni04MzIyLTEyNjk1NmNkNjgxMCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ0MC03OWNmLTliZGEtZmMyNGFiYmU2NjFhIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjhiY2IyOTg3N2RkYTVmYTdhMzVhMTUyZGQ5ZmM3ZjM2NzkwYWY1ODYyNDBlZTRiNzdjMzUwZmI2NTQzNTc4MmIifSwiaWF0IjoxNzkzODk0Njg4fQ.Ot0JyJiBzYAVFtbPErPQupGipdAGmRAEp96PM4Y_Dg-_lqNu6INqpf0qI8d-mPzEAmWCyaL98doGoc6PQKf3mQ"
 	]
 }

@@ -12,6 +12,10 @@
 				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=INV-PP000003\u0026fecha=03-04-2025\u0026importe=1740.00"
 			}
 		],
+		"meta": {
+			"description": "Reverse charge invoices are used for B2B services provided to customers in other EU member states. Reverse charge must be applied when:",
+			"title": "Peppol Spain - B2B services → EU customer (Reverse Charge)"
+		},
 		"from": "iso6523-actorid-upis::9920:ESB85905495",
 		"to": "iso6523-actorid-upis::0208:0316597904"
 	},
@@ -163,6 +167,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4ZGMtNzQ5Zi05ZDY5LWMyZjQ0ZTBjZmE5OCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQzZS03MmU2LTg3MGMtNzYxMzYzNWVkN2ExIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjkxMmEyNzQxYjI0ZDNkYmVlNGZjMDQ0NjY1Y2JkNTdkN2U3YmNkYzY5ZjU3ZWI0YzkzMWVlOTY1MTZjNzcxYTUifSwiaWF0IjoxNzkzODc3MTc0fQ.zEICr_LdnPaBgNBGPkOhhSeKD97I8QNCLv3mhGPhAUb-eCI7yuU_q6uC3BJ9JH30RJwEWxgQVoT6HmV1qwKYPA"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NTEtNzQyMi1iZDdiLTIwMDUwOTQ5ODhjOSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQzZS03MmU2LTg3MGMtNzYxMzYzNWVkN2ExIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjkxMmEyNzQxYjI0ZDNkYmVlNGZjMDQ0NjY1Y2JkNTdkN2U3YmNkYzY5ZjU3ZWI0YzkzMWVlOTY1MTZjNzcxYTUifSwiaWF0IjoxNzkzODk0Njg4fQ.DCObNEVVZJS3XY3Jyy7ollPgPcxuVnrKZOWsDZty2bn8-UQDc5LFOPV3mGnHIyzwbblV4zAxJ9ldbZqwkkeVYA"
 	]
 }

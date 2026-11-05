@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "9773b905b8f0c40490be44d0c024068bdf61ed0710fddbfa6c88b61d594e4aa9"
+		},
+		"meta": {
+			"description": "Comprehensive ZUGFeRD invoice demonstrating additional optional fields such as ordering information, payment terms, delivery details, and discounts.",
+			"title": "ZUGFeRD B2B Invoice with Additional Fields"
 		}
 	},
 	"doc": {

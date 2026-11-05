@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "6571096ae5d6bb5be607fd7ba86aae082d6bf7e35810a90636d4163cb8766256"
+		},
+		"meta": {
+			"description": "County codes on every address, registry identities, buyer accounting reference, 21% and 11% rates with exempt and zero lines, allowance and charge codes, Romanian IBANs, delivery, notes and attachments within the BR-RO length limits.",
+			"title": "RO e-Factura with every feature"
 		}
 	},
 	"doc": {

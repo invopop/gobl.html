@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "6554f20719ac49303f3278df5ce153fa4440ef16c1708732fda3ae164c573f48"
+		},
+		"meta": {
+			"description": "In this example, a retail sale was first recorded with a Smart Receipt (*documento commerciale*) and the customer later asked for an invoice. The invoice is an ordinary SDI invoice that references the receipt issued for the same sale.",
+			"title": "Invoice after a documento commerciale"
 		}
 	},
 	"doc": {

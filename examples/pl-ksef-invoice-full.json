@@ -15,7 +15,11 @@
 				"prv": "favat-qr",
 				"val": "https://ksef-test.mf.gov.pl/web/verify/9876543210-20260210-D1984449A6BC-02/8KCfB1Sa5Jc4Gg6ctK4HKdwnRwK%2BdxT1ScymF6m5d18%3D"
 			}
-		]
+		],
+		"meta": {
+			"description": "VAT invoice with cash accounting and split payment, 23%, 8%, 5%, zero and exempt lines with the legal exemption note, advances by transfer and card, IBAN and BLIK payments, ordering and delivery, notes and attachments.",
+			"title": "KSeF invoice with every feature"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -582,6 +586,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYmEyLWRhMGEtNzVlYi1iMGFkLThhZTE3ZTIyZTU0OCJ9.eyJ1dWlkIjoiMDFhMWFiYTItZGEwOS03NzA0LWEzMGEtZjI0N2VmZjE2YTA2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjUwOGRjMDQ2ZDM5ODc5OTFkMTM4OTM1ZDM4ODlhZTE3Y2Q5ZDJjZjhiNGI1OWRmMzBmNTdkZmNmZmJkZmZhZjgifSwiaWF0IjoxNzkzODgwOTM5fQ.e8kuWlADwUlPJuWjMFHknj6GhccomwBlu3Pj1xhp4fuMxT4hf_TR2img7I_Ec0MYD-0b998VOgBMOW7ytY28cA"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc1LWU3MmEtN2NkMS04NjIzLTkwZDI1ZjY1Yjg0MyJ9.eyJ1dWlkIjoiMDFhMWFiYTItZGEwOS03NzA0LWEzMGEtZjI0N2VmZjE2YTA2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjUwOGRjMDQ2ZDM5ODc5OTFkMTM4OTM1ZDM4ODlhZTE3Y2Q5ZDJjZjhiNGI1OWRmMzBmNTdkZmNmZmJkZmZhZjgifSwiaWF0IjoxNzkzODk0NzcwfQ.STKwuQGg_0z8JJtopSfEtJwxgXtwgKdGljovm39ZzpKvMP7whey4D2sX00D9KHmcmp6u3nKrlq1pAE-Ux4YDrg"
 	]
 }
