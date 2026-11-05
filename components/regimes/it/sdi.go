@@ -25,7 +25,8 @@ var sameTypeCorrections = []cbc.Code{
 // sdiTitleLabel returns the title for a document sent through SDI, made of
 // the name of its document type (TipoDocumento) followed by the code, or an
 // empty string when the document has no SDI document type or the code has no
-// title registered.
+// title registered. A non-breaking space keeps the code on the same line as
+// the last word when a long name wraps.
 func sdiTitleLabel(ctx context.Context, doc internal.Document) string {
 	if doc == nil {
 		return ""
@@ -38,7 +39,7 @@ func sdiTitleLabel(ctx context.Context, doc internal.Document) string {
 	if strings.HasPrefix(label, "!") {
 		return ""
 	}
-	return label + " (" + code.String() + ")"
+	return label + " (" + code.String() + ")"
 }
 
 // isSDICorrection reports whether the invoice reduces an earlier document of
