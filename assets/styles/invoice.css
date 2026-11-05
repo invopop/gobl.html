@@ -26,7 +26,9 @@ header {
     border-top: 0 !important;
 }
 .invoice.din5008 > header section.customer > .party-border {
-    padding-left: 10mm;
+    /* The window starts 20mm from the sheet's edge, 10mm past the page
+       margin; the extra 3mm keeps the address off the window's edge. */
+    padding-left: 13mm;
     border-left: 0.5px solid #e5e7eb;
 }
 .invoice.din5008 > header section.supplier {
