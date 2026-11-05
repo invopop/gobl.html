@@ -297,7 +297,13 @@ section.lines .charge-content .code:after {
 }
 section.lines .discount-content .reason,
 section.lines .charge-content .reason {
+    /* The cell does not wrap, so the reason wraps on its own within a
+       bounded width rather than widening the column past the page. */
     display: block;
+    max-width: 28mm;
+    margin-left: auto;
+    white-space: normal;
+    overflow-wrap: anywhere;
     font-size: 0.85em;
     font-weight: 450;
     color: #6b7280;
