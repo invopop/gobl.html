@@ -193,16 +193,21 @@ templ list(entries []catalog.Entry) {
 						href="#"
 						data-row
 						data-file={ e.File }
-						class="flex items-center gap-2 px-4 py-1.5 border-b border-border cursor-pointer min-w-0"
+						class="flex flex-col gap-0.5 px-4 py-1.5 border-b border-border cursor-pointer min-w-0"
 						:class={ "isVisible('" + e.File + "') ? '' : 'hidden'" }
 						:data-selected={ "selected === '" + e.File + "' ? '' : null" }
 						@click.prevent={ "select('" + e.File + "')" }
 						title={ e.File }
 					>
-						if e.Country != "" {
-							@popui.Image(props.Image{Src: FlagURL(e.Country), Alt: strings.ToUpper(e.Country), Class: "w-3.5 h-2.5 rounded-[1.5px] shrink-0"})
+						<span class="flex items-center gap-2 min-w-0 text-sm">
+							if e.Country != "" {
+								@popui.Image(props.Image{Src: FlagURL(e.Country), Alt: strings.ToUpper(e.Country), Class: "w-3.5 h-2.5 rounded-[1.5px] shrink-0"})
+							}
+							<span class="truncate">{ Title(e.Title) }</span>
+						</span>
+						if e.Description != "" {
+							<span class="truncate text-xs text-foreground-default-tertiary pl-[22px]">{ e.Description }</span>
 						}
-						<span class="truncate">{ Title(e.Title) }</span>
 					</a>
 				</li>
 			}
