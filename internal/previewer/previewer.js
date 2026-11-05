@@ -19,7 +19,7 @@ function previewer() {
   // Parameters an example's own state resets when it is shown. The locale
   // is not among them: a locale chosen in the header applies to every
   // example, and "default" falls back to each example's own.
-  const PER_EXAMPLE = ["void", "sandbox", "adjustment_mode", "hide"];
+  const PER_EXAMPLE = ["void", "sandbox", "adjustment_mode", "hide", "snippets"];
   let shown = 0; // generation of the latest show() call
   const median = (xs) => {
     const s = [...xs].sort((a, b) => a - b);
@@ -34,7 +34,7 @@ function previewer() {
     filters: { country: [], kind: [], addon: [], tag: [] },
     q: "",
     selected: null,
-    params: { locale: "", layout: "", label: "", watermark: "", date_format: "", hide: "", void: false, sandbox: false, adjustment_mode: false },
+    params: { locale: "", layout: "", label: "", watermark: "", date_format: "", hide: "", snippets: "", void: false, sandbox: false, adjustment_mode: false },
     window: "",
     zoom: "fit",
     margins: false,
@@ -217,6 +217,9 @@ function previewer() {
       if (e.sandbox) p.sandbox = true;
       if (e.adjustment_mode) p.adjustment_mode = true;
       if (e.hide) p.hide = e.hide;
+      // Snippets travel as a JSON string, which the renderer accepts in
+      // place of the array, so the options textarea can edit them.
+      if (e.snippets) p.snippets = JSON.stringify(e.snippets, null, 2);
       return p;
     },
     // benchParams are the parameters both sides render with: the example's

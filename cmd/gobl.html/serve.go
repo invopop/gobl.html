@@ -210,4 +210,7 @@ func applyExampleParams(fn string, p *goblhtml.Params, requested func(string) bo
 	if strings.Contains(fn, ".hidden.") && !requested("hide") {
 		p.Hide = strings.Join(catalog.HiddenKeys, ",")
 	}
+	if strings.Contains(fn, ".snippets.") && !requested("snippets") {
+		p.Snippets = catalog.ExampleSnippets
+	}
 }

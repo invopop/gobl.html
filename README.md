@@ -83,6 +83,105 @@ renderer.
 Each release publishes the build to
 `https://assets.invopop.com/gobl.html/<version>/`.
 
+### Hiding sections and placing snippets
+
+`WithHide` removes named sections from the document with CSS, and
+`WithSnippets` places trusted blocks of HTML at the same named places.
+Both use the keys below, so a caller can hide a section and put something
+else in its place with one vocabulary. As task configuration (`Params`)
+they are the `hide` list and the `snippets` array:
+
+```json
+{
+  "hide": "payment.instructions.bank-data,footer.branding",
+  "snippets": [
+    {
+      "at": "payment.instructions",
+      "mode": "after",
+      "html": "{{ if .PaymentLink }}<a href=\"{{ .PaymentLink }}\">Pay {{ .TotalDue }} now</a>{{ end }}"
+    }
+  ]
+}
+```
+
+| Key | Section |
+| --- | --- |
+| `header.logo` | Supplier logo, or the alias when there is no logo |
+| `header.title.badges` | Paid, void, self-billed and label badges next to the code |
+| `header.summary.ordering` | Ordering rows of the summary (order code, period, identities) |
+| `header.contacts.delivery` | Delivery receiver contact |
+| `lines.sublines` | Line references, identities and notes (`hide` only, see below) |
+| `taxes` | Tax breakdown table |
+| `payment` | The whole payment section |
+| `payment.instructions` | Payment instructions list |
+| `payment.instructions.bank-data` | Credit transfer details |
+| `payment.instructions.online` | Online payment links, listed and as QR codes |
+| `payment.terms` | Payment terms and due dates |
+| `notes` | The document's notes; a replacement keeps the regime's tax notes |
+| `footer.branding` | GOBL logo in the footer |
+
+The title, the supplier and customer, the lines, the totals, the regime
+extensions, the tax notes, the page numbers and every regime QR code have
+no key: they are compliance content and cannot be hidden or replaced.
+
+Hiding cascades by prefix, so `payment` also hides `payment.terms`.
+Unknown keys are ignored when rendering; `Snippets.Validate` rejects them,
+which is what a service taking the configuration in should call.
+
+#### Snippets
+
+A snippet names an anchor key, a mode and the HTML to place:
+
+- `before` and `after` render the snippet on either side of the section,
+  even when the section is hidden or has no content for this document, in
+  the order given. `payment.instructions` and `payment.terms` get their
+  payment section created for them when the document has none.
+- `replace` renders the snippet instead of the section's own content.
+  Nothing inside the section is rendered, not even snippets anchored to keys
+  within it. At most one replacement per anchor.
+
+Each snippet is wrapped as `<div class="snippet snippet-<mode>"
+data-at="<key>">`, or `<li>` at the anchors inside a list (ordering,
+bank data, online). The title repeats in the running header of later pages
+and the footer has a print and a screen variant, so a snippet anchored
+there renders once per copy. `lines.sublines` repeats per line and has no
+anchor.
+
+Snippet HTML is trusted, on the same level as the logo URL: the author is
+the owner of the configuration and the markup is not sanitised, except that
+`script`, `iframe`, `object` and `embed` elements are stripped, as a PDF
+can do nothing with them. A single snippet is limited to 32 KiB and a set
+to 128 KiB; the snippets of a document render once, whatever its length.
+
+The HTML is a Go `html/template` over a fixed set of variables, filled from
+the document and formatted the way the document shows them, with the
+locale, date and number formats of the render. Every value is escaped for
+the place it lands in, as text, inside an attribute or as a URL, so
+document data can never break out of the snippet's markup. A variable that
+does not apply is empty, which `{{ if .DueDate }}…{{ end }}` guards for;
+a variable that does not exist fails validation and rendering.
+
+| Variable | Value |
+| --- | --- |
+| `.Code` | Document code |
+| `.Series` | Document series, or empty |
+| `.Number` | Series and code joined as the title shows them |
+| `.IssueDate` | Issue date |
+| `.DueDate` | First due date of the invoice's payment terms, or empty |
+| `.TotalPayable` | Total payable with its currency, before advances |
+| `.TotalDue` | Amount left to pay with its currency, after advances |
+| `.Currency` | Currency code |
+| `.SupplierName` | Supplier's name |
+| `.CustomerName` | Customer's name, or empty |
+| `.PaymentLink` | First online payment URL in the instructions, or empty |
+
+Only an invoice fills `.DueDate`, `.TotalPayable`, `.TotalDue` and
+`.PaymentLink`. `examples/es-verifactu-invoice-full.snippets.json` renders
+with the set in `internal/catalog/snippets.json`, a "Pay now" button after
+the payment instructions and a contact line after the notes, on every
+path that renders the examples; the previewer's options also take a set of
+snippets to try.
+
 ### Examples
 
 Every file in `examples/` is named `<country>-<format>-<kind>[-<variant>]`,

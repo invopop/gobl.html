@@ -1,0 +1,12 @@
+[
+	{
+		"at": "payment.instructions",
+		"mode": "after",
+		"html": "{{ if .PaymentLink }}<div class=\"pay-now\" style=\"align-self: center; margin-left: 6mm;\"><a href=\"{{ .PaymentLink }}\" style=\"display: inline-block; padding: 2.5mm 6mm; border-radius: 1.5mm; background-color: #16a34a; color: #ffffff; font-size: 9pt; font-weight: 600; text-decoration: none; white-space: nowrap;\">Pay {{ .TotalDue }} now</a><div style=\"margin-top: 1.5mm; font-size: 6.5pt; color: #6b7280; text-align: center;\">{{ .Number }}{{ if .DueDate }} · due {{ .DueDate }}{{ end }}</div></div>{{ end }}"
+	},
+	{
+		"at": "notes",
+		"mode": "after",
+		"html": "<p style=\"margin-top: 2mm;\">Questions about invoice {{ .Number }} from {{ .SupplierName }}? Write to <a href=\"mailto:billing@example.com\">billing@example.com</a>.</p>"
+	}
+]

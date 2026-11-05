@@ -12,6 +12,8 @@ import (
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
 	"github.com/invopop/gobl/num"
@@ -35,23 +37,37 @@ const (
 )
 
 templ paymentDetails(inv *bill.Invoice) {
-	@t.Scope(".payment") {
-		if showPayments(inv) {
-			<section class="payment">
-				<h2 class="title">
-					@t.T(".title")
-				</h2>
-				if inv.Payment.Terms != nil {
-					@paymentTerms(inv.Payment.Terms, inv.Totals)
-				}
-				{{ qrs := paymentOnlineQRCodes(inv.Payment.Instructions, inv.Totals) }}
-				if inv.Payment.Instructions != nil {
-					@paymentInstructions(inv.Payment.Instructions, qrs)
-				}
-				@paymentOnlineQRs(qrs)
-			</section>
+	@utils.Section(display.KeyPayment) {
+		@t.Scope(".payment") {
+			if showPayments(ctx, inv) {
+				<section class="payment">
+					<h2 class="title">
+						@t.T(".title")
+					</h2>
+					@utils.Section(display.KeyPaymentTerms) {
+						if inv.Payment != nil && inv.Payment.Terms != nil {
+							@paymentTerms(inv.Payment.Terms, inv.Totals)
+						}
+					}
+					{{ qrs := paymentOnlineQRCodes(paymentInstructionsOf(inv), inv.Totals) }}
+					@utils.Section(display.KeyPaymentInstructions) {
+						if inv.Payment != nil && inv.Payment.Instructions != nil {
+							@paymentInstructions(inv.Payment.Instructions, qrs)
+						}
+					}
+					@paymentOnlineQRs(qrs)
+				</section>
+			}
 		}
 	}
+}
+
+// paymentInstructionsOf provides the invoice's payment instructions, or nil.
+func paymentInstructionsOf(inv *bill.Invoice) *pay.Instructions {
+	if inv.Payment == nil {
+		return nil
+	}
+	return inv.Payment.Instructions
 }
 
 // paymentOnlineQRs adds a column with a QR code and a button for each online
@@ -206,17 +222,19 @@ templ paymentInstructions(inst *pay.Instructions, qrs []*paymentOnlineQR) {
 					</span>
 				</li>
 			}
-			if len(inst.CreditTransfer) > 0 {
-				<li class="bank-data">
-					<span class="label">
-						@t.T(".bank_data")
-					</span>
-					for _, ct := range inst.CreditTransfer {
-						<span class="value">
-							@paymentCreditTransferRow(ct)
+			@utils.ListSection(display.KeyPaymentBankData) {
+				if len(inst.CreditTransfer) > 0 {
+					<li class="bank-data">
+						<span class="label">
+							@t.T(".bank_data")
 						</span>
-					}
-				</li>
+						for _, ct := range inst.CreditTransfer {
+							<span class="value">
+								@paymentCreditTransferRow(ct)
+							</span>
+						}
+					</li>
+				}
 			}
 			if inst.Card != nil {
 				<li class="card">
@@ -238,17 +256,19 @@ templ paymentInstructions(inst *pay.Instructions, qrs []*paymentOnlineQR) {
 					</span>
 				</li>
 			}
-			if links := paymentOnlineLinks(inst, qrs); len(links) > 0 {
-				<li class="online">
-					<span class="label">
-						@t.T(".online")
-					</span>
-					for _, ol := range links {
-						<span class="value">
-							@paymentOnlineRow(ol)
+			@utils.ListSection(display.KeyPaymentOnline) {
+				if links := paymentOnlineLinks(inst, qrs); len(links) > 0 {
+					<li class="online">
+						<span class="label">
+							@t.T(".online")
 						</span>
-					}
-				</li>
+						for _, ol := range links {
+							<span class="value">
+								@paymentOnlineRow(ol)
+							</span>
+						}
+					</li>
+				}
 			}
 			if inst.Notes != "" {
 				<li class="notes">
@@ -420,14 +440,17 @@ func displayDueDates(terms *pay.Terms, totals *bill.Totals) []*pay.DueDate {
 	return []*pay.DueDate{&full}
 }
 
-func showPayments(inv *bill.Invoice) bool {
+// showPayments determines if the payment section has something to show:
+// payment terms or instructions, or snippets anchored inside it.
+func showPayments(ctx context.Context, inv *bill.Invoice) bool {
+	s := internal.Snippets(ctx)
+	if s.Has(display.KeyPaymentTerms) || s.Has(display.KeyPaymentInstructions) {
+		return true
+	}
 	if inv.Payment == nil {
 		return false
 	}
-	if inv.Payment.Instructions == nil && inv.Payment.Terms == nil {
-		return false
-	}
-	return true
+	return inv.Payment.Instructions != nil || inv.Payment.Terms != nil
 }
 
 // paymentPending returns true when the document still has a positive

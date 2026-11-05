@@ -4,6 +4,7 @@ package catalog
 
 import (
 	"context"
+	_ "embed"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -13,6 +14,7 @@ import (
 	"strings"
 
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl.html/locales"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cbc"
@@ -43,6 +45,27 @@ var HiddenKeys = []string{
 	"notes",
 	"footer.branding",
 }
+
+// exampleSnippets is the snippet set a ".snippets." example renders with,
+// shared with wasm/render.mjs, which reads the same file.
+//
+//go:embed snippets.json
+var exampleSnippets []byte
+
+// ExampleSnippets are the snippets an example whose name contains
+// ".snippets." is rendered with on every path that renders the examples: a
+// "Pay now" button after the payment instructions and a contact line after
+// the notes, both filled from the document's variables.
+var ExampleSnippets = func() display.Snippets {
+	var s display.Snippets
+	if err := json.Unmarshal(exampleSnippets, &s); err != nil {
+		panic(fmt.Errorf("catalog: parsing snippets.json: %w", err))
+	}
+	if err := s.Validate(); err != nil {
+		panic(fmt.Errorf("catalog: snippets.json: %w", err))
+	}
+	return s
+}()
 
 // Entry describes one example file.
 type Entry struct {
@@ -75,6 +98,9 @@ type Entry struct {
 	// Hide lists, separated by commas, the sections a ".hidden." example
 	// name hides; see HiddenKeys.
 	Hide string `json:"hide,omitempty"`
+	// Snippets are the snippets a ".snippets." example name places; see
+	// ExampleSnippets.
+	Snippets display.Snippets `json:"snippets,omitempty"`
 	// Void, Sandbox and AdjustmentMode are the states the example name implies.
 	Void           bool `json:"void,omitempty"`
 	Sandbox        bool `json:"sandbox,omitempty"`
@@ -127,6 +153,9 @@ func describe(ctx context.Context, path string, render Renderer) (Entry, error) 
 	}
 	if strings.Contains(name, ".hidden.") {
 		e.Hide = strings.Join(HiddenKeys, ",")
+	}
+	if strings.Contains(name, ".snippets.") {
+		e.Snippets = ExampleSnippets
 	}
 	e.Locale = LocaleFromName(name)
 
@@ -208,6 +237,7 @@ func describe(ctx context.Context, path string, render Renderer) (Entry, error) 
 	add(e.Sandbox, "sandbox")
 	add(e.AdjustmentMode, "adjustment")
 	add(e.Hide != "", "hidden")
+	add(len(e.Snippets) > 0, "snippets")
 
 	if render != nil {
 		out, err := render(ctx, env)

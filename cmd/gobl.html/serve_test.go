@@ -3,10 +3,12 @@ package main
 import (
 	"net/http"
 	"net/http/httptest"
+	"net/url"
 	"strings"
 	"testing"
 
 	goblhtml "github.com/invopop/gobl.html"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl.html/internal/catalog"
 	"github.com/invopop/gobl.html/layout"
 	"github.com/labstack/echo/v4"
@@ -34,6 +36,25 @@ func TestOptionsBindQuery(t *testing.T) {
 	assert.Equal(t, ".", o.ThousandsSeparator)
 }
 
+// TestOptionsBindSnippets checks the snippets arrive through a query
+// parameter as a JSON string, the way the previewer sends them.
+func TestOptionsBindSnippets(t *testing.T) {
+	e := echo.New()
+	q := url.Values{"snippets": {`[{"at": "notes", "mode": "after", "html": "<p>{{ .Number }}</p>"}]`}}
+	req := httptest.NewRequest(http.MethodGet, "/x.html?"+q.Encode(), nil)
+	c := e.NewContext(req, httptest.NewRecorder())
+	c.SetParamNames("filename")
+	c.SetParamValues("x.html")
+
+	o := new(options)
+	require.NoError(t, c.Bind(o))
+	assert.Equal(t, display.Snippets{{At: display.KeyNotes, Mode: display.ModeAfter, HTML: "<p>{{ .Number }}</p>"}}, o.Snippets)
+
+	req = httptest.NewRequest(http.MethodGet, "/x.html?snippets=nope", nil)
+	c = e.NewContext(req, httptest.NewRecorder())
+	assert.Error(t, c.Bind(new(options)))
+}
+
 func TestApplyExampleParams(t *testing.T) {
 	none := func(string) bool { return false }
 
@@ -53,6 +74,14 @@ func TestApplyExampleParams(t *testing.T) {
 	p = new(goblhtml.Params) // hide= in the query
 	applyExampleParams("es-verifactu-invoice-full.hidden.json", p, func(k string) bool { return k == "hide" })
 	assert.Empty(t, p.Hide, "an explicit empty hide keeps the file name from hiding anything")
+
+	p = new(goblhtml.Params)
+	applyExampleParams("es-verifactu-invoice-full.snippets.json", p, none)
+	assert.Equal(t, catalog.ExampleSnippets, p.Snippets, "file name implies the example snippets")
+
+	p = new(goblhtml.Params) // snippets= in the query
+	applyExampleParams("es-verifactu-invoice-full.snippets.json", p, func(k string) bool { return k == "snippets" })
+	assert.Empty(t, p.Snippets, "an explicit empty snippets list keeps the file name from adding any")
 
 	p = &goblhtml.Params{AdjustmentMode: true}
 	applyExampleParams("plain.json", p, none)

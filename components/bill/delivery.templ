@@ -106,9 +106,7 @@ templ deliverySummary(dlv *bill.Delivery) {
 				if len(dlv.Preceding) > 0 {
 					@summaryPrecedingRows(dlv)
 				}
-				if dlv.Ordering != nil {
-					@summaryOrderingRows(dlv.Ordering)
-				}
+				@summaryOrderingRows(dlv.Ordering)
 				if dlv.Tax != nil {
 					@summaryTaxExtRows(dlv.Tax.Ext)
 				}

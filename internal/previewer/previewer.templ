@@ -304,6 +304,13 @@ templ options() {
 					@popui.Input(props.Input{Label: "Watermark", Attributes: templ.Attributes{"x-model": "params.watermark"}})
 					@popui.Input(props.Input{Label: "Hide", Placeholder: "notes,footer.branding", Attributes: templ.Attributes{"x-model": "params.hide"}})
 				</div>
+				@popui.Textarea(props.Textarea{
+					Label:       "Snippets",
+					Placeholder: `[{"at": "payment.instructions", "mode": "after", "html": "<a href=\"{{ .PaymentLink }}\">Pay {{ .TotalDue }}</a>"}]`,
+					Rows:        6,
+					Monospace:   true,
+					Attributes:  templ.Attributes{"x-model": "params.snippets", "title": "JSON array of {at, mode, html}; the html is a template over the document's variables, such as {{ .PaymentLink }}"},
+				})
 				@popui.OptionGroup() {
 					@popui.Checkbox(props.Checkbox{Variant: props.CheckboxVariantSwitch, Name: "void", Label: "Void", Attributes: templ.Attributes{"x-model": "params.void"}})
 					@popui.Checkbox(props.Checkbox{Variant: props.CheckboxVariantSwitch, Name: "sandbox", Label: "Sandbox", Attributes: templ.Attributes{"x-model": "params.sandbox"}})
