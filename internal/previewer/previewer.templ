@@ -6,6 +6,7 @@ import (
 	"github.com/invopop/gobl.html/internal/catalog"
 	"github.com/invopop/icons"
 	"github.com/invopop/popui.go"
+	"github.com/invopop/popui.go/classes"
 	"github.com/invopop/popui.go/props"
 )
 
@@ -86,9 +87,6 @@ templ pageStyle() {
 		[data-row][data-selected] { background: var(--color-background-selected-default); }
 		[data-row]:hover { background: var(--color-background-default-secondary); }
 		[data-row][data-selected]:hover { background: var(--color-background-selected-default); }
-		/* A chosen facet keeps its colour under the pointer; PopUI's section
-		   hover would otherwise paint it grey. */
-		[data-facet][data-on]:hover { background: var(--color-background-selected-default); }
 		.pv-canvas { display: flex; justify-content: center; align-items: flex-start; gap: 28px; padding: 28px 28px 56px; min-height: 100%; }
 		.pv-stack { display: flex; flex-direction: column; align-items: center; gap: 8px; }
 		.pv-caption { font-size: 12px; font-weight: 500; color: var(--color-foreground-default-secondary); }
@@ -117,10 +115,10 @@ templ search() {
 	})
 }
 
-// sidebar lists the facets per group. Each group is a single choice with an
-// "All …" entry that clears it; Alpine keeps the counts in step with the
-// other groups, and the groups below the country only list what its
-// examples have. The addon group only shows when there is a choice.
+// sidebar offers one dropdown per facet group. Each is a single choice
+// whose first entry ("All …") clears it; Alpine keeps the counts in step
+// with the other groups, the groups below the country only list what its
+// examples have, and the addon group only shows when there is a choice.
 templ sidebar(groups []Group) {
 	@popui.Sidebar(props.Sidebar{Attributes: templ.Attributes{":style": "bench ? 'display:none' : ''"}}) {
 		@popui.SidebarHeader() {
@@ -129,48 +127,39 @@ templ sidebar(groups []Group) {
 			<span class="text-foreground-default-tertiary font-normal">previewer</span>
 		}
 		@popui.SidebarContent() {
-			for _, g := range groups {
-				@popui.SidebarSection(props.SidebarSection{Title: g.Title, Attributes: sectionAttrs(g)}) {
-					<li>
-						<a
-							href="#"
-							data-facet
-							@click.prevent={ "choose('" + g.Key + "', '')" }
-							:data-on={ "isOn('" + g.Key + "', '') ? '' : null" }
-							:class={ "{ 'bg-background-selected text-foreground-selected': isOn('" + g.Key + "', '') }" }
+			<div class="flex flex-col gap-4 w-full px-2">
+				for _, g := range groups {
+					<div
+						class="flex flex-col gap-1.5"
+						if g.Key == "addon" {
+							x-show="availableCount('addon') > 1"
+							x-cloak
+						}
+					>
+						@popui.Label(props.Label{ID: "facet-" + g.Key}) {
+							{ g.Title }
+						}
+						<select
+							id={ "facet-" + g.Key }
+							class={ classes.FormField(), "pl-2 pr-9 truncate", classes.FormFieldState(false) }
+							data-select-arrow
+							:value={ "filters." + g.Key + "[0] ?? ''" }
+							@change={ "choose('" + g.Key + "', $event.target.value)" }
 						>
-							if g.Key == "country" {
-								<span class="w-3.5 h-2.5 shrink-0 flex items-center justify-center text-foreground-default-tertiary">
-									@icons.World()
-								</span>
+							<option value="" x-text={ "'" + g.All + " (' + count('" + g.Key + "', '') + ')'" }>{ g.All }</option>
+							for _, f := range g.Facets {
+								<option
+									value={ f.Value }
+									if g.Key != "country" {
+										:hidden={ "!available('" + g.Key + "', '" + f.Value + "')" }
+									}
+									x-text={ "'" + f.Label + " (' + count('" + g.Key + "', '" + f.Value + "') + ')'" }
+								>{ f.Label }</option>
 							}
-							<span>{ g.All }</span>
-							<span class="ml-auto text-sm tabular-nums text-foreground-default-tertiary" x-text={ "count('" + g.Key + "', '')" }></span>
-						</a>
-					</li>
-					for _, f := range g.Facets {
-						<li
-							if g.Key != "country" {
-								x-show={ "available('" + g.Key + "', '" + f.Value + "')" }
-							}
-						>
-							<a
-								href="#"
-								data-facet
-								@click.prevent={ "choose('" + g.Key + "', '" + f.Value + "')" }
-								:data-on={ "isOn('" + g.Key + "', '" + f.Value + "') ? '' : null" }
-								:class={ "{ 'bg-background-selected text-foreground-selected': isOn('" + g.Key + "', '" + f.Value + "'), 'text-foreground-default-tertiary': !isOn('" + g.Key + "', '" + f.Value + "') && count('" + g.Key + "', '" + f.Value + "') === 0 }" }
-							>
-								if g.Key == "country" {
-									@popui.Image(props.Image{Src: FlagURL(f.Value), Alt: f.Label, Class: "w-3.5 h-2.5 rounded-[1.5px] shrink-0"})
-								}
-								<span>{ f.Label }</span>
-								<span class="ml-auto text-sm tabular-nums text-foreground-default-tertiary" x-text={ "count('" + g.Key + "', '" + f.Value + "')" }></span>
-							</a>
-						</li>
-					}
+						</select>
+					</div>
 				}
-			}
+			</div>
 		}
 		@popui.SidebarFooter() {
 			@popui.Button(props.Button{

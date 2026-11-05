@@ -57,7 +57,8 @@ type Entry struct {
 	Kind string `json:"kind"`
 	// Addons lists the tax addons the document declares.
 	Addons []string `json:"addons,omitempty"`
-	// Tags describe notable content: qr, payment-terms, payment-instructions,
+	// Tags describe notable content: the document's own GOBL tags (simplified,
+	// self-billed, reverse-charge, b2g, export…), then qr, payment-terms, payment-instructions,
 	// advances, logo, discounts, charges, delivery, notes, attachments,
 	// preceding, prices-include, currency (a currency other than the
 	// regime's own, or exchange rates), multipage,
@@ -144,6 +145,9 @@ func describe(ctx context.Context, path string, render Renderer) (Entry, error) 
 		e.Currency = doc.Currency.String()
 		e.Supplier = partyName(doc.Supplier)
 		e.Lines = len(doc.Lines)
+		for _, t := range doc.GetTags() {
+			add(true, t.String()) // the document's own tags: simplified, self-billed, reverse-charge, b2g…
+		}
 		paymentTags(add, doc.Payment)
 		add(hasLogo(doc.Supplier), "logo")
 		add(len(doc.Discounts) > 0, "discounts")

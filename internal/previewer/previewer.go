@@ -8,7 +8,6 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/a-h/templ"
 	"github.com/invopop/gobl.html/internal/catalog"
 	"github.com/invopop/gobl.html/locales"
 	"github.com/invopop/popui.go/props"
@@ -105,15 +104,6 @@ func Groups(entries []catalog.Entry) []Group {
 		collect("addon", "Addon", "All addons", func(e catalog.Entry) []string { return e.Addons }, func(s string) string { return s }),
 		collect("tag", "Content", "All content", func(e catalog.Entry) []string { return e.Tags }, func(s string) string { return s }),
 	}
-}
-
-// sectionAttrs hides the addon group while the chosen country leaves no
-// choice of addon.
-func sectionAttrs(g Group) templ.Attributes {
-	if g.Key != "addon" {
-		return nil
-	}
-	return templ.Attributes{"x-show": "availableCount('addon') > 1"}
 }
 
 // localeNames gives each shipped locale its own name for the selector.

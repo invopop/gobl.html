@@ -93,7 +93,7 @@ rather than editing the copy here. With a checkout of the docs repository
 next to this one:
 
 ```bash
-go run scripts/import-docs-examples.go ../docs.invopop.com
+go run scripts/build-examples.go -docs ../docs.invopop.com
 go test . -run Example -update
 ```
 

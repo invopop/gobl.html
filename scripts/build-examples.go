@@ -1,24 +1,36 @@
 //go:build ignore
 
-// import-docs-examples copies the GOBL examples published in the Invopop docs
-// into examples/, so gobl.html renders every document the docs show and can
-// keep more of its own on top. It reads the built snippets (the ```json block
-// of each snippets/{invoices,payments,deliveries}/<cc>/<name>.mdx, skipping
-// .min.mdx inputs and accordions), envelops, calculates and validates them
-// with the gobl version pinned here, and writes examples/<cc>-<name>.json.
-// A file whose document digest is unchanged is left alone, so re-running is
-// a no-op and envelope UUIDs stay put. examples/docs-examples.txt lists what
-// came from the docs; entries the docs no longer have are removed. A docs
-// example whose name an example of gobl.html's own already uses is skipped,
-// and one the current gobl rules reject is reported: both are for the docs
-// to resolve.
+// build-examples turns bare GOBL documents into the enveloped, validated
+// examples the tests and the previewer use. Sources come from two places:
 //
-//	go run scripts/import-docs-examples.go ../docs.invopop.com
+//   - examples/src/*.json: documents of gobl.html's own, hand-authored to
+//     exercise the renderer (the per-regime "full" invoices live here).
+//   - the GOBL examples published in the Invopop docs, when a checkout of
+//     the docs repository is given: the ```json block of each built
+//     snippets/{invoices,payments,deliveries}/<cc>/<name>.mdx (skipping
+//     .min.mdx inputs and accordions), written as examples/<cc>-<name>.json
+//     and listed in examples/docs-examples.txt so a later run updates, adds
+//     and removes them in step with the docs. A docs example whose name an
+//     example of gobl.html's own already uses is skipped, and one the current
+//     gobl rules reject is reported: both are for the docs to resolve.
+//
+// Each document is enveloped, calculated and validated with the gobl pinned
+// here. One whose addon has the tax agency stamp it gets sample stamps
+// shaped like the real ones, a code if it has none, and a signature from a
+// throwaway key, so the previewer shows what the final PDF carries.
+// Re-running is a no-op: a document without a uuid keeps the one its
+// previous build had, and an unchanged document keeps its file, UUID and
+// signature.
+//
+//	go run scripts/build-examples.go                      # own sources only
+//	go run scripts/build-examples.go -docs ../docs.invopop.com
+//	go run scripts/build-examples.go examples/src/xx.json # just these
 package main
 
 import (
 	"bufio"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -42,13 +54,52 @@ const (
 
 var trees = []string{"invoices", "payments", "deliveries"}
 
-func main() {
-	if len(os.Args) != 2 {
-		fmt.Fprintln(os.Stderr, "usage: go run scripts/import-docs-examples.go <docs repo dir>")
-		os.Exit(2)
-	}
-	docs := os.Args[1]
+const srcDir = "examples/src"
 
+func main() {
+	docs := flag.String("docs", "", "checkout of the docs repository to import examples from")
+	flag.Usage = func() {
+		fmt.Fprintln(os.Stderr, "usage: go run scripts/build-examples.go [-docs DIR] [examples/src/NAME.json ...]")
+	}
+	flag.Parse()
+
+	failed := 0
+	if flag.NArg() > 0 {
+		for _, src := range flag.Args() {
+			out := filepath.Join(examplesDir, filepath.Base(src))
+			if err := importOne(src, out, jsonSource); err != nil {
+				fmt.Printf("✗ %s: %v\n", src, err)
+				failed++
+			}
+		}
+		exit(failed)
+		return
+	}
+
+	own, _ := filepath.Glob(filepath.Join(srcDir, "*.json"))
+	sort.Strings(own)
+	for _, src := range own {
+		out := filepath.Join(examplesDir, filepath.Base(src))
+		if err := importOne(src, out, jsonSource); err != nil {
+			fmt.Printf("✗ %s: %v\n", src, err)
+			failed++
+		}
+	}
+	fmt.Printf("%d own sources, %d failed\n", len(own), failed)
+	if *docs != "" {
+		failed += importDocs(*docs)
+	}
+	exit(failed)
+}
+
+func exit(failed int) {
+	if failed > 0 {
+		os.Exit(1)
+	}
+}
+
+// importDocs brings the docs' examples in and returns how many failed.
+func importDocs(docs string) int {
 	previous := readManifest()
 	current := map[string]string{} // example file -> snippet path
 	failed := 0
@@ -73,7 +124,7 @@ func main() {
 					continue
 				}
 			}
-			if err := importOne(f, filepath.Join(examplesDir, out)); err != nil {
+			if err := importOne(f, filepath.Join(examplesDir, out), extractJSON); err != nil {
 				fmt.Printf("✗ %s: %v\n", rel, err)
 				failed++
 				continue
@@ -90,13 +141,14 @@ func main() {
 	}
 	writeManifest(current)
 	fmt.Printf("%d docs examples, %d failed\n", len(current), failed)
-	if failed > 0 {
-		os.Exit(1)
-	}
+	return failed
 }
 
-func importOne(src, dst string) error {
-	data, err := extractJSON(src)
+// jsonSource reads a bare document from a .json file.
+func jsonSource(path string) ([]byte, error) { return os.ReadFile(path) }
+
+func importOne(src, dst string, read func(string) ([]byte, error)) error {
+	data, err := read(src)
 	if err != nil {
 		return err
 	}
@@ -380,7 +432,7 @@ func writeManifest(m map[string]string) {
 	}
 	sort.Strings(files)
 	var b strings.Builder
-	b.WriteString("# Examples imported from docs.invopop.com by scripts/import-docs-examples.go: example\tsnippet\n")
+	b.WriteString("# Examples imported from docs.invopop.com by scripts/build-examples.go: example\tsnippet\n")
 	for _, f := range files {
 		fmt.Fprintf(&b, "%s\t%s\n", f, m[f])
 	}

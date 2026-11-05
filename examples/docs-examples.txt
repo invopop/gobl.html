@@ -1,4 +1,4 @@
-# Examples imported from docs.invopop.com by scripts/import-docs-examples.go: example	snippet
+# Examples imported from docs.invopop.com by scripts/build-examples.go: example	snippet
 ar-arca-credit-note.json	snippets/invoices/ar/arca-credit-note.mdx
 ar-arca-invoice-a.json	snippets/invoices/ar/arca-invoice-A.mdx
 ar-arca-invoice-c.json	snippets/invoices/ar/arca-invoice-C.mdx
