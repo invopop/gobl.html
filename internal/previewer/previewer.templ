@@ -199,14 +199,14 @@ templ list(entries []catalog.Entry) {
 						@click.prevent={ "select('" + e.File + "')" }
 						title={ e.File }
 					>
-						<span class="flex items-center gap-2 min-w-0 text-sm">
+						<span class="flex items-center gap-2 min-w-0 text-base">
 							if e.Country != "" {
 								@popui.Image(props.Image{Src: FlagURL(e.Country), Alt: strings.ToUpper(e.Country), Class: "w-3.5 h-2.5 rounded-[1.5px] shrink-0"})
 							}
 							<span class="truncate">{ Title(e.Title) }</span>
 						</span>
 						if e.Description != "" {
-							<span class="truncate text-xs text-foreground-default-tertiary pl-[22px]">{ e.Description }</span>
+							<span class="truncate text-sm text-foreground-default-tertiary pl-[22px]">{ e.Description }</span>
 						}
 					</a>
 				</li>

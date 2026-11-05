@@ -786,7 +786,7 @@ func list(entries []catalog.Entry) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 44, "\"><span class=\"flex items-center gap-2 min-w-0 text-sm\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 44, "\"><span class=\"flex items-center gap-2 min-w-0 text-base\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -814,7 +814,7 @@ func list(entries []catalog.Entry) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			if e.Description != "" {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 47, "<span class=\"truncate text-xs text-foreground-default-tertiary pl-[22px]\">")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 47, "<span class=\"truncate text-sm text-foreground-default-tertiary pl-[22px]\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
