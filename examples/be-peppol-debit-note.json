@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "4dc7a8cff0f33e8d6ceb03a85a0b9335b974704ea7fe05d89bcd6a7ada560bac"
 		},
+		"meta": {
+			"description": "Debit note (UNTDID 383) adding commissioning hours, spare parts and travel to a prior invoice.",
+			"title": "Peppol debit note"
+		},
 		"from": "iso6523-actorid-upis::0208:0316597904",
 		"to": "iso6523-actorid-upis::0208:0859536301"
 	},

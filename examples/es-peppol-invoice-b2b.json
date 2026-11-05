@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "9f8143a6e81529dae6b56f60e067e6401c8bbb90cd7fa52aea38a78f85c3ac95"
 		},
+		"meta": {
+			"description": "A standard B2B invoice sent over the Peppol network. The eu-en16931-v2017 addon applies the European norm rules; the peppol inboxes on both parties identify the sending and receiving participants.",
+			"title": "Peppol B2B invoice"
+		},
 		"from": "iso6523-actorid-upis::9920:ESB98602642",
 		"to": "iso6523-actorid-upis::9920:ESB85905495"
 	},

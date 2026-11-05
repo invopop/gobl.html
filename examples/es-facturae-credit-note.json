@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "3d5193aa545e2ecc409b716863c511734f5c7e35041f6c17340453f3d26fe3a2"
+		},
+		"meta": {
+			"description": "A corrective invoice (credit note) referencing a previous Facturae invoice.",
+			"title": "Facturae Credit Note"
 		}
 	},
 	"doc": {

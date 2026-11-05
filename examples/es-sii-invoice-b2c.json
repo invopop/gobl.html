@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "890a8af435663dd1a8650728a4131344f9160e06fddb84f6f96377016f28c5ab"
+		},
+		"meta": {
+			"description": "Simplified invoices are used for B2C transactions when the customer is not a business. The transaction amount should be under €400 (VAT included) with some exceptions in which this threshold is increased to €3,000.",
+			"title": "B2C Simplified Invoice"
 		}
 	},
 	"doc": {

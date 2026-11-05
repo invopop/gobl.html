@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "39f0da89a2015021415cc37fcf476bdd0230e450bcedcf7571f733b9bea54590"
+		},
+		"meta": {
+			"description": "Additional kiosks, installation and taxable freight added to a prior invoice under a change order.",
+			"title": "US debit note"
 		}
 	},
 	"doc": {

@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "c66e9cb41fe8439fddcb486d2c4893f8c18faa73f48f57f254d490f746841361"
 		},
+		"meta": {
+			"description": "A restaurant cashes in a B2C sale — VAT is collected on the spot and reported through e-reporting — and the guest's company then asks for a proper invoice. That B2B invoice still travels the flux 2 e-invoicing flow, but must be marked so the VAT is not declared twice.",
+			"title": "PA B2B invoice after a B2C sale (VAT already collected)"
+		},
 		"from": "iso6523-actorid-upis::0225:303265045",
 		"to": "iso6523-actorid-upis::0225:356000000"
 	},

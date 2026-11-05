@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "e4cde8eb750f30dc31c3cac011418edbf9eba95ec0890027bf5b890eb6e66812"
 		},
+		"meta": {
+			"description": "Goods and services that are subject to VAT but taxed at a 0% rate. Zero rated goods in Italy are:",
+			"title": "Peppol Italy - B2B zero rated goods invoice"
+		},
 		"from": "iso6523-actorid-upis::0205:IT00159560366",
 		"to": "iso6523-actorid-upis::0205:IT05140920017"
 	},

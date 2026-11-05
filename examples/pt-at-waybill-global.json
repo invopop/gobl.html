@@ -27,7 +27,11 @@
 				"prv": "at-app-id",
 				"val": "0"
 			}
-		]
+		],
+		"meta": {
+			"description": "For shipments where the specific recipient is not known upfront — for example, multi-stop delivery runs — issuers can emit a global waybill (_Guia de Transporte Global_) to cover the goods in transport.",
+			"title": "AT global waybill"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/delivery",
@@ -140,6 +144,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5OTUtNzVhNS05NTA3LWUzZjJjM2RmMzFlOCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRkOS03ODU0LWFlOTctODU2YWI0ZGU5ZmQ1IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjkzZWY1M2JkMDcyMzI5MTcwYWFhZjU2MzI0Yzg4ZmI0Yzc2OGI5MzUyNjE0MTkwMzZkMDkxYWI3ZGZiZjE2YmYifSwiaWF0IjoxNzkzODc3MTc0fQ.sNKqqH9x6aBHHOwn67MeyFwbdU_7gpBwaqIlKNjpjDXIejJxGEHaZEXF-HhYDN79iRCoqHms7Ebj_zuqbOSvMg"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE3M2EtN2Q2MS04NDI2LTlkYjljY2FmNjc5NCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRkOS03ODU0LWFlOTctODU2YWI0ZGU5ZmQ1IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjkzZWY1M2JkMDcyMzI5MTcwYWFhZjU2MzI0Yzg4ZmI0Yzc2OGI5MzUyNjE0MTkwMzZkMDkxYWI3ZGZiZjE2YmYifSwiaWF0IjoxNzkzODk0Njg4fQ.jkuBvAfUOdqZa3kTAII-Y48pCgp3wSjR5bhaTtfqhqjz8BVSDWsmADP4go8WAz2xrqirpMmaxGRrBn25OLv0-A"
 	]
 }

@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "27e2967977841f41a67a1bfbdda8289c35365a60a8a59e5a56d5e3d4e43f5fb2"
+		},
+		"meta": {
+			"description": "A standard Facturae invoice from a Spanish supplier to a Spanish public sector customer.",
+			"title": "Facturae B2G Invoice"
 		}
 	},
 	"doc": {

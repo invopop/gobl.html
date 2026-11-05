@@ -15,7 +15,11 @@
 				"prv": "favat-qr",
 				"val": "https://ksef-test.mf.gov.pl/web/verify/9876543210-20260120-D1984449A6BC-02/8KCfB1Sa5Jc4Gg6ctK4HKdwnRwK%2BdxT1ScymF6m5d18%3D"
 			}
-		]
+		],
+		"meta": {
+			"description": "In this example, we're issuing a credit note to correct or refund a previous invoice. In Poland, every correction is a _faktura korygująca_ (corrective invoice) — there is no separate credit note document type.",
+			"title": "B2B Credit Note"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -135,6 +139,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5NDEtN2Q1Ni04ZDk4LWVlYTY5NjZlNzFhZSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhOS03YTE5LWI3MTQtNDczNDYxYTJlMWMxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjRlNWViNmJjYTMzNmE3MjIxNDIzNzg3MmQyZTFlNTAyMzZhOTJlODExZjllYTllNTU1NDY4OTJiN2I4NjhkNmIifSwiaWF0IjoxNzkzODc3MTc0fQ.zHJuulZnq_CVlAefOElKETZBFbQK4CFj_HL29MkhLS8syVTalM8o7eHMCh_PjUCPoXiTZUa-jN4yg7-ftvL4ag"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZWMtNzI3MS1hNWJmLTlmOWRjYWY0ODQ0MSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhOS03YTE5LWI3MTQtNDczNDYxYTJlMWMxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjRlNWViNmJjYTMzNmE3MjIxNDIzNzg3MmQyZTFlNTAyMzZhOTJlODExZjllYTllNTU1NDY4OTJiN2I4NjhkNmIifSwiaWF0IjoxNzkzODk0Njg4fQ.WpmDAxd1B0sLcTHE6gKIaSbMDJeXF7GvH2ySyiUZK6SPWSegHSty7h9X8iau07buSp5x9qwS8odQgNaO9bBj9w"
 	]
 }

@@ -27,7 +27,11 @@
 				"prv": "at-app-id",
 				"val": "0"
 			}
-		]
+		],
+		"meta": {
+			"description": "A return guide (_Guia de Devolução_) records goods being returned to the supplier — for example, defective items, unsold stock, or any other scenario where previously delivered goods are sent back.",
+			"title": "AT return guide"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/delivery",
@@ -170,6 +174,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5OTItN2U5ZS05ZGU4LTk1NTU4MjhmMzJkYiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRkOC03NjRkLTk0YTktZTRhYjFkOGYyMWMxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImFiMjc4ODRhMTEwNzliYmY2MmRmODc0MDhiN2VmM2YzZjc5ZTg1MjBhYmY0ODU2NmZkMGZjYjkyNDhlM2Y3ZjAifSwiaWF0IjoxNzkzODc3MTc0fQ.KRrt9dza8ya6oGBW9qm3Pg7zuwSa0CWnqz8uxHHmcmbNjzw3w3pRuzHKGdTT8n3M-5hV3Hwz3Yt_eOetz9aO1w"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE3MzgtNzQ2Yy04NjgyLWMyOGI0MzBkOTJhZSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRkOC03NjRkLTk0YTktZTRhYjFkOGYyMWMxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImFiMjc4ODRhMTEwNzliYmY2MmRmODc0MDhiN2VmM2YzZjc5ZTg1MjBhYmY0ODU2NmZkMGZjYjkyNDhlM2Y3ZjAifSwiaWF0IjoxNzkzODk0Njg4fQ.GhXZ-EauJ5ZJwWMoY-A4aOzZFbW3U4e4V1yUU3GITRPA3DFS0yYk5JyaVxqZJnN2xNrC8SoIHuCmkBfQABvo-A"
 	]
 }

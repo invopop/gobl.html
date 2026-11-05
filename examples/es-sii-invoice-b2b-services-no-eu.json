@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "61fdde3cf91d7133b5baa9ccea41745c60679985dba13232e6630466ae5ec545"
+		},
+		"meta": {
+			"description": "Outside scope invoices are used for B2B services provided to customers outside the EU.",
+			"title": "B2B Services Non-EU Client (Outside Scope)"
 		}
 	},
 	"doc": {

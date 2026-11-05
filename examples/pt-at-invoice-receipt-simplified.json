@@ -27,7 +27,11 @@
 				"prv": "at-app-id",
 				"val": "0"
 			}
-		]
+		],
+		"meta": {
+			"description": "In these examples, we're issuing an invoice-receipt (_Fatura-Recibo_): an invoice that is fully paid at the moment it is issued. The payment.advances entries cover the full document total, so the built document ends up with totals.due at 0.00. The first example is a standard invoice with an identified customer; the second is the simplified (retail) variant.",
+			"title": "AT invoice-receipt (Fatura-Recibo)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -159,6 +163,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5NTYtNzJhMy1iYmQ5LTFhZDQxZWM3NGY4YiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRiNS03ZGVlLTkyYzYtMGI1ZDk5NzU3M2MyIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjhhYWFiZGUyZDQxODYzZTMyMGQxY2JlOWMxODVhYmRhZWI2MWE0M2I4OTVlOTA2OTk3MGQxYzQ4ODk0ZDBiYjgifSwiaWF0IjoxNzkzODc3MTc0fQ.SkXGWiUz-Hxr9_N6JimEXrxDFz1amsj5b8d8h7evEpefGHiMmA5LdBNJbSxE0uRgMGTWrVt6ulGEpUvggJrdeQ"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZmUtNzU3ZS04ZmZhLTJlMDk4NGUxNzFmMSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRiNS03ZGVlLTkyYzYtMGI1ZDk5NzU3M2MyIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjhhYWFiZGUyZDQxODYzZTMyMGQxY2JlOWMxODVhYmRhZWI2MWE0M2I4OTVlOTA2OTk3MGQxYzQ4ODk0ZDBiYjgifSwiaWF0IjoxNzkzODk0Njg4fQ.qzhtvYJKVdHPLxbIl5rksuljKRQjuqS7Vk70IxKz3SnfRiFgiXEDxFymmUNXzQZCMPUav9sUx79WFoW9l-62eQ"
 	]
 }

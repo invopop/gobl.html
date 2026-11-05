@@ -11,7 +11,11 @@
 				"prv": "ade-ref",
 				"val": "0000654321"
 			}
-		]
+		],
+		"meta": {
+			"description": "This example shows a simple B2C invoice from an Italian supplier (Documento Commerciale). Key points to note:",
+			"title": "B2C Invoice"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -127,6 +131,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MzEtNzZjNi04NDFiLTIyNTQyN2JiZDYxNSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ5ZC03NGFiLWJmMDMtYzdlNTIxNDQ0ZDg4IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjZhNmMwOTc5OTM0ZGExZTk1ZTE0OTk1ZDQ2NmIyNzNmYzMwYWMwYmFhYzg1MDI1N2I1YjM1MDBhN2RmMDQzNjEifSwiaWF0IjoxNzkzODc3MTc0fQ.JIpTjAEkeedhpS08O_oP2gmqVdaEnH7YDQmknuXWvnycBgy_LSon7d45veZDxvA8KTzYPrg8jbZR81ncPjEJqg"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZDYtN2VmMC04MWVhLTg3Njk5OWMxMmMyMyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ5ZC03NGFiLWJmMDMtYzdlNTIxNDQ0ZDg4IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjZhNmMwOTc5OTM0ZGExZTk1ZTE0OTk1ZDQ2NmIyNzNmYzMwYWMwYmFhYzg1MDI1N2I1YjM1MDBhN2RmMDQzNjEifSwiaWF0IjoxNzkzODk0Njg4fQ.SWuzIIwkXSN0AeRtPzM5IVA6YGhGHjYjXGEzrDARa3tJQaHQKRPUP6L8BhTR2e-qHPhQAJSx6wJ63A2fA0WorQ"
 	]
 }

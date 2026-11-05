@@ -11,7 +11,11 @@
 				"prv": "verifactu-qr",
 				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-sett/000001\u0026fecha=13-11-2024\u0026importe=1800.00"
 			}
-		]
+		],
+		"meta": {
+			"description": "Reverse charge invoices are used for B2B services provided to customers in other EU member states. Reverse charge must be applied when:",
+			"title": "B2B Services EU Client (Reverse Charge)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -112,6 +116,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4ZjYtNzI1OS1hNzc3LTg1YWJlZDRkMDgwNCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1NS03ZTIxLWJhYjEtOGRmMzdjYTVmMDZmIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImEzM2UyYjEwNjJkNmNkNGVkYjBiMjJlZDhjMzMxYjNjNDc4YzI2YmMyNjgzOTUwYjQ2YmRlNjc1Njc2MzdlNjYifSwiaWF0IjoxNzkzODc3MTc0fQ.Atl6m5OlDwH-KmLY6BFsGN_RfHUAKOe_jggKuhSon8Imrqy9lp-wYzI7Fgv3ziSTt4SvFWwjaHk2ZIl2DTKV1w"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NmUtNzI0Ni1iMjY5LTIzYWYzNDJkYTBkMiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1NS03ZTIxLWJhYjEtOGRmMzdjYTVmMDZmIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImEzM2UyYjEwNjJkNmNkNGVkYjBiMjJlZDhjMzMxYjNjNDc4YzI2YmMyNjgzOTUwYjQ2YmRlNjc1Njc2MzdlNjYifSwiaWF0IjoxNzkzODk0Njg4fQ.tK6qKrdU597ajWST_rb-VCLwjh-FU_Swv41wMBo0hL6OLzBk5Udr5B3cY1nLHueK_JvgGA61eXL_a_6TsGHW5w"
 	]
 }

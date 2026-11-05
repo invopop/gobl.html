@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "45d522e3df4deb95e9b571b26bc786b378872a4f786c7a9f19f4c152e74da798"
 		},
+		"meta": {
+			"description": "Leitweg-ID as buyer reference, Peppol 9930 endpoints, contact person, 19% and 7% rates with exempt and zero lines, allowance and charge codes, SEPA transfer, card and direct debit, delivery, notes and attachments.",
+			"title": "XRechnung with every feature"
+		},
 		"from": "iso6523-actorid-upis::9930:DE879558966",
 		"to": "iso6523-actorid-upis::9930:DE811569869"
 	},

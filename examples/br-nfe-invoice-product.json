@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "dbd97ccf5577db9dce6bdccd24debae1af23267eea41ff4345b054e600e6505a"
+		},
+		"meta": {
+			"description": "In this example, we're issuing an extended product invoice (NF-e) from a Brazilian supplier to another Brazilian business customer.",
+			"title": "Example B2B product invoice (NF-e)"
 		}
 	},
 	"doc": {

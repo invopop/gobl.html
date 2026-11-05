@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "a8aac37fa92908deac66589382f01bcc52bfd4ee12647200af959c113672de43"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a simple consumer invoice (NFC-e) from a Brazilian supplier.",
+			"title": "Example B2C consumer invoice (NFC-e)"
 		}
 	},
 	"doc": {

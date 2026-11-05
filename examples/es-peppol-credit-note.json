@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "94eb7d0795c5a2174f4557ef8172ecf4be310d69d0e13b25e653d1a71c7b59d2"
 		},
+		"meta": {
+			"description": "A credit note reversing part of a previously sent invoice.",
+			"title": "Peppol B2B credit note"
+		},
 		"from": "iso6523-actorid-upis::9920:ESB98602642",
 		"to": "iso6523-actorid-upis::9920:ESB85905495"
 	},

@@ -11,7 +11,11 @@
 				"prv": "verifactu-qr",
 				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=DN-0001\u0026fecha=12-06-2025\u0026importe=903.27"
 			}
-		]
+		],
+		"meta": {
+			"description": "R1 rectification by difference adding extra hours, a call-out and travel to a prior invoice.",
+			"title": "VERI*FACTU debit note"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -208,6 +212,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzUyLTI5MjktNzdlNy1hMTc0LWFkNDlmNDc4ZTliYyJ9.eyJ1dWlkIjoiMDFhMWFjNTItMjkyOC03ZDI3LTgwMzUtYTFlYWM3NzgwOTllIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjEwNzk2Yzg4ZmFmYTRhMDVjNjYyMDIyNWM1MGFmYTZmNjM4MDQ5OGI2NWZlOTAxM2MxMWQ5NGQxYjczNGUwMjQifSwiaWF0IjoxNzkzODkyNDI4fQ.7BMwbzZM0zo_P5qvux9ABt7sv5t6Sy649k7eqK8phDF8ZLbe7jP5FXU5twH3hx-mBH0tEXgqk4wTYYQwPKIG-Q"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc1LWU2ZjYtNzZiYS04ZmVhLTdiM2FiMzNhNDY1MyJ9.eyJ1dWlkIjoiMDFhMWFjNTItMjkyOC03ZDI3LTgwMzUtYTFlYWM3NzgwOTllIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjEwNzk2Yzg4ZmFmYTRhMDVjNjYyMDIyNWM1MGFmYTZmNjM4MDQ5OGI2NWZlOTAxM2MxMWQ5NGQxYjczNGUwMjQifSwiaWF0IjoxNzkzODk0NzcwfQ.AfmyIz5gvaeepgpFLin4nus2uIWtvjz9MQZYggpgCDuGXdqob8wQ_yNULEEy8Ppd7blyCuVhNWz6kNgrnZVcvQ"
 	]
 }

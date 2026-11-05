@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "55593fb5037529cd52a979ae8808bf99bd18d9246be2301b723f2bacfcda2430"
 		},
+		"meta": {
+			"description": "Goods and services that are subject to VAT but taxed at a 0% rate. Zero rated goods in Belgium are:",
+			"title": "Peppol Belgium - B2B zero rated goods invoice"
+		},
 		"from": "iso6523-actorid-upis::0208:0316597904",
 		"to": "iso6523-actorid-upis::0208:0859536301"
 	},

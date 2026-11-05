@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "6640f98845b80222f749a81cc8d7ed9dfb34cfee58983086e9c11211cd5e93c7"
 		},
+		"meta": {
+			"description": "The customer issues the invoice on the supplier's behalf under a self-billing agreement; UNTDID document type 389.",
+			"title": "Self-billed Peppol invoice"
+		},
 		"from": "iso6523-actorid-upis::0208:0859536301",
 		"to": "iso6523-actorid-upis::0208:0316597904"
 	},

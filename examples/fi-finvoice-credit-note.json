@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "4aa2c0865caffb73ba0de1b138606afc70110167a392e7af5892748d8191fe21"
 		},
+		"meta": {
+			"description": "In this example, we're issuing a credit note that corrects a previously issued invoice.",
+			"title": "Example credit note"
+		},
 		"from": "iso6523-actorid-upis::0216:003726174164",
 		"to": "iso6523-actorid-upis::0216:003711223349"
 	},

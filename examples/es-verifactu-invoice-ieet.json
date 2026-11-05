@@ -11,7 +11,11 @@
 				"prv": "verifactu-qr",
 				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-0001\u0026fecha=06-05-2026\u0026importe=604.20"
 			}
-		]
+		],
+		"meta": {
+			"description": "The Catalan tourist tax (IEET, *Impost sobre les Estades en Establiments Turístics*) is a regional tax administered by the Agència Tributària de Catalunya — not the AEAT — so it is **not** classified as a tax in the VERI\\*FACTU record. Hotels declare it directly to the Generalitat through the quarterly Modelo 950.",
+			"title": "B2C Hotel + IEET (Catalonia tourist tax)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -120,6 +124,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MDgtNzI5NC04M2E4LTA0ODM4YWMwZTgyZSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1ZC03YWY0LWI0OTYtYWI3MDBlMzEzMDFiIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImM4ZDBhNGZlNDZjNWMxNjc3NDlmNGE0MWM0OGMzMDUxNTg5ODFmM2QxOTRiODJhNjdmYTFmMjA3Y2MxNzMxOWUifSwiaWF0IjoxNzkzODc3MTc0fQ.UfZxQfb5UyHd979E43qKgyrJHfITtrwqV55ifV6EJR1r6tea3k5OtrjGmDbOerEIAZ3mrhnGcnRXf13C2fQw1w"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2N2QtNzk2Mi1hYmQ1LTgyYWQ5YmY3OThhOCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1ZC03YWY0LWI0OTYtYWI3MDBlMzEzMDFiIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImM4ZDBhNGZlNDZjNWMxNjc3NDlmNGE0MWM0OGMzMDUxNTg5ODFmM2QxOTRiODJhNjdmYTFmMjA3Y2MxNzMxOWUifSwiaWF0IjoxNzkzODk0Njg4fQ.NBXIPzJtqvDAff8kAH2OVvdRKEsgqj5kHcfLFVoscvvjB23RoKNdYZ9XZx2V6gF800_oagnQAHabGEJUeUFLZQ"
 	]
 }

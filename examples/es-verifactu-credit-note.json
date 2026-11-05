@@ -11,7 +11,10 @@
 				"prv": "verifactu-qr",
 				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=CN-0001\u0026fecha=29-05-2025\u0026importe=2178.00"
 			}
-		]
+		],
+		"meta": {
+			"title": "Credit note (rectificativa por diferencias)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -119,6 +122,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MDQtNzVmYi1iNjEzLTcwZDQzNzkyNmRkMiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1Yi03YmVlLWFiYmItNGM3NjRhODhhN2JjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjBjN2FkYzg5NzZkZmRhOWNjMGZjMTIyYzY3MDU4OGMyNjc2MjVkOGRlNDFkMzE1ZmY5NjNmYTc3ZTIzYTk5NzAifSwiaWF0IjoxNzkzODc3MTc0fQ.BXJpvx0_VteA1VcCGx2m1JOxO1h4RWIFniuOnbz11sr1kfmVpOJSk_yIiGzIdoQUj-IadeaqdG-zCP4umu5x7Q"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NzktN2QxMy1hODM0LTU1ZjQxN2IxZmM2ZiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1Yi03YmVlLWFiYmItNGM3NjRhODhhN2JjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjBjN2FkYzg5NzZkZmRhOWNjMGZjMTIyYzY3MDU4OGMyNjc2MjVkOGRlNDFkMzE1ZmY5NjNmYTc3ZTIzYTk5NzAifSwiaWF0IjoxNzkzODk0Njg4fQ.6At4rtUTouGtn9f0mk4iy08U5Vlce1pPjcROzyiOSpfAcLF1xSNlfTOn4Oa0lb7mtn6TzMDTwFYFmh6ocAAdxg"
 	]
 }

@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "0b389c7a59c7525b3d341a6e3f7892efb8056679b10792525b324fc274dc2129"
+		},
+		"meta": {
+			"description": "Standard ZUGFeRD invoice for business-to-consumer transactions with embedded XML in PDF format.",
+			"title": "ZUGFeRD B2C Invoice"
 		}
 	},
 	"doc": {

@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "6715c3285ce02c4ec1a80aa328ed99ffd6ff2af5e7f9ad957d2754842002db13"
 		},
+		"meta": {
+			"description": "Mixed goods and services (billing mode M1), SIREN and SIRET identities, 20%, 10% and 5.5% rates with an exempt line and VATEX code, allowance and charge codes, delivery terms, the three mandatory notes, ordering references, attachments with BON_LIVRAISON and BON_COMMANDE codes.",
+			"title": "French CTC invoice with every feature"
+		},
 		"from": "iso6523-actorid-upis::0225:732829320",
 		"to": "iso6523-actorid-upis::0225:356000000"
 	},

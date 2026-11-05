@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "3f3962d7e45be5939ed7cda6840bacd1409430a621dbb93692bf4d8c97d2beae"
 		},
+		"meta": {
+			"description": "OVT endpoints and operator, Finnish bank reference, 25.5%, 13.5% and 10% rates with exempt and zero lines, allowance and charge codes, delivery, notes; one due date and no attachments, as Finvoice requires.",
+			"title": "Finvoice with every feature"
+		},
 		"from": "iso6523-actorid-upis::0216:003726174164",
 		"to": "iso6523-actorid-upis::0216:003754321096"
 	},

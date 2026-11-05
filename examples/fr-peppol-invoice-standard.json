@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "3d581dc44ae5d8397a3abda6ad37a3420edc652964676aac20911370c5200833"
 		},
+		"meta": {
+			"description": "Regular invoices are used for B2B transactions. Regular invoices must be issued when:",
+			"title": "B2B Standard invoice France"
+		},
 		"from": "iso6523-actorid-upis::0088:FR44257623119",
 		"to": "iso6523-actorid-upis::0088:FR66093885154"
 	},

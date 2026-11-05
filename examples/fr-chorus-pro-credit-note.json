@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "a9cc56b13d41e5e9e1e3edf6caa07c62f6dda4787ad2a100121f9bc2cb5a7188"
+		},
+		"meta": {
+			"description": "A credit note (avoir) reversing part of a previously submitted Chorus Pro invoice.",
+			"title": "Chorus Pro Credit Note"
 		}
 	},
 	"doc": {

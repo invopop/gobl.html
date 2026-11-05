@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "f9fcd9003fa2e363e084bebe93a17d4fd6e77c7c24ec4076369ace5acfffcca3"
+		},
+		"meta": {
+			"description": "A cashed-in receipt from a domestic B2C transaction. Domestic B2C payments aggregate by (date, currency) and are rate-agnostic at the bucket level, so the tax breakdown lives directly on each line rather than on a referenced invoice.",
+			"title": "Domestic B2C payment"
 		}
 	},
 	"doc": {

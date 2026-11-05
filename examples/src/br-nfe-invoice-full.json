@@ -1,685 +1,693 @@
 {
-	"$schema": "https://gobl.org/draft-0/bill/invoice",
-	"$regime": "BR",
-	"$addons": [
-		"br-nfe-v4"
-	],
-	"type": "standard",
-	"series": "1",
-	"code": "20260042",
-	"issue_date": "2026-03-16",
-	"issue_time": "09:48:12",
-	"currency": "BRL",
-	"tax": {
-		"ext": {
-			"br-nfe-presence": "2"
+	"head": {
+		"meta": {
+			"title": "NF-e with every feature",
+			"description": "Interstate sale with ICMS CST codes, IPI, PIS and COFINS, a service line with ISS and IRRF withholding, NCM, GTIN and CEST identities, freight and packing charges, delivery with CT-e, advances, Pix and card payments, notes and attachments."
 		}
 	},
-	"supplier": {
-		"name": "TechNova Soluções Digitais Ltda.",
-		"alias": "TechNova",
-		"tax_id": {
-			"country": "BR",
-			"code": "05229829000184"
-		},
-		"identities": [
-			{
-				"key": "br-nfe-state-reg",
-				"code": "12345678901234"
-			},
-			{
-				"label": "Inscrição Municipal",
-				"code": "9.876.543-2"
-			}
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "BR",
+		"$addons": [
+			"br-nfe-v4"
 		],
-		"addresses": [
-			{
-				"num": "101",
-				"street": "Avenida Paulista",
-				"street_extra": "Conjunto 1201",
-				"locality": "Bela Vista",
-				"region": "São Paulo",
-				"state": "SP",
-				"code": "01311-000",
-				"country": "BR"
-			}
-		],
-		"emails": [
-			{
-				"addr": "faturamento@technova.test"
-			},
-			{
-				"label": "Suporte",
-				"addr": "suporte@technova.test"
-			}
-		],
-		"telephones": [
-			{
-				"num": "+55 11 3456 7890"
-			}
-		],
-		"websites": [
-			{
-				"url": "https://www.technova.test"
-			}
-		],
-		"logos": [
-			{
-				"label": "Invopop",
-				"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
-			}
-		],
-		"ext": {
-			"br-ibge-municipality": "3550308",
-			"br-nfe-regime": "3"
-		}
-	},
-	"customer": {
-		"name": "Construforte Engenharia Ltda.",
-		"tax_id": {
-			"country": "BR",
-			"code": "46602178000103"
-		},
-		"identities": [
-			{
-				"key": "br-nfe-state-reg",
-				"code": "123456789"
-			},
-			{
-				"label": "Código de cliente",
-				"code": "CLI-04471"
-			}
-		],
-		"people": [
-			{
-				"name": {
-					"given": "Fernanda",
-					"surname": "Almeida"
-				},
-				"emails": [
-					{
-						"addr": "fernanda.almeida@construforte.test"
-					}
-				]
-			}
-		],
-		"addresses": [
-			{
-				"label": "Sede",
-				"po_box": "2210",
-				"num": "75",
-				"street": "Avenida Sete de Setembro",
-				"street_extra": "Bloco C, 4º andar",
-				"locality": "Centro",
-				"region": "Salvador",
-				"state": "BA",
-				"code": "40060-000",
-				"country": "BR"
-			}
-		],
-		"emails": [
-			{
-				"addr": "contaspagar@construforte.test"
-			}
-		],
-		"telephones": [
-			{
-				"num": "+55 71 3210 9876"
-			}
-		],
-		"ext": {
-			"br-ibge-municipality": "2927408",
-			"br-nfe-state-reg-ind": "1"
-		}
-	},
-	"lines": [
-		{
-			"quantity": "40",
-			"item": {
-				"ref": "USB-C-2M",
-				"name": "Cabo USB-C 2 metros",
-				"description": "Cabo homologado para carregamento rápido, 100 W",
-				"identities": [
-					{
-						"key": "ncm",
-						"code": "85444290"
-					},
-					{
-						"key": "gtin",
-						"code": "7891234567890"
-					}
-				],
-				"unit": "piece",
-				"price": "28.90"
-			},
-			"discounts": [
-				{
-					"reason": "Desconto comercial",
-					"percent": "5%"
-				}
-			],
-			"taxes": [
-				{
-					"cat": "ICMS",
-					"percent": "12%"
-				},
-				{
-					"cat": "PIS",
-					"percent": "1.65%"
-				},
-				{
-					"cat": "COFINS",
-					"percent": "7.6%"
-				}
-			],
+		"type": "standard",
+		"series": "1",
+		"code": "20260042",
+		"issue_date": "2026-03-16",
+		"issue_time": "09:48:12",
+		"currency": "BRL",
+		"tax": {
 			"ext": {
-				"br-nfe-cfop": "6102"
+				"br-nfe-presence": "2"
 			}
 		},
-		{
-			"quantity": "15",
-			"item": {
-				"ref": "SW-48P",
-				"name": "Switch de rede 48 portas PoE",
-				"description": "Equipamento de fabricação própria, sujeito a IPI",
-				"identities": [
-					{
-						"key": "ncm",
-						"code": "85176200"
-					},
-					{
-						"key": "gtin",
-						"code": "7891234567906"
-					}
-				],
-				"unit": "piece",
-				"price": "3250.00"
-			},
-			"charges": [
-				{
-					"reason": "Configuração e testes de bancada",
-					"percent": "3%"
-				}
-			],
-			"taxes": [
-				{
-					"cat": "ICMS",
-					"percent": "12%"
-				},
-				{
-					"cat": "IPI",
-					"percent": "15%"
-				},
-				{
-					"cat": "PIS",
-					"percent": "1.65%"
-				},
-				{
-					"cat": "COFINS",
-					"percent": "7.6%"
-				}
-			],
-			"ext": {
-				"br-nfe-cfop": "6101"
-			}
-		},
-		{
-			"quantity": "500",
-			"item": {
-				"ref": "CAT6A-BOB",
-				"name": "Cabo de rede Cat6A blindado",
-				"identities": [
-					{
-						"key": "ncm",
-						"code": "85444200"
-					}
-				],
-				"unit": "m",
-				"price": "6.40"
-			},
-			"taxes": [
-				{
-					"cat": "ICMS",
-					"percent": "12%",
-					"ext": {
-						"br-nfe-icms-cst": "20"
-					}
-				},
-				{
-					"cat": "PIS",
-					"percent": "1.65%"
-				},
-				{
-					"cat": "COFINS",
-					"percent": "7.6%"
-				}
-			],
-			"ext": {
-				"br-nfe-cfop": "6102"
-			}
-		},
-		{
-			"quantity": "120",
-			"item": {
-				"ref": "CAFE-1KG",
-				"name": "Café torrado e moído",
-				"description": "Produto da cesta básica, PIS/COFINS alíquota zero",
-				"identities": [
-					{
-						"key": "ncm",
-						"code": "09012100"
-					}
-				],
-				"unit": "kg",
-				"price": "38.50"
-			},
-			"discounts": [
-				{
-					"reason": "Promoção de lançamento",
-					"amount": "120.00"
-				}
-			],
-			"taxes": [
-				{
-					"cat": "ICMS",
-					"percent": "7%",
-					"ext": {
-						"br-nfe-icms-cst": "20"
-					}
-				},
-				{
-					"cat": "PIS",
-					"percent": "0%",
-					"ext": {
-						"br-nfe-pis-cst": "06"
-					}
-				},
-				{
-					"cat": "COFINS",
-					"percent": "0%",
-					"ext": {
-						"br-nfe-cofins-cst": "06"
-					}
-				}
-			],
-			"ext": {
-				"br-nfe-cfop": "6102"
-			}
-		},
-		{
-			"quantity": "30",
-			"item": {
-				"ref": "LIV-TEC",
-				"name": "Livros técnicos impressos",
-				"description": "Imunidade tributária (art. 150, VI, d, CF)",
-				"identities": [
-					{
-						"key": "ncm",
-						"code": "49019900"
-					}
-				],
-				"unit": "piece",
-				"price": "145.00"
-			},
-			"taxes": [
-				{
-					"cat": "ICMS",
-					"percent": "0%",
-					"ext": {
-						"br-nfe-icms-cst": "41"
-					}
-				},
-				{
-					"cat": "PIS",
-					"percent": "0%",
-					"ext": {
-						"br-nfe-pis-cst": "08"
-					}
-				},
-				{
-					"cat": "COFINS",
-					"percent": "0%",
-					"ext": {
-						"br-nfe-cofins-cst": "08"
-					}
-				}
-			],
-			"ext": {
-				"br-nfe-cfop": "6102"
-			}
-		},
-		{
-			"quantity": "60",
-			"item": {
-				"ref": "PNEU-RAD",
-				"name": "Pneu radial para utilitários",
-				"description": "ICMS recolhido anteriormente por substituição tributária",
-				"identities": [
-					{
-						"key": "ncm",
-						"code": "40111000"
-					},
-					{
-						"key": "br-nfe-cest",
-						"code": "1600100"
-					}
-				],
-				"unit": "piece",
-				"price": "890.00"
-			},
-			"taxes": [
-				{
-					"cat": "ICMS",
-					"percent": "0%",
-					"ext": {
-						"br-nfe-icms-cst": "60"
-					}
-				},
-				{
-					"cat": "PIS",
-					"percent": "0%",
-					"ext": {
-						"br-nfe-pis-cst": "04"
-					}
-				},
-				{
-					"cat": "COFINS",
-					"percent": "0%",
-					"ext": {
-						"br-nfe-cofins-cst": "04"
-					}
-				}
-			],
-			"ext": {
-				"br-nfe-cfop": "6404"
-			}
-		},
-		{
-			"quantity": "8",
-			"item": {
-				"ref": "NB-PRO-15",
-				"name": "Notebook profissional 15 polegadas",
-				"description": "Produto importado, origem estrangeira",
-				"identities": [
-					{
-						"key": "ncm",
-						"code": "84713012"
-					},
-					{
-						"key": "gtin",
-						"code": "0884116374152"
-					}
-				],
-				"unit": "piece",
-				"price": "7890.00"
-			},
-			"charges": [
-				{
-					"key": "insurance",
-					"reason": "Seguro de transporte",
-					"amount": "320.00"
-				}
-			],
-			"taxes": [
-				{
-					"cat": "ICMS",
-					"percent": "4%",
-					"ext": {
-						"br-nfe-icms-origin": "1"
-					}
-				},
-				{
-					"cat": "IPI",
-					"percent": "10%"
-				},
-				{
-					"cat": "PIS",
-					"percent": "1.65%"
-				},
-				{
-					"cat": "COFINS",
-					"percent": "7.6%"
-				}
-			],
-			"ext": {
-				"br-nfe-cfop": "6102"
-			}
-		},
-		{
-			"quantity": "24",
-			"item": {
-				"ref": "SRV-INST",
-				"name": "Instalação e configuração de rede",
-				"description": "Horas técnicas no local, serviço sujeito ao ISS",
-				"unit": "h",
-				"price": "185.00"
-			},
-			"taxes": [
-				{
-					"cat": "ICMS",
-					"percent": "0%",
-					"ext": {
-						"br-nfe-icms-cst": "41"
-					}
-				},
-				{
-					"cat": "PIS",
-					"percent": "0.65%"
-				},
-				{
-					"cat": "COFINS",
-					"percent": "3%"
-				},
-				{
-					"cat": "ISS",
-					"percent": "5%"
-				},
-				{
-					"cat": "IRRF",
-					"percent": "1.5%"
-				}
-			],
-			"ext": {
-				"br-nfe-cfop": "6933"
-			}
-		}
-	],
-	"discounts": [
-		{
-			"code": "DPP",
-			"reason": "Desconto por pagamento antecipado",
-			"percent": "2%"
-		}
-	],
-	"charges": [
-		{
-			"key": "delivery",
-			"code": "FRETE",
-			"reason": "Frete rodoviário São Paulo - Salvador",
-			"amount": "1850.00"
-		},
-		{
-			"key": "packing",
-			"reason": "Embalagem especial para equipamentos",
-			"amount": "240.00"
-		}
-	],
-	"ordering": {
-		"code": "PED-2026-0547",
-		"identities": [
-			{
-				"label": "Código de fornecedor",
-				"code": "FORN-0912"
-			},
-			{
-				"label": "Centro de custo",
-				"code": "CC-OBRA-17"
-			}
-		],
-		"period": {
-			"label": "Período de fornecimento",
-			"start": "2026-03-01",
-			"end": "2026-03-31"
-		},
-		"purchases": [
-			{
-				"code": "PED-2026-0547",
-				"issue_date": "2026-02-26"
-			}
-		],
-		"contracts": [
-			{
-				"code": "CON-2026-015",
-				"issue_date": "2026-01-10"
-			}
-		]
-	},
-	"delivery": {
-		"receiver": {
-			"name": "Construforte Engenharia Ltda. - Canteiro de obras",
+		"supplier": {
+			"name": "TechNova Soluções Digitais Ltda.",
+			"alias": "TechNova",
 			"tax_id": {
 				"country": "BR",
-				"code": "46602178000103"
+				"code": "05229829000184"
 			},
+			"identities": [
+				{
+					"key": "br-nfe-state-reg",
+					"code": "12345678901234"
+				},
+				{
+					"label": "Inscrição Municipal",
+					"code": "9.876.543-2"
+				}
+			],
 			"addresses": [
 				{
-					"num": "1200",
-					"street": "Avenida ACM",
-					"locality": "Caminho das Árvores",
-					"region": "Salvador",
-					"state": "BA",
-					"code": "41820-014",
+					"num": "101",
+					"street": "Avenida Paulista",
+					"street_extra": "Conjunto 1201",
+					"locality": "Bela Vista",
+					"region": "São Paulo",
+					"state": "SP",
+					"code": "01311-000",
 					"country": "BR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "faturamento@technova.test"
+				},
+				{
+					"label": "Suporte",
+					"addr": "suporte@technova.test"
 				}
 			],
 			"telephones": [
 				{
-					"num": "+55 71 3210 4455"
+					"num": "+55 11 3456 7890"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://www.technova.test"
+				}
+			],
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
 				}
 			],
 			"ext": {
-				"br-ibge-municipality": "2927408"
+				"br-ibge-municipality": "3550308",
+				"br-nfe-regime": "3"
 			}
 		},
-		"identities": [
-			{
-				"label": "Conhecimento de transporte",
-				"code": "CT-e 35260300001234"
-			}
-		],
-		"date": "2026-03-20",
-		"period": {
-			"start": "2026-03-17",
-			"end": "2026-03-20"
-		}
-	},
-	"payment": {
-		"terms": {
-			"key": "due-date",
-			"notes": "Faturado em duas parcelas, 30 e 60 dias",
-			"due_dates": [
+		"customer": {
+			"name": "Construforte Engenharia Ltda.",
+			"tax_id": {
+				"country": "BR",
+				"code": "46602178000103"
+			},
+			"identities": [
 				{
-					"date": "2026-04-15",
-					"percent": "50%",
-					"notes": "Parcela 1/2"
+					"key": "br-nfe-state-reg",
+					"code": "123456789"
 				},
 				{
-					"date": "2026-05-15",
-					"percent": "50%",
-					"notes": "Parcela 2/2"
+					"label": "Código de cliente",
+					"code": "CLI-04471"
+				}
+			],
+			"people": [
+				{
+					"name": {
+						"given": "Fernanda",
+						"surname": "Almeida"
+					},
+					"emails": [
+						{
+							"addr": "fernanda.almeida@construforte.test"
+						}
+					]
+				}
+			],
+			"addresses": [
+				{
+					"label": "Sede",
+					"po_box": "2210",
+					"num": "75",
+					"street": "Avenida Sete de Setembro",
+					"street_extra": "Bloco C, 4º andar",
+					"locality": "Centro",
+					"region": "Salvador",
+					"state": "BA",
+					"code": "40060-000",
+					"country": "BR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "contaspagar@construforte.test"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+55 71 3210 9876"
+				}
+			],
+			"ext": {
+				"br-ibge-municipality": "2927408",
+				"br-nfe-state-reg-ind": "1"
+			}
+		},
+		"lines": [
+			{
+				"quantity": "40",
+				"item": {
+					"ref": "USB-C-2M",
+					"name": "Cabo USB-C 2 metros",
+					"description": "Cabo homologado para carregamento rápido, 100 W",
+					"identities": [
+						{
+							"key": "ncm",
+							"code": "85444290"
+						},
+						{
+							"key": "gtin",
+							"code": "7891234567890"
+						}
+					],
+					"unit": "piece",
+					"price": "28.90"
+				},
+				"discounts": [
+					{
+						"reason": "Desconto comercial",
+						"percent": "5%"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "ICMS",
+						"percent": "12%"
+					},
+					{
+						"cat": "PIS",
+						"percent": "1.65%"
+					},
+					{
+						"cat": "COFINS",
+						"percent": "7.6%"
+					}
+				],
+				"ext": {
+					"br-nfe-cfop": "6102"
+				}
+			},
+			{
+				"quantity": "15",
+				"item": {
+					"ref": "SW-48P",
+					"name": "Switch de rede 48 portas PoE",
+					"description": "Equipamento de fabricação própria, sujeito a IPI",
+					"identities": [
+						{
+							"key": "ncm",
+							"code": "85176200"
+						},
+						{
+							"key": "gtin",
+							"code": "7891234567906"
+						}
+					],
+					"unit": "piece",
+					"price": "3250.00"
+				},
+				"charges": [
+					{
+						"reason": "Configuração e testes de bancada",
+						"percent": "3%"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "ICMS",
+						"percent": "12%"
+					},
+					{
+						"cat": "IPI",
+						"percent": "15%"
+					},
+					{
+						"cat": "PIS",
+						"percent": "1.65%"
+					},
+					{
+						"cat": "COFINS",
+						"percent": "7.6%"
+					}
+				],
+				"ext": {
+					"br-nfe-cfop": "6101"
+				}
+			},
+			{
+				"quantity": "500",
+				"item": {
+					"ref": "CAT6A-BOB",
+					"name": "Cabo de rede Cat6A blindado",
+					"identities": [
+						{
+							"key": "ncm",
+							"code": "85444200"
+						}
+					],
+					"unit": "m",
+					"price": "6.40"
+				},
+				"taxes": [
+					{
+						"cat": "ICMS",
+						"percent": "12%",
+						"ext": {
+							"br-nfe-icms-cst": "20"
+						}
+					},
+					{
+						"cat": "PIS",
+						"percent": "1.65%"
+					},
+					{
+						"cat": "COFINS",
+						"percent": "7.6%"
+					}
+				],
+				"ext": {
+					"br-nfe-cfop": "6102"
+				}
+			},
+			{
+				"quantity": "120",
+				"item": {
+					"ref": "CAFE-1KG",
+					"name": "Café torrado e moído",
+					"description": "Produto da cesta básica, PIS/COFINS alíquota zero",
+					"identities": [
+						{
+							"key": "ncm",
+							"code": "09012100"
+						}
+					],
+					"unit": "kg",
+					"price": "38.50"
+				},
+				"discounts": [
+					{
+						"reason": "Promoção de lançamento",
+						"amount": "120.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "ICMS",
+						"percent": "7%",
+						"ext": {
+							"br-nfe-icms-cst": "20"
+						}
+					},
+					{
+						"cat": "PIS",
+						"percent": "0%",
+						"ext": {
+							"br-nfe-pis-cst": "06"
+						}
+					},
+					{
+						"cat": "COFINS",
+						"percent": "0%",
+						"ext": {
+							"br-nfe-cofins-cst": "06"
+						}
+					}
+				],
+				"ext": {
+					"br-nfe-cfop": "6102"
+				}
+			},
+			{
+				"quantity": "30",
+				"item": {
+					"ref": "LIV-TEC",
+					"name": "Livros técnicos impressos",
+					"description": "Imunidade tributária (art. 150, VI, d, CF)",
+					"identities": [
+						{
+							"key": "ncm",
+							"code": "49019900"
+						}
+					],
+					"unit": "piece",
+					"price": "145.00"
+				},
+				"taxes": [
+					{
+						"cat": "ICMS",
+						"percent": "0%",
+						"ext": {
+							"br-nfe-icms-cst": "41"
+						}
+					},
+					{
+						"cat": "PIS",
+						"percent": "0%",
+						"ext": {
+							"br-nfe-pis-cst": "08"
+						}
+					},
+					{
+						"cat": "COFINS",
+						"percent": "0%",
+						"ext": {
+							"br-nfe-cofins-cst": "08"
+						}
+					}
+				],
+				"ext": {
+					"br-nfe-cfop": "6102"
+				}
+			},
+			{
+				"quantity": "60",
+				"item": {
+					"ref": "PNEU-RAD",
+					"name": "Pneu radial para utilitários",
+					"description": "ICMS recolhido anteriormente por substituição tributária",
+					"identities": [
+						{
+							"key": "ncm",
+							"code": "40111000"
+						},
+						{
+							"key": "br-nfe-cest",
+							"code": "1600100"
+						}
+					],
+					"unit": "piece",
+					"price": "890.00"
+				},
+				"taxes": [
+					{
+						"cat": "ICMS",
+						"percent": "0%",
+						"ext": {
+							"br-nfe-icms-cst": "60"
+						}
+					},
+					{
+						"cat": "PIS",
+						"percent": "0%",
+						"ext": {
+							"br-nfe-pis-cst": "04"
+						}
+					},
+					{
+						"cat": "COFINS",
+						"percent": "0%",
+						"ext": {
+							"br-nfe-cofins-cst": "04"
+						}
+					}
+				],
+				"ext": {
+					"br-nfe-cfop": "6404"
+				}
+			},
+			{
+				"quantity": "8",
+				"item": {
+					"ref": "NB-PRO-15",
+					"name": "Notebook profissional 15 polegadas",
+					"description": "Produto importado, origem estrangeira",
+					"identities": [
+						{
+							"key": "ncm",
+							"code": "84713012"
+						},
+						{
+							"key": "gtin",
+							"code": "0884116374152"
+						}
+					],
+					"unit": "piece",
+					"price": "7890.00"
+				},
+				"charges": [
+					{
+						"key": "insurance",
+						"reason": "Seguro de transporte",
+						"amount": "320.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "ICMS",
+						"percent": "4%",
+						"ext": {
+							"br-nfe-icms-origin": "1"
+						}
+					},
+					{
+						"cat": "IPI",
+						"percent": "10%"
+					},
+					{
+						"cat": "PIS",
+						"percent": "1.65%"
+					},
+					{
+						"cat": "COFINS",
+						"percent": "7.6%"
+					}
+				],
+				"ext": {
+					"br-nfe-cfop": "6102"
+				}
+			},
+			{
+				"quantity": "24",
+				"item": {
+					"ref": "SRV-INST",
+					"name": "Instalação e configuração de rede",
+					"description": "Horas técnicas no local, serviço sujeito ao ISS",
+					"unit": "h",
+					"price": "185.00"
+				},
+				"taxes": [
+					{
+						"cat": "ICMS",
+						"percent": "0%",
+						"ext": {
+							"br-nfe-icms-cst": "41"
+						}
+					},
+					{
+						"cat": "PIS",
+						"percent": "0.65%"
+					},
+					{
+						"cat": "COFINS",
+						"percent": "3%"
+					},
+					{
+						"cat": "ISS",
+						"percent": "5%"
+					},
+					{
+						"cat": "IRRF",
+						"percent": "1.5%"
+					}
+				],
+				"ext": {
+					"br-nfe-cfop": "6933"
+				}
+			}
+		],
+		"discounts": [
+			{
+				"code": "DPP",
+				"reason": "Desconto por pagamento antecipado",
+				"percent": "2%"
+			}
+		],
+		"charges": [
+			{
+				"key": "delivery",
+				"code": "FRETE",
+				"reason": "Frete rodoviário São Paulo - Salvador",
+				"amount": "1850.00"
+			},
+			{
+				"key": "packing",
+				"reason": "Embalagem especial para equipamentos",
+				"amount": "240.00"
+			}
+		],
+		"ordering": {
+			"code": "PED-2026-0547",
+			"identities": [
+				{
+					"label": "Código de fornecedor",
+					"code": "FORN-0912"
+				},
+				{
+					"label": "Centro de custo",
+					"code": "CC-OBRA-17"
+				}
+			],
+			"period": {
+				"label": "Período de fornecimento",
+				"start": "2026-03-01",
+				"end": "2026-03-31"
+			},
+			"purchases": [
+				{
+					"code": "PED-2026-0547",
+					"issue_date": "2026-02-26"
+				}
+			],
+			"contracts": [
+				{
+					"code": "CON-2026-015",
+					"issue_date": "2026-01-10"
 				}
 			]
 		},
-		"advances": [
-			{
-				"date": "2026-02-27",
-				"key": "credit-transfer",
-				"ref": "PIX-E2E-20260227-0041",
-				"description": "Sinal por transferência Pix",
-				"amount": "20000.00"
+		"delivery": {
+			"receiver": {
+				"name": "Construforte Engenharia Ltda. - Canteiro de obras",
+				"tax_id": {
+					"country": "BR",
+					"code": "46602178000103"
+				},
+				"addresses": [
+					{
+						"num": "1200",
+						"street": "Avenida ACM",
+						"locality": "Caminho das Árvores",
+						"region": "Salvador",
+						"state": "BA",
+						"code": "41820-014",
+						"country": "BR"
+					}
+				],
+				"telephones": [
+					{
+						"num": "+55 71 3210 4455"
+					}
+				],
+				"ext": {
+					"br-ibge-municipality": "2927408"
+				}
 			},
-			{
-				"date": "2026-03-05",
-				"key": "card",
-				"ref": "POS-77412",
-				"description": "Adiantamento com cartão de crédito corporativo",
-				"amount": "8000.00",
+			"identities": [
+				{
+					"label": "Conhecimento de transporte",
+					"code": "CT-e 35260300001234"
+				}
+			],
+			"date": "2026-03-20",
+			"period": {
+				"start": "2026-03-17",
+				"end": "2026-03-20"
+			}
+		},
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"notes": "Faturado em duas parcelas, 30 e 60 dias",
+				"due_dates": [
+					{
+						"date": "2026-04-15",
+						"percent": "50%",
+						"notes": "Parcela 1/2"
+					},
+					{
+						"date": "2026-05-15",
+						"percent": "50%",
+						"notes": "Parcela 2/2"
+					}
+				]
+			},
+			"advances": [
+				{
+					"date": "2026-02-27",
+					"key": "credit-transfer",
+					"ref": "PIX-E2E-20260227-0041",
+					"description": "Sinal por transferência Pix",
+					"amount": "20000.00"
+				},
+				{
+					"date": "2026-03-05",
+					"key": "card",
+					"ref": "POS-77412",
+					"description": "Adiantamento com cartão de crédito corporativo",
+					"amount": "8000.00",
+					"card": {
+						"last4": "6604",
+						"holder": "Construforte Engenharia Ltda."
+					}
+				},
+				{
+					"date": "2026-03-10",
+					"key": "cash",
+					"ref": "REC-0312",
+					"description": "Pagamento em dinheiro na retirada",
+					"amount": "1500.00"
+				}
+			],
+			"instructions": {
+				"key": "credit-transfer",
+				"detail": "Transferência ou Pix para a conta indicada; informar o número da NF-e no histórico",
+				"ref": "NFE-1-20260042",
+				"credit_transfer": [
+					{
+						"label": "Banco do Brasil",
+						"number": "Ag. 1234-5 C/C 98765-4",
+						"name": "TechNova Soluções Digitais Ltda."
+					},
+					{
+						"label": "Chave Pix (CNPJ)",
+						"number": "05229829000184",
+						"name": "TechNova Soluções Digitais Ltda."
+					}
+				],
 				"card": {
 					"last4": "6604",
 					"holder": "Construforte Engenharia Ltda."
-				}
+				},
+				"direct_debit": {
+					"ref": "DDA-CONS-2026",
+					"creditor": "05229829000184",
+					"account": "Ag. 1234-5 C/C 98765-4"
+				},
+				"online": [
+					{
+						"key": "pix",
+						"label": "Pix",
+						"url": "https://pagamentos.technova.test/pix?nfe=20260042"
+					}
+				],
+				"notes": "**Vencimento**: após a data de vencimento incidem _multa de 2% e juros de 1% ao mês_."
+			}
+		},
+		"notes": [
+			{
+				"key": "reason",
+				"text": "Venda de mercadorias e prestação de serviços"
 			},
 			{
-				"date": "2026-03-10",
-				"key": "cash",
-				"ref": "REC-0312",
-				"description": "Pagamento em dinheiro na retirada",
-				"amount": "1500.00"
+				"key": "general",
+				"text": "Obrigado pela preferência. Mercadorias conferidas no ato da entrega; divergências devem ser comunicadas em até 5 dias úteis."
+			},
+			{
+				"key": "legal",
+				"text": "Documento auxiliar da Nota Fiscal Eletrônica. Consulte a autenticidade no portal nacional da NF-e com a chave de acesso. ICMS recolhido conforme legislação estadual vigente.",
+				"meta": {
+					"position": "footer"
+				}
 			}
 		],
-		"instructions": {
-			"key": "credit-transfer",
-			"detail": "Transferência ou Pix para a conta indicada; informar o número da NF-e no histórico",
-			"ref": "NFE-1-20260042",
-			"credit_transfer": [
-				{
-					"label": "Banco do Brasil",
-					"number": "Ag. 1234-5 C/C 98765-4",
-					"name": "TechNova Soluções Digitais Ltda."
-				},
-				{
-					"label": "Chave Pix (CNPJ)",
-					"number": "05229829000184",
-					"name": "TechNova Soluções Digitais Ltda."
-				}
-			],
-			"card": {
-				"last4": "6604",
-				"holder": "Construforte Engenharia Ltda."
+		"attachments": [
+			{
+				"name": "CT-e 35260300001234",
+				"description": "Conhecimento de transporte eletrônico do frete",
+				"url": "https://example.com/docs/cte-35260300001234.pdf",
+				"mime": "application/pdf"
 			},
-			"direct_debit": {
-				"ref": "DDA-CONS-2026",
-				"creditor": "05229829000184",
-				"account": "Ag. 1234-5 C/C 98765-4"
-			},
-			"online": [
-				{
-					"key": "pix",
-					"label": "Pix",
-					"url": "https://pagamentos.technova.test/pix?nfe=20260042"
-				}
-			],
-			"notes": "**Vencimento**: após a data de vencimento incidem _multa de 2% e juros de 1% ao mês_."
-		}
-	},
-	"notes": [
-		{
-			"key": "reason",
-			"text": "Venda de mercadorias e prestação de serviços"
-		},
-		{
-			"key": "general",
-			"text": "Obrigado pela preferência. Mercadorias conferidas no ato da entrega; divergências devem ser comunicadas em até 5 dias úteis."
-		},
-		{
-			"key": "legal",
-			"text": "Documento auxiliar da Nota Fiscal Eletrônica. Consulte a autenticidade no portal nacional da NF-e com a chave de acesso. ICMS recolhido conforme legislação estadual vigente.",
-			"meta": {
-				"position": "footer"
+			{
+				"name": "Pedido PED-2026-0547",
+				"url": "https://example.com/docs/ped-2026-0547.pdf",
+				"mime": "application/pdf"
 			}
-		}
-	],
-	"attachments": [
-		{
-			"name": "CT-e 35260300001234",
-			"description": "Conhecimento de transporte eletrônico do frete",
-			"url": "https://example.com/docs/cte-35260300001234.pdf",
-			"mime": "application/pdf"
-		},
-		{
-			"name": "Pedido PED-2026-0547",
-			"url": "https://example.com/docs/ped-2026-0547.pdf",
-			"mime": "application/pdf"
-		}
-	]
+		]
+	}
 }

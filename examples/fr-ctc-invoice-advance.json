@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "5ad4f85539a4c12d8c4deee2829bc8931103d12ae0eac921180ec123d245b596"
 		},
+		"meta": {
+			"description": "An advance (down-payment) invoice — used when a payment is collected before the final goods or services are delivered.",
+			"title": "PA B2B advance payment invoice"
+		},
 		"from": "iso6523-actorid-upis::0225:732829320",
 		"to": "iso6523-actorid-upis::0225:356000000"
 	},

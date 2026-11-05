@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "4edeabbb911bfe07f4eb00c92ef3c808a469bd57193a49e32cb19a3307c6c1dc"
+		},
+		"meta": {
+			"description": "The Catalan tourist tax (IEET, *Impost sobre les Estades en Establiments Turístics*) is a regional tax administered by the Agència Tributària de Catalunya — not the AEAT — so it is **not** reported as a tax to SII. Hotels declare it directly to the Generalitat through the quarterly Modelo 950.",
+			"title": "B2C Hotel + IEET (Catalonia tourist tax)"
 		}
 	},
 	"doc": {

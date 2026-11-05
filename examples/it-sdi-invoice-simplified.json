@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "79ca158fb8411b854da5a51704d894036cc7b8658864981128951b1650b059bf"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a simplified invoice for a €49.00 restaurant bill to a private customer identified only by their codice fiscale.",
+			"title": "Simplified Invoice (Fattura Semplificata)"
 		}
 	},
 	"doc": {

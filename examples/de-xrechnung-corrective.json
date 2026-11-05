@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "9a483017b6177e64d550929688c2ec8ad6cc15871d6a91a53b16c24d47cf9406"
 		},
+		"meta": {
+			"description": "Full replacement (UNTDID 384) of a prior invoice correcting the hours and the Leitweg-ID, with the preceding reference BR-DE-26 requires.",
+			"title": "XRechnung corrective invoice"
+		},
 		"from": "iso6523-actorid-upis::9930:DE879558966",
 		"to": "iso6523-actorid-upis::9930:DE811569869"
 	},

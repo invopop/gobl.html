@@ -12,6 +12,10 @@
 				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=INV-PP000003\u0026fecha=03-04-2025\u0026importe=1740.00"
 			}
 		],
+		"meta": {
+			"description": "Intra-community supply invoices are used for B2B goods delivered to customers in other EU member states. Intra-community supplies must be applied when:",
+			"title": "Peppol Spain - B2B goods → EU customer (Intra-Community)"
+		},
 		"from": "iso6523-actorid-upis::9920:ESB85905495",
 		"to": "iso6523-actorid-upis::0208:0316597904"
 	},
@@ -163,6 +167,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4ZDktNzI4Yy1iZmZhLWFkOTA4ZDAwOTNmMCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQzYi03NDliLWI5YmItNzZiMGY0N2I2ZjVlIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjgzM2Y0YzljN2Y1ZDBiM2M3ZWM4MzhlOTViY2U4YmVlYmUzYzExNjkxZDAzYWFiZjRhNTUxMWExZjg2NGI5NDkifSwiaWF0IjoxNzkzODc3MTc0fQ.R431Z3z-kONlA1UxDUa5kwJm8Bx_Hn36G4j9gBM6VajHgn20phXOh9-2ZMNZZq6h3_8JNr31AiAXs_Onv5SkFg"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NGQtNzdhMS1hOWVhLTNjMmE4YzY4Y2Q0MCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQzYi03NDliLWI5YmItNzZiMGY0N2I2ZjVlIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjgzM2Y0YzljN2Y1ZDBiM2M3ZWM4MzhlOTViY2U4YmVlYmUzYzExNjkxZDAzYWFiZjRhNTUxMWExZjg2NGI5NDkifSwiaWF0IjoxNzkzODk0Njg4fQ.aKm8hVYwVAUajUyGby4iXfGMLR5OvQ9n4mGJe87wX8DuuJ_whpDLfurziWew95bb1g1TDc0zedKqz9g9s1kGhg"
 	]
 }

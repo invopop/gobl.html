@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "bd4b8d65a49510af5e068cd1387ed2a450751f6632a259113a444ecc87aece0c"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a standard B2B invoice from an Italian supplier to another Italian business customer.",
+			"title": "B2B Invoice"
 		}
 	},
 	"doc": {

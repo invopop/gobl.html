@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "4842833f44b490ebc2a65e2a32f97962c2071d466da07357d3615a9193c0e289"
 		},
+		"meta": {
+			"description": "Gutschriftsverfahren: the customer issues the invoice on the supplier's behalf; UNTDID document type 389.",
+			"title": "Self-billed XRechnung"
+		},
 		"from": "iso6523-actorid-upis::9930:DE993930191",
 		"to": "iso6523-actorid-upis::9930:DE879558966"
 	},

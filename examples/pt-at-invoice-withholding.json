@@ -27,7 +27,11 @@
 				"prv": "at-app-id",
 				"val": "0"
 			}
-		]
+		],
+		"meta": {
+			"description": "In this example, a self-employed professional (_trabalhador independente_) invoices a Portuguese company for consulting services. On top of the standard VAT, the customer retains personal income tax (_IRS_) at source.",
+			"title": "AT invoice with IRS withholding"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -165,6 +169,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5NWYtNzc5NS1hNzNhLTIxYjJlYWYwMDQ4OSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRiYS03YzVmLTg0ZjgtOGQzYmY5ZmM4NzZmIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImUyM2ZjNDRhNTNhZmUwZmUxNjhhZjlmZmI2ODdjMGNiNTVmMWI4ZjExMWI0ZjI1MzAwMWVhM2Q3NjRkZDc0MzkifSwiaWF0IjoxNzkzODc3MTc0fQ.9RCyEexHhfVo7VsIjSuLyI2ckEDIgXm71ML3TrgoAd8HFB9p5Vf369q1BD-noTOxzqkHL1mKuPKGN0k4Cc3LJQ"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE3MDQtN2JhMC1iNDdjLTcwZWZhYWVhYTMyMyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRiYS03YzVmLTg0ZjgtOGQzYmY5ZmM4NzZmIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImUyM2ZjNDRhNTNhZmUwZmUxNjhhZjlmZmI2ODdjMGNiNTVmMWI4ZjExMWI0ZjI1MzAwMWVhM2Q3NjRkZDc0MzkifSwiaWF0IjoxNzkzODk0Njg4fQ.cINwjF2I5ThzagTq2I8Vl83_eyCPYQhIADcbxDdpos_zO5RntQ9iwz9hlksOTFJNktagzHLxFpMm1ZD7z4ebBQ"
 	]
 }

@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "2dcae478ddc13ac692ae90bc8a1e2b2da9a49b0fb03ba8d3fa458006313dedf1"
+		},
+		"meta": {
+			"description": "A self-billed invoice (samofakturowanie) is issued by the customer on behalf of the supplier, under a prior agreement between the two parties.",
+			"title": "Self-billed Invoice"
 		}
 	},
 	"doc": {

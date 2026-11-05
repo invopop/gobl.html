@@ -1,506 +1,514 @@
 {
-	"$schema": "https://gobl.org/draft-0/bill/invoice",
-	"$regime": "MX",
-	"$addons": [
-		"mx-cfdi-v4"
-	],
-	"type": "standard",
-	"series": "A",
-	"code": "20260042",
-	"issue_date": "2026-02-10",
-	"issue_time": "11:25:40",
-	"currency": "MXN",
-	"tax": {
-		"ext": {
-			"mx-cfdi-issue-place": "44100"
+	"head": {
+		"meta": {
+			"title": "CFDI with every feature",
+			"description": "Issue place, fiscal regimes and CFDI use, ClaveProdServ on every line, 16% VAT with zero and exempt lines, IEPS, retained VAT and ISR, advances with their payment means, CLABE accounts, card, direct debit and CoDi, delivery with carta porte, notes and attachments; line-level discounts only, as the addon requires."
 		}
 	},
-	"supplier": {
-		"name": "ESCUELA KEMPER URGATE",
-		"alias": "Kemper Urgate",
-		"tax_id": {
-			"country": "MX",
-			"code": "EKU9003173C9"
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "MX",
+		"$addons": [
+			"mx-cfdi-v4"
+		],
+		"type": "standard",
+		"series": "A",
+		"code": "20260042",
+		"issue_date": "2026-02-10",
+		"issue_time": "11:25:40",
+		"currency": "MXN",
+		"tax": {
+			"ext": {
+				"mx-cfdi-issue-place": "44100"
+			}
 		},
-		"identities": [
-			{
-				"label": "Registro patronal IMSS",
-				"code": "Y1234567108"
-			}
-		],
-		"addresses": [
-			{
-				"street": "Av. Vallarta 1234",
-				"street_extra": "Int. 5, Col. Americana",
-				"locality": "Guadalajara",
-				"region": "Jalisco",
-				"code": "44100",
-				"country": "MX"
-			}
-		],
-		"emails": [
-			{
-				"addr": "facturacion@kemperurgate.mx"
+		"supplier": {
+			"name": "ESCUELA KEMPER URGATE",
+			"alias": "Kemper Urgate",
+			"tax_id": {
+				"country": "MX",
+				"code": "EKU9003173C9"
 			},
-			{
-				"label": "Cobranza",
-				"addr": "cobranza@kemperurgate.mx"
-			}
-		],
-		"telephones": [
-			{
-				"num": "+52 33 1234 5678"
-			}
-		],
-		"websites": [
-			{
-				"url": "https://www.kemperurgate.mx"
-			}
-		],
-		"logos": [
-			{
-				"label": "Invopop",
-				"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
-			}
-		],
-		"ext": {
-			"mx-cfdi-fiscal-regime": "601"
-		}
-	},
-	"customer": {
-		"name": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
-		"tax_id": {
-			"country": "MX",
-			"code": "URE180429TM6"
-		},
-		"identities": [
-			{
-				"label": "Número de cliente",
-				"code": "CLI-00917"
-			}
-		],
-		"people": [
-			{
-				"name": {
-					"given": "Mariana",
-					"surname": "Castillo"
-				},
-				"emails": [
-					{
-						"addr": "mariana.castillo@ure.edu.mx"
-					}
-				]
-			}
-		],
-		"addresses": [
-			{
-				"label": "Rectoría",
-				"po_box": "310",
-				"street": "Calle Universidad 100",
-				"locality": "Villahermosa",
-				"region": "Tabasco",
-				"code": "86991",
-				"country": "MX"
-			}
-		],
-		"emails": [
-			{
-				"addr": "pagos@ure.edu.mx"
-			}
-		],
-		"telephones": [
-			{
-				"num": "+52 993 555 0190"
-			}
-		],
-		"ext": {
-			"mx-cfdi-fiscal-regime": "601",
-			"mx-cfdi-use": "G03"
-		}
-	},
-	"lines": [
-		{
-			"quantity": "60",
-			"item": {
-				"ref": "CONS-SR",
-				"name": "Consultoría en sistemas de información",
-				"description": "Horas de consultor senior, febrero 2026",
-				"unit": "h",
-				"price": "1850.00",
-				"ext": {
-					"mx-cfdi-prod-serv": "81111500"
-				}
-			},
-			"discounts": [
+			"identities": [
 				{
-					"reason": "Descuento por contrato anual",
-					"percent": "10%"
+					"label": "Registro patronal IMSS",
+					"code": "Y1234567108"
 				}
 			],
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "general"
-				},
-				{
-					"cat": "RVAT",
-					"percent": "10.6667%"
-				},
-				{
-					"cat": "ISR",
-					"percent": "10%"
-				}
-			]
-		},
-		{
-			"quantity": "25",
-			"item": {
-				"ref": "LAP-PRO-15",
-				"name": "Computadora portátil 15 pulgadas",
-				"description": "Intel Core i7, 32 GB RAM, 1 TB SSD, garantía 3 años",
-				"identities": [
-					{
-						"type": "GTIN",
-						"code": "0884116374152"
-					}
-				],
-				"unit": "piece",
-				"price": "24500.00",
-				"ext": {
-					"mx-cfdi-prod-serv": "43211503"
-				}
-			},
-			"charges": [
-				{
-					"reason": "Configuración e instalación de software",
-					"percent": "4%"
-				}
-			],
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "general"
-				}
-			]
-		},
-		{
-			"quantity": "400",
-			"item": {
-				"name": "Cable de red Cat6A blindado",
-				"unit": "m",
-				"price": "32.50",
-				"ext": {
-					"mx-cfdi-prod-serv": "26121600"
-				}
-			},
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "general"
-				}
-			]
-		},
-		{
-			"quantity": "120",
-			"item": {
-				"name": "Bebida energética 355 ml",
-				"description": "Bebida saborizada con azúcares añadidos (cuota IEPS)",
-				"unit": "piece",
-				"price": "28.00",
-				"ext": {
-					"mx-cfdi-prod-serv": "50202306"
-				}
-			},
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "general"
-				},
-				{
-					"cat": "IEPS",
-					"percent": "8%"
-				}
-			]
-		},
-		{
-			"quantity": "50",
-			"item": {
-				"name": "Alimentos no básicos de alta densidad calórica",
-				"description": "Botanas y confitería, IEPS 8%",
-				"unit": "kg",
-				"price": "180.00",
-				"ext": {
-					"mx-cfdi-prod-serv": "50192100"
-				}
-			},
-			"discounts": [
-				{
-					"reason": "Promoción de temporada",
-					"amount": "500.00"
-				}
-			],
-			"taxes": [
-				{
-					"cat": "VAT",
-					"key": "zero"
-				},
-				{
-					"cat": "IEPS",
-					"percent": "8%"
-				}
-			]
-		},
-		{
-			"quantity": "30",
-			"item": {
-				"name": "Libros de texto universitarios",
-				"description": "Enajenación de libros, exenta de IVA",
-				"unit": "piece",
-				"price": "650.00",
-				"ext": {
-					"mx-cfdi-prod-serv": "55101500"
-				}
-			},
-			"taxes": [
-				{
-					"cat": "VAT",
-					"key": "exempt"
-				}
-			]
-		},
-		{
-			"quantity": "6",
-			"item": {
-				"name": "Licencia de plataforma educativa",
-				"description": "Suscripción mensual por campus",
-				"unit": "mon",
-				"price": "9800.00",
-				"ext": {
-					"mx-cfdi-prod-serv": "81112500"
-				}
-			},
-			"charges": [
-				{
-					"key": "admin",
-					"reason": "Gastos de administración",
-					"amount": "1200.00"
-				}
-			],
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "general"
-				}
-			]
-		},
-		{
-			"quantity": "2",
-			"item": {
-				"name": "Capacitación docente en sitio",
-				"description": "Jornada completa para hasta 20 asistentes",
-				"unit": "day",
-				"price": "15000.00",
-				"ext": {
-					"mx-cfdi-prod-serv": "86101700"
-				}
-			},
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "general"
-				},
-				{
-					"cat": "ISR",
-					"percent": "10%"
-				}
-			]
-		},
-		{
-			"quantity": "3",
-			"item": {
-				"name": "Servicio de transporte terrestre de equipos",
-				"description": "Flete Guadalajara - Villahermosa, retención 4% IVA",
-				"unit": "service",
-				"price": "8500.00",
-				"ext": {
-					"mx-cfdi-prod-serv": "78101800"
-				}
-			},
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "general"
-				},
-				{
-					"cat": "RVAT",
-					"percent": "4%"
-				}
-			]
-		}
-	],
-	"ordering": {
-		"code": "OC-URE-2026-0217",
-		"identities": [
-			{
-				"label": "Número de proveedor",
-				"code": "PROV-3351"
-			},
-			{
-				"label": "Centro de costos",
-				"code": "CC-TI-07"
-			}
-		],
-		"period": {
-			"label": "Periodo de servicio",
-			"start": "2026-02-01",
-			"end": "2026-02-28"
-		},
-		"purchases": [
-			{
-				"code": "OC-URE-2026-0217",
-				"issue_date": "2026-01-28"
-			}
-		],
-		"contracts": [
-			{
-				"code": "CONV-2025-11",
-				"issue_date": "2025-08-15"
-			}
-		]
-	},
-	"delivery": {
-		"receiver": {
-			"name": "UNIVERSIDAD ROBOTICA ESPAÑOLA - Campus Centro",
 			"addresses": [
 				{
-					"street": "Blvd. Adolfo Ruiz Cortines 1550",
-					"locality": "Villahermosa",
-					"region": "Tabasco",
-					"code": "86035",
+					"street": "Av. Vallarta 1234",
+					"street_extra": "Int. 5, Col. Americana",
+					"locality": "Guadalajara",
+					"region": "Jalisco",
+					"code": "44100",
 					"country": "MX"
+				}
+			],
+			"emails": [
+				{
+					"addr": "facturacion@kemperurgate.mx"
+				},
+				{
+					"label": "Cobranza",
+					"addr": "cobranza@kemperurgate.mx"
 				}
 			],
 			"telephones": [
 				{
-					"num": "+52 993 555 0231"
+					"num": "+52 33 1234 5678"
 				}
-			]
-		},
-		"identities": [
-			{
-				"label": "Carta porte",
-				"code": "CP-2026-00412"
+			],
+			"websites": [
+				{
+					"url": "https://www.kemperurgate.mx"
+				}
+			],
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+				}
+			],
+			"ext": {
+				"mx-cfdi-fiscal-regime": "601"
 			}
-		],
-		"date": "2026-02-06",
-		"period": {
-			"start": "2026-02-04",
-			"end": "2026-02-06"
-		}
-	},
-	"payment": {
-		"terms": {
-			"key": "due-date",
-			"notes": "Pago en parcialidades a 30 y 60 días",
-			"due_dates": [
-				{
-					"date": "2026-03-12",
-					"percent": "50%",
-					"notes": "Primera parcialidad"
-				},
-				{
-					"date": "2026-04-11",
-					"percent": "50%",
-					"notes": "Segunda parcialidad"
-				}
-			]
 		},
-		"advances": [
+		"customer": {
+			"name": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+			"tax_id": {
+				"country": "MX",
+				"code": "URE180429TM6"
+			},
+			"identities": [
+				{
+					"label": "Número de cliente",
+					"code": "CLI-00917"
+				}
+			],
+			"people": [
+				{
+					"name": {
+						"given": "Mariana",
+						"surname": "Castillo"
+					},
+					"emails": [
+						{
+							"addr": "mariana.castillo@ure.edu.mx"
+						}
+					]
+				}
+			],
+			"addresses": [
+				{
+					"label": "Rectoría",
+					"po_box": "310",
+					"street": "Calle Universidad 100",
+					"locality": "Villahermosa",
+					"region": "Tabasco",
+					"code": "86991",
+					"country": "MX"
+				}
+			],
+			"emails": [
+				{
+					"addr": "pagos@ure.edu.mx"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+52 993 555 0190"
+				}
+			],
+			"ext": {
+				"mx-cfdi-fiscal-regime": "601",
+				"mx-cfdi-use": "G03"
+			}
+		},
+		"lines": [
 			{
-				"date": "2026-01-30",
-				"key": "credit-transfer",
-				"ref": "SPEI-20260130-7781",
-				"description": "Anticipo por transferencia SPEI",
-				"amount": "150000.00"
+				"quantity": "60",
+				"item": {
+					"ref": "CONS-SR",
+					"name": "Consultoría en sistemas de información",
+					"description": "Horas de consultor senior, febrero 2026",
+					"unit": "h",
+					"price": "1850.00",
+					"ext": {
+						"mx-cfdi-prod-serv": "81111500"
+					}
+				},
+				"discounts": [
+					{
+						"reason": "Descuento por contrato anual",
+						"percent": "10%"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					},
+					{
+						"cat": "RVAT",
+						"percent": "10.6667%"
+					},
+					{
+						"cat": "ISR",
+						"percent": "10%"
+					}
+				]
 			},
 			{
-				"date": "2026-02-03",
-				"key": "card",
-				"ref": "TPV-00982",
-				"description": "Abono con tarjeta de crédito institucional",
-				"amount": "40000.00",
+				"quantity": "25",
+				"item": {
+					"ref": "LAP-PRO-15",
+					"name": "Computadora portátil 15 pulgadas",
+					"description": "Intel Core i7, 32 GB RAM, 1 TB SSD, garantía 3 años",
+					"identities": [
+						{
+							"type": "GTIN",
+							"code": "0884116374152"
+						}
+					],
+					"unit": "piece",
+					"price": "24500.00",
+					"ext": {
+						"mx-cfdi-prod-serv": "43211503"
+					}
+				},
+				"charges": [
+					{
+						"reason": "Configuración e instalación de software",
+						"percent": "4%"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "400",
+				"item": {
+					"name": "Cable de red Cat6A blindado",
+					"unit": "m",
+					"price": "32.50",
+					"ext": {
+						"mx-cfdi-prod-serv": "26121600"
+					}
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "120",
+				"item": {
+					"name": "Bebida energética 355 ml",
+					"description": "Bebida saborizada con azúcares añadidos (cuota IEPS)",
+					"unit": "piece",
+					"price": "28.00",
+					"ext": {
+						"mx-cfdi-prod-serv": "50202306"
+					}
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					},
+					{
+						"cat": "IEPS",
+						"percent": "8%"
+					}
+				]
+			},
+			{
+				"quantity": "50",
+				"item": {
+					"name": "Alimentos no básicos de alta densidad calórica",
+					"description": "Botanas y confitería, IEPS 8%",
+					"unit": "kg",
+					"price": "180.00",
+					"ext": {
+						"mx-cfdi-prod-serv": "50192100"
+					}
+				},
+				"discounts": [
+					{
+						"reason": "Promoción de temporada",
+						"amount": "500.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "zero"
+					},
+					{
+						"cat": "IEPS",
+						"percent": "8%"
+					}
+				]
+			},
+			{
+				"quantity": "30",
+				"item": {
+					"name": "Libros de texto universitarios",
+					"description": "Enajenación de libros, exenta de IVA",
+					"unit": "piece",
+					"price": "650.00",
+					"ext": {
+						"mx-cfdi-prod-serv": "55101500"
+					}
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "exempt"
+					}
+				]
+			},
+			{
+				"quantity": "6",
+				"item": {
+					"name": "Licencia de plataforma educativa",
+					"description": "Suscripción mensual por campus",
+					"unit": "mon",
+					"price": "9800.00",
+					"ext": {
+						"mx-cfdi-prod-serv": "81112500"
+					}
+				},
+				"charges": [
+					{
+						"key": "admin",
+						"reason": "Gastos de administración",
+						"amount": "1200.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "2",
+				"item": {
+					"name": "Capacitación docente en sitio",
+					"description": "Jornada completa para hasta 20 asistentes",
+					"unit": "day",
+					"price": "15000.00",
+					"ext": {
+						"mx-cfdi-prod-serv": "86101700"
+					}
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					},
+					{
+						"cat": "ISR",
+						"percent": "10%"
+					}
+				]
+			},
+			{
+				"quantity": "3",
+				"item": {
+					"name": "Servicio de transporte terrestre de equipos",
+					"description": "Flete Guadalajara - Villahermosa, retención 4% IVA",
+					"unit": "service",
+					"price": "8500.00",
+					"ext": {
+						"mx-cfdi-prod-serv": "78101800"
+					}
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					},
+					{
+						"cat": "RVAT",
+						"percent": "4%"
+					}
+				]
+			}
+		],
+		"ordering": {
+			"code": "OC-URE-2026-0217",
+			"identities": [
+				{
+					"label": "Número de proveedor",
+					"code": "PROV-3351"
+				},
+				{
+					"label": "Centro de costos",
+					"code": "CC-TI-07"
+				}
+			],
+			"period": {
+				"label": "Periodo de servicio",
+				"start": "2026-02-01",
+				"end": "2026-02-28"
+			},
+			"purchases": [
+				{
+					"code": "OC-URE-2026-0217",
+					"issue_date": "2026-01-28"
+				}
+			],
+			"contracts": [
+				{
+					"code": "CONV-2025-11",
+					"issue_date": "2025-08-15"
+				}
+			]
+		},
+		"delivery": {
+			"receiver": {
+				"name": "UNIVERSIDAD ROBOTICA ESPAÑOLA - Campus Centro",
+				"addresses": [
+					{
+						"street": "Blvd. Adolfo Ruiz Cortines 1550",
+						"locality": "Villahermosa",
+						"region": "Tabasco",
+						"code": "86035",
+						"country": "MX"
+					}
+				],
+				"telephones": [
+					{
+						"num": "+52 993 555 0231"
+					}
+				]
+			},
+			"identities": [
+				{
+					"label": "Carta porte",
+					"code": "CP-2026-00412"
+				}
+			],
+			"date": "2026-02-06",
+			"period": {
+				"start": "2026-02-04",
+				"end": "2026-02-06"
+			}
+		},
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"notes": "Pago en parcialidades a 30 y 60 días",
+				"due_dates": [
+					{
+						"date": "2026-03-12",
+						"percent": "50%",
+						"notes": "Primera parcialidad"
+					},
+					{
+						"date": "2026-04-11",
+						"percent": "50%",
+						"notes": "Segunda parcialidad"
+					}
+				]
+			},
+			"advances": [
+				{
+					"date": "2026-01-30",
+					"key": "credit-transfer",
+					"ref": "SPEI-20260130-7781",
+					"description": "Anticipo por transferencia SPEI",
+					"amount": "150000.00"
+				},
+				{
+					"date": "2026-02-03",
+					"key": "card",
+					"ref": "TPV-00982",
+					"description": "Abono con tarjeta de crédito institucional",
+					"amount": "40000.00",
+					"card": {
+						"last4": "7731",
+						"holder": "UNIVERSIDAD ROBOTICA ESPAÑOLA"
+					}
+				},
+				{
+					"date": "2026-02-05",
+					"key": "cash",
+					"ref": "REC-0455",
+					"description": "Pago en efectivo en caja",
+					"amount": "5000.00"
+				}
+			],
+			"instructions": {
+				"key": "credit-transfer",
+				"detail": "Transferencia SPEI a la CLABE indicada; usar el folio de la factura como concepto",
+				"ref": "A20260042",
+				"credit_transfer": [
+					{
+						"label": "CLABE BBVA",
+						"number": "012320001234567897",
+						"name": "ESCUELA KEMPER URGATE"
+					},
+					{
+						"label": "CLABE Banorte",
+						"number": "072320009876543215",
+						"name": "ESCUELA KEMPER URGATE"
+					}
+				],
 				"card": {
 					"last4": "7731",
 					"holder": "UNIVERSIDAD ROBOTICA ESPAÑOLA"
-				}
+				},
+				"direct_debit": {
+					"ref": "DOM-URE-2025",
+					"creditor": "EKU9003173C9",
+					"account": "012320001234567897"
+				},
+				"online": [
+					{
+						"key": "codi",
+						"label": "CoDi",
+						"url": "https://pagos.kemperurgate.mx/codi?folio=A20260042"
+					}
+				],
+				"notes": "**Vencimiento**: después de la fecha límite se aplicarán _intereses moratorios del 2% mensual_."
+			}
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Gracias por su preferencia. Las retenciones de ISR e IVA se aplican conforme a la LISR y la LIVA vigentes."
 			},
 			{
-				"date": "2026-02-05",
-				"key": "cash",
-				"ref": "REC-0455",
-				"description": "Pago en efectivo en caja",
-				"amount": "5000.00"
+				"key": "legal",
+				"text": "Este documento es una representación impresa de un CFDI versión 4.0. Efectos fiscales al pago. Impuesto retenido de conformidad con la Ley del Impuesto al Valor Agregado.",
+				"meta": {
+					"position": "footer"
+				}
 			}
 		],
-		"instructions": {
-			"key": "credit-transfer",
-			"detail": "Transferencia SPEI a la CLABE indicada; usar el folio de la factura como concepto",
-			"ref": "A20260042",
-			"credit_transfer": [
-				{
-					"label": "CLABE BBVA",
-					"number": "012320001234567897",
-					"name": "ESCUELA KEMPER URGATE"
-				},
-				{
-					"label": "CLABE Banorte",
-					"number": "072320009876543215",
-					"name": "ESCUELA KEMPER URGATE"
-				}
-			],
-			"card": {
-				"last4": "7731",
-				"holder": "UNIVERSIDAD ROBOTICA ESPAÑOLA"
+		"attachments": [
+			{
+				"name": "Carta porte CP-2026-00412",
+				"description": "Complemento carta porte del traslado de equipos",
+				"url": "https://example.com/docs/cp-2026-00412.pdf",
+				"mime": "application/pdf"
 			},
-			"direct_debit": {
-				"ref": "DOM-URE-2025",
-				"creditor": "EKU9003173C9",
-				"account": "012320001234567897"
-			},
-			"online": [
-				{
-					"key": "codi",
-					"label": "CoDi",
-					"url": "https://pagos.kemperurgate.mx/codi?folio=A20260042"
-				}
-			],
-			"notes": "**Vencimiento**: después de la fecha límite se aplicarán _intereses moratorios del 2% mensual_."
-		}
-	},
-	"notes": [
-		{
-			"key": "general",
-			"text": "Gracias por su preferencia. Las retenciones de ISR e IVA se aplican conforme a la LISR y la LIVA vigentes."
-		},
-		{
-			"key": "legal",
-			"text": "Este documento es una representación impresa de un CFDI versión 4.0. Efectos fiscales al pago. Impuesto retenido de conformidad con la Ley del Impuesto al Valor Agregado.",
-			"meta": {
-				"position": "footer"
+			{
+				"name": "Orden de compra OC-URE-2026-0217",
+				"url": "https://example.com/docs/oc-ure-2026-0217.pdf",
+				"mime": "application/pdf"
 			}
-		}
-	],
-	"attachments": [
-		{
-			"name": "Carta porte CP-2026-00412",
-			"description": "Complemento carta porte del traslado de equipos",
-			"url": "https://example.com/docs/cp-2026-00412.pdf",
-			"mime": "application/pdf"
-		},
-		{
-			"name": "Orden de compra OC-URE-2026-0217",
-			"url": "https://example.com/docs/oc-ure-2026-0217.pdf",
-			"mime": "application/pdf"
-		}
-	]
+		]
+	}
 }

@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "30e9d27c7a27e3c9f8e8e90f9aba59093da871dab7e80e3d8a1472e3dac382c2"
 		},
+		"meta": {
+			"description": "A domestic B2B invoice for construction works supplied by a subcontractor to a taxable main contractor. Because both parties are French, this stays in the PA e-invoicing flow (fr-ctc-flow2-v1) even though it carries no VAT — it is not e-reporting.",
+			"title": "PA B2B invoice (building subcontracting, autoliquidation)"
+		},
 		"from": "iso6523-actorid-upis::0225:303265045",
 		"to": "iso6523-actorid-upis::0225:732829320"
 	},

@@ -19,7 +19,11 @@
 				"prv": "arca-qr",
 				"val": "https://www.afip.gob.ar/fe/qr/conceptos-generales.asp"
 			}
-		]
+		],
+		"meta": {
+			"description": "Factura C is issued by monotributistas (simplified tax regime for small businesses and freelancers) to any type of customer. This invoice type does not break down VAT separately.",
+			"title": "Factura C - Monotributista invoice (small business)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -141,6 +145,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4YTMtN2MxNS1hZTVhLWU0NTMzMTk5Mzg2ZSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmNmNy03M2E1LWI5YmItZjBhZjA1NTVjYmVkIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjkwYTk2MTA0MDM4NzY0ZWUyY2FlZDYxNGY2OGYzOTg1NjRmNmFiN2U4YWUwNDQ5OWRmNTNjMzM1NDJmYzIxMTEifSwiaWF0IjoxNzkzODc3MTc0fQ.ez2SQA7v8Wxfa556insmD5VbqbKMdonv9QAs09x8NaSg-ImQ-6RO9JKmFBginTs5fsg6qWg6IVUp0RVqr_FAIw"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE1ZmQtN2UyNS1iZGE4LTIzNGQwZDgzYThiZCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmNmNy03M2E1LWI5YmItZjBhZjA1NTVjYmVkIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjkwYTk2MTA0MDM4NzY0ZWUyY2FlZDYxNGY2OGYzOTg1NjRmNmFiN2U4YWUwNDQ5OWRmNTNjMzM1NDJmYzIxMTEifSwiaWF0IjoxNzkzODk0Njg4fQ.-AQ_V_QSJymZ0olmrF50ggpVS05nBT4LCad7DewiG_Q7f0F7cHc3cMS69zjtkk_IuweqBUdweeLQkHfMV5n1ww"
 	]
 }

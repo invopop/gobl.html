@@ -27,7 +27,11 @@
 				"prv": "iapr-uid",
 				"val": "EB1CF2137764B0D534885F361365C39A32C0205A"
 			}
-		]
+		],
+		"meta": {
+			"description": "In this example, we're issuing a simple services invoice from a Greek supplier to another Greek business customer.",
+			"title": "Example service invoice (B2B)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -179,6 +183,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MWMtNzg0OS1hNDhiLTY4ZDUwOTQ4ZDVkMCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ4Mi03ZTlhLWIzYjAtN2Y2MmJjNThhMjQyIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjIxMDRlZTYxNTEzNzc0MTk4ZGJiY2IwYmQwNDFmODU2NTE2NGFlZDY5MTJlMGRjODk3MTA4OTM3Yzk0NGY5ZTMifSwiaWF0IjoxNzkzODc3MTc0fQ.rHJgrW-cNaSHXXaCFDCTG_WilgJ6z_BhYD7IGVOXtlrNR3M1JDKVrxjyvwlc5P3-MlTJGXMwn_LYj-ydVHmliQ"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2YjAtN2UxOS1hYjgxLWI4ZWY3YjI4ZjgxOSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ4Mi03ZTlhLWIzYjAtN2Y2MmJjNThhMjQyIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjIxMDRlZTYxNTEzNzc0MTk4ZGJiY2IwYmQwNDFmODU2NTE2NGFlZDY5MTJlMGRjODk3MTA4OTM3Yzk0NGY5ZTMifSwiaWF0IjoxNzkzODk0Njg4fQ.pUUrHPK3UKtfJVs_LjzrZ1xmTU5iHK2BYsoYAh9gMJRc9SmhdIvxSPo2YPjQKN4-gl_QxpBMVoiwqUqDS0r1lg"
 	]
 }

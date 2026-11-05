@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "356a9f869df2fc943e63683d8dd32431339cc779d6f5435166089ea18752a93b"
 		},
+		"meta": {
+			"description": "Proforma (UNTDID 325) ahead of the order, with quotation and tender references and a deposit note.",
+			"title": "Peppol proforma"
+		},
 		"from": "iso6523-actorid-upis::0208:0316597904",
 		"to": "iso6523-actorid-upis::0208:0859536301"
 	},

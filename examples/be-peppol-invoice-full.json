@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "4c118edcb6ca036131b2c2cc39f4fe665b47ad34d7985d4a0a8f65c90e4d07d8"
 		},
+		"meta": {
+			"description": "Belgian EN 16931 invoice at 21%, 12%, 6%, exempt and zero rates with allowance and charge codes, structured payment reference, SEPA accounts, direct debit, Bancontact, delivery, ordering references, notes and attachments.",
+			"title": "Peppol invoice with every feature"
+		},
 		"from": "iso6523-actorid-upis::0208:0316597904",
 		"to": "iso6523-actorid-upis::0208:0859536301"
 	},

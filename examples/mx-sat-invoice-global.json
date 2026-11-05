@@ -39,7 +39,11 @@
 				"prv": "sat-url",
 				"val": "https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=01a1ab50-6da1-7d3a-89e6-cca1a86357ab\u0026re=EKU9003173C9\u0026tt=33.64\u0026fe=0PPOsw=="
 			}
-		]
+		],
+		"meta": {
+			"description": "The Global Invoice is used to group a set of invoices into a single CFDI document.",
+			"title": "Global invoice"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -164,6 +168,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LWNjOTctNzdiNC1iMmE4LTJmNTU0ZDNlZWIzNSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhMS03ZDNhLTg5ZTYtY2NhMWE4NjM1N2FiIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjExMjU5YmM1YzQxOTM2Yzc5ZDNmOTUyNDMyZTc3N2Y3OTkyMGQ5YjhmMDk2MWQxYzkwYzlkYmRiOThiYzg5YmQifSwiaWF0IjoxNzkzODc3MjAwfQ.YYUFTHRXDAXnDLOPAzFhw5dxivrVq3fj4HHOqu45TwADo-onhWgndFyxPY2iIAlsia8FZINwI7-iD0adorY7lQ"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZTAtNzQxMi1hODIzLWUxZTQ0YWY1MjY1MyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhMS03ZDNhLTg5ZTYtY2NhMWE4NjM1N2FiIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjExMjU5YmM1YzQxOTM2Yzc5ZDNmOTUyNDMyZTc3N2Y3OTkyMGQ5YjhmMDk2MWQxYzkwYzlkYmRiOThiYzg5YmQifSwiaWF0IjoxNzkzODk0Njg4fQ.NyY5TS6fnmkXWkujlXTlHcY_twPZep28p86pI8rUAHlCrHba0pfbncmLmACCqWyqOd4alzZ6NxPkaEDsT8_YNQ"
 	]
 }

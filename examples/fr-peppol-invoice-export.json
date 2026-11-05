@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "70d3d2d56b40b50dcd7bd5ff0e8faf2a6dfe37d808f1f23f9e64ab2c44540706"
 		},
+		"meta": {
+			"description": "Export invoices are used for B2B goods delivered to customers outside the EU.",
+			"title": "B2B goods invoice France → international customer (Export)"
+		},
 		"from": "iso6523-actorid-upis::0088:FR44257623119",
 		"to": "iso6523-actorid-upis::0195:SGUEN199904785Z"
 	},

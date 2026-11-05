@@ -27,7 +27,11 @@
 				"prv": "iapr-uid",
 				"val": "EB1CF2137764B0D534885F361365C39A32C0205A"
 			}
-		]
+		],
+		"meta": {
+			"description": "In this example, we're issuing a retail sales receipt for a hotel stay (accommodation taxed at the reduced VAT rate) together with the climate crisis resilience fee on the same document.",
+			"title": "Example accommodation + climate fee invoice (B2C)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -143,6 +147,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MWYtNzAxMy05NWExLWQ4ZmM5ODhjNGE1OCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ4NC03MTY3LTg3YWEtNmVkMDhhOWJkMTAxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjZjZTI1NDk2ZDI0Y2Y3NzI3MjQwN2I3YmM2NjJhYzRlODdmMDNjYjUwZmNlNTI3OTRkYWRiOWU5YTg1Mzk5Y2IifSwiaWF0IjoxNzkzODc3MTc0fQ.3UeWpu7HuTIAq95Q-4wuidESv7P6Rdz5Fe8dQcEZk05yEUjITph_rQsQyXqrBGP5Du2bgHxuskd7kn-XNMXuig"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2YjMtNzFjOS04MjRhLWYwMDgxZWE3Y2U2ZSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ4NC03MTY3LTg3YWEtNmVkMDhhOWJkMTAxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjZjZTI1NDk2ZDI0Y2Y3NzI3MjQwN2I3YmM2NjJhYzRlODdmMDNjYjUwZmNlNTI3OTRkYWRiOWU5YTg1Mzk5Y2IifSwiaWF0IjoxNzkzODk0Njg4fQ.rf_6PSYr7npsfsupWHXq6x1NYBt99BFEgyqDG0o9W9A0eUWmaA6UG57vjEzFWc46GsNHRasUgP3dXK83va__rQ"
 	]
 }

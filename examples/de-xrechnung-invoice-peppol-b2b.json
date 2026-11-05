@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "53f473cc88df0d559b5bdeb434838f40c6a675b2a8e99c6add522f35487d0ee3"
 		},
+		"meta": {
+			"description": "Standard XRechnung invoice for business-to-business transactions using the UBL format.",
+			"title": "XRechnung B2B Invoice"
+		},
 		"from": "iso6523-actorid-upis::9930:DE879558966",
 		"to": "iso6523-actorid-upis::9930:DE993930191"
 	},

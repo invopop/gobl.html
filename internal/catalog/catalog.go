@@ -48,8 +48,11 @@ var HiddenKeys = []string{
 type Entry struct {
 	// File is the example's file name, such as "es-verifactu-invoice.json".
 	File string `json:"file"`
-	// Title is a readable name derived from the file name.
+	// Title is the example's name: the envelope head's meta title when the
+	// source gave one, else derived from the file name.
 	Title string `json:"title"`
+	// Description is what the example shows, from the head's meta.
+	Description string `json:"description,omitempty"`
 	// Country is the lower-case tax country code of the document, if any.
 	Country string `json:"country,omitempty"`
 	// Kind is the document kind: invoice, credit-note, debit-note, proforma,
@@ -124,6 +127,12 @@ func describe(ctx context.Context, path string, render Renderer) (Entry, error) 
 		Void:           strings.Contains(name, ".void."),
 		Sandbox:        strings.Contains(name, ".sandbox."),
 		AdjustmentMode: strings.Contains(name, ".adjustment."),
+	}
+	if env.Head != nil {
+		if t := env.Head.Meta["title"]; t != "" {
+			e.Title = t
+		}
+		e.Description = env.Head.Meta["description"]
 	}
 	if strings.Contains(name, ".hidden.") {
 		e.Hide = strings.Join(HiddenKeys, ",")

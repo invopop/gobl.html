@@ -27,7 +27,11 @@
 				"prv": "at-app-id",
 				"val": "0"
 			}
-		]
+		],
+		"meta": {
+			"description": "In this example, we're issuing a simple invoice from a Portuguese supplier to another Portuguese business.",
+			"title": "AT B2B invoice"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -177,6 +181,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5NGYtNzUxNC1hMzAyLTAzOGUzZTRmNjk1ZCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRiMi03MmIzLWJkMzgtMmIyMTc5ZmQwOTUwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjM1YmExNjU5OGM3MTcyYTgzZjVjN2QyZDI1M2VjYjE2MjRiNmE0MDBkOTcxMThiNmIwMzNlNzcxOGQzYmQyMmUifSwiaWF0IjoxNzkzODc3MTc0fQ.VIaF-16OgObZwKgyZeEVuKq4So1PJHE59l2R3AqrM2psR7FegQE4oYcUkYiIBWGbigKQjrMIsLWk7FG55nn15w"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZmEtN2M5Ni05OWI4LWY1OGQ5ZGY2NmE4ZiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRiMi03MmIzLWJkMzgtMmIyMTc5ZmQwOTUwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjM1YmExNjU5OGM3MTcyYTgzZjVjN2QyZDI1M2VjYjE2MjRiNmE0MDBkOTcxMThiNmIwMzNlNzcxOGQzYmQyMmUifSwiaWF0IjoxNzkzODk0Njg4fQ.iLEnSuyzOZY5noL4q-aNS4jrD4j1UBiQmqedLgkAWBuMRv_ByfDZQ4w3CyYr8jE1ZcxQRnRQsEmiutbWfTgFeQ"
 	]
 }

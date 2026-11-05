@@ -27,7 +27,11 @@
 				"prv": "at-app-id",
 				"val": "0"
 			}
-		]
+		],
+		"meta": {
+			"description": "Once the recipient of part of the goods covered by a global waybill is known, a concrete document — typically a GR (Guia de Remessa) — must be issued with the full transaction details, including the customer and a cross-reference back to the originating GT so the AT can correlate both records.",
+			"title": "AT delivery from global waybill"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/delivery",
@@ -174,6 +178,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5OGItNzMyNC05ZmZlLTM3MDkzN2RiZDBjZiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRkNC03OTBjLWE3NzEtNWFjNDE4MjU5MzdkIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImU4YmJmMzk0MDBlNTM1ZGFkZGRkNGQ4ZGVlNDcyYmQ2OTJjM2NkNzAxOTRiMjJkMWU5MzFhMDJlMmExNmNjOGQifSwiaWF0IjoxNzkzODc3MTc0fQ.odib3Xcu2vm-8yZE-OySoN3iTK8n1iuoZEmw74iakg9ZWkELvybCAPVxqiV4wPdHh7rK8OyQJgqe2rSUMBFS4g"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE3MzMtNzBkZS1hYjJlLTAzOWJjYzBkOTc0MiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRkNC03OTBjLWE3NzEtNWFjNDE4MjU5MzdkIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImU4YmJmMzk0MDBlNTM1ZGFkZGRkNGQ4ZGVlNDcyYmQ2OTJjM2NkNzAxOTRiMjJkMWU5MzFhMDJlMmExNmNjOGQifSwiaWF0IjoxNzkzODk0Njg4fQ.cYjaJoxR0M6JWt9vfPzqb9SCdfmFEOlJPEFvdphcTobFge4choEI302tfrz_mtIaZPsNwesH8ZsGxuvS6M1v1g"
 	]
 }

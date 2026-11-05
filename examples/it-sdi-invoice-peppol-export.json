@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "efee823bf5f3d62852fff3adedf361c8c348b926941a2e5515cf3e1744d31c05"
 		},
+		"meta": {
+			"description": "Export invoices are used for B2B goods delivered to customers outside the EU.",
+			"title": "Peppol Italy - B2B goods → international customer (Export)"
+		},
 		"from": "iso6523-actorid-upis::0205:IT00159560366",
 		"to": "iso6523-actorid-upis::0195:SGUEN199904785Z"
 	},

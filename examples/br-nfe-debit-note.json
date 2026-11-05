@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "f44c605df6fe95e34d4ddcaa7a98f374ac1cf1ea0366bf58b0a4034acbc5478e"
+		},
+		"meta": {
+			"description": "Purpose 6 debit note for penalty, interest and a boleto reissue fee, referring to the prior NF-e by its SEFAZ key.",
+			"title": "NF-e debit note"
 		}
 	},
 	"doc": {

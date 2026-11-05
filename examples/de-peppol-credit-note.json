@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "afb277cf2a759b8b121f1d169b60034533866d6ae72a811f2a9688fe4e90b010"
 		},
+		"meta": {
+			"description": "Credit notes reverse all or part of a previously issued invoice — for returns, cancellations, or billing corrections.",
+			"title": "Peppol Germany - B2B credit note"
+		},
 		"from": "iso6523-actorid-upis::9930:DE879558966",
 		"to": "iso6523-actorid-upis::9930:DE993930191"
 	},

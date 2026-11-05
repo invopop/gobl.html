@@ -27,7 +27,11 @@
 				"prv": "iapr-uid",
 				"val": "EB1CF2137764B0D534885F361365C39A32C0205A"
 			}
-		]
+		],
+		"meta": {
+			"description": "In this example, we're issuing a credit note that corrects a previously reported invoice.",
+			"title": "Example credit note (B2B)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -170,6 +174,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MjItN2Q2ZC05M2Q0LTZkMWNiZTM4YTAyNCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ4Ni03ODFlLThkYzktMWE4ZmRkMjM3YTY4IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjQ0ZmEyMzAwMGMwMThiOTBkZWZmZTNhNGFmODA1MTA3OWFmZDk4ZDA1MjFmZTA5YjIzNGFiZDVlMDFkZjdiZGMifSwiaWF0IjoxNzkzODc3MTc0fQ.d7vJYNoG3ZNetKIu-ZFQSFT95NzG_JBE0SeE41PqWrb27-FBXNEsWSJbpv_8SC6HvehqgrJUdoyPBA15Eihy_w"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2YjctNzhkMS04NDE0LWI4OWVjNGUxMGNjNSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ4Ni03ODFlLThkYzktMWE4ZmRkMjM3YTY4IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjQ0ZmEyMzAwMGMwMThiOTBkZWZmZTNhNGFmODA1MTA3OWFmZDk4ZDA1MjFmZTA5YjIzNGFiZDVlMDFkZjdiZGMifSwiaWF0IjoxNzkzODk0Njg4fQ.4-lJM99QSqQZBd_uuYIybmeMiJk08SWt7yuzLaNy4JC7bStpyvCVo5uNf-NMbTVWuSMlfp3fh9ZaLOq81jDmwg"
 	]
 }

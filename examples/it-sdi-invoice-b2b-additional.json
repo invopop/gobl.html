@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "b0f3e2dce38542b114a3995912ba3d6175429669eae6ae0f54e73ccf04be09c4"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a comprehensive B2B invoice with additional optional fields such as ordering information, payment details, and document references.",
+			"title": "B2B Invoice with Additional Fields"
 		}
 	},
 	"doc": {

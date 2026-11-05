@@ -39,7 +39,11 @@
 				"prv": "sat-url",
 				"val": "https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=01a1ab50-6d9f-7a2d-b3b3-a15ef9f3856e\u0026re=EKU9003173C9\u0026tt=580.00\u0026fe=0PPOsw=="
 			}
-		]
+		],
+		"meta": {
+			"description": "This is a standard B2C invoice from a Mexican supplier to a Mexican physical person with tax details, but no specific tax declaration requirements. This would be for a larger sale when the \"Simplified\" and \"Global invoice\" do not apply.",
+			"title": "B2C invoice (Personas Físicas)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -154,6 +158,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LWNjOTMtNzBlYS04YWUzLTYxYzQ0YmY0YzIyYyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ5Zi03YTJkLWIzYjMtYTE1ZWY5ZjM4NTZlIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImZhMzQ0ZDVmYzRlZTM3YzM4OTRhZWM2ZGQ0YWQwODZjMmE5MjA4MWQwMTlmZDQwZjczNzQzMjU5YzUyMzQyZTkifSwiaWF0IjoxNzkzODc3MjAwfQ.iaj5_oVxHXONlBhgLl7zI4ERsUU8ejZ5ZjqsfIX7ZzJNeMuTrLXsg1Sx79vdqAZ3Q0s8C01RltsrZgTHCBEd5g"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZGItNzcwNC1hMWYzLTQyNmMzZmZlYzEwOCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ5Zi03YTJkLWIzYjMtYTE1ZWY5ZjM4NTZlIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImZhMzQ0ZDVmYzRlZTM3YzM4OTRhZWM2ZGQ0YWQwODZjMmE5MjA4MWQwMTlmZDQwZjczNzQzMjU5YzUyMzQyZTkifSwiaWF0IjoxNzkzODk0Njg4fQ.CLvh-BeGxKgwDjVBs8IwwjVRbNRpkKGhcG4d7VbQnAanTR4FhRdS9I4yYzqW4EksFa2G2qEj0Upx9VaNQlrfBw"
 	]
 }

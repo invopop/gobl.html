@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "e935d57d51a0902f67362d11b1f5e24d879d51b4b63637a716e7f78c0a51305e"
+		},
+		"meta": {
+			"description": "This is a standard B2B invoice received from a supplier where:",
+			"title": "B2B Standard Received Invoice"
 		}
 	},
 	"doc": {

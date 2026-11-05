@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "0473e8142ae57cea84684341bab09d4c6afe05dd2707521f42f34bc6a33420d3"
+		},
+		"meta": {
+			"description": "Interstate sale with ICMS CST codes, IPI, PIS and COFINS, a service line with ISS and IRRF withholding, NCM, GTIN and CEST identities, freight and packing charges, delivery with CT-e, advances, Pix and card payments, notes and attachments.",
+			"title": "NF-e with every feature"
 		}
 	},
 	"doc": {

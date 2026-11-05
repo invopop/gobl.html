@@ -11,7 +11,11 @@
 				"prv": "verifactu-qr",
 				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B98602642\u0026numserie=AF-2025-0041\u0026fecha=28-10-2025\u0026importe=14576.87"
 			}
-		]
+		],
+		"meta": {
+			"description": "Issued by the customer on the supplier's behalf (issuer type D) under RD 1619/2012, with the regime's self-billing note.",
+			"title": "Self-billed VERI*FACTU invoice"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -238,6 +242,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYmE0LThiZGYtN2UyMS04MTczLTc3MDgxMmNmNzExOCJ9.eyJ1dWlkIjoiMDFhMWFiYTQtOGJkZi03NDE2LWIyNjgtM2YzNjI3MzU2YzkxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjllMTQwMThjZGQ2MmY1NjQ4NjAwMzg0OTk1M2I4ZmZjNGU1NmZkNjNjZDhjMzg2OTlhMjUyYjcyYzgyZjAyZmMifSwiaWF0IjoxNzkzODgxMDUwfQ.PEltYd1yd6q4I1bq_GUsgiHqgzbWf02QLjOgaWwLP3NwNtlaOBVwmKxvK8UfuNku7FbICVWBfaF4kAqKNvWUYA"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc1LWU2ZjktN2I0Ni05NmNiLTAzYWRhMjQ3MDNkNSJ9.eyJ1dWlkIjoiMDFhMWFiYTQtOGJkZi03NDE2LWIyNjgtM2YzNjI3MzU2YzkxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjllMTQwMThjZGQ2MmY1NjQ4NjAwMzg0OTk1M2I4ZmZjNGU1NmZkNjNjZDhjMzg2OTlhMjUyYjcyYzgyZjAyZmMifSwiaWF0IjoxNzkzODk0NzcwfQ.GvBkD4T9_F8UTTPPmfcLa3SxZ7tt1ugP_Zoa9H1ZtXDVip9kFUivBsoFVkpvMnsFeSkKLcSsfGsK0GFR2toBbg"
 	]
 }

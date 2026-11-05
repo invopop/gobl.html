@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "15c169c3199462d191ffdbdb4f2e19a8beb398639af8c33d5750e5acf204058c"
+		},
+		"meta": {
+			"description": "A cross-border sale by a French supplier where the German customer issues the invoice under a self-billing agreement. Like all cross-border B2B, it is not transmitted through the PA e-invoicing flow — the French supplier reports the sale via e-reporting (Flux 10.1), validated by the fr-ctc-flow10-v1 add-on.",
+			"title": "PA cross-border self-billed invoice"
 		}
 	},
 	"doc": {

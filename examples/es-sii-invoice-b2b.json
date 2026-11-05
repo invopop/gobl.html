@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "e3e27f3541d8d0d5216c078426491135e2357fa094396a6d50d8efce24c82f91"
+		},
+		"meta": {
+			"description": "Regular invoices are used for B2B transactions. Regular invoices must be issued when:",
+			"title": "B2B Standard Invoice"
 		}
 	},
 	"doc": {

@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "5eb548841135890605ec5caaf5ef7d387df11a961aadd3b24625055126e416ed"
 		},
+		"meta": {
+			"description": "An invoice from a French company to a French public entity. It uses the same fr-ctc-flow2-v1 add-on as a domestic B2B invoice, with the data Chorus Pro needs on top.",
+			"title": "PA B2G invoice (public buyer)"
+		},
 		"from": "iso6523-actorid-upis::0225:732829320",
 		"to": "iso6523-actorid-upis::0225:356000000"
 	},

@@ -19,7 +19,11 @@
 				"prv": "arca-qr",
 				"val": "https://www.afip.gob.ar/fe/qr/conceptos-generales.asp"
 			}
-		]
+		],
+		"meta": {
+			"description": "Goods and services with VAT at 21%, 10.5%, 27% and 0%, perceptions for Ingresos Brutos, VAT and municipal tax as charges, document discount, delivery, ordering, advances, card, transfer, debit and online payment, notes and attachments.",
+			"title": "Factura A with every ARCA feature"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -612,6 +616,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYmE3LTcxMDYtN2YyMy04ZDYyLTEwZjcwODYzOTI0MCJ9.eyJ1dWlkIjoiMDFhMWFiYTctNzEwNS03ZDNlLTliNmQtODFkMDA4Y2FjZGEwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImExOTYyZGU0ZGNlNTQ1NTE5NzE1NmFiZTU3MTBlMGRhM2VjNDRiNThjNjg1OTY2MmZhZDRkY2MyZTg3NDg2ZGUifSwiaWF0IjoxNzkzODgxMjM5fQ.hEcg17MHLAi5IjmxTscMPLWXRYAIQGCJDxaT_74XJkoet7ms5ata1tb0cXN-Zu7SL98E0Qm2X6UNUlvkZk4JcQ"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc1LWU2YjMtNzNhZC1hYzQ3LTZlZmY3NGI1OTA4MiJ9.eyJ1dWlkIjoiMDFhMWFiYTctNzEwNS03ZDNlLTliNmQtODFkMDA4Y2FjZGEwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImExOTYyZGU0ZGNlNTQ1NTE5NzE1NmFiZTU3MTBlMGRhM2VjNDRiNThjNjg1OTY2MmZhZDRkY2MyZTg3NDg2ZGUifSwiaWF0IjoxNzkzODk0NzcwfQ.7EV79-s0O01wcz7xntvy3BHqnDrhF8eH5xNzmlbH6R3TV2knt-I0sd26YG6F-T6kMpWfU2JBXSNQ65vvw8aCqA"
 	]
 }

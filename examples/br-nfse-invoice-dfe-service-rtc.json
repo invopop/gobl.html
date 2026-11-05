@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "971c01ac89f0601a588392ff61e402b4db62ceca8303c65ed9aab8d7b2a7274a"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a simple service invoice (NFS-e) with the currently supported RTC (Tax Reform) fields.",
+			"title": "Example B2B service invoice with RTC (NFS-e)"
 		}
 	},
 	"doc": {

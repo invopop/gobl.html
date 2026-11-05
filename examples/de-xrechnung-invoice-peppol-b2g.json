@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "f47a0440a661cd2a51e6686dc32658190f24850102229b14da69d8cca8d3fa9e"
 		},
+		"meta": {
+			"description": "XRechnung invoices are used for B2G transactions with German public sector entities. XRechnung invoices must be issued when:",
+			"title": "Peppol Germany - B2G standard XRechnung invoice"
+		},
 		"from": "iso6523-actorid-upis::9930:DE879558966",
 		"to": "iso6523-actorid-upis::9930:DE811569869"
 	},

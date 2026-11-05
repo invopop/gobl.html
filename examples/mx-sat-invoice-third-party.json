@@ -39,7 +39,11 @@
 				"prv": "sat-url",
 				"val": "https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=01a1ab50-6da4-7bdb-877b-28199dafceca\u0026re=EKU9003173C9\u0026tt=232.00\u0026fe=0PPOsw=="
 			}
-		]
+		],
+		"meta": {
+			"description": "This invoice is used when the **issuer (supplier)** bills the customer **on behalf of another taxpayer** who is the real seller — for example **consignment** sales. The **third party** is identified on each line in the seller object (RFC, fiscal regime, address), while supplier remains the party issuing the CFDI.",
+			"title": "B2B invoice on behalf of a third party (a cuenta de terceros)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -150,6 +154,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LWNjOWMtNzBlYS04NDkwLTJmOWFmZTM3ODQwYyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhNC03YmRiLTg3N2ItMjgxOTlkYWZjZWNhIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImZlY2JlNmFlOTkxNmYyMmUyNmUzZWViYWQ4NjdlOGJmOTQyZjhhYTVkYzU3MTViOTVmMTIwN2VkYTdkNGM5ZjQifSwiaWF0IjoxNzkzODc3MjAwfQ.HEHTz6bD1mkuBUwjB2EX8XBc0E0osXj1JlD-U_GLU1N_ZS9vFxVwvL4Nlr0nO39h1LmY0ITMHEmoQ3Knx-dDKQ"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZTUtNzFjOS05ZWQxLWMwMTU4YmQ2OGIwZCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhNC03YmRiLTg3N2ItMjgxOTlkYWZjZWNhIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImZlY2JlNmFlOTkxNmYyMmUyNmUzZWViYWQ4NjdlOGJmOTQyZjhhYTVkYzU3MTViOTVmMTIwN2VkYTdkNGM5ZjQifSwiaWF0IjoxNzkzODk0Njg4fQ.K1Rc6j8dq43ixMLt3pFCcp6s-jWpSvH8cA26kjPMZDcWDBHPxnAofw2lzKViKLMQbFaiqDtuGarw3Tbz-Sbc_Q"
 	]
 }

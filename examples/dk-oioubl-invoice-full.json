@@ -6,6 +6,10 @@
 			"alg": "sha256",
 			"val": "f4c1ac3423c209408c74971b8e6bb641763634c0cdc8d108b28d3517416b1e3a"
 		},
+		"meta": {
+			"description": "CVR and GLN endpoints, customer contact with identity and email, 25% and zero-rated lines, excise duty codes on a line and a document charge, SEPA transfer and MobilePay, delivery, notes and attachments.",
+			"title": "OIOUBL invoice with every feature"
+		},
 		"from": "iso6523-actorid-upis::0184:16356700",
 		"to": "iso6523-actorid-upis::0088:5798009883735"
 	},

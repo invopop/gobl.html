@@ -27,7 +27,11 @@
 				"prv": "dian-software",
 				"val": "PLEMSI"
 			}
-		]
+		],
+		"meta": {
+			"description": "Gran contribuyente to withholding agent with VAT at 19% and 5%, INC and ICA, ReteFuente, ReteIVA and ReteICA retained, UNSPSC and GTIN item identities, discounts and charges, delivery, advances, PSE and Nequi payments, notes and attachments.",
+			"title": "DIAN invoice with every feature"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -685,6 +689,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYmE3LTcxMWMtNzhjMi04ODdmLWU5N2M0ZDM5MWNkNiJ9.eyJ1dWlkIjoiMDFhMWFiYTctNzExYy03MDhjLThmODgtZmU5OTQzZGY2MDMxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjllZjZmNzAwZDJkZjMyZjYyNjc1MmE0MGY4NDc3NjJiZTBmNzg1MjRjNmIzZDRmZTI4NDhhZmQ4YjIwZjhkNTIifSwiaWF0IjoxNzkzODgxMjM5fQ.WVtCw1CmHAWI-sTs9Vto5E6gLgoi6G_T9R1gN0c-DFdGzVOuW3aK_77FP1bME0kQFvPcO1YLiKHmN0GMN_3eEw"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc1LWU2ZGEtNzUxNC04ZDA4LWFmMGJjNzE2YzZlMyJ9.eyJ1dWlkIjoiMDFhMWFiYTctNzExYy03MDhjLThmODgtZmU5OTQzZGY2MDMxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjllZjZmNzAwZDJkZjMyZjYyNjc1MmE0MGY4NDc3NjJiZTBmNzg1MjRjNmIzZDRmZTI4NDhhZmQ4YjIwZjhkNTIifSwiaWF0IjoxNzkzODk0NzcwfQ.bS-sBoKkT8XwdhabP5BpcjCirG0A5L4naL9JHGRAGFeQeTpG-PUEgnDri9nFSa0n00A070vVZjDzBcEy00L9Jw"
 	]
 }

@@ -27,7 +27,11 @@
 				"prv": "iapr-uid",
 				"val": "EB1CF2137764B0D534885F361365C39A32C0205A"
 			}
-		]
+		],
+		"meta": {
+			"description": "Goods invoice type 1.1 with 24%, 13% and 6% rates, the island rate, an exemption with its code, income classification on every item, environmental and climate fees and stamp duty as charges, delivery, notes and attachments; no document discounts, as myDATA forbids them.",
+			"title": "myDATA invoice with every feature"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -673,6 +677,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYmE3LTg2ZmUtNzdkMC1iZjJhLWJhMzlhODMzOGFlZiJ9.eyJ1dWlkIjoiMDFhMWFiYTctODZmZC03YmE4LWE4MzQtY2VkMTQyZTUyNmM0IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjM3YWZhNmRlZGMwMGIxMzI4NjU3MDc3NDg5Yjk1ZDk1NzY2MmFkZGJmNzUyYzFlOTdjMGVlZDhlNmJlNmM0ZWEifSwiaWF0IjoxNzkzODgxMjQ1fQ.75zU9v0YpjVUBJyCVg4vxVm1aV0VKdofg8eGpFesySNnpkHE394k4VfBXMpy2pMBFcbKt-coU2Eh049hsBatgw"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc1LWU3MGMtNzlhYy1iNGFkLTg3ZjdlMTU2NDc2OSJ9.eyJ1dWlkIjoiMDFhMWFiYTctODZmZC03YmE4LWE4MzQtY2VkMTQyZTUyNmM0IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjM3YWZhNmRlZGMwMGIxMzI4NjU3MDc3NDg5Yjk1ZDk1NzY2MmFkZGJmNzUyYzFlOTdjMGVlZDhlNmJlNmM0ZWEifSwiaWF0IjoxNzkzODk0NzcwfQ.uaDKgGOhk_-C6s1UZpT8jewf5pk9D7WnwzEtGiql70Vvzbf3_BHKQDBcHZef7pHMm9HV4ntEDDRcW2xuaV_5MA"
 	]
 }

@@ -1,175 +1,183 @@
 {
-	"$schema": "https://gobl.org/draft-0/bill/invoice",
-	"$regime": "BE",
-	"$addons": [
-		"eu-en16931-v2017"
-	],
-	"$tags": [
-		"self-billed"
-	],
-	"type": "standard",
-	"series": "SB",
-	"code": "2026-0031",
-	"issue_date": "2026-03-31",
-	"currency": "EUR",
-	"tax": {
-		"ext": {
-			"untdid-document-type": "389"
+	"head": {
+		"meta": {
+			"title": "Self-billed Peppol invoice",
+			"description": "The customer issues the invoice on the supplier's behalf under a self-billing agreement; UNTDID document type 389."
 		}
 	},
-	"supplier": {
-		"name": "Benelux Industries SA/NV",
-		"tax_id": {
-			"country": "BE",
-			"code": "0316597904"
-		},
-		"endpoints": [
-			{
-				"uri": "iso6523-actorid-upis::0208:0316597904"
-			}
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "BE",
+		"$addons": [
+			"eu-en16931-v2017"
 		],
-		"inboxes": [
-			{
-				"key": "peppol",
-				"scheme": "0208",
+		"$tags": [
+			"self-billed"
+		],
+		"type": "standard",
+		"series": "SB",
+		"code": "2026-0031",
+		"issue_date": "2026-03-31",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"untdid-document-type": "389"
+			}
+		},
+		"supplier": {
+			"name": "Benelux Industries SA/NV",
+			"tax_id": {
+				"country": "BE",
 				"code": "0316597904"
-			}
-		],
-		"addresses": [
-			{
-				"num": "42",
-				"street": "Rue de la Loi",
-				"locality": "Brussels",
-				"region": "Brussels-Capital",
-				"code": "1040",
-				"country": "BE"
-			}
-		],
-		"emails": [
-			{
-				"addr": "facturation@example.com"
-			}
-		]
-	},
-	"customer": {
-		"name": "Ardenne Logistics SA/NV",
-		"tax_id": {
-			"country": "BE",
-			"code": "0859536301"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0208:0316597904"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0208",
+					"code": "0316597904"
+				}
+			],
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Rue de la Loi",
+					"locality": "Brussels",
+					"region": "Brussels-Capital",
+					"code": "1040",
+					"country": "BE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "facturation@example.com"
+				}
+			]
 		},
-		"endpoints": [
-			{
-				"uri": "iso6523-actorid-upis::0208:0859536301"
-			}
-		],
-		"inboxes": [
-			{
-				"key": "peppol",
-				"scheme": "0208",
+		"customer": {
+			"name": "Ardenne Logistics SA/NV",
+			"tax_id": {
+				"country": "BE",
 				"code": "0859536301"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0208:0859536301"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0208",
+					"code": "0859536301"
+				}
+			],
+			"addresses": [
+				{
+					"num": "127",
+					"street": "Avenue Louise",
+					"locality": "Ixelles",
+					"region": "Brussels-Capital",
+					"code": "1050",
+					"country": "BE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "achats@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"quantity": "1200",
+				"item": {
+					"name": "Steel brackets, galvanised",
+					"ref": "BR-GV-120",
+					"price": "3.40",
+					"unit": "item"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "40",
+				"item": {
+					"name": "Aluminium profile 6 m",
+					"ref": "AL-P-6000",
+					"price": "28.50",
+					"unit": "item"
+				},
+				"discounts": [
+					{
+						"reason": "Volume discount",
+						"percent": "5%"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "3",
+				"item": {
+					"name": "Delivery to Liège warehouse",
+					"price": "120.00",
+					"unit": "service"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
 			}
 		],
-		"addresses": [
-			{
-				"num": "127",
-				"street": "Avenue Louise",
-				"locality": "Ixelles",
-				"region": "Brussels-Capital",
-				"code": "1050",
-				"country": "BE"
+		"ordering": {
+			"code": "PO-ARD-2026-114",
+			"period": {
+				"start": "2026-03-01",
+				"end": "2026-03-31"
 			}
-		],
-		"emails": [
+		},
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-04-30",
+						"percent": "100%"
+					}
+				],
+				"notes": "Paid by the customer by credit transfer within 30 days of issue"
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "BE68539007547034",
+						"bic": "GKCCBEBB",
+						"name": "Benelux Industries SA/NV"
+					}
+				]
+			}
+		},
+		"notes": [
 			{
-				"addr": "achats@example.com"
+				"key": "general",
+				"text": "Self-billing invoice (autofacturation / zelffacturering): issued by Ardenne Logistics SA/NV in the name and on behalf of Benelux Industries SA/NV under the self-billing agreement of 12 January 2026, as provided by article 53 §2 of the Belgian VAT Code. The invoice is deemed accepted by the supplier unless disputed within 15 days."
 			}
 		]
-	},
-	"lines": [
-		{
-			"quantity": "1200",
-			"item": {
-				"name": "Steel brackets, galvanised",
-				"ref": "BR-GV-120",
-				"price": "3.40",
-				"unit": "item"
-			},
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "general"
-				}
-			]
-		},
-		{
-			"quantity": "40",
-			"item": {
-				"name": "Aluminium profile 6 m",
-				"ref": "AL-P-6000",
-				"price": "28.50",
-				"unit": "item"
-			},
-			"discounts": [
-				{
-					"reason": "Volume discount",
-					"percent": "5%"
-				}
-			],
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "general"
-				}
-			]
-		},
-		{
-			"quantity": "3",
-			"item": {
-				"name": "Delivery to Liège warehouse",
-				"price": "120.00",
-				"unit": "service"
-			},
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "general"
-				}
-			]
-		}
-	],
-	"ordering": {
-		"code": "PO-ARD-2026-114",
-		"period": {
-			"start": "2026-03-01",
-			"end": "2026-03-31"
-		}
-	},
-	"payment": {
-		"terms": {
-			"key": "due-date",
-			"due_dates": [
-				{
-					"date": "2026-04-30",
-					"percent": "100%"
-				}
-			],
-			"notes": "Paid by the customer by credit transfer within 30 days of issue"
-		},
-		"instructions": {
-			"key": "credit-transfer",
-			"credit_transfer": [
-				{
-					"iban": "BE68539007547034",
-					"bic": "GKCCBEBB",
-					"name": "Benelux Industries SA/NV"
-				}
-			]
-		}
-	},
-	"notes": [
-		{
-			"key": "general",
-			"text": "Self-billing invoice (autofacturation / zelffacturering): issued by Ardenne Logistics SA/NV in the name and on behalf of Benelux Industries SA/NV under the self-billing agreement of 12 January 2026, as provided by article 53 §2 of the Belgian VAT Code. The invoice is deemed accepted by the supplier unless disputed within 15 days."
-		}
-	]
+	}
 }

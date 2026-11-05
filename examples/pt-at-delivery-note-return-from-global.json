@@ -27,7 +27,11 @@
 				"prv": "at-app-id",
 				"val": "0"
 			}
-		]
+		],
+		"meta": {
+			"description": "A return can also be linked back to a global waybill — for example, when surplus goods that were not delivered to any customer come back to the depot at the end of a delivery run.",
+			"title": "AT return from global waybill"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/delivery",
@@ -161,6 +165,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5OTAtN2M0NC04YjE5LTZhYTMyZmE1NDg5NiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRkNi03ZTM0LWE3M2ItNDdjYzA1N2I0NDEwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjEyYmU1YThkODMxYzVmNzRlZjQ5ODY5NTQzOWU4YzQ3ZDVhYmU3NDJkMDUwZDZkOTc5NTlmZTY0ZWRjZTc5YmYifSwiaWF0IjoxNzkzODc3MTc0fQ.vFSIhXYMLPCY-Mey9kKGACCxveod39Nn2HXckDZklN8QwEKTkqiS-ato7gbJDV3r-NIe-h-CYVe4Hx-NNcpbnw"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE3MzYtNzBlYS1iMjE0LTNjYWRkNWYwNTJhMiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRkNi03ZTM0LWE3M2ItNDdjYzA1N2I0NDEwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjEyYmU1YThkODMxYzVmNzRlZjQ5ODY5NTQzOWU4YzQ3ZDVhYmU3NDJkMDUwZDZkOTc5NTlmZTY0ZWRjZTc5YmYifSwiaWF0IjoxNzkzODk0Njg4fQ.TTcRO4tliuGD-wtgiS-G_eAn_prmFAHcwX3g7ka-QPGdomH2LxrHIn9b1nJax38fInLe-ubUpDdDPtnoILDEmg"
 	]
 }

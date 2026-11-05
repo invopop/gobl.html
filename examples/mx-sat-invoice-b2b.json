@@ -39,7 +39,11 @@
 				"prv": "sat-url",
 				"val": "https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=01a1ab50-6d9e-797d-b2a9-71b62faef487\u0026re=EKU9003173C9\u0026tt=1160.00\u0026fe=0PPOsw=="
 			}
-		]
+		],
+		"meta": {
+			"description": "This main type of invoice is a standard B2B invoice from a Mexican supplier to another Mexican customer.",
+			"title": "B2B invoice (Personas Morales)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -154,6 +158,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LWNjOTAtN2E4Yi05ZDFjLTA3NTQ2NGJkODc5MyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ5ZS03OTdkLWIyYTktNzFiNjJmYWVmNDg3IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImZmYmE4ODc3M2Y4ZjZhNzVhZDgzOGQ5MjFlZThhMjJmMmU4NzlkMThlZWY0YzgxZTM0M2JiOTA4YmFjY2ZhODMifSwiaWF0IjoxNzkzODc3MjAwfQ.pQMpjDBeRks1_IA29moIcdV3P_Vj7-Byv77njSTYkpT0TDTbsrtDwT0XrUj_p2Oqua3KxkXDBaMUu_p5-_SMxA"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZDgtN2VkYy1iN2I4LWI1YmI5ODQxOTFjMyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ5ZS03OTdkLWIyYTktNzFiNjJmYWVmNDg3IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImZmYmE4ODc3M2Y4ZjZhNzVhZDgzOGQ5MjFlZThhMjJmMmU4NzlkMThlZWY0YzgxZTM0M2JiOTA4YmFjY2ZhODMifSwiaWF0IjoxNzkzODk0Njg4fQ.Sd_8ph0UCh8AifAWEF1vT3pXvwnWs1rUfd8DOxzMAiUL5IreHnyumDwzA2NTrNrB7Op1Hes8d4UXEE49hzu1KQ"
 	]
 }

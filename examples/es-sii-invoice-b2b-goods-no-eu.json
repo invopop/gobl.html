@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "a81de11bae1310196c20164628e974a3c6f5dcaa3784a8d703d37461c21a92de"
+		},
+		"meta": {
+			"description": "Export invoices are used for B2B goods delivered to customers outside the EU.",
+			"title": "B2B Goods Non-EU Client (Export)"
 		}
 	},
 	"doc": {

@@ -1,144 +1,152 @@
 {
-	"$schema": "https://gobl.org/draft-0/bill/invoice",
-	"$regime": "EL",
-	"$addons": [
-		"gr-mydata-v1"
-	],
-	"$tags": [
-		"goods",
-		"self-billed"
-	],
-	"type": "standard",
-	"series": "ΑΤ",
-	"code": "117",
-	"issue_date": "2025-10-24",
-	"currency": "EUR",
-	"supplier": {
-		"name": "Ελληνικά Τρόφιμα Α.Ε.",
-		"tax_id": {
-			"country": "EL",
-			"code": "177472438"
+	"head": {
+		"meta": {
+			"title": "Self-billed myDATA invoice",
+			"description": "Sale on behalf of a third party (invoice type 1.4) issued by the customer under ν. 4308/2014 art. 8 §5."
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "EL",
+		"$addons": [
+			"gr-mydata-v1"
+		],
+		"$tags": [
+			"goods",
+			"self-billed"
+		],
+		"type": "standard",
+		"series": "ΑΤ",
+		"code": "117",
+		"issue_date": "2025-10-24",
+		"currency": "EUR",
+		"supplier": {
+			"name": "Ελληνικά Τρόφιμα Α.Ε.",
+			"tax_id": {
+				"country": "EL",
+				"code": "177472438"
+			},
+			"addresses": [
+				{
+					"street": "Εγνατία 54",
+					"locality": "Θεσσαλονίκη",
+					"code": "54625",
+					"country": "GR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "logistirio@example.com"
+				}
+			]
 		},
-		"addresses": [
+		"customer": {
+			"name": "Αιγαίο Λιανική Α.Ε.",
+			"tax_id": {
+				"country": "EL",
+				"code": "841442160"
+			},
+			"addresses": [
+				{
+					"street": "Λεωφόρος Κηφισίας 120",
+					"locality": "Αθήνα",
+					"code": "11526",
+					"country": "GR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "promitheies@example.com"
+				}
+			]
+		},
+		"lines": [
 			{
-				"street": "Εγνατία 54",
-				"locality": "Θεσσαλονίκη",
-				"code": "54625",
-				"country": "GR"
+				"quantity": "240",
+				"item": {
+					"name": "Ελαιόλαδο εξαιρετικό παρθένο 1L",
+					"price": "8.40",
+					"unit": "item"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced"
+					}
+				]
+			},
+			{
+				"quantity": "600",
+				"item": {
+					"name": "Ζυμαρικά 500g",
+					"price": "1.15",
+					"unit": "item"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced"
+					}
+				]
+			},
+			{
+				"quantity": "120",
+				"item": {
+					"name": "Μέλι θυμαρίσιο 450g",
+					"price": "6.90",
+					"unit": "item"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced"
+					}
+				]
+			},
+			{
+				"quantity": "40",
+				"item": {
+					"name": "Χάρτινες συσκευασίες μεταφοράς",
+					"price": "2.30",
+					"unit": "item"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
 			}
 		],
-		"emails": [
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2025-11-23",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "GR16 0110 1250 0000 0001 2300 695",
+						"name": "Ελληνικά Τρόφιμα Α.Ε."
+					}
+				]
+			}
+		},
+		"notes": [
 			{
-				"addr": "logistirio@example.com"
+				"key": "general",
+				"text": "Αυτοτιμολόγηση: το παραστατικό εκδίδεται από τον αγοραστή για λογαριασμό του προμηθευτή, βάσει της συμφωνίας αυτοτιμολόγησης της 1ης Μαρτίου 2025 (άρθρο 8 παρ. 5 ν. 4308/2014)."
+			},
+			{
+				"key": "general",
+				"text": "Self-billed invoice: issued by the customer on behalf of the supplier under the self-billing agreement of 1 March 2025."
 			}
 		]
-	},
-	"customer": {
-		"name": "Αιγαίο Λιανική Α.Ε.",
-		"tax_id": {
-			"country": "EL",
-			"code": "841442160"
-		},
-		"addresses": [
-			{
-				"street": "Λεωφόρος Κηφισίας 120",
-				"locality": "Αθήνα",
-				"code": "11526",
-				"country": "GR"
-			}
-		],
-		"emails": [
-			{
-				"addr": "promitheies@example.com"
-			}
-		]
-	},
-	"lines": [
-		{
-			"quantity": "240",
-			"item": {
-				"name": "Ελαιόλαδο εξαιρετικό παρθένο 1L",
-				"price": "8.40",
-				"unit": "item"
-			},
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "reduced"
-				}
-			]
-		},
-		{
-			"quantity": "600",
-			"item": {
-				"name": "Ζυμαρικά 500g",
-				"price": "1.15",
-				"unit": "item"
-			},
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "reduced"
-				}
-			]
-		},
-		{
-			"quantity": "120",
-			"item": {
-				"name": "Μέλι θυμαρίσιο 450g",
-				"price": "6.90",
-				"unit": "item"
-			},
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "reduced"
-				}
-			]
-		},
-		{
-			"quantity": "40",
-			"item": {
-				"name": "Χάρτινες συσκευασίες μεταφοράς",
-				"price": "2.30",
-				"unit": "item"
-			},
-			"taxes": [
-				{
-					"cat": "VAT",
-					"rate": "general"
-				}
-			]
-		}
-	],
-	"payment": {
-		"terms": {
-			"key": "due-date",
-			"due_dates": [
-				{
-					"date": "2025-11-23",
-					"percent": "100%"
-				}
-			]
-		},
-		"instructions": {
-			"key": "credit-transfer",
-			"credit_transfer": [
-				{
-					"iban": "GR16 0110 1250 0000 0001 2300 695",
-					"name": "Ελληνικά Τρόφιμα Α.Ε."
-				}
-			]
-		}
-	},
-	"notes": [
-		{
-			"key": "general",
-			"text": "Αυτοτιμολόγηση: το παραστατικό εκδίδεται από τον αγοραστή για λογαριασμό του προμηθευτή, βάσει της συμφωνίας αυτοτιμολόγησης της 1ης Μαρτίου 2025 (άρθρο 8 παρ. 5 ν. 4308/2014)."
-		},
-		{
-			"key": "general",
-			"text": "Self-billed invoice: issued by the customer on behalf of the supplier under the self-billing agreement of 1 March 2025."
-		}
-	]
+	}
 }

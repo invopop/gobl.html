@@ -39,7 +39,11 @@
 				"prv": "sat-url",
 				"val": "https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=01a1ab50-6da3-741e-8a19-715f1771b98e\u0026re=EKU9003173C9\u0026tt=22.04\u0026fe=0PPOsw=="
 			}
-		]
+		],
+		"meta": {
+			"description": "In Mexico, a General Public Invoice (Factura al Público en General) is a type of tax document issued to record sales made to customers who do not request an invoice with a specific Federal Taxpayer Registry (RFC) number. Instead, a generic RFC is used to identify the recipient:",
+			"title": "Simplified invoice (Factura al público en general)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -156,6 +160,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LWNjOTktN2ExOS05NWUyLWRhMzg4MjA5NzdlOCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhMy03NDFlLThhMTktNzE1ZjE3NzFiOThlIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjJjYmZhZGFmOTEyYjdhNGZiMTk3ZDEzNGE5Y2I3OGI3MzY2OWJmM2YyZTc5NzJiYjYyYjczMjdlNTc2ZDI1YjgifSwiaWF0IjoxNzkzODc3MjAwfQ.f9tkZP8YmDo10Ab8PLzlNerHejiAaWHhAVsqfXTaKeeSpbueceuAn88Pk-r8jTBkslLdFPsqau7pdUBG5SlTEQ"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZTItNzZmZC1hNmQ2LTRjMTQ2NmY0MDY2OSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhMy03NDFlLThhMTktNzE1ZjE3NzFiOThlIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjJjYmZhZGFmOTEyYjdhNGZiMTk3ZDEzNGE5Y2I3OGI3MzY2OWJmM2YyZTc5NzJiYjYyYjczMjdlNTc2ZDI1YjgifSwiaWF0IjoxNzkzODk0Njg4fQ.vt8njL94KLrL3L5akc4qaWZl5KjwhWtsEm152d0kqQ2UmNyy4zoptCyhD45E5Ep7YTK4IaM9wqbcXTUgZ5Kf0w"
 	]
 }

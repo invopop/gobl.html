@@ -19,7 +19,11 @@
 				"prv": "arca-qr",
 				"val": "https://www.afip.gob.ar/fe/qr/conceptos-generales.asp"
 			}
-		]
+		],
+		"meta": {
+			"description": "Factura A is issued by registered taxpayers (Responsable Inscripto) to other registered taxpayers or monotributistas. This invoice type includes VAT broken down separately.",
+			"title": "Factura A - Registered taxpayer to registered taxpayer (B2B)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -140,6 +144,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4YTEtNzY3Yy1iYzc1LTY5MzE5MWI4NWZlYSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmNmNS03ODEyLTk5MmQtNjE4OTYwMmUyNTk2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjNhN2U2ODk5YTcxMWIyZDQ4MWNmMDA2Y2Q5ZmE5YmUwNWQ2Zjk0NzBmMDdjNmJmNDhiMzA3YjZkNDBjNWU4NzgifSwiaWF0IjoxNzkzODc3MTc0fQ.6pqOringxaFmF1d5Bb0UxLwbNqdULnwspRlcD5Y2ifvqtiMUlZg_JO7bxfNry6cDQw9Cryu9rrcISUwfZFyo9Q"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE1ZmItNzY4Yi1iYWMwLWUxZDVjNGQwNDM2NyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmNmNS03ODEyLTk5MmQtNjE4OTYwMmUyNTk2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjNhN2U2ODk5YTcxMWIyZDQ4MWNmMDA2Y2Q5ZmE5YmUwNWQ2Zjk0NzBmMDdjNmJmNDhiMzA3YjZkNDBjNWU4NzgifSwiaWF0IjoxNzkzODk0Njg4fQ.yyiXB5eDjSNBv86jaIauf00a3rD593rAdMYmhJfDbm9d6pIDTYfGpnOerqN2huHygjaglY8hG2wMgJEllCXDQw"
 	]
 }

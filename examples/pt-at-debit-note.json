@@ -27,7 +27,11 @@
 				"prv": "at-app-id",
 				"val": "0"
 			}
-		]
+		],
+		"meta": {
+			"description": "Extra consulting hours and travel approved after the invoice, referring to the prior FT.",
+			"title": "AT debit note (ND)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -242,6 +246,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzUzLTM2MTAtNzJiZi1iNDJjLTNmODYzZjNkZDliMyJ9.eyJ1dWlkIjoiMDFhMWFjNTMtMzYwZS03ZWZiLWE4MmQtMTc5ZTgxZGQxYWYzIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImRhNjExZjMxMDMyZThhYjdmZDE3YjYwMzhjNjRhZjU1MTk3YzlmOTY1N2M0ZDg4ODliOWU3NDAzMmUwZWIyYmUifSwiaWF0IjoxNzkzODkyNDk2fQ.8W1F-q0lOOHuMnqutW5IG4FDcXk-dW1DhuvwwEkoAPujyojXTi_mdnuL0VcJaXo_UF33OuH1tFWblkUMNG7SBA"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc1LWU3MzItNzI5MC04YWRjLTY3MWMyM2QxYWNmMiJ9.eyJ1dWlkIjoiMDFhMWFjNTMtMzYwZS03ZWZiLWE4MmQtMTc5ZTgxZGQxYWYzIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImRhNjExZjMxMDMyZThhYjdmZDE3YjYwMzhjNjRhZjU1MTk3YzlmOTY1N2M0ZDg4ODliOWU3NDAzMmUwZWIyYmUifSwiaWF0IjoxNzkzODk0NzcwfQ.Wp9syWvEoohQ-tqZIE7UKWqacEQnM2N07V_q3D1uEnVfQml2zjYwwZSRVU0chLKKGoxXYUg3UEBc7PCRLG-U0Q"
 	]
 }

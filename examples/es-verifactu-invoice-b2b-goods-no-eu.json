@@ -11,7 +11,11 @@
 				"prv": "verifactu-qr",
 				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-sett/000004\u0026fecha=17-11-2025\u0026importe=1800.00"
 			}
-		]
+		],
+		"meta": {
+			"description": "Export invoices are used for B2B goods delivered to customers outside the EU.",
+			"title": "B2B Goods International Client (Export)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -111,6 +115,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4ZjMtN2NhMi1hODYxLWMyMjQyM2NmYzM4NCJ9.eyJ1dWlkIjoiMDFhMWFiNWUtNWRkZS03YWJlLThjYjMtNDIwNTVkOTMwODQzIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjhhOTIxNWU4ZjVmMTFkZWYxZDA5MjI0NmJiMTMwMzRhYTQxOGZmYTQxOTk3YTM0OWYwYjRkM2IxMzY3ZjAyMTUifSwiaWF0IjoxNzkzODc3MTc0fQ.CBYtKlqcN6uL47ku11wHOP2DwujNpzJ3DJdtK3ebfSjwRnUCVJpa1yB3X2W_bCfoA5lGski66xx2SpCNbArymg"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NmMtNzZjNi1iMjZjLTc4NGE1NGQzNTNmZSJ9.eyJ1dWlkIjoiMDFhMWFiNWUtNWRkZS03YWJlLThjYjMtNDIwNTVkOTMwODQzIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjhhOTIxNWU4ZjVmMTFkZWYxZDA5MjI0NmJiMTMwMzRhYTQxOGZmYTQxOTk3YTM0OWYwYjRkM2IxMzY3ZjAyMTUifSwiaWF0IjoxNzkzODk0Njg4fQ.pjZOIvLP_E_vD235NXIffaI0_qz8z3bcRd9qJ9A6kJxi9fPgh68GtsI7nVzrjqpXLosECs3ZFTA3aXyiP8zl2A"
 	]
 }

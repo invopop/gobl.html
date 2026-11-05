@@ -5,6 +5,10 @@
 		"dig": {
 			"alg": "sha256",
 			"val": "4d23bba5e7982ec9f8b3d0b9b6b6ed4bc5a4edcdfcd5848b1f5f8e82b9604be4"
+		},
+		"meta": {
+			"description": "A French supplier invoicing a customer in another EU member state. Cross-border B2B is **not** transmitted via the PA e-invoicing flow — it falls under e-reporting instead — but the same GOBL document is used as the source of truth for both.",
+			"title": "PA intra-community B2B invoice"
 		}
 	},
 	"doc": {

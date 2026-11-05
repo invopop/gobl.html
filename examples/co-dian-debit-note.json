@@ -27,7 +27,11 @@
 				"prv": "dian-software",
 				"val": "PLEMSI"
 			}
-		]
+		],
+		"meta": {
+			"description": "In this example, we're issuing a debit note (nota de débito) that increases the amount of a previously cleared invoice.",
+			"title": "Example debit note"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -166,6 +170,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4YzMtNzM2ZS1iZDY4LTQ0YTFiOTFlYzlmNyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQxNy03ZTZmLWFjN2ItZDRjN2JlNTI0Y2Q0IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImJmZTA2NGJlMjA2ODU0ZjgwYjA5MmUwOTY2ZDM3ODdhNDc4ODI4NmIzNDczNjZjYTc4OGNjNjg0NTIwNDJlOTkifSwiaWF0IjoxNzkzODc3MTc0fQ.DDBt-6B9KaD3CpribwWZnRtgTYvwUKTkA1L1nZuWMfoDiKL6YGZI3CuCQMDauHMwHMkfOZvewPM19a9xviX7Cw"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2MWYtNzJmMS1iNDNjLTZjMmE1YjllYzg2YyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQxNy03ZTZmLWFjN2ItZDRjN2JlNTI0Y2Q0IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImJmZTA2NGJlMjA2ODU0ZjgwYjA5MmUwOTY2ZDM3ODdhNDc4ODI4NmIzNDczNjZjYTc4OGNjNjg0NTIwNDJlOTkifSwiaWF0IjoxNzkzODk0Njg4fQ.lNH-eN2x9bd-nL0POeXI-5W_HfNbIGYJsevJ5uBUQp9i-HlsyndLffvdE_ugBoTb1pwJnCyPLZ1W26kV-1VqwA"
 	]
 }

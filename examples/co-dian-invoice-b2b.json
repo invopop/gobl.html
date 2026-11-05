@@ -27,7 +27,11 @@
 				"prv": "dian-software",
 				"val": "PLEMSI"
 			}
-		]
+		],
+		"meta": {
+			"description": "In this example, we're issuing a B2B invoice from a Colombian supplier to another Colombian business customer.",
+			"title": "Example B2B invoice"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -148,6 +152,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY4YmItNzk4MS1iM2I3LTdiN2I1NjI1OGUyNiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQxNC03NTM3LThjN2MtOWZhNTk2YTU4NmEzIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6Ijk4NTA2NGI5OTNjYTljMjc2ZjBlYjlmMjkzYzU4YzQ1OGYxZjg0ZGNkZGZhZWQwYmI1NDE0YjllZmY5MTQ3YTkifSwiaWF0IjoxNzkzODc3MTc0fQ.4Baj39TJSlerBk9oyrIZZuhoxEMt9WmSOZ7X6eLh45clX-JWFWfNbdn7ZuKiB4Ykl_nivAzVZvnnBtuHYHTrQg"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2MTktNzllMy05MzU2LWZjOGE4ODJlNmYxNCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQxNC03NTM3LThjN2MtOWZhNTk2YTU4NmEzIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6Ijk4NTA2NGI5OTNjYTljMjc2ZjBlYjlmMjkzYzU4YzQ1OGYxZjg0ZGNkZGZhZWQwYmI1NDE0YjllZmY5MTQ3YTkifSwiaWF0IjoxNzkzODk0Njg4fQ.PbaumJFl5c5A6dv471JeI2J19hxE7ao6QHp92CWWlkmS-5zN8XAv_6qdRB1hlp-4A1UP62JW8SPlumeh6h41fg"
 	]
 }

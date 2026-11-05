@@ -27,7 +27,11 @@
 				"prv": "at-app-id",
 				"val": "0"
 			}
-		]
+		],
+		"meta": {
+			"description": "FT with 23%, 13% and 6% rates, an M07 exemption, a Madeira line at 22%, IRC withholding, product types, document discount and delivery charge, advances by card, transfer, notes and attachments.",
+			"title": "AT invoice with every feature"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -698,6 +702,6 @@
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYmE0LWQyN2UtN2Q1Ni04OGVmLWNlZTZhYjUzY2UwYiJ9.eyJ1dWlkIjoiMDFhMWFiYTQtZDI3ZC03ZTM4LTk4NmYtNTRkMmUzYjA1YjZjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjI0ZjEzNGE1MmE4YzhkMTFiNGE0MmZmZjUxMzU2ZTBjMmZiNWY2MDNhMjBhMWI5OTY3ZDM5MGM1NzNhZDQwNmYifSwiaWF0IjoxNzkzODgxMDY4fQ.1zElEVNIx7BlCIGCFsDiFC7ygVMRDSx15fPUf51-TqKp77ELLn6IAzZgpjeHEEx-YDHYaglWYpzSY_ihHucxpw"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc1LWU3MzUtN2VlMC05ZWUwLTZkYWQ2ZjE3NTFlMSJ9.eyJ1dWlkIjoiMDFhMWFiYTQtZDI3ZC03ZTM4LTk4NmYtNTRkMmUzYjA1YjZjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjI0ZjEzNGE1MmE4YzhkMTFiNGE0MmZmZjUxMzU2ZTBjMmZiNWY2MDNhMjBhMWI5OTY3ZDM5MGM1NzNhZDQwNmYifSwiaWF0IjoxNzkzODk0NzcwfQ.3ml9hqHlnkkh71USeQtFZblvPfHzI-MhxY-nOotd3AwmdePRTTM4qgpN6VK8H3p2v9fqGYU9-p4MtZmxeNP2Hg"
 	]
 }

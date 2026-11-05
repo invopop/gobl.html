@@ -11,7 +11,10 @@
 				"prv": "verifactu-qr",
 				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B24830515\u0026numserie=FC-0001\u0026fecha=26-02-2026\u0026importe=605.00"
 			}
-		]
+		],
+		"meta": {
+			"title": "Replacement invoice (factura de canje)"
+		}
 	},
 	"doc": {
 		"$schema": "https://gobl.org/draft-0/bill/invoice",
@@ -119,6 +122,6 @@
 		}
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYjY5LTY5MGEtNzAwYi1iMDdkLTgyNjVlNjljMWY4ZSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1ZS03ZjJhLTk4NDMtY2VhMzFlM2Q2NjBjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImFiZGY1MmY3YTRlMzI5NTM4YTYxZGU0MWQ2NmJkNGE1MzM1NmEzMWY2MWMxZmNhMzg5NjRkZmM4MjNmOWNmOWYifSwiaWF0IjoxNzkzODc3MTc0fQ.ktOPLcianqjyT5mNTRHs3C2ZSfuz4829pGjAHAzBblPl12tY6VBlJOJKDVj_Gzk2j3dax0N6BIkHv92czimO7w"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2N2YtN2QyYi1hYWM2LWYwYzJlOWU0ODYyOCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1ZS03ZjJhLTk4NDMtY2VhMzFlM2Q2NjBjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImFiZGY1MmY3YTRlMzI5NTM4YTYxZGU0MWQ2NmJkNGE1MzM1NmEzMWY2MWMxZmNhMzg5NjRkZmM4MjNmOWNmOWYifSwiaWF0IjoxNzkzODk0Njg4fQ.L6JtcyIIn11zFAvH5EBoK8yW87A-4ZNTNdsRjW3qsJFfcKj-fQ0g2apjS9gZeMCI9M8e5j96uIno9wikeH29_A"
 	]
 }
