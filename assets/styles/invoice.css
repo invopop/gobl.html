@@ -75,6 +75,10 @@ header.with-qr > div.details {
     flex-basis: 50%;
     box-sizing: border-box;
     border-right: 0.5px solid #e5e7eb;
+    /* A long unbreakable name must wrap inside the column rather than
+       widen it, or the QR section drops below the details. */
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 header.with-qr div.contacts {
     flex-basis: 100%;
