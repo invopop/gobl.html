@@ -1,0 +1,140 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6dd6-7e34-a73b-47cc057b4410",
+		"dig": {
+			"alg": "sha256",
+			"val": "c65ed9d9f21d02485f53b2edcb65fd2652cd8caff62a70fed5b60d928365b659"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/delivery",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"$tags": [
+			"return"
+		],
+		"uuid": "01a1ab50-6dd6-7e35-88e7-2ee430e24542",
+		"type": "note",
+		"series": "GD SERIES-A",
+		"issue_date": "2026-04-03",
+		"currency": "EUR",
+		"preceding": [
+			{
+				"issue_date": "2026-04-01",
+				"series": "GT SERIES-A",
+				"code": "1"
+			}
+		],
+		"despatch_date": "2026-04-03",
+		"tax": {
+			"ext": {
+				"pt-saft-movement-type": "GD"
+			}
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "770013813"
+			},
+			"addresses": [
+				{
+					"street": "Rua das Flores 200 3º Esquerdo",
+					"locality": "Porto",
+					"code": "4050-265",
+					"country": "PT"
+				}
+			],
+			"registration": {
+				"capital": "100000.00",
+				"office": "Porto"
+			}
+		},
+		"despatcher": {
+			"name": "Innovatech Logistics",
+			"addresses": [
+				{
+					"street": "Rua da Indústria 45",
+					"locality": "Porto",
+					"code": "4050-300",
+					"country": "PT"
+				}
+			]
+		},
+		"receiver": {
+			"name": "Innovatech Depot",
+			"addresses": [
+				{
+					"street": "Rua da Indústria 45",
+					"locality": "Porto",
+					"code": "4050-300",
+					"country": "PT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Product A",
+					"price": "5.00",
+					"unit": "unit",
+					"ext": {
+						"pt-saft-product-type": "P"
+					}
+				},
+				"sum": "10.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "10.00"
+			}
+		],
+		"totals": {
+			"sum": "10.00",
+			"total": "10.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "NOR"
+								},
+								"base": "10.00",
+								"percent": "23.0%",
+								"amount": "2.30"
+							}
+						],
+						"amount": "2.30"
+					}
+				],
+				"sum": "2.30"
+			},
+			"tax": "2.30",
+			"total_with_tax": "12.30",
+			"payable": "12.30"
+		},
+		"notes": [
+			{
+				"text": "Surplus from global waybill GT SERIES-A/1 returned to depot."
+			}
+		]
+	}
+}

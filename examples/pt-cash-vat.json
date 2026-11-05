@@ -1,0 +1,107 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6dd2-74de-8da6-3dc65b72e768",
+		"dig": {
+			"alg": "sha256",
+			"val": "2bedb1eea86cb3ea8238830f9c9728cc779dcbf1659dd4f58a68168286b5b6b1"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/payment",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"$tags": [
+			"cash-vat"
+		],
+		"uuid": "01a1ab50-6dd2-74e2-8db0-ed70e5b06055",
+		"type": "receipt",
+		"series": "RC SERIES-A",
+		"issue_date": "2024-12-23",
+		"currency": "EUR",
+		"ext": {
+			"pt-saft-payment-type": "RC",
+			"pt-saft-source": "P"
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "770013813"
+			},
+			"addresses": [
+				{
+					"street": "Rua das Flores 200 3º Esquerdo",
+					"locality": "Porto",
+					"code": "4050-265",
+					"country": "PT"
+				}
+			],
+			"registration": {
+				"capital": "100000.00",
+				"office": "Porto"
+			}
+		},
+		"customer": {
+			"name": "Gusto Unipessoal Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Avenida da Liberdade 152 2º Direito",
+					"locality": "Lisboa",
+					"code": "1250-146",
+					"country": "PT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "1",
+					"description": "Invoice 1"
+				},
+				"amount": "61.50",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"ext": {
+										"pt-region": "PT",
+										"pt-saft-tax-rate": "NOR"
+									},
+									"base": "50.00",
+									"percent": "23.0%",
+									"amount": "11.50"
+								}
+							],
+							"amount": "11.50"
+						}
+					],
+					"sum": "11.50"
+				}
+			}
+		],
+		"methods": [
+			{
+				"key": "credit-transfer",
+				"description": "Bank transfer",
+				"amount": "61.50",
+				"ext": {
+					"pt-saft-payment-means": "TB"
+				}
+			}
+		],
+		"total": "61.50"
+	}
+}

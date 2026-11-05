@@ -1,0 +1,123 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d9d-74ab-bf03-c7e521444d88",
+		"dig": {
+			"alg": "sha256",
+			"val": "6a6c0979934da1e95e14995d466b273fc30ac0baac850257b5b3500a7df04361"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"it-ticket-v1"
+		],
+		"uuid": "01a1ab50-6d9d-74ac-8288-2e7af56a1bd9",
+		"type": "standard",
+		"series": "XXIT",
+		"code": "001",
+		"issue_date": "2026-07-08",
+		"currency": "EUR",
+		"tax": {
+			"prices_include": "VAT"
+		},
+		"supplier": {
+			"name": "Cleaning SRL",
+			"tax_id": {
+				"country": "IT",
+				"code": "74230430451"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Cleaning services",
+					"price": "125.00",
+					"ext": {
+						"it-ticket-product": "services"
+					}
+				},
+				"sum": "125.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "export",
+						"ext": {
+							"it-ticket-exempt": "N3"
+						}
+					}
+				],
+				"total": "125.00"
+			},
+			{
+				"i": 2,
+				"quantity": "3",
+				"item": {
+					"name": "Cleaning products",
+					"price": "137.50",
+					"ext": {
+						"it-ticket-product": "goods"
+					}
+				},
+				"sum": "412.50",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "22.0%"
+					}
+				],
+				"total": "412.50"
+			}
+		],
+		"payment": {
+			"advances": [
+				{
+					"key": "card",
+					"description": "Card payment",
+					"percent": "100%",
+					"amount": "537.50"
+				}
+			]
+		},
+		"totals": {
+			"sum": "537.50",
+			"tax_included": "74.39",
+			"total": "463.11",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "export",
+								"ext": {
+									"it-ticket-exempt": "N3"
+								},
+								"base": "125.00",
+								"amount": "0.00"
+							},
+							{
+								"key": "standard",
+								"base": "338.11",
+								"percent": "22.0%",
+								"amount": "74.39"
+							}
+						],
+						"amount": "74.39"
+					}
+				],
+				"sum": "74.39"
+			},
+			"tax": "74.39",
+			"total_with_tax": "537.50",
+			"payable": "537.50",
+			"advance": "537.50",
+			"due": "0.00"
+		}
+	}
+}

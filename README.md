@@ -83,6 +83,27 @@ renderer.
 Each release publishes the build to
 `https://assets.invopop.com/gobl.html/<version>/`.
 
+### Docs examples
+
+Most of `examples/` comes from the GOBL examples published on
+[docs.invopop.com](https://docs.invopop.com), so the previewer renders every
+document the docs show; gobl.html keeps more of its own on top. The docs are
+the source of those files: edit the `.min.mdx` snippet there and re-import
+rather than editing the copy here. With a checkout of the docs repository
+next to this one:
+
+```bash
+go run scripts/import-docs-examples.go ../docs.invopop.com
+go test . -run Example -update
+```
+
+The script envelops and validates each built snippet with the gobl pinned
+here, writes `examples/<country>-<name>.json`, records what it imported in
+`examples/docs-examples.txt` and removes imports the docs dropped. It skips a
+docs example whose name an example of gobl.html's own already uses, and
+reports one the current gobl rules reject, so both show up as work for the
+docs.
+
 ### Testing
 
 Tests are currently pretty limited. To ensure the basics are covered, the contents of the `examples` directory are converted to HTML, pretty printed, and output to the `examples/out` directory. The tests will ensure the output matches what's expected. To update the output test data run:

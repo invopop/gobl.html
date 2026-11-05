@@ -1,0 +1,156 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6da8-78f1-a220-5e6c1be79075",
+		"dig": {
+			"alg": "sha256",
+			"val": "94eb7d0795c5a2174f4557ef8172ecf4be310d69d0e13b25e653d1a71c7b59d2"
+		},
+		"from": "iso6523-actorid-upis::9920:ESB98602642",
+		"to": "iso6523-actorid-upis::9920:ESB85905495"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"eu-en16931-v2017"
+		],
+		"uuid": "01a1ab50-6da8-78f4-b859-27c1f27ec1c7",
+		"type": "credit-note",
+		"series": "CN",
+		"code": "PP000104",
+		"issue_date": "2025-04-10",
+		"currency": "EUR",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2025-04-03",
+				"series": "INV",
+				"code": "PP000003",
+				"reason": "Services not delivered"
+			}
+		],
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"untdid-document-type": "381"
+			}
+		},
+		"supplier": {
+			"name": "Cyberdyne Systems Spain S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B98602642"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9920:ESB98602642"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9920",
+					"code": "ESB98602642"
+				}
+			],
+			"addresses": [
+				{
+					"street": "Paseo de la Castellana 120",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28020",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@cyberdynesys.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Invopop S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9920:ESB85905495"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9920",
+					"code": "ESB85905495"
+				}
+			],
+			"addresses": [
+				{
+					"street": "Calle Pradillo 42",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing+test@invopop.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Sambox services",
+					"price": "145.00",
+					"unit": "one"
+				},
+				"sum": "290.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "290.00"
+			}
+		],
+		"totals": {
+			"sum": "290.00",
+			"total": "290.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "290.00",
+								"percent": "21.0%",
+								"amount": "60.90"
+							}
+						],
+						"amount": "60.90"
+					}
+				],
+				"sum": "60.90"
+			},
+			"tax": "60.90",
+			"total_with_tax": "350.90",
+			"payable": "350.90"
+		}
+	}
+}

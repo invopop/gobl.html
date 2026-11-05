@@ -1,0 +1,149 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6dd8-764d-94a9-e4ab1d8f21c1",
+		"dig": {
+			"alg": "sha256",
+			"val": "fa543d8e052b4f7e8673fdf483d6568fc2b3ec47137d56ad6f2a04117e9a529d"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/delivery",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"$tags": [
+			"return"
+		],
+		"uuid": "01a1ab50-6dd8-7651-b2f5-b0c071ab69ee",
+		"type": "note",
+		"series": "GD SERIES-A",
+		"issue_date": "2026-04-03",
+		"currency": "EUR",
+		"despatch_date": "2026-04-03",
+		"receive_date": "2026-04-03",
+		"tax": {
+			"ext": {
+				"pt-saft-movement-type": "GD"
+			}
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "770013813"
+			},
+			"addresses": [
+				{
+					"street": "Rua das Flores 200 3º Esquerdo",
+					"locality": "Porto",
+					"code": "4050-265",
+					"country": "PT"
+				}
+			],
+			"registration": {
+				"capital": "100000.00",
+				"office": "Porto"
+			}
+		},
+		"customer": {
+			"name": "Gusto Unipessoal Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Avenida da Liberdade 152 2º Direito",
+					"locality": "Lisboa",
+					"code": "1250-146",
+					"country": "PT"
+				}
+			]
+		},
+		"despatcher": {
+			"name": "Gusto Armazém",
+			"addresses": [
+				{
+					"street": "Zona Industrial, Lote 23",
+					"locality": "Lisboa",
+					"code": "1300-300",
+					"country": "PT"
+				}
+			]
+		},
+		"receiver": {
+			"name": "Innovatech Logistics",
+			"addresses": [
+				{
+					"street": "Rua da Indústria 45",
+					"locality": "Porto",
+					"code": "4050-300",
+					"country": "PT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "3",
+				"item": {
+					"name": "Product A",
+					"price": "5.00",
+					"unit": "unit",
+					"ext": {
+						"pt-saft-product-type": "P"
+					}
+				},
+				"sum": "15.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "15.00"
+			}
+		],
+		"totals": {
+			"sum": "15.00",
+			"total": "15.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "NOR"
+								},
+								"base": "15.00",
+								"percent": "23.0%",
+								"amount": "3.45"
+							}
+						],
+						"amount": "3.45"
+					}
+				],
+				"sum": "3.45"
+			},
+			"tax": "3.45",
+			"total_with_tax": "18.45",
+			"payable": "18.45"
+		},
+		"notes": [
+			{
+				"text": "Goods returned by the customer."
+			}
+		]
+	}
+}

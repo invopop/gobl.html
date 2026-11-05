@@ -1,0 +1,152 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d1e-72c6-adc8-14b14be71780",
+		"dig": {
+			"alg": "sha256",
+			"val": "331bd776195a8ce7b598ab04def1a513e39cde11b17a890112ae4ffd1a08126a"
+		},
+		"from": "iso6523-actorid-upis::9930:DE879558966",
+		"to": "iso6523-actorid-upis::0195:SGUEN199904785Z"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "DE",
+		"$addons": [
+			"eu-en16931-v2017"
+		],
+		"uuid": "01a1ab50-6d1e-72c7-a0f4-dedb98875d6a",
+		"type": "standard",
+		"series": "INV",
+		"code": "PP000003",
+		"issue_date": "2025-04-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Rheinland Technologies GmbH",
+			"tax_id": {
+				"country": "DE",
+				"code": "879558966"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9930:DE879558966"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9930",
+					"code": "DE879558966"
+				}
+			],
+			"addresses": [
+				{
+					"num": "27",
+					"street": "Friedrichstraße",
+					"locality": "Berlin",
+					"region": "BE",
+					"code": "10117",
+					"country": "DE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "rechnungen@rheinlandtech.de"
+				}
+			]
+		},
+		"customer": {
+			"name": "Singapore Company LTD",
+			"tax_id": {
+				"country": "SG",
+				"code": "199904785Z"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0195:SGUEN199904785Z"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0195",
+					"code": "SGUEN199904785Z"
+				}
+			],
+			"addresses": [
+				{
+					"street": "18 Marina Gardens Drive",
+					"locality": "Singapore",
+					"region": "Central Region",
+					"code": "018953",
+					"country": "SG"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing+test@invopop.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "12",
+				"item": {
+					"name": "Sambox service",
+					"price": "145.00",
+					"unit": "h"
+				},
+				"sum": "1740.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "outside-scope",
+						"ext": {
+							"cef-vatex": "VATEX-EU-O",
+							"untdid-tax-category": "O"
+						}
+					}
+				],
+				"total": "1740.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			}
+		},
+		"totals": {
+			"sum": "1740.00",
+			"total": "1740.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "outside-scope",
+								"ext": {
+									"cef-vatex": "VATEX-EU-O",
+									"untdid-tax-category": "O"
+								},
+								"base": "1740.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "1740.00",
+			"payable": "1740.00"
+		}
+	}
+}

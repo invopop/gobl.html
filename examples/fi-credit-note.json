@@ -1,0 +1,155 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d62-7553-acbe-fb40f947a588",
+		"dig": {
+			"alg": "sha256",
+			"val": "4aa2c0865caffb73ba0de1b138606afc70110167a392e7af5892748d8191fe21"
+		},
+		"from": "iso6523-actorid-upis::0216:003726174164",
+		"to": "iso6523-actorid-upis::0216:003711223349"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FI",
+		"$addons": [
+			"eu-en16931-v2017",
+			"fi-finvoice-v3"
+		],
+		"uuid": "01a1ab50-6d62-7557-8ac7-0e8a799f875c",
+		"type": "credit-note",
+		"series": "SAMPLE-CN",
+		"code": "0007",
+		"issue_date": "2026-08-05",
+		"currency": "EUR",
+		"preceding": [
+			{
+				"issue_date": "2026-08-01",
+				"series": "SAMPLE",
+				"code": "0042",
+				"reason": "Partial refund for undelivered services"
+			}
+		],
+		"tax": {
+			"ext": {
+				"untdid-document-type": "381"
+			}
+		},
+		"supplier": {
+			"name": "Aurora Ohjelmistot Oy",
+			"tax_id": {
+				"country": "FI",
+				"code": "26174164"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0216:003726174164"
+				}
+			],
+			"addresses": [
+				{
+					"num": "12",
+					"street": "Mannerheimintie",
+					"locality": "Helsinki",
+					"code": "00100",
+					"country": "FI"
+				}
+			]
+		},
+		"customer": {
+			"name": "Pohjola Rakennus Oy",
+			"tax_id": {
+				"country": "FI",
+				"code": "11223349"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0216:003711223349"
+				}
+			],
+			"addresses": [
+				{
+					"num": "8",
+					"street": "Hämeenkatu",
+					"locality": "Tampere",
+					"code": "33100",
+					"country": "FI"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Software development services",
+					"price": "85.00",
+					"unit": "one"
+				},
+				"sum": "170.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "25.5%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "170.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"due_dates": [
+					{
+						"date": "2026-08-19",
+						"amount": "213.35",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"ref": "RF1310023",
+				"credit_transfer": [
+					{
+						"iban": "FI2112345600000785",
+						"bic": "NDEAFIHH"
+					}
+				],
+				"ext": {
+					"untdid-payment-means": "30"
+				}
+			}
+		},
+		"totals": {
+			"sum": "170.00",
+			"total": "170.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "170.00",
+								"percent": "25.5%",
+								"amount": "43.35"
+							}
+						],
+						"amount": "43.35"
+					}
+				],
+				"sum": "43.35"
+			},
+			"tax": "43.35",
+			"total_with_tax": "213.35",
+			"payable": "213.35"
+		}
+	}
+}

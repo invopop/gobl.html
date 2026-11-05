@@ -1,0 +1,194 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d78-773f-ae4e-08c2559593c2",
+		"dig": {
+			"alg": "sha256",
+			"val": "c66e9cb41fe8439fddcb486d2c4893f8c18faa73f48f57f254d490f746841361"
+		},
+		"from": "iso6523-actorid-upis::0225:303265045",
+		"to": "iso6523-actorid-upis::0225:356000000"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FR",
+		"$addons": [
+			"eu-en16931-v2017",
+			"fr-ctc-flow2-v1"
+		],
+		"uuid": "01a1ab50-6d78-7740-bcec-34e0f027442b",
+		"type": "standard",
+		"series": "FAC",
+		"code": "2026-00318",
+		"issue_date": "2026-09-18",
+		"currency": "EUR",
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"fr-ctc-billing-mode": "S7",
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Le Bistrot du Marché SARL",
+			"tax_id": {
+				"country": "FR",
+				"code": "40303265045"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"type": "SIREN",
+					"code": "303265045",
+					"ext": {
+						"iso-scheme-id": "0002"
+					}
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0225:303265045"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0225",
+					"code": "303265045"
+				}
+			],
+			"addresses": [
+				{
+					"num": "18",
+					"street": "Rue du Marché",
+					"locality": "Lyon",
+					"code": "69002",
+					"country": "FR"
+				}
+			]
+		},
+		"customer": {
+			"name": "Conseil \u0026 Associés SAS",
+			"tax_id": {
+				"country": "FR",
+				"code": "39356000000"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"type": "SIREN",
+					"code": "356000000",
+					"ext": {
+						"iso-scheme-id": "0002"
+					}
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0225:356000000"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0225",
+					"code": "356000000"
+				}
+			],
+			"addresses": [
+				{
+					"num": "9",
+					"street": "Place Bellecour",
+					"locality": "Lyon",
+					"code": "69002",
+					"country": "FR"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "4",
+				"item": {
+					"name": "Repas d'affaires - menu du jour",
+					"price": "42.00",
+					"unit": "one"
+				},
+				"sum": "168.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "intermediate",
+						"percent": "10%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "168.00"
+			}
+		],
+		"payment": {
+			"advances": [
+				{
+					"description": "Réglé sur place par carte bancaire",
+					"percent": "100%",
+					"amount": "184.80"
+				}
+			]
+		},
+		"totals": {
+			"sum": "168.00",
+			"total": "168.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "168.00",
+								"percent": "10%",
+								"amount": "16.80"
+							}
+						],
+						"amount": "16.80"
+					}
+				],
+				"sum": "16.80"
+			},
+			"tax": "16.80",
+			"total_with_tax": "184.80",
+			"payable": "184.80",
+			"advance": "184.80",
+			"due": "0.00"
+		},
+		"notes": [
+			{
+				"key": "payment",
+				"text": "Conditions de paiement selon les conditions générales de vente.",
+				"ext": {
+					"untdid-text-subject": "PMT"
+				}
+			},
+			{
+				"key": "payment-method",
+				"text": "Pénalités et indemnités de retard applicables conformément aux conditions générales de vente.",
+				"ext": {
+					"untdid-text-subject": "PMD"
+				}
+			},
+			{
+				"key": "payment-term",
+				"text": "Aucun escompte n'est accordé pour paiement anticipé.",
+				"ext": {
+					"untdid-text-subject": "AAB"
+				}
+			}
+		]
+	}
+}

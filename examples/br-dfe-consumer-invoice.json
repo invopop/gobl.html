@@ -1,0 +1,178 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d0a-76a7-ac91-dcf38691438c",
+		"dig": {
+			"alg": "sha256",
+			"val": "a8aac37fa92908deac66589382f01bcc52bfd4ee12647200af959c113672de43"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "BR",
+		"$addons": [
+			"br-nfe-v4"
+		],
+		"$tags": [
+			"simplified"
+		],
+		"uuid": "01a1ab50-6d0a-76ab-ae38-610b8716e274",
+		"type": "standard",
+		"series": "123",
+		"issue_date": "2026-07-28",
+		"currency": "BRL",
+		"tax": {
+			"ext": {
+				"br-nfe-model": "65",
+				"br-nfe-operation-type": "1",
+				"br-nfe-presence": "1",
+				"br-nfe-purpose": "1"
+			}
+		},
+		"supplier": {
+			"name": "TechNova Soluções Digitais Ltda.",
+			"tax_id": {
+				"country": "BR",
+				"code": "05229829000184"
+			},
+			"identities": [
+				{
+					"key": "br-nfe-state-reg",
+					"code": "12345678901234"
+				}
+			],
+			"addresses": [
+				{
+					"num": "101",
+					"street": "Avenida Paulista",
+					"locality": "Bela Vista",
+					"region": "São Paulo",
+					"state": "SP",
+					"code": "01311-000",
+					"country": "BR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "contact@technova.test"
+				}
+			],
+			"ext": {
+				"br-ibge-municipality": "3550308",
+				"br-nfe-regime": "3",
+				"br-nfse-simples": "1"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Cabo USB-C 2 metros",
+					"price": "28.90"
+				},
+				"sum": "57.80",
+				"taxes": [
+					{
+						"cat": "ICMS",
+						"percent": "18.0%",
+						"ext": {
+							"br-nfe-icms-cst": "00",
+							"br-nfe-icms-origin": "0"
+						}
+					},
+					{
+						"cat": "PIS",
+						"percent": "1.65%",
+						"ext": {
+							"br-nfe-pis-cst": "01"
+						}
+					},
+					{
+						"cat": "COFINS",
+						"percent": "7.60%",
+						"ext": {
+							"br-nfe-cofins-cst": "01"
+						}
+					}
+				],
+				"total": "57.80",
+				"ext": {
+					"br-nfe-cfop": "5102"
+				}
+			}
+		],
+		"payment": {
+			"instructions": {
+				"key": "card",
+				"ext": {
+					"br-nfe-payment-means": "03"
+				}
+			}
+		},
+		"totals": {
+			"sum": "57.80",
+			"total": "57.80",
+			"taxes": {
+				"categories": [
+					{
+						"code": "ICMS",
+						"informative": true,
+						"rates": [
+							{
+								"ext": {
+									"br-nfe-icms-cst": "00",
+									"br-nfe-icms-origin": "0"
+								},
+								"base": "57.80",
+								"percent": "18.0%",
+								"amount": "10.40"
+							}
+						],
+						"amount": "10.40"
+					},
+					{
+						"code": "PIS",
+						"informative": true,
+						"rates": [
+							{
+								"ext": {
+									"br-nfe-pis-cst": "01"
+								},
+								"base": "57.80",
+								"percent": "1.65%",
+								"amount": "0.95"
+							}
+						],
+						"amount": "0.95"
+					},
+					{
+						"code": "COFINS",
+						"informative": true,
+						"rates": [
+							{
+								"ext": {
+									"br-nfe-cofins-cst": "01"
+								},
+								"base": "57.80",
+								"percent": "7.60%",
+								"amount": "4.39"
+							}
+						],
+						"amount": "4.39"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "57.80",
+			"payable": "57.80"
+		},
+		"notes": [
+			{
+				"key": "reason",
+				"text": "Venda de mercadoria"
+			}
+		]
+	}
+}

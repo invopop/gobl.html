@@ -1,0 +1,115 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6dac-70d6-a95e-b76651f9a6e4",
+		"dig": {
+			"alg": "sha256",
+			"val": "b66d6c6075940d383d5f99a89752726b2929c78c371b6e4c624177f8c9b270fc"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "PL",
+		"$addons": [
+			"pl-favat-v3"
+		],
+		"$tags": [
+			"reverse-charge"
+		],
+		"uuid": "01a1ab50-6dac-70da-bc8d-47e7aafaac17",
+		"type": "standard",
+		"series": "RC",
+		"code": "001",
+		"issue_date": "2026-01-20",
+		"currency": "PLN",
+		"tax": {
+			"ext": {
+				"pl-favat-invoice-type": "VAT",
+				"pl-favat-reverse-charge": "1"
+			}
+		},
+		"supplier": {
+			"name": "Testowa Firma Sp. z o.o.",
+			"tax_id": {
+				"country": "PL",
+				"code": "9876543210"
+			},
+			"addresses": [
+				{
+					"street": "ul. Główna 1",
+					"locality": "Warszawa",
+					"code": "00-001",
+					"country": "PL"
+				}
+			]
+		},
+		"customer": {
+			"name": "EU Business GmbH",
+			"tax_id": {
+				"country": "DE",
+				"code": "111111125"
+			},
+			"addresses": [
+				{
+					"street": "Hauptstraße 100",
+					"locality": "Berlin",
+					"code": "10115",
+					"country": "DE"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "IT Services - EU Reverse Charge",
+					"price": "5000.00"
+				},
+				"sum": "5000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "reverse-charge",
+						"ext": {
+							"pl-favat-tax-category": "9"
+						}
+					}
+				],
+				"total": "5000.00"
+			}
+		],
+		"totals": {
+			"sum": "5000.00",
+			"total": "5000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "reverse-charge",
+								"ext": {
+									"pl-favat-tax-category": "9"
+								},
+								"base": "5000.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "5000.00",
+			"payable": "5000.00"
+		},
+		"notes": [
+			{
+				"key": "legal",
+				"text": "Reverse charge mechanism applies - VAT to be accounted for by the customer."
+			}
+		]
+	}
+}

@@ -1,0 +1,136 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6da0-7b4a-85a4-9dc90a7e38ff",
+		"dig": {
+			"alg": "sha256",
+			"val": "60ee09e1b94392103274c2c2d318aef6cf6942459abf2cf8e7d597698c81ca12"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "MX",
+		"$addons": [
+			"mx-cfdi-v4"
+		],
+		"uuid": "01a1ab50-6da0-7b4e-ba35-786d3e9c96d6",
+		"type": "credit-note",
+		"series": "CN",
+		"code": "0003",
+		"issue_date": "2026-07-08",
+		"issue_time": "08:53:24",
+		"currency": "MXN",
+		"preceding": [
+			{
+				"issue_date": "2023-07-10",
+				"series": "TEST",
+				"code": "0001",
+				"stamps": [
+					{
+						"prv": "sat-uuid",
+						"val": "1fac4464-1111-0000-1111-cd37179db12e"
+					}
+				]
+			}
+		],
+		"tax": {
+			"ext": {
+				"mx-cfdi-doc-type": "E",
+				"mx-cfdi-issue-place": "44100",
+				"mx-cfdi-payment-method": "PPD",
+				"mx-cfdi-rel-type": "01"
+			}
+		},
+		"supplier": {
+			"name": "ESCUELA KEMPER URGATE",
+			"tax_id": {
+				"country": "MX",
+				"code": "EKU9003173C9"
+			},
+			"addresses": [
+				{
+					"street": "Julia Navarrete No. 1430",
+					"locality": "Guadalajara",
+					"region": "Jalisco",
+					"code": "44100",
+					"country": "MX"
+				}
+			],
+			"ext": {
+				"mx-cfdi-fiscal-regime": "615"
+			}
+		},
+		"customer": {
+			"name": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+			"tax_id": {
+				"country": "MX",
+				"code": "URE180429TM6"
+			},
+			"addresses": [
+				{
+					"locality": "Ciudad de Mexico",
+					"region": "Ciudad de Mexico",
+					"code": "86991",
+					"country": "MX"
+				}
+			],
+			"ext": {
+				"mx-cfdi-fiscal-regime": "624",
+				"mx-cfdi-use": "G01"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Cigarros",
+					"price": "100.1010",
+					"unit": "piece",
+					"ext": {
+						"mx-cfdi-prod-serv": "50211502"
+					}
+				},
+				"sum": "200.2020",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "16.0%"
+					}
+				],
+				"total": "200.2020"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Pago a 30 días."
+			}
+		},
+		"totals": {
+			"sum": "200.20",
+			"total": "200.20",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "200.20",
+								"percent": "16.0%",
+								"amount": "32.03"
+							}
+						],
+						"amount": "32.03"
+					}
+				],
+				"sum": "32.03"
+			},
+			"tax": "32.03",
+			"total_with_tax": "232.23",
+			"payable": "232.23"
+		}
+	}
+}

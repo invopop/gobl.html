@@ -1,0 +1,246 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d72-7645-9717-0a503810a62f",
+		"dig": {
+			"alg": "sha256",
+			"val": "c1bad3752e321c2b98b945d77eae95ee8b9e0d6df5b0f85ca91c430d71655a44"
+		},
+		"from": "iso6523-actorid-upis::0225:732829320",
+		"to": "iso6523-actorid-upis::0225:356000000"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FR",
+		"$addons": [
+			"eu-en16931-v2017",
+			"fr-ctc-flow2-v1"
+		],
+		"uuid": "01a1ab50-6d72-7646-95af-2427003c88ae",
+		"type": "standard",
+		"series": "FAC",
+		"code": "2024-00107",
+		"issue_date": "2024-07-15",
+		"currency": "EUR",
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"fr-ctc-billing-mode": "M4",
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Fournisseur Example SARL",
+			"tax_id": {
+				"country": "FR",
+				"code": "44732829320"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"type": "SIREN",
+					"code": "732829320",
+					"ext": {
+						"iso-scheme-id": "0002"
+					}
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0225:732829320"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0225",
+					"code": "732829320"
+				}
+			],
+			"addresses": [
+				{
+					"num": "123",
+					"street": "Rue de la Paix",
+					"locality": "Paris",
+					"code": "75001",
+					"country": "FR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "facturation@fournisseur.fr"
+				}
+			]
+		},
+		"customer": {
+			"name": "Client Example SAS",
+			"tax_id": {
+				"country": "FR",
+				"code": "39356000000"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"type": "SIREN",
+					"code": "356000000",
+					"ext": {
+						"iso-scheme-id": "0002"
+					}
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0225:356000000"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0225",
+					"code": "356000000"
+				}
+			],
+			"addresses": [
+				{
+					"num": "456",
+					"street": "Avenue des Champs-Elysees",
+					"locality": "Paris",
+					"code": "75008",
+					"country": "FR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "comptabilite@client.fr"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Projet de developpement - prestation complete",
+					"price": "15000.00",
+					"unit": "one"
+				},
+				"sum": "15000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "15000.00"
+			},
+			{
+				"i": 2,
+				"quantity": "1",
+				"item": {
+					"name": "Serveur de developpement (materiel)",
+					"price": "2000.00",
+					"unit": "one"
+				},
+				"sum": "2000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "2000.00"
+			}
+		],
+		"payment": {
+			"advances": [
+				{
+					"description": "Acompte verse - facture FAC 2024-AV-001",
+					"amount": "8400.00"
+				}
+			],
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2024-08-15",
+						"amount": "12000.00"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "FR7630006000011234567890189",
+						"name": "Fournisseur Example SARL"
+					}
+				],
+				"ext": {
+					"untdid-payment-means": "30"
+				}
+			}
+		},
+		"totals": {
+			"sum": "17000.00",
+			"total": "17000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "17000.00",
+								"percent": "20%",
+								"amount": "3400.00"
+							}
+						],
+						"amount": "3400.00"
+					}
+				],
+				"sum": "3400.00"
+			},
+			"tax": "3400.00",
+			"total_with_tax": "20400.00",
+			"payable": "20400.00",
+			"advance": "8400.00",
+			"due": "12000.00"
+		},
+		"notes": [
+			{
+				"key": "payment",
+				"text": "Une penalite fixe de 40 EUR sera appliquee en cas de retard de paiement.",
+				"ext": {
+					"untdid-text-subject": "PMT"
+				}
+			},
+			{
+				"key": "payment-method",
+				"text": "Des penalites de retard s'appliquent conformement a nos conditions generales de vente.",
+				"ext": {
+					"untdid-text-subject": "PMD"
+				}
+			},
+			{
+				"key": "payment-term",
+				"text": "Aucun escompte n'est offert pour paiement anticipe.",
+				"ext": {
+					"untdid-text-subject": "AAB"
+				}
+			}
+		]
+	}
+}

@@ -1,0 +1,116 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d53-754f-94c9-372a27e1351c",
+		"dig": {
+			"alg": "sha256",
+			"val": "63f452943133f153157d42f9b918e1f95a6abd73a4a98fc19cd086c0eb5e13aa"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-tbai-v1"
+		],
+		"$tags": [
+			"simplified"
+		],
+		"uuid": "01a1ab50-6d53-7553-aa61-f67f91932d7d",
+		"type": "standard",
+		"series": "FS1",
+		"issue_date": "2026-07-08",
+		"currency": "EUR",
+		"tax": {
+			"prices_include": "VAT",
+			"ext": {
+				"es-tbai-region": "BI",
+				"es-tbai-simplified": "S"
+			}
+		},
+		"supplier": {
+			"name": "HFPn5yhXZ9tdD4pHRbvwymaVPrGZQr",
+			"tax_id": {
+				"country": "ES",
+				"code": "A99805194"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "San Frantzisko",
+					"locality": "Bilbo",
+					"region": "Bizkaia",
+					"code": "48003",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Advanced screwdriver set",
+					"price": "25.10",
+					"ext": {
+						"es-tbai-product": "goods"
+					}
+				},
+				"sum": "25.10",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"es-tbai-product": "services",
+							"es-tbai-regime": "01"
+						}
+					}
+				],
+				"total": "25.10"
+			}
+		],
+		"totals": {
+			"sum": "25.10",
+			"tax_included": "4.36",
+			"total": "20.74",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"es-tbai-product": "services",
+									"es-tbai-regime": "01"
+								},
+								"base": "20.74",
+								"percent": "21.0%",
+								"amount": "4.36"
+							}
+						],
+						"amount": "4.36"
+					}
+				],
+				"sum": "4.36"
+			},
+			"tax": "4.36",
+			"total_with_tax": "25.10",
+			"payable": "25.10"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "In person sale"
+			}
+		]
+	}
+}

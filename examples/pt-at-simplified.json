@@ -1,0 +1,114 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6db9-7d23-a595-cf55efe03488",
+		"dig": {
+			"alg": "sha256",
+			"val": "17e365e772cd0835bc6185c95dc82064c3489aabb51615cde1eb691c6ba6b49d"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"$tags": [
+			"simplified"
+		],
+		"uuid": "01a1ab50-6db9-7d24-a6d6-9e9023114a18",
+		"type": "standard",
+		"series": "FS SERIES-A",
+		"issue_date": "2024-12-23",
+		"value_date": "2024-12-23",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"pt-saft-invoice-type": "FS",
+				"pt-saft-source": "P"
+			}
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "504614240"
+			},
+			"addresses": [
+				{
+					"num": "156",
+					"street": "Avenida da República",
+					"locality": "Lisboa",
+					"code": "1050-045",
+					"country": "PT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "maria@example.com"
+				}
+			],
+			"registration": {
+				"capital": "150000.00",
+				"office": "CRC Lisboa",
+				"other": "sob NIF 770013813"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Suporte técnico presencial",
+					"price": "45.00",
+					"unit": "h",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "45.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "45.00"
+			}
+		],
+		"totals": {
+			"sum": "45.00",
+			"total": "45.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "NOR"
+								},
+								"base": "45.00",
+								"percent": "23.0%",
+								"amount": "10.35"
+							}
+						],
+						"amount": "10.35"
+					}
+				],
+				"sum": "10.35"
+			},
+			"tax": "10.35",
+			"total_with_tax": "55.35",
+			"payable": "55.35"
+		}
+	}
+}

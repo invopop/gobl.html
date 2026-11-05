@@ -1,0 +1,104 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d4f-7e9a-92ed-8f81b7449408",
+		"dig": {
+			"alg": "sha256",
+			"val": "4edeabbb911bfe07f4eb00c92ef3c808a469bd57193a49e32cb19a3307c6c1dc"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-sii-v1"
+		],
+		"$tags": [
+			"simplified"
+		],
+		"uuid": "01a1ab50-6d4f-7e9e-a832-0eff01b67606",
+		"type": "standard",
+		"series": "SAMPLE",
+		"issue_date": "2026-05-06",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"es-sii-doc-type": "F2"
+			}
+		},
+		"supplier": {
+			"name": "Hotel Barcelona Example SL",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"addresses": [
+				{
+					"locality": "Barcelona",
+					"code": "08001",
+					"country": "ES"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "3",
+				"item": {
+					"name": "Double room — 3 nights",
+					"price": "180.00",
+					"unit": "day"
+				},
+				"sum": "540.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "10.0%",
+						"ext": {
+							"es-sii-regime": "01"
+						}
+					}
+				],
+				"total": "540.00"
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"key": "tax",
+				"reason": "IEET — Hotel 4★, Barcelona city — 3 nights × 1 guest × €3.40",
+				"amount": "10.20"
+			}
+		],
+		"totals": {
+			"sum": "540.00",
+			"charge": "10.20",
+			"total": "550.20",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"es-sii-regime": "01"
+								},
+								"base": "540.00",
+								"percent": "10.0%",
+								"amount": "54.00"
+							}
+						],
+						"amount": "54.00"
+					}
+				],
+				"sum": "54.00"
+			},
+			"tax": "54.00",
+			"total_with_tax": "604.20",
+			"payable": "604.20"
+		}
+	}
+}

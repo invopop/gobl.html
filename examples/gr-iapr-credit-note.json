@@ -1,0 +1,149 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d86-781e-8dc9-1a8fdd237a68",
+		"dig": {
+			"alg": "sha256",
+			"val": "91ff4a60249174a64f8a1abcc71d9fb786f702dd69c46b8b67c3314b5507fff4"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "EL",
+		"$addons": [
+			"gr-mydata-v1"
+		],
+		"$tags": [
+			"services"
+		],
+		"uuid": "01a1ab50-6d86-781f-873b-b138ea0f6a74",
+		"type": "credit-note",
+		"series": "XXGR-CN",
+		"issue_date": "2026-07-21",
+		"currency": "EUR",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2025-05-12",
+				"series": "XXGR",
+				"code": "0042",
+				"stamps": [
+					{
+						"prv": "iapr-mark",
+						"val": "400001924190872"
+					}
+				]
+			}
+		],
+		"tax": {
+			"ext": {
+				"gr-mydata-invoice-type": "5.1"
+			}
+		},
+		"supplier": {
+			"name": "Αθηναϊκό Ξενοδοχείο Α.Ε.",
+			"tax_id": {
+				"country": "EL",
+				"code": "177472438"
+			},
+			"addresses": [
+				{
+					"num": "28",
+					"street": "Λεωφόρος Συγγρού",
+					"locality": "Αθήνα",
+					"code": "11743",
+					"country": "GR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "reservations@athenianhotel.gr"
+				}
+			]
+		},
+		"customer": {
+			"name": "Τεχνολογικές Λύσεις Ελλάς Α.Ε.",
+			"tax_id": {
+				"country": "EL",
+				"code": "841442160"
+			},
+			"addresses": [
+				{
+					"num": "15",
+					"street": "Οδός Πανεπιστημίου",
+					"locality": "Αθήνα",
+					"code": "10671",
+					"country": "GR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "accounting@techsolutions.gr"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Διαμονή Deluxe Δίκλινο Δωμάτιο",
+					"price": "180.00",
+					"unit": "day",
+					"ext": {
+						"gr-mydata-income-cat": "category1_3",
+						"gr-mydata-income-type": "E3_561_001"
+					}
+				},
+				"sum": "180.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "24%",
+						"ext": {
+							"gr-mydata-vat-rate": "1"
+						}
+					}
+				],
+				"total": "180.00"
+			}
+		],
+		"payment": {
+			"instructions": {
+				"key": "credit-transfer",
+				"ext": {
+					"gr-mydata-payment-means": "1"
+				}
+			}
+		},
+		"totals": {
+			"sum": "180.00",
+			"total": "180.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"gr-mydata-vat-rate": "1"
+								},
+								"base": "180.00",
+								"percent": "24%",
+								"amount": "43.20"
+							}
+						],
+						"amount": "43.20"
+					}
+				],
+				"sum": "43.20"
+			},
+			"tax": "43.20",
+			"total_with_tax": "223.20",
+			"payable": "223.20"
+		}
+	}
+}

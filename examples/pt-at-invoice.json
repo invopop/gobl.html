@@ -1,0 +1,130 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6db7-7363-8da2-14410ee172b7",
+		"dig": {
+			"alg": "sha256",
+			"val": "ab3ef663a6b75775029b7d8b8e6c0a03aa29dd76116058519e1172d628ec3556"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"uuid": "01a1ab50-6db7-7364-ba62-d84e2ad21ef8",
+		"type": "standard",
+		"series": "FT SERIES-A",
+		"issue_date": "2024-12-23",
+		"value_date": "2024-12-23",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"pt-saft-invoice-type": "FT",
+				"pt-saft-source": "P"
+			}
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "770013813"
+			},
+			"registration": {
+				"capital": "100000.00",
+				"office": "Porto"
+			}
+		},
+		"customer": {
+			"name": "Gusto Unipessoal Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Avenida da Liberdade 152 2º Direito",
+					"locality": "Lisboa",
+					"code": "1250-146",
+					"country": "PT"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+351912345678"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Development services",
+					"price": "50.00",
+					"unit": "item",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "50.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "50.00"
+			}
+		],
+		"payment": {
+			"advances": [
+				{
+					"date": "2024-12-18",
+					"description": "Transferência bancária",
+					"amount": "50.00"
+				}
+			],
+			"terms": {
+				"key": "advanced"
+			}
+		},
+		"totals": {
+			"sum": "50.00",
+			"total": "50.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "NOR"
+								},
+								"base": "50.00",
+								"percent": "23.0%",
+								"amount": "11.50"
+							}
+						],
+						"amount": "11.50"
+					}
+				],
+				"sum": "11.50"
+			},
+			"tax": "11.50",
+			"total_with_tax": "61.50",
+			"payable": "61.50",
+			"advance": "50.00",
+			"due": "11.50"
+		}
+	}
+}

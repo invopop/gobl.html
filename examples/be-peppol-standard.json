@@ -1,0 +1,154 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d05-7a44-bda0-092ca6d0394c",
+		"dig": {
+			"alg": "sha256",
+			"val": "1810bf6f9204d1e58d239645b1c879e9dad7b52c7bc8591bc97434730213b9c7"
+		},
+		"from": "iso6523-actorid-upis::0208:0316597904",
+		"to": "iso6523-actorid-upis::0208:0859536301"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "BE",
+		"$addons": [
+			"eu-en16931-v2017"
+		],
+		"uuid": "01a1ab50-6d05-7a45-8c97-97f24bf4a5c1",
+		"type": "standard",
+		"series": "INV",
+		"code": "PP000003",
+		"issue_date": "2025-04-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Benelux Industries SA/NV",
+			"tax_id": {
+				"country": "BE",
+				"code": "0316597904"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0208:0316597904"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0208",
+					"code": "0316597904"
+				}
+			],
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Rue de la Loi",
+					"locality": "Brussels",
+					"region": "Brussels-Capital",
+					"code": "1040",
+					"country": "BE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "test@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Benelux Industries SA/NV",
+			"tax_id": {
+				"country": "BE",
+				"code": "0859536301"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0208:0859536301"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0208",
+					"code": "0859536301"
+				}
+			],
+			"addresses": [
+				{
+					"num": "127",
+					"street": "Avenue Louise",
+					"locality": "Ixelles",
+					"region": "Brussels-Capital",
+					"code": "1050",
+					"country": "BE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "test@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "12",
+				"item": {
+					"name": "Sambox services",
+					"price": "145.00",
+					"unit": "one"
+				},
+				"sum": "1740.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "1740.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			}
+		},
+		"totals": {
+			"sum": "1740.00",
+			"total": "1740.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "1740.00",
+								"percent": "21.0%",
+								"amount": "365.40"
+							}
+						],
+						"amount": "365.40"
+					}
+				],
+				"sum": "365.40"
+			},
+			"tax": "365.40",
+			"total_with_tax": "2105.40",
+			"payable": "2105.40"
+		}
+	}
+}

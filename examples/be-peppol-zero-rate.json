@@ -1,0 +1,153 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d07-70b7-9e2b-a687a180795f",
+		"dig": {
+			"alg": "sha256",
+			"val": "55593fb5037529cd52a979ae8808bf99bd18d9246be2301b723f2bacfcda2430"
+		},
+		"from": "iso6523-actorid-upis::0208:0316597904",
+		"to": "iso6523-actorid-upis::0208:0859536301"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "BE",
+		"$addons": [
+			"eu-en16931-v2017"
+		],
+		"uuid": "01a1ab50-6d07-70bb-a873-602fee085285",
+		"type": "standard",
+		"series": "INV",
+		"code": "PP000003",
+		"issue_date": "2025-04-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Benelux Industries SA/NV",
+			"tax_id": {
+				"country": "BE",
+				"code": "0316597904"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0208:0316597904"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0208",
+					"code": "0316597904"
+				}
+			],
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Rue de la Loi",
+					"locality": "Brussels",
+					"region": "Brussels-Capital",
+					"code": "1040",
+					"country": "BE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "test@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Benelux Industries SA/NV",
+			"tax_id": {
+				"country": "BE",
+				"code": "0859536301"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0208:0859536301"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0208",
+					"code": "0859536301"
+				}
+			],
+			"addresses": [
+				{
+					"num": "127",
+					"street": "Avenue Louise",
+					"locality": "Ixelles",
+					"region": "Brussels-Capital",
+					"code": "1050",
+					"country": "BE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "test@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Het Laatste Nieuws",
+					"price": "2.00",
+					"unit": "one"
+				},
+				"sum": "2.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "zero",
+						"percent": "0%",
+						"ext": {
+							"untdid-tax-category": "Z"
+						}
+					}
+				],
+				"total": "2.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			}
+		},
+		"totals": {
+			"sum": "2.00",
+			"total": "2.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "zero",
+								"ext": {
+									"untdid-tax-category": "Z"
+								},
+								"base": "2.00",
+								"percent": "0%",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "2.00",
+			"payable": "2.00"
+		}
+	}
+}

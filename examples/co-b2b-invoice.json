@@ -1,0 +1,128 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d14-7537-8c7c-9fa596a586a3",
+		"dig": {
+			"alg": "sha256",
+			"val": "985064b993ca9c276f0eb9f293c58c458f1f84dcddfaed0bb5414b9eff9147a9"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "CO",
+		"$addons": [
+			"co-dian-v2"
+		],
+		"uuid": "01a1ab50-6d14-7538-8c32-60b10c9a2fcc",
+		"type": "standard",
+		"series": "SETP",
+		"code": "990001001",
+		"issue_date": "2026-10-13",
+		"currency": "COP",
+		"supplier": {
+			"name": "EXAMPLE SUPPLIER S.A.S.",
+			"tax_id": {
+				"country": "CO",
+				"code": "9005590882",
+				"type": "tin"
+			},
+			"addresses": [
+				{
+					"street": "CRA 15 88 64 OF 502",
+					"locality": "Bogotá, D.C.",
+					"region": "Bogotá",
+					"country": "CO"
+				}
+			],
+			"ext": {
+				"co-dian-fiscal-responsibility": "R-99-PN",
+				"co-dian-municipality": "11001"
+			}
+		},
+		"customer": {
+			"name": "EXAMPLE CUSTOMER S.A.S.",
+			"tax_id": {
+				"country": "CO",
+				"code": "9014514805",
+				"type": "tin"
+			},
+			"addresses": [
+				{
+					"street": "CRA 8 113 31 OF 703",
+					"locality": "Bogotá, D.C.",
+					"region": "Bogotá",
+					"country": "CO"
+				}
+			],
+			"emails": [
+				{
+					"addr": "benito.ortiz@example.com"
+				}
+			],
+			"telephones": [
+				{
+					"num": "3114131811"
+				}
+			],
+			"ext": {
+				"co-dian-fiscal-responsibility": "R-99-PN",
+				"co-dian-municipality": "11001",
+				"co-dian-tax-scheme": "ZZ"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Servicios de consultoría",
+					"price": "200000.00"
+				},
+				"sum": "200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "19%"
+					}
+				],
+				"total": "200000.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"due_dates": [
+					{
+						"date": "2026-11-12",
+						"amount": "238000.00",
+						"percent": "100%"
+					}
+				]
+			}
+		},
+		"totals": {
+			"sum": "200000.00",
+			"total": "200000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "200000.00",
+								"percent": "19%",
+								"amount": "38000.00"
+							}
+						],
+						"amount": "38000.00"
+					}
+				],
+				"sum": "38000.00"
+			},
+			"tax": "38000.00",
+			"total_with_tax": "238000.00",
+			"payable": "238000.00"
+		}
+	}
+}

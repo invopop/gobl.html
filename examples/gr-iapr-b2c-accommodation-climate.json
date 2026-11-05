@@ -1,0 +1,123 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d84-7167-87aa-6ed08a9bd101",
+		"dig": {
+			"alg": "sha256",
+			"val": "6ce25496d24cf77272407b7bc662ac4e87f03cb50fce52794dadb9e9a85399cb"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "EL",
+		"$addons": [
+			"gr-mydata-v1"
+		],
+		"$tags": [
+			"services",
+			"simplified"
+		],
+		"uuid": "01a1ab50-6d84-7168-b570-364f0e720c5c",
+		"type": "standard",
+		"series": "Plato",
+		"code": "216",
+		"issue_date": "2026-07-08",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"gr-mydata-invoice-type": "11.2"
+			}
+		},
+		"supplier": {
+			"name": "Cyberdyne Συστήματα Α.Ε.",
+			"tax_id": {
+				"country": "EL",
+				"code": "177472438"
+			},
+			"addresses": [
+				{
+					"num": "28",
+					"street": "Λεωφόρος Συγγρού",
+					"locality": "Αθήνα",
+					"code": "11743",
+					"country": "GR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "reservations@athenianhotel.gr"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Hotel room (2 nights)",
+					"price": "120.00"
+				},
+				"sum": "240.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "13%",
+						"ext": {
+							"gr-mydata-vat-rate": "2"
+						}
+					}
+				],
+				"total": "240.00"
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"reason": "Climate Crisis Resilience Fee (2 nights x 7.00€)",
+				"amount": "14.00",
+				"ext": {
+					"gr-mydata-other-tax": "22",
+					"gr-mydata-tax-type": "3"
+				}
+			}
+		],
+		"payment": {
+			"instructions": {
+				"key": "card",
+				"ext": {
+					"gr-mydata-payment-means": "7"
+				}
+			}
+		},
+		"totals": {
+			"sum": "240.00",
+			"charge": "14.00",
+			"total": "254.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"gr-mydata-vat-rate": "2"
+								},
+								"base": "240.00",
+								"percent": "13%",
+								"amount": "31.20"
+							}
+						],
+						"amount": "31.20"
+					}
+				],
+				"sum": "31.20"
+			},
+			"tax": "31.20",
+			"total_with_tax": "285.20",
+			"payable": "285.20"
+		}
+	}
+}

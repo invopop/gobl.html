@@ -1,0 +1,217 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6dd0-7d90-a366-7a7cc1522d39",
+		"dig": {
+			"alg": "sha256",
+			"val": "86494cd80d6fe365164cec9395b435c9d5094c552da23faf939ae6048eb90a6b"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/payment",
+		"$regime": "MX",
+		"$addons": [
+			"mx-cfdi-v4"
+		],
+		"uuid": "01a1ab50-6dd0-7d91-a359-9d0ce0ae73f1",
+		"type": "receipt",
+		"series": "P",
+		"code": "0040",
+		"issue_date": "2026-07-23",
+		"issue_time": "04:13:11",
+		"currency": "MXN",
+		"ext": {
+			"mx-cfdi-doc-type": "P",
+			"mx-cfdi-issue-place": "44100"
+		},
+		"preceding": [
+			{
+				"issue_date": "2023-05-31",
+				"series": "P",
+				"code": "0039",
+				"stamps": [
+					{
+						"prv": "sat-uuid",
+						"val": "3e2d1c0b-9a8f-4e7d-8c6b-5a4f3e2d1c0b"
+					}
+				],
+				"ext": {
+					"mx-cfdi-rel-type": "04"
+				}
+			}
+		],
+		"supplier": {
+			"name": "ESCUELA KEMPER URGATE",
+			"tax_id": {
+				"country": "MX",
+				"code": "EKU9003173C9"
+			},
+			"addresses": [
+				{
+					"street": "Julia Navarrete No. 1430",
+					"locality": "Guadalajara",
+					"region": "Jalisco",
+					"code": "44100",
+					"country": "MX"
+				}
+			],
+			"emails": [
+				{
+					"addr": "esckemperugarte@example.com"
+				}
+			],
+			"ext": {
+				"mx-cfdi-fiscal-regime": "601"
+			}
+		},
+		"customer": {
+			"name": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+			"tax_id": {
+				"country": "MX",
+				"code": "URE180429TM6"
+			},
+			"addresses": [
+				{
+					"locality": "Ciudad de Mexico",
+					"region": "Ciudad de Mexico",
+					"code": "86991",
+					"country": "MX"
+				}
+			],
+			"ext": {
+				"mx-cfdi-fiscal-regime": "601",
+				"mx-cfdi-use": "CP01"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"document": {
+					"issue_date": "2023-05-10",
+					"series": "LMC",
+					"code": "0021",
+					"stamps": [
+						{
+							"prv": "sat-uuid",
+							"val": "0f4d2a6e-8b1c-4d3e-9f5a-7c6b5a4d3e2f"
+						}
+					]
+				},
+				"installment": 1,
+				"payable": "9533.33",
+				"amount": "9533.33",
+				"due": "0.00",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"base": "10000.00",
+									"percent": "16.0%",
+									"amount": "1600.00"
+								}
+							],
+							"amount": "1600.00"
+						},
+						{
+							"code": "RVAT",
+							"retained": true,
+							"rates": [
+								{
+									"base": "10000.00",
+									"percent": "10.6667%",
+									"amount": "1066.67"
+								}
+							],
+							"amount": "1066.67"
+						},
+						{
+							"code": "ISR",
+							"retained": true,
+							"rates": [
+								{
+									"base": "10000.00",
+									"percent": "10%",
+									"amount": "1000.00"
+								}
+							],
+							"amount": "1000.00"
+						}
+					],
+					"sum": "1600.00",
+					"retained": "2066.67"
+				}
+			},
+			{
+				"i": 2,
+				"document": {
+					"issue_date": "2023-05-20",
+					"series": "LMC",
+					"code": "0022",
+					"stamps": [
+						{
+							"prv": "sat-uuid",
+							"val": "5b9c8d7e-6f5a-4b3c-8d2e-1f0a9b8c7d6e"
+						}
+					]
+				},
+				"installment": 1,
+				"payable": "1660.00",
+				"amount": "1660.00",
+				"due": "0.00",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"base": "1000.00",
+									"percent": "16.0%",
+									"amount": "160.00"
+								},
+								{
+									"base": "500.00",
+									"amount": "0.00"
+								}
+							],
+							"amount": "160.00"
+						}
+					],
+					"sum": "160.00"
+				}
+			},
+			{
+				"i": 3,
+				"document": {
+					"issue_date": "2023-03-15",
+					"series": "LMC",
+					"code": "0023",
+					"stamps": [
+						{
+							"prv": "sat-uuid",
+							"val": "9a8b7c6d-5e4f-4a3b-8c2d-1e0f9a8b7c6d"
+						}
+					]
+				},
+				"installment": 3,
+				"payable": "1000.00",
+				"advances": "500.00",
+				"amount": "250.00",
+				"due": "250.00"
+			}
+		],
+		"methods": [
+			{
+				"date": "2023-05-30",
+				"key": "credit-transfer",
+				"ref": "MX0123456789",
+				"amount": "11443.33",
+				"ext": {
+					"mx-cfdi-payment-means": "03"
+				}
+			}
+		],
+		"total": "11443.33"
+	}
+}

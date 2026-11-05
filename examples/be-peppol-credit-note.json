@@ -1,0 +1,158 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6cfb-753b-845c-a455b4f1b994",
+		"dig": {
+			"alg": "sha256",
+			"val": "23ec98b8afa7c40c9e81c765a0f49ff06fb4d8d13326f9b20dbfebd201166e0f"
+		},
+		"from": "iso6523-actorid-upis::0208:0316597904",
+		"to": "iso6523-actorid-upis::0208:0859536301"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "BE",
+		"$addons": [
+			"eu-en16931-v2017"
+		],
+		"uuid": "01a1ab50-6cfb-753f-bcd1-743ff79456cd",
+		"type": "credit-note",
+		"series": "CN",
+		"code": "PP000104",
+		"issue_date": "2025-04-10",
+		"currency": "EUR",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2025-04-03",
+				"series": "INV",
+				"code": "PP000003",
+				"reason": "Services not delivered"
+			}
+		],
+		"tax": {
+			"ext": {
+				"untdid-document-type": "381"
+			}
+		},
+		"supplier": {
+			"name": "Benelux Industries SA/NV",
+			"tax_id": {
+				"country": "BE",
+				"code": "0316597904"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0208:0316597904"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0208",
+					"code": "0316597904"
+				}
+			],
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Rue de la Loi",
+					"locality": "Brussels",
+					"region": "Brussels-Capital",
+					"code": "1040",
+					"country": "BE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "test@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Benelux Industries SA/NV",
+			"tax_id": {
+				"country": "BE",
+				"code": "0859536301"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0208:0859536301"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0208",
+					"code": "0859536301"
+				}
+			],
+			"addresses": [
+				{
+					"num": "127",
+					"street": "Avenue Louise",
+					"locality": "Ixelles",
+					"region": "Brussels-Capital",
+					"code": "1050",
+					"country": "BE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "test@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Sambox services",
+					"price": "145.00",
+					"unit": "one"
+				},
+				"sum": "290.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "290.00"
+			}
+		],
+		"totals": {
+			"sum": "290.00",
+			"total": "290.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "290.00",
+								"percent": "21.0%",
+								"amount": "60.90"
+							}
+						],
+						"amount": "60.90"
+					}
+				],
+				"sum": "60.90"
+			},
+			"tax": "60.90",
+			"total_with_tax": "350.90",
+			"payable": "350.90"
+		}
+	}
+}

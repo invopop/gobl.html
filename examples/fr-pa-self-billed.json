@@ -1,0 +1,215 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d77-7265-8468-763d9e723085",
+		"dig": {
+			"alg": "sha256",
+			"val": "70ae3d39be2d21f0627d31e0348203fe9cfe44fb6b2e17ac3aac9c0665ad23b2"
+		},
+		"from": "iso6523-actorid-upis::0225:732829320",
+		"to": "iso6523-actorid-upis::0225:303265045"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FR",
+		"$addons": [
+			"eu-en16931-v2017",
+			"fr-ctc-flow2-v1"
+		],
+		"$tags": [
+			"self-billed"
+		],
+		"uuid": "01a1ab50-6d77-7266-b387-a6d6b820700f",
+		"type": "standard",
+		"series": "AF",
+		"code": "2026-00042",
+		"issue_date": "2026-09-30",
+		"currency": "EUR",
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"fr-ctc-billing-mode": "B1",
+				"untdid-document-type": "389"
+			}
+		},
+		"supplier": {
+			"name": "Ferme de la Vallée SARL",
+			"tax_id": {
+				"country": "FR",
+				"code": "40303265045"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"type": "SIREN",
+					"code": "303265045",
+					"ext": {
+						"iso-scheme-id": "0002"
+					}
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0225:303265045"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0225",
+					"code": "303265045"
+				}
+			],
+			"addresses": [
+				{
+					"num": "3",
+					"street": "Chemin des Vergers",
+					"locality": "Avignon",
+					"code": "84000",
+					"country": "FR"
+				}
+			]
+		},
+		"customer": {
+			"name": "Grande Distribution SA",
+			"tax_id": {
+				"country": "FR",
+				"code": "44732829320"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"type": "SIREN",
+					"code": "732829320",
+					"ext": {
+						"iso-scheme-id": "0002"
+					}
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0225:732829320"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0225",
+					"code": "732829320"
+				}
+			],
+			"addresses": [
+				{
+					"num": "40",
+					"street": "Boulevard du Commerce",
+					"locality": "Paris",
+					"code": "75012",
+					"country": "FR"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "500",
+				"item": {
+					"name": "Légumes de saison - livraison septembre",
+					"price": "2.40",
+					"unit": "kg"
+				},
+				"sum": "1200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "5.5%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "1200.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-10-30",
+						"amount": "1266.00"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "FR7630006000011234567890189"
+					}
+				],
+				"ext": {
+					"untdid-payment-means": "30"
+				}
+			}
+		},
+		"totals": {
+			"sum": "1200.00",
+			"total": "1200.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "1200.00",
+								"percent": "5.5%",
+								"amount": "66.00"
+							}
+						],
+						"amount": "66.00"
+					}
+				],
+				"sum": "66.00"
+			},
+			"tax": "66.00",
+			"total_with_tax": "1266.00",
+			"payable": "1266.00"
+		},
+		"notes": [
+			{
+				"key": "legal",
+				"text": "Autofacturation - facture établie par le client au nom et pour le compte du fournisseur.",
+				"ext": {
+					"untdid-text-subject": "ABL"
+				}
+			},
+			{
+				"key": "payment",
+				"text": "Conditions de paiement selon les conditions générales de vente.",
+				"ext": {
+					"untdid-text-subject": "PMT"
+				}
+			},
+			{
+				"key": "payment-method",
+				"text": "Pénalités et indemnités de retard applicables conformément aux conditions générales de vente.",
+				"ext": {
+					"untdid-text-subject": "PMD"
+				}
+			},
+			{
+				"key": "payment-term",
+				"text": "Aucun escompte n'est accordé pour paiement anticipé.",
+				"ext": {
+					"untdid-text-subject": "AAB"
+				}
+			}
+		]
+	}
+}

@@ -1,0 +1,153 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6cf9-74c2-bbd2-7a2cf286be43",
+		"dig": {
+			"alg": "sha256",
+			"val": "1c896d09547f7677ec40fb796b9ff08567d7ea282f7c7011e36e55e697beb2c2"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "AR",
+		"$addons": [
+			"ar-arca-v4"
+		],
+		"uuid": "5cfa9d78-7be0-6dfd-b2df-0a0402fa074c",
+		"type": "standard",
+		"series": "1",
+		"issue_date": "2025-02-01",
+		"currency": "ARS",
+		"tax": {
+			"ext": {
+				"ar-arca-concept": "2",
+				"ar-arca-doc-type": "195",
+				"ar-arca-tourism-type": "1"
+			}
+		},
+		"supplier": {
+			"name": "Hotel Patagonia S.A.",
+			"tax_id": {
+				"country": "AR",
+				"code": "30712345671"
+			},
+			"addresses": [
+				{
+					"street": "Av. San Martín 500",
+					"locality": "Bariloche",
+					"region": "Río Negro",
+					"code": "R8400",
+					"country": "AR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "reservas@hotelpatagonia.com.ar"
+				}
+			],
+			"registration": {
+				"other": "Inicio de actividades: 2016-03-01"
+			}
+		},
+		"customer": {
+			"name": "John Smith",
+			"identities": [
+				{
+					"code": "AB123456",
+					"ext": {
+						"ar-arca-identity-type": "94"
+					}
+				}
+			],
+			"addresses": [
+				{
+					"street": "123 Main St",
+					"locality": "New York",
+					"region": "NY",
+					"country": "US"
+				}
+			],
+			"ext": {
+				"ar-arca-vat-status": "5"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"key": "services",
+					"name": "Hotel sin desayuno",
+					"price": "100.00"
+				},
+				"sum": "100.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"ar-arca-tourism-item": "1",
+							"ar-arca-vat-rate": "5"
+						}
+					}
+				],
+				"total": "100.00"
+			}
+		],
+		"payment": {
+			"advances": [
+				{
+					"waiver": "vat-refund",
+					"description": "Reintegro de IVA",
+					"taxes": [
+						{
+							"cat": "VAT",
+							"ext": {
+								"ar-arca-tourism-item": "1"
+							}
+						},
+						{
+							"cat": "VAT",
+							"ext": {
+								"ar-arca-tourism-item": "2"
+							}
+						}
+					],
+					"amount": "21.00"
+				}
+			]
+		},
+		"totals": {
+			"sum": "100.00",
+			"total": "100.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"ar-arca-tourism-item": "1",
+									"ar-arca-vat-rate": "5"
+								},
+								"base": "100.00",
+								"percent": "21.0%",
+								"amount": "21.00"
+							}
+						],
+						"amount": "21.00"
+					}
+				],
+				"sum": "21.00"
+			},
+			"tax": "21.00",
+			"total_with_tax": "121.00",
+			"payable": "121.00",
+			"advance": "21.00",
+			"due": "100.00"
+		}
+	}
+}

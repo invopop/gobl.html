@@ -1,0 +1,96 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d82-725d-8b15-6c375c991230",
+		"dig": {
+			"alg": "sha256",
+			"val": "b0d9fff06a00fe1588dad9735d003ad126d7f3aa436dab5b32debd8a860dfefd"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "EL",
+		"$addons": [
+			"gr-mydata-v1"
+		],
+		"uuid": "01a1ab50-6d82-7261-9263-a77e61a86a78",
+		"type": "other",
+		"series": "XXGR",
+		"issue_date": "2026-07-08",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"gr-mydata-invoice-type": "8.2"
+			}
+		},
+		"supplier": {
+			"name": "Αθηναϊκό Ξενοδοχείο Α.Ε.",
+			"tax_id": {
+				"country": "EL",
+				"code": "177472438"
+			},
+			"addresses": [
+				{
+					"num": "28",
+					"street": "Λεωφόρος Συγγρού",
+					"locality": "Αθήνα",
+					"code": "11743",
+					"country": "GR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "reservations@athenianhotel.gr"
+				}
+			]
+		},
+		"customer": {
+			"name": "Τεχνολογικές Λύσεις Ελλάς Α.Ε.",
+			"tax_id": {
+				"country": "EL",
+				"code": "841442160"
+			},
+			"addresses": [
+				{
+					"num": "15",
+					"street": "Οδός Πανεπιστημίου",
+					"locality": "Αθήνα",
+					"code": "10671",
+					"country": "GR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "accounting@techsolutions.gr"
+				}
+			]
+		},
+		"charges": [
+			{
+				"i": 1,
+				"reason": "Τέλος ανθεκτικότητας στην κλιματική κρίση",
+				"amount": "3.00",
+				"ext": {
+					"gr-mydata-other-tax": "8",
+					"gr-mydata-tax-type": "3"
+				}
+			}
+		],
+		"payment": {
+			"instructions": {
+				"key": "credit-transfer",
+				"ext": {
+					"gr-mydata-payment-means": "1"
+				}
+			}
+		},
+		"totals": {
+			"sum": "0.00",
+			"charge": "3.00",
+			"total": "3.00",
+			"tax": "0.00",
+			"total_with_tax": "3.00",
+			"payable": "3.00"
+		}
+	}
+}

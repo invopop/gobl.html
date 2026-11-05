@@ -1,0 +1,112 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d51-7007-8d93-22802a24a80e",
+		"dig": {
+			"alg": "sha256",
+			"val": "a3a2391517ad4b7fadd4c1c3bc8a09dfe66e9c10cea14175be83a668c721e6a7"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-sii-v1"
+		],
+		"$tags": [
+			"replacement"
+		],
+		"uuid": "01a1ab50-6d51-7008-a6ad-345f92816e47",
+		"type": "standard",
+		"series": "FC",
+		"issue_date": "2026-02-26",
+		"currency": "EUR",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2026-02-20",
+				"series": "FS",
+				"code": "001"
+			}
+		],
+		"tax": {
+			"ext": {
+				"es-sii-doc-type": "F3"
+			}
+		},
+		"supplier": {
+			"name": "Easor Software Solutions S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B24830515"
+			},
+			"addresses": [
+				{
+					"num": "532",
+					"street": "Avenida Diagonal",
+					"locality": "Barcelona",
+					"region": "Barcelona",
+					"code": "08006",
+					"country": "ES"
+				}
+			]
+		},
+		"customer": {
+			"name": "Cliente Ejemplo S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B63272603"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Servicio de consultoría",
+					"price": "500.00"
+				},
+				"sum": "500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"es-sii-regime": "01"
+						}
+					}
+				],
+				"total": "500.00"
+			}
+		],
+		"totals": {
+			"sum": "500.00",
+			"total": "500.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"es-sii-regime": "01"
+								},
+								"base": "500.00",
+								"percent": "21.0%",
+								"amount": "105.00"
+							}
+						],
+						"amount": "105.00"
+					}
+				],
+				"sum": "105.00"
+			},
+			"tax": "105.00",
+			"total_with_tax": "605.00",
+			"payable": "605.00"
+		}
+	}
+}

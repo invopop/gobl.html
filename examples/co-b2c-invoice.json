@@ -1,0 +1,101 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d15-76ca-95a0-23f6c4cada8c",
+		"dig": {
+			"alg": "sha256",
+			"val": "3e14a502ba001833968b3b6328d4c63c6220a1697eb0445705afc7667f71dd39"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "CO",
+		"$addons": [
+			"co-dian-v2"
+		],
+		"$tags": [
+			"simplified"
+		],
+		"uuid": "01a1ab50-6d15-76ce-8fc3-eec595d4f149",
+		"type": "standard",
+		"series": "SETP",
+		"code": "990001002",
+		"issue_date": "2026-10-13",
+		"currency": "COP",
+		"tax": {},
+		"supplier": {
+			"name": "EXAMPLE SUPPLIER S.A.S.",
+			"tax_id": {
+				"country": "CO",
+				"code": "9005590882",
+				"type": "tin"
+			},
+			"addresses": [
+				{
+					"street": "CRA 15 88 64 OF 502",
+					"locality": "Bogotá, D.C.",
+					"region": "Bogotá",
+					"country": "CO"
+				}
+			],
+			"ext": {
+				"co-dian-fiscal-responsibility": "R-99-PN",
+				"co-dian-municipality": "11001"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Servicios de consultoría",
+					"price": "200000.00"
+				},
+				"sum": "200000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "19%"
+					}
+				],
+				"total": "200000.00"
+			}
+		],
+		"payment": {
+			"advances": [
+				{
+					"description": "Prepaid",
+					"percent": "100%",
+					"amount": "238000.00"
+				}
+			]
+		},
+		"totals": {
+			"sum": "200000.00",
+			"total": "200000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "200000.00",
+								"percent": "19%",
+								"amount": "38000.00"
+							}
+						],
+						"amount": "38000.00"
+					}
+				],
+				"sum": "38000.00"
+			},
+			"tax": "38000.00",
+			"total_with_tax": "238000.00",
+			"payable": "238000.00",
+			"advance": "238000.00",
+			"due": "0.00"
+		}
+	}
+}

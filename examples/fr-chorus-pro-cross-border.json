@@ -1,0 +1,150 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d66-71a1-87ae-9ba4ecf69e33",
+		"dig": {
+			"alg": "sha256",
+			"val": "7c75515657e2e5a2fcea972e7391d67ff3f2e42abe4d0bb739adca5150e084c6"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FR",
+		"$addons": [
+			"eu-en16931-v2017",
+			"fr-choruspro-v1"
+		],
+		"uuid": "01a1ab50-6d66-71a2-b7b0-dfb35f8a7bca",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "001",
+		"issue_date": "2022-02-01",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"fr-choruspro-framework": "A1",
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Provide One Inc.",
+			"tax_id": {
+				"country": "DE",
+				"code": "111111125"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Berliner Strasse",
+					"locality": "Berlin",
+					"code": "10117",
+					"country": "DE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			],
+			"ext": {
+				"fr-choruspro-scheme": "2"
+			}
+		},
+		"customer": {
+			"name": "Sample Public Entity",
+			"tax_id": {
+				"country": "FR",
+				"code": "44732829320"
+			},
+			"identities": [
+				{
+					"type": "SIRET",
+					"code": "73282932012345",
+					"ext": {
+						"iso-scheme-id": "0009"
+					}
+				}
+			],
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Rue Sundacsakn",
+					"locality": "Saint-Germain-En-Laye",
+					"code": "75050",
+					"country": "FR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "email@sample.com"
+				}
+			],
+			"ext": {
+				"fr-choruspro-scheme": "1"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Development services",
+					"price": "90.00",
+					"unit": "h"
+				},
+				"sum": "1800.00",
+				"discounts": [
+					{
+						"reason": "Special discount",
+						"percent": "10%",
+						"amount": "180.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "1620.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Please pay within 10 days"
+			}
+		},
+		"totals": {
+			"sum": "1620.00",
+			"total": "1620.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "1620.00",
+								"percent": "20%",
+								"amount": "324.00"
+							}
+						],
+						"amount": "324.00"
+					}
+				],
+				"sum": "324.00"
+			},
+			"tax": "324.00",
+			"total_with_tax": "1944.00",
+			"payable": "1944.00"
+		}
+	}
+}

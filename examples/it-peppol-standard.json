@@ -1,0 +1,160 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d8d-76b6-9080-0df9046b6d7d",
+		"dig": {
+			"alg": "sha256",
+			"val": "9e078632c2cc4220153cc2498f23454dd015baaa8704c94150675a2b25449870"
+		},
+		"from": "iso6523-actorid-upis::0205:IT00159560366",
+		"to": "iso6523-actorid-upis::0205:IT05140920017"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"eu-en16931-v2017",
+			"it-sdi-v1"
+		],
+		"uuid": "01a1ab50-6d8d-76ba-8c65-4fde135bbd6e",
+		"type": "standard",
+		"series": "INV",
+		"code": "PP000003",
+		"issue_date": "2025-04-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"it-sdi-document-type": "TD01",
+				"it-sdi-format": "FPR12",
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Tecnologie Adriatico S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "00159560366"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0205:IT00159560366"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0205",
+					"code": "IT00159560366"
+				}
+			],
+			"addresses": [
+				{
+					"num": "15",
+					"street": "Via Giuseppe Verdi",
+					"locality": "Milano",
+					"region": "MI",
+					"code": "20121",
+					"country": "IT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "fatturazione@tecnologieadriatico.it"
+				}
+			],
+			"ext": {
+				"it-sdi-fiscal-regime": "RF01"
+			}
+		},
+		"customer": {
+			"name": "Roma Solutions S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "05140920017"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0205:IT05140920017"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0205",
+					"code": "IT05140920017"
+				}
+			],
+			"addresses": [
+				{
+					"num": "10",
+					"street": "Via del Corso",
+					"locality": "Roma",
+					"region": "RM",
+					"code": "00186",
+					"country": "IT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "test@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "12",
+				"item": {
+					"name": "Sambox services",
+					"price": "145.00",
+					"unit": "one"
+				},
+				"sum": "1740.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "22.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "1740.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			}
+		},
+		"totals": {
+			"sum": "1740.00",
+			"total": "1740.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "1740.00",
+								"percent": "22.0%",
+								"amount": "382.80"
+							}
+						],
+						"amount": "382.80"
+					}
+				],
+				"sum": "382.80"
+			},
+			"tax": "382.80",
+			"total_with_tax": "2122.80",
+			"payable": "2122.80"
+		}
+	}
+}

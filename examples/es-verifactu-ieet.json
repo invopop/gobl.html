@@ -1,0 +1,115 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d5d-7af4-b496-ab700e31301b",
+		"dig": {
+			"alg": "sha256",
+			"val": "d4fd6620867e67dd0f2e8a89a86faf2f269387b124480bab61b49b1b57ba2383"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-verifactu-v1"
+		],
+		"$tags": [
+			"simplified"
+		],
+		"uuid": "01a1ab50-6d5d-7af8-b10e-c454b2fac718",
+		"type": "standard",
+		"series": "SAMPLE",
+		"issue_date": "2026-05-06",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"es-verifactu-doc-type": "F2"
+			}
+		},
+		"supplier": {
+			"name": "Hotel Barcelona Example SL",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"addresses": [
+				{
+					"locality": "Barcelona",
+					"code": "08001",
+					"country": "ES"
+				}
+			]
+		},
+		"customer": {
+			"name": "John Smith",
+			"addresses": [
+				{
+					"locality": "London",
+					"country": "GB"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "3",
+				"item": {
+					"name": "Double room — 3 nights",
+					"price": "180.00",
+					"unit": "day"
+				},
+				"sum": "540.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "10.0%",
+						"ext": {
+							"es-verifactu-op-class": "S1",
+							"es-verifactu-regime": "01"
+						}
+					}
+				],
+				"total": "540.00"
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"key": "tax",
+				"reason": "IEET — Hotel 4★, Barcelona city — 3 nights × 1 guest × €3.40",
+				"amount": "10.20"
+			}
+		],
+		"totals": {
+			"sum": "540.00",
+			"charge": "10.20",
+			"total": "550.20",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"es-verifactu-op-class": "S1",
+									"es-verifactu-regime": "01"
+								},
+								"base": "540.00",
+								"percent": "10.0%",
+								"amount": "54.00"
+							}
+						],
+						"amount": "54.00"
+					}
+				],
+				"sum": "54.00"
+			},
+			"tax": "54.00",
+			"total_with_tax": "604.20",
+			"payable": "604.20"
+		}
+	}
+}

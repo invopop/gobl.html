@@ -1,0 +1,268 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d0f-7add-8633-4e25bc549f44",
+		"dig": {
+			"alg": "sha256",
+			"val": "dbd97ccf5577db9dce6bdccd24debae1af23267eea41ff4345b054e600e6505a"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "BR",
+		"$addons": [
+			"br-nfe-v4"
+		],
+		"uuid": "01a1ab50-6d0f-7ae1-9818-1d8c1e0238aa",
+		"type": "standard",
+		"series": "1",
+		"issue_date": "2026-05-22",
+		"currency": "BRL",
+		"tax": {
+			"ext": {
+				"br-nfe-model": "55",
+				"br-nfe-operation-type": "1",
+				"br-nfe-presence": "2",
+				"br-nfe-purpose": "1"
+			}
+		},
+		"supplier": {
+			"name": "TechNova Soluções Digitais Ltda.",
+			"tax_id": {
+				"country": "BR",
+				"code": "05229829000184"
+			},
+			"identities": [
+				{
+					"key": "br-nfe-state-reg",
+					"code": "12345678901234"
+				}
+			],
+			"addresses": [
+				{
+					"num": "101",
+					"street": "Avenida Paulista",
+					"locality": "Bela Vista",
+					"region": "São Paulo",
+					"state": "SP",
+					"code": "01311-000",
+					"country": "BR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "contact@technova.test"
+				}
+			],
+			"ext": {
+				"br-ibge-municipality": "3550308",
+				"br-nfe-regime": "3"
+			}
+		},
+		"customer": {
+			"name": "Construforte Engenharia Ltda.",
+			"tax_id": {
+				"country": "BR",
+				"code": "46602178000103"
+			},
+			"addresses": [
+				{
+					"num": "75",
+					"street": "Avenida Sete de Setembro",
+					"street_extra": "Bloco C",
+					"locality": "Centro",
+					"region": "Salvador",
+					"state": "BA",
+					"code": "40060-000",
+					"country": "BR"
+				}
+			],
+			"ext": {
+				"br-ibge-municipality": "2927408",
+				"br-nfe-state-reg-ind": "9"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "10",
+				"order": "1",
+				"item": {
+					"ref": "USB-C-2M",
+					"name": "Cabo USB-C 2 metros",
+					"identities": [
+						{
+							"key": "ncm",
+							"code": "85444290"
+						},
+						{
+							"key": "gtin",
+							"code": "7891234567890"
+						}
+					],
+					"price": "28.90",
+					"unit": "piece"
+				},
+				"sum": "289.00",
+				"discounts": [
+					{
+						"reason": "Desconto comercial",
+						"percent": "5%",
+						"amount": "14.45"
+					}
+				],
+				"charges": [
+					{
+						"key": "delivery",
+						"amount": "15.00"
+					},
+					{
+						"key": "insurance",
+						"amount": "5.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "ICMS",
+						"percent": "12.0%",
+						"ext": {
+							"br-nfe-icms-cst": "00",
+							"br-nfe-icms-origin": "0"
+						}
+					},
+					{
+						"cat": "PIS",
+						"percent": "1.65%",
+						"ext": {
+							"br-nfe-pis-cst": "01"
+						}
+					},
+					{
+						"cat": "COFINS",
+						"percent": "7.60%",
+						"ext": {
+							"br-nfe-cofins-cst": "01"
+						}
+					}
+				],
+				"total": "294.55",
+				"notes": [
+					{
+						"key": "goods",
+						"text": "Cabo homologado para carregamento rápido."
+					}
+				],
+				"ext": {
+					"br-nfe-cfop": "6102"
+				}
+			}
+		],
+		"ordering": {
+			"code": "PED-2026-0547",
+			"contracts": [
+				{
+					"code": "CON-2026-015"
+				}
+			]
+		},
+		"payment": {
+			"instructions": {
+				"key": "credit-transfer",
+				"ext": {
+					"br-nfe-payment-means": "18"
+				}
+			}
+		},
+		"delivery": {
+			"receiver": {
+				"name": "Construforte Engenharia Ltda.",
+				"tax_id": {
+					"country": "BR",
+					"code": "46602178000103"
+				},
+				"addresses": [
+					{
+						"num": "1200",
+						"street": "Avenida ACM",
+						"locality": "Caminho das Árvores",
+						"region": "Salvador",
+						"state": "BA",
+						"code": "41820-014",
+						"country": "BR"
+					}
+				],
+				"ext": {
+					"br-ibge-municipality": "2927408"
+				}
+			}
+		},
+		"totals": {
+			"sum": "294.55",
+			"total": "294.55",
+			"taxes": {
+				"categories": [
+					{
+						"code": "ICMS",
+						"informative": true,
+						"rates": [
+							{
+								"ext": {
+									"br-nfe-icms-cst": "00",
+									"br-nfe-icms-origin": "0"
+								},
+								"base": "294.55",
+								"percent": "12.0%",
+								"amount": "35.35"
+							}
+						],
+						"amount": "35.35"
+					},
+					{
+						"code": "PIS",
+						"informative": true,
+						"rates": [
+							{
+								"ext": {
+									"br-nfe-pis-cst": "01"
+								},
+								"base": "294.55",
+								"percent": "1.65%",
+								"amount": "4.86"
+							}
+						],
+						"amount": "4.86"
+					},
+					{
+						"code": "COFINS",
+						"informative": true,
+						"rates": [
+							{
+								"ext": {
+									"br-nfe-cofins-cst": "01"
+								},
+								"base": "294.55",
+								"percent": "7.60%",
+								"amount": "22.39"
+							}
+						],
+						"amount": "22.39"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "294.55",
+			"payable": "294.55"
+		},
+		"notes": [
+			{
+				"key": "reason",
+				"text": "Venda de Mercadorias"
+			},
+			{
+				"key": "general",
+				"text": "Pedido nº 2026/0547."
+			}
+		]
+	}
+}

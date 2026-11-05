@@ -1,0 +1,127 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d90-73d8-bce7-e83cdeff414d",
+		"dig": {
+			"alg": "sha256",
+			"val": "6554f20719ac49303f3278df5ce153fa4440ef16c1708732fda3ae164c573f48"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"it-sdi-v1"
+		],
+		"uuid": "01a1ab50-6d90-73d9-95bf-f34c3f658904",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "003",
+		"issue_date": "2025-05-22",
+		"op_date": "2025-05-20",
+		"currency": "EUR",
+		"tax": {
+			"prices_include": "VAT",
+			"ext": {
+				"it-sdi-document-type": "TD01",
+				"it-sdi-format": "FPR12"
+			}
+		},
+		"supplier": {
+			"name": "Cleaning SRL",
+			"tax_id": {
+				"country": "IT",
+				"code": "74230430451"
+			},
+			"addresses": [
+				{
+					"num": "12",
+					"street": "Via Roma",
+					"locality": "Milano",
+					"region": "MI",
+					"code": "20121",
+					"country": "IT"
+				}
+			],
+			"ext": {
+				"it-sdi-fiscal-regime": "RF01"
+			}
+		},
+		"customer": {
+			"name": "Mela S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "13029381004"
+			},
+			"inboxes": [
+				{
+					"key": "it-sdi-code",
+					"code": "M5UXCR5"
+				}
+			],
+			"addresses": [
+				{
+					"num": "23",
+					"street": "Via dei Mille",
+					"locality": "Firenze",
+					"region": "FI",
+					"code": "50123",
+					"country": "IT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "3",
+				"item": {
+					"name": "Cleaning products",
+					"attributes": [
+						{
+							"type": "N.DOC.COMM",
+							"text": "ACUBE2025/0000-7816",
+							"amount": "7816",
+							"date": "2025-05-20"
+						}
+					],
+					"price": "137.50"
+				},
+				"sum": "412.50",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "22.0%"
+					}
+				],
+				"total": "412.50"
+			}
+		],
+		"totals": {
+			"sum": "412.50",
+			"tax_included": "74.39",
+			"total": "338.11",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "338.11",
+								"percent": "22.0%",
+								"amount": "74.39"
+							}
+						],
+						"amount": "74.39"
+					}
+				],
+				"sum": "74.39"
+			},
+			"tax": "74.39",
+			"total_with_tax": "412.50",
+			"payable": "412.50"
+		}
+	}
+}

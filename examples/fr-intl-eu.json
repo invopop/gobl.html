@@ -1,0 +1,81 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6dd0-7177-8c78-918cca12aa95",
+		"dig": {
+			"alg": "sha256",
+			"val": "fe208b56118aa33f8182cea9837ffb639c171b24b043d69baa041ee449feef53"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/payment",
+		"$regime": "FR",
+		"uuid": "01a1ab50-6dd0-717a-b1a9-940cac288d76",
+		"type": "receipt",
+		"series": "B",
+		"code": "PAY-DE-001",
+		"issue_date": "2026-04-20",
+		"value_date": "2026-04-20",
+		"currency": "EUR",
+		"supplier": {
+			"name": "Bistrot Lyon SAS",
+			"tax_id": {
+				"country": "FR",
+				"code": "50522465228"
+			},
+			"addresses": [
+				{
+					"country": "FR"
+				}
+			]
+		},
+		"customer": {
+			"name": "Müller GmbH",
+			"tax_id": {
+				"country": "DE",
+				"code": "136695976"
+			},
+			"addresses": [
+				{
+					"country": "DE"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"document": {
+					"type": "standard",
+					"issue_date": "2026-04-20",
+					"series": "B",
+					"code": "INTL-DE-APR-001"
+				},
+				"amount": "2400.00",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"base": "2000.00",
+									"percent": "20%",
+									"amount": "400.00"
+								}
+							],
+							"amount": "400.00"
+						}
+					],
+					"sum": "400.00"
+				}
+			}
+		],
+		"methods": [
+			{
+				"key": "credit-transfer",
+				"amount": "2400.00"
+			}
+		],
+		"total": "2400.00"
+	}
+}

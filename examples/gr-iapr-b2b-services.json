@@ -1,0 +1,158 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d82-7e9a-b3b0-7f62bc58a242",
+		"dig": {
+			"alg": "sha256",
+			"val": "5f8b3e6c69d3d7226fb7bd5c11ebf8090f648f83803ace5e1ee554d889aadb4c"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "EL",
+		"$addons": [
+			"gr-mydata-v1"
+		],
+		"$tags": [
+			"services",
+			"simplified"
+		],
+		"uuid": "01a1ab50-6d82-7e9b-81b9-ee252e79abfb",
+		"type": "standard",
+		"series": "XXGR",
+		"issue_date": "2026-07-08",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"gr-mydata-invoice-type": "11.2"
+			}
+		},
+		"supplier": {
+			"name": "Αθηναϊκό Ξενοδοχείο Α.Ε.",
+			"tax_id": {
+				"country": "EL",
+				"code": "177472438"
+			},
+			"addresses": [
+				{
+					"num": "28",
+					"street": "Λεωφόρος Συγγρού",
+					"locality": "Αθήνα",
+					"code": "11743",
+					"country": "GR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "reservations@athenianhotel.gr"
+				}
+			],
+			"ext": {
+				"gr-mydata-branch": "2"
+			}
+		},
+		"customer": {
+			"name": "Τεχνολογικές Λύσεις Ελλάς Α.Ε.",
+			"tax_id": {
+				"country": "EL",
+				"code": "841442160"
+			},
+			"addresses": [
+				{
+					"num": "15",
+					"street": "Οδός Πανεπιστημίου",
+					"locality": "Αθήνα",
+					"code": "10671",
+					"country": "GR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "accounting@techsolutions.gr"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "3",
+				"item": {
+					"name": "Διαμονή Deluxe Δίκλινο Δωμάτιο",
+					"price": "180.00",
+					"unit": "day",
+					"ext": {
+						"gr-mydata-income-cat": "category1_3",
+						"gr-mydata-income-type": "E3_561_001"
+					}
+				},
+				"sum": "540.00",
+				"discounts": [
+					{
+						"reason": "Εταιρική Έκπτωση",
+						"percent": "10%",
+						"amount": "54.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "24%",
+						"ext": {
+							"gr-mydata-vat-rate": "1"
+						}
+					}
+				],
+				"total": "486.00"
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"reason": "Τέλος διαμονής παρεπιδημούντων",
+				"amount": "21.00",
+				"ext": {
+					"gr-mydata-fee": "18",
+					"gr-mydata-tax-type": "2"
+				}
+			}
+		],
+		"payment": {
+			"instructions": {
+				"key": "credit-transfer",
+				"ext": {
+					"gr-mydata-payment-means": "1"
+				}
+			}
+		},
+		"totals": {
+			"sum": "486.00",
+			"charge": "21.00",
+			"total": "507.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"gr-mydata-vat-rate": "1"
+								},
+								"base": "486.00",
+								"percent": "24%",
+								"amount": "116.64"
+							}
+						],
+						"amount": "116.64"
+					}
+				],
+				"sum": "116.64"
+			},
+			"tax": "116.64",
+			"total_with_tax": "623.64",
+			"payable": "623.64"
+		}
+	}
+}

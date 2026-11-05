@@ -1,0 +1,215 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d74-720f-aacd-e7a3a257b7eb",
+		"dig": {
+			"alg": "sha256",
+			"val": "30e9d27c7a27e3c9f8e8e90f9aba59093da871dab7e80e3d8a1472e3dac382c2"
+		},
+		"from": "iso6523-actorid-upis::0225:303265045",
+		"to": "iso6523-actorid-upis::0225:732829320"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FR",
+		"$addons": [
+			"eu-en16931-v2017",
+			"fr-ctc-flow2-v1"
+		],
+		"$tags": [
+			"reverse-charge"
+		],
+		"uuid": "01a1ab50-6d74-7213-b07d-319212f858ae",
+		"type": "standard",
+		"series": "ST",
+		"code": "2026-00001",
+		"issue_date": "2026-09-15",
+		"currency": "EUR",
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"fr-ctc-billing-mode": "S1",
+				"untdid-document-type": "380"
+			},
+			"notes": [
+				{
+					"cat": "VAT",
+					"key": "reverse-charge",
+					"text": "Autoliquidation – TVA due par le preneur, article 283-2 nonies du CGI.",
+					"ext": {
+						"untdid-tax-category": "AE"
+					}
+				}
+			]
+		},
+		"supplier": {
+			"name": "Plomberie Dupont SARL",
+			"tax_id": {
+				"country": "FR",
+				"code": "40303265045"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"type": "SIREN",
+					"code": "303265045",
+					"ext": {
+						"iso-scheme-id": "0002"
+					}
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0225:303265045"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0225",
+					"code": "303265045"
+				}
+			],
+			"addresses": [
+				{
+					"num": "12",
+					"street": "Rue des Artisans",
+					"locality": "Lyon",
+					"code": "69003",
+					"country": "FR"
+				}
+			]
+		},
+		"customer": {
+			"name": "Bâtiment Martin SA",
+			"tax_id": {
+				"country": "FR",
+				"code": "44732829320"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"type": "SIREN",
+					"code": "732829320",
+					"ext": {
+						"iso-scheme-id": "0002"
+					}
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0225:732829320"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0225",
+					"code": "732829320"
+				}
+			],
+			"addresses": [
+				{
+					"num": "5",
+					"street": "Avenue de la Construction",
+					"locality": "Villeurbanne",
+					"code": "69100",
+					"country": "FR"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Travaux de plomberie en sous-traitance",
+					"price": "10000.00",
+					"unit": "one"
+				},
+				"sum": "10000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "reverse-charge",
+						"ext": {
+							"untdid-tax-category": "AE"
+						}
+					}
+				],
+				"total": "10000.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-10-15",
+						"amount": "10000.00"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "FR7630006000011234567890189"
+					}
+				],
+				"ext": {
+					"untdid-payment-means": "30"
+				}
+			}
+		},
+		"totals": {
+			"sum": "10000.00",
+			"total": "10000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "reverse-charge",
+								"ext": {
+									"untdid-tax-category": "AE"
+								},
+								"base": "10000.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "10000.00",
+			"payable": "10000.00"
+		},
+		"notes": [
+			{
+				"key": "payment",
+				"text": "Conditions de paiement selon les conditions générales de vente.",
+				"ext": {
+					"untdid-text-subject": "PMT"
+				}
+			},
+			{
+				"key": "payment-method",
+				"text": "Pénalités et indemnités de retard applicables conformément aux conditions générales de vente.",
+				"ext": {
+					"untdid-text-subject": "PMD"
+				}
+			},
+			{
+				"key": "payment-term",
+				"text": "Aucun escompte n'est accordé pour paiement anticipé.",
+				"ext": {
+					"untdid-text-subject": "AAB"
+				}
+			}
+		]
+	}
+}
