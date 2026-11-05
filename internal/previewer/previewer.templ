@@ -228,53 +228,63 @@ func Title(s string) string {
 // the main sheet shows the results laid out like a GOBL document.
 templ preview(entries []catalog.Entry) {
 	<div class="flex-1 min-w-0 flex flex-col">
-		<div class="h-10 px-4 flex items-center gap-3 border-b border-border bg-background shrink-0">
-			<span class="font-medium truncate" x-text="currentTitle()"></span>
-			<span class="text-sm text-foreground-default-secondary tabular-nums whitespace-nowrap" x-text="meta"></span>
-			<span class="text-sm text-foreground-critical truncate" x-show="error" x-text="error"></span>
-			<span class="ml-auto flex items-center gap-1">
-				<template x-if="bench && !running">
-					@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Attributes: templ.Attributes{"@click": "closeBenchmark()"}}) {
-						@icons.ArrowLeft()
-						Back to preview
+		// The header: title, then file name and render stats, then the
+		// description on the left; the links and the tags on the right. Every
+		// example's file name and tags are rendered and the current one shown,
+		// so the tags keep PopUI's styling.
+		<div class="px-4 py-2 flex items-start gap-4 border-b border-border bg-background shrink-0">
+			<div class="min-w-0 flex-1 flex flex-col gap-0.5">
+				<span class="font-medium truncate" x-text="currentTitle()"></span>
+				<span class="flex items-center gap-2 text-xs text-foreground-default-tertiary tabular-nums whitespace-nowrap min-w-0">
+					for _, e := range entries {
+						<span class="font-mono truncate" :class={ "selected === '" + e.File + "' && !bench ? '' : 'hidden'" }>{ e.File }</span>
 					}
-				</template>
-				<template x-if="current && !bench">
-					<span class="flex items-center gap-1">
-						@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Href: "#", Target: "_blank", Attributes: templ.Attributes{":href": "serverURL(current.file, 'html')"}}) {
-							HTML
-							@icons.ExternalLink()
+					<span x-text="meta"></span>
+				</span>
+				<span class="text-sm text-foreground-critical truncate" x-show="error" x-text="error"></span>
+				for _, e := range entries {
+					if e.Description != "" {
+						<span class="text-sm text-foreground-default-secondary" :class={ "selected === '" + e.File + "' && !bench ? '' : 'hidden'" }>{ e.Description }</span>
+					}
+				}
+			</div>
+			<div class="shrink-0 flex flex-col items-end gap-1.5 max-w-[50%]">
+				<span class="flex items-center gap-1">
+					<template x-if="bench && !running">
+						@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Attributes: templ.Attributes{"@click": "closeBenchmark()"}}) {
+							@icons.ArrowLeft()
+							Back to preview
 						}
-						@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Href: "#", Target: "_blank", Attributes: templ.Attributes{":href": "serverURL(current.file, 'pdf')"}}) {
-							PDF
-							@icons.ExternalLink()
+					</template>
+					<template x-if="current && !bench">
+						<span class="flex items-center gap-1">
+							@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Href: "#", Target: "_blank", Attributes: templ.Attributes{":href": "serverURL(current.file, 'html')"}}) {
+								HTML
+								@icons.ExternalLink()
+							}
+							@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Href: "#", Target: "_blank", Attributes: templ.Attributes{":href": "serverURL(current.file, 'pdf')"}}) {
+								PDF
+								@icons.ExternalLink()
+							}
+							@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Href: "#", Target: "_blank", Attributes: templ.Attributes{":href": "'/api/examples/' + current.file"}}) {
+								JSON
+								@icons.ExternalLink()
+							}
+						</span>
+					</template>
+				</span>
+				for _, e := range entries {
+					<span class="flex flex-wrap justify-end gap-1" :class={ "selected === '" + e.File + "' && !bench ? '' : 'hidden'" }>
+						@popui.TagStatus(props.TagStatus{Label: KindLabel(e.Kind), Status: KindStatus(e.Kind)})
+						for _, a := range e.Addons {
+							@popui.TagStatus(props.TagStatus{Label: a, Status: "steelBlue"})
 						}
-						@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Href: "#", Target: "_blank", Attributes: templ.Attributes{":href": "'/api/examples/' + current.file"}}) {
-							JSON
-							@icons.ExternalLink()
+						for _, t := range e.Tags {
+							@popui.TagStatus(props.TagStatus{Label: t, Status: "grey"})
 						}
 					</span>
-				</template>
-			</span>
-		</div>
-		// The selected example's file name and tags; every example's strip is
-		// rendered and the current one shown, so the tags keep PopUI's styling.
-		<div class="px-4 py-1.5 flex items-center gap-2 border-b border-border bg-background shrink-0 text-sm" x-show="current && !bench" x-cloak>
-			for _, e := range entries {
-				<span class="flex flex-wrap items-center gap-1 min-w-0" :class={ "selected === '" + e.File + "' ? '' : 'hidden'" }>
-					if e.Description != "" {
-						<span class="basis-full text-foreground-default-secondary mb-0.5">{ e.Description }</span>
-					}
-					<span class="font-mono text-xs text-foreground-default-tertiary mr-2">{ e.File }</span>
-					@popui.TagStatus(props.TagStatus{Label: KindLabel(e.Kind), Status: KindStatus(e.Kind)})
-					for _, a := range e.Addons {
-						@popui.TagStatus(props.TagStatus{Label: a, Status: "steelBlue"})
-					}
-					for _, t := range e.Tags {
-						@popui.TagStatus(props.TagStatus{Label: t, Status: "grey"})
-					}
-				</span>
-			}
+				}
+			</div>
 		</div>
 		<div class="flex-1 min-w-0 overflow-auto bg-background-default-secondary" x-ref="canvas">
 			<div class="pv-canvas">
