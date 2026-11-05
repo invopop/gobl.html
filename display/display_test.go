@@ -12,6 +12,7 @@ import (
 
 const (
 	badMode  = "around"           // a mode that does not exist
+	laterKey = "future.key"       // an anchor a newer renderer might add
 	kept     = "<p>a</p><p>b</p>" // what Strip leaves of its inputs
 	fragment = "<p>x</p>"
 )
@@ -238,14 +239,17 @@ func TestRender(t *testing.T) {
 		assert.Equal(t, "<p>0042</p>", r.After(display.KeyNotes)[0])
 	})
 
-	t.Run("skips unknown keys and modes", func(t *testing.T) {
+	t.Run("skips unknown keys and modes before any other check", func(t *testing.T) {
 		r, err := display.Snippets{
-			{At: "future.key", Mode: display.ModeAfter, HTML: fragment},
+			{At: laterKey, Mode: display.ModeAfter, HTML: fragment},
 			{At: display.KeyNotes, Mode: badMode, HTML: fragment},
 			{At: display.KeyLinesSublines, Mode: display.ModeAfter, HTML: fragment},
+			{At: laterKey, Mode: display.ModeAfter, HTML: strings.Repeat("x", display.MaxSnippetSize+1)},
+			{At: laterKey, Mode: display.ModeAfter, HTML: "{{ .Nope }}"},
+			nil,
 		}.Render(vars)
 		require.NoError(t, err)
-		assert.False(t, r.Has("future.key"))
+		assert.False(t, r.Has(laterKey))
 		assert.False(t, r.Has(display.KeyNotes))
 		assert.False(t, r.Has(display.KeyLinesSublines))
 	})

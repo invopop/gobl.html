@@ -113,12 +113,17 @@ they are the `hide` list and the `snippets` array:
 | `lines.sublines` | Line references, identities and notes (`hide` only, see below) |
 | `taxes` | Tax breakdown table |
 | `payment` | The whole payment section |
-| `payment.instructions` | Payment instructions list |
+| `payment.instructions` | Payment instructions list, with the online payment QR codes |
 | `payment.instructions.bank-data` | Credit transfer details |
-| `payment.instructions.online` | Online payment links, listed and as QR codes |
+| `payment.instructions.online` | Online payment links; a replacement also drops their QR codes |
 | `payment.terms` | Payment terms and due dates |
 | `notes` | The document's notes; a replacement keeps the regime's tax notes |
 | `footer.branding` | GOBL logo in the footer |
+
+The keys apply to every document kind that has the section: an order's
+contracts and period sit under `header.summary.ordering`, a delivery
+note's receiver under `header.contacts.delivery`, and an order's payment
+details under the `payment` keys.
 
 The title, the supplier and customer, the lines, the totals, the regime
 extensions, the tax notes, the page numbers and every regime QR code have
@@ -134,8 +139,10 @@ A snippet names an anchor key, a mode and the HTML to place:
 
 - `before` and `after` render the snippet on either side of the section,
   even when the section is hidden or has no content for this document, in
-  the order given. `payment.instructions` and `payment.terms` get their
-  payment section created for them when the document has none.
+  the order given. They sit outside the element `hide` removes, so hiding
+  `notes` keeps the snippets around it. `payment.instructions` and
+  `payment.terms` get their payment section created for them when the
+  document has none.
 - `replace` renders the snippet instead of the section's own content.
   Nothing inside the section is rendered, not even snippets anchored to keys
   within it. At most one replacement per anchor.

@@ -26,17 +26,50 @@ templ ListSection(key display.Key) {
 }
 
 templ section(key display.Key, item bool) {
-	{{ s := internal.Snippets(ctx) }}
-	for _, h := range s.Before(key) {
+	@before(key, item)
+	@replaceable(key, item) {
+		{ children... }
+	}
+	@after(key, item)
+}
+
+// Before renders the snippets placed before the key, on their own, for a
+// section whose container must stay between the snippets and the
+// replaceable content.
+templ Before(key display.Key) {
+	@before(key, false)
+}
+
+// After renders the snippets placed after the key, on their own.
+templ After(key display.Key) {
+	@after(key, false)
+}
+
+// Replaceable renders the replacement snippet at the key, or the children
+// when there is none, without the before and after snippets.
+templ Replaceable(key display.Key) {
+	@replaceable(key, false) {
+		{ children... }
+	}
+}
+
+templ before(key display.Key, item bool) {
+	for _, h := range internal.Snippets(ctx).Before(key) {
 		@snippet(key, display.ModeBefore, h, item)
 	}
-	if h, ok := s.Replacement(key); ok {
+}
+
+templ after(key display.Key, item bool) {
+	for _, h := range internal.Snippets(ctx).After(key) {
+		@snippet(key, display.ModeAfter, h, item)
+	}
+}
+
+templ replaceable(key display.Key, item bool) {
+	if h, ok := internal.Snippets(ctx).Replacement(key); ok {
 		@snippet(key, display.ModeReplace, h, item)
 	} else {
 		{ children... }
-	}
-	for _, h := range s.After(key) {
-		@snippet(key, display.ModeAfter, h, item)
 	}
 }
 

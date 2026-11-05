@@ -36,11 +36,13 @@ templ notes(notes []*org.Note) {
 	@notesSection(nil, notes)
 }
 
-// notesSection renders the notes of a document: the fixed notes always,
-// the regular notes inside the "notes" anchor so a snippet can replace
-// them or sit beside them. An invoice's tax notes are fixed, as they carry
-// the regime's legal mentions.
+// notesSection renders the notes of a document at the "notes" anchor: the
+// fixed notes always, the regular notes where a snippet can replace them.
+// An invoice's tax notes are fixed, as they carry the regime's legal
+// mentions. Snippets before and after the anchor sit outside the section,
+// so they stay when WithHide hides it.
 templ notesSection(fixed, notes []*org.Note) {
+	@utils.Before(display.KeyNotes)
 	if len(fixed) > 0 || showNotes(ctx, notes) {
 		<section class="notes">
 			@t.Scope(".notes") {
@@ -50,7 +52,7 @@ templ notesSection(fixed, notes []*org.Note) {
 				for _, n := range fixed {
 					@note(n)
 				}
-				@utils.Section(display.KeyNotes) {
+				@utils.Replaceable(display.KeyNotes) {
 					for _, n := range notes {
 						@note(n)
 					}
@@ -58,12 +60,14 @@ templ notesSection(fixed, notes []*org.Note) {
 			}
 		</section>
 	}
+	@utils.After(display.KeyNotes)
 }
 
-// showNotes determines if the regular notes, or the snippets placed at
-// their anchor, give the section something to show.
+// showNotes determines if the regular notes, or a snippet replacing them,
+// give the section something to show.
 func showNotes(ctx context.Context, notes []*org.Note) bool {
-	return len(notes) > 0 || internal.Snippets(ctx).Has(display.KeyNotes)
+	_, replaced := internal.Snippets(ctx).Replacement(display.KeyNotes)
+	return len(notes) > 0 || replaced
 }
 
 templ lineNotes(notes []*org.Note) {

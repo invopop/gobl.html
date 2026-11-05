@@ -210,10 +210,11 @@ func (s Snippets) Validate() error {
 }
 
 // Render fills the variables into every snippet and groups the results by
-// anchor. Snippets at unknown keys or in unknown modes are left out, so a
-// configuration written for a newer renderer still works; a snippet over
-// the size limits, that does not parse, or that uses a variable Vars does
-// not define is an error, as nothing should render with a hole in it.
+// anchor. Snippets at unknown keys or in unknown modes are left out before
+// any other check, so a configuration written for a newer renderer still
+// works; a snippet that would render but is over the size limits, does not
+// parse, or uses a variable Vars does not define is an error, as nothing
+// should render with a hole in it.
 func (s Snippets) Render(vars *Vars) (*Rendered, error) {
 	if len(s) == 0 {
 		return nil, nil
@@ -224,7 +225,7 @@ func (s Snippets) Render(vars *Vars) (*Rendered, error) {
 	r := &Rendered{anchors: make(map[Key]*anchor)}
 	total := 0
 	for i, sn := range s {
-		if sn == nil {
+		if sn == nil || !sn.At.Valid() || !sn.Mode.Valid() {
 			continue
 		}
 		if len(sn.HTML) > MaxSnippetSize {
@@ -233,9 +234,6 @@ func (s Snippets) Render(vars *Vars) (*Rendered, error) {
 		total += len(sn.HTML)
 		if total > MaxTotalSize {
 			return nil, fmt.Errorf("snippets: total html exceeds %d bytes", MaxTotalSize)
-		}
-		if !sn.At.Valid() || !sn.Mode.Valid() {
-			continue
 		}
 		out, err := sn.execute(vars)
 		if err != nil {

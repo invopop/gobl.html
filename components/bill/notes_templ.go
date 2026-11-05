@@ -69,10 +69,11 @@ func notes(notes []*org.Note) templ.Component {
 	})
 }
 
-// notesSection renders the notes of a document: the fixed notes always,
-// the regular notes inside the "notes" anchor so a snippet can replace
-// them or sit beside them. An invoice's tax notes are fixed, as they carry
-// the regime's legal mentions.
+// notesSection renders the notes of a document at the "notes" anchor: the
+// fixed notes always, the regular notes where a snippet can replace them.
+// An invoice's tax notes are fixed, as they carry the regime's legal
+// mentions. Snippets before and after the anchor sit outside the section,
+// so they stay when WithHide hides it.
 func notesSection(fixed, notes []*org.Note) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
@@ -94,6 +95,10 @@ func notesSection(fixed, notes []*org.Note) templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Err = utils.Before(display.KeyNotes).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
 		if len(fixed) > 0 || showNotes(ctx, notes) {
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"notes\">")
 			if templ_7745c5c3_Err != nil {
@@ -153,7 +158,7 @@ func notesSection(fixed, notes []*org.Note) templ.Component {
 					}
 					return nil
 				})
-				templ_7745c5c3_Err = utils.Section(display.KeyNotes).Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = utils.Replaceable(display.KeyNotes).Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -168,14 +173,19 @@ func notesSection(fixed, notes []*org.Note) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
+		templ_7745c5c3_Err = utils.After(display.KeyNotes).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
 		return nil
 	})
 }
 
-// showNotes determines if the regular notes, or the snippets placed at
-// their anchor, give the section something to show.
+// showNotes determines if the regular notes, or a snippet replacing them,
+// give the section something to show.
 func showNotes(ctx context.Context, notes []*org.Note) bool {
-	return len(notes) > 0 || internal.Snippets(ctx).Has(display.KeyNotes)
+	_, replaced := internal.Snippets(ctx).Replacement(display.KeyNotes)
+	return len(notes) > 0 || replaced
 }
 
 func lineNotes(notes []*org.Note) templ.Component {

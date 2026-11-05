@@ -5,6 +5,8 @@ import (
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl/bill"
 )
 
@@ -21,7 +23,7 @@ templ Order(env *gobl.Envelope, ord *bill.Order) {
 					@orderTotals(ord, ord.Totals)
 					@taxes(ord.RegimeDef(), ord.Totals.Taxes)
 				</div>
-				@orderPaymentDetails(ord)
+				@paymentSection(ord.Payment, ord.Totals)
 				@notes(ord.Notes)
 				<div class="extensions">
 					// Region specific information
@@ -94,11 +96,13 @@ templ orderSummary(ord *bill.Order) {
 				if len(ord.Preceding) > 0 {
 					@summaryPrecedingRows(ord)
 				}
-				if len(ord.Contracts) > 0 {
-					@summaryContractRows(ord)
-				}
-				if ord.Period != nil {
-					@summaryOrderPeriodRows(ord.Period)
+				@utils.ListSection(display.KeyHeaderSummaryOrdering) {
+					if len(ord.Contracts) > 0 {
+						@summaryContractRows(ord)
+					}
+					if ord.Period != nil {
+						@summaryOrderPeriodRows(ord.Period)
+					}
 				}
 				if ord.Tax != nil {
 					@summaryTaxExtRows(ord.Tax.Ext)
@@ -218,23 +222,3 @@ templ orderTotals(ord *bill.Order, totals *bill.Totals) {
 	</section>
 }
 
-// orderPaymentDetails renders the payment details component for orders
-templ orderPaymentDetails(ord *bill.Order) {
-	if ord.Payment != nil {
-		@t.Scope(".payment") {
-			<section class="payment">
-				<h2 class="title">
-					@t.T(".title")
-				</h2>
-				if ord.Payment.Terms != nil {
-					@paymentTerms(ord.Payment.Terms, ord.Totals)
-				}
-				{{ qrs := paymentOnlineQRCodes(ord.Payment.Instructions, ord.Totals) }}
-				if ord.Payment.Instructions != nil {
-					@paymentInstructions(ord.Payment.Instructions, qrs)
-				}
-				@paymentOnlineQRs(qrs)
-			</section>
-		}
-	}
-}

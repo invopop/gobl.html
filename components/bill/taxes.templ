@@ -6,11 +6,20 @@ import (
 	"strings"
 
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl/tax"
 	"github.com/invopop/gobl/num"
 )
 
+// taxes renders the tax breakdown of any document inside the "taxes" anchor.
 templ taxes(r *tax.RegimeDef, taxes *tax.Total) {
+	@utils.Section(display.KeyTaxes) {
+		@taxesTable(r, taxes)
+	}
+}
+
+templ taxesTable(r *tax.RegimeDef, taxes *tax.Total) {
 	if taxes != nil && len(taxes.Categories) > 0 {
 		{{ ts := prepareTaxSupport(taxes) }}
 		<section class="taxes">

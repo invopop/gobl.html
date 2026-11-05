@@ -20,9 +20,11 @@ import (
 )
 
 const (
-	snippetsFullExample     = "es-verifactu-invoice-full.json"
-	snippetsDeliveryExample = "es-verifactu-invoice-delivery.json"
-	snippetsTermsExample    = "fr-ctc-invoice-b2b.json"
+	snippetsFullExample         = "es-verifactu-invoice-full.json"
+	snippetsDeliveryExample     = "es-verifactu-invoice-delivery.json"
+	snippetsTermsExample        = "fr-ctc-invoice-b2b.json"
+	snippetsOrderExample        = "pt-at-order-full.json"
+	snippetsDeliveryNoteExample = "pt-at-delivery-note-full.json"
 )
 
 func renderSnippets(t *testing.T, env *gobl.Envelope, s display.Snippets, opts ...goblhtml.Option) string {
@@ -40,6 +42,8 @@ func loadSnippetsExample(t *testing.T, name string) *gobl.Envelope {
 	require.NoError(t, err)
 	return env
 }
+
+const taxesMarker = `class="taxes"`
 
 func wrapped(mode display.Mode, key display.Key, html string) string {
 	return `<div class="snippet snippet-` + string(mode) + `" data-at="` + string(key) + `">` + html + `</div>`
@@ -64,7 +68,7 @@ func TestSnippetAnchors(t *testing.T) {
 		{key: display.KeyHeaderTitleBadges, example: snippetsFullExample, marker: "BADGE-MARKER", opts: []goblhtml.Option{goblhtml.WithLabel("BADGE-MARKER")}},
 		{key: display.KeyHeaderSummaryOrdering, example: snippetsFullExample, marker: `class="ordering-code"`, item: true},
 		{key: display.KeyHeaderContactsDelivery, example: snippetsDeliveryExample, marker: `class="receiver"`},
-		{key: display.KeyTaxes, example: snippetsFullExample, marker: `class="taxes"`},
+		{key: display.KeyTaxes, example: snippetsFullExample, marker: taxesMarker},
 		{key: display.KeyPayment, example: snippetsFullExample, marker: `<section class="payment">`},
 		{key: display.KeyPaymentInstructions, example: snippetsFullExample, marker: `class="instructions"`},
 		{key: display.KeyPaymentBankData, example: snippetsFullExample, marker: `class="bank-data"`, item: true},
@@ -72,9 +76,20 @@ func TestSnippetAnchors(t *testing.T) {
 		{key: display.KeyPaymentTerms, example: snippetsTermsExample, marker: `class="terms"`},
 		{key: display.KeyNotes, example: snippetsFullExample, marker: "Thank you for your business!"},
 		{key: display.KeyFooterBranding, example: snippetsFullExample, marker: `class="gobl-logo"`},
+		// The anchors are shared by every document kind.
+		{key: display.KeyHeaderSummaryOrdering, example: snippetsOrderExample, marker: `class="contract"`, item: true},
+		{key: display.KeyTaxes, example: snippetsOrderExample, marker: taxesMarker},
+		{key: display.KeyPayment, example: snippetsOrderExample, marker: `<section class="payment">`},
+		{key: display.KeyPaymentInstructions, example: snippetsOrderExample, marker: `class="instructions"`},
+		{key: display.KeyPaymentTerms, example: snippetsOrderExample, marker: `class="terms"`},
+		{key: display.KeyNotes, example: snippetsOrderExample, marker: `<section class="notes">`},
+		{key: display.KeyHeaderContactsDelivery, example: snippetsDeliveryNoteExample, marker: `class="receiver"`},
+		{key: display.KeyHeaderSummaryOrdering, example: snippetsDeliveryNoteExample, marker: `class="ordering-code"`, item: true},
+		{key: display.KeyTaxes, example: snippetsDeliveryNoteExample, marker: taxesMarker},
+		{key: display.KeyNotes, example: snippetsDeliveryNoteExample, marker: `<section class="notes">`},
 	}
 	for _, tt := range tests {
-		t.Run(string(tt.key), func(t *testing.T) {
+		t.Run(tt.example+"/"+string(tt.key), func(t *testing.T) {
 			env := loadSnippetsExample(t, tt.example)
 			if tt.key == display.KeyPaymentOnline {
 				// Links without a QR code are listed in the instructions.
@@ -120,6 +135,42 @@ func TestSnippetReplace(t *testing.T) {
 	assert.NotContains(t, out, "bank-before")
 	assert.Contains(t, out, wrapped(display.ModeReplace, display.KeyPayment, "<p>Pay via portal</p>"))
 	assert.Contains(t, out, `class="totals"`)
+}
+
+func TestSnippetReplaceInstructionsCoversQRCodes(t *testing.T) {
+	env := loadSnippetsExample(t, snippetsFullExample)
+	plain := renderSnippets(t, env, nil)
+	require.Contains(t, plain, `class="online-qrs"`)
+
+	out := renderSnippets(t, env, display.Snippets{
+		{At: display.KeyPaymentInstructions, Mode: display.ModeReplace, HTML: "<p>See portal</p>"},
+	})
+	assert.NotContains(t, out, `class="instructions"`)
+	assert.NotContains(t, out, `class="online-qrs"`)
+	assert.Contains(t, out, wrapped(display.ModeReplace, display.KeyPaymentInstructions, "<p>See portal</p>"))
+
+	// Replacing the online links keeps them out of the QR column too.
+	out = renderSnippets(t, env, display.Snippets{
+		{At: display.KeyPaymentOnline, Mode: display.ModeReplace, HTML: "pay-elsewhere"},
+	})
+	assert.NotContains(t, out, `class="online-qrs"`)
+	assert.NotContains(t, out, `class="online"`)
+	assert.Contains(t, out, wrappedItem(display.ModeReplace, display.KeyPaymentOnline, "pay-elsewhere"))
+	assert.Contains(t, out, `class="instructions"`)
+}
+
+func TestSnippetsAtHiddenNotesStayVisible(t *testing.T) {
+	env := loadSnippetsExample(t, snippetsFullExample)
+	out := renderSnippets(t, env, display.Snippets{
+		{At: display.KeyNotes, Mode: display.ModeBefore, HTML: "<p>notes-before</p>"},
+		{At: display.KeyNotes, Mode: display.ModeAfter, HTML: "<p>notes-after</p>"},
+	}, goblhtml.WithHide("notes"))
+	assert.Contains(t, out, `section.notes { display: none !important; }`)
+	before := strings.Index(out, wrapped(display.ModeBefore, display.KeyNotes, "<p>notes-before</p>"))
+	section := strings.Index(out, `<section class="notes">`)
+	end := strings.Index(out, `</section>`+wrapped(display.ModeAfter, display.KeyNotes, "<p>notes-after</p>"))
+	require.True(t, before >= 0 && section >= 0 && end >= 0, "before %d, section %d, after %d", before, section, end)
+	assert.True(t, before < section && section < end, "the snippets sit outside the hidden section")
 }
 
 func TestSnippetReplaceWithoutNativeContent(t *testing.T) {
@@ -314,6 +365,9 @@ func TestSnippetsUnknownKeysIgnored(t *testing.T) {
 		{At: "totals", Mode: display.ModeReplace, HTML: "x"},
 		{At: display.KeyNotes, Mode: "around", HTML: "x"},
 		{At: display.KeyLinesSublines, Mode: display.ModeAfter, HTML: "x"},
+		// Oversized or broken, an unknown anchor is still just ignored.
+		{At: "future.key", Mode: display.ModeAfter, HTML: strings.Repeat("x", display.MaxSnippetSize+1)},
+		{At: "future.key", Mode: display.ModeAfter, HTML: "{{ .Nope }}"},
 	}
 	require.Error(t, s.Validate())
 	out, err := goblhtml.Render(context.Background(), env, goblhtml.WithSnippets(s))
