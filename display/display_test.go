@@ -10,6 +10,12 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+const (
+	badMode  = "around"           // a mode that does not exist
+	kept     = "<p>a</p><p>b</p>" // what Strip leaves of its inputs
+	fragment = "<p>x</p>"
+)
+
 func TestKeys(t *testing.T) {
 	assert.True(t, display.KeyPayment.Valid())
 	assert.False(t, display.Key("totals").Valid())
@@ -18,7 +24,7 @@ func TestKeys(t *testing.T) {
 		assert.True(t, k.Valid())
 	}
 	assert.True(t, display.ModeAfter.Valid())
-	assert.False(t, display.Mode("around").Valid())
+	assert.False(t, display.Mode(badMode).Valid())
 }
 
 func TestVarNames(t *testing.T) {
@@ -55,7 +61,7 @@ func TestValidate(t *testing.T) {
 		},
 		{
 			name:     "unknown mode",
-			snippets: display.Snippets{{At: display.KeyNotes, Mode: "around", HTML: "x"}},
+			snippets: display.Snippets{{At: display.KeyNotes, Mode: badMode, HTML: "x"}},
 			errs:     []string{"0: mode: unknown mode 'around'"},
 		},
 		{
@@ -120,7 +126,7 @@ func TestValidate(t *testing.T) {
 		{
 			name: "several errors are all reported",
 			snippets: display.Snippets{
-				{At: "nope", Mode: "around", HTML: "{{ .Nope }}"},
+				{At: "nope", Mode: badMode, HTML: "{{ .Nope }}"},
 			},
 			errs: []string{"0: at: unknown key 'nope'", "0: mode: unknown mode 'around'", "0: html: unknown variable 'Nope'"},
 		},
@@ -144,16 +150,16 @@ func TestStrip(t *testing.T) {
 	tests := []struct {
 		in, out string
 	}{
-		{`<p>a</p><script>alert(1)</script><p>b</p>`, `<p>a</p><p>b</p>`},
+		{`<p>a</p><script>alert(1)</script><p>b</p>`, kept},
 		{`<p>a</p><SCRIPT type="x">
 		multi
-		line</Script ><p>b</p>`, `<p>a</p><p>b</p>`},
-		{`<p>a</p><iframe src="https://evil"></iframe><p>b</p>`, `<p>a</p><p>b</p>`},
-		{`<p>a</p><object data="x.swf"><param name="y"></object><p>b</p>`, `<p>a</p><p>b</p>`},
-		{`<p>a</p><embed src="x.svg"><p>b</p>`, `<p>a</p><p>b</p>`},
-		{`<p>a</p><embed src="x.svg" /><p>b</p>`, `<p>a</p><p>b</p>`},
+		line</Script ><p>b</p>`, kept},
+		{`<p>a</p><iframe src="https://evil"></iframe><p>b</p>`, kept},
+		{`<p>a</p><object data="x.swf"><param name="y"></object><p>b</p>`, kept},
+		{`<p>a</p><embed src="x.svg"><p>b</p>`, kept},
+		{`<p>a</p><embed src="x.svg" /><p>b</p>`, kept},
 		{`<p>a</p><script>never closed<p>b</p>`, `<p>a</p>`},
-		{`<p>a</p></script><p>b</p>`, `<p>a</p><p>b</p>`},
+		{`<p>a</p></script><p>b</p>`, kept},
 		{`<p>scripted</p><p class="embedded">ok</p>`, `<p>scripted</p><p class="embedded">ok</p>`},
 	}
 	for _, tt := range tests {
@@ -234,9 +240,9 @@ func TestRender(t *testing.T) {
 
 	t.Run("skips unknown keys and modes", func(t *testing.T) {
 		r, err := display.Snippets{
-			{At: "future.key", Mode: display.ModeAfter, HTML: "<p>x</p>"},
-			{At: display.KeyNotes, Mode: "around", HTML: "<p>x</p>"},
-			{At: display.KeyLinesSublines, Mode: display.ModeAfter, HTML: "<p>x</p>"},
+			{At: "future.key", Mode: display.ModeAfter, HTML: fragment},
+			{At: display.KeyNotes, Mode: badMode, HTML: fragment},
+			{At: display.KeyLinesSublines, Mode: display.ModeAfter, HTML: fragment},
 		}.Render(vars)
 		require.NoError(t, err)
 		assert.False(t, r.Has("future.key"))
