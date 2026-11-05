@@ -381,6 +381,9 @@ templ groupDiscounts(discounts []*bill.LineDiscount) {
 			} else {
 				@t.LM(d.Amount)
 			}
+			if d.Reason != "" {
+				<span class="reason">{ d.Reason }</span>
+			}
 		</span>
 	}
 }
@@ -397,6 +400,9 @@ templ groupCharges(charges []*bill.LineCharge) {
 				@t.L(*c.Percent)
 			} else {
 				@t.LM(c.Amount)
+			}
+			if c.Reason != "" {
+				<span class="reason">{ c.Reason }</span>
 			}
 		</span>
 	}

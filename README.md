@@ -99,7 +99,9 @@ go test . -run Example -update
 
 The script envelops and validates each built snippet with the gobl pinned
 here, writes `examples/<country>-<name>.json`, records what it imported in
-`examples/docs-examples.txt` and removes imports the docs dropped. It skips a
+`examples/docs-examples.txt`; with `-prune` it also removes imports the
+docs dropped (without it they are kept and reported, since they may come
+from a docs branch not merged yet). It skips a
 docs example whose name an example of gobl.html's own already uses, and
 reports one the current gobl rules reject, so both show up as work for the
 docs. A document whose addon has the tax agency stamp it (VERI\*FACTU,

@@ -50,6 +50,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 				@paymentDetails(inv)
 				@ar.ARCAFiscalTransparency(inv)
 				@notes(invoiceNotes(ctx, inv))
+				@attachments(inv.Attachments)
 				<div class="extensions">
 					// Region specific information
 					@ar.ARCAQR(env)

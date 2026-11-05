@@ -161,6 +161,9 @@ en:
       notes:
         title: "Notes"
 
+      attachments:
+        title: "Attachments"
+
     payment:
       <<: *invoice
       title:

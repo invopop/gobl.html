@@ -295,6 +295,13 @@ section.lines .charge-content {
 section.lines .charge-content .code:after {
     content: ": ";
 }
+section.lines .discount-content .reason,
+section.lines .charge-content .reason {
+    display: block;
+    font-size: 0.85em;
+    font-weight: 450;
+    color: #6b7280;
+}
 section.lines .alt-price {
     display: block;
     font-size: 0.85em;
@@ -560,6 +567,32 @@ section.tracking span.label {
 
 section.tracking span.value {
     display: block;
+}
+section.attachments {
+    padding-top: 6mm;
+    padding-bottom: 6mm;
+    border-bottom: 0.5px solid #e5e7eb;
+    break-inside: avoid;
+}
+section.attachments ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+section.attachments li {
+    margin-bottom: 1mm;
+}
+section.attachments li a {
+    font-weight: 500;
+}
+section.attachments li .code {
+    margin-left: 1mm;
+}
+section.attachments li .description,
+section.attachments li .mime {
+    display: block;
+    font-size: 0.85em;
+    color: #6b7280;
 }
 section.notes {
     padding-top: 6mm;

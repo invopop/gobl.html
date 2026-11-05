@@ -157,6 +157,9 @@ el:
       notes:
         title: "Σημειώσεις"
 
+      attachments:
+        title: "Συνημμένα"
+
     payment:
       <<: *invoice
       title:

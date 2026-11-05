@@ -9,8 +9,8 @@
 //     the docs repository is given: the ```json block of each built
 //     snippets/{invoices,payments,deliveries}/<cc>/<name>.mdx (skipping
 //     .min.mdx inputs and accordions), written as examples/<cc>-<name>.json
-//     and listed in examples/docs-examples.txt so a later run updates, adds
-//     and removes them in step with the docs. A docs example whose name an
+//     and listed in examples/docs-examples.txt so a later run updates and
+//     adds them in step with the docs, and removes with -prune. A docs example whose name an
 //     example of gobl.html's own already uses is skipped, and one the current
 //     gobl rules reject is reported: both are for the docs to resolve.
 //
@@ -23,7 +23,8 @@
 // signature.
 //
 //	go run scripts/build-examples.go                      # own sources only
-//	go run scripts/build-examples.go -docs ../docs.invopop.com
+//	go run scripts/build-examples.go -docs ../docs.invopop.com          # add and update
+//	go run scripts/build-examples.go -docs ../docs.invopop.com -prune   # also remove what the docs dropped
 //	go run scripts/build-examples.go examples/src/xx.json # just these
 package main
 
@@ -58,6 +59,7 @@ const srcDir = "examples/src"
 
 func main() {
 	docs := flag.String("docs", "", "checkout of the docs repository to import examples from")
+	prune := flag.Bool("prune", false, "with -docs, remove examples the docs no longer have (kept and reported otherwise)")
 	flag.Usage = func() {
 		fmt.Fprintln(os.Stderr, "usage: go run scripts/build-examples.go [-docs DIR] [examples/src/NAME.json ...]")
 	}
@@ -87,7 +89,7 @@ func main() {
 	}
 	fmt.Printf("%d own sources, %d failed\n", len(own), failed)
 	if *docs != "" {
-		failed += importDocs(*docs)
+		failed += importDocs(*docs, *prune)
 	}
 	exit(failed)
 }
@@ -99,7 +101,7 @@ func exit(failed int) {
 }
 
 // importDocs brings the docs' examples in and returns how many failed.
-func importDocs(docs string) int {
+func importDocs(docs string, prune bool) int {
 	previous := readManifest()
 	current := map[string]string{} // example file -> snippet path
 	failed := 0
@@ -132,11 +134,19 @@ func importDocs(docs string) int {
 			current[out] = rel
 		}
 	}
-	for file := range previous {
-		if _, ok := current[file]; !ok {
+	// An example the docs no longer have may come from a docs branch not
+	// yet merged, so it stays, and in the manifest, unless pruning.
+	for file, src := range previous {
+		if _, ok := current[file]; ok {
+			continue
+		}
+		if prune {
 			os.Remove(filepath.Join(examplesDir, file))
 			os.Remove(filepath.Join(examplesDir, "out", strings.TrimSuffix(file, ".json")+".html"))
 			fmt.Printf("- %s (no longer in the docs)\n", file)
+		} else {
+			current[file] = src
+			fmt.Printf("? %s: not in these docs, kept (pass -prune to remove)\n", file)
 		}
 	}
 	writeManifest(current)

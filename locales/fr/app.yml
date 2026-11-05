@@ -146,6 +146,9 @@ fr:
       notes:
         title: "Notes"
 
+      attachments:
+        title: "Pièces jointes"
+
     payment:
       <<: *invoice
       title:
