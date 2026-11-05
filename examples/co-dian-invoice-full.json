@@ -1,0 +1,690 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1aba7-711c-708c-8f88-fe9943df6031",
+		"dig": {
+			"alg": "sha256",
+			"val": "9ef6f700d2df32f626752a40f847762be0f78524c6b3d4fe2848afd8b20f8d52"
+		},
+		"stamps": [
+			{
+				"prv": "dian-cude",
+				"val": "50d06ed88fb3f4f2d4a903c613db4d7b8bc550df7087d35091860dcf78a4a920846b2d16dd15ef4b8438e66f4857b887"
+			},
+			{
+				"prv": "dian-qr",
+				"val": "NumFac: 1041290\nFecFac: 2026-03-25\nNitFac: 9015852843\nValTotal: 83068371.00\nCUFE: 50d06ed88fb3f4f2d4a903c613db4d7b8bc550df7087d35091860dcf78a4a920846b2d16dd15ef4b8438e66f4857b887\nhttps://catalogo-vpfe-hab.dian.gov.co/document/searchqr?documentkey=50d06ed88fb3f4f2d4a903c613db4d7b8bc550df7087d35091860dcf78a4a920846b2d16dd15ef4b8438e66f4857b887"
+			},
+			{
+				"prv": "dian-provider",
+				"val": "EMPRESA DE DIVULGACIONES Y ASESORIAS ECA SAS"
+			},
+			{
+				"prv": "dian-provider-nit",
+				"val": "860517022"
+			},
+			{
+				"prv": "dian-software",
+				"val": "PLEMSI"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "CO",
+		"$addons": [
+			"co-dian-v2"
+		],
+		"uuid": "01a1aba7-711c-7090-9638-dd102d8f1b55",
+		"type": "standard",
+		"series": "SETT",
+		"code": "1041290",
+		"issue_date": "2026-03-25",
+		"issue_time": "14:05:30",
+		"currency": "COP",
+		"supplier": {
+			"name": "Cyberdyne Sistemas SAS",
+			"alias": "Cyberdyne",
+			"tax_id": {
+				"country": "CO",
+				"code": "9015852843",
+				"type": "tin"
+			},
+			"identities": [
+				{
+					"label": "Matrícula mercantil",
+					"code": "03245678"
+				}
+			],
+			"addresses": [
+				{
+					"street": "CRA 8 113 31 OF 703",
+					"locality": "Bogotá",
+					"region": "Bogotá, D.C.",
+					"code": "110111",
+					"country": "CO"
+				}
+			],
+			"emails": [
+				{
+					"addr": "facturacion@cyberdyne.co"
+				},
+				{
+					"label": "Soporte",
+					"addr": "soporte@cyberdyne.co"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://www.cyberdyne.co"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+57 601 555 1234"
+				}
+			],
+			"registration": {
+				"office": "Cámara de Comercio de Bogotá",
+				"entry": "03245678",
+				"other": "Responsable de IVA. Gran contribuyente Res. 012345 de 2025"
+			},
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+				}
+			],
+			"ext": {
+				"co-dian-fiscal-responsibility": "O-13",
+				"co-dian-municipality": "11001",
+				"co-dian-tax-scheme": "01"
+			}
+		},
+		"customer": {
+			"name": "Atlas Organization SAS",
+			"tax_id": {
+				"country": "CO",
+				"code": "9015852843"
+			},
+			"identities": [
+				{
+					"label": "Código de cliente",
+					"code": "ATL-0042"
+				}
+			],
+			"people": [
+				{
+					"name": {
+						"given": "Diego",
+						"surname": "López"
+					},
+					"emails": [
+						{
+							"addr": "diego.lopez@atlas.com"
+						}
+					]
+				}
+			],
+			"addresses": [
+				{
+					"label": "Sede principal",
+					"po_box": "1234",
+					"street": "Carrera 74 43 03",
+					"street_extra": "Torre B, piso 5",
+					"locality": "Medellín",
+					"region": "Antioquia",
+					"code": "050037",
+					"country": "CO"
+				}
+			],
+			"emails": [
+				{
+					"addr": "cuentasporpagar@atlas.com"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+57 604 555 9876"
+				}
+			],
+			"ext": {
+				"co-dian-fiscal-responsibility": "O-23",
+				"co-dian-municipality": "05001",
+				"co-dian-tax-scheme": "01"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "40",
+				"item": {
+					"ref": "81111500",
+					"name": "Consultoría técnica en infraestructura",
+					"description": "Horas de consultor senior, marzo 2026",
+					"price": "350000.00",
+					"unit": "h",
+					"ext": {
+						"co-dian-item-identification": "001"
+					}
+				},
+				"sum": "14000000.00",
+				"discounts": [
+					{
+						"reason": "Descuento por contrato marco",
+						"percent": "10%",
+						"amount": "1400000.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					},
+					{
+						"cat": "RR",
+						"percent": "11%"
+					},
+					{
+						"cat": "RVAT",
+						"percent": "15%"
+					},
+					{
+						"cat": "RICA",
+						"percent": "0.966%"
+					}
+				],
+				"total": "12600000.00"
+			},
+			{
+				"i": 2,
+				"quantity": "5",
+				"item": {
+					"ref": "LIC-ERP-M",
+					"name": "Licencia de software ERP",
+					"description": "Suscripción mensual por usuario",
+					"price": "180000.00",
+					"unit": "mon",
+					"ext": {
+						"co-dian-item-identification": "999"
+					}
+				},
+				"sum": "900000.00",
+				"charges": [
+					{
+						"reason": "Soporte prioritario 24x7",
+						"percent": "12%",
+						"amount": "108000.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					},
+					{
+						"cat": "RR",
+						"percent": "3.5%"
+					}
+				],
+				"total": "1008000.00"
+			},
+			{
+				"i": 3,
+				"quantity": "12",
+				"item": {
+					"ref": "7702004003489",
+					"name": "Switch de red 48 puertos PoE",
+					"identities": [
+						{
+							"type": "GTIN",
+							"code": "7702004003489"
+						}
+					],
+					"description": "Equipo nuevo con garantía de 2 años",
+					"price": "2450000.00",
+					"unit": "item",
+					"ext": {
+						"co-dian-item-identification": "010"
+					}
+				},
+				"sum": "29400000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					},
+					{
+						"cat": "RR",
+						"percent": "2.5%"
+					}
+				],
+				"total": "29400000.00"
+			},
+			{
+				"i": 4,
+				"quantity": "300",
+				"item": {
+					"name": "Cableado estructurado categoría 6A",
+					"description": "Incluye instalación y certificación",
+					"price": "28000.00",
+					"unit": "m"
+				},
+				"sum": "8400000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					}
+				],
+				"total": "8400000.00"
+			},
+			{
+				"i": 5,
+				"quantity": "250",
+				"item": {
+					"name": "Café tostado en grano",
+					"description": "Producto gravado a tarifa reducida",
+					"price": "42000.00",
+					"unit": "kg"
+				},
+				"sum": "10500000.00",
+				"discounts": [
+					{
+						"reason": "Promoción de temporada",
+						"amount": "250000.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "5.0%"
+					}
+				],
+				"total": "10250000.00"
+			},
+			{
+				"i": 6,
+				"quantity": "20",
+				"item": {
+					"name": "Libros técnicos impresos",
+					"description": "Bienes excluidos del IVA (art. 424 E.T.)",
+					"price": "95000.00",
+					"unit": "item"
+				},
+				"sum": "1900000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "exempt"
+					}
+				],
+				"total": "1900000.00"
+			},
+			{
+				"i": 7,
+				"quantity": "45",
+				"item": {
+					"name": "Servicio de restaurante para evento corporativo",
+					"description": "Menú ejecutivo por persona",
+					"price": "65000.00",
+					"unit": "item"
+				},
+				"sum": "2925000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "exempt"
+					},
+					{
+						"cat": "INC",
+						"percent": "8%"
+					}
+				],
+				"total": "2925000.00"
+			},
+			{
+				"i": 8,
+				"quantity": "3",
+				"item": {
+					"name": "Capacitación técnica en sitio",
+					"description": "Jornada completa para hasta 15 asistentes",
+					"price": "1800000.00",
+					"unit": "day"
+				},
+				"sum": "5400000.00",
+				"charges": [
+					{
+						"key": "transport",
+						"reason": "Desplazamiento del instructor",
+						"amount": "450000.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19.0%"
+					},
+					{
+						"cat": "ICA",
+						"percent": "0.966%"
+					}
+				],
+				"total": "5850000.00"
+			}
+		],
+		"discounts": [
+			{
+				"i": 1,
+				"code": "DPP",
+				"reason": "Descuento por pronto pago",
+				"percent": "2%",
+				"amount": "1446660.00"
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"key": "delivery",
+				"code": "ENV",
+				"reason": "Transporte y seguro de equipos a Medellín",
+				"amount": "380000.00"
+			},
+			{
+				"i": 2,
+				"key": "packing",
+				"reason": "Embalaje especial para equipos de red",
+				"amount": "120000.00"
+			}
+		],
+		"ordering": {
+			"code": "OC-2026-0318",
+			"identities": [
+				{
+					"label": "Código de proveedor",
+					"code": "PRV-00871"
+				},
+				{
+					"label": "Centro de costos",
+					"code": "CC-TI-01"
+				}
+			],
+			"period": {
+				"label": "Período de servicio",
+				"start": "2026-03-01",
+				"end": "2026-03-31"
+			},
+			"contracts": [
+				{
+					"issue_date": "2025-06-15",
+					"code": "CM-2025-044"
+				}
+			],
+			"purchases": [
+				{
+					"issue_date": "2026-02-27",
+					"code": "OC-2026-0318"
+				}
+			]
+		},
+		"payment": {
+			"advances": [
+				{
+					"date": "2026-03-02",
+					"key": "credit-transfer",
+					"ref": "TRF-20260302-118",
+					"description": "Anticipo por transferencia PSE",
+					"amount": "10000000.00"
+				},
+				{
+					"date": "2026-03-10",
+					"key": "card",
+					"ref": "POS-55210",
+					"description": "Abono con tarjeta de crédito corporativa",
+					"amount": "2500000.00",
+					"card": {
+						"last4": "4411",
+						"holder": "Atlas Organization SAS"
+					}
+				}
+			],
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-04-24",
+						"notes": "Primera cuota",
+						"amount": "33200187.50",
+						"percent": "50%"
+					},
+					{
+						"date": "2026-05-25",
+						"notes": "Segunda cuota",
+						"amount": "33200187.50",
+						"percent": "50%"
+					}
+				],
+				"notes": "Crédito a 30 y 60 días"
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"detail": "Transferencia a la cuenta indicada; citar el número de factura como referencia",
+				"ref": "SETT1041290",
+				"credit_transfer": [
+					{
+						"label": "Cuenta de ahorros Bancolombia",
+						"number": "031-456789-01",
+						"name": "Cyberdyne Sistemas SAS"
+					},
+					{
+						"label": "Cuenta corriente Davivienda",
+						"number": "0088-0012-3456",
+						"name": "Cyberdyne Sistemas SAS"
+					}
+				],
+				"card": {
+					"last4": "4411",
+					"holder": "Atlas Organization SAS"
+				},
+				"direct_debit": {
+					"ref": "DEB-ATL-2025",
+					"creditor": "9015852843",
+					"account": "031-456789-01"
+				},
+				"online": [
+					{
+						"key": "pse",
+						"label": "PSE",
+						"url": "https://pagos.cyberdyne.co/pse?ref=SETT1041290"
+					},
+					{
+						"key": "nequi",
+						"label": "Nequi",
+						"url": "https://pagos.cyberdyne.co/nequi?ref=SETT1041290"
+					}
+				],
+				"notes": "**Vencimiento**: pasados los plazos pactados se aplicará interés de mora a la _tasa máxima legal_."
+			}
+		},
+		"delivery": {
+			"receiver": {
+				"name": "Atlas Organization SAS - Centro de datos",
+				"addresses": [
+					{
+						"street": "Calle 10 Sur 50 15",
+						"locality": "Itagüí",
+						"region": "Antioquia",
+						"code": "055412",
+						"country": "CO"
+					}
+				],
+				"telephones": [
+					{
+						"num": "+57 604 555 4455"
+					}
+				]
+			},
+			"identities": [
+				{
+					"label": "Guía de transporte",
+					"code": "GT-778812"
+				}
+			],
+			"date": "2026-03-20",
+			"period": {
+				"start": "2026-03-18",
+				"end": "2026-03-20"
+			}
+		},
+		"totals": {
+			"sum": "72333000.00",
+			"discount": "1446660.00",
+			"charge": "500000.00",
+			"total": "71386340.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "57258000.00",
+								"percent": "19.0%",
+								"amount": "10879020.00"
+							},
+							{
+								"key": "standard",
+								"base": "10250000.00",
+								"percent": "5.0%",
+								"amount": "512500.00"
+							},
+							{
+								"key": "exempt",
+								"base": "4825000.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "11391520.00"
+					},
+					{
+						"code": "RR",
+						"retained": true,
+						"rates": [
+							{
+								"base": "12600000.00",
+								"percent": "11%",
+								"amount": "1386000.00"
+							},
+							{
+								"base": "1008000.00",
+								"percent": "3.5%",
+								"amount": "35280.00"
+							},
+							{
+								"base": "29400000.00",
+								"percent": "2.5%",
+								"amount": "735000.00"
+							}
+						],
+						"amount": "2156280.00"
+					},
+					{
+						"code": "RVAT",
+						"retained": true,
+						"rates": [
+							{
+								"base": "12600000.00",
+								"percent": "15%",
+								"amount": "1890000.00"
+							}
+						],
+						"amount": "1890000.00"
+					},
+					{
+						"code": "RICA",
+						"retained": true,
+						"rates": [
+							{
+								"base": "12600000.00",
+								"percent": "0.966%",
+								"amount": "121716.00"
+							}
+						],
+						"amount": "121716.00"
+					},
+					{
+						"code": "INC",
+						"rates": [
+							{
+								"base": "2925000.00",
+								"percent": "8%",
+								"amount": "234000.00"
+							}
+						],
+						"amount": "234000.00"
+					},
+					{
+						"code": "ICA",
+						"rates": [
+							{
+								"base": "5850000.00",
+								"percent": "0.966%",
+								"amount": "56511.00"
+							}
+						],
+						"amount": "56511.00"
+					}
+				],
+				"sum": "11682031.00",
+				"retained": "4167996.00"
+			},
+			"tax": "11682031.00",
+			"total_with_tax": "83068371.00",
+			"retained_tax": "4167996.00",
+			"payable": "78900375.00",
+			"advance": "12500000.00",
+			"due": "66400375.00"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Gracias por su confianza. Las retenciones practicadas corresponden a la calidad de agente retenedor del adquiriente."
+			},
+			{
+				"key": "legal",
+				"text": "Esta factura electrónica de venta se asimila en todos sus efectos a una letra de cambio (art. 774 del Código de Comercio). Favor confirmar recibo dentro de los 3 días hábiles siguientes.",
+				"meta": {
+					"position": "footer"
+				}
+			}
+		],
+		"attachments": [
+			{
+				"name": "Guía de transporte GT-778812",
+				"description": "Guía firmada por el centro de datos del cliente",
+				"url": "https://example.com/docs/gt-778812.pdf",
+				"mime": "application/pdf"
+			},
+			{
+				"name": "Orden de compra OC-2026-0318",
+				"url": "https://example.com/docs/oc-2026-0318.pdf",
+				"mime": "application/pdf"
+			}
+		]
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYmE3LTcxMWMtNzhjMi04ODdmLWU5N2M0ZDM5MWNkNiJ9.eyJ1dWlkIjoiMDFhMWFiYTctNzExYy03MDhjLThmODgtZmU5OTQzZGY2MDMxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjllZjZmNzAwZDJkZjMyZjYyNjc1MmE0MGY4NDc3NjJiZTBmNzg1MjRjNmIzZDRmZTI4NDhhZmQ4YjIwZjhkNTIifSwiaWF0IjoxNzkzODgxMjM5fQ.WVtCw1CmHAWI-sTs9Vto5E6gLgoi6G_T9R1gN0c-DFdGzVOuW3aK_77FP1bME0kQFvPcO1YLiKHmN0GMN_3eEw"
+	]
+}

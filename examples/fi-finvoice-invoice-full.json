@@ -1,0 +1,671 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1aba6-46cc-7785-a828-04eac4814976",
+		"dig": {
+			"alg": "sha256",
+			"val": "3f3962d7e45be5939ed7cda6840bacd1409430a621dbb93692bf4d8c97d2beae"
+		},
+		"from": "iso6523-actorid-upis::0216:003726174164",
+		"to": "iso6523-actorid-upis::0216:003754321096"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FI",
+		"$addons": [
+			"eu-en16931-v2017",
+			"fi-finvoice-v3"
+		],
+		"uuid": "01a1aba6-46cc-7933-a590-ec78ad721ba3",
+		"type": "standard",
+		"series": "LASKU-2026",
+		"code": "0271",
+		"issue_date": "2026-09-04",
+		"issue_time": "11:08:22",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Aurora Ohjelmistot Oy",
+			"alias": "Aurora",
+			"tax_id": {
+				"country": "FI",
+				"code": "26174164"
+			},
+			"identities": [
+				{
+					"label": "Y-tunnus",
+					"scope": "legal",
+					"code": "2617416-4"
+				},
+				{
+					"label": "Toimittajanumero",
+					"code": "TOIM-3310"
+				}
+			],
+			"people": [
+				{
+					"name": {
+						"given": "Liisa",
+						"surname": "Virtanen"
+					},
+					"role": "Laskutus",
+					"emails": [
+						{
+							"addr": "liisa.virtanen@aurora.example"
+						}
+					],
+					"telephones": [
+						{
+							"num": "+358 9 1234 5678"
+						}
+					]
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0216:003726174164"
+				}
+			],
+			"addresses": [
+				{
+					"num": "12",
+					"street": "Mannerheimintie",
+					"street_extra": "4. kerros",
+					"locality": "Helsinki",
+					"region": "Uusimaa",
+					"code": "00100",
+					"country": "FI"
+				}
+			],
+			"emails": [
+				{
+					"addr": "laskutus@aurora.example"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://www.aurora.example"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+358 9 1234 5600"
+				}
+			],
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+				}
+			]
+		},
+		"customer": {
+			"name": "Suomen Valtion Virasto",
+			"tax_id": {
+				"country": "FI",
+				"code": "54321096"
+			},
+			"identities": [
+				{
+					"label": "Y-tunnus",
+					"scope": "legal",
+					"code": "5432109-6"
+				},
+				{
+					"label": "Asiakasnumero",
+					"code": "AS-2026-0418"
+				}
+			],
+			"people": [
+				{
+					"name": {
+						"given": "Mikko",
+						"surname": "Korhonen"
+					},
+					"role": "Hankinnat"
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0216:003754321096"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Laskutusosoite",
+					"po_box": "PL 28",
+					"num": "1",
+					"street": "Snellmaninkatu",
+					"locality": "Helsinki",
+					"region": "Uusimaa",
+					"code": "00170",
+					"country": "FI"
+				}
+			],
+			"emails": [
+				{
+					"addr": "ostolaskut@valtionvirasto.example"
+				}
+			],
+			"ext": {
+				"fi-finvoice-operator": "003721291126"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "96",
+				"item": {
+					"ref": "KONS-ARKK",
+					"name": "Arkkitehtikonsultointi",
+					"description": "Tietojärjestelmän arkkitehtuurisuunnittelu, elokuu 2026",
+					"price": "135.00",
+					"unit": "h"
+				},
+				"sum": "12960.00",
+				"discounts": [
+					{
+						"key": "special-agreement",
+						"reason": "Puitesopimusalennus",
+						"percent": "7.5%",
+						"amount": "972.00",
+						"ext": {
+							"untdid-allowance": "64"
+						}
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "25.5%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "11988.00"
+			},
+			{
+				"i": 2,
+				"quantity": "40",
+				"item": {
+					"ref": "LIS-PERUS",
+					"name": "Käyttäjälisenssi, perus",
+					"description": "Vuosilisenssi nimettyä käyttäjää kohden",
+					"price": "240.00",
+					"unit": "item"
+				},
+				"sum": "9600.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "25.5%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "9600.00"
+			},
+			{
+				"i": 3,
+				"quantity": "4",
+				"item": {
+					"ref": "HW-NAS",
+					"name": "Verkkotallennin 8 TB",
+					"identities": [
+						{
+							"type": "EAN",
+							"code": "6430010171234"
+						}
+					],
+					"description": "Kahden levyn NAS-laite, sisältää asennuksen",
+					"price": "1290.00",
+					"unit": "piece"
+				},
+				"sum": "5160.00",
+				"charges": [
+					{
+						"key": "packing",
+						"reason": "Kuljetuspakkaus",
+						"amount": "48.00",
+						"ext": {
+							"untdid-charge": "PC"
+						}
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "25.5%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "5208.00"
+			},
+			{
+				"i": 4,
+				"quantity": "180",
+				"item": {
+					"ref": "KAAPELI-CAT6A",
+					"name": "Verkkokaapeli Cat 6A",
+					"price": "2.10",
+					"unit": "m"
+				},
+				"sum": "378.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "25.5%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "378.00"
+			},
+			{
+				"i": 5,
+				"quantity": "60",
+				"item": {
+					"ref": "KIRJA-OPAS",
+					"name": "Käyttöopas, painettu",
+					"description": "Sidottu A4-opas, suomenkielinen",
+					"price": "32.00",
+					"unit": "item"
+				},
+				"sum": "1920.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "super-reduced",
+						"percent": "10.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "1920.00"
+			},
+			{
+				"i": 6,
+				"quantity": "25",
+				"item": {
+					"ref": "LOUNAS-KOUL",
+					"name": "Koulutuspäivän lounastarjoilu",
+					"price": "18.50",
+					"unit": "portion"
+				},
+				"sum": "462.50",
+				"discounts": [
+					{
+						"reason": "Ryhmähinta",
+						"amount": "37.50"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "13.5%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "425.00"
+			},
+			{
+				"i": 7,
+				"quantity": "2",
+				"item": {
+					"ref": "KOUL-PAIVA",
+					"name": "Koulutuspäivä",
+					"description": "Ammatillinen koulutus asiakkaan tiloissa, enintään 12 osallistujaa",
+					"price": "1800.00",
+					"unit": "day"
+				},
+				"sum": "3600.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "exempt",
+						"ext": {
+							"cef-vatex": "VATEX-EU-132-1I",
+							"untdid-tax-category": "E"
+						}
+					}
+				],
+				"total": "3600.00"
+			},
+			{
+				"i": 8,
+				"quantity": "3",
+				"item": {
+					"ref": "RAHTI-EXP",
+					"name": "Pikarahti",
+					"price": "45.00",
+					"unit": "trip"
+				},
+				"sum": "135.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "zero",
+						"percent": "0%",
+						"ext": {
+							"untdid-tax-category": "Z"
+						}
+					}
+				],
+				"total": "135.00"
+			}
+		],
+		"discounts": [
+			{
+				"i": 1,
+				"key": "early-completion",
+				"reason": "Bonus aikataulua nopeammasta toimituksesta",
+				"percent": "2%",
+				"amount": "665.08",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "25.5%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"ext": {
+					"untdid-allowance": "41"
+				}
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"key": "delivery",
+				"reason": "Rahti Helsinkiin",
+				"amount": "95.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "25.5%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"ext": {
+					"untdid-charge": "DL"
+				}
+			},
+			{
+				"i": 2,
+				"key": "admin",
+				"reason": "Laskutuslisä",
+				"amount": "5.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "25.5%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"ext": {
+					"untdid-charge": "AEM"
+				}
+			}
+		],
+		"ordering": {
+			"code": "VSK-2026-0418",
+			"identities": [
+				{
+					"label": "Ostajan viite",
+					"code": "Mikko Korhonen / 0418"
+				},
+				{
+					"label": "Myyjän viite",
+					"code": "LV-2026-0271"
+				}
+			],
+			"cost": "KP-4120-0418",
+			"period": {
+				"label": "Toimitusjakso",
+				"start": "2026-08-01",
+				"end": "2026-08-31"
+			},
+			"projects": [
+				{
+					"code": "HANKE-2026-TIETOJARJ"
+				}
+			],
+			"contracts": [
+				{
+					"issue_date": "2025-12-15",
+					"code": "VSK12026001",
+					"description": "Puitesopimus IT-konsultoinnista"
+				}
+			],
+			"purchases": [
+				{
+					"issue_date": "2026-07-06",
+					"code": "V12026001"
+				}
+			],
+			"receiving": [
+				{
+					"issue_date": "2026-08-28",
+					"code": "VAST-2026-0344"
+				}
+			],
+			"despatch": [
+				{
+					"issue_date": "2026-08-26",
+					"code": "LAH-2026-0781"
+				}
+			],
+			"tender": [
+				{
+					"code": "KILP-2025-117"
+				}
+			]
+		},
+		"payment": {
+			"advances": [
+				{
+					"date": "2026-07-20",
+					"key": "credit-transfer",
+					"ref": "ENNAKKO-2026-0271",
+					"description": "Ennakkomaksu tilausvahvistuksen yhteydessä",
+					"percent": "20%",
+					"amount": "7944.71"
+				}
+			],
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-10-04",
+						"notes": "Eräpäivä",
+						"amount": "31778.86",
+						"percent": "100%"
+					}
+				],
+				"notes": "Maksuehto 30 päivää netto. Viivästyskorko korkolain mukaan."
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"detail": "Tilisiirto, käytä viitenumeroa",
+				"ref": "202608010041",
+				"credit_transfer": [
+					{
+						"label": "Nordea",
+						"iban": "FI2112345600000785",
+						"bic": "NDEAFIHH",
+						"name": "Aurora Ohjelmistot Oy"
+					},
+					{
+						"label": "Danske Bank",
+						"iban": "FI1080001234567890",
+						"bic": "DABAFIHH",
+						"name": "Aurora Ohjelmistot Oy"
+					}
+				],
+				"direct_debit": {
+					"ref": "SV-VALT-2025-0042",
+					"creditor": "FI98ZZZ12345678",
+					"account": "FI2112345600000785"
+				},
+				"online": [
+					{
+						"key": "mobilepay",
+						"label": "MobilePay",
+						"url": "https://pay.aurora.example/LASKU-2026-0271"
+					}
+				],
+				"notes": "Maksettaessa käytä aina viitenumeroa **2026 0801 0041**.",
+				"ext": {
+					"untdid-payment-means": "30"
+				}
+			}
+		},
+		"delivery": {
+			"receiver": {
+				"name": "Suomen Valtion Virasto, tietohallinto",
+				"addresses": [
+					{
+						"num": "9",
+						"street": "Hakaniemenranta",
+						"locality": "Helsinki",
+						"code": "00530",
+						"country": "FI"
+					}
+				]
+			},
+			"date": "2026-08-26",
+			"period": {
+				"start": "2026-08-01",
+				"end": "2026-08-31"
+			}
+		},
+		"totals": {
+			"sum": "33254.00",
+			"discount": "665.08",
+			"charge": "100.00",
+			"total": "32688.92",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "26608.92",
+								"percent": "25.5%",
+								"amount": "6785.27"
+							},
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "1920.00",
+								"percent": "10.0%",
+								"amount": "192.00"
+							},
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "425.00",
+								"percent": "13.5%",
+								"amount": "57.38"
+							},
+							{
+								"key": "exempt",
+								"ext": {
+									"cef-vatex": "VATEX-EU-132-1I",
+									"untdid-tax-category": "E"
+								},
+								"base": "3600.00",
+								"amount": "0.00"
+							},
+							{
+								"key": "zero",
+								"ext": {
+									"untdid-tax-category": "Z"
+								},
+								"base": "135.00",
+								"percent": "0%",
+								"amount": "0.00"
+							}
+						],
+						"amount": "7034.65"
+					}
+				],
+				"sum": "7034.65"
+			},
+			"tax": "7034.65",
+			"total_with_tax": "39723.57",
+			"payable": "39723.57",
+			"advance": "7944.71",
+			"due": "31778.86"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Kiitos tilauksestanne. Laskua koskevat kysymykset: laskutus@aurora.example.",
+				"ext": {
+					"untdid-text-subject": "AAI"
+				}
+			},
+			{
+				"key": "delivery",
+				"text": "Laitteet toimitettu tietohallintoon, Hakaniemenranta 9, 26.8.2026, lähete LAH-2026-0781.",
+				"ext": {
+					"untdid-text-subject": "DEL"
+				}
+			},
+			{
+				"key": "legal",
+				"text": "Aurora Ohjelmistot Oy · Y-tunnus 2617416-4 · Kotipaikka Helsinki · ALV-numero FI26174164",
+				"meta": {
+					"position": "footer"
+				},
+				"ext": {
+					"untdid-text-subject": "ABL"
+				}
+			}
+		]
+	}
+}

@@ -1,0 +1,491 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1aba5-ecfd-7870-b35b-d59b3ab3e8b5",
+		"dig": {
+			"alg": "sha256",
+			"val": "0ef718a74fd2d0c3529c16f450e0627e91f13cda12ebad0605196159e56770ce"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "SG",
+		"uuid": "01a1aba5-ecfd-787b-8b06-fc62d225d75d",
+		"type": "standard",
+		"series": "INV",
+		"code": "2026-0031",
+		"issue_date": "2026-04-08",
+		"issue_time": "14:05:12",
+		"currency": "SGD",
+		"supplier": {
+			"name": "Straits Digital Pte Ltd",
+			"tax_id": {
+				"country": "SG",
+				"code": "199307558M"
+			},
+			"identities": [
+				{
+					"type": "UEN",
+					"code": "199307558M"
+				},
+				{
+					"label": "GST registration",
+					"code": "199307558M"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Registered office",
+					"num": "66",
+					"street": "Tanah Merah Coast Road",
+					"street_extra": "#03-12 Coastal Hub",
+					"locality": "Singapore",
+					"code": "498789",
+					"country": "SG"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@straitsdigital.sg"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://straitsdigital.sg"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+65 6123 4567"
+				}
+			],
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+				}
+			]
+		},
+		"customer": {
+			"name": "Harbourfront Events Pte Ltd",
+			"tax_id": {
+				"country": "SG",
+				"code": "199912345R"
+			},
+			"identities": [
+				{
+					"type": "UEN",
+					"code": "199912345R"
+				},
+				{
+					"label": "Customer account",
+					"code": "HFE-00412"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Finance department",
+					"po_box": "912",
+					"num": "1",
+					"street": "Harbourfront Walk",
+					"street_extra": "#05-01 VivoCity Tower",
+					"locality": "Singapore",
+					"code": "098585",
+					"country": "SG"
+				}
+			],
+			"emails": [
+				{
+					"addr": "ap@harbourfrontevents.sg"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "96",
+				"item": {
+					"ref": "AV-TECH",
+					"name": "Audio-visual engineering",
+					"description": "On-site AV engineering for the Marina Bay conference, March 2026",
+					"price": "145.00",
+					"unit": "h"
+				},
+				"sum": "13920.00",
+				"discounts": [
+					{
+						"reason": "Framework agreement discount",
+						"percent": "10%",
+						"amount": "1392.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "standard",
+						"rate": "general",
+						"percent": "9%"
+					}
+				],
+				"total": "12528.00"
+			},
+			{
+				"i": 2,
+				"quantity": "12",
+				"item": {
+					"ref": "LED-WALL",
+					"name": "LED wall panel 2.6mm",
+					"identities": [
+						{
+							"type": "EAN",
+							"code": "0799439112766"
+						}
+					],
+					"price": "1850.00",
+					"unit": "piece"
+				},
+				"sum": "22200.00",
+				"charges": [
+					{
+						"key": "insurance",
+						"reason": "Equipment insurance",
+						"percent": "2%",
+						"amount": "444.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "standard",
+						"rate": "general",
+						"percent": "9%"
+					}
+				],
+				"total": "22644.00"
+			},
+			{
+				"i": 3,
+				"quantity": "180",
+				"item": {
+					"ref": "TRUSS-ALU",
+					"name": "Aluminium truss",
+					"price": "22.50",
+					"unit": "m"
+				},
+				"sum": "4050.00",
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "standard",
+						"rate": "general",
+						"percent": "9%"
+					}
+				],
+				"total": "4050.00"
+			},
+			{
+				"i": 4,
+				"quantity": "450",
+				"item": {
+					"ref": "CATER-BOX",
+					"name": "Catered lunch box",
+					"price": "18.00",
+					"unit": "box"
+				},
+				"sum": "8100.00",
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "standard",
+						"rate": "general",
+						"percent": "9%"
+					}
+				],
+				"total": "8100.00"
+			},
+			{
+				"i": 5,
+				"quantity": "3",
+				"item": {
+					"ref": "STREAM-INTL",
+					"name": "International live-stream production",
+					"description": "Services performed for the overseas audience and zero-rated under section 21(3) of the GST Act",
+					"price": "4200.00",
+					"unit": "day"
+				},
+				"sum": "12600.00",
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "zero",
+						"percent": "0%"
+					}
+				],
+				"total": "12600.00"
+			},
+			{
+				"i": 6,
+				"quantity": "1",
+				"item": {
+					"ref": "FIN-INSTAL",
+					"name": "Instalment financing interest",
+					"description": "Exempt financial service under the Fourth Schedule of the GST Act",
+					"price": "960.00",
+					"unit": "service"
+				},
+				"sum": "960.00",
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "exempt"
+					}
+				],
+				"total": "960.00"
+			},
+			{
+				"i": 7,
+				"quantity": "250",
+				"item": {
+					"ref": "ICE-DRY",
+					"name": "Dry ice for stage effects",
+					"price": "3.80",
+					"unit": "kg"
+				},
+				"sum": "950.00",
+				"discounts": [
+					{
+						"reason": "Bulk order",
+						"amount": "50.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "standard",
+						"rate": "general",
+						"percent": "9%"
+					}
+				],
+				"total": "900.00"
+			},
+			{
+				"i": 8,
+				"quantity": "2",
+				"item": {
+					"ref": "SUP-PREM",
+					"name": "Premium technical support",
+					"price": "1200.00",
+					"unit": "mon"
+				},
+				"sum": "2400.00",
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "standard",
+						"rate": "general",
+						"percent": "9%"
+					}
+				],
+				"total": "2400.00"
+			}
+		],
+		"discounts": [
+			{
+				"i": 1,
+				"key": "early-completion",
+				"code": "DISC-EC-0326",
+				"reason": "Early completion bonus credited to the customer",
+				"percent": "2.5%",
+				"amount": "1604.55",
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "standard",
+						"rate": "general",
+						"percent": "9%"
+					}
+				]
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"key": "delivery",
+				"code": "CHG-LOGISTICS",
+				"reason": "Logistics and rigging crew",
+				"amount": "1800.00",
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "standard",
+						"rate": "general",
+						"percent": "9%"
+					}
+				]
+			}
+		],
+		"ordering": {
+			"code": "PO-HFE-2026-077",
+			"identities": [
+				{
+					"label": "Event reference",
+					"code": "EVT-MARINA-0326"
+				}
+			],
+			"period": {
+				"label": "Service period",
+				"start": "2026-03-01",
+				"end": "2026-03-31"
+			},
+			"contracts": [
+				{
+					"issue_date": "2025-09-01",
+					"code": "MSA-2025-014"
+				}
+			],
+			"purchases": [
+				{
+					"issue_date": "2026-02-19",
+					"code": "PO-HFE-2026-077"
+				}
+			]
+		},
+		"payment": {
+			"advances": [
+				{
+					"date": "2026-02-25",
+					"key": "online",
+					"ref": "PAYNOW-7731902",
+					"description": "Deposit paid via PayNow",
+					"amount": "15000.00"
+				}
+			],
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-04-22",
+						"notes": "First instalment",
+						"amount": "26975.51",
+						"percent": "50%"
+					},
+					{
+						"date": "2026-05-08",
+						"notes": "Second instalment",
+						"amount": "26975.51",
+						"percent": "50%"
+					}
+				],
+				"notes": "Net 30. Late payments attract interest at 1% per month."
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"detail": "FAST / GIRO transfer to the account below",
+				"ref": "INV-2026-0031",
+				"credit_transfer": [
+					{
+						"label": "DBS current account",
+						"bic": "DBSSSGSG",
+						"number": "0123456789",
+						"clearing": "7171",
+						"name": "Straits Digital Pte Ltd"
+					}
+				],
+				"card": {
+					"last4": "4321",
+					"holder": "Harbourfront Events Pte Ltd"
+				},
+				"online": [
+					{
+						"key": "paynow",
+						"label": "PayNow (UEN 199307558M)",
+						"url": "https://pay.straitsdigital.sg/paynow?ref=INV-2026-0031"
+					}
+				],
+				"notes": "Please quote the invoice number in the payment reference. **PayNow** to UEN 199307558M is accepted."
+			}
+		},
+		"delivery": {
+			"receiver": {
+				"name": "Harbourfront Events Pte Ltd — Marina Bay site office",
+				"addresses": [
+					{
+						"num": "10",
+						"street": "Bayfront Avenue",
+						"street_extra": "#B1-07",
+						"locality": "Singapore",
+						"code": "018956",
+						"country": "SG"
+					}
+				]
+			},
+			"date": "2026-03-31",
+			"period": {
+				"start": "2026-03-01",
+				"end": "2026-03-31"
+			}
+		},
+		"totals": {
+			"sum": "64182.00",
+			"discount": "1604.55",
+			"charge": "1800.00",
+			"total": "64377.45",
+			"taxes": {
+				"categories": [
+					{
+						"code": "GST",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "50817.45",
+								"percent": "9%",
+								"amount": "4573.57"
+							},
+							{
+								"key": "zero",
+								"base": "12600.00",
+								"percent": "0%",
+								"amount": "0.00"
+							},
+							{
+								"key": "exempt",
+								"base": "960.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "4573.57"
+					}
+				],
+				"sum": "4573.57"
+			},
+			"tax": "4573.57",
+			"total_with_tax": "68951.02",
+			"payable": "68951.02",
+			"advance": "15000.00",
+			"due": "53951.02"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Thank you for your business."
+			},
+			{
+				"key": "legal",
+				"text": "This is a tax invoice issued by a GST-registered business. GST Reg. No. 199307558M. Zero-rated and exempt supplies are identified per line.",
+				"meta": {
+					"position": "footer"
+				}
+			}
+		],
+		"attachments": [
+			{
+				"key": "delivery-note",
+				"code": "DO-2026-0019",
+				"name": "DO-2026-0019.pdf",
+				"description": "Delivery order for the LED wall and truss equipment",
+				"url": "https://files.straitsdigital.sg/do/DO-2026-0019.pdf",
+				"mime": "application/pdf"
+			}
+		]
+	}
+}

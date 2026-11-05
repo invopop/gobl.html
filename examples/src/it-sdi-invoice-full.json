@@ -1,0 +1,499 @@
+{
+	"$schema": "https://gobl.org/draft-0/bill/invoice",
+	"$regime": "IT",
+	"$addons": [
+		"it-sdi-v1"
+	],
+	"type": "standard",
+	"series": "FT",
+	"code": "2026-0042",
+	"issue_date": "2026-03-16",
+	"issue_time": "10:42:15",
+	"currency": "EUR",
+	"tax": {
+		"ext": {
+			"it-sdi-document-type": "TD01",
+			"it-sdi-format": "FPR12"
+		}
+	},
+	"supplier": {
+		"name": "Innovatech S.r.l.",
+		"tax_id": {
+			"country": "IT",
+			"code": "12345678903"
+		},
+		"identities": [
+			{
+				"key": "it-fiscal-code",
+				"code": "12345678903"
+			},
+			{
+				"label": "REA",
+				"code": "RM-1234567"
+			}
+		],
+		"addresses": [
+			{
+				"num": "42",
+				"street": "Via della Libertà",
+				"street_extra": "Scala B, Piano 3",
+				"locality": "Roma",
+				"region": "RM",
+				"code": "00185",
+				"country": "IT"
+			}
+		],
+		"emails": [
+			{
+				"label": "Fatturazione",
+				"addr": "fatturazione@innovatech.example.it"
+			},
+			{
+				"label": "PEC",
+				"addr": "innovatech@pec.example.it"
+			}
+		],
+		"telephones": [
+			{
+				"num": "0612345678"
+			}
+		],
+		"websites": [
+			{
+				"url": "https://innovatech.example.it"
+			}
+		],
+		"inboxes": [
+			{
+				"key": "it-sdi-pec",
+				"email": "innovatech@pec.example.it"
+			}
+		],
+		"registration": {
+			"capital": "100000.00",
+			"currency": "EUR",
+			"office": "RM",
+			"entry": "RM-1234567"
+		},
+		"ext": {
+			"it-sdi-fiscal-regime": "RF01"
+		},
+		"logos": [
+			{
+				"label": "Invopop",
+				"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+			}
+		]
+	},
+	"customer": {
+		"name": "Gusto Commerciale S.p.A.",
+		"tax_id": {
+			"country": "IT",
+			"code": "09876543217"
+		},
+		"identities": [
+			{
+				"key": "it-fiscal-code",
+				"code": "09876543217"
+			},
+			{
+				"label": "Codice cliente",
+				"code": "CLI-00817"
+			}
+		],
+		"inboxes": [
+			{
+				"key": "it-sdi-code",
+				"code": "M5UXCR5"
+			}
+		],
+		"addresses": [
+			{
+				"label": "Sede legale",
+				"po_box": "1042",
+				"num": "7",
+				"street": "Corso Vittorio Emanuele II",
+				"street_extra": "Interno 12",
+				"locality": "Milano",
+				"region": "MI",
+				"code": "20122",
+				"country": "IT"
+			}
+		],
+		"emails": [
+			{
+				"addr": "contabilita@gusto.example.it"
+			}
+		],
+		"telephones": [
+			{
+				"num": "0298765432"
+			}
+		]
+	},
+	"lines": [
+		{
+			"quantity": "40",
+			"item": {
+				"ref": "CONS-SENIOR",
+				"name": "Consulenza senior architettura software",
+				"description": "Progettazione della nuova piattaforma di fatturazione, marzo 2026",
+				"identities": [
+					{
+						"label": "SKU",
+						"code": "CONS-SR-2026"
+					}
+				],
+				"price": "95.00",
+				"unit": "h",
+				"meta": {
+					"unit-label": "ORE"
+				}
+			},
+			"discounts": [
+				{
+					"reason": "Sconto volume",
+					"percent": "10%"
+				}
+			],
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				},
+				{
+					"cat": "IRPEF",
+					"percent": "20%",
+					"ext": {
+						"it-sdi-retained": "A"
+					}
+				}
+			]
+		},
+		{
+			"quantity": "3",
+			"item": {
+				"ref": "LIC-ERP-M",
+				"name": "Licenza mensile ERP Cloud",
+				"description": "Abbonamento 10 utenti, da marzo a maggio 2026",
+				"price": "320.00",
+				"unit": "mon"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "25",
+			"item": {
+				"ref": "CAB-UTP6",
+				"name": "Cavo di rete UTP Cat.6",
+				"identities": [
+					{
+						"type": "EAN",
+						"code": "8001234567890"
+					}
+				],
+				"price": "1.85",
+				"unit": "m"
+			},
+			"charges": [
+				{
+					"reason": "Taglio su misura",
+					"amount": "4.50"
+				}
+			],
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "12.5",
+			"item": {
+				"ref": "CAFE-BIO",
+				"name": "Caffè in grani biologico per ufficio",
+				"price": "14.80",
+				"unit": "kg"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "intermediate"
+				}
+			]
+		},
+		{
+			"quantity": "60",
+			"item": {
+				"ref": "LIB-TEC",
+				"name": "Manuale tecnico stampato",
+				"identities": [
+					{
+						"type": "ISBN",
+						"code": "978-88-00-00000-1"
+					}
+				],
+				"price": "24.00",
+				"unit": "piece"
+			},
+			"discounts": [
+				{
+					"reason": "Promozione di lancio",
+					"amount": "60.00"
+				}
+			],
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "super-reduced"
+				}
+			]
+		},
+		{
+			"quantity": "2",
+			"item": {
+				"ref": "FORM-GDPR",
+				"name": "Formazione certificata protezione dati",
+				"description": "Attività formativa esente IVA ai sensi dell'art. 10 DPR 633/72",
+				"price": "450.00",
+				"unit": "day"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "exempt",
+					"ext": {
+						"it-sdi-exempt": "N4"
+					}
+				}
+			]
+		},
+		{
+			"quantity": "4",
+			"item": {
+				"ref": "PUL-UFF",
+				"name": "Pulizia locali in edificio (subappalto edile)",
+				"price": "180.00",
+				"unit": "service"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "reverse-charge",
+					"ext": {
+						"it-sdi-exempt": "N6.7"
+					}
+				}
+			]
+		},
+		{
+			"quantity": "1",
+			"item": {
+				"ref": "ECO-RAEE",
+				"name": "Eco-contributo RAEE su apparecchiature",
+				"price": "6.00",
+				"unit": "one"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		}
+	],
+	"discounts": [
+		{
+			"code": "SC-PP",
+			"reason": "Sconto per pronto pagamento",
+			"percent": "2%",
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		}
+	],
+	"charges": [
+		{
+			"key": "fund-contribution",
+			"code": "INPS-4",
+			"reason": "Rivalsa INPS 4% (L. 335/95)",
+			"percent": "4%",
+			"ext": {
+				"it-sdi-fund-type": "TC22"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"key": "delivery",
+			"code": "SPED",
+			"reason": "Spese di spedizione",
+			"amount": "35.00",
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"key": "stamp-duty",
+			"reason": "Imposta di bollo assolta virtualmente",
+			"amount": "2.00"
+		}
+	],
+	"ordering": {
+		"code": "PO-2026-0317",
+		"identities": [
+			{
+				"label": "Rif. fornitore",
+				"code": "INV-GUSTO-03"
+			},
+			{
+				"label": "Centro di costo",
+				"code": "CC-IT-04"
+			}
+		],
+		"period": {
+			"label": "Periodo di competenza",
+			"start": "2026-03-01",
+			"end": "2026-03-31"
+		},
+		"purchases": [
+			{
+				"code": "PO-2026-0317",
+				"issue_date": "2026-02-20",
+				"line": "1"
+			}
+		],
+		"contracts": [
+			{
+				"code": "CTR-2025-118",
+				"issue_date": "2025-11-03"
+			}
+		]
+	},
+	"delivery": {
+		"receiver": {
+			"name": "Gusto Commerciale S.p.A. - Magazzino di Bologna",
+			"addresses": [
+				{
+					"num": "15",
+					"street": "Via Emilia Levante",
+					"locality": "Bologna",
+					"region": "BO",
+					"code": "40139",
+					"country": "IT"
+				}
+			],
+			"telephones": [
+				{
+					"num": "0512003004"
+				}
+			]
+		},
+		"identities": [
+			{
+				"label": "DDT",
+				"code": "DDT-2026-0019"
+			}
+		],
+		"date": "2026-03-13",
+		"period": {
+			"start": "2026-03-12",
+			"end": "2026-03-13"
+		}
+	},
+	"payment": {
+		"terms": {
+			"key": "due-date",
+			"due_dates": [
+				{
+					"date": "2026-04-15",
+					"percent": "50%",
+					"notes": "Prima rata"
+				},
+				{
+					"date": "2026-05-15",
+					"percent": "50%",
+					"notes": "Seconda rata"
+				}
+			],
+			"notes": "Pagamento in due rate, senza interessi."
+		},
+		"advances": [
+			{
+				"date": "2026-02-25",
+				"key": "card",
+				"ref": "ACC-2026-0042",
+				"description": "Acconto pagato con carta",
+				"amount": "1500.00"
+			}
+		],
+		"instructions": {
+			"key": "credit-transfer",
+			"ref": "FT 2026-0042",
+			"credit_transfer": [
+				{
+					"label": "Conto principale",
+					"iban": "IT60X0542811101000000123456",
+					"bic": "BPMOIT22",
+					"name": "Innovatech S.r.l."
+				}
+			],
+			"card": {
+				"last4": "4321",
+				"holder": "Innovatech S.r.l."
+			},
+			"direct_debit": {
+				"ref": "MANDATO-GUSTO-001",
+				"creditor": "IT12ZZZ0000012345678903",
+				"account": "IT60X0542811101000000123456"
+			},
+			"online": [
+				{
+					"key": "pagopa",
+					"label": "pagoPA",
+					"url": "https://pay.innovatech.example.it/pagopa/FT-2026-0042"
+				}
+			],
+			"notes": "Indicare il numero della fattura nella causale del bonifico."
+		}
+	},
+	"notes": [
+		{
+			"key": "general",
+			"text": "Grazie per la fiducia. La consegna dei beni è avvenuta con DDT n. 2026-0019 del 13/03/2026."
+		},
+		{
+			"key": "legal",
+			"text": "Operazione soggetta a ritenuta d'acconto ai sensi dell'art. 25 DPR 600/73. Imposta di bollo assolta in modo virtuale ai sensi del DM 17/06/2014. In caso di ritardato pagamento sono dovuti gli interessi di mora ex D.Lgs. 231/2002.",
+			"meta": {
+				"position": "footer"
+			}
+		}
+	],
+	"attachments": [
+		{
+			"key": "delivery-note",
+			"code": "DDT-2026-0019",
+			"name": "Documento di trasporto DDT-2026-0019",
+			"description": "DDT che ha accompagnato la consegna dei beni al magazzino di Bologna.",
+			"url": "https://docs.innovatech.example.it/ddt/DDT-2026-0019.pdf",
+			"mime": "application/pdf"
+		}
+	]
+}

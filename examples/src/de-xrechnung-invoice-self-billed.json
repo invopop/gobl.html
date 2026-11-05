@@ -1,0 +1,218 @@
+{
+	"$schema": "https://gobl.org/draft-0/bill/invoice",
+	"$regime": "DE",
+	"$addons": [
+		"eu-en16931-v2017",
+		"de-xrechnung-v3"
+	],
+	"$tags": [
+		"self-billed"
+	],
+	"type": "standard",
+	"series": "SB-2026",
+	"code": "0018",
+	"issue_date": "2026-03-31",
+	"currency": "EUR",
+	"tax": {
+		"ext": {
+			"untdid-document-type": "389"
+		}
+	},
+	"supplier": {
+		"name": "Rheinland Technologies GmbH",
+		"tax_id": {
+			"country": "DE",
+			"code": "879558966"
+		},
+		"people": [
+			{
+				"name": {
+					"given": "Anna",
+					"surname": "Weber"
+				}
+			}
+		],
+		"endpoints": [
+			{
+				"uri": "iso6523-actorid-upis::9930:DE879558966"
+			}
+		],
+		"inboxes": [
+			{
+				"key": "peppol",
+				"scheme": "9930",
+				"code": "DE879558966"
+			}
+		],
+		"addresses": [
+			{
+				"num": "27",
+				"street": "Friedrichstraße",
+				"locality": "Berlin",
+				"region": "BE",
+				"code": "10117",
+				"country": "DE"
+			}
+		],
+		"emails": [
+			{
+				"addr": "billing@example.com"
+			}
+		],
+		"telephones": [
+			{
+				"num": "+49100200300"
+			}
+		]
+	},
+	"customer": {
+		"name": "Bavaria Solutions GmbH",
+		"tax_id": {
+			"country": "DE",
+			"code": "993930191"
+		},
+		"people": [
+			{
+				"name": {
+					"given": "Lukas",
+					"surname": "Hoffmann"
+				}
+			}
+		],
+		"endpoints": [
+			{
+				"uri": "iso6523-actorid-upis::9930:DE993930191"
+			}
+		],
+		"inboxes": [
+			{
+				"key": "peppol",
+				"scheme": "9930",
+				"code": "DE993930191"
+			}
+		],
+		"addresses": [
+			{
+				"num": "15",
+				"street": "Marienplatz",
+				"locality": "München",
+				"region": "BY",
+				"code": "80331",
+				"country": "DE"
+			}
+		],
+		"emails": [
+			{
+				"addr": "kreditoren@example.com"
+			}
+		],
+		"telephones": [
+			{
+				"num": "+49890001000"
+			}
+		]
+	},
+	"lines": [
+		{
+			"quantity": "64",
+			"item": {
+				"name": "Backend development",
+				"description": "Sprint 14, March 2026",
+				"price": "92.00",
+				"unit": "h"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "12",
+			"item": {
+				"name": "Architecture review",
+				"description": "Senior consultant, on site",
+				"price": "140.00",
+				"unit": "h"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "1",
+			"item": {
+				"name": "Monthly platform licence",
+				"description": "Build and deployment pipeline, March 2026",
+				"price": "350.00",
+				"unit": "mon"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "2",
+			"item": {
+				"name": "Technical handbook (print)",
+				"description": "Printed documentation for the operations team",
+				"price": "45.00",
+				"unit": "item"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "reduced"
+				}
+			]
+		}
+	],
+	"ordering": {
+		"code": "PO-2026-0882",
+		"period": {
+			"start": "2026-03-01",
+			"end": "2026-03-31"
+		},
+		"contracts": [
+			{
+				"code": "RV-2025-11",
+				"issue_date": "2025-11-15"
+			}
+		]
+	},
+	"payment": {
+		"terms": {
+			"key": "due-date",
+			"due_dates": [
+				{
+					"date": "2026-04-30",
+					"percent": "100%"
+				}
+			],
+			"notes": "Settled by the customer by SEPA credit transfer within 30 days of issue"
+		},
+		"instructions": {
+			"key": "credit-transfer+sepa",
+			"credit_transfer": [
+				{
+					"iban": "DE89370400440532013000",
+					"bic": "COBADEFFXXX",
+					"name": "Rheinland Technologies GmbH"
+				}
+			]
+		}
+	},
+	"notes": [
+		{
+			"key": "general",
+			"text": "Self-billed invoice (Gutschrift im Gutschriftsverfahren): issued by Bavaria Solutions GmbH on behalf of and in the name of Rheinland Technologies GmbH under the self-billing agreement RV-2025-11 of 15 November 2025. The supplier remains liable for the VAT shown."
+		}
+	]
+}

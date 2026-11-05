@@ -1,0 +1,418 @@
+{
+	"$schema": "https://gobl.org/draft-0/bill/invoice",
+	"$regime": "PL",
+	"$addons": [
+		"pl-favat-v3"
+	],
+	"type": "standard",
+	"series": "FV/2026",
+	"code": "0042",
+	"issue_date": "2026-02-10",
+	"issue_time": "09:41:23",
+	"currency": "PLN",
+	"tax": {
+		"ext": {
+			"pl-favat-invoice-type": "VAT",
+			"pl-favat-cash-accounting": "1",
+			"pl-favat-split-payment": "1",
+			"pl-favat-exemption": "A"
+		}
+	},
+	"supplier": {
+		"name": "Testowa Firma Sp. z o.o.",
+		"tax_id": {
+			"country": "PL",
+			"code": "9876543210"
+		},
+		"identities": [
+			{
+				"label": "REGON",
+				"code": "123456785"
+			},
+			{
+				"label": "KRS",
+				"code": "0000123456"
+			}
+		],
+		"addresses": [
+			{
+				"street": "ul. Główna 1",
+				"street_extra": "lok. 12",
+				"locality": "Warszawa",
+				"region": "mazowieckie",
+				"code": "00-001",
+				"country": "PL"
+			}
+		],
+		"emails": [
+			{
+				"addr": "faktury@testowa.pl"
+			}
+		],
+		"telephones": [
+			{
+				"num": "+48 22 123 45 67"
+			}
+		],
+		"websites": [
+			{
+				"url": "https://testowa.pl"
+			}
+		],
+		"logos": [
+			{
+				"label": "Invopop",
+				"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+			}
+		]
+	},
+	"customer": {
+		"name": "Klient Testowy Sp. z o.o.",
+		"tax_id": {
+			"country": "PL",
+			"code": "1111111111"
+		},
+		"identities": [
+			{
+				"label": "Numer klienta",
+				"code": "KT-00917"
+			}
+		],
+		"addresses": [
+			{
+				"label": "Siedziba",
+				"po_box": "44",
+				"street": "ul. Testowa 10",
+				"locality": "Kraków",
+				"region": "małopolskie",
+				"code": "30-001",
+				"country": "PL"
+			}
+		],
+		"emails": [
+			{
+				"addr": "ksiegowosc@klient-testowy.pl"
+			}
+		]
+	},
+	"ordering": {
+		"code": "ZAM/2026/0117",
+		"identities": [
+			{
+				"label": "Numer projektu",
+				"code": "PRJ-ERP-2026"
+			}
+		],
+		"period": {
+			"label": "Okres rozliczeniowy",
+			"start": "2026-01-01",
+			"end": "2026-01-31"
+		},
+		"purchases": [
+			{
+				"code": "PO-2026-0117",
+				"issue_date": "2025-12-18"
+			}
+		],
+		"contracts": [
+			{
+				"code": "UM/2025/0088",
+				"issue_date": "2025-11-03"
+			}
+		]
+	},
+	"delivery": {
+		"receiver": {
+			"name": "Klient Testowy Sp. z o.o. — Oddział Wrocław",
+			"addresses": [
+				{
+					"street": "ul. Dostawcza 7",
+					"locality": "Wrocław",
+					"code": "50-001",
+					"country": "PL"
+				}
+			]
+		},
+		"date": "2026-01-31",
+		"period": {
+			"start": "2026-01-01",
+			"end": "2026-01-31"
+		}
+	},
+	"lines": [
+		{
+			"quantity": "120",
+			"item": {
+				"ref": "DEV-SENIOR",
+				"name": "Usługi programistyczne — senior developer",
+				"description": "Rozwój modułu fakturowania w systemie ERP, styczeń 2026",
+				"price": "180.00",
+				"unit": "h"
+			},
+			"discounts": [
+				{
+					"reason": "Rabat ramowy",
+					"percent": "10%"
+				}
+			],
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "standard",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "4",
+			"item": {
+				"ref": "SRV-RACK",
+				"name": "Serwer rack 2U",
+				"identities": [
+					{
+						"type": "EAN",
+						"code": "5901234123457"
+					}
+				],
+				"price": "8450.00",
+				"unit": "piece"
+			},
+			"charges": [
+				{
+					"key": "insurance",
+					"reason": "Ubezpieczenie transportu",
+					"percent": "1.5%"
+				}
+			],
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "standard",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "250",
+			"item": {
+				"ref": "CAB-CAT6",
+				"name": "Kabel sieciowy CAT6 S/FTP",
+				"price": "4.20",
+				"unit": "m"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "standard",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "36",
+			"item": {
+				"ref": "CAT-LUNCH",
+				"name": "Catering — lunch podczas warsztatów",
+				"price": "48.00",
+				"unit": "portion"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "standard",
+					"rate": "reduced"
+				}
+			]
+		},
+		{
+			"quantity": "12",
+			"item": {
+				"ref": "BOOK-ERP",
+				"name": "Podręcznik użytkownika systemu ERP (druk)",
+				"identities": [
+					{
+						"type": "ISBN",
+						"code": "9788301234567"
+					}
+				],
+				"price": "89.00",
+				"unit": "piece"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "standard",
+					"rate": "super-reduced"
+				}
+			]
+		},
+		{
+			"quantity": "2.5",
+			"item": {
+				"ref": "FREIGHT-INTL",
+				"name": "Transport międzynarodowy sprzętu",
+				"description": "Fracht lotniczy Warszawa — Wrocław — Singapur, waga brutto",
+				"price": "1200.00",
+				"unit": "t"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "zero"
+				}
+			]
+		},
+		{
+			"quantity": "1",
+			"item": {
+				"ref": "TRAIN-ERP",
+				"name": "Szkolenie zawodowe — obsługa systemu ERP",
+				"description": "Szkolenie zwolnione na podstawie art. 43 ust. 1 pkt 29 ustawy o VAT",
+				"price": "3600.00",
+				"unit": "service"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "exempt"
+				}
+			]
+		},
+		{
+			"quantity": "3",
+			"item": {
+				"ref": "SUP-PREM",
+				"name": "Wsparcie techniczne Premium",
+				"price": "950.00",
+				"unit": "mon"
+			},
+			"discounts": [
+				{
+					"reason": "Rabat za płatność z góry",
+					"amount": "150.00"
+				}
+			],
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "standard",
+					"rate": "general"
+				}
+			]
+		}
+	],
+	"discounts": [
+		{
+			"key": "early-completion",
+			"code": "RAB-2026-01",
+			"reason": "Rabat za wcześniejsze zakończenie projektu",
+			"percent": "2%",
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "standard",
+					"rate": "general"
+				}
+			]
+		}
+	],
+	"charges": [
+		{
+			"key": "delivery",
+			"code": "OPL-DOST",
+			"reason": "Koszty dostawy i instalacji",
+			"amount": "650.00",
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "standard",
+					"rate": "general"
+				}
+			]
+		}
+	],
+	"payment": {
+		"terms": {
+			"key": "due-date",
+			"due_dates": [
+				{
+					"date": "2026-02-24",
+					"percent": "50%",
+					"notes": "Pierwsza rata"
+				},
+				{
+					"date": "2026-03-12",
+					"percent": "50%",
+					"notes": "Druga rata"
+				}
+			],
+			"notes": "Płatność przelewem na rachunek wskazany na fakturze. Mechanizm podzielonej płatności."
+		},
+		"advances": [
+			{
+				"date": "2026-01-15",
+				"key": "credit-transfer",
+				"ref": "ZAL/2026/0007",
+				"description": "Zaliczka na sprzęt serwerowy",
+				"amount": "10000.00"
+			},
+			{
+				"date": "2026-01-28",
+				"key": "card",
+				"ref": "CARD-88213",
+				"description": "Płatność kartą za podręczniki",
+				"amount": "1068.00"
+			}
+		],
+		"instructions": {
+			"key": "credit-transfer",
+			"detail": "Przelew na rachunek bankowy sprzedawcy",
+			"ref": "FV/2026/0042",
+			"credit_transfer": [
+				{
+					"iban": "PL61109010140000071219812874",
+					"bic": "WBKPPLPP",
+					"name": "Testowa Firma Sp. z o.o.",
+					"label": "Rachunek rozliczeniowy"
+				}
+			],
+			"online": [
+				{
+					"key": "blik",
+					"label": "BLIK / Przelewy24",
+					"url": "https://secure.przelewy24.pl/pay?ref=FV-2026-0042"
+				}
+			],
+			"notes": "W tytule przelewu prosimy podać numer faktury. **Mechanizm podzielonej płatności** — kwotę VAT prosimy przekazać na rachunek VAT."
+		}
+	},
+	"notes": [
+		{
+			"key": "general",
+			"text": "Mechanizm podzielonej płatności. Metoda kasowa."
+		},
+		{
+			"key": "legal",
+			"code": "A",
+			"src": "pl-favat-exemption",
+			"text": "Zwolnienie z VAT na podstawie art. 43 ust. 1 pkt 29 ustawy z dnia 11 marca 2004 r. o podatku od towarów i usług."
+		},
+		{
+			"key": "legal",
+			"text": "Faktura wystawiona w Krajowym Systemie e-Faktur (KSeF). Numer KSeF i kod QR widoczne na dokumencie potwierdzają jej przyjęcie.",
+			"meta": {
+				"position": "footer"
+			}
+		}
+	],
+	"attachments": [
+		{
+			"key": "delivery-note",
+			"code": "WZ/2026/0031",
+			"name": "WZ-2026-0031.pdf",
+			"description": "Dokument wydania magazynowego dla dostawy sprzętu serwerowego",
+			"url": "https://files.testowa.pl/wz/WZ-2026-0031.pdf",
+			"mime": "application/pdf"
+		}
+	]
+}

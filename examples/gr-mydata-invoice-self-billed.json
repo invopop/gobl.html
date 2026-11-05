@@ -1,0 +1,257 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1aba4-8bea-7bee-ab4c-357f5fafe2d5",
+		"dig": {
+			"alg": "sha256",
+			"val": "ad0666e911d406ed4c5b8a742fa245ea31a695f406583c3a994f7fa125b9e209"
+		},
+		"stamps": [
+			{
+				"prv": "iapr-qr",
+				"val": "https://test.vs.gr/iv/invoice/10cc0a7d90a1c9470190a634ec19073e"
+			},
+			{
+				"prv": "iapr-hash",
+				"val": "792F62ADE1B5E4CCBC8FFA787258CC68E90B817B"
+			},
+			{
+				"prv": "iapr-mark",
+				"val": "400001929816893"
+			},
+			{
+				"prv": "iapr-provider",
+				"val": "ΙΛΥΔΑ ΠΛΗΡΟΦΟΡΙΚΗ Α.Ε. — https://test.vs.gr"
+			},
+			{
+				"prv": "iapr-uid",
+				"val": "EB1CF2137764B0D534885F361365C39A32C0205A"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "EL",
+		"$addons": [
+			"gr-mydata-v1"
+		],
+		"$tags": [
+			"goods",
+			"self-billed"
+		],
+		"uuid": "01a1aba4-8bea-7bf2-8a94-3593fea28394",
+		"type": "standard",
+		"series": "ΑΤ",
+		"code": "117",
+		"issue_date": "2025-10-24",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"gr-mydata-invoice-type": "1.4"
+			}
+		},
+		"supplier": {
+			"name": "Ελληνικά Τρόφιμα Α.Ε.",
+			"tax_id": {
+				"country": "EL",
+				"code": "177472438"
+			},
+			"addresses": [
+				{
+					"street": "Εγνατία 54",
+					"locality": "Θεσσαλονίκη",
+					"code": "54625",
+					"country": "GR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "logistirio@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Αιγαίο Λιανική Α.Ε.",
+			"tax_id": {
+				"country": "EL",
+				"code": "841442160"
+			},
+			"addresses": [
+				{
+					"street": "Λεωφόρος Κηφισίας 120",
+					"locality": "Αθήνα",
+					"code": "11526",
+					"country": "GR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "promitheies@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "240",
+				"item": {
+					"name": "Ελαιόλαδο εξαιρετικό παρθένο 1L",
+					"price": "8.40",
+					"unit": "item"
+				},
+				"sum": "2016.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "13%",
+						"ext": {
+							"gr-mydata-vat-rate": "2"
+						}
+					}
+				],
+				"total": "2016.00"
+			},
+			{
+				"i": 2,
+				"quantity": "600",
+				"item": {
+					"name": "Ζυμαρικά 500g",
+					"price": "1.15",
+					"unit": "item"
+				},
+				"sum": "690.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "13%",
+						"ext": {
+							"gr-mydata-vat-rate": "2"
+						}
+					}
+				],
+				"total": "690.00"
+			},
+			{
+				"i": 3,
+				"quantity": "120",
+				"item": {
+					"name": "Μέλι θυμαρίσιο 450g",
+					"price": "6.90",
+					"unit": "item"
+				},
+				"sum": "828.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "13%",
+						"ext": {
+							"gr-mydata-vat-rate": "2"
+						}
+					}
+				],
+				"total": "828.00"
+			},
+			{
+				"i": 4,
+				"quantity": "40",
+				"item": {
+					"name": "Χάρτινες συσκευασίες μεταφοράς",
+					"price": "2.30",
+					"unit": "item"
+				},
+				"sum": "92.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "24%",
+						"ext": {
+							"gr-mydata-vat-rate": "1"
+						}
+					}
+				],
+				"total": "92.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2025-11-23",
+						"amount": "4107.50",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "GR16 0110 1250 0000 0001 2300 695",
+						"name": "Ελληνικά Τρόφιμα Α.Ε."
+					}
+				],
+				"ext": {
+					"gr-mydata-payment-means": "1"
+				}
+			}
+		},
+		"totals": {
+			"sum": "3626.00",
+			"total": "3626.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"gr-mydata-vat-rate": "2"
+								},
+								"base": "3534.00",
+								"percent": "13%",
+								"amount": "459.42"
+							},
+							{
+								"key": "standard",
+								"ext": {
+									"gr-mydata-vat-rate": "1"
+								},
+								"base": "92.00",
+								"percent": "24%",
+								"amount": "22.08"
+							}
+						],
+						"amount": "481.50"
+					}
+				],
+				"sum": "481.50"
+			},
+			"tax": "481.50",
+			"total_with_tax": "4107.50",
+			"payable": "4107.50"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Αυτοτιμολόγηση: το παραστατικό εκδίδεται από τον αγοραστή για λογαριασμό του προμηθευτή, βάσει της συμφωνίας αυτοτιμολόγησης της 1ης Μαρτίου 2025 (άρθρο 8 παρ. 5 ν. 4308/2014)."
+			},
+			{
+				"key": "general",
+				"text": "Self-billed invoice: issued by the customer on behalf of the supplier under the self-billing agreement of 1 March 2025."
+			}
+		]
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYmE0LThiZWItNzE2Ny04YTRkLTRhNzc0MmEwNzQxNCJ9.eyJ1dWlkIjoiMDFhMWFiYTQtOGJlYS03YmVlLWFiNGMtMzU3ZjVmYWZlMmQ1IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImFkMDY2NmU5MTFkNDA2ZWQ0YzViOGE3NDJmYTI0NWVhMzFhNjk1ZjQwNjU4M2MzYTk5NGY3ZmExMjViOWUyMDkifSwiaWF0IjoxNzkzODgxMDUwfQ.-Z5asZDr5AZOZiaK0Xlus3sABEtd_BzsA8qScCfpGLeTj9KwOfyvKtTfFpV97wezpFNqMa9bQMzgceasjNeJGw"
+	]
+}

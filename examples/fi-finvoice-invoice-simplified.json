@@ -1,0 +1,233 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1aba5-c6e4-78f4-af89-2b572db46225",
+		"dig": {
+			"alg": "sha256",
+			"val": "7e4344a6230392f279d365f2ac07dd570bd22558b7371bdf63b956657826c4c8"
+		},
+		"from": "iso6523-actorid-upis::0216:003726174164",
+		"to": "iso6523-actorid-upis::0216:FI4950001520000081"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FI",
+		"$addons": [
+			"eu-en16931-v2017",
+			"fi-finvoice-v3"
+		],
+		"$tags": [
+			"simplified"
+		],
+		"uuid": "01a1aba5-c6e4-7900-acd1-79f73141a52a",
+		"type": "standard",
+		"series": "S",
+		"code": "2026-0217",
+		"issue_date": "2026-03-31",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Aurora Ohjelmistot Oy",
+			"tax_id": {
+				"country": "FI",
+				"code": "26174164"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0216:003726174164"
+				}
+			],
+			"addresses": [
+				{
+					"num": "12",
+					"street": "Mannerheimintie",
+					"locality": "Helsinki",
+					"code": "00100",
+					"country": "FI"
+				}
+			],
+			"emails": [
+				{
+					"addr": "laskutus@example.com"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+358 9 1234 5678"
+				}
+			]
+		},
+		"customer": {
+			"name": "Matti Virtanen",
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0216:FI4950001520000081"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0216",
+					"code": "FI4950001520000081"
+				}
+			],
+			"addresses": [
+				{
+					"num": "5 B 12",
+					"street": "Kauppakatu",
+					"locality": "Jyväskylä",
+					"code": "40100",
+					"country": "FI"
+				}
+			],
+			"emails": [
+				{
+					"addr": "matti.virtanen@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Home office software licence",
+					"description": "Annual subscription, 1 April 2026 to 31 March 2027",
+					"price": "119.00",
+					"unit": "one"
+				},
+				"sum": "119.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "25.5%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "119.00"
+			},
+			{
+				"i": 2,
+				"quantity": "2",
+				"item": {
+					"name": "Remote setup session",
+					"price": "45.00",
+					"unit": "h"
+				},
+				"sum": "90.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "25.5%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "90.00"
+			},
+			{
+				"i": 3,
+				"quantity": "1",
+				"item": {
+					"name": "Printed user guide",
+					"price": "24.00",
+					"unit": "item"
+				},
+				"sum": "24.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "13.5%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "24.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-04-14",
+						"amount": "289.54",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"ref": "RF1310023",
+				"credit_transfer": [
+					{
+						"iban": "FI2112345600000785",
+						"bic": "NDEAFIHH"
+					}
+				],
+				"ext": {
+					"untdid-payment-means": "30"
+				}
+			}
+		},
+		"totals": {
+			"sum": "233.00",
+			"total": "233.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "209.00",
+								"percent": "25.5%",
+								"amount": "53.30"
+							},
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "24.00",
+								"percent": "13.5%",
+								"amount": "3.24"
+							}
+						],
+						"amount": "56.54"
+					}
+				],
+				"sum": "56.54"
+			},
+			"tax": "56.54",
+			"total_with_tax": "289.54",
+			"payable": "289.54"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Simplified invoice (kevennetty lasku) to a private customer: the customer's VAT details are not recorded, as the Finnish VAT Act allows for invoices to consumers. Delivered as a consumer e-invoice to the customer's bank.",
+				"ext": {
+					"untdid-text-subject": "AAI"
+				}
+			}
+		]
+	}
+}

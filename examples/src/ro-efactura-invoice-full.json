@@ -1,0 +1,510 @@
+{
+	"$schema": "https://gobl.org/draft-0/bill/invoice",
+	"$regime": "RO",
+	"$addons": [
+		"eu-en16931-v2017",
+		"ro-efactura-v1"
+	],
+	"type": "standard",
+	"series": "FCT",
+	"code": "0417",
+	"issue_date": "2026-10-28",
+	"issue_time": "13:51:09",
+	"currency": "RON",
+	"tax": {
+		"rounding": "currency",
+		"ext": {
+			"untdid-document-type": "380"
+		}
+	},
+	"supplier": {
+		"name": "Exemplu Digital SRL",
+		"alias": "Exemplu Digital",
+		"tax_id": {
+			"country": "RO",
+			"code": "12345674"
+		},
+		"identities": [
+			{
+				"scope": "legal",
+				"label": "Nr. Reg. Com.",
+				"code": "J40/1234/2015"
+			},
+			{
+				"label": "Cod furnizor",
+				"code": "FURN-2210"
+			}
+		],
+		"people": [
+			{
+				"name": {
+					"given": "Ioana",
+					"surname": "Popescu"
+				},
+				"role": "Facturare",
+				"emails": [
+					{
+						"addr": "ioana.popescu@exemplu.ro"
+					}
+				],
+				"telephones": [
+					{
+						"num": "+40 21 123 45 67"
+					}
+				]
+			}
+		],
+		"addresses": [
+			{
+				"num": "10",
+				"street": "Strada Exemplu",
+				"street_extra": "Bloc A2, Scara 1, Etaj 3",
+				"locality": "SECTOR1",
+				"region": "RO-B",
+				"state": "B",
+				"code": "010101",
+				"country": "RO"
+			}
+		],
+		"emails": [
+			{
+				"addr": "facturare@exemplu.ro"
+			}
+		],
+		"telephones": [
+			{
+				"num": "+40 21 123 45 00"
+			}
+		],
+		"websites": [
+			{
+				"url": "https://www.exemplu.ro"
+			}
+		],
+		"logos": [
+			{
+				"label": "Invopop",
+				"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+			}
+		]
+	},
+	"customer": {
+		"name": "Client Test SRL",
+		"tax_id": {
+			"country": "RO",
+			"code": "34567892"
+		},
+		"identities": [
+			{
+				"scope": "legal",
+				"label": "Nr. Reg. Com.",
+				"code": "J12/5678/2018"
+			},
+			{
+				"label": "Cod client",
+				"code": "CL-0931"
+			}
+		],
+		"people": [
+			{
+				"name": {
+					"given": "Andrei",
+					"surname": "Ionescu"
+				},
+				"role": "Achiziții"
+			}
+		],
+		"addresses": [
+			{
+				"label": "Adresa de facturare",
+				"po_box": "CP 12",
+				"num": "25",
+				"street": "Strada Memorandumului",
+				"locality": "Cluj-Napoca",
+				"region": "RO-CJ",
+				"state": "CJ",
+				"code": "400114",
+				"country": "RO"
+			}
+		],
+		"emails": [
+			{
+				"addr": "contabilitate@clienttest.ro"
+			}
+		]
+	},
+	"lines": [
+		{
+			"quantity": "96",
+			"item": {
+				"ref": "DEV-SENIOR",
+				"name": "Servicii de dezvoltare software",
+				"description": "Dezvoltare backend pentru platforma de comenzi, octombrie 2026",
+				"price": "150.00",
+				"unit": "h"
+			},
+			"discounts": [
+				{
+					"key": "special-agreement",
+					"reason": "Tarif conform contractului cadru",
+					"percent": "10%"
+				}
+			],
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "20",
+			"item": {
+				"ref": "LIC-STD",
+				"name": "Licență software, standard",
+				"description": "Abonament anual per utilizator",
+				"price": "480.00",
+				"unit": "item"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "4",
+			"item": {
+				"ref": "HW-GW-01",
+				"name": "Gateway industrial",
+				"description": "Gateway IoT cu montaj pe șină DIN, include sursa de alimentare",
+				"identities": [
+					{
+						"type": "EAN",
+						"code": "5941234567890"
+					}
+				],
+				"price": "3250.00",
+				"unit": "piece"
+			},
+			"charges": [
+				{
+					"key": "packing",
+					"reason": "Ambalaj de transport",
+					"amount": "120.00"
+				}
+			],
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "300",
+			"item": {
+				"ref": "CBL-CAT6",
+				"name": "Cablu de rețea Cat 6",
+				"price": "4.20",
+				"unit": "m"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "15",
+			"item": {
+				"ref": "COP-WIRE",
+				"name": "Conductor de împământare din cupru",
+				"price": "62.00",
+				"unit": "kg"
+			},
+			"discounts": [
+				{
+					"reason": "Preț de volum",
+					"amount": "80.00"
+				}
+			],
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "50",
+			"item": {
+				"ref": "DOC-MANUAL",
+				"name": "Manual de operare tipărit",
+				"description": "Manual A4 legat, ediția în limba română",
+				"price": "45.00",
+				"unit": "item"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "reduced"
+				}
+			]
+		},
+		{
+			"quantity": "2",
+			"item": {
+				"ref": "TRAIN-ONSITE",
+				"name": "Zi de instruire la sediul clientului",
+				"description": "Formare profesională pentru maximum 12 participanți",
+				"price": "4500.00",
+				"unit": "day"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "exempt",
+					"ext": {
+						"cef-vatex": "VATEX-EU-132-1I"
+					}
+				}
+			]
+		},
+		{
+			"quantity": "3",
+			"item": {
+				"ref": "SHIP-EXP",
+				"name": "Transport curier expres",
+				"price": "180.00",
+				"unit": "trip"
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "zero"
+				}
+			]
+		}
+	],
+	"discounts": [
+		{
+			"key": "early-completion",
+			"reason": "Bonus pentru livrare înainte de termen",
+			"percent": "2%",
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		}
+	],
+	"charges": [
+		{
+			"key": "delivery",
+			"reason": "Transport la Cluj-Napoca",
+			"amount": "650.00",
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"key": "insurance",
+			"reason": "Asigurare de transport",
+			"amount": "140.00",
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		}
+	],
+	"ordering": {
+		"code": "CMD-2026-0418",
+		"identities": [
+			{
+				"label": "Referință cumpărător",
+				"code": "A. Ionescu / Achiziții"
+			},
+			{
+				"label": "Referință vânzător",
+				"code": "OF-2026-0098"
+			}
+		],
+		"cost": "CC-CLUJ-4120",
+		"period": {
+			"label": "Perioada de prestare",
+			"start": "2026-10-01",
+			"end": "2026-10-31"
+		},
+		"purchases": [
+			{
+				"code": "PO-2026-0418",
+				"issue_date": "2026-09-14"
+			}
+		],
+		"sales": [
+			{
+				"code": "SO-2026-1187",
+				"issue_date": "2026-09-15"
+			}
+		],
+		"contracts": [
+			{
+				"code": "CTR-2025-0042",
+				"issue_date": "2025-11-01",
+				"description": "Contract cadru pentru servicii de dezvoltare"
+			}
+		],
+		"receiving": [
+			{
+				"code": "NIR-2026-0871",
+				"issue_date": "2026-10-22"
+			}
+		],
+		"despatch": [
+			{
+				"code": "AVIZ-2026-0334",
+				"issue_date": "2026-10-20"
+			}
+		],
+		"tender": [
+			{
+				"code": "LIC-2025-117"
+			}
+		],
+		"projects": [
+			{
+				"code": "PRJ-COMENZI-2026"
+			}
+		]
+	},
+	"delivery": {
+		"receiver": {
+			"name": "Client Test SRL, punct de lucru Timișoara",
+			"addresses": [
+				{
+					"num": "7",
+					"street": "Calea Aradului",
+					"locality": "Timișoara",
+					"region": "RO-TM",
+					"state": "TM",
+					"code": "300088",
+					"country": "RO"
+				}
+			]
+		},
+		"date": "2026-10-20",
+		"period": {
+			"start": "2026-10-01",
+			"end": "2026-10-31"
+		}
+	},
+	"payment": {
+		"terms": {
+			"key": "due-date",
+			"due_dates": [
+				{
+					"date": "2026-11-12",
+					"percent": "50%",
+					"notes": "Prima tranșă"
+				},
+				{
+					"date": "2026-11-27",
+					"percent": "50%",
+					"notes": "Rest de plată"
+				}
+			],
+			"notes": "Plata în 30 de zile de la data facturii. Penalități de întârziere de 0,1% pe zi conform contractului."
+		},
+		"advances": [
+			{
+				"date": "2026-09-25",
+				"key": "credit-transfer",
+				"ref": "AVANS-2026-0417",
+				"description": "Avans achitat la confirmarea comenzii",
+				"percent": "25%"
+			}
+		],
+		"instructions": {
+			"key": "credit-transfer",
+			"ref": "FCT-0417",
+			"detail": "Transfer bancar, vă rugăm să menționați numărul facturii",
+			"credit_transfer": [
+				{
+					"iban": "RO65 BTRL RONC RT01 2345 6789",
+					"bic": "BTRLRO22",
+					"name": "Exemplu Digital SRL",
+					"label": "Banca Transilvania"
+				},
+				{
+					"iban": "RO59 RNCB 0082 0441 7242 0001",
+					"bic": "RNCBROBU",
+					"name": "Exemplu Digital SRL",
+					"label": "BCR"
+				}
+			],
+			"card": {
+				"first6": "411111",
+				"last4": "1111",
+				"holder": "Client Test SRL"
+			},
+			"direct_debit": {
+				"ref": "MANDAT-CT-2025-0042",
+				"creditor": "RO98ZZZ123456789",
+				"account": "RO65BTRLRONCRT0123456789"
+			},
+			"online": [
+				{
+					"key": "card-online",
+					"label": "Plată online cu cardul",
+					"url": "https://pay.exemplu.ro/FCT-0417"
+				}
+			],
+			"notes": "Discount de **2%** pentru plata în _10 zile_.",
+			"ext": {
+				"untdid-payment-means": "30"
+			}
+		}
+	},
+	"notes": [
+		{
+			"key": "general",
+			"text": "Vă mulțumim pentru comandă. Întrebări legate de această factură: facturare@exemplu.ro."
+		},
+		{
+			"key": "delivery",
+			"text": "Echipamentele au fost livrate la punctul de lucru Timișoara în data de 20.10.2026, aviz AVIZ-2026-0334."
+		},
+		{
+			"key": "legal",
+			"text": "Exemplu Digital SRL · CUI RO12345674 · J40/1234/2015 · Capital social 200 RON · Sediul: Strada Exemplu 10, Sector 1, București",
+			"meta": {
+				"position": "footer"
+			}
+		}
+	],
+	"attachments": [
+		{
+			"code": "AVIZ-2026-0334",
+			"name": "aviz-insotire-AVIZ-2026-0334.pdf",
+			"description": "Aviz de însoțire a mărfii semnat",
+			"url": "https://files.exemplu.ro/aviz-2026-0334.pdf",
+			"mime": "application/pdf"
+		},
+		{
+			"code": "PONTAJ-2026-10",
+			"name": "pontaj-2026-10.pdf",
+			"description": "Fișa de pontaj pentru octombrie 2026",
+			"url": "https://files.exemplu.ro/pontaj-2026-10.pdf",
+			"mime": "application/pdf"
+		}
+	]
+}

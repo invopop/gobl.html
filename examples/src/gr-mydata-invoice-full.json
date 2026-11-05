@@ -1,0 +1,495 @@
+{
+	"$schema": "https://gobl.org/draft-0/bill/invoice",
+	"$regime": "EL",
+	"$addons": [
+		"gr-mydata-v1"
+	],
+	"$tags": [
+		"goods"
+	],
+	"type": "standard",
+	"series": "INV",
+	"code": "0042",
+	"issue_date": "2026-03-16",
+	"issue_time": "10:42:15",
+	"currency": "EUR",
+	"tax": {
+		"ext": {
+			"gr-mydata-invoice-type": "1.1"
+		}
+	},
+	"supplier": {
+		"name": "Innovatech Ελλάς Α.Ε.",
+		"tax_id": {
+			"country": "EL",
+			"code": "177472438"
+		},
+		"identities": [
+			{
+				"label": "ΓΕΜΗ",
+				"code": "123456701000"
+			}
+		],
+		"addresses": [
+			{
+				"num": "28",
+				"street": "Λεωφόρος Συγγρού",
+				"street_extra": "4ος όροφος",
+				"locality": "Αθήνα",
+				"region": "Αττική",
+				"code": "11743",
+				"country": "GR"
+			}
+		],
+		"emails": [
+			{
+				"label": "Τιμολόγηση",
+				"addr": "billing@innovatech.example.gr"
+			},
+			{
+				"label": "Υποστήριξη",
+				"addr": "support@innovatech.example.gr"
+			}
+		],
+		"telephones": [
+			{
+				"num": "+30 210 123 4567"
+			}
+		],
+		"websites": [
+			{
+				"url": "https://innovatech.example.gr"
+			}
+		],
+		"registration": {
+			"capital": "150000.00",
+			"currency": "EUR",
+			"office": "ΓΕΜΗ Αθηνών",
+			"entry": "123456701000"
+		},
+		"ext": {
+			"gr-mydata-branch": "0"
+		},
+		"logos": [
+			{
+				"label": "Invopop",
+				"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+			}
+		]
+	},
+	"customer": {
+		"name": "Τεχνολογικές Λύσεις Ελλάς Α.Ε.",
+		"tax_id": {
+			"country": "EL",
+			"code": "841442160"
+		},
+		"identities": [
+			{
+				"label": "Κωδικός πελάτη",
+				"code": "CLI-00817"
+			}
+		],
+		"addresses": [
+			{
+				"label": "Έδρα",
+				"po_box": "1042",
+				"num": "15",
+				"street": "Οδός Πανεπιστημίου",
+				"street_extra": "2ος όροφος",
+				"locality": "Αθήνα",
+				"region": "Αττική",
+				"code": "10671",
+				"country": "GR"
+			}
+		],
+		"emails": [
+			{
+				"addr": "accounting@techsolutions.example.gr"
+			}
+		],
+		"telephones": [
+			{
+				"num": "+30 210 765 4321"
+			}
+		],
+		"ext": {
+			"gr-mydata-branch": "1"
+		}
+	},
+	"lines": [
+		{
+			"quantity": "40",
+			"item": {
+				"ref": "CONS-SENIOR",
+				"name": "Συμβουλευτικές υπηρεσίες αρχιτεκτονικής λογισμικού",
+				"description": "Σχεδιασμός της νέας πλατφόρμας τιμολόγησης, Μάρτιος 2026",
+				"identities": [
+					{
+						"label": "SKU",
+						"code": "CONS-SR-2026"
+					}
+				],
+				"price": "95.00",
+				"unit": "h",
+				"ext": {
+					"gr-mydata-income-cat": "category1_3",
+					"gr-mydata-income-type": "E3_561_001"
+				}
+			},
+			"discounts": [
+				{
+					"reason": "Έκπτωση όγκου",
+					"percent": "10%"
+				}
+			],
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "3",
+			"item": {
+				"ref": "LIC-ERP-M",
+				"name": "Μηνιαία άδεια ERP Cloud",
+				"description": "Συνδρομή 10 χρηστών, Μάρτιος έως Μάιος 2026",
+				"price": "320.00",
+				"unit": "mon",
+				"ext": {
+					"gr-mydata-income-cat": "category1_3",
+					"gr-mydata-income-type": "E3_561_001"
+				}
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "25",
+			"item": {
+				"ref": "CAB-UTP6",
+				"name": "Καλώδιο δικτύου UTP Cat.6",
+				"identities": [
+					{
+						"type": "EAN",
+						"code": "5201234567890"
+					}
+				],
+				"price": "1.85",
+				"unit": "m",
+				"ext": {
+					"gr-mydata-income-cat": "category1_1",
+					"gr-mydata-income-type": "E3_561_001"
+				}
+			},
+			"charges": [
+				{
+					"reason": "Κοπή στα μέτρα",
+					"amount": "4.50"
+				}
+			],
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		},
+		{
+			"quantity": "12.5",
+			"item": {
+				"ref": "CAFE-BIO",
+				"name": "Βιολογικός καφές σε κόκκους για το γραφείο",
+				"price": "14.80",
+				"unit": "kg",
+				"ext": {
+					"gr-mydata-income-cat": "category1_1",
+					"gr-mydata-income-type": "E3_561_001"
+				}
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "reduced"
+				}
+			]
+		},
+		{
+			"quantity": "60",
+			"item": {
+				"ref": "LIV-TEC",
+				"name": "Έντυπο τεχνικό εγχειρίδιο",
+				"identities": [
+					{
+						"type": "ISBN",
+						"code": "978-960-00-0000-1"
+					}
+				],
+				"price": "24.00",
+				"unit": "piece",
+				"ext": {
+					"gr-mydata-income-cat": "category1_2",
+					"gr-mydata-income-type": "E3_561_001"
+				}
+			},
+			"discounts": [
+				{
+					"reason": "Προσφορά κυκλοφορίας",
+					"amount": "60.00"
+				}
+			],
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "super-reduced"
+				}
+			]
+		},
+		{
+			"quantity": "2",
+			"item": {
+				"ref": "FORM-GDPR",
+				"name": "Πιστοποιημένη εκπαίδευση προστασίας δεδομένων",
+				"description": "Υπηρεσία επαγγελματικής εκπαίδευσης απαλλασσόμενη ΦΠΑ (άρθρο 22 Κώδικα ΦΠΑ)",
+				"price": "450.00",
+				"unit": "day",
+				"ext": {
+					"gr-mydata-income-cat": "category1_3",
+					"gr-mydata-income-type": "E3_561_001"
+				}
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"key": "exempt",
+					"ext": {
+						"gr-mydata-exemption": "7"
+					}
+				}
+			]
+		},
+		{
+			"quantity": "4",
+			"item": {
+				"ref": "INST-NAX",
+				"name": "Εγκατάσταση εξοπλισμού στο υποκατάστημα Νάξου",
+				"description": "Μειωμένος νησιωτικός συντελεστής ΦΠΑ",
+				"price": "180.00",
+				"unit": "service",
+				"ext": {
+					"gr-mydata-income-cat": "category1_3",
+					"gr-mydata-income-type": "E3_561_001"
+				}
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general+island"
+				}
+			]
+		},
+		{
+			"quantity": "1",
+			"item": {
+				"ref": "ECO-WEEE",
+				"name": "Εισφορά ανακύκλωσης ηλεκτρικού εξοπλισμού",
+				"price": "6.00",
+				"unit": "one",
+				"ext": {
+					"gr-mydata-income-cat": "category1_5",
+					"gr-mydata-income-type": "E3_562"
+				}
+			},
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		}
+	],
+	"charges": [
+		{
+			"code": "ENV-FEE",
+			"reason": "Περιβαλλοντικό τέλος πλαστικής σακούλας",
+			"amount": "0.70",
+			"ext": {
+				"gr-mydata-fee": "8"
+			}
+		},
+		{
+			"code": "ACC-TAX",
+			"reason": "Τέλος ανθεκτικότητας στην κλιματική κρίση (ξενοδοχείο 4 αστέρων, 2 διανυκτερεύσεις)",
+			"amount": "6.00",
+			"ext": {
+				"gr-mydata-other-tax": "8"
+			}
+		},
+		{
+			"key": "stamp-duty",
+			"code": "STAMP",
+			"reason": "Χαρτόσημο 3,6% επί του δανείου εξοπλισμού",
+			"amount": "18.00",
+			"ext": {
+				"gr-mydata-stamp-duty": "3"
+			}
+		},
+		{
+			"key": "delivery",
+			"code": "SHIP",
+			"reason": "Έξοδα αποστολής προς Νάξο",
+			"amount": "35.00",
+			"taxes": [
+				{
+					"cat": "VAT",
+					"rate": "general"
+				}
+			]
+		}
+	],
+	"ordering": {
+		"code": "PO-2026-0317",
+		"identities": [
+			{
+				"label": "Αναφορά προμηθευτή",
+				"code": "INV-TECH-03"
+			},
+			{
+				"label": "Κέντρο κόστους",
+				"code": "CC-IT-04"
+			}
+		],
+		"period": {
+			"label": "Περίοδος παροχής",
+			"start": "2026-03-01",
+			"end": "2026-03-31"
+		},
+		"purchases": [
+			{
+				"code": "PO-2026-0317",
+				"issue_date": "2026-02-20"
+			}
+		],
+		"contracts": [
+			{
+				"code": "CTR-2025-118",
+				"issue_date": "2025-11-03"
+			}
+		]
+	},
+	"delivery": {
+		"receiver": {
+			"name": "Τεχνολογικές Λύσεις Ελλάς Α.Ε. - Υποκατάστημα Νάξου",
+			"addresses": [
+				{
+					"num": "7",
+					"street": "Παραλία Χώρας",
+					"locality": "Νάξος",
+					"region": "Κυκλάδες",
+					"code": "84300",
+					"country": "GR"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+30 22850 12345"
+				}
+			]
+		},
+		"identities": [
+			{
+				"label": "Δελτίο αποστολής",
+				"code": "DA-2026-0019"
+			}
+		],
+		"date": "2026-03-13",
+		"period": {
+			"start": "2026-03-12",
+			"end": "2026-03-13"
+		}
+	},
+	"payment": {
+		"terms": {
+			"key": "due-date",
+			"due_dates": [
+				{
+					"date": "2026-04-15",
+					"percent": "50%",
+					"notes": "Πρώτη δόση"
+				},
+				{
+					"date": "2026-05-15",
+					"percent": "50%",
+					"notes": "Δεύτερη δόση"
+				}
+			],
+			"notes": "Πληρωμή σε δύο δόσεις, χωρίς τόκους."
+		},
+		"advances": [
+			{
+				"date": "2026-02-25",
+				"key": "card",
+				"ref": "PROK-2026-0042",
+				"description": "Προκαταβολή με κάρτα",
+				"amount": "1500.00"
+			}
+		],
+		"instructions": {
+			"key": "credit-transfer",
+			"ref": "INV-0042",
+			"credit_transfer": [
+				{
+					"label": "Κύριος λογαριασμός",
+					"iban": "GR16 0110 1250 0000 0001 2300 695",
+					"bic": "ETHNGRAA",
+					"name": "Innovatech Ελλάς Α.Ε."
+				}
+			],
+			"card": {
+				"last4": "4321",
+				"holder": "Innovatech Ελλάς Α.Ε."
+			},
+			"direct_debit": {
+				"ref": "MANDATE-TECH-001",
+				"creditor": "GR12ZZZ177472438",
+				"account": "GR16 0110 1250 0000 0001 2300 695"
+			},
+			"online": [
+				{
+					"key": "iris",
+					"label": "IRIS Payments",
+					"url": "https://pay.innovatech.example.gr/iris/INV-0042"
+				}
+			],
+			"notes": "Αναγράψτε τον αριθμό του τιμολογίου στην αιτιολογία της μεταφοράς."
+		}
+	},
+	"notes": [
+		{
+			"key": "general",
+			"text": "Σας ευχαριστούμε για την προτίμησή σας. Τα αγαθά παραδόθηκαν με το δελτίο αποστολής DA-2026-0019 στις 13/03/2026."
+		},
+		{
+			"key": "legal",
+			"text": "Το παρόν τιμολόγιο διαβιβάζεται ηλεκτρονικά στην πλατφόρμα myDATA της ΑΑΔΕ. Σε περίπτωση καθυστέρησης πληρωμής οφείλονται τόκοι υπερημερίας σύμφωνα με τον νόμο.",
+			"meta": {
+				"position": "footer"
+			}
+		}
+	],
+	"attachments": [
+		{
+			"key": "delivery-note",
+			"code": "DA-2026-0019",
+			"name": "Δελτίο αποστολής DA-2026-0019",
+			"description": "Δελτίο αποστολής που συνόδευσε την παράδοση του εξοπλισμού στη Νάξο.",
+			"url": "https://docs.innovatech.example.gr/da/DA-2026-0019.pdf",
+			"mime": "application/pdf"
+		}
+	]
+}

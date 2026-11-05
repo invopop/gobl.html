@@ -1,0 +1,755 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1aba7-710f-789b-91c7-7915112f804b",
+		"dig": {
+			"alg": "sha256",
+			"val": "4c118edcb6ca036131b2c2cc39f4fe665b47ad34d7985d4a0a8f65c90e4d07d8"
+		},
+		"from": "iso6523-actorid-upis::0208:0316597904",
+		"to": "iso6523-actorid-upis::0208:0859536301"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "BE",
+		"$addons": [
+			"eu-en16931-v2017"
+		],
+		"uuid": "01a1aba7-710f-789f-a5ae-87b0d6d99055",
+		"type": "standard",
+		"series": "INV-2026",
+		"code": "00352",
+		"issue_date": "2026-05-22",
+		"issue_time": "14:27:03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Benelux Industries SA/NV",
+			"alias": "Benelux Industries",
+			"tax_id": {
+				"country": "BE",
+				"code": "0316597904"
+			},
+			"identities": [
+				{
+					"type": "BCE",
+					"code": "0316597904"
+				},
+				{
+					"label": "Supplier number",
+					"code": "SUP-BE-2210"
+				}
+			],
+			"people": [
+				{
+					"name": {
+						"given": "Sophie",
+						"surname": "Dubois"
+					},
+					"role": "Accounts receivable",
+					"emails": [
+						{
+							"addr": "sophie.dubois@benelux-industries.example"
+						}
+					],
+					"telephones": [
+						{
+							"num": "+32 2 123 45 67"
+						}
+					]
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0208:0316597904"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0208",
+					"code": "0316597904"
+				}
+			],
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Rue de la Loi",
+					"street_extra": "Bâtiment C, 5e étage",
+					"locality": "Brussels",
+					"region": "Brussels-Capital",
+					"code": "1040",
+					"country": "BE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "invoices@benelux-industries.example"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://www.benelux-industries.example"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+32 2 123 45 00"
+				}
+			],
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+				}
+			]
+		},
+		"customer": {
+			"name": "Ardennes Logistics BV",
+			"tax_id": {
+				"country": "BE",
+				"code": "0859536301"
+			},
+			"identities": [
+				{
+					"type": "BCE",
+					"code": "0859536301"
+				},
+				{
+					"label": "Customer number",
+					"code": "CUST-0931"
+				}
+			],
+			"people": [
+				{
+					"name": {
+						"given": "Jan",
+						"surname": "Peeters"
+					},
+					"role": "Purchasing"
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0208:0859536301"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0208",
+					"code": "0859536301"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Billing address",
+					"po_box": "PB 12",
+					"num": "127",
+					"street": "Avenue Louise",
+					"locality": "Ixelles",
+					"region": "Brussels-Capital",
+					"code": "1050",
+					"country": "BE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "ap@ardennes-logistics.example"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "64",
+				"item": {
+					"ref": "ENG-AUTO",
+					"name": "Automation engineering",
+					"description": "Conveyor control integration at the Liège hub, May 2026",
+					"price": "110.00",
+					"unit": "h"
+				},
+				"sum": "7040.00",
+				"discounts": [
+					{
+						"key": "special-agreement",
+						"reason": "Framework agreement rate",
+						"percent": "10%",
+						"amount": "704.00",
+						"ext": {
+							"untdid-allowance": "64"
+						}
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "6336.00"
+			},
+			{
+				"i": 2,
+				"quantity": "8",
+				"item": {
+					"ref": "SEN-PLC-01",
+					"name": "PLC controller module",
+					"identities": [
+						{
+							"type": "EAN",
+							"code": "5410013001234"
+						}
+					],
+					"description": "16 DI / 8 DO, Profinet, DIN rail mount",
+					"price": "640.00",
+					"unit": "piece"
+				},
+				"sum": "5120.00",
+				"charges": [
+					{
+						"key": "packing",
+						"reason": "Anti-static packaging",
+						"amount": "24.00",
+						"ext": {
+							"untdid-charge": "PC"
+						}
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "5144.00"
+			},
+			{
+				"i": 3,
+				"quantity": "2.5",
+				"item": {
+					"ref": "STEEL-S235",
+					"name": "Structural steel S235, cut to size",
+					"price": "1180.00",
+					"unit": "t"
+				},
+				"sum": "2950.00",
+				"discounts": [
+					{
+						"reason": "Volume price",
+						"amount": "150.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "2800.00"
+			},
+			{
+				"i": 4,
+				"quantity": "350",
+				"item": {
+					"ref": "CBL-PWR-3G",
+					"name": "Power cable 3G2.5",
+					"price": "1.95",
+					"unit": "m"
+				},
+				"sum": "682.50",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "682.50"
+			},
+			{
+				"i": 5,
+				"quantity": "120",
+				"item": {
+					"ref": "PAINT-RAL",
+					"name": "Industrial floor paint RAL 7035",
+					"price": "9.80",
+					"unit": "l"
+				},
+				"sum": "1176.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "1176.00"
+			},
+			{
+				"i": 6,
+				"quantity": "30",
+				"item": {
+					"ref": "DOC-MANUAL",
+					"name": "Printed operator manual",
+					"description": "Bound A4 manual, FR/NL edition",
+					"price": "28.00",
+					"unit": "item"
+				},
+				"sum": "840.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "6.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "840.00"
+			},
+			{
+				"i": 7,
+				"quantity": "40",
+				"item": {
+					"ref": "CANTEEN-MEAL",
+					"name": "Canteen meals during commissioning",
+					"price": "14.50",
+					"unit": "portion"
+				},
+				"sum": "580.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "intermediate",
+						"percent": "12.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "580.00"
+			},
+			{
+				"i": 8,
+				"quantity": "2",
+				"item": {
+					"ref": "TRAIN-OPS",
+					"name": "Operator training day",
+					"description": "Vocational training for up to 12 participants",
+					"price": "1500.00",
+					"unit": "day"
+				},
+				"sum": "3000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "exempt",
+						"ext": {
+							"cef-vatex": "VATEX-EU-132-1I",
+							"untdid-tax-category": "E"
+						}
+					}
+				],
+				"total": "3000.00"
+			},
+			{
+				"i": 9,
+				"quantity": "3",
+				"item": {
+					"ref": "SHIP-EXP",
+					"name": "Express courier shipment",
+					"price": "38.00",
+					"unit": "trip"
+				},
+				"sum": "114.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "zero",
+						"percent": "0%",
+						"ext": {
+							"untdid-tax-category": "Z"
+						}
+					}
+				],
+				"total": "114.00"
+			}
+		],
+		"discounts": [
+			{
+				"i": 1,
+				"key": "early-completion",
+				"reason": "Commissioning completed ahead of schedule",
+				"percent": "2%",
+				"amount": "413.45",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"ext": {
+					"untdid-allowance": "41"
+				}
+			},
+			{
+				"i": 2,
+				"key": "special-rebate",
+				"reason": "Loyalty rebate",
+				"amount": "250.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"ext": {
+					"untdid-allowance": "100"
+				}
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"key": "delivery",
+				"reason": "Freight to Liège",
+				"amount": "180.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"ext": {
+					"untdid-charge": "DL"
+				}
+			},
+			{
+				"i": 2,
+				"key": "insurance",
+				"reason": "Transport insurance",
+				"amount": "42.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"ext": {
+					"untdid-charge": "IN"
+				}
+			}
+		],
+		"ordering": {
+			"code": "ARD-PO-2026-0418",
+			"identities": [
+				{
+					"label": "Buyer reference",
+					"code": "J. Peeters / Liège hub"
+				},
+				{
+					"label": "Seller reference",
+					"code": "Q-2026-0098"
+				}
+			],
+			"cost": "CC-LIEGE-4120",
+			"period": {
+				"label": "Service period",
+				"start": "2026-05-01",
+				"end": "2026-05-31"
+			},
+			"projects": [
+				{
+					"code": "PRJ-LIEGE-CONVEYOR"
+				}
+			],
+			"contracts": [
+				{
+					"issue_date": "2025-10-01",
+					"code": "FA-2025-0042",
+					"description": "Framework agreement for automation services"
+				}
+			],
+			"purchases": [
+				{
+					"issue_date": "2026-04-14",
+					"code": "PO-2026-0418"
+				}
+			],
+			"sales": [
+				{
+					"issue_date": "2026-04-15",
+					"code": "SO-2026-1187"
+				}
+			],
+			"receiving": [
+				{
+					"issue_date": "2026-05-19",
+					"code": "GR-2026-0871"
+				}
+			],
+			"despatch": [
+				{
+					"issue_date": "2026-05-18",
+					"code": "DN-2026-0334"
+				}
+			],
+			"tender": [
+				{
+					"code": "RFQ-2025-117"
+				}
+			]
+		},
+		"payment": {
+			"advances": [
+				{
+					"date": "2026-04-20",
+					"key": "credit-transfer",
+					"ref": "ADV-2026-0352",
+					"description": "Deposit paid on order confirmation",
+					"percent": "30%",
+					"amount": "7094.23"
+				}
+			],
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-06-21",
+						"notes": "First instalment",
+						"amount": "8276.60",
+						"percent": "50%"
+					},
+					{
+						"date": "2026-07-21",
+						"notes": "Balance",
+						"amount": "8276.60",
+						"percent": "50%"
+					}
+				],
+				"notes": "Payment within 30 days net. Late payment interest as per the Belgian Act of 2 August 2002."
+			},
+			"instructions": {
+				"key": "credit-transfer+sepa",
+				"detail": "SEPA credit transfer, please quote the structured communication",
+				"ref": "+++026/0035/20213+++",
+				"credit_transfer": [
+					{
+						"label": "Belfius",
+						"iban": "BE68 5390 0754 7034",
+						"bic": "GKCCBEBB",
+						"name": "Benelux Industries SA/NV"
+					},
+					{
+						"label": "BNP Paribas Fortis",
+						"iban": "BE45 0501 2345 67",
+						"bic": "GEBABEBB",
+						"name": "Benelux Industries SA/NV"
+					}
+				],
+				"card": {
+					"first6": "411111",
+					"last4": "1111",
+					"holder": "Ardennes Logistics BV"
+				},
+				"direct_debit": {
+					"ref": "MANDATE-ARD-2025-0042",
+					"creditor": "BE69ZZZ050D000000008",
+					"account": "BE68539007547034"
+				},
+				"online": [
+					{
+						"key": "bancontact",
+						"label": "Bancontact / Payconiq",
+						"url": "https://pay.benelux-industries.example/INV-2026-00352"
+					}
+				],
+				"notes": "A **2%** discount applies for payment within _10 days_.",
+				"ext": {
+					"untdid-payment-means": "58"
+				}
+			}
+		},
+		"delivery": {
+			"receiver": {
+				"name": "Ardennes Logistics BV, Liège hub",
+				"addresses": [
+					{
+						"num": "8",
+						"street": "Rue de l'Aéroport",
+						"locality": "Grâce-Hollogne",
+						"region": "Liège",
+						"code": "4460",
+						"country": "BE"
+					}
+				]
+			},
+			"date": "2026-05-18",
+			"period": {
+				"start": "2026-05-01",
+				"end": "2026-05-31"
+			}
+		},
+		"totals": {
+			"sum": "20672.50",
+			"discount": "663.45",
+			"charge": "222.00",
+			"total": "20231.05",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "15697.05",
+								"percent": "21.0%",
+								"amount": "3296.38"
+							},
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "840.00",
+								"percent": "6.0%",
+								"amount": "50.40"
+							},
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "580.00",
+								"percent": "12.0%",
+								"amount": "69.60"
+							},
+							{
+								"key": "exempt",
+								"ext": {
+									"cef-vatex": "VATEX-EU-132-1I",
+									"untdid-tax-category": "E"
+								},
+								"base": "3000.00",
+								"amount": "0.00"
+							},
+							{
+								"key": "zero",
+								"ext": {
+									"untdid-tax-category": "Z"
+								},
+								"base": "114.00",
+								"percent": "0%",
+								"amount": "0.00"
+							}
+						],
+						"amount": "3416.38"
+					}
+				],
+				"sum": "3416.38"
+			},
+			"tax": "3416.38",
+			"total_with_tax": "23647.43",
+			"payable": "23647.43",
+			"advance": "7094.23",
+			"due": "16553.20"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Thank you for your order. Questions about this invoice: invoices@benelux-industries.example.",
+				"ext": {
+					"untdid-text-subject": "AAI"
+				}
+			},
+			{
+				"key": "delivery",
+				"text": "Goods delivered to the Liège hub on 2026-05-18, delivery note DN-2026-0334.",
+				"ext": {
+					"untdid-text-subject": "DEL"
+				}
+			},
+			{
+				"key": "legal",
+				"text": "Benelux Industries SA/NV · RPM Bruxelles 0316.597.904 · TVA BE 0316.597.904 · Siège social: Rue de la Loi 42, 1040 Bruxelles",
+				"meta": {
+					"position": "footer"
+				},
+				"ext": {
+					"untdid-text-subject": "ABL"
+				}
+			}
+		],
+		"attachments": [
+			{
+				"code": "DN-2026-0334",
+				"name": "delivery-note-DN-2026-0334.pdf",
+				"description": "Signed delivery note",
+				"url": "https://files.benelux-industries.example/dn-2026-0334.pdf",
+				"mime": "application/pdf"
+			},
+			{
+				"code": "TS-2026-05",
+				"name": "timesheet-2026-05.pdf",
+				"description": "Timesheet for May 2026",
+				"url": "https://files.benelux-industries.example/timesheet-2026-05.pdf",
+				"mime": "application/pdf"
+			}
+		]
+	}
+}
