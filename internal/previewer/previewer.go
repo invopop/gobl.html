@@ -8,6 +8,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/a-h/templ"
 	"github.com/invopop/gobl.html/internal/catalog"
 	"github.com/invopop/gobl.html/locales"
 	"github.com/invopop/popui.go/props"
@@ -22,6 +23,7 @@ var Script []byte
 type Group struct {
 	Key    string
 	Title  string
+	All    string // label of the entry that clears the choice
 	Facets []Facet
 }
 
@@ -82,9 +84,9 @@ func KindStatus(kind string) string {
 
 // Groups derives the facet groups from the catalog entries.
 func Groups(entries []catalog.Entry) []Group {
-	collect := func(key, title string, of func(catalog.Entry) []string, label func(string) string) Group {
+	collect := func(key, title, all string, of func(catalog.Entry) []string, label func(string) string) Group {
 		seen := map[string]bool{}
-		g := Group{Key: key, Title: title}
+		g := Group{Key: key, Title: title, All: all}
 		for _, e := range entries {
 			for _, v := range of(e) {
 				if v == "" || seen[v] {
@@ -98,11 +100,20 @@ func Groups(entries []catalog.Entry) []Group {
 		return g
 	}
 	return []Group{
-		collect("country", "Country", func(e catalog.Entry) []string { return []string{e.Country} }, strings.ToUpper),
-		collect("kind", "Document", func(e catalog.Entry) []string { return []string{e.Kind} }, KindLabel),
-		collect("addon", "Addon", func(e catalog.Entry) []string { return e.Addons }, func(s string) string { return s }),
-		collect("tag", "Content", func(e catalog.Entry) []string { return e.Tags }, func(s string) string { return s }),
+		collect("country", "Country", "All countries", func(e catalog.Entry) []string { return []string{e.Country} }, strings.ToUpper),
+		collect("kind", "Document", "All documents", func(e catalog.Entry) []string { return []string{e.Kind} }, KindLabel),
+		collect("addon", "Addon", "All addons", func(e catalog.Entry) []string { return e.Addons }, func(s string) string { return s }),
+		collect("tag", "Content", "All content", func(e catalog.Entry) []string { return e.Tags }, func(s string) string { return s }),
 	}
+}
+
+// sectionAttrs hides the addon group while the chosen country leaves no
+// choice of addon.
+func sectionAttrs(g Group) templ.Attributes {
+	if g.Key != "addon" {
+		return nil
+	}
+	return templ.Attributes{"x-show": "availableCount('addon') > 1"}
 }
 
 // localeNames gives each shipped locale its own name for the selector.

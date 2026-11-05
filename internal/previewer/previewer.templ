@@ -114,8 +114,10 @@ templ search() {
 	})
 }
 
-// sidebar lists the facets per group; Alpine toggles them and keeps the
-// counts in step with the other filters.
+// sidebar lists the facets per group. Each group is a single choice with an
+// "All …" entry that clears it; Alpine keeps the counts in step with the
+// other groups, and the groups below the country only list what its
+// examples have. The addon group only shows when there is a choice.
 templ sidebar(groups []Group) {
 	@popui.Sidebar(props.Sidebar{Attributes: templ.Attributes{":style": "bench ? 'display:none' : ''"}}) {
 		@popui.SidebarHeader() {
@@ -125,22 +127,22 @@ templ sidebar(groups []Group) {
 		}
 		@popui.SidebarContent() {
 			for _, g := range groups {
-				@popui.SidebarSection(props.SidebarSection{Title: g.Title}) {
-					if g.Key == "country" {
-						<li>
-							<a
-								href="#"
-								@click.prevent="toggle('country', '')"
-								:class="{ 'bg-background-selected text-foreground-selected': isOn('country', '') }"
-							>
-								<span class="w-3.5 h-2.5 shrink-0 text-foreground-default-tertiary">
+				@popui.SidebarSection(props.SidebarSection{Title: g.Title, Attributes: sectionAttrs(g)}) {
+					<li>
+						<a
+							href="#"
+							@click.prevent={ "choose('" + g.Key + "', '')" }
+							:class={ "{ 'bg-background-selected text-foreground-selected': isOn('" + g.Key + "', '') }" }
+						>
+							if g.Key == "country" {
+								<span class="w-3.5 h-2.5 shrink-0 flex items-center justify-center text-foreground-default-tertiary">
 									@icons.World()
 								</span>
-								<span>All countries</span>
-								<span class="ml-auto text-sm tabular-nums text-foreground-default-tertiary" x-text="count('country', '')"></span>
-							</a>
-						</li>
-					}
+							}
+							<span>{ g.All }</span>
+							<span class="ml-auto text-sm tabular-nums text-foreground-default-tertiary" x-text={ "count('" + g.Key + "', '')" }></span>
+						</a>
+					</li>
 					for _, f := range g.Facets {
 						<li
 							if g.Key != "country" {
@@ -149,7 +151,7 @@ templ sidebar(groups []Group) {
 						>
 							<a
 								href="#"
-								@click.prevent={ "toggle('" + g.Key + "', '" + f.Value + "')" }
+								@click.prevent={ "choose('" + g.Key + "', '" + f.Value + "')" }
 								:class={ "{ 'bg-background-selected text-foreground-selected': isOn('" + g.Key + "', '" + f.Value + "'), 'text-foreground-default-tertiary': !isOn('" + g.Key + "', '" + f.Value + "') && count('" + g.Key + "', '" + f.Value + "') === 0 }" }
 							>
 								if g.Key == "country" {

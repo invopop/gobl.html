@@ -86,7 +86,7 @@ function previewer() {
       const u = new URLSearchParams(location.search);
       this.q = u.get("q") ?? "";
       for (const k of Object.keys(GROUPS)) this.filters[k] = (u.get(k) ?? "").split(",").filter(Boolean);
-      this.filters.country = this.filters.country.slice(0, 1);
+      for (const k of Object.keys(GROUPS)) this.filters[k] = this.filters[k].slice(0, 1);
       this.selected = u.get("file");
     },
     writeURL() {
@@ -129,22 +129,24 @@ function previewer() {
     isOn(key, value) {
       return value === "" ? this.filters[key].length === 0 : this.filters[key].includes(value);
     },
-    // The country is a single choice that drives the groups below: they
-    // only list the documents, addons and content its examples have.
-    // "All countries" (the empty value) clears it.
+    // Every group is a single choice; the empty value ("All …") clears it.
+    // The country drives the groups below: they only list the documents,
+    // addons and content its examples have, and lose a choice the new
+    // country cannot satisfy.
     available(key, value) {
       return this.entries.some((e) => this.matchesGroup(e, "country") && GROUPS[key](e).includes(value));
     },
-    toggle(key, value) {
+    availableCount(key) {
+      const seen = new Set();
+      for (const e of this.entries) if (this.matchesGroup(e, "country")) for (const v of GROUPS[key](e)) seen.add(v);
+      return seen.size;
+    },
+    choose(key, value) {
+      this.filters[key] = value ? [value] : [];
       if (key === "country") {
-        this.filters.country = value ? [value] : [];
         for (const k of Object.keys(GROUPS)) {
           if (k !== "country") this.filters[k] = this.filters[k].filter((v) => this.available(k, v));
         }
-      } else {
-        const i = this.filters[key].indexOf(value);
-        if (i >= 0) this.filters[key].splice(i, 1);
-        else this.filters[key].push(value);
       }
       this.filtersChanged();
     },
