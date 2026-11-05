@@ -110,6 +110,9 @@ func convertExample(name string) ([]byte, error) {
 	if strings.Contains(name, ".pl.") {
 		opts = append(opts, goblhtml.WithLocale("pl"))
 	}
+	if strings.Contains(name, ".ro.") {
+		opts = append(opts, goblhtml.WithLocale("ro"))
+	}
 
 	ctx := context.Background()
 	return goblhtml.Render(ctx, env, opts...)
