@@ -253,7 +253,35 @@ it:
       # Riferimento assegnato dall'AdE all'annullamento del documento
       # commerciale; deve essere stampato sullo scontrino annullato.
       ade-void-ref: "Riferimento annullamento AdE"
+      # Documento con importi negativi che rettifica uno precedente dello stesso
+      # tipo SDI; per l'AdE ha valore di nota di variazione ai fini IVA.
+      correction: "Nota di variazione"
       title:
         # Nome ufficiale del documento AdE (Risposta all'interpello n. 167/2020).
         ticket: "Documento commerciale"
         ticket-corrective: "Documento commerciale di annullamento"
+        # Tipi documento SDI (TipoDocumento), dai nomi dell'addon it-sdi-v1
+        # senza i riferimenti normativi. Il titolo aggiunge il codice dopo il nome.
+        sdi:
+          TD01: "Fattura"
+          TD02: "Acconto/anticipo su fattura"
+          TD03: "Acconto/anticipo su parcella"
+          TD04: "Nota di credito"
+          TD05: "Nota di debito"
+          TD06: "Parcella"
+          TD07: "Fattura semplificata"
+          TD08: "Nota di credito semplificata"
+          TD09: "Nota di debito semplificata"
+          TD16: "Integrazione fattura reverse charge interno"
+          TD17: "Integrazione/autofattura per acquisto servizi da estero"
+          TD18: "Integrazione per acquisto beni intracomunitari"
+          TD19: "Integrazione/autofattura per acquisto beni ex art. 17 c. 2"
+          TD20: "Autofattura per regolarizzazione e integrazione delle fatture"
+          TD21: "Autofattura per splafonamento"
+          TD22: "Estrazione beni da Deposito IVA"
+          TD23: "Estrazione beni da Deposito IVA con versamento IVA"
+          TD24: "Fattura differita"
+          TD25: "Fattura differita"
+          TD26: "Cessione di beni ammortizzabili e passaggi interni"
+          TD27: "Fattura per autoconsumo o cessioni gratuite senza rivalsa"
+          TD28: "Acquisti da San Marino con IVA"

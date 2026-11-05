@@ -1,0 +1,119 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "0195a1c2-7d4e-7a10-9b3c-5e6f7a8b9c03",
+		"dig": {
+			"alg": "sha256",
+			"val": "4361b7e24f7eb7df9c00b734e0513ead70f8def616b4982ba1b04fb6264b5258"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"it-sdi-v1"
+		],
+		"$tags": [
+			"self-billed",
+			"import"
+		],
+		"uuid": "0195a1c2-7d4e-7a10-9b3c-5e6f7a8b9c04",
+		"type": "standard",
+		"series": "AUTO",
+		"code": "018",
+		"issue_date": "2026-10-20",
+		"currency": "EUR",
+		"preceding": [
+			{
+				"issue_date": "2026-10-18",
+				"code": "CN-2026-104"
+			}
+		],
+		"tax": {
+			"ext": {
+				"it-sdi-document-type": "TD17",
+				"it-sdi-format": "FPR12"
+			}
+		},
+		"supplier": {
+			"name": "Provide One GmbH",
+			"tax_id": {
+				"country": "DE",
+				"code": "111111125"
+			},
+			"addresses": [
+				{
+					"num": "16",
+					"street": "Dietmar-Hopp-Allee",
+					"locality": "Walldorf",
+					"code": "69190",
+					"country": "DE"
+				}
+			],
+			"ext": {
+				"it-sdi-fiscal-regime": "RF18"
+			}
+		},
+		"customer": {
+			"name": "Mela S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "12345678903"
+			},
+			"addresses": [
+				{
+					"num": "23",
+					"street": "Via dei Mille",
+					"locality": "Firenze",
+					"region": "FI",
+					"code": "50100",
+					"country": "IT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "-1",
+				"item": {
+					"name": "Credit for service outage, October 2026",
+					"price": "200.00"
+				},
+				"sum": "-200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "22.0%"
+					}
+				],
+				"total": "-200.00"
+			}
+		],
+		"totals": {
+			"sum": "-200.00",
+			"total": "-200.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "-200.00",
+								"percent": "22.0%",
+								"amount": "-44.00"
+							}
+						],
+						"amount": "-44.00"
+					}
+				],
+				"sum": "-44.00"
+			},
+			"tax": "-44.00",
+			"total_with_tax": "-244.00",
+			"payable": "-244.00"
+		}
+	}
+}
