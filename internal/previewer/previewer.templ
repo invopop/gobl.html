@@ -235,12 +235,6 @@ templ preview(entries []catalog.Entry) {
 		<div class="px-4 py-2 flex items-start gap-4 border-b border-border bg-background shrink-0">
 			<div class="min-w-0 flex-1 flex flex-col gap-0.5">
 				<span class="font-medium truncate" x-text="currentTitle()"></span>
-				<span class="flex items-center gap-2 text-xs text-foreground-default-tertiary tabular-nums whitespace-nowrap min-w-0">
-					for _, e := range entries {
-						<span class="font-mono truncate" :class={ "selected === '" + e.File + "' && !bench ? '' : 'hidden'" }>{ e.File }</span>
-					}
-					<span x-text="meta"></span>
-				</span>
 				<span class="text-sm text-foreground-critical truncate" x-show="error" x-text="error"></span>
 				for _, e := range entries {
 					if e.Description != "" {
@@ -260,15 +254,12 @@ templ preview(entries []catalog.Entry) {
 						<span class="flex items-center gap-1">
 							@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Href: "#", Target: "_blank", Attributes: templ.Attributes{":href": "serverURL(current.file, 'html')"}}) {
 								HTML
-								@icons.ExternalLink()
 							}
 							@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Href: "#", Target: "_blank", Attributes: templ.Attributes{":href": "serverURL(current.file, 'pdf')"}}) {
 								PDF
-								@icons.ExternalLink()
 							}
 							@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Href: "#", Target: "_blank", Attributes: templ.Attributes{":href": "'/api/examples/' + current.file"}}) {
 								JSON
-								@icons.ExternalLink()
 							}
 						</span>
 					</template>
