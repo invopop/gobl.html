@@ -132,7 +132,7 @@ templ sidebar(groups []Group) {
 								:class={ "{ 'bg-background-selected text-foreground-selected': isOn('" + g.Key + "', '" + f.Value + "'), 'text-foreground-default-tertiary': !isOn('" + g.Key + "', '" + f.Value + "') && count('" + g.Key + "', '" + f.Value + "') === 0 }" }
 							>
 								if g.Key == "country" {
-									@popui.Image(props.Image{Src: "https://assets.invopop.com/flags/" + f.Value + ".svg", Alt: f.Label, Class: "w-3.5 h-2.5 rounded-[1.5px] shrink-0"})
+									@popui.Image(props.Image{Src: FlagURL(f.Value), Alt: f.Label, Class: "w-3.5 h-2.5 rounded-[1.5px] shrink-0"})
 								}
 								<span>{ f.Label }</span>
 								<span class="ml-auto text-sm tabular-nums text-foreground-default-tertiary" x-text={ "count('" + g.Key + "', '" + f.Value + "')" }></span>
@@ -180,7 +180,7 @@ templ list(entries []catalog.Entry) {
 					>
 						<span class="flex items-center gap-2 min-w-0">
 							if e.Country != "" {
-								@popui.Image(props.Image{Src: "https://assets.invopop.com/flags/" + e.Country + ".svg", Alt: strings.ToUpper(e.Country), Class: "w-3.5 h-2.5 rounded-[1.5px] shrink-0"})
+								@popui.Image(props.Image{Src: FlagURL(e.Country), Alt: strings.ToUpper(e.Country), Class: "w-3.5 h-2.5 rounded-[1.5px] shrink-0"})
 							}
 							<span class="font-medium truncate">{ Title(e.Title) }</span>
 						</span>

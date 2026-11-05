@@ -44,6 +44,16 @@ var kindLabels = map[string]string{
 	"message":     "Message",
 }
 
+// FlagURL returns the CDN flag image for a lower-case tax country code.
+// Tax codes that differ from ISO 3166-1 (Greece uses EL) are mapped to the
+// ISO code the flag set is keyed by.
+func FlagURL(country string) string {
+	if country == "el" {
+		country = "gr"
+	}
+	return "https://assets.invopop.com/flags/" + country + ".svg"
+}
+
 // KindLabel returns the readable name of a document kind.
 func KindLabel(kind string) string {
 	if l, ok := kindLabels[kind]; ok {
