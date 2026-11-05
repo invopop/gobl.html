@@ -73,7 +73,7 @@ templ Page(entries []catalog.Entry) {
 		}
 		@popui.Main(props.Main{Class: "flex-row gap-0 overflow-hidden justify-start"}) {
 			@list(entries)
-			@preview()
+			@preview(entries)
 		}
 		@options()
 	}
@@ -193,27 +193,16 @@ templ list(entries []catalog.Entry) {
 						href="#"
 						data-row
 						data-file={ e.File }
-						class="flex flex-col gap-1 px-4 py-2 border-b border-border cursor-pointer"
+						class="flex items-center gap-2 px-4 py-1.5 border-b border-border cursor-pointer min-w-0"
 						:class={ "isVisible('" + e.File + "') ? '' : 'hidden'" }
 						:data-selected={ "selected === '" + e.File + "' ? '' : null" }
 						@click.prevent={ "select('" + e.File + "')" }
+						title={ e.File }
 					>
-						<span class="flex items-center gap-2 min-w-0">
-							if e.Country != "" {
-								@popui.Image(props.Image{Src: FlagURL(e.Country), Alt: strings.ToUpper(e.Country), Class: "w-3.5 h-2.5 rounded-[1.5px] shrink-0"})
-							}
-							<span class="font-medium truncate">{ Title(e.Title) }</span>
-						</span>
-						<span class="font-mono text-xs text-foreground-default-tertiary truncate">{ e.File }</span>
-						<span class="flex flex-wrap gap-1">
-							@popui.TagStatus(props.TagStatus{Label: KindLabel(e.Kind), Status: KindStatus(e.Kind)})
-							for _, a := range e.Addons {
-								@popui.TagStatus(props.TagStatus{Label: a, Status: "steelBlue"})
-							}
-							for _, t := range e.Tags {
-								@popui.TagStatus(props.TagStatus{Label: t, Status: "grey"})
-							}
-						</span>
+						if e.Country != "" {
+							@popui.Image(props.Image{Src: FlagURL(e.Country), Alt: strings.ToUpper(e.Country), Class: "w-3.5 h-2.5 rounded-[1.5px] shrink-0"})
+						}
+						<span class="font-medium truncate">{ Title(e.Title) }</span>
 					</a>
 				</li>
 			}
@@ -232,7 +221,7 @@ func Title(s string) string {
 // preview holds the toolbar and the paper canvas. While a benchmark runs the
 // canvas shows the browser and server renders side by side; once it finishes
 // the main sheet shows the results laid out like a GOBL document.
-templ preview() {
+templ preview(entries []catalog.Entry) {
 	<div class="flex-1 min-w-0 flex flex-col">
 		<div class="h-10 px-4 flex items-center gap-3 border-b border-border bg-background shrink-0">
 			<span class="font-medium truncate" x-text="currentTitle()"></span>
@@ -262,6 +251,22 @@ templ preview() {
 					</span>
 				</template>
 			</span>
+		</div>
+		// The selected example's file name and tags; every example's strip is
+		// rendered and the current one shown, so the tags keep PopUI's styling.
+		<div class="px-4 py-1.5 flex items-center gap-2 border-b border-border bg-background shrink-0 text-sm" x-show="current && !bench" x-cloak>
+			for _, e := range entries {
+				<span class="flex flex-wrap items-center gap-1 min-w-0" :class={ "selected === '" + e.File + "' ? '' : 'hidden'" }>
+					<span class="font-mono text-xs text-foreground-default-tertiary mr-2">{ e.File }</span>
+					@popui.TagStatus(props.TagStatus{Label: KindLabel(e.Kind), Status: KindStatus(e.Kind)})
+					for _, a := range e.Addons {
+						@popui.TagStatus(props.TagStatus{Label: a, Status: "steelBlue"})
+					}
+					for _, t := range e.Tags {
+						@popui.TagStatus(props.TagStatus{Label: t, Status: "grey"})
+					}
+				</span>
+			}
 		</div>
 		<div class="flex-1 min-w-0 overflow-auto bg-background-default-secondary" x-ref="canvas">
 			<div class="pv-canvas">
