@@ -1,0 +1,194 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d22-7720-872d-93d1718a055e",
+		"dig": {
+			"alg": "sha256",
+			"val": "53f473cc88df0d559b5bdeb434838f40c6a675b2a8e99c6add522f35487d0ee3"
+		},
+		"meta": {
+			"description": "Standard XRechnung invoice for business-to-business transactions using the UBL format.",
+			"title": "XRechnung B2B Invoice"
+		},
+		"from": "iso6523-actorid-upis::9930:DE879558966",
+		"to": "iso6523-actorid-upis::9930:DE993930191"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "DE",
+		"$addons": [
+			"eu-en16931-v2017",
+			"de-xrechnung-v3"
+		],
+		"uuid": "01a1ab50-6d22-7724-b733-127d80daf584",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "001",
+		"issue_date": "2022-02-01",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Rheinland Technologies GmbH",
+			"tax_id": {
+				"country": "DE",
+				"code": "879558966"
+			},
+			"people": [
+				{
+					"name": {
+						"given": "John",
+						"surname": "Doe"
+					}
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9930:DE879558966"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9930",
+					"code": "DE879558966"
+				}
+			],
+			"addresses": [
+				{
+					"num": "27",
+					"street": "Friedrichstraße",
+					"locality": "Berlin",
+					"region": "BE",
+					"code": "10117",
+					"country": "DE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+49100200300"
+				}
+			]
+		},
+		"customer": {
+			"name": "Bavaria Solutions GmbH",
+			"tax_id": {
+				"country": "DE",
+				"code": "993930191"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9930:DE993930191"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9930",
+					"code": "DE993930191"
+				}
+			],
+			"addresses": [
+				{
+					"num": "15",
+					"street": "Marienplatz",
+					"locality": "München",
+					"region": "BY",
+					"code": "80331",
+					"country": "DE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "test@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Development services",
+					"price": "90.00",
+					"unit": "h"
+				},
+				"sum": "1800.00",
+				"discounts": [
+					{
+						"reason": "Special discount",
+						"percent": "10%",
+						"amount": "180.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "1620.00"
+			}
+		],
+		"ordering": {
+			"code": "N"
+		},
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			},
+			"instructions": {
+				"key": "credit-transfer+sepa",
+				"credit_transfer": [
+					{
+						"iban": "DE89370400440532013000",
+						"name": "Random Bank Co."
+					}
+				],
+				"ext": {
+					"untdid-payment-means": "58"
+				}
+			}
+		},
+		"totals": {
+			"sum": "1620.00",
+			"total": "1620.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "1620.00",
+								"percent": "19%",
+								"amount": "307.80"
+							}
+						],
+						"amount": "307.80"
+					}
+				],
+				"sum": "307.80"
+			},
+			"tax": "307.80",
+			"total_with_tax": "1927.80",
+			"payable": "1927.80"
+		}
+	}
+}

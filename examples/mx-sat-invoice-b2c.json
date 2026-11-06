@@ -1,0 +1,163 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d9f-7a2d-b3b3-a15ef9f3856e",
+		"dig": {
+			"alg": "sha256",
+			"val": "fa344d5fc4ee37c3894aec6dd4ad086c2a92081d019fd40f73743259c52342e9"
+		},
+		"stamps": [
+			{
+				"prv": "sat-uuid",
+				"val": "01a1ab50-6d9f-7a2d-b3b3-a15ef9f3856e"
+			},
+			{
+				"prv": "cfdi-sig",
+				"val": "Qk+hftgbpSYMqcc7BoBzGOctcNbDypP4IiHfzgf4mJuraxGEFbo8JEfS6BOzfqXojVLbRxPkXE83fqzWdnowOhOmi0Mvk3CdlTZNZ9i2i7hJv6cwfHXMTPpeOxfptuv2AzhFX7O14gS2szeai5yJIcT+d8/W6H0zN6b/2S12GkMdik0tyF8XRtQQat4Q1jxQzslOp46brROc0Xuobc7/jogq2ib7oaJEu7qDKhjYAkH7BHMaLMJgeC6eVeHUkkrr7RVTkH75H4wteKZNuP85E/F12nCkbMSQq7uplzRuLyO6YEkyIWxpT+0Gqtcb6pziYk8wqwP1pVsVZZ4Q0PPOsw=="
+			},
+			{
+				"prv": "cfdi-serial",
+				"val": "30001000000500003416"
+			},
+			{
+				"prv": "sat-sig",
+				"val": "MQWzFEvDEWag8sM8OWjlCS1DmrZWe+/1VtGsxDz8ycSH1yh8aoUGV3lKezQy190TnB2mncusGvFoUpbDhrk0tlRpTGT2+68/43yb0RZ+yWTVCrd09sCzRk/Dct+oyUKWr2AYYxA0Jt7ECyR4DQfPQYbPF4shsmcerMWxsbMUKqR43shvsb5QTxk/yA6CiWx3z/+uSxvJitUoUihAtFeBBdiNnKVBcG7ifWNJaoaBL03UOm1Ro77rGvUfYuxqqI02Fav98iv9eS//YmGzUTpz0Uvc9Lut+MRqkBvs3G/PBiJvO5Yi6I2PhzNo0O7z9SD6P9WnmufmVI9JFCbHVk+PNg=="
+			},
+			{
+				"prv": "sat-serial",
+				"val": "30001000000500003456"
+			},
+			{
+				"prv": "sat-timestamp",
+				"val": "2026-07-08T07:16:10"
+			},
+			{
+				"prv": "sat-chain",
+				"val": "||1.1|01a1ab50-6d9f-7a2d-b3b3-a15ef9f3856e|2026-07-08T07:16:10|SPR190613I52|Qk+hftgbpSYMqcc7BoBzGOctcNbDypP4IiHfzgf4mJuraxGEFbo8JEfS6BOzfqXojVLbRxPkXE83fqzWdnowOhOmi0Mvk3CdlTZNZ9i2i7hJv6cwfHXMTPpeOxfptuv2AzhFX7O14gS2szeai5yJIcT+d8/W6H0zN6b/2S12GkMdik0tyF8XRtQQat4Q1jxQzslOp46brROc0Xuobc7/jogq2ib7oaJEu7qDKhjYAkH7BHMaLMJgeC6eVeHUkkrr7RVTkH75H4wteKZNuP85E/F12nCkbMSQq7uplzRuLyO6YEkyIWxpT+0Gqtcb6pziYk8wqwP1pVsVZZ4Q0PPOsw==|30001000000500003456||"
+			},
+			{
+				"prv": "sat-url",
+				"val": "https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=01a1ab50-6d9f-7a2d-b3b3-a15ef9f3856e\u0026re=EKU9003173C9\u0026tt=580.00\u0026fe=0PPOsw=="
+			}
+		],
+		"meta": {
+			"description": "This is a standard B2C invoice from a Mexican supplier to a Mexican physical person with tax details, but no specific tax declaration requirements. This would be for a larger sale when the \"Simplified\" and \"Global invoice\" do not apply.",
+			"title": "B2C invoice (Personas Físicas)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "MX",
+		"$addons": [
+			"mx-cfdi-v4"
+		],
+		"uuid": "01a1ab50-6d9f-7a2e-9828-aede7bf3715a",
+		"type": "standard",
+		"series": "XXMX",
+		"code": "0001",
+		"issue_date": "2026-07-08",
+		"issue_time": "08:51:26",
+		"currency": "MXN",
+		"tax": {
+			"ext": {
+				"mx-cfdi-doc-type": "I",
+				"mx-cfdi-issue-place": "44100",
+				"mx-cfdi-payment-method": "PPD"
+			}
+		},
+		"supplier": {
+			"uuid": "018fbeda-bc61-7000-b66d-398ce3e21c43",
+			"name": "ESCUELA KEMPER URGATE",
+			"tax_id": {
+				"country": "MX",
+				"code": "EKU9003173C9"
+			},
+			"addresses": [
+				{
+					"street": "Julia Navarrete No. 1430",
+					"locality": "Guadalajara",
+					"region": "Jalisco",
+					"code": "44100",
+					"country": "MX"
+				}
+			],
+			"emails": [
+				{
+					"addr": "esckemperugarte@example.com"
+				}
+			],
+			"ext": {
+				"mx-cfdi-fiscal-regime": "601"
+			}
+		},
+		"customer": {
+			"name": "LUIS IAN ÑUZCO",
+			"tax_id": {
+				"country": "MX",
+				"code": "IAÑL750210963"
+			},
+			"addresses": [
+				{
+					"locality": "Ciudad de Mexico",
+					"region": "Ciudad de Mexico",
+					"code": "85256",
+					"country": "MX"
+				}
+			],
+			"ext": {
+				"mx-cfdi-fiscal-regime": "616",
+				"mx-cfdi-use": "S01"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Standard Plan",
+					"price": "500.00",
+					"ext": {
+						"mx-cfdi-prod-serv": "81112002"
+					}
+				},
+				"sum": "500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "16.0%"
+					}
+				],
+				"total": "500.00"
+			}
+		],
+		"totals": {
+			"sum": "500.00",
+			"total": "500.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "500.00",
+								"percent": "16.0%",
+								"amount": "80.00"
+							}
+						],
+						"amount": "80.00"
+					}
+				],
+				"sum": "80.00"
+			},
+			"tax": "80.00",
+			"total_with_tax": "580.00",
+			"payable": "580.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZGItNzcwNC1hMWYzLTQyNmMzZmZlYzEwOCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ5Zi03YTJkLWIzYjMtYTE1ZWY5ZjM4NTZlIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImZhMzQ0ZDVmYzRlZTM3YzM4OTRhZWM2ZGQ0YWQwODZjMmE5MjA4MWQwMTlmZDQwZjczNzQzMjU5YzUyMzQyZTkifSwiaWF0IjoxNzkzODk0Njg4fQ.CLvh-BeGxKgwDjVBs8IwwjVRbNRpkKGhcG4d7VbQnAanTR4FhRdS9I4yYzqW4EksFa2G2qEj0Upx9VaNQlrfBw"
+	]
+}

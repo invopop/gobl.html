@@ -1,0 +1,221 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d0b-7d3e-8c6c-f32a505996a2",
+		"dig": {
+			"alg": "sha256",
+			"val": "078bc5ab1b16473d69d18d45b02720cf595e38014ce03d02ae2d63f7df318a9a"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a NF-e that fully returns the goods of a previously issued B2B product invoice — a _devolução total_ under the pre-reform (pre-RTC) rules.",
+			"title": "Example NF-e for a full goods return"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "BR",
+		"$addons": [
+			"br-nfe-v4"
+		],
+		"uuid": "01a1ab50-6d0b-7d42-b410-88f8d5abe07c",
+		"type": "credit-note",
+		"series": "1",
+		"issue_date": "2024-11-20",
+		"currency": "BRL",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2024-11-15",
+				"series": "1",
+				"code": "1",
+				"stamps": [
+					{
+						"prv": "sefaz-key",
+						"val": "35241105229829000184550010000000011000000019"
+					}
+				]
+			}
+		],
+		"tax": {
+			"ext": {
+				"br-nfe-model": "55",
+				"br-nfe-operation-type": "0",
+				"br-nfe-presence": "1",
+				"br-nfe-purpose": "4"
+			}
+		},
+		"supplier": {
+			"name": "TechNova Soluções Digitais Ltda.",
+			"tax_id": {
+				"country": "BR",
+				"code": "05229829000184"
+			},
+			"identities": [
+				{
+					"key": "br-nfe-state-reg",
+					"code": "12345678901234"
+				}
+			],
+			"addresses": [
+				{
+					"num": "101",
+					"street": "Avenida Paulista",
+					"locality": "Bela Vista",
+					"region": "São Paulo",
+					"state": "SP",
+					"code": "01311-000",
+					"country": "BR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "contact@technova.test"
+				}
+			],
+			"ext": {
+				"br-ibge-municipality": "3550308",
+				"br-nfe-regime": "3"
+			}
+		},
+		"customer": {
+			"name": "Construforte Engenharia Ltda.",
+			"tax_id": {
+				"country": "BR",
+				"code": "46602178000103"
+			},
+			"addresses": [
+				{
+					"num": "75",
+					"street": "Avenida Sete de Setembro",
+					"street_extra": "Bloco C",
+					"locality": "Centro",
+					"region": "Salvador",
+					"state": "BA",
+					"code": "40060-000",
+					"country": "BR"
+				}
+			],
+			"ext": {
+				"br-ibge-municipality": "2927408",
+				"br-nfe-state-reg-ind": "9"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "10",
+				"item": {
+					"name": "Cabo USB-C 2 metros",
+					"identities": [
+						{
+							"key": "ncm",
+							"code": "85444290"
+						}
+					],
+					"price": "28.90"
+				},
+				"sum": "289.00",
+				"taxes": [
+					{
+						"cat": "ICMS",
+						"percent": "12.0%",
+						"ext": {
+							"br-nfe-icms-cst": "00",
+							"br-nfe-icms-origin": "0"
+						}
+					},
+					{
+						"cat": "PIS",
+						"percent": "1.65%",
+						"ext": {
+							"br-nfe-pis-cst": "01"
+						}
+					},
+					{
+						"cat": "COFINS",
+						"percent": "7.60%",
+						"ext": {
+							"br-nfe-cofins-cst": "01"
+						}
+					}
+				],
+				"total": "289.00",
+				"ext": {
+					"br-nfe-cfop": "2202"
+				}
+			}
+		],
+		"payment": {
+			"instructions": {
+				"key": "other",
+				"ext": {
+					"br-nfe-payment-means": "90"
+				}
+			}
+		},
+		"totals": {
+			"sum": "289.00",
+			"total": "289.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "ICMS",
+						"informative": true,
+						"rates": [
+							{
+								"ext": {
+									"br-nfe-icms-cst": "00",
+									"br-nfe-icms-origin": "0"
+								},
+								"base": "289.00",
+								"percent": "12.0%",
+								"amount": "34.68"
+							}
+						],
+						"amount": "34.68"
+					},
+					{
+						"code": "PIS",
+						"informative": true,
+						"rates": [
+							{
+								"ext": {
+									"br-nfe-pis-cst": "01"
+								},
+								"base": "289.00",
+								"percent": "1.65%",
+								"amount": "4.77"
+							}
+						],
+						"amount": "4.77"
+					},
+					{
+						"code": "COFINS",
+						"informative": true,
+						"rates": [
+							{
+								"ext": {
+									"br-nfe-cofins-cst": "01"
+								},
+								"base": "289.00",
+								"percent": "7.60%",
+								"amount": "21.96"
+							}
+						],
+						"amount": "21.96"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "289.00",
+			"payable": "289.00"
+		},
+		"notes": [
+			{
+				"key": "reason",
+				"text": "Devolução total de mercadoria"
+			}
+		]
+	}
+}

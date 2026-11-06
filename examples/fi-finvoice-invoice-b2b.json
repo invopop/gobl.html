@@ -1,0 +1,154 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d5f-7da4-8762-67a61d4373fa",
+		"dig": {
+			"alg": "sha256",
+			"val": "72644a7192497345e06caced6b0f12c14368cbcd7a8be4158a0cb7f06c3e1771"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a B2B invoice from a Finnish supplier to another Finnish business.",
+			"title": "Example B2B invoice"
+		},
+		"from": "iso6523-actorid-upis::0216:003726174164",
+		"to": "iso6523-actorid-upis::0216:003711223349"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FI",
+		"$addons": [
+			"eu-en16931-v2017",
+			"fi-finvoice-v3"
+		],
+		"uuid": "01a1ab50-6d5f-7da5-96de-e83b463c9d01",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "0042",
+		"issue_date": "2026-08-01",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Aurora Ohjelmistot Oy",
+			"tax_id": {
+				"country": "FI",
+				"code": "26174164"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0216:003726174164"
+				}
+			],
+			"addresses": [
+				{
+					"num": "12",
+					"street": "Mannerheimintie",
+					"locality": "Helsinki",
+					"code": "00100",
+					"country": "FI"
+				}
+			]
+		},
+		"customer": {
+			"name": "Pohjola Rakennus Oy",
+			"tax_id": {
+				"country": "FI",
+				"code": "11223349"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0216:003711223349"
+				}
+			],
+			"addresses": [
+				{
+					"num": "8",
+					"street": "Hämeenkatu",
+					"locality": "Tampere",
+					"code": "33100",
+					"country": "FI"
+				}
+			],
+			"ext": {
+				"fi-finvoice-operator": "003723327487"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "10",
+				"item": {
+					"name": "Software development services",
+					"price": "85.00",
+					"unit": "one"
+				},
+				"sum": "850.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "25.5%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "850.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"due_dates": [
+					{
+						"date": "2026-08-15",
+						"amount": "1066.75",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"ref": "RF1310023",
+				"credit_transfer": [
+					{
+						"iban": "FI2112345600000785",
+						"bic": "NDEAFIHH"
+					}
+				],
+				"ext": {
+					"untdid-payment-means": "30"
+				}
+			}
+		},
+		"totals": {
+			"sum": "850.00",
+			"total": "850.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "850.00",
+								"percent": "25.5%",
+								"amount": "216.75"
+							}
+						],
+						"amount": "216.75"
+					}
+				],
+				"sum": "216.75"
+			},
+			"tax": "216.75",
+			"total_with_tax": "1066.75",
+			"payable": "1066.75"
+		}
+	}
+}

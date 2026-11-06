@@ -1,0 +1,162 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6dc1-74da-959f-5a427300408d",
+		"dig": {
+			"alg": "sha256",
+			"val": "dfe434aea071c24c1cfb76b68119fdf603f3cf412efa282938905c8f6ced9e92"
+		},
+		"stamps": [
+			{
+				"prv": "zatca-qr",
+				"val": "AS3Yp9mF2YrZitmF2YjYsyDYp9mE2LnYsdio2YrYqSDZhNmE2YHYudin2YTZitin2Kog2KfZhNiq2LHZgdmK2YfZitipAg8zMTE1ODgxMDcyMDAwMDMDEzIwMjUtMDktMjVUMDA6MDA6MDBaBAY5NDguNzUFBjEyMy43NQ=="
+			}
+		],
+		"meta": {
+			"description": "A debit note increasing the value of a previously reported simplified invoice.",
+			"title": "Simplified debit note"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "SA",
+		"$addons": [
+			"eu-en16931-v2017",
+			"sa-zatca-v1"
+		],
+		"$tags": [
+			"simplified"
+		],
+		"uuid": "a1b2c3d4-4444-4aaa-bbbb-000000000004",
+		"type": "debit-note",
+		"series": "DN",
+		"code": "DN-001",
+		"issue_date": "2022-03-01",
+		"issue_time": "10:00:00",
+		"currency": "SAR",
+		"preceding": [
+			{
+				"issue_date": "2022-02-01",
+				"code": "SAMPLE-001",
+				"reason": "Price adjustment for development services"
+			}
+		],
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"sa-zatca-invoice-type": "0200000",
+				"untdid-document-type": "383"
+			}
+		},
+		"supplier": {
+			"name": "Acme Corp Saudi",
+			"tax_id": {
+				"country": "SA",
+				"code": "312345678912343"
+			},
+			"identities": [
+				{
+					"type": "MLS",
+					"code": "1234567890"
+				}
+			],
+			"addresses": [
+				{
+					"num": "1234",
+					"street": "King Fahd Road",
+					"street_extra": "Al Olaya",
+					"locality": "Riyadh",
+					"region": "Riyadh",
+					"code": "12345",
+					"country": "SA"
+				}
+			]
+		},
+		"customer": {
+			"name": "Sample Consumer LLC",
+			"addresses": [
+				{
+					"num": "5678",
+					"street": "Olaya Street",
+					"street_extra": "Al Malaz",
+					"locality": "Riyadh",
+					"region": "Riyadh",
+					"code": "54321",
+					"country": "SA"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "5",
+				"item": {
+					"name": "Development services",
+					"price": "90.00",
+					"unit": "h"
+				},
+				"sum": "450.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "15.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "450.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Payment due within 30 days"
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"ext": {
+					"untdid-payment-means": "30"
+				}
+			}
+		},
+		"delivery": {
+			"date": "2022-03-01",
+			"period": {
+				"start": "2022-02-01",
+				"end": "2022-02-28"
+			}
+		},
+		"totals": {
+			"sum": "450.00",
+			"total": "450.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "450.00",
+								"percent": "15.0%",
+								"amount": "67.50"
+							}
+						],
+						"amount": "67.50"
+					}
+				],
+				"sum": "67.50"
+			},
+			"tax": "67.50",
+			"total_with_tax": "517.50",
+			"payable": "517.50"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc2LTI5NjMtN2RiZi04MTg0LWY1YjA2YjA4MjdmNiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRjMS03NGRhLTk1OWYtNWE0MjczMDA0MDhkIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImRmZTQzNGFlYTA3MWMyNGMxY2ZiNzZiNjgxMTlmZGY2MDNmM2NmNDEyZWZhMjgyOTM4OTA1YzhmNmNlZDllOTIifSwiaWF0IjoxNzkzODk0Nzg3fQ.j0M3rndSjhoX6BxSABSSPdpaWD1OcHvn1LGJ8R7m4yHpRoMYJMSfX6maTqQY07SuiW8KDlaD8GkRQW4qWOcv4w"
+	]
+}

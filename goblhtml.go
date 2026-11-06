@@ -1,6 +1,4 @@
 // Package goblhtml provides a simple way to render HTML documents from GOBL envelopes.
-//
-//go:generate go run ./cmd/gobl.html generate-index
 package goblhtml
 
 import (
@@ -16,6 +14,7 @@ import (
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/layout"
 	srclocales "github.com/invopop/gobl.html/locales"
+	_ "github.com/invopop/gobl.ro.anaf/addon" // ro-efactura-v1, not yet in the bundle
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/l10n"
 	"github.com/invopop/gobl/num"

@@ -1,0 +1,173 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6da1-7d3a-89e6-cca1a86357ab",
+		"dig": {
+			"alg": "sha256",
+			"val": "11259bc5c41936c79d3f952432e777f79920d9b8f0961d1c90c9dbdb98bc89bd"
+		},
+		"stamps": [
+			{
+				"prv": "sat-uuid",
+				"val": "01a1ab50-6da1-7d3a-89e6-cca1a86357ab"
+			},
+			{
+				"prv": "cfdi-sig",
+				"val": "Qk+hftgbpSYMqcc7BoBzGOctcNbDypP4IiHfzgf4mJuraxGEFbo8JEfS6BOzfqXojVLbRxPkXE83fqzWdnowOhOmi0Mvk3CdlTZNZ9i2i7hJv6cwfHXMTPpeOxfptuv2AzhFX7O14gS2szeai5yJIcT+d8/W6H0zN6b/2S12GkMdik0tyF8XRtQQat4Q1jxQzslOp46brROc0Xuobc7/jogq2ib7oaJEu7qDKhjYAkH7BHMaLMJgeC6eVeHUkkrr7RVTkH75H4wteKZNuP85E/F12nCkbMSQq7uplzRuLyO6YEkyIWxpT+0Gqtcb6pziYk8wqwP1pVsVZZ4Q0PPOsw=="
+			},
+			{
+				"prv": "cfdi-serial",
+				"val": "30001000000500003416"
+			},
+			{
+				"prv": "sat-sig",
+				"val": "MQWzFEvDEWag8sM8OWjlCS1DmrZWe+/1VtGsxDz8ycSH1yh8aoUGV3lKezQy190TnB2mncusGvFoUpbDhrk0tlRpTGT2+68/43yb0RZ+yWTVCrd09sCzRk/Dct+oyUKWr2AYYxA0Jt7ECyR4DQfPQYbPF4shsmcerMWxsbMUKqR43shvsb5QTxk/yA6CiWx3z/+uSxvJitUoUihAtFeBBdiNnKVBcG7ifWNJaoaBL03UOm1Ro77rGvUfYuxqqI02Fav98iv9eS//YmGzUTpz0Uvc9Lut+MRqkBvs3G/PBiJvO5Yi6I2PhzNo0O7z9SD6P9WnmufmVI9JFCbHVk+PNg=="
+			},
+			{
+				"prv": "sat-serial",
+				"val": "30001000000500003456"
+			},
+			{
+				"prv": "sat-timestamp",
+				"val": "2026-07-08T07:16:10"
+			},
+			{
+				"prv": "sat-chain",
+				"val": "||1.1|01a1ab50-6da1-7d3a-89e6-cca1a86357ab|2026-07-08T07:16:10|SPR190613I52|Qk+hftgbpSYMqcc7BoBzGOctcNbDypP4IiHfzgf4mJuraxGEFbo8JEfS6BOzfqXojVLbRxPkXE83fqzWdnowOhOmi0Mvk3CdlTZNZ9i2i7hJv6cwfHXMTPpeOxfptuv2AzhFX7O14gS2szeai5yJIcT+d8/W6H0zN6b/2S12GkMdik0tyF8XRtQQat4Q1jxQzslOp46brROc0Xuobc7/jogq2ib7oaJEu7qDKhjYAkH7BHMaLMJgeC6eVeHUkkrr7RVTkH75H4wteKZNuP85E/F12nCkbMSQq7uplzRuLyO6YEkyIWxpT+0Gqtcb6pziYk8wqwP1pVsVZZ4Q0PPOsw==|30001000000500003456||"
+			},
+			{
+				"prv": "sat-url",
+				"val": "https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=01a1ab50-6da1-7d3a-89e6-cca1a86357ab\u0026re=EKU9003173C9\u0026tt=33.64\u0026fe=0PPOsw=="
+			}
+		],
+		"meta": {
+			"description": "The Global Invoice is used to group a set of invoices into a single CFDI document.",
+			"title": "Global invoice"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "MX",
+		"$addons": [
+			"mx-cfdi-v4"
+		],
+		"$tags": [
+			"global"
+		],
+		"uuid": "01a1ab50-6da1-7d3b-909e-8cf6dd2d9811",
+		"type": "standard",
+		"series": "GLOBAL",
+		"code": "0001",
+		"issue_date": "2026-07-08",
+		"issue_time": "08:51:26",
+		"currency": "MXN",
+		"tax": {
+			"ext": {
+				"mx-cfdi-doc-type": "I",
+				"mx-cfdi-global-month": "03",
+				"mx-cfdi-global-period": "04",
+				"mx-cfdi-global-year": "2025",
+				"mx-cfdi-issue-place": "44100",
+				"mx-cfdi-payment-method": "PUE"
+			}
+		},
+		"supplier": {
+			"name": "ESCUELA KEMPER URGATE",
+			"tax_id": {
+				"country": "MX",
+				"code": "EKU9003173C9"
+			},
+			"ext": {
+				"mx-cfdi-fiscal-regime": "601"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"ref": "SALE1",
+					"name": "Sale 1",
+					"price": "10.00"
+				},
+				"sum": "10.00",
+				"discounts": [
+					{
+						"percent": "10.0%",
+						"amount": "1.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "16.0%"
+					}
+				],
+				"total": "9.00"
+			},
+			{
+				"i": 2,
+				"quantity": "1",
+				"item": {
+					"ref": "SALE2",
+					"name": "Sale 2",
+					"price": "20.00"
+				},
+				"sum": "20.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "16.0%"
+					}
+				],
+				"total": "20.00"
+			}
+		],
+		"payment": {
+			"advances": [
+				{
+					"key": "cash",
+					"description": "Prepaid",
+					"percent": "100%",
+					"amount": "33.64",
+					"ext": {
+						"mx-cfdi-payment-means": "01"
+					}
+				}
+			]
+		},
+		"totals": {
+			"sum": "29.00",
+			"total": "29.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "29.00",
+								"percent": "16.0%",
+								"amount": "4.64"
+							}
+						],
+						"amount": "4.64"
+					}
+				],
+				"sum": "4.64"
+			},
+			"tax": "4.64",
+			"total_with_tax": "33.64",
+			"payable": "33.64",
+			"advance": "33.64",
+			"due": "0.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZTAtNzQxMi1hODIzLWUxZTQ0YWY1MjY1MyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhMS03ZDNhLTg5ZTYtY2NhMWE4NjM1N2FiIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjExMjU5YmM1YzQxOTM2Yzc5ZDNmOTUyNDMyZTc3N2Y3OTkyMGQ5YjhmMDk2MWQxYzkwYzlkYmRiOThiYzg5YmQifSwiaWF0IjoxNzkzODk0Njg4fQ.NyY5TS6fnmkXWkujlXTlHcY_twPZep28p86pI8rUAHlCrHba0pfbncmLmACCqWyqOd4alzZ6NxPkaEDsT8_YNQ"
+	]
+}

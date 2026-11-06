@@ -1,0 +1,129 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d5d-7af4-b496-ab700e31301b",
+		"dig": {
+			"alg": "sha256",
+			"val": "c8d0a4fe46c5c167749f4a41c48c305158981f3d194b82a67fa1f207cc17319e"
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-0001\u0026fecha=06-05-2026\u0026importe=604.20"
+			}
+		],
+		"meta": {
+			"description": "The Catalan tourist tax (IEET, *Impost sobre les Estades en Establiments Turístics*) is a regional tax administered by the Agència Tributària de Catalunya — not the AEAT — so it is **not** classified as a tax in the VERI\\*FACTU record. Hotels declare it directly to the Generalitat through the quarterly Modelo 950.",
+			"title": "B2C Hotel + IEET (Catalonia tourist tax)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-verifactu-v1"
+		],
+		"$tags": [
+			"simplified"
+		],
+		"uuid": "01a1ab50-6d5d-7af8-b10e-c454b2fac718",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "0001",
+		"issue_date": "2026-05-06",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"es-verifactu-doc-type": "F2"
+			}
+		},
+		"supplier": {
+			"name": "Hotel Barcelona Example SL",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"addresses": [
+				{
+					"locality": "Barcelona",
+					"code": "08001",
+					"country": "ES"
+				}
+			]
+		},
+		"customer": {
+			"name": "John Smith",
+			"addresses": [
+				{
+					"locality": "London",
+					"country": "GB"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "3",
+				"item": {
+					"name": "Double room — 3 nights",
+					"price": "180.00",
+					"unit": "day"
+				},
+				"sum": "540.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "10.0%",
+						"ext": {
+							"es-verifactu-op-class": "S1",
+							"es-verifactu-regime": "01"
+						}
+					}
+				],
+				"total": "540.00"
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"key": "tax",
+				"reason": "IEET — Hotel 4★, Barcelona city — 3 nights × 1 guest × €3.40",
+				"amount": "10.20"
+			}
+		],
+		"totals": {
+			"sum": "540.00",
+			"charge": "10.20",
+			"total": "550.20",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"es-verifactu-op-class": "S1",
+									"es-verifactu-regime": "01"
+								},
+								"base": "540.00",
+								"percent": "10.0%",
+								"amount": "54.00"
+							}
+						],
+						"amount": "54.00"
+					}
+				],
+				"sum": "54.00"
+			},
+			"tax": "54.00",
+			"total_with_tax": "604.20",
+			"payable": "604.20"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2N2QtNzk2Mi1hYmQ1LTgyYWQ5YmY3OThhOCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1ZC03YWY0LWI0OTYtYWI3MDBlMzEzMDFiIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImM4ZDBhNGZlNDZjNWMxNjc3NDlmNGE0MWM0OGMzMDUxNTg5ODFmM2QxOTRiODJhNjdmYTFmMjA3Y2MxNzMxOWUifSwiaWF0IjoxNzkzODk0Njg4fQ.NBXIPzJtqvDAff8kAH2OVvdRKEsgqj5kHcfLFVoscvvjB23RoKNdYZ9XZx2V6gF800_oagnQAHabGEJUeUFLZQ"
+	]
+}

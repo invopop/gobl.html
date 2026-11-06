@@ -156,6 +156,9 @@ nl:
       notes:
         title: "Opmerkingen"
 
+      attachments:
+        title: "Bijlagen"
+
     payment:
       <<: *invoice
       title:

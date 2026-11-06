@@ -1,0 +1,121 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab5e-5de0-7626-a073-c7020ddfc62a",
+		"dig": {
+			"alg": "sha256",
+			"val": "f8b5a8a9c239be99b8e57e70bf381f31d0e5f5fd66cee9747adeedd79b1ad42b"
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-sett/000002\u0026fecha=17-11-2025\u0026importe=1800.00"
+			}
+		],
+		"meta": {
+			"description": "Outside scope invoices are used for B2B services provided to customers outside the EU.",
+			"title": "B2B Services International Client (Outside Scope)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-verifactu-v1"
+		],
+		"uuid": "01a1ab5e-5de0-7627-bf2f-60db6031a33a",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "sett/000002",
+		"issue_date": "2025-11-17",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"es-verifactu-doc-type": "F1"
+			}
+		},
+		"supplier": {
+			"name": "Invopop S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			]
+		},
+		"customer": {
+			"name": "Sample Consumer",
+			"tax_id": {
+				"country": "SG",
+				"code": "199912345R"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Development services",
+					"price": "90.00",
+					"unit": "h"
+				},
+				"sum": "1800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "outside-scope",
+						"ext": {
+							"es-verifactu-op-class": "N2",
+							"es-verifactu-regime": "01"
+						}
+					}
+				],
+				"total": "1800.00"
+			}
+		],
+		"totals": {
+			"sum": "1800.00",
+			"total": "1800.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "outside-scope",
+								"ext": {
+									"es-verifactu-op-class": "N2",
+									"es-verifactu-regime": "01"
+								},
+								"base": "1800.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "1800.00",
+			"payable": "1800.00"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "This is a sample invoice with a outside-scope tax"
+			}
+		]
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NzAtNzYzOS1iOTg1LTEwOGE2MzY4Y2I5MyJ9.eyJ1dWlkIjoiMDFhMWFiNWUtNWRlMC03NjI2LWEwNzMtYzcwMjBkZGZjNjJhIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImY4YjVhOGE5YzIzOWJlOTliOGU1N2U3MGJmMzgxZjMxZDBlNWY1ZmQ2NmNlZTk3NDdhZGVlZGQ3OWIxYWQ0MmIifSwiaWF0IjoxNzkzODk0Njg4fQ.AoqPU6DNAY0BzEo2FkXb2tRueQfpFTK3_SMOOyFgF8KwXPtQJOXdpwl_TPnqjnq4VTpOAYkdKcSXI54PxolphQ"
+	]
+}

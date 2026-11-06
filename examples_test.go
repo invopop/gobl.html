@@ -11,9 +11,10 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
 	goblhtml "github.com/invopop/gobl.html"
-	"github.com/invopop/gobl.html/internal/gallery"
+	"github.com/invopop/gobl.html/internal/catalog"
 	"github.com/pmezard/go-difflib/difflib"
 	"github.com/stretchr/testify/require"
 	"github.com/yosssi/gohtml"
@@ -24,7 +25,7 @@ const (
 	examplesOutPath = "./examples/out"
 )
 
-var updateOut = flag.Bool("update", false, "Update the HTML files in examples/out and regenerate examples/index.html")
+var updateOut = flag.Bool("update", false, "Update the HTML files in examples/out")
 
 func TestGOBLRenderExamples(t *testing.T) {
 	examples, err := findExamples()
@@ -66,11 +67,6 @@ func TestGOBLRenderExamples(t *testing.T) {
 			// assert.Equal(t, string(expected), out, "output file %s does not match, run tests with `--update` flag to update", filepath.Base(outPath))
 		})
 	}
-
-	if *updateOut {
-		err := gallery.WriteIndexHTML(gallery.ExamplesDir, gallery.IndexHTMLPath())
-		require.NoError(t, err)
-	}
 }
 
 func findExamples() ([]string, error) {
@@ -104,24 +100,10 @@ func convertExample(name string) ([]byte, error) {
 		opts = append(opts, goblhtml.EnableAdjustmentMode)
 	}
 	if strings.Contains(name, ".hidden.") {
-		opts = append(opts, goblhtml.WithHide(
-			"header.summary.ordering",
-			"payment.instructions.bank-data",
-			"notes",
-			"footer.branding",
-		))
+		opts = append(opts, goblhtml.WithHide(catalog.HiddenKeys...))
 	}
-	if strings.Contains(name, ".es.") {
-		opts = append(opts, goblhtml.WithLocale("es"))
-	}
-	if strings.Contains(name, ".fr.") {
-		opts = append(opts, goblhtml.WithLocale("fr"))
-	}
-	if strings.Contains(name, ".pl.") {
-		opts = append(opts, goblhtml.WithLocale("pl"))
-	}
-	if strings.Contains(name, ".it.") {
-		opts = append(opts, goblhtml.WithLocale("it"))
+	if l := catalog.LocaleFromName(name); l != "" {
+		opts = append(opts, goblhtml.WithLocale(i18n.Code(l)))
 	}
 
 	ctx := context.Background()

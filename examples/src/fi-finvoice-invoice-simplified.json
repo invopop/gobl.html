@@ -1,0 +1,156 @@
+{
+	"head": {
+		"meta": {
+			"title": "Simplified Finvoice invoice",
+			"description": "Consumer invoice to a private person without a tax ID, routed through a consumer e-invoice address."
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FI",
+		"$addons": [
+			"eu-en16931-v2017",
+			"fi-finvoice-v3"
+		],
+		"$tags": [
+			"simplified"
+		],
+		"type": "standard",
+		"series": "S",
+		"code": "2026-0217",
+		"issue_date": "2026-03-31",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Aurora Ohjelmistot Oy",
+			"tax_id": {
+				"country": "FI",
+				"code": "26174164"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0216:003726174164"
+				}
+			],
+			"addresses": [
+				{
+					"num": "12",
+					"street": "Mannerheimintie",
+					"locality": "Helsinki",
+					"code": "00100",
+					"country": "FI"
+				}
+			],
+			"emails": [
+				{
+					"addr": "laskutus@example.com"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+358 9 1234 5678"
+				}
+			]
+		},
+		"customer": {
+			"name": "Matti Virtanen",
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0216",
+					"code": "FI4950001520000081"
+				}
+			],
+			"addresses": [
+				{
+					"num": "5 B 12",
+					"street": "Kauppakatu",
+					"locality": "Jyväskylä",
+					"code": "40100",
+					"country": "FI"
+				}
+			],
+			"emails": [
+				{
+					"addr": "matti.virtanen@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"quantity": "1",
+				"item": {
+					"name": "Home office software licence",
+					"description": "Annual subscription, 1 April 2026 to 31 March 2027",
+					"price": "119.00",
+					"unit": "one"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "2",
+				"item": {
+					"name": "Remote setup session",
+					"price": "45.00",
+					"unit": "h"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "1",
+				"item": {
+					"name": "Printed user guide",
+					"price": "24.00",
+					"unit": "item"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced"
+					}
+				]
+			}
+		],
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-04-14",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"ref": "RF1310023",
+				"credit_transfer": [
+					{
+						"iban": "FI2112345600000785",
+						"bic": "NDEAFIHH"
+					}
+				]
+			}
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Simplified invoice (kevennetty lasku) to a private customer: the customer's VAT details are not recorded, as the Finnish VAT Act allows for invoices to consumers. Delivered as a consumer e-invoice to the customer's bank."
+			}
+		]
+	}
+}

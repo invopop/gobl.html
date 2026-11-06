@@ -1,10 +1,14 @@
 {
 	"$schema": "https://gobl.org/draft-0/envelope",
 	"head": {
-		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
+		"uuid": "01a1ac94-b204-7bb0-947c-7405e2cb032b",
 		"dig": {
 			"alg": "sha256",
-			"val": "09485047202a748b9e5a0ba20e206dd540a83776134fadd27be5dd7eab118191"
+			"val": "38f8c6c382345cc3d169acf6ebe4698e625148282dd89fc81e6fb1d8b3576e80"
+		},
+		"meta": {
+			"description": "A regulated B2B invoice between two French parties, both registered in the Annuaire. The fr-ctc-flow2-v1 add-on drives validation for the PA e-invoicing flow.",
+			"title": "PA B2B invoice (domestic)"
 		},
 		"from": "iso6523-actorid-upis::0225:732829320",
 		"to": "iso6523-actorid-upis::0225:356000000"
@@ -16,17 +20,16 @@
 			"eu-en16931-v2017",
 			"fr-ctc-flow2-v1"
 		],
-		"uuid": "3aea7b56-59d8-4beb-90bd-f8f280d852a0",
+		"uuid": "01a1ac94-b204-7bb1-9eb6-c9a226b7e8bf",
 		"type": "standard",
 		"series": "FAC",
-		"code": "2024-001",
+		"code": "2024-00001",
 		"issue_date": "2024-06-13",
 		"currency": "EUR",
 		"tax": {
 			"rounding": "currency",
-			"point": "delivery",
 			"ext": {
-				"fr-ctc-billing-mode": "B7",
+				"fr-ctc-billing-mode": "S1",
 				"untdid-document-type": "380"
 			}
 		},
@@ -130,13 +133,6 @@
 			{
 				"i": 1,
 				"quantity": "10",
-				"identifier": {
-					"code": "SN-0000001",
-					"ext": {
-						"untdid-reference": "SE"
-					}
-				},
-				"order": "PO-LINE-1",
 				"item": {
 					"name": "Services de conseil",
 					"price": "100.00",

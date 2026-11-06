@@ -1,0 +1,148 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d5a-7afc-bdd7-050999e76516",
+		"dig": {
+			"alg": "sha256",
+			"val": "9353c28fceb967bc6f82112ff271de1ed35e08dafa84e1c32d30645e9601f9e9"
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=CO-0001\u0026fecha=29-05-2025\u0026importe=2178.00"
+			}
+		],
+		"meta": {
+			"title": "Corrective invoice (rectificativa por sustitución)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-verifactu-v1"
+		],
+		"uuid": "01a1ab50-6d5a-7b00-9dd5-2b8464395b52",
+		"type": "corrective",
+		"series": "CO",
+		"code": "0001",
+		"issue_date": "2025-05-29",
+		"currency": "EUR",
+		"preceding": [
+			{
+				"uuid": "3aea7b56-59d8-4beb-90bd-f8f280d852a0",
+				"type": "standard",
+				"issue_date": "2024-11-13",
+				"series": "SAMPLE",
+				"code": "004",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"ext": {
+										"es-verifactu-op-class": "S1",
+										"es-verifactu-regime": "01"
+									},
+									"base": "1800.00",
+									"percent": "21.0%",
+									"amount": "378.00"
+								}
+							],
+							"amount": "378.00"
+						}
+					],
+					"sum": "378.00"
+				}
+			}
+		],
+		"tax": {
+			"ext": {
+				"es-verifactu-correction-type": "S",
+				"es-verifactu-doc-type": "R1"
+			}
+		},
+		"supplier": {
+			"name": "Invopop S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			]
+		},
+		"customer": {
+			"name": "Sample Consumer",
+			"tax_id": {
+				"country": "ES",
+				"code": "B63272603"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Development services",
+					"price": "90.00",
+					"unit": "h"
+				},
+				"sum": "1800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"es-verifactu-op-class": "S1",
+							"es-verifactu-regime": "01"
+						}
+					}
+				],
+				"total": "1800.00"
+			}
+		],
+		"totals": {
+			"sum": "1800.00",
+			"total": "1800.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"es-verifactu-op-class": "S1",
+									"es-verifactu-regime": "01"
+								},
+								"base": "1800.00",
+								"percent": "21.0%",
+								"amount": "378.00"
+							}
+						],
+						"amount": "378.00"
+					}
+				],
+				"sum": "378.00"
+			},
+			"tax": "378.00",
+			"total_with_tax": "2178.00",
+			"payable": "2178.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NzgtNzAzYS1hMGQ1LThiMDI3YzAwMDM5YyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1YS03YWZjLWJkZDctMDUwOTk5ZTc2NTE2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjkzNTNjMjhmY2ViOTY3YmM2ZjgyMTEyZmYyNzFkZTFlZDM1ZTA4ZGFmYTg0ZTFjMzJkMzA2NDVlOTYwMWY5ZTkifSwiaWF0IjoxNzkzODk0Njg4fQ.lA8cHw-bQYhi_vX_5lvvqw0xTFU_FbuW-fzRBAxOZpS4ooZbo7FlTHO1lS4r5_IyHSi7KFktFbB6RU6vbjsapA"
+	]
+}

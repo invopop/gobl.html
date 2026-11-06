@@ -1,0 +1,157 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d25-7a25-a845-678d9b170217",
+		"dig": {
+			"alg": "sha256",
+			"val": "044420bfe251e514607fbd20abccb28174ab0945b56c29aea29e1bee5eccb0ee"
+		},
+		"meta": {
+			"description": "Until recently and outside specific international trade scenarios, Germany did not broadly apply a domestic zero VAT rate on typical goods like food, books, or medicines as some countries do. However, since 1 January 2023, Germany introduced a specific zero-rating rule in its VAT Act:",
+			"title": "Peppol Germany - B2B zero rated goods invoice"
+		},
+		"from": "iso6523-actorid-upis::9930:DE879558966",
+		"to": "iso6523-actorid-upis::9930:DE993930191"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "DE",
+		"$addons": [
+			"eu-en16931-v2017"
+		],
+		"uuid": "01a1ab50-6d25-7a29-bc7e-6078aaff463c",
+		"type": "standard",
+		"series": "INV",
+		"code": "PP000003",
+		"issue_date": "2025-04-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Rheinland Technologies GmbH",
+			"tax_id": {
+				"country": "DE",
+				"code": "879558966"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9930:DE879558966"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9930",
+					"code": "DE879558966"
+				}
+			],
+			"addresses": [
+				{
+					"num": "27",
+					"street": "Friedrichstraße",
+					"locality": "Berlin",
+					"region": "BE",
+					"code": "10117",
+					"country": "DE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "rechnungen@rheinlandtech.de"
+				}
+			]
+		},
+		"customer": {
+			"name": "Bavaria Solutions GmbH",
+			"tax_id": {
+				"country": "DE",
+				"code": "993930191"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9930:DE993930191"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9930",
+					"code": "DE993930191"
+				}
+			],
+			"addresses": [
+				{
+					"num": "15",
+					"street": "Marienplatz",
+					"locality": "München",
+					"region": "BY",
+					"code": "80331",
+					"country": "DE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "test@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Photovoltaic system",
+					"price": "1200.00",
+					"unit": "one"
+				},
+				"sum": "1200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "zero",
+						"percent": "0%",
+						"ext": {
+							"untdid-tax-category": "Z"
+						}
+					}
+				],
+				"total": "1200.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			}
+		},
+		"totals": {
+			"sum": "1200.00",
+			"total": "1200.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "zero",
+								"ext": {
+									"untdid-tax-category": "Z"
+								},
+								"base": "1200.00",
+								"percent": "0%",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "1200.00",
+			"payable": "1200.00"
+		}
+	}
+}

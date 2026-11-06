@@ -1,0 +1,502 @@
+{
+	"head": {
+		"meta": {
+			"title": "OIOUBL invoice with every feature",
+			"description": "CVR and GLN endpoints, customer contact with identity and email, 25% and zero-rated lines, excise duty codes on a line and a document charge, SEPA transfer and MobilePay, delivery, notes and attachments."
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "DK",
+		"$addons": [
+			"eu-en16931-v2017",
+			"dk-oioubl-v2"
+		],
+		"type": "standard",
+		"series": "FAK-2026",
+		"code": "00188",
+		"issue_date": "2026-08-14",
+		"issue_time": "09:15:40",
+		"currency": "DKK",
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Nordlys Software ApS",
+			"alias": "Nordlys",
+			"tax_id": {
+				"country": "DK",
+				"code": "16356700"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"type": "CVR",
+					"code": "16356700"
+				},
+				{
+					"label": "Leverandørnummer",
+					"code": "LEV-2210"
+				}
+			],
+			"people": [
+				{
+					"name": {
+						"given": "Mette",
+						"surname": "Kristensen"
+					},
+					"role": "Direktør",
+					"emails": [
+						{
+							"addr": "mette@nordlys.dk"
+						}
+					],
+					"telephones": [
+						{
+							"num": "+45 33 12 34 56"
+						}
+					]
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0184:16356700"
+				}
+			],
+			"addresses": [
+				{
+					"num": "24",
+					"street": "Vesterbrogade",
+					"street_extra": "2. sal",
+					"locality": "København V",
+					"region": "Hovedstaden",
+					"code": "1620",
+					"country": "DK"
+				}
+			],
+			"emails": [
+				{
+					"addr": "faktura@nordlys.dk"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+45 33 12 34 50"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://www.nordlys.dk"
+				}
+			],
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+				}
+			]
+		},
+		"customer": {
+			"name": "Helsingør Kommune",
+			"tax_id": {
+				"country": "DK",
+				"code": "12345674"
+			},
+			"identities": [
+				{
+					"label": "Kundenummer",
+					"code": "KD-0931"
+				}
+			],
+			"people": [
+				{
+					"name": {
+						"given": "Søren",
+						"surname": "Andersen"
+					},
+					"role": "Indkøber",
+					"identities": [
+						{
+							"label": "Personreference",
+							"code": "SA-4471"
+						}
+					],
+					"emails": [
+						{
+							"addr": "soren.andersen@helsingor.example"
+						}
+					]
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0088:5798009883735"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Fakturaadresse",
+					"po_box": "180",
+					"num": "10",
+					"street": "Stengade",
+					"locality": "Helsingør",
+					"region": "Hovedstaden",
+					"code": "3000",
+					"country": "DK"
+				}
+			],
+			"emails": [
+				{
+					"addr": "faktura@helsingor.example"
+				}
+			]
+		},
+		"lines": [
+			{
+				"quantity": "80",
+				"item": {
+					"ref": "KONS-SENIOR",
+					"name": "Senior konsulent",
+					"description": "Systemintegration for borgerportalen, august 2026",
+					"price": "1150.00",
+					"unit": "h"
+				},
+				"discounts": [
+					{
+						"key": "special-agreement",
+						"reason": "Rammeaftale rabat",
+						"percent": "8%"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "25",
+				"item": {
+					"ref": "LIC-STD",
+					"name": "Softwarelicens, standard",
+					"description": "Årlig licens pr. navngiven bruger",
+					"price": "1800.00",
+					"unit": "item"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "6",
+				"item": {
+					"ref": "HW-TABLET",
+					"name": "Tablet til sagsbehandling",
+					"description": "10.9\" tablet med beskyttelsescover og pen",
+					"identities": [
+						{
+							"type": "EAN",
+							"code": "5711724010095"
+						}
+					],
+					"price": "4995.00",
+					"unit": "piece"
+				},
+				"charges": [
+					{
+						"key": "handling",
+						"reason": "Klargøring og registrering",
+						"amount": "450.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "120",
+				"item": {
+					"ref": "KABEL-CAT6",
+					"name": "Netværkskabel Cat 6",
+					"price": "14.50",
+					"unit": "m"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "3",
+				"item": {
+					"ref": "KURSUS-DAG",
+					"name": "Kursusdag for sagsbehandlere",
+					"description": "Undervisning på kundens adresse, op til 15 deltagere",
+					"price": "12500.00",
+					"unit": "day"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "40",
+				"item": {
+					"ref": "KAFFE-GAVE",
+					"name": "Chokoladeæske til kursusdeltagere",
+					"price": "85.00",
+					"unit": "box"
+				},
+				"charges": [
+					{
+						"key": "excise",
+						"reason": "Chokolade- og sukkervarerafgift",
+						"amount": "272.00",
+						"ext": {
+							"dk-oioubl-duty-code": "16"
+						}
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "1",
+				"item": {
+					"ref": "PORTO",
+					"name": "Porto og forsendelse til udlandet",
+					"price": "640.00",
+					"unit": "service"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "zero"
+					}
+				]
+			}
+		],
+		"discounts": [
+			{
+				"key": "early-completion",
+				"reason": "Bonus for levering før tid",
+				"percent": "1.5%",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			}
+		],
+		"charges": [
+			{
+				"key": "delivery",
+				"reason": "Fragt til Helsingør",
+				"amount": "1250.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"key": "excise",
+				"reason": "Registreringsafgift af motorkøretøjer",
+				"amount": "18500.00",
+				"ext": {
+					"dk-oioubl-duty-code": "66"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "zero"
+					}
+				]
+			}
+		],
+		"ordering": {
+			"code": "EAN-5798009883735-2026-091",
+			"identities": [
+				{
+					"label": "Rekvisitionsnummer",
+					"code": "REK-2026-0912"
+				},
+				{
+					"label": "Kontostreng",
+					"code": "4120-5510-091"
+				}
+			],
+			"cost": "4120-5510",
+			"period": {
+				"label": "Leveringsperiode",
+				"start": "2026-08-01",
+				"end": "2026-08-31"
+			},
+			"purchases": [
+				{
+					"code": "5002701",
+					"issue_date": "2026-07-03"
+				}
+			],
+			"contracts": [
+				{
+					"code": "SKI-02.19-2025",
+					"issue_date": "2025-09-01",
+					"description": "SKI framework agreement, IT consultancy"
+				}
+			],
+			"receiving": [
+				{
+					"code": "MOD-2026-0344",
+					"issue_date": "2026-08-12"
+				}
+			],
+			"despatch": [
+				{
+					"code": "FS-2026-0781",
+					"issue_date": "2026-08-10"
+				}
+			],
+			"projects": [
+				{
+					"code": "BORGERPORTAL-2026"
+				}
+			]
+		},
+		"delivery": {
+			"receiver": {
+				"name": "Helsingør Kommune, IT-afdelingen",
+				"addresses": [
+					{
+						"num": "59",
+						"street": "Sct. Anna Gade",
+						"locality": "Helsingør",
+						"code": "3000",
+						"country": "DK"
+					}
+				]
+			},
+			"date": "2026-08-10",
+			"period": {
+				"start": "2026-08-01",
+				"end": "2026-08-31"
+			}
+		},
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-08-31",
+						"percent": "50%",
+						"notes": "Første rate"
+					},
+					{
+						"date": "2026-09-30",
+						"percent": "50%",
+						"notes": "Restbeløb"
+					}
+				],
+				"notes": "Betaling netto 30 dage. Ved for sen betaling tilskrives rente efter renteloven."
+			},
+			"advances": [
+				{
+					"date": "2026-07-15",
+					"key": "credit-transfer",
+					"ref": "ACONTO-2026-0188",
+					"description": "Acontobetaling ved ordrebekræftelse",
+					"percent": "25%"
+				}
+			],
+			"instructions": {
+				"key": "credit-transfer+sepa",
+				"ref": "FAK-2026-00188",
+				"detail": "Bankoverførsel, angiv venligst fakturanummer",
+				"credit_transfer": [
+					{
+						"iban": "DK50 0040 0440 1162 43",
+						"bic": "DABADKKK",
+						"name": "Nordlys Software ApS",
+						"label": "Danske Bank"
+					},
+					{
+						"iban": "DK36 3000 0012 3456 78",
+						"bic": "NDEADKKK",
+						"name": "Nordlys Software ApS",
+						"label": "Nordea"
+					}
+				],
+				"direct_debit": {
+					"ref": "BS-AFTALE-2025-0042",
+					"creditor": "DK98ZZZ99999999",
+					"account": "DK5000400440116243"
+				},
+				"online": [
+					{
+						"key": "mobilepay",
+						"label": "MobilePay",
+						"url": "https://pay.nordlys.example/FAK-2026-00188"
+					}
+				],
+				"notes": "Betal venligst med reference **FAK-2026-00188**.",
+				"ext": {
+					"untdid-payment-means": "58"
+				}
+			}
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Tak for ordren. Spørgsmål til fakturaen rettes til faktura@nordlys.dk."
+			},
+			{
+				"key": "delivery",
+				"text": "Tablets leveret til IT-afdelingen, Sct. Anna Gade 59, den 10. august 2026, følgeseddel FS-2026-0781."
+			},
+			{
+				"key": "legal",
+				"text": "Nordlys Software ApS · CVR 16356700 · Vesterbrogade 24, 1620 København V · Fakturaen er omfattet af OIOUBL 2.1 og sendt via NemHandel.",
+				"meta": {
+					"position": "footer"
+				}
+			}
+		],
+		"attachments": [
+			{
+				"code": "FS-2026-0781",
+				"name": "foelgeseddel-FS-2026-0781.pdf",
+				"description": "Signed delivery note",
+				"url": "https://files.nordlys.example/fs-2026-0781.pdf",
+				"mime": "application/pdf"
+			},
+			{
+				"code": "TIMER-2026-08",
+				"name": "timeregistrering-2026-08.pdf",
+				"description": "Timesheet for August 2026",
+				"url": "https://files.nordlys.example/timer-2026-08.pdf",
+				"mime": "application/pdf"
+			}
+		]
+	}
+}

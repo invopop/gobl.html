@@ -1,0 +1,247 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1aba4-8bdf-7416-b268-3f3627356c91",
+		"dig": {
+			"alg": "sha256",
+			"val": "9e14018cdd62f56486003849953b8ffc4e56fd63cd8c38699a252b72c82f02fc"
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B98602642\u0026numserie=AF-2025-0041\u0026fecha=28-10-2025\u0026importe=14576.87"
+			}
+		],
+		"meta": {
+			"description": "Issued by the customer on the supplier's behalf (issuer type D) under RD 1619/2012, with the regime's self-billing note.",
+			"title": "Self-billed VERI*FACTU invoice"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-verifactu-v1"
+		],
+		"$tags": [
+			"self-billed"
+		],
+		"uuid": "01a1aba4-8bdf-743d-baf0-b3750d58420d",
+		"type": "standard",
+		"series": "AF",
+		"code": "2025-0041",
+		"issue_date": "2025-10-28",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"es-verifactu-doc-type": "F1",
+				"es-verifactu-issuer-type": "D"
+			},
+			"notes": [
+				{
+					"key": "self-billed",
+					"text": "Facturación por el destinatario."
+				}
+			]
+		},
+		"supplier": {
+			"name": "Provide One S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B98602642"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Bilbao",
+					"region": "Vizcaya",
+					"code": "48001",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Distribuciones Norte S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"addresses": [
+				{
+					"num": "8",
+					"street": "Calle Alcalá",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28014",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "compras@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "120",
+				"item": {
+					"name": "Backend development",
+					"price": "85.00",
+					"unit": "h"
+				},
+				"sum": "10200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"es-verifactu-op-class": "S1",
+							"es-verifactu-regime": "01"
+						}
+					}
+				],
+				"total": "10200.00"
+			},
+			{
+				"i": 2,
+				"quantity": "16",
+				"item": {
+					"name": "Release coordination meetings",
+					"price": "70.00",
+					"unit": "h"
+				},
+				"sum": "1120.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"es-verifactu-op-class": "S1",
+							"es-verifactu-regime": "01"
+						}
+					}
+				],
+				"total": "1120.00"
+			},
+			{
+				"i": 3,
+				"quantity": "1",
+				"item": {
+					"name": "On-call support, October 2025",
+					"price": "450.00"
+				},
+				"sum": "450.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"es-verifactu-op-class": "S1",
+							"es-verifactu-regime": "01"
+						}
+					}
+				],
+				"total": "450.00"
+			},
+			{
+				"i": 4,
+				"quantity": "2",
+				"item": {
+					"name": "Travel to the Madrid office",
+					"price": "138.50",
+					"unit": "trip"
+				},
+				"sum": "277.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"es-verifactu-op-class": "S1",
+							"es-verifactu-regime": "01"
+						}
+					}
+				],
+				"total": "277.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2025-11-27",
+						"amount": "14576.87",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "ES91 2100 0418 4502 0005 1332",
+						"name": "Provide One S.L."
+					}
+				]
+			}
+		},
+		"totals": {
+			"sum": "12047.00",
+			"total": "12047.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"es-verifactu-op-class": "S1",
+									"es-verifactu-regime": "01"
+								},
+								"base": "12047.00",
+								"percent": "21.0%",
+								"amount": "2529.87"
+							}
+						],
+						"amount": "2529.87"
+					}
+				],
+				"sum": "2529.87"
+			},
+			"tax": "2529.87",
+			"total_with_tax": "14576.87",
+			"payable": "14576.87"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Factura emitida por el destinatario en nombre y por cuenta del proveedor, conforme al acuerdo de autofacturación firmado el 15 de enero de 2025 (art. 5 del Reglamento de facturación, RD 1619/2012)."
+			},
+			{
+				"key": "general",
+				"text": "Self-billed invoice: issued by the customer on behalf of the supplier under the self-billing agreement of 15 January 2025."
+			}
+		]
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc1LWU2ZjktN2I0Ni05NmNiLTAzYWRhMjQ3MDNkNSJ9.eyJ1dWlkIjoiMDFhMWFiYTQtOGJkZi03NDE2LWIyNjgtM2YzNjI3MzU2YzkxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjllMTQwMThjZGQ2MmY1NjQ4NjAwMzg0OTk1M2I4ZmZjNGU1NmZkNjNjZDhjMzg2OTlhMjUyYjcyYzgyZjAyZmMifSwiaWF0IjoxNzkzODk0NzcwfQ.GvBkD4T9_F8UTTPPmfcLa3SxZ7tt1ugP_Zoa9H1ZtXDVip9kFUivBsoFVkpvMnsFeSkKLcSsfGsK0GFR2toBbg"
+	]
+}

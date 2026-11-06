@@ -1,0 +1,202 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d37-72bf-91a1-0b6dce9364df",
+		"dig": {
+			"alg": "sha256",
+			"val": "a6d2daa65497bb6048095b1cf9f21b2899c466b5a54f06ccf604d9588f37890e"
+		},
+		"meta": {
+			"description": "An invoice addressed to a public administration via the FACe platform, including the three required DIR3 administrative centers.",
+			"title": "Facturae FACe Invoice (with Administrative Centers)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-facturae-v3"
+		],
+		"uuid": "01a1ab50-6d37-72c0-877a-40688c4e9d0a",
+		"type": "standard",
+		"code": "TEST01002F",
+		"issue_date": "2021-12-08",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"es-facturae-doc-type": "FC",
+				"es-facturae-invoice-class": "OO"
+			}
+		},
+		"supplier": {
+			"name": "Hypeprop Sl",
+			"alias": "Hypeprop",
+			"tax_id": {
+				"country": "ES",
+				"code": "B23103039"
+			},
+			"people": [
+				{
+					"name": {
+						"given": "Paloma",
+						"surname": "Araujo"
+					}
+				}
+			],
+			"addresses": [
+				{
+					"num": "74",
+					"street": "Campo Real",
+					"locality": "Torrejón De La Calzada",
+					"region": "Madrid",
+					"code": "28023",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "rxazy27xfc@iname.com"
+				}
+			],
+			"telephones": [
+				{
+					"label": "office",
+					"num": "+34910730028"
+				}
+			]
+		},
+		"customer": {
+			"name": "Ayuntamiento de Madrid",
+			"tax_id": {
+				"country": "ES",
+				"code": "P2807900B"
+			},
+			"identities": [
+				{
+					"scope": "tax",
+					"code": "L01280796"
+				}
+			],
+			"addresses": [
+				{
+					"num": "4",
+					"street": "Plaza de la Villa",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28005",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "facturacion@madrid.es"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Services rendered",
+					"price": "200.00"
+				},
+				"sum": "4000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "4000.00"
+			}
+		],
+		"ordering": {
+			"buyer": {
+				"name": "Departamento de Compras",
+				"identities": [
+					{
+						"code": "LA0007408"
+					}
+				],
+				"addresses": [
+					{
+						"num": "10",
+						"street": "Gran Vía",
+						"locality": "Madrid",
+						"region": "Madrid",
+						"code": "28013",
+						"country": "ES"
+					}
+				]
+			}
+		},
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2021-12-30",
+						"amount": "4840.00",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "ES25 0188 2570 7185 4470 4761",
+						"name": "Bankrandom"
+					}
+				]
+			}
+		},
+		"delivery": {
+			"receiver": {
+				"name": "Concejalía de Hacienda",
+				"identities": [
+					{
+						"code": "LA0007407"
+					}
+				],
+				"addresses": [
+					{
+						"num": "3",
+						"street": "Calle Alcalá",
+						"locality": "Madrid",
+						"region": "Madrid",
+						"code": "28014",
+						"country": "ES"
+					}
+				]
+			}
+		},
+		"totals": {
+			"sum": "4000.00",
+			"total": "4000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "4000.00",
+								"percent": "21.0%",
+								"amount": "840.00"
+							}
+						],
+						"amount": "840.00"
+					}
+				],
+				"sum": "840.00"
+			},
+			"tax": "840.00",
+			"total_with_tax": "4840.00",
+			"payable": "4840.00"
+		}
+	}
+}

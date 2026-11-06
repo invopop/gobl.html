@@ -1,0 +1,168 @@
+{
+	"head": {
+		"meta": {
+			"title": "SDI customer-issued integration (TD16)",
+			"description": "The customer integrates a reverse-charge invoice received from the supplier, issuer type CC."
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"it-sdi-v1"
+		],
+		"$tags": [
+			"self-billed",
+			"reverse-charge"
+		],
+		"type": "standard",
+		"series": "AF",
+		"code": "2025-0017",
+		"issue_date": "2025-10-30",
+		"currency": "EUR",
+		"supplier": {
+			"name": "Edilizia Rossi S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "12345678903"
+			},
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Viale della Libertà",
+					"locality": "Roma",
+					"region": "RM",
+					"code": "00100",
+					"country": "IT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "amministrazione@example.com"
+				}
+			],
+			"registration": {
+				"capital": "50000.00",
+				"currency": "EUR",
+				"office": "RM",
+				"entry": "123456"
+			},
+			"ext": {
+				"it-sdi-fiscal-regime": "RF01"
+			}
+		},
+		"customer": {
+			"name": "Costruzioni Leoni S.p.A.",
+			"tax_id": {
+				"country": "IT",
+				"code": "09876543217"
+			},
+			"inboxes": [
+				{
+					"key": "it-sdi-code",
+					"code": "ABCDEF1"
+				}
+			],
+			"addresses": [
+				{
+					"num": "32",
+					"street": "Viale dei Lavoratori",
+					"locality": "Firenze",
+					"region": "FI",
+					"code": "50100",
+					"country": "IT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "contabilita@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"quantity": "1",
+				"item": {
+					"name": "Demolizione tramezzi interni, piano terra",
+					"price": "4200.00"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "180",
+				"item": {
+					"name": "Posa cartongesso e rasatura",
+					"price": "32.00",
+					"unit": "m2"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "1",
+				"item": {
+					"name": "Impianto elettrico, adeguamento quadro",
+					"price": "2650.00"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "1",
+				"item": {
+					"name": "Smaltimento materiali di risulta",
+					"price": "480.00"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			}
+		],
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2025-11-29",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "IT60 X054 2811 1010 0000 0123 456",
+						"name": "Edilizia Rossi S.r.l."
+					}
+				]
+			}
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Documento di integrazione (TD16) emesso dal cessionario/committente per la fattura n. 2025/214 del 20 ottobre 2025 ricevuta in regime di inversione contabile per subappalto nel settore edile (art. 17, comma 6, lett. a) DPR 633/72)."
+			},
+			{
+				"key": "general",
+				"text": "Self-billed integration document issued by the customer for a domestic reverse-charge invoice received from the supplier (construction subcontracting)."
+			}
+		]
+	}
+}

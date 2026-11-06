@@ -1,0 +1,164 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6dcb-7962-adfb-982cd8822788",
+		"dig": {
+			"alg": "sha256",
+			"val": "1f7ebba34b2d14746eb410f1d171e161688f5858c6297c27519efa65dca62b12"
+		},
+		"stamps": [
+			{
+				"prv": "zatca-qr",
+				"val": "AS3Yp9mF2YrZitmF2YjYsyDYp9mE2LnYsdio2YrYqSDZhNmE2YHYudin2YTZitin2Kog2KfZhNiq2LHZgdmK2YfZitipAg8zMTE1ODgxMDcyMDAwMDMDEzIwMjUtMDktMjVUMDA6MDA6MDBaBAY5NDguNzUFBjEyMy43NQ=="
+			}
+		],
+		"meta": {
+			"description": "A self-billed invoice, where the customer issues the document on the supplier's behalf under a self-billing agreement.",
+			"title": "Standard self-billed invoice"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "SA",
+		"$addons": [
+			"eu-en16931-v2017",
+			"sa-zatca-v1"
+		],
+		"$tags": [
+			"self-billed"
+		],
+		"uuid": "3aea7b56-59d8-4beb-90bd-f8f280d853a1",
+		"type": "standard",
+		"code": "SAMPLE-SB-001",
+		"issue_date": "2024-06-15",
+		"issue_time": "12:00:00",
+		"currency": "SAR",
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"sa-zatca-invoice-type": "0100001",
+				"untdid-document-type": "388"
+			}
+		},
+		"supplier": {
+			"name": "Acme Corp Saudi",
+			"tax_id": {
+				"country": "SA",
+				"code": "312345678912343"
+			},
+			"identities": [
+				{
+					"type": "CRN",
+					"code": "1234567890"
+				}
+			],
+			"addresses": [
+				{
+					"num": "1234",
+					"street": "King Fahd Road",
+					"street_extra": "Al Olaya",
+					"locality": "Riyadh",
+					"region": "Riyadh",
+					"code": "12345",
+					"country": "SA"
+				}
+			]
+		},
+		"customer": {
+			"name": "Sample Consumer LLC",
+			"tax_id": {
+				"country": "SA",
+				"code": "399999999900003"
+			},
+			"identities": [
+				{
+					"type": "CRN",
+					"code": "123456789012345"
+				}
+			],
+			"addresses": [
+				{
+					"num": "5678",
+					"street": "Olaya Street",
+					"street_extra": "Al Malaz",
+					"locality": "Riyadh",
+					"region": "Riyadh",
+					"code": "54321",
+					"country": "SA"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Development services",
+					"price": "90.00",
+					"unit": "h"
+				},
+				"sum": "1800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "15.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "1800.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Payment due within 30 days"
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"ext": {
+					"untdid-payment-means": "30"
+				}
+			}
+		},
+		"delivery": {
+			"date": "2024-06-15",
+			"period": {
+				"start": "2024-06-01",
+				"end": "2024-06-30"
+			}
+		},
+		"totals": {
+			"sum": "1800.00",
+			"total": "1800.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "1800.00",
+								"percent": "15.0%",
+								"amount": "270.00"
+							}
+						],
+						"amount": "270.00"
+					}
+				],
+				"sum": "270.00"
+			},
+			"tax": "270.00",
+			"total_with_tax": "2070.00",
+			"payable": "2070.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc2LTI5NzUtNzliYy1iNzU0LTAxYzQzMjM3YzI1NSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRjYi03OTYyLWFkZmItOTgyY2Q4ODIyNzg4IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjFmN2ViYmEzNGIyZDE0NzQ2ZWI0MTBmMWQxNzFlMTYxNjg4ZjU4NThjNjI5N2MyNzUxOWVmYTY1ZGNhNjJiMTIifSwiaWF0IjoxNzkzODk0Nzg3fQ.TgyqxpsdJsle-QU-vNaOpERPMHltdSDMQ87RakIxnzZqg4E5xz2jcrijwCF5malbQMM6KX3K1QEARQKh3BhIHQ"
+	]
+}

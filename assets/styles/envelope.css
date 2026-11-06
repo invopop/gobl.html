@@ -18,11 +18,27 @@ body {
     color: #030712;
 }
 @media screen {
+    /* On screen the envelope fills the viewport and the footer sits at its
+     * bottom, as Prince places the print footer in the page margin. A
+     * viewer sized to whole pages, like the previewer, lands it where the
+     * PDF would. */
+    html {
+        height: 100%;
+    }
     body {
         margin: 10mm;
+        min-height: calc(100% - 20mm);
+        display: flex;
+        flex-direction: column;
+    }
+    article.envelope {
+        flex: 1 0 auto;
+        display: flex;
+        flex-direction: column;
     }
     footer.screen {
         display: block;
+        margin-top: auto;
     }
     footer.print {
         display: none;
