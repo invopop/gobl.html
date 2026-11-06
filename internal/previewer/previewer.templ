@@ -262,6 +262,8 @@ templ preview(entries []catalog.Entry) {
 				for _, e := range entries {
 					if e.Description != "" {
 						<span :class={ "selected === '" + e.File + "' && !bench ? '' : 'hidden'" }>{ e.Description }</span>
+					} else {
+						<span class="text-foreground-default-tertiary italic" :class={ "selected === '" + e.File + "' && !bench ? '' : 'hidden'" }>No description</span>
 					}
 				}
 			</div>
