@@ -4,6 +4,8 @@ package catalog
 
 import (
 	"context"
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -53,6 +55,9 @@ type Entry struct {
 	Title string `json:"title"`
 	// Description is what the example shows, from the head's meta.
 	Description string `json:"description,omitempty"`
+	// same identifies the rendered document: its digest and the stamps on
+	// it. Two examples with the same key render the same page.
+	same string
 	// Country is the lower-case tax country code of the document, if any.
 	Country string `json:"country,omitempty"`
 	// Kind is the document kind: invoice, credit-note, debit-note, proforma,
@@ -110,6 +115,79 @@ func Scan(ctx context.Context, dir string, render Renderer) (entries []Entry, er
 	return entries, errs
 }
 
+// sameKey identifies what an example renders: its document without the
+// UUIDs that make each copy unique, plus the stamps on it.
+func sameKey(env *gobl.Envelope) string {
+	if env.Document == nil {
+		return ""
+	}
+	data, err := json.Marshal(env.Document)
+	if err != nil {
+		return ""
+	}
+	var doc any
+	if err := json.Unmarshal(data, &doc); err != nil {
+		return ""
+	}
+	data, err = json.Marshal(withoutUUIDs(doc))
+	if err != nil {
+		return ""
+	}
+	sum := sha256.Sum256(data)
+	key := hex.EncodeToString(sum[:])
+	for _, st := range env.Head.Stamps {
+		key += " " + st.Provider.String()
+	}
+	return key
+}
+
+func withoutUUIDs(v any) any {
+	switch x := v.(type) {
+	case map[string]any:
+		delete(x, "uuid")
+		for k, v := range x {
+			x[k] = withoutUUIDs(v)
+		}
+	case []any:
+		for i, v := range x {
+			x[i] = withoutUUIDs(v)
+		}
+	}
+	return v
+}
+
+// Fold drops examples that render the same page as another: a state or
+// locale variant of a document that is also present on its own, or a copy
+// under a second name. The one kept is the plainest name, then the one
+// with a title, then the first. The variants stay on disk for the output
+// tests, which exercise those states; the previewer offers them as
+// options instead.
+func Fold(entries []Entry) []Entry {
+	best := map[string]int{} // key -> index into entries
+	rank := func(e Entry) int {
+		r := strings.Count(e.File, ".") * 10 // infixes push a name down
+		if e.Title == title(e.File) {
+			r++ // no title of its own
+		}
+		return r
+	}
+	for i, e := range entries {
+		if e.same == "" {
+			continue
+		}
+		if j, ok := best[e.same]; !ok || rank(e) < rank(entries[j]) {
+			best[e.same] = i
+		}
+	}
+	keep := make([]Entry, 0, len(entries))
+	for i, e := range entries {
+		if e.same == "" || best[e.same] == i {
+			keep = append(keep, e)
+		}
+	}
+	return keep
+}
+
 func describe(ctx context.Context, path string, render Renderer) (Entry, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
@@ -133,6 +211,7 @@ func describe(ctx context.Context, path string, render Renderer) (Entry, error) 
 			e.Title = t
 		}
 		e.Description = env.Head.Meta["description"]
+		e.same = sameKey(env)
 	}
 	if strings.Contains(name, ".hidden.") {
 		e.Hide = strings.Join(HiddenKeys, ",")

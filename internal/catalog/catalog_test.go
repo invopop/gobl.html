@@ -71,3 +71,17 @@ func TestScan(t *testing.T) {
 	assert.Equal(t, strings.Join(catalog.HiddenKeys, ","), hidden.Hide)
 	assert.Contains(t, hidden.Tags, "hidden")
 }
+
+func TestFold(t *testing.T) {
+	entries, errs := catalog.Scan(context.Background(), "../../examples", nil)
+	require.Empty(t, errs)
+	folded := catalog.Fold(entries)
+	files := map[string]bool{}
+	for _, e := range folded {
+		files[e.File] = true
+	}
+	assert.Less(t, len(folded), len(entries), "variants that render the same page fold away")
+	assert.True(t, files["es-verifactu-invoice-full.json"], "the plain name stays")
+	assert.False(t, files["es-verifactu-invoice-full.hidden.json"], "its hidden variant folds into it")
+	assert.True(t, files["es-tbai-invoice.json"] && files["es-verifactu-invoice.json"], "same document, different stamps: both stay")
+}
