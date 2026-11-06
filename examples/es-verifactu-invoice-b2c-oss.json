@@ -4,12 +4,12 @@
 		"uuid": "01a1ab50-6d58-7a44-8365-2fca396295b1",
 		"dig": {
 			"alg": "sha256",
-			"val": "b4b8d5c2a2f8e0711b674fa51493bfae0f8120fe9561d19ee89fe6e6cd3530b5"
+			"val": "0c260733e611057a99fef1e9c0456d9078ff5da0c43fa7a7210d670a26ad83fb"
 		},
 		"stamps": [
 			{
 				"prv": "verifactu-qr",
-				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-004\u0026fecha=13-11-2024\u0026importe=2178.00"
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-004\u0026fecha=13-11-2024\u0026importe=2142.00"
 			}
 		],
 		"meta": {
@@ -54,6 +54,23 @@
 				}
 			]
 		},
+		"customer": {
+			"name": "Anna Müller",
+			"addresses": [
+				{
+					"num": "12",
+					"street": "Rosenthaler Straße",
+					"locality": "Berlin",
+					"code": "10119",
+					"country": "DE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "anna.mueller@example.de"
+				}
+			]
+		},
 		"lines": [
 			{
 				"i": 1,
@@ -67,12 +84,13 @@
 				"taxes": [
 					{
 						"cat": "VAT",
+						"country": "DE",
 						"key": "standard",
 						"rate": "general",
-						"percent": "21.0%",
+						"percent": "19%",
 						"ext": {
-							"es-verifactu-op-class": "S1",
-							"es-verifactu-regime": "01"
+							"es-verifactu-op-class": "N2",
+							"es-verifactu-regime": "17"
 						}
 					}
 				],
@@ -88,33 +106,34 @@
 						"code": "VAT",
 						"rates": [
 							{
+								"country": "DE",
 								"key": "standard",
 								"ext": {
-									"es-verifactu-op-class": "S1",
-									"es-verifactu-regime": "01"
+									"es-verifactu-op-class": "N2",
+									"es-verifactu-regime": "17"
 								},
 								"base": "1800.00",
-								"percent": "21.0%",
-								"amount": "378.00"
+								"percent": "19%",
+								"amount": "342.00"
 							}
 						],
-						"amount": "378.00"
+						"amount": "342.00"
 					}
 				],
-				"sum": "378.00"
+				"sum": "342.00"
 			},
-			"tax": "378.00",
-			"total_with_tax": "2178.00",
-			"payable": "2178.00"
+			"tax": "342.00",
+			"total_with_tax": "2142.00",
+			"payable": "2142.00"
 		},
 		"notes": [
 			{
 				"key": "general",
-				"text": "This is a sample invoice with a standard tax"
+				"text": "Distance sale to a consumer in Germany under the EU One Stop Shop (OSS) scheme: VAT is charged at the German rate and declared through the Spanish OSS return."
 			}
 		]
 	},
 	"sigs": [
-		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NzQtNzY3NC1iODE3LWRjMDJjZGNiNGM4YiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1OC03YTQ0LTgzNjUtMmZjYTM5NjI5NWIxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImI0YjhkNWMyYTJmOGUwNzExYjY3NGZhNTE0OTNiZmFlMGY4MTIwZmU5NTYxZDE5ZWU4OWZlNmU2Y2QzNTMwYjUifSwiaWF0IjoxNzkzODk0Njg4fQ.pMjfedyp90GBrnerl1A5yhkbe9nMRIq1-OEPIFftA7pIsCFqdh2gIXRKqtwbfj_CHxkZU4ikfDnh3NbWmEnV3Q"
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFiMDc0LTFiODgtN2Q0YS1iZTk5LTAxZTdiNDE3YzVhOCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1OC03YTQ0LTgzNjUtMmZjYTM5NjI5NWIxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjBjMjYwNzMzZTYxMTA1N2E5OWZlZjFlOWMwNDU2ZDkwNzhmZjVkYTBjNDNmYTdhNzIxMGQ2NzBhMjZhZDgzZmIifSwiaWF0IjoxNzkzOTYxNzYxfQ.Pfyn1ECFezPrTkYf8uJhCP3Yn1-r56fd_F7cv_1_u7kMDWf91YbntnkuuAclPRJVuW3nMaOJ0VA78449HhEjMw"
 	]
 }

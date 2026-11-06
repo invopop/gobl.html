@@ -4,7 +4,7 @@
 		"uuid": "01a1ab50-6d48-7115-a1b2-c1a6fc0df81e",
 		"dig": {
 			"alg": "sha256",
-			"val": "72bbbd1c1c2641cc10a8d298f4edae3de4f28f08792190f8f39c9169725a561b"
+			"val": "0228e16c89fcb8ca30f7dc9acb3992d05c4f7803a45404cc0e48308ba7d1e165"
 		},
 		"meta": {
 			"description": "One-Stop-Shop (OSS) invoices are used for B2C distance sales of goods and services to consumers in other EU member states when the supplier is registered under the OSS scheme.",
@@ -23,7 +23,7 @@
 		"uuid": "01a1ab50-6d48-7116-aacf-679df1696bfd",
 		"type": "standard",
 		"series": "SAMPLE",
-		"issue_date": "2026-07-08",
+		"issue_date": "2026-11-06",
 		"currency": "EUR",
 		"tax": {
 			"ext": {
@@ -52,6 +52,23 @@
 				}
 			]
 		},
+		"customer": {
+			"name": "Anna Müller",
+			"addresses": [
+				{
+					"num": "12",
+					"street": "Rosenthaler Straße",
+					"locality": "Berlin",
+					"code": "10119",
+					"country": "DE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "anna.mueller@example.de"
+				}
+			]
+		},
 		"lines": [
 			{
 				"i": 1,
@@ -65,11 +82,13 @@
 				"taxes": [
 					{
 						"cat": "VAT",
+						"country": "DE",
 						"key": "standard",
 						"rate": "general",
-						"percent": "21.0%",
+						"percent": "19%",
 						"ext": {
-							"es-sii-regime": "01"
+							"es-sii-outside-scope": "location",
+							"es-sii-regime": "17"
 						}
 					}
 				],
@@ -85,28 +104,30 @@
 						"code": "VAT",
 						"rates": [
 							{
+								"country": "DE",
 								"key": "standard",
 								"ext": {
-									"es-sii-regime": "01"
+									"es-sii-outside-scope": "location",
+									"es-sii-regime": "17"
 								},
 								"base": "1800.00",
-								"percent": "21.0%",
-								"amount": "378.00"
+								"percent": "19%",
+								"amount": "342.00"
 							}
 						],
-						"amount": "378.00"
+						"amount": "342.00"
 					}
 				],
-				"sum": "378.00"
+				"sum": "342.00"
 			},
-			"tax": "378.00",
-			"total_with_tax": "2178.00",
-			"payable": "2178.00"
+			"tax": "342.00",
+			"total_with_tax": "2142.00",
+			"payable": "2142.00"
 		},
 		"notes": [
 			{
 				"key": "general",
-				"text": "This is a sample invoice with a standard tax"
+				"text": "Distance sale to a consumer in Germany under the EU One Stop Shop (OSS) scheme: VAT is charged at the German rate and declared through the Spanish OSS return."
 			}
 		]
 	}
