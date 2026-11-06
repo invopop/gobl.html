@@ -663,6 +663,7 @@ section.notes .note {
 }
 .limited-height small {
     color: #6b7280;
+    display: inline-block;
 }
 
 /* used to ensure certain elements don't break to the next line */
