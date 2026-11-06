@@ -312,18 +312,32 @@ templ options() {
 					@popui.Input(props.Input{Label: "Watermark", Attributes: templ.Attributes{"x-model": "params.watermark"}})
 					@popui.Input(props.Input{Label: "Hide", Placeholder: "notes,footer.branding", Attributes: templ.Attributes{"x-model": "params.hide"}})
 				</div>
-				@popui.Textarea(props.Textarea{
-					Label:       "Snippets",
-					Placeholder: `[{"at": "payment.instructions", "mode": "after", "html": "<a href=\"{{ .PaymentLink }}\">Pay {{ .TotalDue }}</a>"}]`,
-					Rows:        6,
-					Monospace:   true,
-					Attributes:  templ.Attributes{"x-model": "params.snippets", "title": "JSON array of {at, mode, html}; the html is a template over the document's variables, such as {{ .PaymentLink }}"},
-				})
 				@popui.OptionGroup() {
 					@popui.Checkbox(props.Checkbox{Variant: props.CheckboxVariantSwitch, Name: "void", Label: "Void", Attributes: templ.Attributes{"x-model": "params.void"}})
 					@popui.Checkbox(props.Checkbox{Variant: props.CheckboxVariantSwitch, Name: "sandbox", Label: "Sandbox", Attributes: templ.Attributes{"x-model": "params.sandbox"}})
 					@popui.Checkbox(props.Checkbox{Variant: props.CheckboxVariantSwitch, Name: "adjustment", Label: "Adjustment mode", Description: "Render credit and debit notes as adjustments", Attributes: templ.Attributes{"x-model": "params.adjustment_mode"}})
 				}
+			}
+			@popui.Fieldset(props.Fieldset{Legend: "Snippet", Variant: props.FieldsetVariantCard}) {
+				<div class="grid grid-cols-2 gap-3">
+					@popui.Select(props.Select{
+						Label:      "At",
+						Options:    SnippetKeyOptions(),
+						Attributes: templ.Attributes{"x-model": "snippet.at", "title": "Anchor the snippet is placed at"},
+					})
+					@popui.Select(props.Select{
+						Label:      "Mode",
+						Options:    SnippetModeOptions(),
+						Attributes: templ.Attributes{"x-model": "snippet.mode", "title": "Placement relative to the anchor"},
+					})
+				</div>
+				@popui.Textarea(props.Textarea{
+					Label:       "HTML",
+					Placeholder: `<a href="{{ .PaymentLink }}">Pay {{ .TotalDue }}</a>`,
+					Rows:        5,
+					Monospace:   true,
+					Attributes:  templ.Attributes{"x-model": "snippet.html", "title": "Trusted HTML, as a Go template over the document's variables, such as {{ .PaymentLink }}, {{ .TotalDue }} or {{ .Number }}. Empty removes the snippet."},
+				})
 			}
 			@popui.Fieldset(props.Fieldset{Legend: "Paper", Variant: props.FieldsetVariantCard}) {
 				@popui.Select(props.Select{

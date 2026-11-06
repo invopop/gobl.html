@@ -21,6 +21,15 @@ function previewer() {
   // example, and "default" falls back to each example's own.
   const PER_EXAMPLE = ["void", "sandbox", "adjustment_mode", "hide", "snippets"];
   let shown = 0; // generation of the latest show() call
+  // parseSnippets reads the JSON list in params.snippets, or none.
+  const parseSnippets = (src) => {
+    try {
+      const list = JSON.parse(src || "[]");
+      return Array.isArray(list) ? list : [];
+    } catch {
+      return [];
+    }
+  };
   const median = (xs) => {
     const s = [...xs].sort((a, b) => a - b);
     return s.length ? s[Math.floor(s.length / 2)] : 0;
@@ -35,6 +44,10 @@ function previewer() {
     q: "",
     selected: null,
     params: { locale: "", layout: "", label: "", watermark: "", date_format: "", hide: "", snippets: "", void: false, sandbox: false, adjustment_mode: false },
+    // snippet is the one snippet the options form edits; params.snippets
+    // holds the JSON the renderer receives, which an example may fill
+    // with several.
+    snippet: { at: "payment.instructions", mode: "after", html: "" },
     window: "",
     zoom: "fit",
     margins: false,
@@ -60,6 +73,7 @@ function previewer() {
       this.ensureSelected();
       this.$watch("q", () => this.filtersChanged());
       this.$watch("params", () => this.show());
+      this.$watch("snippet", () => this.snippetChanged());
       new ResizeObserver(() => this.fitPaper()).observe(this.$refs.canvas);
       document.addEventListener("keydown", (ev) => this.keydown(ev));
       this.show();
@@ -239,6 +253,33 @@ function previewer() {
       if (e && e.locale && !this.params.locale) p.locale = e.locale;
       return p;
     },
+    // ---- Snippet form ------------------------------------------------
+    // snippetChanged sends the form's snippet as the list, or none when
+    // its HTML is empty. Alpine runs watchers after the change, so a flag
+    // cannot tell a fill from a keystroke; instead the form only clears a
+    // list of at most one snippet, its own, and a set of several an
+    // example brought stays until the form holds something to replace it.
+    snippetChanged() {
+      const sn = this.snippet;
+      const next = sn.html.trim() ? JSON.stringify([{ at: sn.at, mode: sn.mode, html: sn.html }]) : "";
+      const cur = parseSnippets(this.params.snippets);
+      if (next ? JSON.stringify(cur) === next : cur.length === 0) return;
+      if (!next && cur.length > 1) return;
+      this.params.snippets = next;
+    },
+    // snippetFromParams fills the form from params.snippets when it holds
+    // exactly one snippet; otherwise the form starts empty.
+    snippetFromParams() {
+      const list = parseSnippets(this.params.snippets);
+      if (list.length === 1 && list[0] && typeof list[0] === "object") {
+        const sn = list[0];
+        this.snippet.at = sn.at ?? this.snippet.at;
+        this.snippet.mode = sn.mode ?? this.snippet.mode;
+        this.snippet.html = sn.html ?? "";
+      } else {
+        this.snippet.html = "";
+      }
+    },
     serverURL(file, ext, p = this.requestParams()) {
       return "/" + file.replace(/\.json$/, "." + ext) + "?" + new URLSearchParams(p);
     },
@@ -257,6 +298,7 @@ function previewer() {
         // persistent ones (layout, label, …) carry over.
         const p = this.entryParams(e);
         for (const k of PER_EXAMPLE) this.params[k] = p[k] ?? (typeof this.params[k] === "boolean" ? false : "");
+        this.snippetFromParams();
         this.lastShown = e.file;
       }
       const p = this.requestParams();
