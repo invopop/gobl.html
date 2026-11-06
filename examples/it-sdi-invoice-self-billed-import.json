@@ -1,0 +1,114 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "0195a1c2-7d4e-7a10-9b3c-5e6f7a8b9c01",
+		"dig": {
+			"alg": "sha256",
+			"val": "6d85ad54e186aba5805c1c988ee2c731fbf7a77c3878f404c529b284ee21436a"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"it-sdi-v1"
+		],
+		"$tags": [
+			"self-billed",
+			"import"
+		],
+		"uuid": "0195a1c2-7d4e-7a10-9b3c-5e6f7a8b9c02",
+		"type": "standard",
+		"series": "AUTO",
+		"code": "017",
+		"issue_date": "2026-10-12",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"it-sdi-document-type": "TD17",
+				"it-sdi-format": "FPR12",
+				"it-sdi-issuer-type": "CC"
+			}
+		},
+		"supplier": {
+			"name": "Provide One GmbH",
+			"tax_id": {
+				"country": "DE",
+				"code": "111111125"
+			},
+			"addresses": [
+				{
+					"num": "16",
+					"street": "Dietmar-Hopp-Allee",
+					"locality": "Walldorf",
+					"code": "69190",
+					"country": "DE"
+				}
+			],
+			"ext": {
+				"it-sdi-fiscal-regime": "RF18"
+			}
+		},
+		"customer": {
+			"name": "Mela S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "12345678903"
+			},
+			"addresses": [
+				{
+					"num": "23",
+					"street": "Via dei Mille",
+					"locality": "Firenze",
+					"region": "FI",
+					"code": "50100",
+					"country": "IT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Software subscription, October 2026",
+					"price": "1000.00"
+				},
+				"sum": "1000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "22.0%"
+					}
+				],
+				"total": "1000.00"
+			}
+		],
+		"totals": {
+			"sum": "1000.00",
+			"total": "1000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "1000.00",
+								"percent": "22.0%",
+								"amount": "220.00"
+							}
+						],
+						"amount": "220.00"
+					}
+				],
+				"sum": "220.00"
+			},
+			"tax": "220.00",
+			"total_with_tax": "1220.00",
+			"payable": "1220.00"
+		}
+	}
+}

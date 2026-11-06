@@ -11,6 +11,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
 	goblhtml "github.com/invopop/gobl.html"
 	"github.com/invopop/gobl.html/internal/catalog"
@@ -101,17 +102,8 @@ func convertExample(name string) ([]byte, error) {
 	if strings.Contains(name, ".hidden.") {
 		opts = append(opts, goblhtml.WithHide(catalog.HiddenKeys...))
 	}
-	if strings.Contains(name, ".es.") {
-		opts = append(opts, goblhtml.WithLocale("es"))
-	}
-	if strings.Contains(name, ".fr.") {
-		opts = append(opts, goblhtml.WithLocale("fr"))
-	}
-	if strings.Contains(name, ".pl.") {
-		opts = append(opts, goblhtml.WithLocale("pl"))
-	}
-	if strings.Contains(name, ".ro.") {
-		opts = append(opts, goblhtml.WithLocale("ro"))
+	if l := catalog.LocaleFromName(name); l != "" {
+		opts = append(opts, goblhtml.WithLocale(i18n.Code(l)))
 	}
 
 	ctx := context.Background()
