@@ -1,0 +1,20 @@
+/*
+ * Typefaces used by every document. Both are variable fonts covering the
+ * full weight range, licensed under the SIL Open Font License (see the
+ * LICENSE files alongside). When assets are embedded the url() values are
+ * replaced with data URIs, so a rendered document needs no network access.
+ */
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url(InterVariable.woff2) format("woff2");
+}
+@font-face {
+    font-family: "Geist Mono";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url(GeistMonoVariable.woff2) format("woff2");
+}
