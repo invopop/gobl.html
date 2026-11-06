@@ -228,22 +228,15 @@ func Title(s string) string {
 // the main sheet shows the results laid out like a GOBL document.
 templ preview(entries []catalog.Entry) {
 	<div class="flex-1 min-w-0 flex flex-col">
-		// The header: title, then file name and render stats, then the
-		// description on the left; the links and the tags on the right. Every
-		// example's file name and tags are rendered and the current one shown,
-		// so the tags keep PopUI's styling.
-		<div class="px-4 py-2 flex items-start gap-4 border-b border-border bg-background shrink-0">
-			<div class="min-w-0 flex-1 flex flex-col gap-0.5">
-				<span class="font-medium truncate" x-text="currentTitle()"></span>
+		// The header keeps three fixed rows so the layout never shifts between
+		// examples: title with the links, one line of description, one line
+		// of tags. Every example's description and tags are rendered and the
+		// current one shown, so the tags keep PopUI's styling.
+		<div class="px-4 py-2 flex flex-col gap-1 border-b border-border bg-background shrink-0">
+			<div class="h-7 flex items-center gap-4">
+				<span class="font-medium truncate min-w-0 flex-1" x-text="currentTitle()"></span>
 				<span class="text-sm text-foreground-critical truncate" x-show="error" x-text="error"></span>
-				for _, e := range entries {
-					if e.Description != "" {
-						<span class="text-sm text-foreground-default-secondary" :class={ "selected === '" + e.File + "' && !bench ? '' : 'hidden'" }>{ e.Description }</span>
-					}
-				}
-			</div>
-			<div class="shrink-0 flex flex-col items-end gap-1.5 max-w-[50%]">
-				<span class="flex items-center gap-1">
+				<span class="shrink-0 flex items-center gap-1">
 					<template x-if="bench && !running">
 						@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Attributes: templ.Attributes{"@click": "closeBenchmark()"}}) {
 							@icons.ArrowLeft()
@@ -264,8 +257,17 @@ templ preview(entries []catalog.Entry) {
 						</span>
 					</template>
 				</span>
+			</div>
+			<div class="h-5 text-sm text-foreground-default-secondary truncate">
 				for _, e := range entries {
-					<span class="flex flex-wrap justify-end gap-1" :class={ "selected === '" + e.File + "' && !bench ? '' : 'hidden'" }>
+					if e.Description != "" {
+						<span :class={ "selected === '" + e.File + "' && !bench ? '' : 'hidden'" }>{ e.Description }</span>
+					}
+				}
+			</div>
+			<div class="h-6 overflow-hidden">
+				for _, e := range entries {
+					<span class="flex items-center gap-1 whitespace-nowrap" :class={ "selected === '" + e.File + "' && !bench ? '' : 'hidden'" }>
 						@popui.TagStatus(props.TagStatus{Label: KindLabel(e.Kind), Status: KindStatus(e.Kind)})
 						for _, a := range e.Addons {
 							@popui.TagStatus(props.TagStatus{Label: a, Status: "steelBlue"})
