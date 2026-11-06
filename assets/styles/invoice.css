@@ -659,6 +659,10 @@ section.notes .note {
     max-height: 80vh;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 1.3;
+}
+.limited-height small {
+    color: #6b7280;
 }
 
 /* used to ensure certain elements don't break to the next line */
