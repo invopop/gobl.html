@@ -4,7 +4,7 @@
 		"uuid": "2b4f1c3e-b9e1-11f1-9f2a-92000739e901",
 		"dig": {
 			"alg": "sha256",
-			"val": "8948accd6815e9340649d2da8b90668f28ba6ff7e64d0b5f2afa280513833627"
+			"val": "fe014c0e1cb13359c2c71ee0d63330b84a8c0bbc555c9d34411e092ca07dcee2"
 		}
 	},
 	"doc": {
@@ -90,7 +90,7 @@
 		],
 		"payment": {
 			"terms": {
-				"notes": "Plata in 30 de zile"
+				"notes": "Plata în 30 de zile"
 			}
 		},
 		"totals": {
