@@ -1,19 +1,22 @@
 module github.com/invopop/gobl.html
 
-go 1.26.0
+go 1.26.2
 
 require (
 	github.com/a-h/templ v0.3.1001
 	github.com/go-resty/resty/v2 v2.16.5
 	github.com/invopop/ctxi18n v0.9.0
-	github.com/invopop/gobl v0.508.0
+	github.com/invopop/gobl v0.512.0
 	github.com/invopop/gobl.ar.arca v0.0.3
 	github.com/invopop/gobl.co.dian v0.0.3
 	github.com/invopop/gobl.dev v0.507.3
+	github.com/invopop/gobl.es.verifactu v0.41.0
+	github.com/invopop/gobl.fr.ctc v0.0.18
 	github.com/invopop/gobl.it.sdi v0.81.0
 	github.com/invopop/gobl.mx.cfdi v0.64.0
 	github.com/invopop/gobl.pl.ksef v0.45.0
 	github.com/invopop/gobl.pt.saft v0.0.8
+	github.com/invopop/gobl.ro.anaf v0.7.0
 	github.com/invopop/gobl.sa.zatca v0.0.4
 	github.com/invopop/princepdf v0.0.0-20240408123340-585be3cab91a
 	github.com/labstack/echo/v4 v4.16.3
@@ -44,7 +47,6 @@ require (
 	github.com/invopop/gobl.br.nfse v0.0.2 // indirect
 	github.com/invopop/gobl.dk.oioubl v0.0.9 // indirect
 	github.com/invopop/gobl.fi.finvoice v0.0.2 // indirect
-	github.com/invopop/gobl.fr.ctc v0.0.8 // indirect
 	github.com/invopop/jsonschema v0.14.0 // indirect
 	github.com/invopop/yaml v0.3.1 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
