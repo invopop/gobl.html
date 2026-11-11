@@ -117,7 +117,7 @@ they are the `hide` list and the `snippets` array:
 | `payment.instructions.bank-data` | Credit transfer details |
 | `payment.instructions.online` | Online payment links; a replacement also drops their QR codes |
 | `payment.terms` | Payment terms and due dates |
-| `notes` | The document's notes; a replacement keeps the regime's tax notes |
+| `notes` | The document's notes; hiding or replacing them keeps the regime's tax notes |
 | `footer.branding` | GOBL logo in the footer |
 
 The keys apply to every document kind that has the section: an order's
@@ -140,16 +140,17 @@ A snippet names an anchor key, a mode and the HTML to place:
 - `before` and `after` render the snippet on either side of the section,
   even when the section is hidden or has no content for this document, in
   the order given. They sit outside the element `hide` removes, so hiding
-  `notes` keeps the snippets around it. `payment.instructions` and
-  `payment.terms` get their payment section created for them when the
-  document has none.
+  `notes` keeps the snippets around it. The `payment` anchors inside the
+  section get the payment section, and for `bank-data` and `online` the
+  instructions list, created for them when the document has none.
 - `replace` renders the snippet instead of the section's own content.
   Nothing inside the section is rendered, not even snippets anchored to keys
   within it. At most one replacement per anchor.
 
 Each snippet is wrapped as `<div class="snippet snippet-<mode>"
 data-at="<key>">`, or `<li>` at the anchors inside a list (ordering,
-bank data, online). The title repeats in the running header of later pages
+bank data, online), and `<span>` at `header.title.badges`, which sits inside
+the title heading, so a snippet there should be inline markup. The title repeats in the running header of later pages
 and the footer has a print and a screen variant, so a snippet anchored
 there renders once per copy. `lines.sublines` repeats per line and has no
 anchor.

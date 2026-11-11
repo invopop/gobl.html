@@ -39,18 +39,19 @@ templ notes(notes []*org.Note) {
 // notesSection renders the notes of a document at the "notes" anchor: the
 // fixed notes always, the regular notes where a snippet can replace them.
 // An invoice's tax notes are fixed, as they carry the regime's legal
-// mentions. Snippets before and after the anchor sit outside the section,
-// so they stay when WithHide hides it.
+// mentions, and are marked "fixed" so hiding "notes" leaves them, and the
+// section around them, in place. Snippets before and after the anchor sit
+// outside the section, so they stay when WithHide hides it.
 templ notesSection(fixed, notes []*org.Note) {
 	@utils.Before(display.KeyNotes)
 	if len(fixed) > 0 || showNotes(ctx, notes) {
-		<section class="notes">
+		<section class={ "notes", templ.KV("fixed", len(fixed) > 0) }>
 			@t.Scope(".notes") {
 				<h2>
 					@t.T(".title")
 				</h2>
 				for _, n := range fixed {
-					@note(n)
+					@noteWithClass(n, "note fixed")
 				}
 				@utils.Replaceable(display.KeyNotes) {
 					for _, n := range notes {
@@ -81,7 +82,11 @@ templ lineNotes(notes []*org.Note) {
 }
 
 templ note(note *org.Note) {
-	<div class="note">
+	@noteWithClass(note, "note")
+}
+
+templ noteWithClass(note *org.Note, class string) {
+	<div class={ class }>
 		@templ.Raw(renderNote(note))
 	</div>
 }

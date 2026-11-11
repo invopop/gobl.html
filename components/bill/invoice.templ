@@ -76,7 +76,7 @@ templ title(env *gobl.Envelope, doc internal.Document) {
 				{ " " }
 				<h2 class="code">
 					@titleCode(doc)
-					@utils.Section(display.KeyHeaderTitleBadges) {
+					@utils.InlineSection(display.KeyHeaderTitleBadges) {
 						@titleBadges(env, doc)
 					}
 				</h2>

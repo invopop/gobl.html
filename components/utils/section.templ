@@ -12,7 +12,7 @@ import (
 // key render even when the children are empty for this document, or
 // hidden with WithHide.
 templ Section(key display.Key) {
-	@section(key, false) {
+	@section(key, wrapBlock) {
 		{ children... }
 	}
 }
@@ -20,54 +20,73 @@ templ Section(key display.Key) {
 // ListSection is Section for anchors inside a list, where the snippets
 // are wrapped in list items so the markup stays valid.
 templ ListSection(key display.Key) {
-	@section(key, true) {
+	@section(key, wrapItem) {
 		{ children... }
 	}
 }
 
-templ section(key display.Key, item bool) {
-	@before(key, item)
-	@replaceable(key, item) {
+// InlineSection is Section for anchors inside phrasing content, such as a
+// heading, where the snippets are wrapped in spans so the markup stays
+// valid.
+templ InlineSection(key display.Key) {
+	@section(key, wrapInline) {
 		{ children... }
 	}
-	@after(key, item)
+}
+
+// wrap is the element a snippet is wrapped in, which depends on where its
+// anchor sits.
+type wrap int
+
+const (
+	wrapBlock wrap = iota
+	wrapItem
+	wrapInline
+)
+
+templ section(key display.Key, w wrap) {
+	@before(key, w)
+	@replaceable(key, w) {
+		{ children... }
+	}
+	@after(key, w)
 }
 
 // Before renders the snippets placed before the key, on their own, for a
 // section whose container must stay between the snippets and the
 // replaceable content.
 templ Before(key display.Key) {
-	@before(key, false)
+	@before(key, wrapBlock)
 }
 
 // After renders the snippets placed after the key, on their own.
 templ After(key display.Key) {
-	@after(key, false)
+	@after(key, wrapBlock)
 }
 
 // Replaceable renders the replacement snippet at the key, or the children
 // when there is none, without the before and after snippets.
 templ Replaceable(key display.Key) {
-	@replaceable(key, false) {
+	@replaceable(key, wrapBlock) {
 		{ children... }
 	}
 }
 
-templ before(key display.Key, item bool) {
+templ before(key display.Key, w wrap) {
 	for _, h := range internal.Snippets(ctx).Before(key) {
-		@snippet(key, display.ModeBefore, h, item)
+		@snippet(key, display.ModeBefore, h, w)
 	}
 }
 
-templ after(key display.Key, item bool) {
+templ after(key display.Key, w wrap) {
 	for _, h := range internal.Snippets(ctx).After(key) {
-		@snippet(key, display.ModeAfter, h, item)
+		@snippet(key, display.ModeAfter, h, w)
 	}
 }
 
-templ replaceable(key display.Key, item bool) {
+templ replaceable(key display.Key, w wrap) {
 	if h, ok := internal.Snippets(ctx).Replacement(key); ok {
-		@snippet(key, display.ModeReplace, h, item)
+		@snippet(key, display.ModeReplace, h, w)
 	} else {
 		{ children... }
 	}
@@ -75,14 +94,19 @@ templ replaceable(key display.Key, item bool) {
 
 // snippet writes one rendered snippet. The HTML is trusted, with its
 // variables already escaped by the display package.
-templ snippet(key display.Key, mode display.Mode, html string, item bool) {
-	if item {
-		<li class={ "snippet", "snippet-" + string(mode) } data-at={ string(key) }>
-			@templ.Raw(html)
-		</li>
-	} else {
-		<div class={ "snippet", "snippet-" + string(mode) } data-at={ string(key) }>
-			@templ.Raw(html)
-		</div>
+templ snippet(key display.Key, mode display.Mode, html string, w wrap) {
+	switch w {
+		case wrapItem:
+			<li class={ "snippet", "snippet-" + string(mode) } data-at={ string(key) }>
+				@templ.Raw(html)
+			</li>
+		case wrapInline:
+			<span class={ "snippet", "snippet-" + string(mode) } data-at={ string(key) }>
+				@templ.Raw(html)
+			</span>
+		default:
+			<div class={ "snippet", "snippet-" + string(mode) } data-at={ string(key) }>
+				@templ.Raw(html)
+			</div>
 	}
 }

@@ -53,6 +53,10 @@ func wrappedItem(mode display.Mode, key display.Key, html string) string {
 	return `<li class="snippet snippet-` + string(mode) + `" data-at="` + string(key) + `">` + html + `</li>`
 }
 
+func wrappedInline(mode display.Mode, key display.Key, html string) string {
+	return `<span class="snippet snippet-` + string(mode) + `" data-at="` + string(key) + `">` + html + `</span>`
+}
+
 // TestSnippetAnchors places a before and an after snippet at every anchor
 // on a document that has native content there, and checks they land on
 // either side of it.
@@ -63,9 +67,10 @@ func TestSnippetAnchors(t *testing.T) {
 		marker  string // native content between the two snippets
 		opts    []goblhtml.Option
 		item    bool
+		inline  bool
 	}{
 		{key: display.KeyHeaderLogo, example: snippetsFullExample, marker: `class="alias"`},
-		{key: display.KeyHeaderTitleBadges, example: snippetsFullExample, marker: "BADGE-MARKER", opts: []goblhtml.Option{goblhtml.WithLabel("BADGE-MARKER")}},
+		{key: display.KeyHeaderTitleBadges, example: snippetsFullExample, marker: "BADGE-MARKER", opts: []goblhtml.Option{goblhtml.WithLabel("BADGE-MARKER")}, inline: true},
 		{key: display.KeyHeaderSummaryOrdering, example: snippetsFullExample, marker: `class="ordering-code"`, item: true},
 		{key: display.KeyHeaderContactsDelivery, example: snippetsDeliveryExample, marker: `class="receiver"`},
 		{key: display.KeyTaxes, example: snippetsFullExample, marker: taxesMarker},
@@ -103,8 +108,11 @@ func TestSnippetAnchors(t *testing.T) {
 				{At: tt.key, Mode: display.ModeBefore, HTML: "<b>before-marker</b>"},
 			}, tt.opts...)
 			wrap := wrapped
-			if tt.item {
+			switch {
+			case tt.item:
 				wrap = wrappedItem
+			case tt.inline:
+				wrap = wrappedInline
 			}
 			before := strings.Index(out, wrap(display.ModeBefore, tt.key, "<b>before-marker</b>"))
 			native := strings.Index(out, tt.marker)
@@ -165,9 +173,9 @@ func TestSnippetsAtHiddenNotesStayVisible(t *testing.T) {
 		{At: display.KeyNotes, Mode: display.ModeBefore, HTML: "<p>notes-before</p>"},
 		{At: display.KeyNotes, Mode: display.ModeAfter, HTML: "<p>notes-after</p>"},
 	}, goblhtml.WithHide("notes"))
-	assert.Contains(t, out, `section.notes { display: none !important; }`)
+	assert.Contains(t, out, `section.notes:not(.fixed), section.notes .note:not(.fixed), section.notes .snippet-replace { display: none !important; }`)
 	before := strings.Index(out, wrapped(display.ModeBefore, display.KeyNotes, "<p>notes-before</p>"))
-	section := strings.Index(out, `<section class="notes">`)
+	section := strings.Index(out, `<section class="notes`)
 	end := strings.Index(out, `</section>`+wrapped(display.ModeAfter, display.KeyNotes, "<p>notes-after</p>"))
 	require.True(t, before >= 0 && section >= 0 && end >= 0, "before %d, section %d, after %d", before, section, end)
 	assert.True(t, before < section && section < end, "the snippets sit outside the hidden section")
@@ -185,6 +193,32 @@ func TestSnippetReplaceWithoutNativeContent(t *testing.T) {
 	assert.Contains(t, out, wrapped(display.ModeReplace, display.KeyPayment, "<p>Pay via portal</p>"))
 	assert.Contains(t, out, `<section class="notes">`)
 	assert.Contains(t, out, wrapped(display.ModeReplace, display.KeyNotes, "<p>Custom notes</p>"))
+}
+
+func TestHiddenNotesKeepTaxNotes(t *testing.T) {
+	env := loadSnippetsExample(t, snippetsFullExample)
+	inv := env.Extract().(*bill.Invoice)
+	require.NotNil(t, inv.Tax)
+	require.NotEmpty(t, inv.Notes)
+	inv.Tax.Notes = append(inv.Tax.Notes, &tax.Note{Text: "Tax note marker"})
+	out := renderSnippets(t, env, nil, goblhtml.WithHide("notes"))
+	// The rule hides the regular notes, and the section only when it has
+	// no tax notes; the tax notes are marked so the rule leaves them.
+	assert.Contains(t, out, `<section class="notes fixed">`)
+	assert.Contains(t, out, `<div class="note fixed"><p>Tax note marker</p>`)
+	assert.Contains(t, out, `section.notes:not(.fixed), section.notes .note:not(.fixed)`)
+}
+
+func TestSnippetsInsideEmptyPaymentList(t *testing.T) {
+	env := loadSnippetsExample(t, snippetsDeliveryExample)
+	require.Nil(t, env.Extract().(*bill.Invoice).Payment)
+	out := renderSnippets(t, env, display.Snippets{
+		{At: display.KeyPaymentBankData, Mode: display.ModeBefore, HTML: "IBAN ES00"},
+		{At: display.KeyPaymentOnline, Mode: display.ModeReplace, HTML: "pay online"},
+	})
+	assert.Contains(t, out, `<section class="payment">`)
+	assert.Contains(t, out, `<ul class="instructions">`+wrappedItem(display.ModeBefore, display.KeyPaymentBankData, "IBAN ES00"))
+	assert.Contains(t, out, wrappedItem(display.ModeReplace, display.KeyPaymentOnline, "pay online"))
 }
 
 func TestSnippetsInsideEmptyPayment(t *testing.T) {
@@ -288,6 +322,8 @@ func TestSnippetVariables(t *testing.T) {
 	t.Run("non-invoice documents fill the shared variables", func(t *testing.T) {
 		ord := loadSnippetsExample(t, "pt-at-order-full.json")
 		out := renderSnippets(t, ord, s)
+		// Portuguese numbers join with a slash, as in the title.
+		assert.Contains(t, out, "<li>number=NE SERIES-A/123</li>")
 		assert.Contains(t, out, "<li>supplier=")
 		assert.Contains(t, out, "<li>payable=</li>")
 		assert.Contains(t, out, "<li>due=</li>")
@@ -399,7 +435,7 @@ func TestSnippetsKeepTaxNotes(t *testing.T) {
 	out := renderSnippets(t, env, display.Snippets{
 		{At: display.KeyNotes, Mode: display.ModeReplace, HTML: "<p>replaced</p>"},
 	})
-	assert.Contains(t, out, `<section class="notes">`)
+	assert.Contains(t, out, `<section class="notes fixed">`)
 	assert.Contains(t, out, "Tax note marker")
 	assert.Contains(t, out, wrapped(display.ModeReplace, display.KeyNotes, "<p>replaced</p>"))
 	assert.NotContains(t, out, inv.Notes[0].Text)

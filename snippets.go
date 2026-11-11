@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/invopop/gobl"
+	htmlbill "github.com/invopop/gobl.html/components/bill"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl.html/internal"
@@ -22,7 +23,7 @@ func snippetVars(ctx context.Context, env *gobl.Envelope) *display.Vars {
 	v := &display.Vars{
 		Code:     doc.GetCode().String(),
 		Series:   doc.GetSeries().String(),
-		Number:   doc.GetSeries().Join(doc.GetCode()).String(),
+		Number:   htmlbill.DocumentNumber(doc),
 		Currency: doc.GetCurrency().String(),
 	}
 	if d := doc.GetIssueDate(); !d.IsZero() {

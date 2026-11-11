@@ -56,8 +56,8 @@ templ paymentSection(payment *bill.PaymentDetails, totals *bill.Totals) {
 					}
 					@utils.Section(display.KeyPaymentInstructions) {
 						{{ qrs := paymentOnlineQRCodes(ctx, paymentInstructionsOf(payment), totals) }}
-						if payment != nil && payment.Instructions != nil {
-							@paymentInstructions(payment.Instructions, qrs)
+						if inst := paymentInstructionsList(ctx, payment); inst != nil {
+							@paymentInstructions(inst, qrs)
 						}
 						@paymentOnlineQRs(qrs)
 					}
@@ -73,6 +73,26 @@ func paymentInstructionsOf(payment *bill.PaymentDetails) *pay.Instructions {
 		return nil
 	}
 	return payment.Instructions
+}
+
+// paymentInstructionsList provides the instructions to list, or an empty
+// set when the document has none but a snippet sits at an anchor inside
+// the list, so that snippet has a list to go in.
+func paymentInstructionsList(ctx context.Context, payment *bill.PaymentDetails) *pay.Instructions {
+	if inst := paymentInstructionsOf(payment); inst != nil {
+		return inst
+	}
+	if paymentListSnippets(ctx) {
+		return new(pay.Instructions)
+	}
+	return nil
+}
+
+// paymentListSnippets returns true when a snippet sits at one of the
+// anchors inside the payment instructions list.
+func paymentListSnippets(ctx context.Context) bool {
+	s := internal.Snippets(ctx)
+	return s.Has(display.KeyPaymentBankData) || s.Has(display.KeyPaymentOnline)
 }
 
 // paymentOnlineQRs adds a column with a QR code and a button for each online
@@ -450,10 +470,10 @@ func displayDueDates(terms *pay.Terms, totals *bill.Totals) []*pay.DueDate {
 }
 
 // showPayments determines if the payment section has something to show:
-// payment terms or instructions, or snippets anchored inside it.
+// payment terms or instructions, or snippets anchored anywhere inside it.
 func showPayments(ctx context.Context, payment *bill.PaymentDetails) bool {
 	s := internal.Snippets(ctx)
-	if s.Has(display.KeyPaymentTerms) || s.Has(display.KeyPaymentInstructions) {
+	if s.Has(display.KeyPaymentTerms) || s.Has(display.KeyPaymentInstructions) || paymentListSnippets(ctx) {
 		return true
 	}
 	if payment == nil {
