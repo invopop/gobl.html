@@ -1,0 +1,382 @@
+// Package catalog describes the example documents so the previewer can filter
+// them by country, document kind, addon and content.
+package catalog
+
+import (
+	"context"
+	"crypto/sha256"
+	"encoding/hex"
+	"encoding/json"
+	"fmt"
+	"os"
+	"path/filepath"
+	"regexp"
+	"slices"
+	"strings"
+
+	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/locales"
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/cbc"
+	"github.com/invopop/gobl/currency"
+	"github.com/invopop/gobl/note"
+	"github.com/invopop/gobl/org"
+	"github.com/invopop/gobl/tax"
+)
+
+// LocaleFromName returns the locale an example's file name implies with a
+// ".<code>." segment, such as "ro-efactura-invoice.ro.json", for any of the
+// shipped locales, or "" when the name implies none.
+func LocaleFromName(name string) string {
+	for _, l := range locales.Codes() {
+		if strings.Contains(name, "."+l+".") {
+			return l
+		}
+	}
+	return ""
+}
+
+// HiddenKeys are the sections an example whose name contains ".hidden."
+// is rendered without, on every path that renders the examples: the output
+// tests, the development server, the previewer and the WebAssembly test.
+var HiddenKeys = []string{
+	"header.summary.ordering",
+	"payment.instructions.bank-data",
+	"notes",
+	"footer.branding",
+}
+
+// Entry describes one example file.
+type Entry struct {
+	// File is the example's file name, such as "es-verifactu-invoice.json".
+	File string `json:"file"`
+	// Title is the example's name: the envelope head's meta title when the
+	// source gave one, else derived from the file name.
+	Title string `json:"title"`
+	// Description is what the example shows, from the head's meta.
+	Description string `json:"description,omitempty"`
+	// same identifies the rendered document: its digest and the stamps on
+	// it. Two examples with the same key render the same page.
+	same string
+	// Country is the lower-case tax country code of the document, if any.
+	Country string `json:"country,omitempty"`
+	// Kind is the document kind: invoice, credit-note, debit-note, proforma,
+	// corrective, order, delivery, payment, party or message.
+	Kind string `json:"kind"`
+	// Addons lists the tax addons the document declares.
+	Addons []string `json:"addons,omitempty"`
+	// Tags describe notable content: the document's own GOBL tags (simplified,
+	// self-billed, reverse-charge, b2g, export…), then qr, payment-terms, payment-instructions,
+	// advances, logo, discounts, charges, delivery, notes, attachments,
+	// preceding, prices-include, currency (a currency other than the
+	// regime's own, or exchange rates), multipage,
+	// and the states void, sandbox and adjustment.
+	Tags []string `json:"tags,omitempty"`
+	// Currency is the document currency, if any.
+	Currency string `json:"currency,omitempty"`
+	// Supplier is the supplier's name, if any.
+	Supplier string `json:"supplier,omitempty"`
+	// Lines is the number of lines in the document.
+	Lines int `json:"lines,omitempty"`
+	// Locale is the rendering locale the example name implies, if any.
+	Locale string `json:"locale,omitempty"`
+	// Hide lists, separated by commas, the sections a ".hidden." example
+	// name hides; see HiddenKeys.
+	Hide string `json:"hide,omitempty"`
+	// Void, Sandbox and AdjustmentMode are the states the example name implies.
+	Void           bool `json:"void,omitempty"`
+	Sandbox        bool `json:"sandbox,omitempty"`
+	AdjustmentMode bool `json:"adjustment_mode,omitempty"`
+}
+
+// Renderer produces the HTML for an envelope; it lets the scan detect content
+// that only shows up when rendered, such as QR codes.
+type Renderer func(ctx context.Context, env *gobl.Envelope) ([]byte, error)
+
+// qrMarker matches the class names the regime components use for QR codes.
+var qrMarker = regexp.MustCompile(`class="[^"]*\bqr\b`)
+
+// Scan reads every *.json file in dir and describes it. Files that fail to
+// parse are skipped with their error reported in errs.
+func Scan(ctx context.Context, dir string, render Renderer) (entries []Entry, errs []error) {
+	matches, err := filepath.Glob(filepath.Join(dir, "*.json"))
+	if err != nil {
+		return nil, []error{err}
+	}
+	slices.Sort(matches)
+	for _, path := range matches {
+		e, err := describe(ctx, path, render)
+		if err != nil {
+			errs = append(errs, fmt.Errorf("%s: %w", filepath.Base(path), err))
+			continue
+		}
+		entries = append(entries, e)
+	}
+	return entries, errs
+}
+
+// sameKey identifies what an example renders: its document without the
+// UUIDs that make each copy unique, plus the stamps on it.
+func sameKey(env *gobl.Envelope) string {
+	if env.Document == nil {
+		return ""
+	}
+	data, err := json.Marshal(env.Document)
+	if err != nil {
+		return ""
+	}
+	var doc any
+	if err := json.Unmarshal(data, &doc); err != nil {
+		return ""
+	}
+	data, err = json.Marshal(withoutUUIDs(doc))
+	if err != nil {
+		return ""
+	}
+	sum := sha256.Sum256(data)
+	key := hex.EncodeToString(sum[:])
+	for _, st := range env.Head.Stamps {
+		key += " " + st.Provider.String()
+	}
+	return key
+}
+
+func withoutUUIDs(v any) any {
+	switch x := v.(type) {
+	case map[string]any:
+		delete(x, "uuid")
+		for k, v := range x {
+			x[k] = withoutUUIDs(v)
+		}
+	case []any:
+		for i, v := range x {
+			x[i] = withoutUUIDs(v)
+		}
+	}
+	return v
+}
+
+// Fold drops examples that render the same page as another: a state or
+// locale variant of a document that is also present on its own, or a copy
+// under a second name. The one kept is the plainest name, then the one
+// with a title, then the first. The variants stay on disk for the output
+// tests, which exercise those states; the previewer offers them as
+// options instead.
+func Fold(entries []Entry) []Entry {
+	best := map[string]int{} // key -> index into entries
+	rank := func(e Entry) int {
+		r := strings.Count(e.File, ".") * 10 // infixes push a name down
+		if e.Title == title(e.File) {
+			r++ // no title of its own
+		}
+		return r
+	}
+	for i, e := range entries {
+		if e.same == "" {
+			continue
+		}
+		if j, ok := best[e.same]; !ok || rank(e) < rank(entries[j]) {
+			best[e.same] = i
+		}
+	}
+	keep := make([]Entry, 0, len(entries))
+	for i, e := range entries {
+		if e.same == "" || best[e.same] == i {
+			keep = append(keep, e)
+		}
+	}
+	return keep
+}
+
+func describe(ctx context.Context, path string, render Renderer) (Entry, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return Entry{}, err
+	}
+	env := new(gobl.Envelope)
+	if err := json.Unmarshal(data, env); err != nil {
+		return Entry{}, err
+	}
+
+	name := filepath.Base(path)
+	e := Entry{
+		File:           name,
+		Title:          title(name),
+		Void:           strings.Contains(name, ".void."),
+		Sandbox:        strings.Contains(name, ".sandbox."),
+		AdjustmentMode: strings.Contains(name, ".adjustment."),
+	}
+	if env.Head != nil {
+		if t := env.Head.Meta["title"]; t != "" {
+			e.Title = t
+		}
+		e.Description = env.Head.Meta["description"]
+		e.same = sameKey(env)
+	}
+	if strings.Contains(name, ".hidden.") {
+		e.Hide = strings.Join(HiddenKeys, ",")
+	}
+	e.Locale = LocaleFromName(name)
+
+	var tags []string
+	add := func(cond bool, tag string) {
+		if cond {
+			tags = append(tags, tag)
+		}
+	}
+
+	switch doc := env.Extract().(type) {
+	case *bill.Invoice:
+		e.Kind = kindForInvoice(doc.Type)
+		e.Country = country(doc.Regime)
+		e.Addons = addons(doc.Addons)
+		e.Currency = doc.Currency.String()
+		e.Supplier = partyName(doc.Supplier)
+		e.Lines = len(doc.Lines)
+		for _, t := range doc.GetTags() {
+			add(true, t.String()) // the document's own tags: simplified, self-billed, reverse-charge, b2g…
+		}
+		paymentTags(add, doc.Payment)
+		add(hasLogo(doc.Supplier), "logo")
+		add(len(doc.Discounts) > 0, "discounts")
+		add(len(doc.Charges) > 0, "charges")
+		add(doc.Delivery != nil, "delivery")
+		add(len(doc.Notes) > 0, "notes")
+		add(len(doc.Attachments) > 0, "attachments")
+		add(len(doc.Preceding) > 0, "preceding")
+		add(doc.Tax != nil && doc.Tax.PricesInclude != "", "prices-include")
+		add(currencySensitive(doc.Regime, doc.Currency, len(doc.ExchangeRates)), "currency")
+	case *bill.Order:
+		e.Kind = "order"
+		e.Country = country(doc.Regime)
+		e.Addons = addons(doc.Addons)
+		e.Currency = doc.Currency.String()
+		e.Supplier = partyName(doc.Supplier)
+		e.Lines = len(doc.Lines)
+		add(hasLogo(doc.Supplier), "logo")
+		paymentTags(add, doc.Payment)
+		add(doc.Delivery != nil, "delivery")
+		add(len(doc.Notes) > 0, "notes")
+		add(currencySensitive(doc.Regime, doc.Currency, len(doc.ExchangeRates)), "currency")
+	case *bill.Delivery:
+		e.Kind = "delivery"
+		e.Country = country(doc.Regime)
+		e.Addons = addons(doc.Addons)
+		e.Currency = doc.Currency.String()
+		e.Supplier = partyName(doc.Supplier)
+		e.Lines = len(doc.Lines)
+		add(hasLogo(doc.Supplier), "logo")
+		add(len(doc.Notes) > 0, "notes")
+		add(currencySensitive(doc.Regime, doc.Currency, len(doc.ExchangeRates)), "currency")
+	case *bill.Payment:
+		e.Kind = "payment"
+		e.Country = country(doc.Regime)
+		e.Addons = addons(doc.Addons)
+		e.Currency = doc.Currency.String()
+		e.Supplier = partyName(doc.Supplier)
+		e.Lines = len(doc.Lines)
+		add(hasLogo(doc.Supplier), "logo")
+		add(len(doc.Notes) > 0, "notes")
+		add(currencySensitive(doc.Regime, doc.Currency, len(doc.ExchangeRates)), "currency")
+	case *org.Party:
+		e.Kind = "party"
+		if doc.TaxID != nil {
+			e.Country = strings.ToLower(doc.TaxID.Country.String())
+		}
+		e.Supplier = doc.Name
+		add(hasLogo(doc), "logo")
+	case *note.Message:
+		e.Kind = "message"
+	default:
+		e.Kind = "unknown"
+	}
+
+	add(strings.Contains(name, "multipage"), "multipage")
+	add(e.Void, "void")
+	add(e.Sandbox, "sandbox")
+	add(e.AdjustmentMode, "adjustment")
+	add(e.Hide != "", "hidden")
+
+	if render != nil {
+		out, err := render(ctx, env)
+		if err != nil {
+			return Entry{}, fmt.Errorf("rendering: %w", err)
+		}
+		add(qrMarker.Match(out), "qr")
+	}
+
+	slices.Sort(tags)
+	e.Tags = tags
+	return e, nil
+}
+
+func kindForInvoice(t cbc.Key) string {
+	switch t {
+	case bill.InvoiceTypeCreditNote, bill.InvoiceTypeDebitNote, bill.InvoiceTypeProforma, bill.InvoiceTypeCorrective:
+		return t.String()
+	default:
+		return "invoice"
+	}
+}
+
+// paymentTags tells apart the ways a document talks about payment: the
+// terms (due dates, notes), the instructions (bank details, cards, online
+// links) and advances already received.
+func paymentTags(add func(bool, string), p *bill.PaymentDetails) {
+	if p == nil {
+		return
+	}
+	add(p.Terms != nil, "payment-terms")
+	add(p.Instructions != nil, "payment-instructions")
+	add(len(p.Advances) > 0, "advances")
+}
+
+// currencySensitive reports whether currency handling matters for the
+// document: it is issued in a currency other than the regime's own, or it
+// carries exchange rates.
+func currencySensitive(r tax.Regime, cur currency.Code, rates int) bool {
+	if rates > 0 {
+		return true
+	}
+	def := r.RegimeDef()
+	return def != nil && cur != "" && def.GetCurrency() != cur
+}
+
+func country(r tax.Regime) string {
+	return strings.ToLower(r.Country.String())
+}
+
+func addons(a tax.Addons) []string {
+	keys := a.GetAddons()
+	out := make([]string, 0, len(keys))
+	for _, k := range keys {
+		out = append(out, k.String())
+	}
+	return out
+}
+
+func partyName(p *org.Party) string {
+	if p == nil {
+		return ""
+	}
+	return p.Name
+}
+
+func hasLogo(p *org.Party) bool {
+	return p != nil && len(p.Logos) > 0
+}
+
+// title turns "es-verifactu-invoice-tax-included.adjustment.es.json" into
+// "verifactu invoice tax included", dropping the country prefix and the
+// state suffixes, which are shown separately.
+func title(name string) string {
+	base := strings.TrimSuffix(name, ".json")
+	if i := strings.IndexByte(base, '.'); i > 0 {
+		base = base[:i]
+	}
+	parts := strings.Split(base, "-")
+	if len(parts) > 1 && len(parts[0]) == 2 {
+		parts = parts[1:]
+	}
+	return strings.Join(parts, " ")
+}

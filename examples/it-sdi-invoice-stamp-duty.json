@@ -1,0 +1,164 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d99-74a3-8bae-d0f2804e6aa1",
+		"dig": {
+			"alg": "sha256",
+			"val": "cfb91eb314716ac74aedf2fa0d217829cf65fab02617ebb6a3166fe6afc73169"
+		},
+		"meta": {
+			"description": "This example matches the **B2B invoice** above but adds a **€2.00 Marca da bollo** (stamp duty) as a document-level charge.",
+			"title": "Stamp Duty Invoice (Marca da Bollo)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"it-sdi-v1"
+		],
+		"uuid": "01a1ab50-6d99-74a7-9ff7-9661e2289170",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "002",
+		"issue_date": "2023-05-21",
+		"currency": "EUR",
+		"tax": {
+			"prices_include": "VAT",
+			"ext": {
+				"it-sdi-document-type": "TD01",
+				"it-sdi-format": "FPR12"
+			}
+		},
+		"supplier": {
+			"name": "Hotel California",
+			"tax_id": {
+				"country": "IT",
+				"code": "12345678903"
+			},
+			"addresses": [
+				{
+					"num": "102",
+					"street": "Via California",
+					"locality": "Palermo",
+					"region": "PA",
+					"code": "33213",
+					"country": "IT"
+				}
+			],
+			"registration": {
+				"capital": "50000.00",
+				"currency": "EUR",
+				"office": "RM",
+				"entry": "123456"
+			},
+			"ext": {
+				"it-sdi-fiscal-regime": "RF01"
+			}
+		},
+		"customer": {
+			"name": "Mela S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "13029381004"
+			},
+			"inboxes": [
+				{
+					"key": "it-sdi-code",
+					"code": "M5UXCR5"
+				}
+			],
+			"addresses": [
+				{
+					"num": "23",
+					"street": "Via dei Mille",
+					"locality": "Firenze",
+					"region": "FI",
+					"code": "00100",
+					"country": "IT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Tassa di Soggiorno",
+					"price": "1.00"
+				},
+				"sum": "1.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "exempt",
+						"ext": {
+							"it-sdi-exempt": "N4"
+						}
+					}
+				],
+				"total": "1.00"
+			},
+			{
+				"i": 2,
+				"quantity": "1",
+				"item": {
+					"name": "Camera Matrimoniale",
+					"price": "125.00"
+				},
+				"sum": "125.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "intermediate",
+						"percent": "10.0%"
+					}
+				],
+				"total": "125.00"
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"key": "stamp-duty",
+				"reason": "Imposta di bollo",
+				"amount": "2.00"
+			}
+		],
+		"totals": {
+			"sum": "126.00",
+			"charge": "2.00",
+			"tax_included": "11.36",
+			"total": "116.64",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "exempt",
+								"ext": {
+									"it-sdi-exempt": "N4"
+								},
+								"base": "1.00",
+								"amount": "0.00"
+							},
+							{
+								"key": "standard",
+								"base": "113.64",
+								"percent": "10.0%",
+								"amount": "11.36"
+							}
+						],
+						"amount": "11.36"
+					}
+				],
+				"sum": "11.36"
+			},
+			"tax": "11.36",
+			"total_with_tax": "128.00",
+			"payable": "128.00"
+		}
+	}
+}

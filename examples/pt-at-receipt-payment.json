@@ -1,0 +1,132 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6dd3-7562-a305-ea23a4a3dc83",
+		"dig": {
+			"alg": "sha256",
+			"val": "e6b1d8d2fece18db57cba480334f4536b4d41d6762e7e379baea0d3af4f80db8"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a payment receipt from a Portuguese supplier to another Portuguese business.",
+			"title": "AT payment receipt"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/payment",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"uuid": "01a1ab50-6dd3-7563-af30-977d50e35898",
+		"type": "receipt",
+		"series": "RG SERIES-A",
+		"code": "0001",
+		"issue_date": "2024-12-23",
+		"currency": "EUR",
+		"ext": {
+			"pt-saft-payment-type": "RG",
+			"pt-saft-source": "P"
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "770013813"
+			},
+			"addresses": [
+				{
+					"street": "Rua das Flores 200 3º Esquerdo",
+					"locality": "Porto",
+					"code": "4050-265",
+					"country": "PT"
+				}
+			],
+			"registration": {
+				"capital": "100000.00",
+				"office": "Porto"
+			}
+		},
+		"customer": {
+			"name": "Gusto Unipessoal Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Avenida da Liberdade 152 2º Direito",
+					"locality": "Lisboa",
+					"code": "1250-146",
+					"country": "PT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "gusto@example.com"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://gusto.example.com"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+351912345678"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"document": {
+					"issue_date": "2024-12-23",
+					"series": "FT SERIES-A",
+					"code": "1",
+					"description": "Invoice 1"
+				},
+				"amount": "61.50",
+				"tax": {
+					"categories": [
+						{
+							"code": "VAT",
+							"rates": [
+								{
+									"key": "standard",
+									"ext": {
+										"pt-region": "PT",
+										"pt-saft-tax-rate": "NOR"
+									},
+									"base": "50.00",
+									"percent": "23.0%",
+									"amount": "11.50"
+								}
+							],
+							"amount": "11.50"
+						}
+					],
+					"sum": "11.50"
+				}
+			}
+		],
+		"methods": [
+			{
+				"key": "cash",
+				"description": "Cash portion",
+				"amount": "30.00",
+				"ext": {
+					"pt-saft-payment-means": "NU"
+				}
+			},
+			{
+				"key": "card",
+				"description": "Card portion",
+				"amount": "31.50",
+				"ext": {
+					"pt-saft-payment-means": "CC"
+				}
+			}
+		],
+		"total": "61.50"
+	}
+}

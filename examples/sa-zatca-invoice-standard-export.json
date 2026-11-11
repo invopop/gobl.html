@@ -1,0 +1,169 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6dc7-7bbb-9647-98e13585c3e3",
+		"dig": {
+			"alg": "sha256",
+			"val": "8c3ea633c43c16b11d847a28acf1d06c88f25bb024c0af94169416a58a41ba01"
+		},
+		"stamps": [
+			{
+				"prv": "zatca-qr",
+				"val": "AS3Yp9mF2YrZitmF2YjYsyDYp9mE2LnYsdio2YrYqSDZhNmE2YHYudin2YTZitin2Kog2KfZhNiq2LHZgdmK2YfZitipAg8zMTE1ODgxMDcyMDAwMDMDEzIwMjUtMDktMjVUMDA6MDA6MDBaBAY5NDguNzUFBjEyMy43NQ=="
+			}
+		],
+		"meta": {
+			"description": "An export to a customer outside the GCC, taxed at the zero rate. Exports carry an exemption reason and are reported with the export tag.",
+			"title": "Standard export invoice"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "SA",
+		"$addons": [
+			"eu-en16931-v2017",
+			"sa-zatca-v1"
+		],
+		"$tags": [
+			"export"
+		],
+		"uuid": "3aea7b56-59d8-4beb-90bd-f8f280d852d0",
+		"type": "standard",
+		"code": "SAMPLE-EX-001",
+		"issue_date": "2022-02-01",
+		"issue_time": "12:00:00",
+		"currency": "SAR",
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"sa-zatca-invoice-type": "0100100",
+				"untdid-document-type": "388"
+			},
+			"notes": [
+				{
+					"cat": "VAT",
+					"key": "zero",
+					"text": "Export of goods",
+					"ext": {
+						"untdid-tax-category": "Z"
+					}
+				}
+			]
+		},
+		"supplier": {
+			"name": "Acme Corp Saudi",
+			"tax_id": {
+				"country": "SA",
+				"code": "312345678912343"
+			},
+			"identities": [
+				{
+					"type": "CRN",
+					"code": "1234567890"
+				}
+			],
+			"addresses": [
+				{
+					"num": "1234",
+					"street": "King Fahd Road",
+					"street_extra": "Al Olaya",
+					"locality": "Riyadh",
+					"region": "Riyadh",
+					"code": "12345",
+					"country": "SA"
+				}
+			]
+		},
+		"customer": {
+			"name": "Global Importers Ltd",
+			"identities": [
+				{
+					"type": "PAS",
+					"code": "X1234567"
+				}
+			],
+			"addresses": [
+				{
+					"num": "100",
+					"street": "Sheikh Zayed Road",
+					"locality": "Dubai",
+					"code": "00000",
+					"country": "AE"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Development services",
+					"price": "90.00",
+					"unit": "h"
+				},
+				"sum": "1800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "zero",
+						"percent": "0%",
+						"ext": {
+							"cef-vatex": "VATEX-SA-32",
+							"untdid-tax-category": "Z"
+						}
+					}
+				],
+				"total": "1800.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Payment due within 30 days"
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"ext": {
+					"untdid-payment-means": "30"
+				}
+			}
+		},
+		"delivery": {
+			"date": "2022-02-01",
+			"period": {
+				"start": "2022-02-01",
+				"end": "2022-02-28"
+			}
+		},
+		"totals": {
+			"sum": "1800.00",
+			"total": "1800.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "zero",
+								"ext": {
+									"cef-vatex": "VATEX-SA-32",
+									"untdid-tax-category": "Z"
+								},
+								"base": "1800.00",
+								"percent": "0%",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "1800.00",
+			"payable": "1800.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc2LTI5NmUtNzZiYS05YTYzLWY5ZTYyYTY2ZThlZSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRjNy03YmJiLTk2NDctOThlMTM1ODVjM2UzIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjhjM2VhNjMzYzQzYzE2YjExZDg0N2EyOGFjZjFkMDZjODhmMjViYjAyNGMwYWY5NDE2OTQxNmE1OGE0MWJhMDEifSwiaWF0IjoxNzkzODk0Nzg3fQ.AFHQ9db2UT0_FhqxhO9vbMfW7h-X-BFwK9-DPVLT1dVuoUBRzTu4HfasbJrp8QPv_oIdAi-Jb3OnIG2RWt2JSQ"
+	]
+}

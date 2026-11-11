@@ -1,0 +1,397 @@
+{
+	"head": {
+		"meta": {
+			"title": "ZATCA standard invoice with every feature",
+			"description": "Bilingual Arabic and English names, CRN identities, 15%, zero, exempt and out-of-scope lines with their VATEX codes, document discount and charge, delivery, advances, notes and attachments; line discounts only, as ZATCA forbids line charges."
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "SA",
+		"$addons": [
+			"eu-en16931-v2017",
+			"sa-zatca-v1"
+		],
+		"type": "standard",
+		"series": "INV",
+		"code": "2026-00128",
+		"issue_date": "2026-03-02",
+		"issue_time": "10:17:45",
+		"currency": "SAR",
+		"tax": {
+			"ext": {
+				"sa-zatca-invoice-type": "0100000",
+				"untdid-document-type": "388"
+			}
+		},
+		"supplier": {
+			"name": "شركة توريد التكنولوجيا بأقصى سرعة المحدودة | Maximum Speed Tech Supply LTD",
+			"tax_id": {
+				"country": "SA",
+				"code": "399999999900003"
+			},
+			"identities": [
+				{
+					"type": "CRN",
+					"code": "1010010000"
+				}
+			],
+			"addresses": [
+				{
+					"num": "2322",
+					"street": "الامير سلطان | Prince Sultan",
+					"street_extra": "المربع | Al-Murabba",
+					"locality": "الرياض | Riyadh",
+					"region": "منطقة الرياض | Riyadh Province",
+					"code": "23333",
+					"country": "SA"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@maxspeedtech.sa"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+966 11 400 1234"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://maxspeedtech.sa"
+				}
+			],
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+				}
+			]
+		},
+		"customer": {
+			"name": "شركة الأعمال النموذجية المحدودة | Sample Business LLC",
+			"tax_id": {
+				"country": "SA",
+				"code": "312345678912343"
+			},
+			"identities": [
+				{
+					"type": "CRN",
+					"code": "1010543210"
+				},
+				{
+					"label": "رقم العميل | Customer account",
+					"code": "SB00917"
+				}
+			],
+			"addresses": [
+				{
+					"label": "المكتب الرئيسي | Head office",
+					"po_box": "88412",
+					"num": "5678",
+					"street": "شارع العليا | Olaya Street",
+					"street_extra": "الملز | Al Malaz",
+					"locality": "الرياض | Riyadh",
+					"region": "منطقة الرياض | Riyadh Province",
+					"code": "54321",
+					"country": "SA"
+				}
+			],
+			"emails": [
+				{
+					"addr": "accounts@samplebusiness.sa"
+				}
+			]
+		},
+		"ordering": {
+			"code": "PO-2026-0455",
+			"identities": [
+				{
+					"label": "رقم المشروع | Project",
+					"code": "PRJDCRUH07"
+				}
+			],
+			"period": {
+				"label": "فترة الخدمة | Service period",
+				"start": "2026-02-01",
+				"end": "2026-02-28"
+			},
+			"purchases": [
+				{
+					"code": "PO-2026-0455",
+					"issue_date": "2026-01-20"
+				}
+			],
+			"contracts": [
+				{
+					"code": "CTR-2025-311",
+					"issue_date": "2025-10-05"
+				}
+			]
+		},
+		"delivery": {
+			"receiver": {
+				"name": "شركة الأعمال النموذجية المحدودة — مستودع جدة | Sample Business LLC — Jeddah warehouse",
+				"addresses": [
+					{
+						"num": "7701",
+						"street": "طريق الملك عبدالله | King Abdullah Road",
+						"street_extra": "الروضة | Al Rawdah",
+						"locality": "جدة | Jeddah",
+						"region": "منطقة مكة المكرمة | Makkah Province",
+						"code": "23432",
+						"country": "SA"
+					}
+				]
+			},
+			"date": "2026-02-28",
+			"period": {
+				"start": "2026-02-01",
+				"end": "2026-02-28"
+			}
+		},
+		"lines": [
+			{
+				"quantity": "160",
+				"item": {
+					"ref": "DEV-CLOUD",
+					"name": "خدمات هندسة السحابة | Cloud engineering services",
+					"description": "Data centre migration, February 2026",
+					"price": "350.00",
+					"unit": "h"
+				},
+				"discounts": [
+					{
+						"reason": "خصم إطاري | Framework discount",
+						"percent": "10%"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "6",
+				"item": {
+					"ref": "SRV-RACK",
+					"name": "خادم رفوف 2U | Rack server 2U",
+					"identities": [
+						{
+							"type": "EAN",
+							"code": "0799439112766"
+						}
+					],
+					"price": "18500.00",
+					"unit": "piece"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "320",
+				"item": {
+					"ref": "CAB-FIBRE",
+					"name": "كابل ألياف بصرية | Fibre optic cable OM4",
+					"price": "9.75",
+					"unit": "m"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "40",
+				"item": {
+					"ref": "MED-KIT",
+					"name": "حقيبة إسعافات أولية | First aid kit (registered medical equipment)",
+					"price": "120.00",
+					"unit": "piece"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "zero",
+						"ext": {
+							"cef-vatex": "VATEX-SA-35"
+						}
+					}
+				]
+			},
+			{
+				"quantity": "1",
+				"item": {
+					"ref": "FIN-LEASE",
+					"name": "رسوم تمويل تأجيري | Equipment lease financing fee",
+					"description": "Financial service under Article 29 of the VAT Regulations",
+					"price": "4200.00",
+					"unit": "service"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "exempt",
+						"ext": {
+							"cef-vatex": "VATEX-SA-29"
+						}
+					}
+				]
+			},
+			{
+				"quantity": "3",
+				"item": {
+					"ref": "TRAIN-ONSITE",
+					"name": "تدريب في الموقع | On-site training day",
+					"price": "2800.00",
+					"unit": "day"
+				},
+				"discounts": [
+					{
+						"reason": "خصم الحجز المبكر | Early booking",
+						"amount": "600.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "2",
+				"item": {
+					"ref": "DISB-GOV",
+					"name": "رسوم حكومية مدفوعة نيابة عن العميل | Government fees paid on the customer's behalf",
+					"description": "Disbursement, outside the scope of VAT",
+					"price": "1500.00",
+					"unit": "one"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "outside-scope",
+						"ext": {
+							"cef-vatex": "VATEX-SA-OOS"
+						}
+					}
+				]
+			}
+		],
+		"discounts": [
+			{
+				"key": "special-agreement",
+				"code": "DISC-2026-03",
+				"reason": "خصم تعاقدي | Contractual volume discount",
+				"percent": "2%",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general"
+					}
+				]
+			}
+		],
+		"charges": [
+			{
+				"key": "delivery",
+				"code": "CHG-FREIGHT",
+				"reason": "الشحن والتركيب | Freight and installation",
+				"amount": "2400.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general"
+					}
+				]
+			}
+		],
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-03-16",
+						"percent": "40%",
+						"notes": "الدفعة الأولى | First instalment"
+					},
+					{
+						"date": "2026-04-01",
+						"percent": "60%",
+						"notes": "الدفعة الثانية | Second instalment"
+					}
+				],
+				"notes": "الدفع خلال 30 يومًا من تاريخ الفاتورة | Payment within 30 days of the invoice date"
+			},
+			"advances": [
+				{
+					"date": "2026-02-05",
+					"key": "credit-transfer",
+					"ref": "ADV-2026-0019",
+					"description": "دفعة مقدمة لمعدات الخوادم | Advance payment for server equipment",
+					"amount": "40000.00"
+				}
+			],
+			"instructions": {
+				"key": "credit-transfer",
+				"detail": "تحويل بنكي | Bank transfer",
+				"ref": "INV-2026-00128",
+				"credit_transfer": [
+					{
+						"iban": "SA0380000000608010167519",
+						"bic": "RJHISARI",
+						"name": "Maximum Speed Tech Supply LTD",
+						"label": "الحساب الجاري | Current account"
+					}
+				],
+				"online": [
+					{
+						"key": "sadad",
+						"label": "SADAD",
+						"url": "https://pay.maxspeedtech.sa/sadad?ref=INV-2026-00128"
+					}
+				],
+				"notes": "يرجى ذكر رقم الفاتورة في مرجع التحويل | Please quote the invoice number in the transfer reference."
+			}
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "شكرًا لتعاملكم معنا | Thank you for your business."
+			},
+			{
+				"key": "legal",
+				"text": "فاتورة ضريبية صادرة وفقًا للائحة الفوترة الإلكترونية الصادرة عن هيئة الزكاة والضريبة والجمارك | Tax invoice issued in accordance with the ZATCA e-invoicing regulation.",
+				"meta": {
+					"position": "footer"
+				}
+			}
+		],
+		"attachments": [
+			{
+				"key": "delivery-note",
+				"code": "DN-2026-0088",
+				"name": "DN-2026-0088.pdf",
+				"description": "إشعار تسليم معدات الخوادم | Delivery note for the server equipment",
+				"url": "https://files.maxspeedtech.sa/dn/DN-2026-0088.pdf",
+				"mime": "application/pdf"
+			}
+		]
+	}
+}

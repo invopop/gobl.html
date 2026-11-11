@@ -1,0 +1,120 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d54-72ca-b882-7042e224ea61",
+		"dig": {
+			"alg": "sha256",
+			"val": "ebbf33a495b5c27c572cfa2761cbba631001b7984d27b6d51140f0e8104d9ff2"
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-sett/000003\u0026fecha=13-11-2024\u0026importe=1800.00"
+			}
+		],
+		"meta": {
+			"description": "Intra-community supply invoices are used for B2B goods delivered to customers in other EU member states. Intra-community supplies must be applied when:",
+			"title": "B2B Goods EU Client (Intra-Community)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-verifactu-v1"
+		],
+		"uuid": "01a1ab50-6d54-72ce-a574-bef4d4772f6e",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "sett/000003",
+		"issue_date": "2024-11-13",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"es-verifactu-doc-type": "F1"
+			}
+		},
+		"supplier": {
+			"name": "Invopop S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			]
+		},
+		"customer": {
+			"name": "Sample Consumer",
+			"tax_id": {
+				"country": "DE",
+				"code": "111111125"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Goods",
+					"price": "90.00"
+				},
+				"sum": "1800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "intra-community",
+						"ext": {
+							"es-verifactu-exempt": "E5",
+							"es-verifactu-regime": "01"
+						}
+					}
+				],
+				"total": "1800.00"
+			}
+		],
+		"totals": {
+			"sum": "1800.00",
+			"total": "1800.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "intra-community",
+								"ext": {
+									"es-verifactu-exempt": "E5",
+									"es-verifactu-regime": "01"
+								},
+								"base": "1800.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "1800.00",
+			"payable": "1800.00"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "This is a sample invoice with a intra-community"
+			}
+		]
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NmEtNzFhMS05MWY0LWE2Zjg5MzhmYzEyMSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1NC03MmNhLWI4ODItNzA0MmUyMjRlYTYxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImViYmYzM2E0OTViNWMyN2M1NzJjZmEyNzYxY2JiYTYzMTAwMWI3OTg0ZDI3YjZkNTExNDBmMGU4MTA0ZDlmZjIifSwiaWF0IjoxNzkzODk0Njg4fQ.W7R0WHoNrzXVsFovnaMxp8ir6Sh3uhemfJGR0_RfriiyENtOU2FnTKJjN5DvnUm7NBrjP3A6IwEgMhY13M5pNA"
+	]
+}

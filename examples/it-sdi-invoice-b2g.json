@@ -1,0 +1,177 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d94-7280-a672-38a243dc4539",
+		"dig": {
+			"alg": "sha256",
+			"val": "efb100c04cbeac9dac7012c1e9a5c770f9464c1589567075bbfbf033ba4dbb0b"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a B2G invoice from an Italian supplier to the Italian government.",
+			"title": "B2G Invoice"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"it-sdi-v1"
+		],
+		"$tags": [
+			"b2g"
+		],
+		"uuid": "01a1ab50-6d94-7284-9e2f-04bfd1db6285",
+		"type": "standard",
+		"series": "PA",
+		"code": "2026-001",
+		"issue_date": "2026-05-08",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"it-sdi-document-type": "TD01",
+				"it-sdi-format": "FPA12"
+			}
+		},
+		"supplier": {
+			"name": "Esempio Fornitore SRL",
+			"tax_id": {
+				"country": "IT",
+				"code": "12345678903"
+			},
+			"addresses": [
+				{
+					"num": "10",
+					"street": "Via Roma",
+					"locality": "Milano",
+					"region": "MI",
+					"code": "20121",
+					"country": "IT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "amministrazione@esempio-fornitore.it"
+				}
+			],
+			"ext": {
+				"it-sdi-fiscal-regime": "RF01"
+			}
+		},
+		"customer": {
+			"name": "Comune di Roma",
+			"tax_id": {
+				"country": "IT",
+				"code": "02438750586"
+			},
+			"inboxes": [
+				{
+					"key": "it-sdi-code",
+					"code": "UF9DN8"
+				}
+			],
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Piazza del Campidoglio",
+					"locality": "Roma",
+					"region": "RM",
+					"code": "00186",
+					"country": "IT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Servizi di consulenza informatica",
+					"price": "150.00",
+					"unit": "h"
+				},
+				"sum": "3000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "22.0%"
+					}
+				],
+				"total": "3000.00"
+			},
+			{
+				"i": 2,
+				"quantity": "1",
+				"item": {
+					"name": "Licenza software annuale",
+					"price": "1200.00"
+				},
+				"sum": "1200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "22.0%"
+					}
+				],
+				"total": "1200.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"due_dates": [
+					{
+						"date": "2026-06-07",
+						"amount": "5124.00",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "IT60X0542811101000000123456",
+						"bic": "BPMOIT22XXX",
+						"name": "Banca Esempio SpA"
+					}
+				],
+				"ext": {
+					"it-sdi-payment-means": "MP05"
+				}
+			}
+		},
+		"totals": {
+			"sum": "4200.00",
+			"total": "4200.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "4200.00",
+								"percent": "22.0%",
+								"amount": "924.00"
+							}
+						],
+						"amount": "924.00"
+					}
+				],
+				"sum": "924.00"
+			},
+			"tax": "924.00",
+			"total_with_tax": "5124.00",
+			"payable": "5124.00"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Fattura emessa verso Pubblica Amministrazione tramite SDI. CIG: Z1A2B3C4D5 - CUP: F81B12000000001"
+			}
+		]
+	}
+}

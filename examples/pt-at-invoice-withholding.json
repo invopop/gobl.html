@@ -1,0 +1,174 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6dba-7c5f-84f8-8d3bf9fc876f",
+		"dig": {
+			"alg": "sha256",
+			"val": "e23fc44a53afe0fe168af9ffb687c0cb55f1b8f111b4f253001ea3d764dd7439"
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJR2KW4-2"
+			},
+			{
+				"prv": "at-hash",
+				"val": "0vot"
+			},
+			{
+				"prv": "at-hash-full",
+				"val": "0WMEHADswWv5aavY+2VboOclMpPyoQtl7neqfA/7PPvhayQR1OQMok5fFr8N4vi6TGm8ymmHSpfX4QG28jeDJqNuO92v5TbRH78/4lPbcryEmVIgG0x9jXtYPX6RehwYYuUZg1q1XSEYrEGg+zQoPN8VZetI5PxGRWqrkIe8G5w="
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:545259045*B:999999990*C:PT*D:FT*E:N*F:20240803*G:FT SERIES-A 0001*H:AAJFJR2KW4-2*I1:PT*I7:1230.00*N:0.00*O:1230.00*Q:0vot*R:0"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "0"
+			}
+		],
+		"meta": {
+			"description": "In this example, a self-employed professional (_trabalhador independente_) invoices a Portuguese company for consulting services. On top of the standard VAT, the customer retains personal income tax (_IRS_) at source.",
+			"title": "AT invoice with IRS withholding"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"uuid": "01a1ab50-6dba-7c63-8ad6-8d33ba4fcc62",
+		"type": "standard",
+		"series": "FT SERIES-A",
+		"code": "0001",
+		"issue_date": "2024-08-03",
+		"value_date": "2024-08-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"pt-saft-invoice-type": "FT",
+				"pt-saft-source": "P"
+			},
+			"notes": [
+				{
+					"cat": "IRS",
+					"text": "Art. 101.º CIRS"
+				}
+			]
+		},
+		"supplier": {
+			"name": "João Silva, Trabalhador Independente",
+			"tax_id": {
+				"country": "PT",
+				"code": "545259045"
+			},
+			"addresses": [
+				{
+					"street": "Rua das Flores",
+					"locality": "Lisboa",
+					"code": "1000-000",
+					"country": "PT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "joao.silva@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Empresa Cliente, Lda.",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Avenida da Liberdade 152 2º Direito",
+					"locality": "Lisboa",
+					"code": "1250-146",
+					"country": "PT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Serviços de consultoria",
+					"price": "1000.00",
+					"unit": "h",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "1000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					},
+					{
+						"cat": "IRS",
+						"percent": "25%"
+					}
+				],
+				"total": "1000.00"
+			}
+		],
+		"totals": {
+			"sum": "1000.00",
+			"total": "1000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "NOR"
+								},
+								"base": "1000.00",
+								"percent": "23.0%",
+								"amount": "230.00"
+							}
+						],
+						"amount": "230.00"
+					},
+					{
+						"code": "IRS",
+						"retained": true,
+						"rates": [
+							{
+								"base": "1000.00",
+								"percent": "25%",
+								"amount": "250.00"
+							}
+						],
+						"amount": "250.00"
+					}
+				],
+				"sum": "230.00",
+				"retained": "250.00"
+			},
+			"tax": "230.00",
+			"total_with_tax": "1230.00",
+			"retained_tax": "250.00",
+			"payable": "980.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE3MDQtN2JhMC1iNDdjLTcwZWZhYWVhYTMyMyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRiYS03YzVmLTg0ZjgtOGQzYmY5ZmM4NzZmIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImUyM2ZjNDRhNTNhZmUwZmUxNjhhZjlmZmI2ODdjMGNiNTVmMWI4ZjExMWI0ZjI1MzAwMWVhM2Q3NjRkZDc0MzkifSwiaWF0IjoxNzkzODk0Njg4fQ.cINwjF2I5ThzagTq2I8Vl83_eyCPYQhIADcbxDdpos_zO5RntQ9iwz9hlksOTFJNktagzHLxFpMm1ZD7z4ebBQ"
+	]
+}

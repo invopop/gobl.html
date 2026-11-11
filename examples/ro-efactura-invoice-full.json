@@ -1,0 +1,689 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1aba7-d963-7efb-98e4-1f1424932998",
+		"dig": {
+			"alg": "sha256",
+			"val": "6571096ae5d6bb5be607fd7ba86aae082d6bf7e35810a90636d4163cb8766256"
+		},
+		"meta": {
+			"description": "County codes on every address, registry identities, buyer accounting reference, 21% and 11% rates with exempt and zero lines, allowance and charge codes, Romanian IBANs, delivery, notes and attachments within the BR-RO length limits.",
+			"title": "RO e-Factura with every feature"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "RO",
+		"$addons": [
+			"eu-en16931-v2017",
+			"ro-efactura-v1"
+		],
+		"uuid": "01a1aba7-d963-7efc-abad-2031d1367727",
+		"type": "standard",
+		"series": "FCT",
+		"code": "0417",
+		"issue_date": "2026-10-28",
+		"issue_time": "13:51:09",
+		"currency": "RON",
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Exemplu Digital SRL",
+			"alias": "Exemplu Digital",
+			"tax_id": {
+				"country": "RO",
+				"code": "12345674"
+			},
+			"identities": [
+				{
+					"label": "Nr. Reg. Com.",
+					"scope": "legal",
+					"code": "J40/1234/2015"
+				},
+				{
+					"label": "Cod furnizor",
+					"code": "FURN-2210"
+				}
+			],
+			"people": [
+				{
+					"name": {
+						"given": "Ioana",
+						"surname": "Popescu"
+					},
+					"role": "Facturare",
+					"emails": [
+						{
+							"addr": "ioana.popescu@exemplu.ro"
+						}
+					],
+					"telephones": [
+						{
+							"num": "+40 21 123 45 67"
+						}
+					]
+				}
+			],
+			"addresses": [
+				{
+					"num": "10",
+					"street": "Strada Exemplu",
+					"street_extra": "Bloc A2, Scara 1, Etaj 3",
+					"locality": "SECTOR1",
+					"region": "RO-B",
+					"state": "B",
+					"code": "010101",
+					"country": "RO"
+				}
+			],
+			"emails": [
+				{
+					"addr": "facturare@exemplu.ro"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://www.exemplu.ro"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+40 21 123 45 00"
+				}
+			],
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+				}
+			]
+		},
+		"customer": {
+			"name": "Client Test SRL",
+			"tax_id": {
+				"country": "RO",
+				"code": "34567892"
+			},
+			"identities": [
+				{
+					"label": "Nr. Reg. Com.",
+					"scope": "legal",
+					"code": "J12/5678/2018"
+				},
+				{
+					"label": "Cod client",
+					"code": "CL-0931"
+				}
+			],
+			"people": [
+				{
+					"name": {
+						"given": "Andrei",
+						"surname": "Ionescu"
+					},
+					"role": "Achiziții"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Adresa de facturare",
+					"po_box": "CP 12",
+					"num": "25",
+					"street": "Strada Memorandumului",
+					"locality": "Cluj-Napoca",
+					"region": "RO-CJ",
+					"state": "CJ",
+					"code": "400114",
+					"country": "RO"
+				}
+			],
+			"emails": [
+				{
+					"addr": "contabilitate@clienttest.ro"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "96",
+				"item": {
+					"ref": "DEV-SENIOR",
+					"name": "Servicii de dezvoltare software",
+					"description": "Dezvoltare backend pentru platforma de comenzi, octombrie 2026",
+					"price": "150.00",
+					"unit": "h"
+				},
+				"sum": "14400.00",
+				"discounts": [
+					{
+						"key": "special-agreement",
+						"reason": "Tarif conform contractului cadru",
+						"percent": "10%",
+						"amount": "1440.00",
+						"ext": {
+							"untdid-allowance": "64"
+						}
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "12960.00"
+			},
+			{
+				"i": 2,
+				"quantity": "20",
+				"item": {
+					"ref": "LIC-STD",
+					"name": "Licență software, standard",
+					"description": "Abonament anual per utilizator",
+					"price": "480.00",
+					"unit": "item"
+				},
+				"sum": "9600.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "9600.00"
+			},
+			{
+				"i": 3,
+				"quantity": "4",
+				"item": {
+					"ref": "HW-GW-01",
+					"name": "Gateway industrial",
+					"identities": [
+						{
+							"type": "EAN",
+							"code": "5941234567890"
+						}
+					],
+					"description": "Gateway IoT cu montaj pe șină DIN, include sursa de alimentare",
+					"price": "3250.00",
+					"unit": "piece"
+				},
+				"sum": "13000.00",
+				"charges": [
+					{
+						"key": "packing",
+						"reason": "Ambalaj de transport",
+						"amount": "120.00",
+						"ext": {
+							"untdid-charge": "PC"
+						}
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "13120.00"
+			},
+			{
+				"i": 4,
+				"quantity": "300",
+				"item": {
+					"ref": "CBL-CAT6",
+					"name": "Cablu de rețea Cat 6",
+					"price": "4.20",
+					"unit": "m"
+				},
+				"sum": "1260.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "1260.00"
+			},
+			{
+				"i": 5,
+				"quantity": "15",
+				"item": {
+					"ref": "COP-WIRE",
+					"name": "Conductor de împământare din cupru",
+					"price": "62.00",
+					"unit": "kg"
+				},
+				"sum": "930.00",
+				"discounts": [
+					{
+						"reason": "Preț de volum",
+						"amount": "80.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "850.00"
+			},
+			{
+				"i": 6,
+				"quantity": "50",
+				"item": {
+					"ref": "DOC-MANUAL",
+					"name": "Manual de operare tipărit",
+					"description": "Manual A4 legat, ediția în limba română",
+					"price": "45.00",
+					"unit": "item"
+				},
+				"sum": "2250.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "11.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "2250.00"
+			},
+			{
+				"i": 7,
+				"quantity": "2",
+				"item": {
+					"ref": "TRAIN-ONSITE",
+					"name": "Zi de instruire la sediul clientului",
+					"description": "Formare profesională pentru maximum 12 participanți",
+					"price": "4500.00",
+					"unit": "day"
+				},
+				"sum": "9000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "exempt",
+						"ext": {
+							"cef-vatex": "VATEX-EU-132-1I",
+							"untdid-tax-category": "E"
+						}
+					}
+				],
+				"total": "9000.00"
+			},
+			{
+				"i": 8,
+				"quantity": "3",
+				"item": {
+					"ref": "SHIP-EXP",
+					"name": "Transport curier expres",
+					"price": "180.00",
+					"unit": "trip"
+				},
+				"sum": "540.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "zero",
+						"percent": "0%",
+						"ext": {
+							"untdid-tax-category": "Z"
+						}
+					}
+				],
+				"total": "540.00"
+			}
+		],
+		"discounts": [
+			{
+				"i": 1,
+				"key": "early-completion",
+				"reason": "Bonus pentru livrare înainte de termen",
+				"percent": "2%",
+				"amount": "991.60",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"ext": {
+					"untdid-allowance": "41"
+				}
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"key": "delivery",
+				"reason": "Transport la Cluj-Napoca",
+				"amount": "650.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"ext": {
+					"untdid-charge": "DL"
+				}
+			},
+			{
+				"i": 2,
+				"key": "insurance",
+				"reason": "Asigurare de transport",
+				"amount": "140.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"ext": {
+					"untdid-charge": "IN"
+				}
+			}
+		],
+		"ordering": {
+			"code": "CMD-2026-0418",
+			"identities": [
+				{
+					"label": "Referință cumpărător",
+					"code": "A. Ionescu / Achiziții"
+				},
+				{
+					"label": "Referință vânzător",
+					"code": "OF-2026-0098"
+				}
+			],
+			"cost": "CC-CLUJ-4120",
+			"period": {
+				"label": "Perioada de prestare",
+				"start": "2026-10-01",
+				"end": "2026-10-31"
+			},
+			"projects": [
+				{
+					"code": "PRJ-COMENZI-2026"
+				}
+			],
+			"contracts": [
+				{
+					"issue_date": "2025-11-01",
+					"code": "CTR-2025-0042",
+					"description": "Contract cadru pentru servicii de dezvoltare"
+				}
+			],
+			"purchases": [
+				{
+					"issue_date": "2026-09-14",
+					"code": "PO-2026-0418"
+				}
+			],
+			"sales": [
+				{
+					"issue_date": "2026-09-15",
+					"code": "SO-2026-1187"
+				}
+			],
+			"receiving": [
+				{
+					"issue_date": "2026-10-22",
+					"code": "NIR-2026-0871"
+				}
+			],
+			"despatch": [
+				{
+					"issue_date": "2026-10-20",
+					"code": "AVIZ-2026-0334"
+				}
+			],
+			"tender": [
+				{
+					"code": "LIC-2025-117"
+				}
+			]
+		},
+		"payment": {
+			"advances": [
+				{
+					"date": "2026-09-25",
+					"key": "credit-transfer",
+					"ref": "AVANS-2026-0417",
+					"description": "Avans achitat la confirmarea comenzii",
+					"percent": "25%",
+					"amount": "14379.87"
+				}
+			],
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-11-12",
+						"notes": "Prima tranșă",
+						"amount": "21569.80",
+						"percent": "50%"
+					},
+					{
+						"date": "2026-11-27",
+						"notes": "Rest de plată",
+						"amount": "21569.80",
+						"percent": "50%"
+					}
+				],
+				"notes": "Plata în 30 de zile de la data facturii. Penalități de întârziere de 0,1% pe zi conform contractului."
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"detail": "Transfer bancar, vă rugăm să menționați numărul facturii",
+				"ref": "FCT-0417",
+				"credit_transfer": [
+					{
+						"label": "Banca Transilvania",
+						"iban": "RO65 BTRL RONC RT01 2345 6789",
+						"bic": "BTRLRO22",
+						"name": "Exemplu Digital SRL"
+					},
+					{
+						"label": "BCR",
+						"iban": "RO59 RNCB 0082 0441 7242 0001",
+						"bic": "RNCBROBU",
+						"name": "Exemplu Digital SRL"
+					}
+				],
+				"card": {
+					"first6": "411111",
+					"last4": "1111",
+					"holder": "Client Test SRL"
+				},
+				"direct_debit": {
+					"ref": "MANDAT-CT-2025-0042",
+					"creditor": "RO98ZZZ123456789",
+					"account": "RO65BTRLRONCRT0123456789"
+				},
+				"online": [
+					{
+						"key": "card-online",
+						"label": "Plată online cu cardul",
+						"url": "https://pay.exemplu.ro/FCT-0417"
+					}
+				],
+				"notes": "Discount de **2%** pentru plata în _10 zile_.",
+				"ext": {
+					"untdid-payment-means": "30"
+				}
+			}
+		},
+		"delivery": {
+			"receiver": {
+				"name": "Client Test SRL, punct de lucru Timișoara",
+				"addresses": [
+					{
+						"num": "7",
+						"street": "Calea Aradului",
+						"locality": "Timișoara",
+						"region": "RO-TM",
+						"state": "TM",
+						"code": "300088",
+						"country": "RO"
+					}
+				]
+			},
+			"date": "2026-10-20",
+			"period": {
+				"start": "2026-10-01",
+				"end": "2026-10-31"
+			}
+		},
+		"totals": {
+			"sum": "49580.00",
+			"discount": "991.60",
+			"charge": "790.00",
+			"total": "49378.40",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "37588.40",
+								"percent": "21.0%",
+								"amount": "7893.56"
+							},
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "2250.00",
+								"percent": "11.0%",
+								"amount": "247.50"
+							},
+							{
+								"key": "exempt",
+								"ext": {
+									"cef-vatex": "VATEX-EU-132-1I",
+									"untdid-tax-category": "E"
+								},
+								"base": "9000.00",
+								"amount": "0.00"
+							},
+							{
+								"key": "zero",
+								"ext": {
+									"untdid-tax-category": "Z"
+								},
+								"base": "540.00",
+								"percent": "0%",
+								"amount": "0.00"
+							}
+						],
+						"amount": "8141.06"
+					}
+				],
+				"sum": "8141.06"
+			},
+			"tax": "8141.06",
+			"total_with_tax": "57519.46",
+			"payable": "57519.46",
+			"advance": "14379.87",
+			"due": "43139.59"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Vă mulțumim pentru comandă. Întrebări legate de această factură: facturare@exemplu.ro.",
+				"ext": {
+					"untdid-text-subject": "AAI"
+				}
+			},
+			{
+				"key": "delivery",
+				"text": "Echipamentele au fost livrate la punctul de lucru Timișoara în data de 20.10.2026, aviz AVIZ-2026-0334.",
+				"ext": {
+					"untdid-text-subject": "DEL"
+				}
+			},
+			{
+				"key": "legal",
+				"text": "Exemplu Digital SRL · CUI RO12345674 · J40/1234/2015 · Capital social 200 RON · Sediul: Strada Exemplu 10, Sector 1, București",
+				"meta": {
+					"position": "footer"
+				},
+				"ext": {
+					"untdid-text-subject": "ABL"
+				}
+			}
+		],
+		"attachments": [
+			{
+				"code": "AVIZ-2026-0334",
+				"name": "aviz-insotire-AVIZ-2026-0334.pdf",
+				"description": "Aviz de însoțire a mărfii semnat",
+				"url": "https://files.exemplu.ro/aviz-2026-0334.pdf",
+				"mime": "application/pdf"
+			},
+			{
+				"code": "PONTAJ-2026-10",
+				"name": "pontaj-2026-10.pdf",
+				"description": "Fișa de pontaj pentru octombrie 2026",
+				"url": "https://files.exemplu.ro/pontaj-2026-10.pdf",
+				"mime": "application/pdf"
+			}
+		]
+	}
+}

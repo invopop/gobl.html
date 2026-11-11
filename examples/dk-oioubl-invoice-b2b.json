@@ -1,0 +1,168 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab5e-5dae-7115-a86b-25bb1c921d26",
+		"dig": {
+			"alg": "sha256",
+			"val": "2e118e61e9b6bba3e2bc013a099d6b8207a1bee97ee9cb7ace5bdc9e2561f1b0"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a B2B invoice from a Danish supplier to another Danish business.",
+			"title": "Example B2B invoice"
+		},
+		"from": "iso6523-actorid-upis::0184:16356700",
+		"to": "iso6523-actorid-upis::0184:12345674"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "DK",
+		"$addons": [
+			"eu-en16931-v2017",
+			"dk-oioubl-v2"
+		],
+		"uuid": "01a1ab5e-5dae-7116-94e2-ee09d3d01a29",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "0043",
+		"issue_date": "2026-08-01",
+		"currency": "DKK",
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Nordlys Software ApS",
+			"tax_id": {
+				"country": "DK",
+				"code": "16356700"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"code": "16356700"
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0184:16356700"
+				}
+			],
+			"addresses": [
+				{
+					"num": "24",
+					"street": "Vesterbrogade",
+					"locality": "København V",
+					"code": "1620",
+					"country": "DK"
+				}
+			],
+			"emails": [
+				{
+					"addr": "faktura@nordlys.dk"
+				}
+			]
+		},
+		"customer": {
+			"name": "Havnens Byggemarked A/S",
+			"tax_id": {
+				"country": "DK",
+				"code": "12345674"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"code": "12345674"
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0184:12345674"
+				}
+			],
+			"addresses": [
+				{
+					"num": "3",
+					"street": "Havnegade",
+					"locality": "Aarhus C",
+					"code": "8000",
+					"country": "DK"
+				}
+			],
+			"emails": [
+				{
+					"addr": "faktura@havnens-byggemarked.dk"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "10",
+				"item": {
+					"name": "Consulting services",
+					"price": "800.00",
+					"unit": "h"
+				},
+				"sum": "8000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "25.0%"
+					}
+				],
+				"total": "8000.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"due_dates": [
+					{
+						"date": "2026-08-31",
+						"amount": "10000.00",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "other",
+				"credit_transfer": [
+					{
+						"number": "1234567890",
+						"clearing": "1234"
+					}
+				],
+				"ext": {
+					"untdid-payment-means": "42"
+				}
+			}
+		},
+		"totals": {
+			"sum": "8000.00",
+			"total": "8000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "8000.00",
+								"percent": "25.0%",
+								"amount": "2000.00"
+							}
+						],
+						"amount": "2000.00"
+					}
+				],
+				"sum": "2000.00"
+			},
+			"tax": "2000.00",
+			"total_with_tax": "10000.00",
+			"payable": "10000.00"
+		}
+	}
+}

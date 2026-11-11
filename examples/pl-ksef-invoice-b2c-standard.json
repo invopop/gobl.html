@@ -1,0 +1,164 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6daf-778d-aa5b-7ca293e57599",
+		"dig": {
+			"alg": "sha256",
+			"val": "89b4c3a94dc5ecefe202bb55dbf377646af9d0fa1f21f0e321b38c8b0569e6ee"
+		},
+		"stamps": [
+			{
+				"prv": "favat-ksef-number",
+				"val": "9551893317-20260204-D1984449A6BC-02"
+			},
+			{
+				"prv": "favat-qr",
+				"val": "https://ksef-test.mf.gov.pl/web/verify/9551893317-20260204-D1984449A6BC-02/8KCfB1Sa5Jc4Gg6ctK4HKdwnRwK%2BdxT1ScymF6m5d18%3D"
+			}
+		],
+		"meta": {
+			"title": "B2C Invoice (voluntary)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "PL",
+		"$addons": [
+			"pl-favat-v3"
+		],
+		"$tags": [
+			"simplified"
+		],
+		"uuid": "019c2849-dd61-7001-8c88-3c6d1aa83f8a",
+		"type": "standard",
+		"series": "SIMPLE",
+		"code": "236",
+		"issue_date": "2026-02-04",
+		"currency": "PLN",
+		"tax": {
+			"ext": {
+				"pl-favat-invoice-type": "UPR"
+			}
+		},
+		"supplier": {
+			"name": "Testowa Firma Sp. z o.o.",
+			"tax_id": {
+				"country": "PL",
+				"code": "9551893317"
+			},
+			"addresses": [
+				{
+					"street": "ul. Główna 1",
+					"locality": "Warszawa",
+					"code": "00-001",
+					"country": "PL"
+				}
+			],
+			"emails": [
+				{
+					"addr": "kontakt@testowa.pl"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "10",
+				"item": {
+					"name": "Software Development Services",
+					"price": "100.00",
+					"unit": "h"
+				},
+				"sum": "1000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "23.0%",
+						"ext": {
+							"pl-favat-tax-category": "1"
+						}
+					}
+				],
+				"total": "1000.00"
+			},
+			{
+				"i": 2,
+				"quantity": "5",
+				"item": {
+					"name": "Consulting Services",
+					"price": "150.00",
+					"unit": "h"
+				},
+				"sum": "750.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "8.0%",
+						"ext": {
+							"pl-favat-tax-category": "2"
+						}
+					}
+				],
+				"total": "750.00"
+			}
+		],
+		"payment": {
+			"instructions": {
+				"key": "credit-transfer",
+				"detail": "Transfer payment to our bank account",
+				"credit_transfer": [
+					{
+						"iban": "PL61109010140000071219812874",
+						"name": "Testowa Firma Sp. z o.o."
+					}
+				],
+				"ext": {
+					"pl-favat-payment-means": "6"
+				}
+			}
+		},
+		"totals": {
+			"sum": "1750.00",
+			"total": "1750.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pl-favat-tax-category": "1"
+								},
+								"base": "1000.00",
+								"percent": "23.0%",
+								"amount": "230.00"
+							},
+							{
+								"key": "standard",
+								"ext": {
+									"pl-favat-tax-category": "2"
+								},
+								"base": "750.00",
+								"percent": "8.0%",
+								"amount": "60.00"
+							}
+						],
+						"amount": "290.00"
+					}
+				],
+				"sum": "290.00"
+			},
+			"tax": "290.00",
+			"total_with_tax": "2040.00",
+			"payable": "2040.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZjctNzE5Mi04NzY5LWE3ZjMxMmRjNmQzYyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhZi03NzhkLWFhNWItN2NhMjkzZTU3NTk5IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6Ijg5YjRjM2E5NGRjNWVjZWZlMjAyYmI1NWRiZjM3NzY0NmFmOWQwZmExZjIxZjBlMzIxYjM4YzhiMDU2OWU2ZWUifSwiaWF0IjoxNzkzODk0Njg4fQ.mjMglIRb0uo06svzf_usmhhcJZsQ8Jj1crkM6PROL_cjeHY_ZCuyqxjRDLrKV1W_lt6Bhyzawc4N03NHZHlo1Q"
+	]
+}

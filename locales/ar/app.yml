@@ -160,6 +160,9 @@ ar:
       notes:
         title: "ملاحظات"
 
+      attachments:
+        title: "المرفقات"
+
     payment:
       <<: *invoice
       title:

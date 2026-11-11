@@ -1,0 +1,179 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d86-781e-8dc9-1a8fdd237a68",
+		"dig": {
+			"alg": "sha256",
+			"val": "44fa23000c018b90deffe3a4af8051079afd98d0521fe09b234abd5e01df7bdc"
+		},
+		"stamps": [
+			{
+				"prv": "iapr-qr",
+				"val": "https://test.vs.gr/iv/invoice/10cc0a7d90a1c9470190a634ec19073e"
+			},
+			{
+				"prv": "iapr-hash",
+				"val": "792F62ADE1B5E4CCBC8FFA787258CC68E90B817B"
+			},
+			{
+				"prv": "iapr-mark",
+				"val": "400001929816893"
+			},
+			{
+				"prv": "iapr-provider",
+				"val": "ΙΛΥΔΑ ΠΛΗΡΟΦΟΡΙΚΗ Α.Ε. — https://test.vs.gr"
+			},
+			{
+				"prv": "iapr-uid",
+				"val": "EB1CF2137764B0D534885F361365C39A32C0205A"
+			}
+		],
+		"meta": {
+			"description": "In this example, we're issuing a credit note that corrects a previously reported invoice.",
+			"title": "Example credit note (B2B)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "EL",
+		"$addons": [
+			"gr-mydata-v1"
+		],
+		"$tags": [
+			"services"
+		],
+		"uuid": "01a1ab50-6d86-781f-873b-b138ea0f6a74",
+		"type": "credit-note",
+		"series": "XXGR-CN",
+		"code": "0001",
+		"issue_date": "2026-07-21",
+		"currency": "EUR",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2025-05-12",
+				"series": "XXGR",
+				"code": "0042",
+				"stamps": [
+					{
+						"prv": "iapr-mark",
+						"val": "400001924190872"
+					}
+				]
+			}
+		],
+		"tax": {
+			"ext": {
+				"gr-mydata-invoice-type": "5.1"
+			}
+		},
+		"supplier": {
+			"name": "Αθηναϊκό Ξενοδοχείο Α.Ε.",
+			"tax_id": {
+				"country": "EL",
+				"code": "177472438"
+			},
+			"addresses": [
+				{
+					"num": "28",
+					"street": "Λεωφόρος Συγγρού",
+					"locality": "Αθήνα",
+					"code": "11743",
+					"country": "GR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "reservations@athenianhotel.gr"
+				}
+			]
+		},
+		"customer": {
+			"name": "Τεχνολογικές Λύσεις Ελλάς Α.Ε.",
+			"tax_id": {
+				"country": "EL",
+				"code": "841442160"
+			},
+			"addresses": [
+				{
+					"num": "15",
+					"street": "Οδός Πανεπιστημίου",
+					"locality": "Αθήνα",
+					"code": "10671",
+					"country": "GR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "accounting@techsolutions.gr"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Διαμονή Deluxe Δίκλινο Δωμάτιο",
+					"price": "180.00",
+					"unit": "day",
+					"ext": {
+						"gr-mydata-income-cat": "category1_3",
+						"gr-mydata-income-type": "E3_561_001"
+					}
+				},
+				"sum": "180.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "24%",
+						"ext": {
+							"gr-mydata-vat-rate": "1"
+						}
+					}
+				],
+				"total": "180.00"
+			}
+		],
+		"payment": {
+			"instructions": {
+				"key": "credit-transfer",
+				"ext": {
+					"gr-mydata-payment-means": "1"
+				}
+			}
+		},
+		"totals": {
+			"sum": "180.00",
+			"total": "180.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"gr-mydata-vat-rate": "1"
+								},
+								"base": "180.00",
+								"percent": "24%",
+								"amount": "43.20"
+							}
+						],
+						"amount": "43.20"
+					}
+				],
+				"sum": "43.20"
+			},
+			"tax": "43.20",
+			"total_with_tax": "223.20",
+			"payable": "223.20"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2YjctNzhkMS04NDE0LWI4OWVjNGUxMGNjNSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ4Ni03ODFlLThkYzktMWE4ZmRkMjM3YTY4IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjQ0ZmEyMzAwMGMwMThiOTBkZWZmZTNhNGFmODA1MTA3OWFmZDk4ZDA1MjFmZTA5YjIzNGFiZDVlMDFkZjdiZGMifSwiaWF0IjoxNzkzODk0Njg4fQ.4-lJM99QSqQZBd_uuYIybmeMiJk08SWt7yuzLaNy4JC7bStpyvCVo5uNf-NMbTVWuSMlfp3fh9ZaLOq81jDmwg"
+	]
+}

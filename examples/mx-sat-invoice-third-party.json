@@ -1,0 +1,159 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6da4-7bdb-877b-28199dafceca",
+		"dig": {
+			"alg": "sha256",
+			"val": "fecbe6ae9916f22e26e3eebad867e8bf942f8aa5dc5715b95f1207eda7d4c9f4"
+		},
+		"stamps": [
+			{
+				"prv": "sat-uuid",
+				"val": "01a1ab50-6da4-7bdb-877b-28199dafceca"
+			},
+			{
+				"prv": "cfdi-sig",
+				"val": "Qk+hftgbpSYMqcc7BoBzGOctcNbDypP4IiHfzgf4mJuraxGEFbo8JEfS6BOzfqXojVLbRxPkXE83fqzWdnowOhOmi0Mvk3CdlTZNZ9i2i7hJv6cwfHXMTPpeOxfptuv2AzhFX7O14gS2szeai5yJIcT+d8/W6H0zN6b/2S12GkMdik0tyF8XRtQQat4Q1jxQzslOp46brROc0Xuobc7/jogq2ib7oaJEu7qDKhjYAkH7BHMaLMJgeC6eVeHUkkrr7RVTkH75H4wteKZNuP85E/F12nCkbMSQq7uplzRuLyO6YEkyIWxpT+0Gqtcb6pziYk8wqwP1pVsVZZ4Q0PPOsw=="
+			},
+			{
+				"prv": "cfdi-serial",
+				"val": "30001000000500003416"
+			},
+			{
+				"prv": "sat-sig",
+				"val": "MQWzFEvDEWag8sM8OWjlCS1DmrZWe+/1VtGsxDz8ycSH1yh8aoUGV3lKezQy190TnB2mncusGvFoUpbDhrk0tlRpTGT2+68/43yb0RZ+yWTVCrd09sCzRk/Dct+oyUKWr2AYYxA0Jt7ECyR4DQfPQYbPF4shsmcerMWxsbMUKqR43shvsb5QTxk/yA6CiWx3z/+uSxvJitUoUihAtFeBBdiNnKVBcG7ifWNJaoaBL03UOm1Ro77rGvUfYuxqqI02Fav98iv9eS//YmGzUTpz0Uvc9Lut+MRqkBvs3G/PBiJvO5Yi6I2PhzNo0O7z9SD6P9WnmufmVI9JFCbHVk+PNg=="
+			},
+			{
+				"prv": "sat-serial",
+				"val": "30001000000500003456"
+			},
+			{
+				"prv": "sat-timestamp",
+				"val": "2026-07-08T07:16:10"
+			},
+			{
+				"prv": "sat-chain",
+				"val": "||1.1|01a1ab50-6da4-7bdb-877b-28199dafceca|2026-07-08T07:16:10|SPR190613I52|Qk+hftgbpSYMqcc7BoBzGOctcNbDypP4IiHfzgf4mJuraxGEFbo8JEfS6BOzfqXojVLbRxPkXE83fqzWdnowOhOmi0Mvk3CdlTZNZ9i2i7hJv6cwfHXMTPpeOxfptuv2AzhFX7O14gS2szeai5yJIcT+d8/W6H0zN6b/2S12GkMdik0tyF8XRtQQat4Q1jxQzslOp46brROc0Xuobc7/jogq2ib7oaJEu7qDKhjYAkH7BHMaLMJgeC6eVeHUkkrr7RVTkH75H4wteKZNuP85E/F12nCkbMSQq7uplzRuLyO6YEkyIWxpT+0Gqtcb6pziYk8wqwP1pVsVZZ4Q0PPOsw==|30001000000500003456||"
+			},
+			{
+				"prv": "sat-url",
+				"val": "https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=01a1ab50-6da4-7bdb-877b-28199dafceca\u0026re=EKU9003173C9\u0026tt=232.00\u0026fe=0PPOsw=="
+			}
+		],
+		"meta": {
+			"description": "This invoice is used when the **issuer (supplier)** bills the customer **on behalf of another taxpayer** who is the real seller — for example **consignment** sales. The **third party** is identified on each line in the seller object (RFC, fiscal regime, address), while supplier remains the party issuing the CFDI.",
+			"title": "B2B invoice on behalf of a third party (a cuenta de terceros)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "MX",
+		"$addons": [
+			"mx-cfdi-v4"
+		],
+		"uuid": "01a1ab50-6da4-7bdf-9a2b-8187605639d4",
+		"type": "standard",
+		"series": "LMC",
+		"code": "002",
+		"issue_date": "2026-07-08",
+		"issue_time": "01:42:18",
+		"currency": "MXN",
+		"tax": {
+			"ext": {
+				"mx-cfdi-doc-type": "I",
+				"mx-cfdi-issue-place": "26015",
+				"mx-cfdi-payment-method": "PPD"
+			}
+		},
+		"supplier": {
+			"name": "ESCUELA KEMPER URGATE",
+			"tax_id": {
+				"country": "MX",
+				"code": "EKU9003173C9"
+			},
+			"ext": {
+				"mx-cfdi-fiscal-regime": "601"
+			}
+		},
+		"customer": {
+			"name": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+			"tax_id": {
+				"country": "MX",
+				"code": "URE180429TM6"
+			},
+			"addresses": [
+				{
+					"code": "86991"
+				}
+			],
+			"ext": {
+				"mx-cfdi-fiscal-regime": "601",
+				"mx-cfdi-use": "G01"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Venta en consignación",
+					"price": "100.00",
+					"ext": {
+						"mx-cfdi-prod-serv": "50211502"
+					}
+				},
+				"sum": "200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "16.0%"
+					}
+				],
+				"total": "200.00",
+				"seller": {
+					"name": "XENON INDUSTRIAL ARTICLES",
+					"tax_id": {
+						"country": "MX",
+						"code": "XIA190128J61"
+					},
+					"addresses": [
+						{
+							"code": "76343"
+						}
+					],
+					"ext": {
+						"mx-cfdi-fiscal-regime": "601"
+					}
+				}
+			}
+		],
+		"totals": {
+			"sum": "200.00",
+			"total": "200.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "200.00",
+								"percent": "16.0%",
+								"amount": "32.00"
+							}
+						],
+						"amount": "32.00"
+					}
+				],
+				"sum": "32.00"
+			},
+			"tax": "32.00",
+			"total_with_tax": "232.00",
+			"payable": "232.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZTUtNzFjOS05ZWQxLWMwMTU4YmQ2OGIwZCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhNC03YmRiLTg3N2ItMjgxOTlkYWZjZWNhIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImZlY2JlNmFlOTkxNmYyMmUyNmUzZWViYWQ4NjdlOGJmOTQyZjhhYTVkYzU3MTViOTVmMTIwN2VkYTdkNGM5ZjQifSwiaWF0IjoxNzkzODk0Njg4fQ.K1Rc6j8dq43ixMLt3pFCcp6s-jWpSvH8cA26kjPMZDcWDBHPxnAofw2lzKViKLMQbFaiqDtuGarw3Tbz-Sbc_Q"
+	]
+}

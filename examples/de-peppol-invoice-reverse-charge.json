@@ -1,0 +1,156 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d1f-7718-aa63-342829a4dbb3",
+		"dig": {
+			"alg": "sha256",
+			"val": "c234e0b1e8d555ff88e7b19f9c647f4c80abc68c46d3f4871d8f4d8012489619"
+		},
+		"meta": {
+			"description": "Reverse charge invoices are used for B2B services provided to customers in other EU member states. Reverse charge must be applied when:",
+			"title": "Peppol Germany - B2B services → EU customer (Reverse Charge)"
+		},
+		"from": "iso6523-actorid-upis::9930:DE879558966",
+		"to": "iso6523-actorid-upis::9920:ESB85905495"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "DE",
+		"$addons": [
+			"eu-en16931-v2017"
+		],
+		"uuid": "01a1ab50-6d1f-771c-bc5a-321a086fe4f1",
+		"type": "standard",
+		"series": "INV",
+		"code": "PP000003",
+		"issue_date": "2025-04-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Rheinland Technologies GmbH",
+			"tax_id": {
+				"country": "DE",
+				"code": "879558966"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9930:DE879558966"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9930",
+					"code": "DE879558966"
+				}
+			],
+			"addresses": [
+				{
+					"num": "27",
+					"street": "Friedrichstraße",
+					"locality": "Berlin",
+					"region": "BE",
+					"code": "10117",
+					"country": "DE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "rechnungen@rheinlandtech.de"
+				}
+			]
+		},
+		"customer": {
+			"name": "Invopop SL",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9920:ESB85905495"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9920",
+					"code": "ESB85905495"
+				}
+			],
+			"addresses": [
+				{
+					"street": "Calle Pradillo 42",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing+test@invopop.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "12",
+				"item": {
+					"name": "Sambox services",
+					"price": "145.00",
+					"unit": "one"
+				},
+				"sum": "1740.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "reverse-charge",
+						"ext": {
+							"cef-vatex": "VATEX-EU-AE",
+							"untdid-tax-category": "AE"
+						}
+					}
+				],
+				"total": "1740.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			}
+		},
+		"totals": {
+			"sum": "1740.00",
+			"total": "1740.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "reverse-charge",
+								"ext": {
+									"cef-vatex": "VATEX-EU-AE",
+									"untdid-tax-category": "AE"
+								},
+								"base": "1740.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "1740.00",
+			"payable": "1740.00"
+		}
+	}
+}

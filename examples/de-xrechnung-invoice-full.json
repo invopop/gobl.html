@@ -1,0 +1,709 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1aba3-cfcc-7e86-80d8-098cc5e4b614",
+		"dig": {
+			"alg": "sha256",
+			"val": "45d522e3df4deb95e9b571b26bc786b378872a4f786c7a9f19f4c152e74da798"
+		},
+		"meta": {
+			"description": "Leitweg-ID as buyer reference, Peppol 9930 endpoints, contact person, 19% and 7% rates with exempt and zero lines, allowance and charge codes, SEPA transfer, card and direct debit, delivery, notes and attachments.",
+			"title": "XRechnung with every feature"
+		},
+		"from": "iso6523-actorid-upis::9930:DE879558966",
+		"to": "iso6523-actorid-upis::9930:DE811569869"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "DE",
+		"$addons": [
+			"eu-en16931-v2017",
+			"de-xrechnung-v3"
+		],
+		"uuid": "01a1aba3-cfcc-7eb1-a7fc-15a2b806cb26",
+		"type": "standard",
+		"series": "RE-2026",
+		"code": "00417",
+		"issue_date": "2026-06-15",
+		"issue_time": "10:42:17",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Rheinland Technologies GmbH",
+			"alias": "Rheinland Tech",
+			"tax_id": {
+				"country": "DE",
+				"code": "879558966"
+			},
+			"identities": [
+				{
+					"key": "de-tax-number",
+					"code": "21/815/08150"
+				},
+				{
+					"label": "Handelsregister",
+					"code": "HRB 123456 B"
+				},
+				{
+					"label": "Lieferantennummer",
+					"code": "SUP-DE-4471"
+				}
+			],
+			"people": [
+				{
+					"name": {
+						"given": "Anna",
+						"surname": "Schneider"
+					},
+					"role": "Rechnungsstelle",
+					"emails": [
+						{
+							"addr": "anna.schneider@rheinland-tech.de"
+						}
+					],
+					"telephones": [
+						{
+							"num": "+49 30 1234 5678"
+						}
+					]
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9930:DE879558966"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9930",
+					"code": "DE879558966"
+				}
+			],
+			"addresses": [
+				{
+					"num": "27",
+					"street": "Friedrichstraße",
+					"street_extra": "Aufgang B, 3. OG",
+					"locality": "Berlin",
+					"region": "BE",
+					"code": "10117",
+					"country": "DE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "rechnung@rheinland-tech.de"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://www.rheinland-tech.de"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+49 30 1234 5600"
+				}
+			],
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+				}
+			]
+		},
+		"customer": {
+			"name": "Deutsche Bahn AG",
+			"tax_id": {
+				"country": "DE",
+				"code": "811569869"
+			},
+			"identities": [
+				{
+					"label": "Kundennummer",
+					"code": "KD-2026-0931"
+				}
+			],
+			"people": [
+				{
+					"name": {
+						"given": "Markus",
+						"surname": "Weber"
+					},
+					"role": "Einkauf"
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9930:DE811569869"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9930",
+					"code": "DE811569869"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Rechnungsanschrift",
+					"po_box": "100 123",
+					"num": "15",
+					"street": "Marienplatz",
+					"locality": "München",
+					"region": "BY",
+					"code": "80331",
+					"country": "DE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "rechnungseingang@example.de"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "120",
+				"item": {
+					"ref": "DEV-SENIOR",
+					"name": "Senior software development",
+					"identities": [
+						{
+							"label": "Leistungsnummer",
+							"code": "LN-4471-01"
+						}
+					],
+					"description": "Backend development for the ticketing platform, June 2026",
+					"price": "95.00",
+					"unit": "h"
+				},
+				"sum": "11400.00",
+				"discounts": [
+					{
+						"key": "special-agreement",
+						"reason": "Framework agreement rate",
+						"percent": "10%",
+						"amount": "1140.00",
+						"ext": {
+							"untdid-allowance": "64"
+						}
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "10260.00"
+			},
+			{
+				"i": 2,
+				"quantity": "3",
+				"item": {
+					"ref": "SRV-LIC-ENT",
+					"name": "Enterprise platform licence",
+					"description": "Annual subscription, up to 500 named users",
+					"price": "2400.00",
+					"unit": "yr"
+				},
+				"sum": "7200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "7200.00"
+			},
+			{
+				"i": 3,
+				"quantity": "2",
+				"item": {
+					"ref": "HW-GW-01",
+					"name": "Edge gateway appliance",
+					"identities": [
+						{
+							"type": "EAN",
+							"code": "4006381333931"
+						}
+					],
+					"description": "Industrial gateway, DIN rail mount, incl. power supply",
+					"price": "1850.00",
+					"unit": "piece"
+				},
+				"sum": "3700.00",
+				"charges": [
+					{
+						"key": "packing",
+						"reason": "Transport packaging",
+						"amount": "45.00",
+						"ext": {
+							"untdid-charge": "PC"
+						}
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "3745.00"
+			},
+			{
+				"i": 4,
+				"quantity": "250",
+				"item": {
+					"ref": "CBL-CAT6",
+					"name": "Cat 6 network cable",
+					"price": "1.85",
+					"unit": "m"
+				},
+				"sum": "462.50",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "462.50"
+			},
+			{
+				"i": 5,
+				"quantity": "12.5",
+				"item": {
+					"ref": "COP-WIRE",
+					"name": "Copper earthing wire",
+					"price": "14.20",
+					"unit": "kg"
+				},
+				"sum": "177.50",
+				"discounts": [
+					{
+						"reason": "Bulk price",
+						"amount": "17.75"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "159.75"
+			},
+			{
+				"i": 6,
+				"quantity": "40",
+				"item": {
+					"ref": "DOC-HANDBUCH",
+					"name": "Printed operator handbook",
+					"description": "Bound A4 manual, German edition",
+					"price": "24.50",
+					"unit": "item"
+				},
+				"sum": "980.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "7%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "980.00"
+			},
+			{
+				"i": 7,
+				"quantity": "1",
+				"item": {
+					"ref": "TRAIN-ONSITE",
+					"name": "On-site training day",
+					"description": "Operator training for up to 12 participants",
+					"price": "1600.00",
+					"unit": "day"
+				},
+				"sum": "1600.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "exempt",
+						"ext": {
+							"cef-vatex": "VATEX-EU-132-1I",
+							"untdid-tax-category": "E"
+						}
+					}
+				],
+				"total": "1600.00"
+			},
+			{
+				"i": 8,
+				"quantity": "4",
+				"item": {
+					"ref": "SHIP-EXP",
+					"name": "Express courier shipment",
+					"price": "32.00",
+					"unit": "trip"
+				},
+				"sum": "128.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "zero",
+						"percent": "0%",
+						"ext": {
+							"untdid-tax-category": "Z"
+						}
+					}
+				],
+				"total": "128.00"
+			}
+		],
+		"discounts": [
+			{
+				"i": 1,
+				"key": "early-completion",
+				"reason": "Delivered ahead of schedule",
+				"percent": "2%",
+				"amount": "490.71",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"ext": {
+					"untdid-allowance": "41"
+				}
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"key": "delivery",
+				"reason": "Freight to Munich",
+				"amount": "120.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"ext": {
+					"untdid-charge": "DL"
+				}
+			},
+			{
+				"i": 2,
+				"key": "insurance",
+				"reason": "Transport insurance",
+				"amount": "35.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"ext": {
+					"untdid-charge": "IN"
+				}
+			}
+		],
+		"ordering": {
+			"code": "04011000-12345-67",
+			"identities": [
+				{
+					"label": "Leitweg-ID",
+					"code": "04011000-12345-67"
+				},
+				{
+					"label": "Vorgangsnummer",
+					"code": "VG-2026-0098"
+				}
+			],
+			"cost": "KST-4711",
+			"period": {
+				"label": "Leistungszeitraum",
+				"start": "2026-06-01",
+				"end": "2026-06-30"
+			},
+			"projects": [
+				{
+					"code": "PRJ-TICKETING-2026"
+				}
+			],
+			"contracts": [
+				{
+					"issue_date": "2025-11-01",
+					"code": "RV-2025-0042",
+					"description": "Framework agreement for development services"
+				}
+			],
+			"purchases": [
+				{
+					"issue_date": "2026-05-12",
+					"code": "PO-2026-5519"
+				}
+			],
+			"receiving": [
+				{
+					"issue_date": "2026-06-10",
+					"code": "WE-2026-0871"
+				}
+			],
+			"despatch": [
+				{
+					"issue_date": "2026-06-08",
+					"code": "LS-2026-0334"
+				}
+			],
+			"tender": [
+				{
+					"code": "AUS-2025-117"
+				}
+			]
+		},
+		"payment": {
+			"advances": [
+				{
+					"date": "2026-05-20",
+					"key": "credit-transfer",
+					"ref": "ANZ-2026-0417",
+					"description": "Deposit paid on order confirmation",
+					"percent": "20%",
+					"amount": "5670.31"
+				}
+			],
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-06-30",
+						"notes": "First instalment",
+						"amount": "9072.49",
+						"percent": "40%"
+					},
+					{
+						"date": "2026-07-15",
+						"notes": "Balance",
+						"amount": "13608.74",
+						"percent": "60%"
+					}
+				],
+				"notes": "Zahlbar innerhalb von 30 Tagen ohne Abzug."
+			},
+			"instructions": {
+				"key": "credit-transfer+sepa",
+				"detail": "SEPA credit transfer, please quote the invoice number",
+				"ref": "RE-2026-00417",
+				"credit_transfer": [
+					{
+						"label": "Commerzbank",
+						"iban": "DE89 3704 0044 0532 0130 00",
+						"bic": "COBADEFFXXX",
+						"name": "Rheinland Technologies GmbH"
+					},
+					{
+						"label": "Deutsche Kreditbank",
+						"iban": "DE02 1203 0000 0000 2020 51",
+						"bic": "BYLADEM1001",
+						"name": "Rheinland Technologies GmbH"
+					}
+				],
+				"card": {
+					"first6": "411111",
+					"last4": "1111",
+					"holder": "Deutsche Bahn AG"
+				},
+				"direct_debit": {
+					"ref": "MANDAT-DB-2025-0042",
+					"creditor": "DE98ZZZ09999999999",
+					"account": "DE02120300000000202051"
+				},
+				"online": [
+					{
+						"key": "paypal",
+						"label": "PayPal",
+						"url": "https://www.paypal.com/pay?ref=RE-2026-00417"
+					}
+				],
+				"notes": "Skonto: **2%** bei Zahlung innerhalb von _10 Tagen_.",
+				"ext": {
+					"untdid-payment-means": "58"
+				}
+			}
+		},
+		"delivery": {
+			"receiver": {
+				"name": "DB Systel GmbH",
+				"addresses": [
+					{
+						"num": "1",
+						"street": "Jürgen-Ponto-Platz",
+						"locality": "Frankfurt am Main",
+						"region": "HE",
+						"code": "60329",
+						"country": "DE"
+					}
+				]
+			},
+			"date": "2026-06-08",
+			"period": {
+				"start": "2026-06-01",
+				"end": "2026-06-30"
+			}
+		},
+		"totals": {
+			"sum": "24535.25",
+			"discount": "490.71",
+			"charge": "155.00",
+			"total": "24199.55",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "21491.55",
+								"percent": "19%",
+								"amount": "4083.39"
+							},
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "980.00",
+								"percent": "7%",
+								"amount": "68.60"
+							},
+							{
+								"key": "exempt",
+								"ext": {
+									"cef-vatex": "VATEX-EU-132-1I",
+									"untdid-tax-category": "E"
+								},
+								"base": "1600.00",
+								"amount": "0.00"
+							},
+							{
+								"key": "zero",
+								"ext": {
+									"untdid-tax-category": "Z"
+								},
+								"base": "128.00",
+								"percent": "0%",
+								"amount": "0.00"
+							}
+						],
+						"amount": "4151.99"
+					}
+				],
+				"sum": "4151.99"
+			},
+			"tax": "4151.99",
+			"total_with_tax": "28351.54",
+			"payable": "28351.54",
+			"advance": "5670.31",
+			"due": "22681.23"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Vielen Dank für Ihren Auftrag. Fragen zu dieser Rechnung richten Sie bitte an rechnung@rheinland-tech.de.",
+				"ext": {
+					"untdid-text-subject": "AAI"
+				}
+			},
+			{
+				"key": "delivery",
+				"text": "Hardware delivered to DB Systel Frankfurt on 2026-06-08, delivery note LS-2026-0334.",
+				"ext": {
+					"untdid-text-subject": "DEL"
+				}
+			},
+			{
+				"key": "legal",
+				"text": "Rheinland Technologies GmbH · Sitz Berlin · Amtsgericht Charlottenburg HRB 123456 B · Geschäftsführerin: Anna Schneider · USt-IdNr. DE879558966",
+				"meta": {
+					"position": "footer"
+				},
+				"ext": {
+					"untdid-text-subject": "ABL"
+				}
+			}
+		],
+		"attachments": [
+			{
+				"code": "LS-2026-0334",
+				"name": "lieferschein-LS-2026-0334.pdf",
+				"description": "Signed delivery note",
+				"url": "https://files.rheinland-tech.example/ls-2026-0334.pdf",
+				"mime": "application/pdf"
+			},
+			{
+				"code": "TS-2026-06",
+				"name": "stundennachweis-2026-06.pdf",
+				"description": "Timesheet for June 2026",
+				"url": "https://files.rheinland-tech.example/timesheet-2026-06.pdf",
+				"mime": "application/pdf"
+			}
+		]
+	}
+}

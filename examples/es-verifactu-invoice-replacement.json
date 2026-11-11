@@ -1,0 +1,127 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d5e-7f2a-9843-cea31e3d660c",
+		"dig": {
+			"alg": "sha256",
+			"val": "abdf52f7a4e329538a61de41d66bd4a53356a31f61c1fca38964dfc823f9cf9f"
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B24830515\u0026numserie=FC-0001\u0026fecha=26-02-2026\u0026importe=605.00"
+			}
+		],
+		"meta": {
+			"title": "Replacement invoice (factura de canje)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-verifactu-v1"
+		],
+		"$tags": [
+			"replacement"
+		],
+		"uuid": "01a1ab50-6d5e-7f2e-a7a4-0aca82a72dd8",
+		"type": "standard",
+		"series": "FC",
+		"code": "0001",
+		"issue_date": "2026-02-26",
+		"currency": "EUR",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2026-02-20",
+				"series": "FS",
+				"code": "001"
+			}
+		],
+		"tax": {
+			"ext": {
+				"es-verifactu-doc-type": "F3"
+			}
+		},
+		"supplier": {
+			"name": "Easor Software Solutions S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B24830515"
+			},
+			"addresses": [
+				{
+					"num": "532",
+					"street": "Avenida Diagonal",
+					"locality": "Barcelona",
+					"region": "Barcelona",
+					"code": "08006",
+					"country": "ES"
+				}
+			]
+		},
+		"customer": {
+			"name": "Cliente Ejemplo S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B63272603"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Servicio de consultoría",
+					"price": "500.00"
+				},
+				"sum": "500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"es-verifactu-op-class": "S1",
+							"es-verifactu-regime": "01"
+						}
+					}
+				],
+				"total": "500.00"
+			}
+		],
+		"totals": {
+			"sum": "500.00",
+			"total": "500.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"es-verifactu-op-class": "S1",
+									"es-verifactu-regime": "01"
+								},
+								"base": "500.00",
+								"percent": "21.0%",
+								"amount": "105.00"
+							}
+						],
+						"amount": "105.00"
+					}
+				],
+				"sum": "105.00"
+			},
+			"tax": "105.00",
+			"total_with_tax": "605.00",
+			"payable": "605.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2N2YtN2QyYi1hYWM2LWYwYzJlOWU0ODYyOCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1ZS03ZjJhLTk4NDMtY2VhMzFlM2Q2NjBjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImFiZGY1MmY3YTRlMzI5NTM4YTYxZGU0MWQ2NmJkNGE1MzM1NmEzMWY2MWMxZmNhMzg5NjRkZmM4MjNmOWNmOWYifSwiaWF0IjoxNzkzODk0Njg4fQ.L6JtcyIIn11zFAvH5EBoK8yW87A-4ZNTNdsRjW3qsJFfcKj-fQ0g2apjS9gZeMCI9M8e5j96uIno9wikeH29_A"
+	]
+}

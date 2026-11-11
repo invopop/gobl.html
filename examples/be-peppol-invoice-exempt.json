@@ -1,0 +1,156 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6cfc-7f23-ba0f-64580aa00d76",
+		"dig": {
+			"alg": "sha256",
+			"val": "65889409cbb7662416acd3e63bc629bfcf56ce1ed51a25be3b5086aad9e05200"
+		},
+		"meta": {
+			"description": "Exempt invoices are used for B2B transactions that are exempt from VAT, which also covers exemptions in internal operations.",
+			"title": "Peppol Belgium - B2B exempt invoice"
+		},
+		"from": "iso6523-actorid-upis::0208:0316597904",
+		"to": "iso6523-actorid-upis::0195:SGUEN199904785Z"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "BE",
+		"$addons": [
+			"eu-en16931-v2017"
+		],
+		"uuid": "01a1ab50-6cfc-7f26-8f26-7641167225eb",
+		"type": "standard",
+		"series": "INV",
+		"code": "PP000003",
+		"issue_date": "2025-04-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Benelux Industries SA/NV",
+			"tax_id": {
+				"country": "BE",
+				"code": "0316597904"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0208:0316597904"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0208",
+					"code": "0316597904"
+				}
+			],
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Rue de la Loi",
+					"locality": "Brussels",
+					"region": "Brussels-Capital",
+					"code": "1040",
+					"country": "BE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "test@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Singapore Company LTD",
+			"tax_id": {
+				"country": "SG",
+				"code": "199904785Z"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0195:SGUEN199904785Z"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0195",
+					"code": "SGUEN199904785Z"
+				}
+			],
+			"addresses": [
+				{
+					"street": "18 Marina Gardens Drive",
+					"locality": "Singapore",
+					"region": "Central Region",
+					"code": "018953",
+					"country": "SG"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing+test@invopop.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "12",
+				"item": {
+					"name": "Sambox product",
+					"price": "145.00",
+					"unit": "one"
+				},
+				"sum": "1740.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "exempt",
+						"ext": {
+							"cef-vatex": "VATEX-EU-132-1I",
+							"untdid-tax-category": "E"
+						}
+					}
+				],
+				"total": "1740.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			}
+		},
+		"totals": {
+			"sum": "1740.00",
+			"total": "1740.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "exempt",
+								"ext": {
+									"cef-vatex": "VATEX-EU-132-1I",
+									"untdid-tax-category": "E"
+								},
+								"base": "1740.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "1740.00",
+			"payable": "1740.00"
+		}
+	}
+}

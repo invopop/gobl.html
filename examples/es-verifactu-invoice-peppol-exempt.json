@@ -1,0 +1,172 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d38-7ad5-a771-96a357cda886",
+		"dig": {
+			"alg": "sha256",
+			"val": "50651ffbb73fa3d12e6d9896233c5815f57d1dfdd1aae64ae73ec22ee180a6c0"
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B71353213\u0026numserie=INV-PP000003\u0026fecha=03-04-2025\u0026importe=120.00"
+			}
+		],
+		"meta": {
+			"description": "Exempt invoices are used for B2B transactions that are exempt from VAT, which also covers exemptions in internal operations.",
+			"title": "Peppol Spain - B2B exempt invoice"
+		},
+		"from": "iso6523-actorid-upis::9920:ESB71353213",
+		"to": "iso6523-actorid-upis::9920:ESB85905495"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"eu-en16931-v2017",
+			"es-verifactu-v1"
+		],
+		"uuid": "01a1ab50-6d38-7ad9-9c11-be9e0e7ec2f4",
+		"type": "standard",
+		"series": "INV",
+		"code": "PP000003",
+		"issue_date": "2025-04-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"es-verifactu-doc-type": "F1",
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Escuela de Lengua Española",
+			"tax_id": {
+				"country": "ES",
+				"code": "B71353213"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9920:ESB71353213"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9920",
+					"code": "ESB71353213"
+				}
+			],
+			"addresses": [
+				{
+					"num": "20",
+					"street": "Passeig de Gràcia",
+					"locality": "Barcelona",
+					"region": "Madrid-Capital",
+					"code": "08008",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Invopop S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9920:ESB85905495"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9920",
+					"code": "ESB85905495"
+				}
+			],
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid-Capital",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Curso de Español - Mes",
+					"price": "120.00",
+					"unit": "one"
+				},
+				"sum": "120.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "exempt",
+						"ext": {
+							"cef-vatex": "VATEX-EU-132-1I",
+							"es-verifactu-exempt": "E1",
+							"es-verifactu-regime": "01",
+							"untdid-tax-category": "E"
+						}
+					}
+				],
+				"total": "120.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			}
+		},
+		"totals": {
+			"sum": "120.00",
+			"total": "120.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "exempt",
+								"ext": {
+									"cef-vatex": "VATEX-EU-132-1I",
+									"es-verifactu-exempt": "E1",
+									"es-verifactu-regime": "01",
+									"untdid-tax-category": "E"
+								},
+								"base": "120.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "120.00",
+			"payable": "120.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NDktNzdjNC1hNDFmLWRjMTZjYjI3ODE3MSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQzOC03YWQ1LWE3NzEtOTZhMzU3Y2RhODg2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjUwNjUxZmZiYjczZmEzZDEyZTZkOTg5NjIzM2M1ODE1ZjU3ZDFkZmRkMWFhZTY0YWU3M2VjMjJlZTE4MGE2YzAifSwiaWF0IjoxNzkzODk0Njg4fQ.4x8PZb3s2osadwrGkvZaqLXaiv34JOuxkMzLUQIYeWWQ3StGpD-Bi6RTJeH3VJz_TtnpknEVh-7JyGrKLG-HJw"
+	]
+}

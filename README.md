@@ -42,6 +42,93 @@ templ generate --watch --cmd="go run ./cmd/gobl.html serve --pdf prince"
 
 Before uploading changes to git, be sure to re-run the regular `templ generate` command, as the live version makes temporary modifications to files that need to be replaced.
 
+### WebAssembly
+
+The renderer also compiles to WebAssembly so a browser can render a GOBL
+envelope without a server round trip. The `wasm` package exposes:
+
+```js
+goblRender(envelopeJSON, { locale: "es", watermark: "DRAFT" }) // → { html } or { error }
+goblVersion()                                                  // → { version, gobl }
+```
+
+Parameters use the same names as pdf.go's task configuration (see `Params` in
+`params.go`). Documents are rendered as given, without calculation, and assets
+are embedded unless `embed_assets` is false.
+
+Build it with:
+
+```bash
+scripts/cdn-dist.sh dist
+```
+
+The development server (`go run ./cmd/gobl.html serve`) opens a previewer
+at `/`, built with [PopUI](https://github.com/invopop/popui.go), that lists
+the examples with filters for country, document kind, addon and content (QR
+codes, payment details, logos, …) and renders the selected one in the browser
+through the WebAssembly build on a true-ratio sheet, with page breaks, an
+optional DIN 5008 envelope window and links to the server HTML and PDF. A
+benchmark button renders the listed examples both ways and compares the
+times. After editing `internal/previewer/previewer.templ`, regenerate with
+the templ version from `go.mod`:
+
+```bash
+go run github.com/a-h/templ/cmd/templ generate -path internal/previewer
+```
+
+The `wasm` package test builds the module and checks,
+through Node, that every example renders byte-identically to the native
+renderer.
+
+Each release publishes the build to
+`https://assets.invopop.com/gobl.html/<version>/`.
+
+### Examples
+
+Every file in `examples/` is named `<country>-<format>-<kind>[-<variant>]`,
+with states and locales as dotted infixes: the regime's country, the agency
+or format the addon targets (`verifactu`, `sat`, `at`, `sdi`, `peppol`…),
+the document kind (`invoice`, `credit-note`, `debit-note`, `corrective`,
+`proforma`, `order`, `delivery`, `receipt`, `party`…) and what else sets
+the example apart, as in `es-verifactu-invoice-full` or
+`mx-sat-invoice-b2c.hidden`. `scripts/build-examples.go` derives the name
+from the document, and `-rename` moves every example, with its output,
+source and manifest entry, to its canonical name.
+
+An example can say what it shows: the envelope head's `meta` carries a
+`title` and a `description`, which the previewer lists and which the
+digest does not cover. The docs import takes them from the accordion
+each snippet appears in; a source under `examples/src/` gives them by
+wrapping the document as `{"head": {"meta": {"title": …, "description":
+…}}, "doc": {…}}`.
+
+### Docs examples
+
+Most of `examples/` comes from the GOBL examples published on
+[docs.invopop.com](https://docs.invopop.com), so the previewer renders every
+document the docs show; gobl.html keeps more of its own on top. The docs are
+the source of those files: edit the `.min.mdx` snippet there and re-import
+rather than editing the copy here. With a checkout of the docs repository
+next to this one:
+
+```bash
+go run scripts/build-examples.go -docs ../docs.invopop.com
+go test . -run Example -update
+```
+
+The script envelops and validates each built snippet with the gobl pinned
+here, writes `examples/<country>-<name>.json`, records what it imported in
+`examples/docs-examples.txt`; with `-prune` it also removes imports the
+docs dropped (without it they are kept and reported, since they may come
+from a docs branch not merged yet). It skips a
+docs example whose name an example of gobl.html's own already uses, and
+reports one the current gobl rules reject, so both show up as work for the
+docs. A document whose addon has the tax agency stamp it (VERI\*FACTU,
+TicketBAI, AT, SAT, KSeF, ZATCA, myDATA, DIAN, ARCA, Smart Receipts) gets
+sample stamps shaped like the real ones, a code if it has none, and a
+signature from a throwaway key, so the previewer shows the QR codes and
+references the final PDF carries.
+
 ### Testing
 
 Tests are currently pretty limited. To ensure the basics are covered, the contents of the `examples` directory are converted to HTML, pretty printed, and output to the `examples/out` directory. The tests will ensure the output matches what's expected. To update the output test data run:

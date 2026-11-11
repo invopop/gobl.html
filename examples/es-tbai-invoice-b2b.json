@@ -1,0 +1,148 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d51-7ed0-ba02-9087bafece51",
+		"dig": {
+			"alg": "sha256",
+			"val": "2e7eadaf426786db1e20f2d502f8849a4049094bc52908e729f820ca04972fd4"
+		},
+		"stamps": [
+			{
+				"prv": "tbai-code",
+				"val": "TBAI-A99805194-080726-LrNMp23wKPLjx-112"
+			},
+			{
+				"prv": "tbai-qr",
+				"val": "https://batuz.eus/QRTBAI/?id=TBAI-A99805194-080726-LrNMp23wKPLjx-112\u0026s=F1\u0026nf=0001\u0026i=2178.00\u0026cr=027"
+			}
+		],
+		"meta": {
+			"description": "In this example, we're issuing a standard B2B invoice from a Basque supplier to a customer in Madrid.",
+			"title": "B2B Invoice"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-tbai-v1"
+		],
+		"uuid": "01a1ab50-6d51-7ed4-8282-014ae264209d",
+		"type": "standard",
+		"series": "F1",
+		"code": "0001",
+		"issue_date": "2026-07-08",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"es-tbai-region": "BI"
+			}
+		},
+		"supplier": {
+			"name": "HFPn5yhXZ9tdD4pHRbvwymaVPrGZQr",
+			"tax_id": {
+				"country": "ES",
+				"code": "A99805194"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "San Frantzisko",
+					"locality": "Bilbo",
+					"region": "Bizkaia",
+					"code": "48003",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Receive One S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B98602642"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Development services",
+					"price": "90.00",
+					"unit": "h"
+				},
+				"sum": "1800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"es-tbai-product": "services",
+							"es-tbai-regime": "01"
+						}
+					}
+				],
+				"total": "1800.00"
+			}
+		],
+		"totals": {
+			"sum": "1800.00",
+			"total": "1800.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"es-tbai-product": "services",
+									"es-tbai-regime": "01"
+								},
+								"base": "1800.00",
+								"percent": "21.0%",
+								"amount": "378.00"
+							}
+						],
+						"amount": "378.00"
+					}
+				],
+				"sum": "378.00"
+			},
+			"tax": "378.00",
+			"total_with_tax": "2178.00",
+			"payable": "2178.00"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Invoice for development services"
+			}
+		]
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NjYtNzFlYy04MGIwLWM2NDM4YTYxMTFiZSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1MS03ZWQwLWJhMDItOTA4N2JhZmVjZTUxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjJlN2VhZGFmNDI2Nzg2ZGIxZTIwZjJkNTAyZjg4NDlhNDA0OTA5NGJjNTI5MDhlNzI5ZjgyMGNhMDQ5NzJmZDQifSwiaWF0IjoxNzkzODk0Njg4fQ.xQiQYf9FysaHYDQCNa728JYIxsKlJsqQhh-BPwT3ql2pV9Y9AMipyqrzLeFbOjGhesnyaI9w4syj-Kj4dIRQwg"
+	]
+}

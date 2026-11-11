@@ -1,0 +1,161 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d75-7b42-9137-2e96032718e9",
+		"dig": {
+			"alg": "sha256",
+			"val": "15c169c3199462d191ffdbdb4f2e19a8beb398639af8c33d5750e5acf204058c"
+		},
+		"meta": {
+			"description": "A cross-border sale by a French supplier where the German customer issues the invoice under a self-billing agreement. Like all cross-border B2B, it is not transmitted through the PA e-invoicing flow — the French supplier reports the sale via e-reporting (Flux 10.1), validated by the fr-ctc-flow10-v1 add-on.",
+			"title": "PA cross-border self-billed invoice"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FR",
+		"$addons": [
+			"fr-ctc-flow10-v1"
+		],
+		"$tags": [
+			"self-billed"
+		],
+		"uuid": "01a1ab50-6d75-7b46-b881-68d38b0b522f",
+		"type": "standard",
+		"series": "AF",
+		"code": "2026-INT-007",
+		"issue_date": "2026-09-30",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"fr-ctc-billing-mode": "B1",
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Domaine de la Vallée SARL",
+			"tax_id": {
+				"country": "FR",
+				"code": "40303265045"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"type": "SIREN",
+					"code": "303265045",
+					"ext": {
+						"iso-scheme-id": "0002"
+					}
+				}
+			],
+			"addresses": [
+				{
+					"num": "3",
+					"street": "Chemin des Vergers",
+					"locality": "Avignon",
+					"code": "84000",
+					"country": "FR"
+				}
+			]
+		},
+		"customer": {
+			"name": "Weinhandel München GmbH",
+			"tax_id": {
+				"country": "DE",
+				"code": "111111125"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"code": "DE111111125",
+					"ext": {
+						"iso-scheme-id": "0223"
+					}
+				}
+			],
+			"inboxes": [
+				{
+					"email": "buchhaltung@weinhandel.de"
+				}
+			],
+			"addresses": [
+				{
+					"num": "10",
+					"street": "Weinstrasse",
+					"locality": "München",
+					"code": "80331",
+					"country": "DE"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "120",
+				"item": {
+					"name": "Côtes du Rhône 2024 (carton de 6)",
+					"price": "45.00",
+					"unit": "item"
+				},
+				"sum": "5400.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "intra-community",
+						"ext": {
+							"cef-vatex": "VATEX-EU-IC",
+							"untdid-tax-category": "K"
+						}
+					}
+				],
+				"total": "5400.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Paiement à 30 jours"
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "FR7630006000011234567890189"
+					}
+				]
+			}
+		},
+		"totals": {
+			"sum": "5400.00",
+			"total": "5400.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "intra-community",
+								"ext": {
+									"cef-vatex": "VATEX-EU-IC",
+									"untdid-tax-category": "K"
+								},
+								"base": "5400.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "5400.00",
+			"payable": "5400.00"
+		},
+		"notes": [
+			{
+				"key": "legal",
+				"text": "Autofacturation - facture établie par le client au nom et pour le compte du fournisseur."
+			}
+		]
+	}
+}
