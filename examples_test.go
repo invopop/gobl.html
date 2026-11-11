@@ -13,6 +13,7 @@ import (
 
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
+	_ "github.com/invopop/gobl.fr.ctc/addon/facturx" // fr-facturx-v1, external since gobl v0.509.0
 	goblhtml "github.com/invopop/gobl.html"
 	"github.com/invopop/gobl.html/internal/catalog"
 	"github.com/pmezard/go-difflib/difflib"
