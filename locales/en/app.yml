@@ -311,12 +311,40 @@ en:
       # Reference assigned by the AdE when the commercial document is
       # voided; it must be printed on the ticket of the annulled document.
       ade-void-ref: "AdE annulment reference"
+      # Badge for a negative document that corrects an earlier one of the same
+      # SDI type; the AdE treats it as a "nota di variazione" for VAT.
+      correction: "Correction"
       title:
         # AdE receipt document names ("documento commerciale"); corrections
         # keep the commercial document title per Risposta all'interpello
         # n. 167/2020.
         ticket: "Commercial document"
         ticket-corrective: "Cancellation commercial document"
+        # SDI document types (TipoDocumento), shortened from the names in the
+        # it-sdi-v1 addon. The title adds the code after the name.
+        sdi:
+          TD01: "Invoice"
+          TD02: "Advance payment invoice"
+          TD03: "Freelancer advance payment invoice"
+          TD04: "Credit note"
+          TD05: "Debit note"
+          TD06: "Freelancer invoice"
+          TD07: "Simplified invoice"
+          TD08: "Simplified credit note"
+          TD09: "Simplified debit note"
+          TD16: "Domestic reverse charge integration"
+          TD17: "Self-billed invoice for services from abroad"
+          TD18: "Integration for EU goods purchase"
+          TD19: "Self-billed invoice for goods (art. 17 c. 2)"
+          TD20: "Self-billed regularisation invoice"
+          TD21: "Self-billed invoice for exceeding the export ceiling"
+          TD22: "Goods extracted from VAT warehouse"
+          TD23: "Goods extracted from VAT warehouse with VAT payment"
+          TD24: "Deferred invoice"
+          TD25: "Deferred invoice"
+          TD26: "Sale of depreciable assets or internal transfer"
+          TD27: "Self-consumption or free transfer invoice"
+          TD28: "Purchase from San Marino with VAT"
     gr:
       title:
         1:
