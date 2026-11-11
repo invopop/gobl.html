@@ -11,6 +11,7 @@ require (
 	github.com/invopop/gobl.co.dian v0.0.3
 	github.com/invopop/gobl.dev v0.511.2
 	github.com/invopop/gobl.es.verifactu v0.41.0
+	github.com/invopop/gobl.it.sdi v0.90.0
 	github.com/invopop/gobl.mx.cfdi v0.68.0
 	github.com/invopop/gobl.pl.ksef v0.47.0
 	github.com/invopop/gobl.pt.saft v0.0.9
@@ -53,7 +54,6 @@ require (
 	github.com/invopop/gobl.es.facturae v0.29.0 // indirect
 	github.com/invopop/gobl.fi.finvoice v0.0.6 // indirect
 	github.com/invopop/gobl.fr.ctc v0.0.17 // indirect
-	github.com/invopop/gobl.it.sdi v0.90.0 // indirect
 	github.com/invopop/gobl.peppol v0.0.2 // indirect
 	github.com/invopop/gobl.ubl v0.98.0 // indirect
 	github.com/invopop/jsonschema v0.14.0 // indirect

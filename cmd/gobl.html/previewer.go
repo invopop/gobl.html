@@ -67,7 +67,7 @@ func (p *previewerHandler) scan(c echo.Context) []catalog.Entry {
 		for _, err := range errs {
 			c.Logger().Warnf("catalog: %v", err)
 		}
-		p.entries = entries
+		p.entries = catalog.Fold(entries)
 	})
 	return p.entries
 }

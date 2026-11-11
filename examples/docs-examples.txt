@@ -86,8 +86,10 @@ fi-finvoice-invoice-b2g.json	snippets/invoices/fi/b2g-invoice.mdx
 fr-chorus-pro-credit-note.json	snippets/invoices/fr/chorus-pro-credit-note.mdx
 fr-chorus-pro-invoice-b2g.json	snippets/invoices/fr/chorus-pro-b2g.mdx
 fr-chorus-pro-invoice-cross-border.json	snippets/invoices/fr/chorus-pro-cross-border.mdx
+fr-ctc-credit-note.json	snippets/invoices/fr/pa-credit-note.mdx
 fr-ctc-invoice-advance.json	snippets/invoices/fr/pa-advance.mdx
 fr-ctc-invoice-b2b-international.json	snippets/invoices/fr/pa-b2b-international.mdx
+fr-ctc-invoice-b2b.json	snippets/invoices/fr/pa-b2b.mdx
 fr-ctc-invoice-b2g.json	snippets/invoices/fr/pa-b2g.mdx
 fr-ctc-invoice-debit-note.json	snippets/invoices/fr/pa-debit-note.mdx
 fr-ctc-invoice-final-after-advance.json	snippets/invoices/fr/pa-final-after-advance.mdx

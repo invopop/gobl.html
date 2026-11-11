@@ -199,14 +199,14 @@ templ list(entries []catalog.Entry) {
 						@click.prevent={ "select('" + e.File + "')" }
 						title={ e.File }
 					>
-						<span class="flex items-center gap-2 min-w-0 text-sm">
+						<span class="flex items-center gap-2 min-w-0 text-base">
 							if e.Country != "" {
 								@popui.Image(props.Image{Src: FlagURL(e.Country), Alt: strings.ToUpper(e.Country), Class: "w-3.5 h-2.5 rounded-[1.5px] shrink-0"})
 							}
 							<span class="truncate">{ Title(e.Title) }</span>
 						</span>
 						if e.Description != "" {
-							<span class="truncate text-xs text-foreground-default-tertiary pl-[22px]">{ e.Description }</span>
+							<span class="truncate text-sm text-foreground-default-tertiary pl-[22px]">{ e.Description }</span>
 						}
 					</a>
 				</li>
@@ -228,53 +228,58 @@ func Title(s string) string {
 // the main sheet shows the results laid out like a GOBL document.
 templ preview(entries []catalog.Entry) {
 	<div class="flex-1 min-w-0 flex flex-col">
-		<div class="h-10 px-4 flex items-center gap-3 border-b border-border bg-background shrink-0">
-			<span class="font-medium truncate" x-text="currentTitle()"></span>
-			<span class="text-sm text-foreground-default-secondary tabular-nums whitespace-nowrap" x-text="meta"></span>
-			<span class="text-sm text-foreground-critical truncate" x-show="error" x-text="error"></span>
-			<span class="ml-auto flex items-center gap-1">
-				<template x-if="bench && !running">
-					@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Attributes: templ.Attributes{"@click": "closeBenchmark()"}}) {
-						@icons.ArrowLeft()
-						Back to preview
+		// The header keeps three fixed rows so the layout never shifts between
+		// examples: title with the links, one line of description, one line
+		// of tags. Every example's description and tags are rendered and the
+		// current one shown, so the tags keep PopUI's styling.
+		<div class="px-4 py-2 flex flex-col gap-1 border-b border-border bg-background shrink-0">
+			<div class="h-7 flex items-center gap-4">
+				<span class="font-medium truncate min-w-0 flex-1" x-text="currentTitle()"></span>
+				<span class="text-sm text-foreground-critical truncate" x-show="error" x-text="error"></span>
+				<span class="shrink-0 flex items-center gap-1">
+					<template x-if="bench && !running">
+						@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Attributes: templ.Attributes{"@click": "closeBenchmark()"}}) {
+							@icons.ArrowLeft()
+							Back to preview
+						}
+					</template>
+					<template x-if="current && !bench">
+						<span class="flex items-center gap-1">
+							@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Href: "#", Target: "_blank", Attributes: templ.Attributes{":href": "serverURL(current.file, 'html')"}}) {
+								HTML
+							}
+							@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Href: "#", Target: "_blank", Attributes: templ.Attributes{":href": "serverURL(current.file, 'pdf')"}}) {
+								PDF
+							}
+							@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Href: "#", Target: "_blank", Attributes: templ.Attributes{":href": "'/api/examples/' + current.file"}}) {
+								JSON
+							}
+						</span>
+					</template>
+				</span>
+			</div>
+			<div class="h-5 text-sm text-foreground-default-secondary truncate">
+				for _, e := range entries {
+					if e.Description != "" {
+						<span :class={ "selected === '" + e.File + "' && !bench ? '' : 'hidden'" }>{ e.Description }</span>
+					} else {
+						<span class="text-foreground-default-tertiary italic" :class={ "selected === '" + e.File + "' && !bench ? '' : 'hidden'" }>No description</span>
 					}
-				</template>
-				<template x-if="current && !bench">
-					<span class="flex items-center gap-1">
-						@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Href: "#", Target: "_blank", Attributes: templ.Attributes{":href": "serverURL(current.file, 'html')"}}) {
-							HTML
-							@icons.ExternalLink()
+				}
+			</div>
+			<div class="h-6 overflow-hidden">
+				for _, e := range entries {
+					<span class="flex items-center gap-1 whitespace-nowrap" :class={ "selected === '" + e.File + "' && !bench ? '' : 'hidden'" }>
+						@popui.TagStatus(props.TagStatus{Label: KindLabel(e.Kind), Status: KindStatus(e.Kind)})
+						for _, a := range e.Addons {
+							@popui.TagStatus(props.TagStatus{Label: a, Status: "steelBlue"})
 						}
-						@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Href: "#", Target: "_blank", Attributes: templ.Attributes{":href": "serverURL(current.file, 'pdf')"}}) {
-							PDF
-							@icons.ExternalLink()
-						}
-						@popui.Button(props.Button{Variant: props.ButtonVariantTransparent, Size: props.ButtonSizeSmall, Href: "#", Target: "_blank", Attributes: templ.Attributes{":href": "'/api/examples/' + current.file"}}) {
-							JSON
-							@icons.ExternalLink()
+						for _, t := range e.Tags {
+							@popui.TagStatus(props.TagStatus{Label: t, Status: "grey"})
 						}
 					</span>
-				</template>
-			</span>
-		</div>
-		// The selected example's file name and tags; every example's strip is
-		// rendered and the current one shown, so the tags keep PopUI's styling.
-		<div class="px-4 py-1.5 flex items-center gap-2 border-b border-border bg-background shrink-0 text-sm" x-show="current && !bench" x-cloak>
-			for _, e := range entries {
-				<span class="flex flex-wrap items-center gap-1 min-w-0" :class={ "selected === '" + e.File + "' ? '' : 'hidden'" }>
-					if e.Description != "" {
-						<span class="basis-full text-foreground-default-secondary mb-0.5">{ e.Description }</span>
-					}
-					<span class="font-mono text-xs text-foreground-default-tertiary mr-2">{ e.File }</span>
-					@popui.TagStatus(props.TagStatus{Label: KindLabel(e.Kind), Status: KindStatus(e.Kind)})
-					for _, a := range e.Addons {
-						@popui.TagStatus(props.TagStatus{Label: a, Status: "steelBlue"})
-					}
-					for _, t := range e.Tags {
-						@popui.TagStatus(props.TagStatus{Label: t, Status: "grey"})
-					}
-				</span>
-			}
+				}
+			</div>
 		</div>
 		<div class="flex-1 min-w-0 overflow-auto bg-background-default-secondary" x-ref="canvas">
 			<div class="pv-canvas">

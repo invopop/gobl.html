@@ -123,6 +123,7 @@ templ titleType(doc internal.Document) {
 			pt.TitleType(doc),
 			gr.TitleType(doc),
 			it.TitleType(doc),
+			it.SDITitleType(doc),
 			pl.TitleType(doc),
 			sg.TitleType(doc),
 			untdidTitleType(doc),
@@ -175,6 +176,7 @@ templ titleBadges(env *gobl.Envelope, doc internal.Document) {
 			@t.T(".self-billed")
 		</span>
 	}
+	@it.CorrectionBadge(doc)
 	if lbl := label(ctx); lbl != "" {
 		<span class="label">
 			{ lbl }
