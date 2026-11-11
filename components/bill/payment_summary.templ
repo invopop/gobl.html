@@ -38,9 +38,7 @@ templ paymentSummary(pmt *bill.Payment) {
 						</span>
 					</li>
 				}
-				if pmt.Ordering != nil {
-					@summaryOrderingRows(pmt.Ordering)
-				}
+				@summaryOrderingRows(pmt.Ordering)
 				@summaryTaxExtRows(pmt.Ext)
 			</ul>
 		}

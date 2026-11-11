@@ -204,6 +204,15 @@ func docType(doc internal.Document) cbc.Code {
 	}
 }
 
+// Number joins a series and code the way Portuguese documents show them,
+// with a slash, or returns an empty string for any other document.
+func Number(doc internal.Document, series, code cbc.Code) string {
+	if !isPortuguese(doc) {
+		return ""
+	}
+	return series.JoinWith("/", code).String()
+}
+
 func isPortuguese(doc internal.Document) bool {
 	return doc != nil && doc.GetRegime().Country.Code().Tax() == country
 }
