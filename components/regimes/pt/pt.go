@@ -2,13 +2,12 @@
 package pt
 
 import (
-	"bytes"
 	"context"
-	"encoding/base64"
 	"fmt"
 	"slices"
 
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/gobl.html/internal"
 	saft "github.com/invopop/gobl.pt.saft/addon"
 	"github.com/invopop/gobl/bill"
@@ -87,15 +86,7 @@ func generateQR(qrval string) string {
 		return ""
 	}
 
-	conf := go_qr.NewQrCodeImgConfig(10, 4)
-
-	buf := new(bytes.Buffer)
-	if err := qr.WriteAsSVG(conf, buf, "#FFFFFF", "#000000"); err != nil {
-		return ""
-	}
-
-	str := base64.StdEncoding.EncodeToString(buf.Bytes())
-	return "data:image/svg+xml;base64," + str
+	return images.QRCodeSource(qr)
 }
 
 // qrNotes returns the notes to be added after the QR code
