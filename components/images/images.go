@@ -26,9 +26,15 @@ func QRSource(qrval string) string {
 		return ""
 	}
 
+	return QRCodeSource(qr)
+}
+
+// QRCodeSource renders an already encoded QR code as an SVG data URI
+// suitable for the src attribute of an HTML img tag, without the DOCTYPE
+// go-qr adds. Returns an empty string if the SVG cannot be written.
+func QRCodeSource(qr *go_qr.QrCode) string {
 	conf := go_qr.NewQrCodeImgConfig(10, 4)
 
-	// buf := bytes.NewBufferString("data:image/svg+xml;utf8,")
 	buf := new(bytes.Buffer)
 	if err := qr.WriteAsSVG(conf, buf, "#FFFFFF", "#000000"); err != nil {
 		return ""
