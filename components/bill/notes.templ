@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"slices"
 
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/utils"
@@ -39,19 +40,20 @@ templ notes(notes []*org.Note) {
 // notesSection renders the notes of a document at the "notes" anchor: the
 // fixed notes always, the regular notes where a snippet can replace them.
 // An invoice's tax notes are fixed, as they carry the regime's legal
-// mentions, and are marked "fixed" so hiding "notes" leaves them, and the
-// section around them, in place. Snippets before and after the anchor sit
+// mentions; when "notes" is hidden they are marked "fixed" so the hide rule
+// leaves them, and the section around them, in place. Snippets before and after the anchor sit
 // outside the section, so they stay when WithHide hides it.
 templ notesSection(fixed, notes []*org.Note) {
 	@utils.Before(display.KeyNotes)
 	if len(fixed) > 0 || showNotes(ctx, notes) {
-		<section class={ "notes", templ.KV("fixed", len(fixed) > 0) }>
+		{{ mark := markFixedNotes(ctx, fixed) }}
+		<section class={ "notes", templ.KV("fixed", mark) }>
 			@t.Scope(".notes") {
 				<h2>
 					@t.T(".title")
 				</h2>
 				for _, n := range fixed {
-					@noteWithClass(n, "note fixed")
+					@noteWithClass(n, fixedNoteClass(mark))
 				}
 				@utils.Replaceable(display.KeyNotes) {
 					for _, n := range notes {
@@ -62,6 +64,20 @@ templ notesSection(fixed, notes []*org.Note) {
 		</section>
 	}
 	@utils.After(display.KeyNotes)
+}
+
+// markFixedNotes returns true when there are fixed notes to keep from the
+// "notes" hide rule. Other renders leave the markup unchanged.
+func markFixedNotes(ctx context.Context, fixed []*org.Note) bool {
+	opts := internal.Options(ctx)
+	return len(fixed) > 0 && opts != nil && slices.Contains(opts.Hide, string(display.KeyNotes))
+}
+
+func fixedNoteClass(mark bool) string {
+	if mark {
+		return "note fixed"
+	}
+	return "note"
 }
 
 // showNotes determines if the regular notes, or a snippet replacing them,

@@ -12,6 +12,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"slices"
 
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/utils"
@@ -72,8 +73,8 @@ func notes(notes []*org.Note) templ.Component {
 // notesSection renders the notes of a document at the "notes" anchor: the
 // fixed notes always, the regular notes where a snippet can replace them.
 // An invoice's tax notes are fixed, as they carry the regime's legal
-// mentions, and are marked "fixed" so hiding "notes" leaves them, and the
-// section around them, in place. Snippets before and after the anchor sit
+// mentions; when "notes" is hidden they are marked "fixed" so the hide rule
+// leaves them, and the section around them, in place. Snippets before and after the anchor sit
 // outside the section, so they stay when WithHide hides it.
 func notesSection(fixed, notes []*org.Note) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
@@ -101,7 +102,8 @@ func notesSection(fixed, notes []*org.Note) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		if len(fixed) > 0 || showNotes(ctx, notes) {
-			var templ_7745c5c3_Var3 = []any{"notes", templ.KV("fixed", len(fixed) > 0)}
+			mark := markFixedNotes(ctx, fixed)
+			var templ_7745c5c3_Var3 = []any{"notes", templ.KV("fixed", mark)}
 			templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var3...)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -148,7 +150,7 @@ func notesSection(fixed, notes []*org.Note) templ.Component {
 					return templ_7745c5c3_Err
 				}
 				for _, n := range fixed {
-					templ_7745c5c3_Err = noteWithClass(n, "note fixed").Render(ctx, templ_7745c5c3_Buffer)
+					templ_7745c5c3_Err = noteWithClass(n, fixedNoteClass(mark)).Render(ctx, templ_7745c5c3_Buffer)
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
@@ -198,6 +200,20 @@ func notesSection(fixed, notes []*org.Note) templ.Component {
 		}
 		return nil
 	})
+}
+
+// markFixedNotes returns true when there are fixed notes to keep from the
+// "notes" hide rule. Other renders leave the markup unchanged.
+func markFixedNotes(ctx context.Context, fixed []*org.Note) bool {
+	opts := internal.Options(ctx)
+	return len(fixed) > 0 && opts != nil && slices.Contains(opts.Hide, string(display.KeyNotes))
+}
+
+func fixedNoteClass(mark bool) string {
+	if mark {
+		return "note fixed"
+	}
+	return "note"
 }
 
 // showNotes determines if the regular notes, or a snippet replacing them,

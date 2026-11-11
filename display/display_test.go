@@ -15,6 +15,7 @@ const (
 	laterKey = "future.key"       // an anchor a newer renderer might add
 	kept     = "<p>a</p><p>b</p>" // what Strip leaves of its inputs
 	fragment = "<p>x</p>"
+	bogusErr = "unknown variable 'Bogus'"
 )
 
 func TestKeys(t *testing.T) {
@@ -102,12 +103,17 @@ func TestValidate(t *testing.T) {
 		{
 			name:     "unknown variable inside a branch",
 			snippets: display.Snippets{{At: display.KeyNotes, Mode: display.ModeAfter, HTML: "{{ if .PaymentLink }}{{ .Bogus }}{{ end }}"}},
-			errs:     []string{"unknown variable 'Bogus'"},
+			errs:     []string{bogusErr},
 		},
 		{
 			name:     "unknown variable through the root",
 			snippets: display.Snippets{{At: display.KeyNotes, Mode: display.ModeAfter, HTML: "{{ with .Code }}{{ $.Bogus }}{{ end }}"}},
-			errs:     []string{"unknown variable 'Bogus'"},
+			errs:     []string{bogusErr},
+		},
+		{
+			name:     "unknown variable inside a definition",
+			snippets: display.Snippets{{At: display.KeyNotes, Mode: display.ModeAfter, HTML: `{{ define "unused" }}{{ .Bogus }}{{ end }}<p>{{ .Code }}</p>`}},
+			errs:     []string{bogusErr},
 		},
 		{
 			name:     "variables have no fields",

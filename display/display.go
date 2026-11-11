@@ -278,8 +278,12 @@ func (sn *Snippet) parse() (*template.Template, error) {
 	if err != nil {
 		return nil, err
 	}
-	if t.Tree != nil {
-		if err := checkFields(t.Tree.Root); err != nil {
+	// Each {{ define }} body is a separate template, so check them all.
+	for _, tt := range t.Templates() {
+		if tt.Tree == nil {
+			continue
+		}
+		if err := checkFields(tt.Tree.Root); err != nil {
 			return nil, err
 		}
 	}

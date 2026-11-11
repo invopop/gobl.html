@@ -435,7 +435,7 @@ func TestSnippetsKeepTaxNotes(t *testing.T) {
 	out := renderSnippets(t, env, display.Snippets{
 		{At: display.KeyNotes, Mode: display.ModeReplace, HTML: "<p>replaced</p>"},
 	})
-	assert.Contains(t, out, `<section class="notes fixed">`)
+	assert.Contains(t, out, `<section class="notes">`)
 	assert.Contains(t, out, "Tax note marker")
 	assert.Contains(t, out, wrapped(display.ModeReplace, display.KeyNotes, "<p>replaced</p>"))
 	assert.NotContains(t, out, inv.Notes[0].Text)
