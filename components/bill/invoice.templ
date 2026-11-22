@@ -9,6 +9,7 @@ import (
 	"github.com/invopop/gobl"
 
 	"github.com/invopop/gobl.html/components/regimes/ar"
+	"github.com/invopop/gobl.html/components/regimes/au"
 	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/regimes/es"
 	"github.com/invopop/gobl.html/components/regimes/gr"
@@ -47,6 +48,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 					@totals(inv, inv.Totals)
 					@taxes(inv.RegimeDef(), inv.Totals.Taxes)
 				</div>
+				@au.Statements(inv)
 				@paymentDetails(inv)
 				@ar.ARCAFiscalTransparency(inv)
 				@notes(invoiceNotes(ctx, inv))
@@ -77,6 +79,7 @@ templ title(env *gobl.Envelope, doc internal.Document) {
 					@titleBadges(env, doc)
 				</h2>
 			</div>
+			@au.TitleSubtitle(doc)
 		</section>
 	}
 }
@@ -119,6 +122,7 @@ templ titleType(doc internal.Document) {
 			it.TitleType(doc),
 			pl.TitleType(doc),
 			sg.TitleType(doc),
+			au.TitleType(doc),
 			untdidTitleType(doc),
 			defaultTitleType(doc),
 		)

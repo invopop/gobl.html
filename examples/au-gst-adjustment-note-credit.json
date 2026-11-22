@@ -1,0 +1,112 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120107",
+		"dig": {
+			"alg": "sha256",
+			"val": "e1b2eba06de4a0ad0bdc684f4ec741b212a46597c78de3d6b5e2f44cd0ae3053"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "AU",
+		"uuid": "019a1c00-0000-7000-8000-000000000001",
+		"type": "credit-note",
+		"series": "CN",
+		"code": "007",
+		"issue_date": "2026-10-15",
+		"currency": "AUD",
+		"preceding": [
+			{
+				"issue_date": "2026-10-01",
+				"series": "INV",
+				"code": "043",
+				"reason": "Workshop cancelled by the customer"
+			}
+		],
+		"supplier": {
+			"name": "Southern Cross Consulting Pty Ltd",
+			"tax_id": {
+				"country": "AU",
+				"code": "51824753556"
+			},
+			"addresses": [
+				{
+					"num": "200",
+					"street": "George Street",
+					"locality": "Sydney",
+					"region": "NSW",
+					"code": "2000",
+					"country": "AU"
+				}
+			],
+			"emails": [
+				{
+					"addr": "accounts@southerncross.example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Harbour City Retail Pty Ltd",
+			"tax_id": {
+				"country": "AU",
+				"code": "83914571673"
+			},
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Collins Street",
+					"locality": "Melbourne",
+					"region": "VIC",
+					"code": "3000",
+					"country": "AU"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Workshop facilitation",
+					"price": "1000.00",
+					"unit": "service"
+				},
+				"sum": "1000.00",
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "standard",
+						"rate": "general",
+						"percent": "10.0%"
+					}
+				],
+				"total": "1000.00"
+			}
+		],
+		"totals": {
+			"sum": "1000.00",
+			"total": "1000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "GST",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "1000.00",
+								"percent": "10.0%",
+								"amount": "100.00"
+							}
+						],
+						"amount": "100.00"
+					}
+				],
+				"sum": "100.00"
+			},
+			"tax": "100.00",
+			"total_with_tax": "1100.00",
+			"payable": "1100.00"
+		}
+	}
+}

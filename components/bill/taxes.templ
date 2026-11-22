@@ -5,7 +5,9 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/invopop/gobl.html/components/regimes/au"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/tax"
 	"github.com/invopop/gobl/num"
 )
@@ -64,7 +66,9 @@ templ taxRateRow(r *tax.RegimeDef, cat *tax.CategoryTotal, rate *tax.RateTotal, 
 			@t.LM(rate.Base)
 		</td>
 		<td class="rate">
-			if rate.Percent != nil {
+			if lbl := au.KeyLabel(ctx, internal.DocumentFrom(ctx), cat.Code, rate.Key); lbl != "" {
+				{ lbl }
+			} else if rate.Percent != nil {
 				if cat.Retained {
 					@t.L(rate.Percent)
 				} else {

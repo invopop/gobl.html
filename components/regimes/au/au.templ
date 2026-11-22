@@ -1,0 +1,112 @@
+package au
+
+import (
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/internal"
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/currency"
+)
+
+// TitleType renders the ATO heading for Australian invoices: "Tax Invoice",
+// "Adjustment Note", "Recipient Created Tax Invoice" and so on. The headings
+// are legally significant and so are not translated. Renders nothing for
+// other regimes so that the default title applies.
+templ TitleType(doc internal.Document) {
+	if key := titleKey(doc); key != "" {
+		@t.T(key)
+	}
+}
+
+// TitleSubtitle states the effect of an adjustment note under its heading:
+// a decreasing adjustment for a credit note, increasing for a debit note.
+templ TitleSubtitle(doc internal.Document) {
+	if key := adjustmentKey(doc); key != "" {
+		<div class="subtitle">
+			@t.T(key)
+		</div>
+	}
+}
+
+// LinesLegend explains the GST column values used for supplies that attract
+// no GST, shown under the lines table only when the invoice has any.
+templ LinesLegend(doc internal.Document) {
+	if keys := legendKeys(doc); len(keys) > 0 {
+		<ul class="legend">
+			for _, k := range keys {
+				<li>
+					<span class="label">
+						@t.T("regimes.au.lines." + taxKeyName[k])
+					</span>
+					{ " – " }
+					@t.T("regimes.au.lines.legend." + taxKeyName[k])
+				</li>
+			}
+		</ul>
+	}
+}
+
+// TotalsRows adds the GST total converted into AUD for foreign currency
+// invoices, since the GST payable must be ascertainable in AUD.
+templ TotalsRows(inv *bill.Invoice) {
+	if gst := gstInAUD(inv); gst != nil && invoiceFor(internal.DocumentFor(inv)) != nil {
+		<tr class="gst-aud">
+			<th>
+				@t.T("regimes.au.totals.gst_aud")
+			</th>
+			<td>
+				@t.LCD(*gst, currency.AUD)
+			</td>
+		</tr>
+	}
+}
+
+// Statements prints the ATO wording that applies to the document: "Total
+// price includes GST" when every supply is taxable, and the supplier's GST
+// liability on recipient created documents.
+templ Statements(inv *bill.Invoice) {
+	if keys := statements(internal.DocumentFor(inv)); len(keys) > 0 {
+		<section class="au-statements">
+			for _, key := range keys {
+				<p>
+					@t.T(key)
+				</p>
+			}
+		</section>
+	}
+}
+
+// SummaryPrecedingRows renders the documents an Australian adjustment note
+// adjusts, with the reason for the adjustment in its own labelled row as the
+// determination requires. Renders nothing for other documents.
+templ SummaryPrecedingRows(doc internal.Document) {
+	if inv := invoiceFor(doc); inv != nil && isNote(inv) && len(inv.Preceding) > 0 {
+		<li class="preceding">
+			<span class="label">
+				@t.T("regimes.au.summary.adjusts")
+			</span>
+			for _, pre := range inv.Preceding {
+				<span class="value">
+					{ pre.Series.Join(pre.Code).String() }
+					if pre.IssueDate != nil {
+						{ " · " }
+						<span class="date">
+							@t.L(pre.IssueDate)
+						</span>
+					}
+				</span>
+			}
+		</li>
+		if reasons := adjustmentReasons(inv); len(reasons) > 0 {
+			<li class="reason">
+				<span class="label">
+					@t.T("regimes.au.summary.reason")
+				</span>
+				for _, reason := range reasons {
+					<span class="value">
+						{ reason }
+					</span>
+				}
+			</li>
+		}
+	}
+}

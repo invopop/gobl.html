@@ -4,8 +4,10 @@ import (
 	"context"
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/components/regimes/au"
 	"github.com/invopop/gobl.html/components/regimes/it"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl/bill"
 	"github.com/invopop/gobl/cal"
@@ -85,6 +87,13 @@ templ summary(env *gobl.Envelope, inv *bill.Invoice) {
 
 templ summaryPrecedingRows(obj any) {
 	{{ doc := internal.DocumentFor(obj) }}
+	@utils.Coalesce(
+		au.SummaryPrecedingRows(doc),
+		defaultSummaryPrecedingRows(doc),
+	)
+}
+
+templ defaultSummaryPrecedingRows(doc internal.Document) {
 	<li class="preceding">
 		<span class="label">
 			if internal.Options(ctx).AdjustmentMode {
