@@ -185,7 +185,7 @@ func summary(env *gobl.Envelope, inv *bill.Invoice) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			if len(inv.Preceding) > 0 {
+			if len(inv.Preceding) > 0 || au.HasAdjustmentReason(internal.DocumentFor(inv)) {
 				templ_7745c5c3_Err = summaryPrecedingRows(inv).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err

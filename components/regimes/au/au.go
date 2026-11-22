@@ -44,12 +44,17 @@ func hasABN(party *org.Party) bool {
 		party.TaxID.Country == country && party.TaxID.Code != cbc.CodeEmpty
 }
 
-// hasGST reports whether any line, discount or charge is subject to GST,
-// whatever the key, which is the proxy used for the supplier being
-// GST-registered.
+// hasGST reports whether any line, discount or charge is a taxable supply,
+// meaning one that attracts GST. GST-free, input-taxed and outside-scope
+// supplies carry a GST combo but no GST is payable on them, so a document
+// made up only of those is not a tax invoice.
 func hasGST(inv *bill.Invoice) bool {
 	found := false
-	eachGSTCombo(inv, func(*tax.Combo) { found = true })
+	eachGSTCombo(inv, func(c *tax.Combo) {
+		if _, ok := taxKeyName[c.Key]; !ok {
+			found = true
+		}
+	})
 	return found
 }
 
@@ -292,6 +297,14 @@ func totalIncludesGST(inv *bill.Invoice) bool {
 	total := inv.Totals.TotalWithTax
 	eleventh := total.Divide(num.MakeAmount(11, 0)).Rescale(total.Exp())
 	return eleventh.Equals(*gst)
+}
+
+// HasAdjustmentReason reports whether the document is an Australian
+// adjustment note that explains the adjustment, in which case the summary
+// must show the reason even when no preceding document is referenced.
+func HasAdjustmentReason(doc internal.Document) bool {
+	inv := invoiceFor(doc)
+	return inv != nil && isNote(inv) && len(adjustmentReasons(inv)) > 0
 }
 
 // adjustmentReasons provides the explanation of an adjustment note, taken from

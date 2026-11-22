@@ -71,7 +71,7 @@ templ summary(env *gobl.Envelope, inv *bill.Invoice) {
 						</span>
 					</li>
 				}
-				if len(inv.Preceding) > 0 {
+				if len(inv.Preceding) > 0 || au.HasAdjustmentReason(internal.DocumentFor(inv)) {
 					@summaryPrecedingRows(inv)
 				}
 				if inv.Ordering != nil {

@@ -2,6 +2,7 @@ package au
 
 import (
 	"context"
+	"strings"
 	"testing"
 
 	"github.com/invopop/ctxi18n/i18n"
@@ -91,6 +92,26 @@ func TestTitleKey(t *testing.T) {
 	t.Run("plain invoice without GST", func(t *testing.T) {
 		doc := calculate(t, invoice(t, "100.00"))
 		assert.Equal(t, "regimes.au.title.invoice", titleKey(doc))
+	})
+	t.Run("plain invoice when no supply attracts GST", func(t *testing.T) {
+		for _, key := range []cbc.Key{tax.KeyZero, tax.KeyExempt, tax.KeyOutsideScope} {
+			combo := &tax.Combo{Category: tax.CategoryGST, Key: key}
+			if key == tax.KeyZero {
+				combo.Percent = num.NewPercentage(0, 2)
+			}
+			doc := calculate(t, invoice(t, "100.00", combo))
+			assert.Equal(t, "regimes.au.title.invoice", titleKey(doc), key)
+			assert.Empty(t, LabelKey(doc, "totals.taxes"), key)
+		}
+	})
+	t.Run("tax invoice for mixed supplies", func(t *testing.T) {
+		inv := invoice(t, "100.00", standard())
+		inv.Lines = append(inv.Lines, &bill.Line{
+			Quantity: num.MakeAmount(1, 0),
+			Item:     &org.Item{Name: "Rent", Price: num.NewAmount(50000, 2)},
+			Taxes:    tax.Set{{Category: tax.CategoryGST, Key: tax.KeyExempt}},
+		})
+		assert.Equal(t, "regimes.au.title.tax-invoice", titleKey(calculate(t, inv)))
 	})
 	t.Run("plain invoice without a supplier ABN", func(t *testing.T) {
 		inv := invoice(t, "100.00", standard())
@@ -259,5 +280,37 @@ func TestWarnings(t *testing.T) {
 		inv.Type = bill.InvoiceTypeProforma
 		inv.Customer = nil
 		assert.Empty(t, Warnings(calculate(t, inv)))
+	})
+}
+
+func TestSummaryPrecedingRows(t *testing.T) {
+	render := func(t *testing.T, inv *bill.Invoice) string {
+		t.Helper()
+		var buf strings.Builder
+		require.NoError(t, SummaryPrecedingRows(calculate(t, inv)).Render(localized(t), &buf))
+		return buf.String()
+	}
+	t.Run("reason from a note without a preceding document", func(t *testing.T) {
+		inv := invoice(t, "100.00", standard())
+		inv.Type = bill.InvoiceTypeCreditNote
+		inv.Notes = []*org.Note{{Key: org.NoteKeyReason, Text: "Goods returned"}}
+		assert.True(t, HasAdjustmentReason(calculate(t, inv)))
+		out := render(t, inv)
+		assert.Contains(t, out, "Reason for adjustment")
+		assert.Contains(t, out, "Goods returned")
+		assert.NotContains(t, out, "Adjusts tax invoice")
+	})
+	t.Run("preceding document with its reason", func(t *testing.T) {
+		inv := invoice(t, "100.00", standard())
+		inv.Type = bill.InvoiceTypeCreditNote
+		inv.Preceding = []*org.DocumentRef{{Series: "INV", Code: "042", Reason: "Goods returned"}}
+		out := render(t, inv)
+		assert.Contains(t, out, "Adjusts tax invoice")
+		assert.Contains(t, out, "Goods returned")
+	})
+	t.Run("nothing for standard invoices", func(t *testing.T) {
+		inv := invoice(t, "100.00", standard())
+		assert.False(t, HasAdjustmentReason(calculate(t, inv)))
+		assert.Empty(t, strings.TrimSpace(render(t, inv)))
 	})
 }

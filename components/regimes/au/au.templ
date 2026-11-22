@@ -77,25 +77,29 @@ templ Statements(inv *bill.Invoice) {
 
 // SummaryPrecedingRows renders the documents an Australian adjustment note
 // adjusts, with the reason for the adjustment in its own labelled row as the
-// determination requires. Renders nothing for other documents.
+// determination requires. The reason is shown even when it comes from a note
+// and no preceding document is referenced. Renders nothing for other
+// documents.
 templ SummaryPrecedingRows(doc internal.Document) {
-	if inv := invoiceFor(doc); inv != nil && isNote(inv) && len(inv.Preceding) > 0 {
-		<li class="preceding">
-			<span class="label">
-				@t.T("regimes.au.summary.adjusts")
-			</span>
-			for _, pre := range inv.Preceding {
-				<span class="value">
-					{ pre.Series.Join(pre.Code).String() }
-					if pre.IssueDate != nil {
-						{ " · " }
-						<span class="date">
-							@t.L(pre.IssueDate)
-						</span>
-					}
+	if inv := invoiceFor(doc); inv != nil && isNote(inv) {
+		if len(inv.Preceding) > 0 {
+			<li class="preceding">
+				<span class="label">
+					@t.T("regimes.au.summary.adjusts")
 				</span>
-			}
-		</li>
+				for _, pre := range inv.Preceding {
+					<span class="value">
+						{ pre.Series.Join(pre.Code).String() }
+						if pre.IssueDate != nil {
+							{ " · " }
+							<span class="date">
+								@t.L(pre.IssueDate)
+							</span>
+						}
+					</span>
+				}
+			</li>
+		}
 		if reasons := adjustmentReasons(inv); len(reasons) > 0 {
 			<li class="reason">
 				<span class="label">
