@@ -23,6 +23,9 @@ import (
 const (
 	supplierABN = "51824753556"
 	customerABN = "83914571673"
+
+	invoiceSeries    = "INV"
+	adjustmentReason = "Goods returned"
 )
 
 func localized(t *testing.T) context.Context {
@@ -39,7 +42,7 @@ func invoice(t *testing.T, price string, combos ...*tax.Combo) *bill.Invoice {
 	inv := &bill.Invoice{
 		Regime:    tax.WithRegime("AU"),
 		Type:      bill.InvoiceTypeStandard,
-		Series:    "INV",
+		Series:    invoiceSeries,
 		Code:      "001",
 		IssueDate: cal.MakeDate(2026, 10, 1),
 		Currency:  currency.AUD,
@@ -265,14 +268,14 @@ func TestWarnings(t *testing.T) {
 	t.Run("adjustment notes need a reason", func(t *testing.T) {
 		inv := invoice(t, "100.00", standard())
 		inv.Type = bill.InvoiceTypeCreditNote
-		inv.Preceding = []*org.DocumentRef{{Series: "INV", Code: "042"}}
+		inv.Preceding = []*org.DocumentRef{{Series: invoiceSeries, Code: "042"}}
 		assert.Equal(t, []cbc.Key{WarningAdjustmentReason}, codes(Warnings(calculate(t, inv))))
 
-		inv.Preceding[0].Reason = "Goods returned"
+		inv.Preceding[0].Reason = adjustmentReason
 		assert.Empty(t, Warnings(calculate(t, inv)))
 
 		inv.Preceding[0].Reason = ""
-		inv.Notes = []*org.Note{{Key: org.NoteKeyReason, Text: "Goods returned"}}
+		inv.Notes = []*org.Note{{Key: org.NoteKeyReason, Text: adjustmentReason}}
 		assert.Empty(t, Warnings(calculate(t, inv)))
 	})
 	t.Run("proformas and other regimes are ignored", func(t *testing.T) {
@@ -293,20 +296,20 @@ func TestSummaryPrecedingRows(t *testing.T) {
 	t.Run("reason from a note without a preceding document", func(t *testing.T) {
 		inv := invoice(t, "100.00", standard())
 		inv.Type = bill.InvoiceTypeCreditNote
-		inv.Notes = []*org.Note{{Key: org.NoteKeyReason, Text: "Goods returned"}}
+		inv.Notes = []*org.Note{{Key: org.NoteKeyReason, Text: adjustmentReason}}
 		assert.True(t, HasAdjustmentReason(calculate(t, inv)))
 		out := render(t, inv)
 		assert.Contains(t, out, "Reason for adjustment")
-		assert.Contains(t, out, "Goods returned")
+		assert.Contains(t, out, adjustmentReason)
 		assert.NotContains(t, out, "Adjusts tax invoice")
 	})
 	t.Run("preceding document with its reason", func(t *testing.T) {
 		inv := invoice(t, "100.00", standard())
 		inv.Type = bill.InvoiceTypeCreditNote
-		inv.Preceding = []*org.DocumentRef{{Series: "INV", Code: "042", Reason: "Goods returned"}}
+		inv.Preceding = []*org.DocumentRef{{Series: invoiceSeries, Code: "042", Reason: adjustmentReason}}
 		out := render(t, inv)
 		assert.Contains(t, out, "Adjusts tax invoice")
-		assert.Contains(t, out, "Goods returned")
+		assert.Contains(t, out, adjustmentReason)
 	})
 	t.Run("nothing for standard invoices", func(t *testing.T) {
 		inv := invoice(t, "100.00", standard())
