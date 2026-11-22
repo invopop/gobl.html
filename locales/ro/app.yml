@@ -1,0 +1,275 @@
+# Use "Sentence case" for all labels, as opposed to "Title Case".
+ro:
+  page: "Pagina %{page} din %{count}"
+
+  billing:
+    invoice: &invoice
+      title:
+        standard: "Factură"
+        standard-simplified: "Factură simplificată"
+        proforma: "Factură proformă"
+        corrective: "Factură corectivă"
+        adjustment: "Factură de regularizare"
+        # Romanian practice calls the document that reverses an invoice a
+        # "factură storno"; "notă de credit" is the literal UBL/e-Factura
+        # name for the same document (type 381).
+        credit-note: "Factură storno"
+        debit-note: "Notă de debit"
+        other: "Document"
+        paid: "Plătită"
+        void: "Anulată"
+        self-billed: "Autofactură"
+        untdid:
+          "325": "Factură proformă"
+          "380": "Factură"
+          "381": "Factură storno"
+          "383": "Notă de debit"
+          "384": "Factură corectivă"
+          "326": "Factură parțială"
+          "389": "Autofactură"
+          "261": "Factură storno (autofacturare)"
+          "386": "Factură de avans"
+          "393": "Factură cesionată (factoring)"
+          "396": "Factură storno cesionată (factoring)"
+
+      summary: &summary
+        title: "Rezumat"
+        issue_date: "Data emiterii"
+        value_date: "Data valutei"
+        taxable_event: "Fapt generator"
+        taxable_event_date: "Data faptului generator"
+        tax_points:
+          issue: "Data emiterii"
+          delivery: "Data livrării"
+          payment: "Data plății"
+        operation_date: "Data operațiunii"
+        currency: "Monedă"
+        currency_value: "%{desc} (%{code})"
+        preceding_document: "Documente anterioare"
+        replaced_documents: "Documente înlocuite"
+        corrected_documents: "Documente corectate"
+        order: "Comandă"
+        order_period: "Perioadă"
+        order_period_label: "%{label}"
+        order_period_range: "%{start} – %{end}"
+        contract: "Contract"
+
+      supplier:
+        title: "Furnizor"
+
+      customer:
+        title: "Client"
+
+      receiver:
+        title: "Adresa de livrare"
+        date: "Data livrării: %{date}"
+        period: "Perioada livrării: %{start} – %{end}"
+
+      lines: &lines
+        title: "Linii"
+        i: "#"
+        ref: "Ref."
+        description: "Descriere"
+        quantity: "Cantitate"
+        unit: "Unitate"
+        price: "Preț unitar"
+        discount: "Reducere"
+        charges: "Suplimente"
+        total: "Total"
+        no_percent: "—"
+        exemption: "Scutire"
+        on_behalf_of: "În numele"
+        period: "Perioadă"
+        period_range: "%{start} – %{end}"
+
+      totals: &totals
+        sum: "Total fără TVA"
+        discount: "Reducere"
+        charge: "Supliment"
+        title: "Totaluri"
+        prices_include: "Include %{tax}"
+        total: "Total"
+        taxes: "TVA"
+        total_with_tax: "Total cu TVA"
+        retained_tax: "Impozit reținut"
+        rounding: "Rotunjire"
+        total_to_pay: "Total de plată"
+        advance: "Avans"
+        due_sum: "Rest de plată"
+        exchange_rate: "Curs de schimb în %{to} (%{amount})"
+        carried_fwd: "De reportat"
+        brought_fwd: "Reportat"
+
+      taxes:
+        title: "Taxe"
+        category: "Taxă"
+        base: "Bază de impozitare"
+        rate: "Cotă"
+        amount: "Sumă"
+        exemption: "Scutire"
+        no_percent: "—"
+
+      payment: &payment
+        title: "Plată"
+        instructions: &payment_instructions
+          method: "Metodă de plată"
+          ref: "Referință"
+          ref_line: "Referință: %{ref}"
+          amount: "Sumă"
+          description: "Descriere"
+          bank_data: "Date pentru transfer bancar"
+          card: "Plată cu cardul"
+          card_detail: "Plată efectuată cu cardul care se termină în %{last4}, deținut de %{holder}"
+          direct_debit: "Debitare directă"
+          mandate_ref: "Mandat: %{ref}"
+          creditor: "ID creditor: %{creditor}"
+          observations: "Observații privind plata"
+          bank_name: "Bancă: %{name}"
+          iban: "IBAN: %{iban}"
+          account_number: "Număr de cont: %{num}"
+          clearing: "Cod de compensare: %{code}"
+          bic: "BIC: %{bic}"
+          online: "Link de plată"
+          methods:
+            card: "Card bancar"
+            card+credit: "Card de credit"
+            card+debit: "Card de debit"
+            credit-transfer: "Transfer bancar"
+            debit-transfer: "Transfer de debit"
+            cash: "Numerar"
+            direct-debit: "Debitare directă"
+            online: "Online"
+            cheque: "Cec"
+        terms:
+          key: "Condiții de plată"
+          notes: "Observații privind condițiile de plată"
+          due_dates:
+            one: "Data scadenței"
+            other: "Date scadente"
+          keys:
+            na: "Nespecificat"
+            end_of_month: "La sfârșitul lunii"
+            due_date: "La data scadenței"
+            deferred: "După data scadenței"
+            proximo: "Luna următoare"
+            instant: "La primirea facturii"
+            elective: "La alegerea clientului"
+            pending: "De stabilit de către furnizor"
+            advanced: "Plătit în avans"
+            delivery: "La livrare"
+
+      notes:
+        title: "Observații"
+
+    payment:
+      <<: *invoice
+      title:
+        request: "Cerere de plată"
+        advice: "Aviz de plată"
+        receipt: "Chitanță"
+        paid: "Plătit"
+        void: "Anulat"
+
+      lines:
+        <<: *lines
+        document: "Document"
+
+      methods:
+        title: "Detalii plată"
+        date: "Dată"
+        amount: "Sumă"
+        total: "Total plătit"
+        instructions: *payment_instructions
+
+    delivery:
+      <<: *invoice
+      title:
+        advice: "Aviz de livrare"
+        note: "Aviz de însoțire a mărfii"
+        waybill: "Scrisoare de trăsură"
+        receipt: "Confirmare de primire"
+
+      summary:
+        <<: *summary
+        despatch_date: "Data expedierii"
+        receive_date: "Data primirii"
+        preceding_document: "Document anterior"
+
+      despatcher:
+        title: "Expeditor"
+
+      receiver:
+        title: "Destinatar"
+
+      courier:
+        title: "Curier"
+
+      tracking:
+        title: "Informații de urmărire"
+        code: "Cod de urmărire"
+        website: "Link de urmărire"
+
+    order:
+      <<: *invoice
+      title:
+        purchase: "Comandă de achiziție"
+        sale: "Comandă de vânzare"
+        quote: "Ofertă"
+
+      summary:
+        <<: *summary
+        preceding_document: "Document anterior"
+        contract: "Contract"
+        period: "Perioadă"
+
+      buyer:
+        title: "Cumpărător"
+
+      seller:
+        title: "Vânzător"
+
+  org:
+    party:
+      tax_id: "%{label}: (%{country}) %{code}"
+      tax_id_no_country: "%{label}: %{code}"
+      person: "%{name}"
+      person_label: "%{label}: %{name}"
+      tel: "Tel: %{num}"
+      tel_label: "Tel: %{num} (%{label})"
+      email:
+        one: "E-mail: %{addr}"
+        other: "E-mailuri: %{addr}"
+      email_label: "%{addr} (%{label})"
+      website: "Web: %{url}"
+      website_label: "%{label}: %{url}"
+      identity: "%{label}: %{code}"
+      identity_code: "Cod de identificare"
+      identity_labels:
+        passport: "Pașaport"
+      po_box: "C.P. %{po_box}"
+      labels:
+        default: "Cod fiscal"
+        ro: "CIF"
+      ext: "%{label}: %{value}"
+      ext_map:
+        # Make sure this list is kept up to date in every language!
+        co-dian-municipality: "Municipiu"
+      reg:
+        capital: "Capital social: %{amount}"
+        registration: "Înregistrare:"
+        book: "Cartea %{id}"
+        volume: "Volumul %{id}"
+        sheet: "Fila %{id}"
+        section: "Secțiunea %{id}"
+        page: "Pagina %{id}"
+        entry: "Nr. %{id}"
+    address:
+      label: "%{label}:"
+      country: "(%{country})"
+
+  regimes:
+    ro:
+      # Fiscal Code art. 319 alin. (20) lit. j): the VAT amount must be
+      # expressed in lei, so invoices issued in another currency also show
+      # the converted VAT total.
+      vat_in_currency: "TVA în %{to}"

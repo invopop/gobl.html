@@ -62,6 +62,8 @@ type Opts struct {
 	// or similar should be rendered as adjustments to the original invoice, as
 	// required in certain jurisdictions.
 	AdjustmentMode bool
+	// Hide lists the keys of the document sections to hide using CSS.
+	Hide []string
 }
 
 // WithOptions prepares the context with the options to use.

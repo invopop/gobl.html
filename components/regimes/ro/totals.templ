@@ -1,0 +1,45 @@
+package ro
+
+import (
+	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/currency"
+	"github.com/invopop/gobl/l10n"
+	"github.com/invopop/gobl.html/components/t"
+)
+
+// TaxInAccountingCurrency renders the VAT total converted into lei on
+// Romanian invoices issued in another currency. Fiscal Code art. 319
+// alin. (20) lit. j) requires the VAT amount to be expressed in lei, the
+// figure e-Factura carries in BT-111. Nothing is rendered for invoices in
+// lei, for other regimes, or when no exchange rate into lei is given.
+templ TaxInAccountingCurrency(inv *bill.Invoice) {
+	for _, er := range taxExchangeRates(inv) {
+		<tr class="exchange-rate tax-in-lei">
+			<th>
+				@t.T("regimes.ro.vat_in_currency", i18n.M{"to": er.To.String()})
+			</th>
+			<td>
+				@t.LCD(er.Convert(inv.Totals.Tax), er.To)
+			</td>
+		</tr>
+	}
+}
+
+// taxExchangeRates returns the exchange rates from the invoice currency into
+// lei of a Romanian invoice that carries VAT in another currency.
+func taxExchangeRates(inv *bill.Invoice) []*currency.ExchangeRate {
+	if inv == nil || inv.Totals == nil || inv.Totals.Tax.IsZero() {
+		return nil
+	}
+	if inv.Regime.Country.Code() != l10n.RO || inv.Currency == currency.RON {
+		return nil
+	}
+	list := make([]*currency.ExchangeRate, 0, 1)
+	for _, er := range inv.ExchangeRates {
+		if er.From == inv.Currency && er.To == currency.RON {
+			list = append(list, er)
+		}
+	}
+	return list
+}

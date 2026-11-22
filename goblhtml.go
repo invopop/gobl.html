@@ -170,6 +170,21 @@ func WithLabel(label string) Option {
 	}
 }
 
+// WithHide hides the document sections identified by the provided keys
+// using CSS. Hiding a key also hides all of its descendants, so hiding
+// "payment" also hides "payment.terms". Unknown keys are ignored. See
+// HideKeys for the complete list.
+func WithHide(keys ...string) Option {
+	return func(o *internal.Opts) {
+		o.Hide = append(o.Hide, keys...)
+	}
+}
+
+// HideKeys provides the list of section keys supported by WithHide.
+func HideKeys() []string {
+	return components.HideKeys()
+}
+
 // EnableAdjustmentMode indicates that invoice types credit-note and debit-note
 // or similar should be rendered as adjustments to the original invoice, as
 // required in certain jurisdictions. By default, this mode is disabled.
@@ -227,6 +242,13 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 				// The GST payable must be ascertainable in AUD, so a plain
 				// "$" must never be ambiguous on a foreign currency invoice.
 				nf = d.GetCurrency().Def().Formatter(currency.WithDisambiguateSymbol())
+			}
+			if d.GetRegime().Country.Code() == l10n.RO {
+				// Romanian convention: dot for thousands, comma for decimals
+				// and the currency after the amount (1.234,56 Lei, 1.234,56 €).
+				nf.ThousandsSeparator = "."
+				nf.DecimalMark = ","
+				nf.Template = "%n %u"
 			}
 		}
 	}

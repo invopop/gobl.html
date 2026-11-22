@@ -10,8 +10,8 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import (
 	"github.com/invopop/gobl"
+	verifactu "github.com/invopop/gobl.es.verifactu/addon"
 	"github.com/invopop/gobl.html/components/images"
-	"github.com/invopop/gobl/addons/es/verifactu"
 	"github.com/invopop/gobl/head"
 )
 

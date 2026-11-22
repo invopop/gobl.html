@@ -33,6 +33,7 @@ templ Envelope(env *gobl.Envelope) {
 			@assets.Stylesheet("invoice.css")
 			@co.Stylesheets(env)
 			@pt.Stylesheets(env)
+			@hideStyles()
 		</head>
 		<body
 			if applyLetterLayout(ctx) {

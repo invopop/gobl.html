@@ -546,6 +546,7 @@ func titleType(doc internal.Document) templ.Component {
 			pt.TitleType(doc),
 			gr.TitleType(doc),
 			it.TitleType(doc),
+			it.SDITitleType(doc),
 			pl.TitleType(doc),
 			sg.TitleType(doc),
 			au.TitleType(doc),
@@ -591,7 +592,7 @@ func untdidTitleType(doc internal.Document) templ.Component {
 			var templ_7745c5c3_Var23 string
 			templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinStringErrs(lbl)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 137, Col: 7}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 138, Col: 7}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var23))
 			if templ_7745c5c3_Err != nil {
@@ -710,10 +711,14 @@ func titleBadges(env *gobl.Envelope, doc internal.Document) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "</span> ")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "</span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
+		}
+		templ_7745c5c3_Err = it.CorrectionBadge(doc).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
 		}
 		if lbl := label(ctx); lbl != "" {
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "<span class=\"label\">")
@@ -723,7 +728,7 @@ func titleBadges(env *gobl.Envelope, doc internal.Document) templ.Component {
 			var templ_7745c5c3_Var26 string
 			templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(lbl)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 178, Col: 8}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/bill/invoice.templ`, Line: 180, Col: 8}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var26))
 			if templ_7745c5c3_Err != nil {
@@ -913,17 +918,19 @@ func label(ctx context.Context) string {
 	return opts.Label
 }
 
-// franceCountry scopes the self-billed badge to French invoices.
-var franceCountry = l10n.FR.Tax()
+// selfBilledCountries are the regimes whose law asks for a self-billing
+// mention on the invoice itself: France ("autofacturation") and Romania
+// ("autofactură", Fiscal Code art. 319 alin. (20) lit. k)).
+var selfBilledCountries = []l10n.TaxCountryCode{l10n.FR.Tax(), l10n.RO.Tax()}
 
-// isSelfBilled reports whether the document is a French self-billed invoice
-// ("autofacturation"), which is flagged with a label next to the title.
+// isSelfBilled reports whether the document is a self-billed invoice of a
+// regime that flags it with a label next to the title.
 func isSelfBilled(doc internal.Document) bool {
 	inv, ok := doc.Extract().(*bill.Invoice)
 	if !ok {
 		return false
 	}
-	if doc.GetRegime().Country.Code().Tax() != franceCountry {
+	if !doc.GetRegime().Country.Code().Tax().In(selfBilledCountries...) {
 		return false
 	}
 	return inv.HasTags(tax.TagSelfBilled)

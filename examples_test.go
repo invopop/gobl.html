@@ -12,8 +12,10 @@ import (
 	"testing"
 
 	"github.com/invopop/gobl"
+	_ "github.com/invopop/gobl.fr.ctc/addon/facturx" // fr-facturx-v1, external since gobl v0.509.0
 	goblhtml "github.com/invopop/gobl.html"
 	"github.com/invopop/gobl.html/internal/gallery"
+	_ "github.com/invopop/gobl.ro.anaf/addon" // ro-efactura-v1, external to gobl
 	"github.com/pmezard/go-difflib/difflib"
 	"github.com/stretchr/testify/require"
 	"github.com/yosssi/gohtml"
@@ -103,6 +105,14 @@ func convertExample(name string) ([]byte, error) {
 	if strings.Contains(name, ".adjustment.") {
 		opts = append(opts, goblhtml.EnableAdjustmentMode)
 	}
+	if strings.Contains(name, ".hidden.") {
+		opts = append(opts, goblhtml.WithHide(
+			"header.summary.ordering",
+			"payment.instructions.bank-data",
+			"notes",
+			"footer.branding",
+		))
+	}
 	if strings.Contains(name, ".es.") {
 		opts = append(opts, goblhtml.WithLocale("es"))
 	}
@@ -111,6 +121,12 @@ func convertExample(name string) ([]byte, error) {
 	}
 	if strings.Contains(name, ".pl.") {
 		opts = append(opts, goblhtml.WithLocale("pl"))
+	}
+	if strings.Contains(name, ".it.") {
+		opts = append(opts, goblhtml.WithLocale("it"))
+	}
+	if strings.Contains(name, ".ro.") {
+		opts = append(opts, goblhtml.WithLocale("ro"))
 	}
 
 	ctx := context.Background()

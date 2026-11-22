@@ -6,7 +6,7 @@ import (
 	"io/fs"
 )
 
-//go:embed ar ca da de el en es eu fi fr gl it nl no pl pt
+//go:embed ar ca da de el en es eu fi fr gl it nl no pl pt ro
 
 // Content is the embedded content for the locales.
 var Content embed.FS
