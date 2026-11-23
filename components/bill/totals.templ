@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/components/regimes/au"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/regimes/ro"
 	"github.com/invopop/gobl.html/components/t"
@@ -81,7 +82,7 @@ templ totalsBaseRows(inv *bill.Invoice, totals *bill.Totals) {
 	if totals.Taxes != nil && len(totals.Taxes.Categories) > 0 && (totals.TaxIncluded == nil || !totals.TaxIncluded.Equals(totals.Tax)) {
 		<tr class="tax">
 			<th>
-				@t.T(".taxes")
+				{ tl(ctx, "totals.taxes", ".taxes") }
 			</th>
 			<td>
 				@t.LM(totals.Tax)
@@ -91,7 +92,7 @@ templ totalsBaseRows(inv *bill.Invoice, totals *bill.Totals) {
 	if !totals.TotalWithTax.Equals(totals.Payable) {
 		<tr class="total-with-tax strong">
 			<th>
-				@t.T(".total_with_tax")
+				{ tl(ctx, "totals.total_with_tax", ".total_with_tax") }
 			</th>
 			<td>
 				@t.LM(totals.TotalWithTax)
@@ -124,7 +125,7 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 	if label := payableLabel(inv, totals); label != "" {
 		<tr class="payable strong">
 			<th>
-				@t.T(label)
+				{ tl(ctx, "totals.payable", label) }
 			</th>
 			<td>
 				@t.LM(totals.Payable)
@@ -141,6 +142,7 @@ templ totalsPayableRows(inv *bill.Invoice, totals *bill.Totals) {
 			</td>
 		</tr>
 	}
+	@au.TotalsRows(inv)
 	@ro.TaxInAccountingCurrency(inv)
 }
 

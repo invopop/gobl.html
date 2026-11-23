@@ -1,0 +1,118 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a2024b-3245-74ed-aed6-0ea9aa7be382",
+		"dig": {
+			"alg": "sha256",
+			"val": "83435bc48ecdc47a2e2d5b1c320b9504a286f177e126ae27475aa253433d40d0"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "AU",
+		"uuid": "019a2b6e-4c10-7d3a-9f51-2b8e6c0d1a78",
+		"type": "standard",
+		"series": "INV",
+		"code": "046",
+		"issue_date": "2026-10-01",
+		"currency": "AUD",
+		"supplier": {
+			"name": "Southern Cross Consulting Pty Ltd",
+			"tax_id": {
+				"country": "AU",
+				"code": "51824753556"
+			},
+			"addresses": [
+				{
+					"num": "200",
+					"street": "George Street",
+					"locality": "Sydney",
+					"region": "NSW",
+					"code": "2000",
+					"country": "AU"
+				}
+			],
+			"emails": [
+				{
+					"addr": "accounts@southerncross.example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Harbour City Retail Pty Ltd",
+			"tax_id": {
+				"country": "AU",
+				"code": "83914571673"
+			},
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Collins Street",
+					"locality": "Melbourne",
+					"region": "VIC",
+					"code": "3000",
+					"country": "AU"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Residential rent",
+					"price": "500.00",
+					"unit": "mon"
+				},
+				"sum": "500.00",
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "exempt"
+					}
+				],
+				"total": "500.00"
+			},
+			{
+				"i": 2,
+				"quantity": "1",
+				"item": {
+					"name": "Government fee recharged",
+					"price": "40.00",
+					"unit": "item"
+				},
+				"sum": "40.00",
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "outside-scope"
+					}
+				],
+				"total": "40.00"
+			}
+		],
+		"totals": {
+			"sum": "540.00",
+			"total": "540.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "GST",
+						"rates": [
+							{
+								"key": "exempt",
+								"base": "540.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "540.00",
+			"payable": "540.00"
+		}
+	}
+}
