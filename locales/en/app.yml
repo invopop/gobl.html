@@ -249,6 +249,7 @@ en:
       labels:
         default: "TIN"
         ar: "CUIT"
+        au: "ABN"
         co: "NIT"
         de: "USt-IdNr."
         es: "NIF"
@@ -569,3 +570,41 @@ en:
         tax-invoice: "Tax Invoice"
         simplified-tax-invoice: "Simplified Tax Invoice"
         customer-accounting-tax-invoice: "Customer Accounting Tax Invoice"
+    au:
+      # ATO headings and labels. The wording is legally significant (a GST
+      # registered supplier must show the document is intended to be a tax
+      # invoice) and records must be kept in English, so none of it is
+      # translated.
+      title:
+        invoice: "Invoice"
+        tax-invoice: "Tax Invoice"
+        adjustment-note: "Adjustment Note"
+        recipient-created-tax-invoice: "Recipient Created Tax Invoice"
+        recipient-created-adjustment-note: "Recipient Created Adjustment Note"
+        proforma: "Pro Forma Invoice"
+      adjustment:
+        decreasing: "Decreasing adjustment"
+        increasing: "Increasing adjustment"
+      summary:
+        adjusts: "Adjusts tax invoice"
+        reason: "Reason for adjustment"
+      lines:
+        price_incl: "Price (incl. GST)"
+        price_excl: "Price (excl. GST)"
+        gst_free: "GST-free"
+        input_taxed: "Input taxed"
+        not_taxable: "N/T"
+        legend:
+          gst_free: "GST-free supply"
+          input_taxed: "Input-taxed supply (no GST)"
+          not_taxable: "Not a taxable supply"
+      totals:
+        gst: "GST"
+        gst_adjustment: "GST adjustment"
+        gst_aud: "GST (AUD)"
+        total_incl_gst: "Total (incl. GST)"
+        amount_payable: "Amount payable (incl. GST)"
+        adjustment_amount: "Adjustment amount (incl. GST)"
+      statements:
+        includes_gst: "Total price includes GST."
+        self_billed: "The GST shown is payable by the supplier."

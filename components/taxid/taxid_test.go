@@ -51,6 +51,13 @@ func TestFormat(t *testing.T) {
 			country: "ES",
 		},
 		{
+			name:    "Australian Business Number grouped as printed by the ABR",
+			id:      &tax.Identity{Country: "AU", Code: "51824753556"},
+			label:   "ABN",
+			code:    "51 824 753 556",
+			country: "AU",
+		},
+		{
 			name:  "prefix part of the official identifier",
 			id:    &tax.Identity{Country: "DE", Code: "111111125"},
 			label: "USt-IdNr.",

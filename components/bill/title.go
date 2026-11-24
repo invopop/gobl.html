@@ -5,12 +5,16 @@ import (
 	"strings"
 
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/components/regimes/au"
 	"github.com/invopop/gobl.html/internal"
 )
 
 // DocumentTitle returns the localized document-type label plus series+code, e.g. "Invoice SAMPLE-001".
 func DocumentTitle(ctx context.Context, doc internal.Document) string {
-	label := untdidTitleLabel(ctx, doc)
+	label := au.TitleLabel(ctx, doc)
+	if label == "" {
+		label = untdidTitleLabel(ctx, doc)
+	}
 	if label == "" {
 		label = invoiceTitleLabel(ctx, doc)
 	}

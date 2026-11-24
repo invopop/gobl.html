@@ -1,0 +1,107 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120109",
+		"dig": {
+			"alg": "sha256",
+			"val": "cff0236dbdc602ac3ea548a364858773236f76b3c4d9026d9bfcc0c65d2af45f"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "AU",
+		"$tags": [
+			"self-billed"
+		],
+		"uuid": "019a1c00-0000-7000-8000-000000000001",
+		"type": "standard",
+		"series": "RCTI",
+		"code": "015",
+		"issue_date": "2026-10-01",
+		"currency": "AUD",
+		"supplier": {
+			"name": "Southern Cross Consulting Pty Ltd",
+			"tax_id": {
+				"country": "AU",
+				"code": "51824753556"
+			},
+			"addresses": [
+				{
+					"num": "200",
+					"street": "George Street",
+					"locality": "Sydney",
+					"region": "NSW",
+					"code": "2000",
+					"country": "AU"
+				}
+			],
+			"emails": [
+				{
+					"addr": "accounts@southerncross.example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Harbour City Retail Pty Ltd",
+			"tax_id": {
+				"country": "AU",
+				"code": "83914571673"
+			},
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Collins Street",
+					"locality": "Melbourne",
+					"region": "VIC",
+					"code": "3000",
+					"country": "AU"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "250",
+				"item": {
+					"name": "Recycled cardboard collected",
+					"price": "4.20",
+					"unit": "kg"
+				},
+				"sum": "1050.00",
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "standard",
+						"rate": "general",
+						"percent": "10.0%"
+					}
+				],
+				"total": "1050.00"
+			}
+		],
+		"totals": {
+			"sum": "1050.00",
+			"total": "1050.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "GST",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "1050.00",
+								"percent": "10.0%",
+								"amount": "105.00"
+							}
+						],
+						"amount": "105.00"
+					}
+				],
+				"sum": "105.00"
+			},
+			"tax": "105.00",
+			"total_with_tax": "1155.00",
+			"payable": "1155.00"
+		}
+	}
+}
