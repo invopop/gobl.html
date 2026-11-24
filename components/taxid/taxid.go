@@ -53,6 +53,7 @@ type rule struct {
 // identification number, which is handled by intraCommunity below.
 var rules = map[l10n.TaxCountryCode]rule{
 	l10n.AT.Tax(): {prefixed: true},
+	l10n.AU.Tax(): {format: formatAU},
 	l10n.CH.Tax(): {prefixed: true, format: formatCH},
 	l10n.CO.Tax(): {format: formatCO},
 	l10n.DE.Tax(): {prefixed: true},
@@ -163,4 +164,13 @@ func formatNO(code string) string {
 		return base + " MVA"
 	}
 	return code
+}
+
+// formatAU groups the Australian Business Number as it is printed by the
+// ABR, in blocks of 2-3-3-3, e.g. "51824753556" becomes "51 824 753 556".
+func formatAU(code string) string {
+	if len(code) != 11 {
+		return code
+	}
+	return code[0:2] + " " + code[2:5] + " " + code[5:8] + " " + code[8:11]
 }

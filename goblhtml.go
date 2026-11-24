@@ -17,6 +17,7 @@ import (
 	srclocales "github.com/invopop/gobl.html/locales"
 	_ "github.com/invopop/gobl.ro.anaf/addon" // ro-efactura-v1, not yet in the bundle
 	"github.com/invopop/gobl/bill"
+	"github.com/invopop/gobl/currency"
 	"github.com/invopop/gobl/l10n"
 	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/org"
@@ -204,6 +205,20 @@ var EnableAdjustmentMode = func(o *internal.Opts) {
 	o.AdjustmentMode = true
 }
 
+// Warning flags information that a tax authority requires on the rendered
+// document but which the source document does not provide, such as the
+// recipient's identity on an Australian tax invoice of 1,000 AUD or more.
+// Rendering still goes ahead; warnings are advisory.
+type Warning = internal.Warning
+
+// Warnings reports the information missing from the envelope's document that
+// a tax authority requires on the rendered output. Nothing is printed on the
+// document itself: callers decide how to surface them, e.g. by logging or
+// attaching them to the rendering job.
+func Warnings(env *gobl.Envelope) []Warning {
+	return components.Warnings(internal.ExtractDocumentFrom(env))
+}
+
 // Render takes the GOBL envelope and attempts to render an HTML document
 // from it.
 func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, error) {
@@ -235,6 +250,11 @@ func Render(ctx context.Context, env *gobl.Envelope, opts ...Option) ([]byte, er
 				nf.ThousandsSeparator = " "
 				nf.DecimalMark = ","
 				nf.Template = "%n %u"
+			}
+			if d.GetRegime().Country.Code() == l10n.AU && d.GetCurrency() != currency.AUD {
+				// The GST payable must be ascertainable in AUD, so a plain
+				// "$" must never be ambiguous on a foreign currency invoice.
+				nf = d.GetCurrency().Def().Formatter(currency.WithDisambiguateSymbol())
 			}
 			if d.GetRegime().Country.Code() == l10n.RO {
 				// Romanian convention: dot for thousands, comma for decimals

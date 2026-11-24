@@ -178,6 +178,12 @@ section.title .title-group-inline h2 {
 section.title h2.code {
     word-break: break-all;
 }
+section.title .subtitle {
+    font-size: 10pt;
+    font-weight: 500;
+    color: #4b5563;
+    margin-top: 1mm;
+}
 section.summary {
     padding-right: 6mm;
     padding-top: 0mm;
@@ -269,6 +275,16 @@ section.lines .description {
 }
 section.lines .label {
     font-weight: 500;
+}
+section.lines ul.legend {
+    list-style: none;
+    margin: 2mm 0 0;
+    padding: 0;
+    font-size: 0.85em;
+    color: #4b5563;
+}
+section.lines ul.legend .label {
+    color: #111827;
 }
 section.lines .subline {
     display: block;
@@ -416,9 +432,14 @@ section.taxes th.category,
 section.taxes td.category {
     text-align: left;
 }
-section.arca-transparency {
+section.arca-transparency,
+section.au-statements {
     padding-top: 6mm;
     break-inside: avoid;
+}
+section.au-statements p {
+    margin: 0;
+    font-weight: 500;
 }
 section.payment {
     border-bottom: 0.5px solid #e5e7eb;

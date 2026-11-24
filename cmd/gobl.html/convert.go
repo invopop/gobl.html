@@ -54,6 +54,9 @@ func (c *convertOpts) runE(cmd *cobra.Command, args []string) error {
 	if err != nil {
 		return fmt.Errorf("generating html: %w", err)
 	}
+	for _, w := range goblhtml.Warnings(env) {
+		fmt.Fprintf(cmd.ErrOrStderr(), "warning: %s: %s\n", w.Code, w.Message) //nolint:errcheck
+	}
 
 	if _, err = out.Write(data); err != nil {
 		return fmt.Errorf("writing html: %w", err)

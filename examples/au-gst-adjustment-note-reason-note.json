@@ -1,0 +1,110 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a2024b-3232-7c9e-b482-4f5a631ba522",
+		"dig": {
+			"alg": "sha256",
+			"val": "60f15960bf5d21df419d3e32236ca0a2d96f6f5f74fb56e20f78150d79fa3cac"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "AU",
+		"uuid": "019a2b6e-4c10-7d3a-9f51-2b8e6c0d1a77",
+		"type": "credit-note",
+		"series": "CN",
+		"code": "008",
+		"issue_date": "2026-10-15",
+		"currency": "AUD",
+		"supplier": {
+			"name": "Southern Cross Consulting Pty Ltd",
+			"tax_id": {
+				"country": "AU",
+				"code": "51824753556"
+			},
+			"addresses": [
+				{
+					"num": "200",
+					"street": "George Street",
+					"locality": "Sydney",
+					"region": "NSW",
+					"code": "2000",
+					"country": "AU"
+				}
+			],
+			"emails": [
+				{
+					"addr": "accounts@southerncross.example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Harbour City Retail Pty Ltd",
+			"tax_id": {
+				"country": "AU",
+				"code": "83914571673"
+			},
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Collins Street",
+					"locality": "Melbourne",
+					"region": "VIC",
+					"code": "3000",
+					"country": "AU"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Workshop facilitation",
+					"price": "1000.00",
+					"unit": "service"
+				},
+				"sum": "1000.00",
+				"taxes": [
+					{
+						"cat": "GST",
+						"key": "standard",
+						"rate": "general",
+						"percent": "10.0%"
+					}
+				],
+				"total": "1000.00"
+			}
+		],
+		"totals": {
+			"sum": "1000.00",
+			"total": "1000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "GST",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "1000.00",
+								"percent": "10.0%",
+								"amount": "100.00"
+							}
+						],
+						"amount": "100.00"
+					}
+				],
+				"sum": "100.00"
+			},
+			"tax": "100.00",
+			"total_with_tax": "1100.00",
+			"payable": "1100.00"
+		},
+		"notes": [
+			{
+				"key": "reason",
+				"text": "Workshop cancelled by the customer"
+			}
+		]
+	}
+}

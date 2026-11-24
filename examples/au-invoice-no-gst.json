@@ -1,0 +1,79 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120105",
+		"dig": {
+			"alg": "sha256",
+			"val": "45d22e395a3889b188de3f09aa9864cf936cf39071fb4e304c73db793523debc"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "AU",
+		"uuid": "019a1c00-0000-7000-8000-000000000001",
+		"type": "standard",
+		"series": "INV",
+		"code": "046",
+		"issue_date": "2026-10-01",
+		"currency": "AUD",
+		"supplier": {
+			"name": "Southern Cross Consulting Pty Ltd",
+			"tax_id": {
+				"country": "AU",
+				"code": "51824753556"
+			},
+			"addresses": [
+				{
+					"num": "200",
+					"street": "George Street",
+					"locality": "Sydney",
+					"region": "NSW",
+					"code": "2000",
+					"country": "AU"
+				}
+			],
+			"emails": [
+				{
+					"addr": "accounts@southerncross.example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Harbour City Retail Pty Ltd",
+			"tax_id": {
+				"country": "AU",
+				"code": "83914571673"
+			},
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Collins Street",
+					"locality": "Melbourne",
+					"region": "VIC",
+					"code": "3000",
+					"country": "AU"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "4",
+				"item": {
+					"name": "Gardening services",
+					"price": "60.00",
+					"unit": "h"
+				},
+				"sum": "240.00",
+				"total": "240.00"
+			}
+		],
+		"totals": {
+			"sum": "240.00",
+			"total": "240.00",
+			"tax": "0.00",
+			"total_with_tax": "240.00",
+			"payable": "240.00"
+		}
+	}
+}

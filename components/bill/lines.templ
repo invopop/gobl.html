@@ -3,7 +3,9 @@ package bill
 import (
 	"fmt"
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/components/regimes/au"
 	"github.com/invopop/gobl.html/components/regimes/mx"
+	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/components/t"
 	"github.com/invopop/gobl.html/components/taxid"
 	"github.com/invopop/gobl.html/components/utils"
@@ -45,7 +47,7 @@ templ linesWithSupport(reg *tax.RegimeDef, lines []*bill.Line, dss []*bill.Disco
 					}
 					if ls.prices {
 						<th class="price">
-							@t.T(".price")
+							{ tl(ctx, "lines.price", ".price") }
 						</th>
 					}
 					if ls.discounts {
@@ -80,6 +82,7 @@ templ linesWithSupport(reg *tax.RegimeDef, lines []*bill.Line, dss []*bill.Disco
 			@discountsBody(dss, ls, st)
 			@chargesBody(chs, ls, st)
 		</table>
+		@au.LinesLegend(internal.DocumentFrom(ctx))
 	</section>
 }
 
@@ -155,7 +158,9 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 			{{ combo := l.Taxes.Get(cat.Code) }}
 			<td class="tax">
 				if combo != nil {
-					if combo.Percent != nil {
+					if lbl := au.KeyLabel(ctx, internal.DocumentFrom(ctx), combo.Category, combo.Key); lbl != "" {
+						{ lbl }
+					} else if combo.Percent != nil {
 						@t.L(*combo.Percent)
 						if (combo.Surcharge != nil) {
 							<br>+&nbsp;
