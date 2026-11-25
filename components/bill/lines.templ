@@ -101,10 +101,14 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 		</td>
 		<td class="description">
 			<div class="limited-height">
-				<span>{ l.Item.Name }</span>
+				<span>
+					@wrappable(l.Item.Name)
+				</span>
 				if l.Item.Description != "" {
 					<br/>
-					<small>{ l.Item.Description }</small>
+					<small>
+						@wrappable(l.Item.Description)
+					</small>
 				}
 				@lineIdentifier(l.Identifier)
 				if l.Item.Ref != "" {
@@ -113,7 +117,7 @@ templ line(l *bill.Line, ls *lineSupport, st *subtotal) {
 							@t.T(".ref")
 						</span>
 						<code>
-							{ l.Item.Ref.String() }
+							@wrappable(l.Item.Ref.String())
 						</code>
 					</span>
 				}
@@ -205,10 +209,14 @@ templ breakdownLine(sl *bill.SubLine, ls *lineSupport, st *subtotal) {
 		</td>
 		<td class="description">
 			<div class="limited-height">
-				<span>{ sl.Item.Name }</span>
+				<span>
+					@wrappable(sl.Item.Name)
+				</span>
 				if sl.Item.Description != "" {
 					<br/>
-					<small>{ sl.Item.Description }</small>
+					<small>
+						@wrappable(sl.Item.Description)
+					</small>
 				}
 				@lineIdentifier(sl.Identifier)
 				if sl.Item.Ref != "" {
@@ -217,7 +225,7 @@ templ breakdownLine(sl *bill.SubLine, ls *lineSupport, st *subtotal) {
 							@t.T(".ref")
 						</span>
 						<code>
-							{ sl.Item.Ref.String() }
+							@wrappable(sl.Item.Ref.String())
 						</code>
 					</span>
 				}
@@ -308,7 +316,7 @@ templ defaultLineSeller(seller *org.Party) {
 		<span class="label">
 			@t.T(".on_behalf_of")
 		</span>
-		{ seller.Name }
+		@wrappable(seller.Name)
 		if seller.TaxID != nil && seller.TaxID.Code != "" {
 			{ " · " }
 			<code>{ taxid.Format(ctx, seller.TaxID).Code }</code>
@@ -320,7 +328,9 @@ templ defaultLineSeller(seller *org.Party) {
 templ lineIdentifier(id *org.Identity) {
 	if id != nil && id.Code != "" {
 		<br/>
-		<small>{ id.Code.String() }</small>
+		<small>
+			@wrappable(id.Code.String())
+		</small>
 	}
 }
 
@@ -330,13 +340,13 @@ templ identities(idents []*org.Identity) {
 			<span class="subline">
 				<span class="label">
 					if ident.Label != "" {
-						{ ident.Label }
+						@wrappable(ident.Label)
 					} else {
 						{ ident.Type.String() }
 					}
 				</span>
 				<code>
-					{ ident.Code.String() }
+					@wrappable(ident.Code.String())
 				</code>
 			</span>
 		}
@@ -348,7 +358,7 @@ templ linePeriod(p *cal.Period) {
 		<span class="subline">
 			<span class="label">
 				if p.Label != "" {
-					{ p.Label }
+					@wrappable(p.Label)
 				} else {
 					@t.T(".period")
 				}

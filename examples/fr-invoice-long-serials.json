@@ -1,0 +1,203 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a212cc-c56e-70c4-824a-e46713c4c881",
+		"dig": {
+			"alg": "sha256",
+			"val": "ba6cc3539282b65a1a89b0067ff46f1e664d1dc0aed0e863ecc7104dd5a24dcd"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FR",
+		"uuid": "01a212cc-c56e-7a7b-8818-fbca3ef10326",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "LS-0001",
+		"issue_date": "2022-02-01",
+		"value_date": "2022-02-15",
+		"currency": "EUR",
+		"supplier": {
+			"name": "Provide One Inc.",
+			"tax_id": {
+				"country": "FR",
+				"code": "44732829320"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Sample Consumer",
+			"tax_id": {
+				"country": "FR",
+				"code": "39356000000"
+			},
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Rue Sundacsakn",
+					"locality": "Saint-Germain-En-Laye",
+					"code": "75050"
+				}
+			],
+			"emails": [
+				{
+					"addr": "email@sample.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "30",
+				"item": {
+					"name": "Barcode scanner",
+					"description": "SN24A00001,SN24A00002,SN24A00003,SN24A00004,SN24A00005,SN24A00006,SN24A00007,SN24A00008,SN24A00009,SN24A00010,SN24A00011,SN24A00012,SN24A00013,SN24A00014,SN24A00015,SN24A00016,SN24A00017,SN24A00018,SN24A00019,SN24A00020,SN24A00021,SN24A00022,SN24A00023,SN24A00024,SN24A00025,SN24A00026,SN24A00027,SN24A00028,SN24A00029,SN24A00030",
+					"price": "89.00",
+					"unit": "item"
+				},
+				"sum": "2670.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "2670.00"
+			},
+			{
+				"i": 2,
+				"quantity": "11",
+				"identifier": {
+					"code": "SN24B00001,SN24B00002,SN24B00003,SN24B00004,SN24B00005,SN24B00006,SN24B00007,SN24B00008,SN24B00009,SN24B00010,SN24B00011"
+				},
+				"item": {
+					"name": "Handheld terminal",
+					"price": "415.00",
+					"unit": "item"
+				},
+				"sum": "4565.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "4565.00",
+				"notes": [
+					{
+						"text": "Replaces units SN23Z00001,SN23Z00002,SN23Z00003,SN23Z00004,SN23Z00005,SN23Z00006,SN23Z00007,SN23Z00008"
+					}
+				]
+			},
+			{
+				"i": 3,
+				"quantity": "1",
+				"item": {
+					"name": "Annual maintenance and support contract",
+					"description": "Preventive maintenance visits, remote troubleshooting, firmware upgrades and replacement of faulty components for all registered warehouse devices, including telecommunications equipment, during the contract year.",
+					"price": "1200.00",
+					"unit": "item"
+				},
+				"sum": "1200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "1200.00"
+			},
+			{
+				"i": 4,
+				"quantity": "1",
+				"item": {
+					"ref": "SN24C00001,SN24C00002,SN24C00003,SN24C00004,SN24C00005,SN24C00006,SN24C00007,SN24C00008,SN24C00009,SN24C00010,SN24C00011",
+					"name": "Replacement battery kit",
+					"currency": "EUR",
+					"price": "629.00",
+					"unit": "item"
+				},
+				"breakdown": [
+					{
+						"i": 1,
+						"quantity": "12",
+						"item": {
+							"name": "Battery pack",
+							"description": "SN24D00001,SN24D00002,SN24D00003,SN24D00004,SN24D00005,SN24D00006,SN24D00007,SN24D00008,SN24D00009,SN24D00010,SN24D00011,SN24D00012",
+							"price": "24.00"
+						},
+						"sum": "288.00",
+						"total": "288.00"
+					},
+					{
+						"i": 2,
+						"quantity": "11",
+						"identifier": {
+							"code": "SN24E00001,SN24E00002,SN24E00003,SN24E00004,SN24E00005,SN24E00006,SN24E00007,SN24E00008,SN24E00009,SN24E00010,SN24E00011"
+						},
+						"item": {
+							"name": "Charging cradle",
+							"price": "31.00"
+						},
+						"sum": "341.00",
+						"total": "341.00"
+					}
+				],
+				"sum": "629.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "629.00"
+			}
+		],
+		"totals": {
+			"sum": "9064.00",
+			"total": "9064.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "9064.00",
+								"percent": "20%",
+								"amount": "1812.80"
+							}
+						],
+						"amount": "1812.80"
+					}
+				],
+				"sum": "1812.80"
+			},
+			"tax": "1812.80",
+			"total_with_tax": "10876.80",
+			"payable": "10876.80"
+		}
+	}
+}
