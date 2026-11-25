@@ -289,6 +289,7 @@ section.lines .subline .label {
 section.lines .subline code {
     padding: 0;
     background-color: transparent;
+    white-space: normal;
 }
 section.lines .subline .label:after {
     content: ": ";
