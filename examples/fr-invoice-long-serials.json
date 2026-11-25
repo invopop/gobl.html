@@ -4,7 +4,7 @@
 		"uuid": "01a212cc-c56e-70c4-824a-e46713c4c881",
 		"dig": {
 			"alg": "sha256",
-			"val": "ba6cc3539282b65a1a89b0067ff46f1e664d1dc0aed0e863ecc7104dd5a24dcd"
+			"val": "b8cee38dbebdb79617269d57662cfc9a841f3974d4363c7bfa7540411b9a7231"
 		}
 	},
 	"doc": {
@@ -103,7 +103,7 @@
 				"total": "4565.00",
 				"notes": [
 					{
-						"text": "Replaces units SN23Z00001,SN23Z00002,SN23Z00003,SN23Z00004,SN23Z00005,SN23Z00006,SN23Z00007,SN23Z00008"
+						"text": "Replaces the units returned under warranty."
 					}
 				]
 			},

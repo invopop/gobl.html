@@ -48,18 +48,10 @@ templ lineNotes(notes []*org.Note) {
 	if len(notes) > 0 {
 		<span class="subline">
 			for _, n := range notes {
-				@lineNote(n)
+				@note(n)
 			}
 		</span>
 	}
-}
-
-// lineNote renders a note in a line's description cell, where long words
-// need wrap points (see wrappable).
-templ lineNote(note *org.Note) {
-	<div class="note">
-		@templ.Raw(wrapLongWordsHTML(renderNote(note)))
-	</div>
 }
 
 templ note(note *org.Note) {
