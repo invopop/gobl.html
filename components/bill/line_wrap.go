@@ -38,7 +38,8 @@ func joinWithWbr(parts []string) string {
 // caller can print a <wbr> between the parts. Joined together, the parts
 // give back s. A long word is split right after each run of
 // longWordBreakAfter characters, never before one, so no line starts with a
-// separator. A long word without any separator is left whole.
+// separator, and never after the separators that start the word, so none
+// ends with one on its own. A long word without any separator is left whole.
 //
 // The lines table sizes its columns from their content, so a long word with
 // no wrap points sets the width of the description column and pushes the
@@ -50,10 +51,14 @@ func splitLongWords(s string) []string {
 	var parts []string
 	from := 0
 	for _, loc := range longWordRegexp.FindAllStringIndex(s, -1) {
-		// the separators are ASCII, so a byte never matches inside a
-		// multi-byte character
+		// The separators are ASCII, so a byte never matches inside a
+		// multi-byte character. Separators that start the word, such as the
+		// "+" of a phone number, stay with what follows them.
+		started := false
 		for i := loc[0]; i < loc[1]-1; i++ {
-			if isBreakAfter(s[i]) && !isBreakAfter(s[i+1]) {
+			if !isBreakAfter(s[i]) {
+				started = true
+			} else if started && !isBreakAfter(s[i+1]) {
 				parts = append(parts, s[from:i+1])
 				from = i + 1
 			}

@@ -57,6 +57,14 @@ func TestSplitLongWords(t *testing.T) {
 			want: []string{strings.Repeat("x", 30) + ",", "yyyyy"},
 		},
 		{
+			name: "separators that start a word stay with it",
+			in:   "-Model_X5_Processor_Core_i5_16GB_RAM +34600000001,34600000002,34600000003",
+			want: []string{
+				"-Model_", "X5_", "Processor_", "Core_", "i5_", "16GB_",
+				"RAM +34600000001,", "34600000002,", "34600000003",
+			},
+		},
+		{
 			name: "repeated separators stay together",
 			in:   "SN0000000001,,SN0000000002,,SN0000000003",
 			want: []string{"SN0000000001,,", "SN0000000002,,", "SN0000000003"},
