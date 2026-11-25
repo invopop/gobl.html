@@ -1,0 +1,233 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a21221-18dc-7395-9db5-48cfcbcd624c",
+		"dig": {
+			"alg": "sha256",
+			"val": "187fe1afc43ae7d7fee62cd0970f939415e472e8e131db469edc8addda8e6594"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FR",
+		"uuid": "01a21221-18dc-73a5-a912-9a27ba77bf69",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "LR-0001",
+		"issue_date": "2022-02-01",
+		"value_date": "2022-02-15",
+		"currency": "EUR",
+		"supplier": {
+			"name": "Provide One Inc.",
+			"tax_id": {
+				"country": "FR",
+				"code": "44732829320"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Sample Consumer",
+			"tax_id": {
+				"country": "FR",
+				"code": "39356000000"
+			},
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Rue Sundacsakn",
+					"locality": "Saint-Germain-En-Laye",
+					"code": "75050"
+				}
+			],
+			"emails": [
+				{
+					"addr": "email@sample.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"period": {
+					"start": "2026-10-01",
+					"end": "2026-10-31"
+				},
+				"item": {
+					"ref": "Managed Relational Database Flexible Server General Purpose Series Compute, 4 vCore, EU West, 3 Years",
+					"name": "Managed database, reserved",
+					"price": "730.00",
+					"unit": "item"
+				},
+				"sum": "730.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "730.00"
+			},
+			{
+				"i": 2,
+				"quantity": "512",
+				"period": {
+					"start": "2026-10-01",
+					"end": "2026-10-31"
+				},
+				"item": {
+					"ref": "Object Storage Hot Tier Locally Redundant Data Stored, EU West",
+					"name": "Object storage",
+					"price": "0.0184",
+					"unit": "item"
+				},
+				"sum": "9.4208",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "9.4208"
+			},
+			{
+				"i": 3,
+				"quantity": "1",
+				"period": {
+					"start": "2026-10-01",
+					"end": "2026-10-31"
+				},
+				"item": {
+					"ref": "Compute savings plan, 3 Year",
+					"name": "Compute reservation",
+					"price": "730.00",
+					"unit": "item"
+				},
+				"sum": "730.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "730.00"
+			},
+			{
+				"i": 4,
+				"quantity": "2",
+				"period": {
+					"start": "2026-10-01",
+					"end": "2026-10-31"
+				},
+				"item": {
+					"ref": "Managed In-Memory Cache Premium Tier Clustered Node P1, EU North, 3 Years",
+					"name": "Managed cache",
+					"price": "91.00",
+					"unit": "item"
+				},
+				"sum": "182.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "182.00"
+			},
+			{
+				"i": 5,
+				"quantity": "40",
+				"period": {
+					"start": "2026-10-01",
+					"end": "2026-10-31"
+				},
+				"item": {
+					"ref": "Speech-to-Text Batch Transcription Standard Model, per audio hour",
+					"name": "Speech recognition",
+					"price": "0.36",
+					"unit": "item"
+				},
+				"sum": "14.40",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "14.40"
+			},
+			{
+				"i": 6,
+				"quantity": "1",
+				"period": {
+					"start": "2026-10-01",
+					"end": "2026-10-31"
+				},
+				"item": {
+					"ref": "Professional Direct Support",
+					"name": "Support plan",
+					"price": "1000.00",
+					"unit": "item"
+				},
+				"sum": "1000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%"
+					}
+				],
+				"total": "1000.00"
+			}
+		],
+		"totals": {
+			"sum": "2665.82",
+			"total": "2665.82",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "2665.82",
+								"percent": "20%",
+								"amount": "533.16"
+							}
+						],
+						"amount": "533.16"
+					}
+				],
+				"sum": "533.16"
+			},
+			"tax": "533.16",
+			"total_with_tax": "3198.99",
+			"payable": "3198.99"
+		}
+	}
+}
