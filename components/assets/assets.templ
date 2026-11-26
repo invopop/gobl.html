@@ -20,6 +20,19 @@ templ Stylesheet(path string) {
 	}
 }
 
+// Fonts declares the document typefaces, inlining the font files as data
+// URIs when assets are embedded so that the document loads nothing from the
+// network, and linking the stylesheet otherwise.
+templ Fonts() {
+	if opts := internal.Options(ctx); opts != nil {
+		if opts.EmbedAssets {
+			@templ.Raw(`<style type="text/css">` + assets.FontStyles() + `</style>`)
+		} else {
+			<link rel="stylesheet" href={ assets.FontStylesheet }/>
+		}
+	}
+}
+
 // Script renders a script tag or inline script based on the options
 templ Script(path string) {
   {{ path = filepath.Join("scripts", path) }}

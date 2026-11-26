@@ -71,6 +71,7 @@ func (s *serveOpts) runE(cmd *cobra.Command, _ []string) error {
 	e := prepareEcho()
 	e.StaticFS("/styles", echo.MustSubFS(assets.Content, "styles"))
 	e.StaticFS("/scripts", echo.MustSubFS(assets.Content, "scripts"))
+	e.StaticFS("/fonts", echo.MustSubFS(assets.Content, "fonts"))
 	e.GET("/", s.index)
 	e.GET("/:filename", s.generate)
 
