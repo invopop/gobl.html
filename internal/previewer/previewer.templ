@@ -323,6 +323,27 @@ templ options() {
 					@popui.Checkbox(props.Checkbox{Variant: props.CheckboxVariantSwitch, Name: "adjustment", Label: "Adjustment mode", Description: "Render credit and debit notes as adjustments", Attributes: templ.Attributes{"x-model": "params.adjustment_mode"}})
 				}
 			}
+			@popui.Fieldset(props.Fieldset{Legend: "Snippet", Variant: props.FieldsetVariantCard}) {
+				<div class="grid grid-cols-2 gap-3">
+					@popui.Select(props.Select{
+						Label:      "At",
+						Options:    SnippetKeyOptions(),
+						Attributes: templ.Attributes{"x-model": "snippet.at", "title": "Anchor the snippet is placed at"},
+					})
+					@popui.Select(props.Select{
+						Label:      "Mode",
+						Options:    SnippetModeOptions(),
+						Attributes: templ.Attributes{"x-model": "snippet.mode", "title": "Placement relative to the anchor"},
+					})
+				</div>
+				@popui.Textarea(props.Textarea{
+					Label:       "HTML",
+					Placeholder: `<a href="{{ .PaymentLink }}">Pay {{ .TotalDue }}</a>`,
+					Rows:        5,
+					Monospace:   true,
+					Attributes:  templ.Attributes{"x-model": "snippet.html", "title": "Trusted HTML, as a Go template over the document's variables, such as {{ .PaymentLink }}, {{ .TotalDue }} or {{ .Number }}. Empty removes the snippet."},
+				})
+			}
 			@popui.Fieldset(props.Fieldset{Legend: "Paper", Variant: props.FieldsetVariantCard}) {
 				@popui.Select(props.Select{
 					Label: "Envelope window",

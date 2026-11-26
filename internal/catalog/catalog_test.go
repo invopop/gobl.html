@@ -70,6 +70,12 @@ func TestScan(t *testing.T) {
 	hidden := byFile["es-verifactu-invoice-full.hidden.json"]
 	assert.Equal(t, strings.Join(catalog.HiddenKeys, ","), hidden.Hide)
 	assert.Contains(t, hidden.Tags, "hidden")
+
+	snippets := byFile["es-verifactu-invoice-full.snippets.json"]
+	assert.Equal(t, catalog.ExampleSnippets, snippets.Snippets)
+	assert.Contains(t, snippets.Tags, "snippets")
+	assert.Empty(t, byFile["es-verifactu-invoice-full.json"].Snippets)
+	require.NoError(t, catalog.ExampleSnippets.Validate())
 }
 
 func TestFold(t *testing.T) {

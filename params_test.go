@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	goblhtml "github.com/invopop/gobl.html"
+	"github.com/invopop/gobl.html/display"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -29,6 +30,7 @@ func TestParamsOptions(t *testing.T) {
 			"label": "COPY",
 			"watermark": "DRAFT",
 			"hide": "payment,notes",
+			"snippets": [{"at": "taxes", "mode": "after", "html": "<p>{{ .Number }}</p>"}],
 			"thousands_separator": ".",
 			"decimal_mark": ",",
 			"void": true,
@@ -44,6 +46,7 @@ func TestParamsOptions(t *testing.T) {
 			goblhtml.WithLabel("COPY"),
 			goblhtml.WithWatermark("DRAFT"),
 			goblhtml.WithHide("payment", "notes"),
+			goblhtml.WithSnippets(display.Snippets{{At: display.KeyTaxes, Mode: display.ModeAfter, HTML: "<p>{{ .Number }}</p>"}}),
 			goblhtml.WithThousandsSeparator("."),
 			goblhtml.WithDecimalMark(","),
 			goblhtml.WithVoid(true),
@@ -52,6 +55,7 @@ func TestParamsOptions(t *testing.T) {
 		require.NoError(t, err)
 
 		assert.Equal(t, string(want), string(got))
+		assert.Contains(t, string(got), `<div class="snippet snippet-after" data-at="taxes"><p>`)
 		assert.Contains(t, string(got), "<style")
 		assert.NotContains(t, string(got), `href="styles/`)
 	})
@@ -63,4 +67,16 @@ func TestParamsEmbedAssetsFalseSurvivesJSON(t *testing.T) {
 	b, err := json.Marshal(&goblhtml.Params{EmbedAssets: false})
 	require.NoError(t, err)
 	assert.Contains(t, string(b), `"embed_assets":false`)
+}
+
+func TestParamsSnippetsAsString(t *testing.T) {
+	// A query parameter or form field carries the list as a JSON string,
+	// which decodes the same as the array.
+	p := new(goblhtml.Params)
+	require.NoError(t, json.Unmarshal([]byte(`{"snippets": "[{\"at\": \"notes\", \"mode\": \"before\", \"html\": \"<p>x</p>\"}]"}`), p))
+	assert.Equal(t, display.Snippets{{At: display.KeyNotes, Mode: display.ModeBefore, HTML: "<p>x</p>"}}, p.Snippets)
+
+	b, err := json.Marshal(&goblhtml.Params{})
+	require.NoError(t, err)
+	assert.NotContains(t, string(b), "snippets", "an empty list is omitted")
 }

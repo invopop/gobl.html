@@ -121,11 +121,9 @@ func paymentSummary(pmt *bill.Payment) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			if pmt.Ordering != nil {
-				templ_7745c5c3_Err = summaryOrderingRows(pmt.Ordering).Render(ctx, templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
+			templ_7745c5c3_Err = summaryOrderingRows(pmt.Ordering).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
 			}
 			templ_7745c5c3_Err = summaryTaxExtRows(pmt.Ext).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {

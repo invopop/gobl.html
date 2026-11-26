@@ -6,6 +6,8 @@ import (
 	"github.com/invopop/gobl"
 	"github.com/invopop/gobl.html/components/images"
 	"github.com/invopop/gobl.html/components/regimes/co"
+	"github.com/invopop/gobl.html/components/utils"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl.html/internal"
 	"strings"
 )
@@ -41,11 +43,13 @@ templ footerNotes(env *gobl.Envelope) {
 }
 
 templ footerGOBLLogo() {
-	<div class="gobl-logo">
-		<a href="https://gobl.org">
-			@images.GOBL()
-		</a>
-	</div>
+	@utils.Section(display.KeyFooterBranding) {
+		<div class="gobl-logo">
+			<a href="https://gobl.org">
+				@images.GOBL()
+			</a>
+		</div>
+	}
 }
 
 func pageNumber(ctx context.Context) string {

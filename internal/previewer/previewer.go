@@ -8,6 +8,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl.html/internal/catalog"
 	"github.com/invopop/gobl.html/locales"
 	"github.com/invopop/popui.go/props"
@@ -125,6 +126,27 @@ var localeNames = map[string]string{
 	"pl": "Polski",
 	"pt": "Português",
 	"ro": "Română",
+}
+
+// SnippetKeyOptions lists the anchors a snippet can be placed at, in
+// document order.
+func SnippetKeyOptions() []props.SelectOption {
+	keys := display.Keys()
+	opts := make([]props.SelectOption, 0, len(keys))
+	for _, k := range keys {
+		opts = append(opts, props.SelectOption{Value: k.String(), Label: k.String()})
+	}
+	return opts
+}
+
+// SnippetModeOptions lists the placements of a snippet relative to its
+// anchor.
+func SnippetModeOptions() []props.SelectOption {
+	return []props.SelectOption{
+		{Value: string(display.ModeBefore), Label: "Before"},
+		{Value: string(display.ModeAfter), Label: "After"},
+		{Value: string(display.ModeReplace), Label: "Replace"},
+	}
 }
 
 // LocaleOptions lists the locales embedded in the renderer for the header

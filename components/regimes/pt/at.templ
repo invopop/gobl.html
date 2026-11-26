@@ -49,8 +49,8 @@ templ TitleType(doc internal.Document) {
 }
 
 templ JoinCode(doc internal.Document, series, code cbc.Code) {
-	if isPortuguese(doc) {
-		{ series.JoinWith("/", code).String() }
+	if n := Number(doc, series, code); n != "" {
+		{ n }
 	}
 }
 

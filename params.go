@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl.html/layout"
 	"github.com/invopop/gobl/org"
 )
@@ -58,6 +59,10 @@ type Params struct {
 	// Hide lists, separated by commas, the document sections to hide; see
 	// HideKeys for the supported keys.
 	Hide string `json:"hide,omitempty" query:"hide"`
+	// Snippets are the trusted HTML blocks to place at the document's
+	// anchors, with their variables; see the display package. As a query
+	// parameter the list travels as a JSON string.
+	Snippets display.Snippets `json:"snippets,omitempty" query:"snippets"`
 }
 
 // dateReplacer maps strftime-style date directives to Go's reference layout.
@@ -142,6 +147,9 @@ func (p *Params) Options() []Option {
 	}
 	if p.Hide != "" {
 		opts = append(opts, WithHide(strings.Split(p.Hide, ",")...))
+	}
+	if len(p.Snippets) > 0 {
+		opts = append(opts, WithSnippets(p.Snippets))
 	}
 	return opts
 }

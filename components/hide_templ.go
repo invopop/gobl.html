@@ -30,7 +30,7 @@ var hideSelectors = map[string]string{
 	"payment.instructions.bank-data": "section.payment .instructions .bank-data",
 	"payment.instructions.online":    "section.payment .instructions .online, section.payment .online-qrs",
 	"payment.terms":                  "section.payment .terms",
-	"notes":                          "section.notes",
+	"notes":                          "section.notes:not(.fixed), section.notes .note:not(.fixed), section.notes .snippet-replace",
 	"footer.branding":                "footer .gobl-logo",
 }
 

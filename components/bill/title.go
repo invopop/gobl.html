@@ -6,6 +6,7 @@ import (
 
 	"github.com/invopop/ctxi18n/i18n"
 	"github.com/invopop/gobl.html/components/regimes/au"
+	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/internal"
 )
 
@@ -20,6 +21,15 @@ func DocumentTitle(ctx context.Context, doc internal.Document) string {
 	}
 	code := doc.GetSeries().Join(doc.GetCode()).String()
 	return strings.TrimSpace(label + " " + code)
+}
+
+// DocumentNumber returns the series and code joined the way the document's
+// title shows them, which is regime-specific for Portugal.
+func DocumentNumber(doc internal.Document) string {
+	if n := pt.Number(doc, doc.GetSeries(), doc.GetCode()); n != "" {
+		return n
+	}
+	return doc.GetSeries().Join(doc.GetCode()).String()
 }
 
 // invoiceTitleLabel resolves the generic invoice-type label, or "" if untranslated.

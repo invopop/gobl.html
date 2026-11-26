@@ -5,6 +5,8 @@ import (
 	"github.com/invopop/gobl.html/internal"
 	"github.com/invopop/gobl.html/components/regimes/pt"
 	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl.html/components/utils"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl/bill"
 )
 
@@ -45,7 +47,9 @@ templ deliveryHeader(env *gobl.Envelope, dlv *bill.Delivery) {
 		@supplier(doc)
 		@customer(doc)
 		@contact(dlv.Despatcher, "despatcher")
-		@contact(dlv.Receiver, "receiver")
+		@utils.Section(display.KeyHeaderContactsDelivery) {
+			@contact(dlv.Receiver, "receiver")
+		}
 		@contact(dlv.Courier, "courier")
 	</div>
 }
@@ -106,9 +110,7 @@ templ deliverySummary(dlv *bill.Delivery) {
 				if len(dlv.Preceding) > 0 {
 					@summaryPrecedingRows(dlv)
 				}
-				if dlv.Ordering != nil {
-					@summaryOrderingRows(dlv.Ordering)
-				}
+				@summaryOrderingRows(dlv.Ordering)
 				if dlv.Tax != nil {
 					@summaryTaxExtRows(dlv.Tax.Ext)
 				}

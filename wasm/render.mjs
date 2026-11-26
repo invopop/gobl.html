@@ -46,6 +46,12 @@ const LOCALES = fs
   .filter((d) => d.isDirectory())
   .map((d) => d.name);
 
+// SNIPPETS is the set a ".snippets." example renders with, the same file
+// catalog.ExampleSnippets embeds.
+const SNIPPETS = JSON.parse(
+  fs.readFileSync(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../internal/catalog/snippets.json"), "utf8"),
+);
+
 // paramsFor mirrors examples_test.go: the file name carries the state.
 function paramsFor(name) {
   const p = { ...base };
@@ -54,6 +60,7 @@ function paramsFor(name) {
   if (name.includes(".adjustment.")) p.adjustment_mode = true;
   // Same list as catalog.HiddenKeys.
   if (name.includes(".hidden.")) p.hide = "header.summary.ordering,payment.instructions.bank-data,notes,footer.branding";
+  if (name.includes(".snippets.")) p.snippets = SNIPPETS;
   for (const locale of LOCALES) {
     if (name.includes(`.${locale}.`)) p.locale = locale;
   }

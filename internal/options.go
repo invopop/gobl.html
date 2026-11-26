@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/invopop/ctxi18n/i18n"
+	"github.com/invopop/gobl.html/display"
 	"github.com/invopop/gobl.html/layout"
 	"github.com/invopop/gobl/num"
 	"github.com/invopop/gobl/org"
@@ -64,6 +65,12 @@ type Opts struct {
 	AdjustmentMode bool
 	// Hide lists the keys of the document sections to hide using CSS.
 	Hide []string
+	// Snippets are the HTML snippets to place at the document's anchors,
+	// as configured.
+	Snippets display.Snippets
+	// Rendered holds the snippets with their variables filled in, prepared
+	// by Render before the components run.
+	Rendered *display.Rendered
 }
 
 // WithOptions prepares the context with the options to use.
@@ -75,6 +82,15 @@ func WithOptions(ctx context.Context, opts *Opts) context.Context {
 func Options(ctx context.Context) *Opts {
 	if opts, ok := ctx.Value(optsKey).(*Opts); ok {
 		return opts
+	}
+	return nil
+}
+
+// Snippets provides the rendered snippets from the context. The result is
+// nil-safe: with no snippets configured, nothing is placed anywhere.
+func Snippets(ctx context.Context) *display.Rendered {
+	if opts := Options(ctx); opts != nil {
+		return opts.Rendered
 	}
 	return nil
 }
