@@ -273,6 +273,14 @@ section.lines .total {
 section.lines .description {
     white-space: wrap;
 }
+/* cap the description so a long word without spaces, such as a list of
+   serial numbers, wraps instead of pushing the other columns off the page:
+   overflow-wrap only breaks a word that is wider than its box, and a table
+   cell grows to fit its content unless the box has a maximum width */
+section.lines td.description > .limited-height {
+    max-width: 80mm;
+    overflow-wrap: break-word;
+}
 section.lines .label {
     font-weight: 500;
 }
