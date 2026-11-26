@@ -160,6 +160,9 @@ es:
       notes:
         title: "Notas"
 
+      attachments:
+        title: "Adjuntos"
+
     payment:
       <<: *invoice
       title:

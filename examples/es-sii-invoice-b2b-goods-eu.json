@@ -1,0 +1,118 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d41-7db7-b2cb-6617524fd695",
+		"dig": {
+			"alg": "sha256",
+			"val": "40bdc0d50a6790defdf951475da1e9c68dbed524ae345b19a697f63df6077020"
+		},
+		"meta": {
+			"description": "Intra-community supply invoices are used for B2B goods delivered to customers in other EU member states. Intra-community supplies must be applied when:",
+			"title": "B2B Goods EU Client (Intra-Community)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-sii-v1"
+		],
+		"uuid": "01a1ab50-6d41-7dbb-ae27-71d45c879e3b",
+		"type": "standard",
+		"series": "SAMPLE",
+		"issue_date": "2026-07-08",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"es-sii-doc-type": "F1"
+			}
+		},
+		"supplier": {
+			"name": "Invopop S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Sample Consumer",
+			"tax_id": {
+				"country": "DE",
+				"code": "111111125"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"key": "goods",
+					"name": "Goods",
+					"price": "90.00"
+				},
+				"sum": "1800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "intra-community",
+						"ext": {
+							"es-sii-exempt": "E5",
+							"es-sii-product": "goods",
+							"es-sii-regime": "02"
+						}
+					}
+				],
+				"total": "1800.00"
+			}
+		],
+		"totals": {
+			"sum": "1800.00",
+			"total": "1800.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "intra-community",
+								"ext": {
+									"es-sii-exempt": "E5",
+									"es-sii-product": "goods",
+									"es-sii-regime": "02"
+								},
+								"base": "1800.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "1800.00",
+			"payable": "1800.00"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "This is a sample invoice with a intra-community"
+			}
+		]
+	}
+}

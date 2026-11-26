@@ -1,0 +1,134 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d53-754f-94c9-372a27e1351c",
+		"dig": {
+			"alg": "sha256",
+			"val": "1e1199e429c53e0032961c359a27efc3af77f5a625eab08c093dc492dc83ff55"
+		},
+		"stamps": [
+			{
+				"prv": "tbai-code",
+				"val": "TBAI-A99805194-080726-LrNMp23wKPLjx-112"
+			},
+			{
+				"prv": "tbai-qr",
+				"val": "https://batuz.eus/QRTBAI/?id=TBAI-A99805194-080726-LrNMp23wKPLjx-112\u0026s=FS1\u0026nf=0001\u0026i=25.10\u0026cr=027"
+			}
+		],
+		"meta": {
+			"description": "In this example, we're issuing a simplified B2C invoice from a Basque supplier for an in-person sale.",
+			"title": "B2C Simplified Invoice"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-tbai-v1"
+		],
+		"$tags": [
+			"simplified"
+		],
+		"uuid": "01a1ab50-6d53-7553-aa61-f67f91932d7d",
+		"type": "standard",
+		"series": "FS1",
+		"code": "0001",
+		"issue_date": "2026-07-08",
+		"currency": "EUR",
+		"tax": {
+			"prices_include": "VAT",
+			"ext": {
+				"es-tbai-region": "BI",
+				"es-tbai-simplified": "S"
+			}
+		},
+		"supplier": {
+			"name": "HFPn5yhXZ9tdD4pHRbvwymaVPrGZQr",
+			"tax_id": {
+				"country": "ES",
+				"code": "A99805194"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "San Frantzisko",
+					"locality": "Bilbo",
+					"region": "Bizkaia",
+					"code": "48003",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Advanced screwdriver set",
+					"price": "25.10",
+					"ext": {
+						"es-tbai-product": "goods"
+					}
+				},
+				"sum": "25.10",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"es-tbai-product": "services",
+							"es-tbai-regime": "01"
+						}
+					}
+				],
+				"total": "25.10"
+			}
+		],
+		"totals": {
+			"sum": "25.10",
+			"tax_included": "4.36",
+			"total": "20.74",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"es-tbai-product": "services",
+									"es-tbai-regime": "01"
+								},
+								"base": "20.74",
+								"percent": "21.0%",
+								"amount": "4.36"
+							}
+						],
+						"amount": "4.36"
+					}
+				],
+				"sum": "4.36"
+			},
+			"tax": "4.36",
+			"total_with_tax": "25.10",
+			"payable": "25.10"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "In person sale"
+			}
+		]
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NjgtNzNiNS04NDcyLTA5MjMyNzMyYTdhZCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1My03NTRmLTk0YzktMzcyYTI3ZTEzNTFjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjFlMTE5OWU0MjljNTNlMDAzMjk2MWMzNTlhMjdlZmMzYWY3N2Y1YTYyNWVhYjA4YzA5M2RjNDkyZGM4M2ZmNTUifSwiaWF0IjoxNzkzODk0Njg4fQ.gWBR3SEQZkC9M4clVk9YZpqQJsSisBgL-MVEgPSPb4c-Mn9QcbYovOiroPFb0w2G5gs6Je-QviLDSKpc9VkFcw"
+	]
+}

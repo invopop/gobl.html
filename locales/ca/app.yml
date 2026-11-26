@@ -160,6 +160,9 @@ ca:
       notes:
         title: "Notes"
 
+      attachments:
+        title: "Adjunts"
+
     payment:
       <<: *invoice
       title:

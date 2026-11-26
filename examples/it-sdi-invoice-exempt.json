@@ -1,0 +1,117 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d97-7459-afb2-00e05db461ae",
+		"dig": {
+			"alg": "sha256",
+			"val": "f42d29432c5b02af8177deeeebc666214cf7e7d4e28c9cf8a0b270d99d782b79"
+		},
+		"meta": {
+			"description": "In this example, we're issuing an invoice for goods or services that are exempt from VAT (IVA).",
+			"title": "VAT Exempt Invoice"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"it-sdi-v1"
+		],
+		"uuid": "01a1ab50-6d97-745d-9b0e-89148fd0915d",
+		"type": "standard",
+		"code": "INVOICE-001",
+		"issue_date": "2026-07-08",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"it-sdi-document-type": "TD01",
+				"it-sdi-format": "FPR12"
+			}
+		},
+		"supplier": {
+			"name": "Example IT Supplier S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "12345678903"
+			},
+			"addresses": [
+				{
+					"street": "Via Roma, 123",
+					"locality": "Milan",
+					"code": "20121",
+					"country": "IT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "info@supplier.it"
+				}
+			],
+			"ext": {
+				"it-sdi-fiscal-regime": "RF01"
+			}
+		},
+		"customer": {
+			"name": "Example IT Customer S.p.A.",
+			"tax_id": {
+				"country": "IT",
+				"code": "13029381004"
+			},
+			"addresses": [
+				{
+					"street": "Via Dante, 456",
+					"locality": "Rome",
+					"code": "00100",
+					"country": "IT"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "10",
+				"item": {
+					"name": "Tax Exempt Service",
+					"price": "100.00"
+				},
+				"sum": "1000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "exempt",
+						"ext": {
+							"it-sdi-exempt": "N4"
+						}
+					}
+				],
+				"total": "1000.00"
+			}
+		],
+		"totals": {
+			"sum": "1000.00",
+			"total": "1000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "exempt",
+								"ext": {
+									"it-sdi-exempt": "N4"
+								},
+								"base": "1000.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "1000.00",
+			"payable": "1000.00"
+		}
+	}
+}

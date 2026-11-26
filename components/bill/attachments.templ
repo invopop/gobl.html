@@ -1,0 +1,42 @@
+package bill
+
+import (
+	"github.com/invopop/gobl.html/components/t"
+	"github.com/invopop/gobl/org"
+)
+
+// attachments lists the documents attached to the invoice: a link on the
+// name (or the URL when it has none), then the code, description and type.
+templ attachments(atts []*org.Attachment) {
+	if len(atts) > 0 {
+		<section class="attachments">
+			@t.Scope(".attachments") {
+				<h2>
+					@t.T(".title")
+				</h2>
+				<ul>
+					for _, a := range atts {
+						<li>
+							<a href={ templ.URL(a.URL) }>
+								if a.Name != "" {
+									{ a.Name }
+								} else {
+									{ a.URL }
+								}
+							</a>
+							if a.Code != "" {
+								<span class="code">{ a.Code.String() }</span>
+							}
+							if a.Description != "" {
+								<span class="description">{ a.Description }</span>
+							}
+							if a.MIME != "" {
+								<span class="mime">{ a.MIME }</span>
+							}
+						</li>
+					}
+				</ul>
+			}
+		</section>
+	}
+}

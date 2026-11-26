@@ -1,0 +1,164 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d88-79df-9006-3f6681eda166",
+		"dig": {
+			"alg": "sha256",
+			"val": "efee823bf5f3d62852fff3adedf361c8c348b926941a2e5515cf3e1744d31c05"
+		},
+		"meta": {
+			"description": "Export invoices are used for B2B goods delivered to customers outside the EU.",
+			"title": "Peppol Italy - B2B goods → international customer (Export)"
+		},
+		"from": "iso6523-actorid-upis::0205:IT00159560366",
+		"to": "iso6523-actorid-upis::0195:SGUEN199904785Z"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"eu-en16931-v2017",
+			"it-sdi-v1"
+		],
+		"uuid": "01a1ab50-6d88-79e3-a198-31655becae3f",
+		"type": "standard",
+		"series": "INV",
+		"code": "PP000003",
+		"issue_date": "2025-04-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"it-sdi-document-type": "TD01",
+				"it-sdi-format": "FPR12",
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Tecnologie Adriatico S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "00159560366"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0205:IT00159560366"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0205",
+					"code": "IT00159560366"
+				}
+			],
+			"addresses": [
+				{
+					"num": "15",
+					"street": "Via Giuseppe Verdi",
+					"locality": "Milano",
+					"region": "Milano-Capital",
+					"code": "20121",
+					"country": "IT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "fatturazione@tecnologieadriatico.it"
+				}
+			],
+			"ext": {
+				"it-sdi-fiscal-regime": "RF01"
+			}
+		},
+		"customer": {
+			"name": "Singapore Company LTD",
+			"tax_id": {
+				"country": "SG",
+				"code": "199904785Z"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0195:SGUEN199904785Z"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0195",
+					"code": "SGUEN199904785Z"
+				}
+			],
+			"addresses": [
+				{
+					"street": "18 Marina Gardens Drive",
+					"locality": "Singapore",
+					"region": "Central Region",
+					"code": "018953",
+					"country": "SG"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing+test@invopop.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "12",
+				"item": {
+					"name": "Sambox product",
+					"price": "145.00",
+					"unit": "one"
+				},
+				"sum": "1740.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "export",
+						"ext": {
+							"cef-vatex": "VATEX-EU-G",
+							"it-sdi-exempt": "N3.1",
+							"untdid-tax-category": "G"
+						}
+					}
+				],
+				"total": "1740.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			}
+		},
+		"totals": {
+			"sum": "1740.00",
+			"total": "1740.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "export",
+								"ext": {
+									"cef-vatex": "VATEX-EU-G",
+									"it-sdi-exempt": "N3.1",
+									"untdid-tax-category": "G"
+								},
+								"base": "1740.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "1740.00",
+			"payable": "1740.00"
+		}
+	}
+}

@@ -160,6 +160,9 @@ gl:
       notes:
         title: "Notas"
 
+      attachments:
+        title: "Anexos"
+
     payment:
       <<: *invoice
       title:

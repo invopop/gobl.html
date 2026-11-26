@@ -159,6 +159,9 @@ pl:
       notes:
         title: "Uwagi"
 
+      attachments:
+        title: "Załączniki"
+
     payment:
       <<: *invoice
       title:

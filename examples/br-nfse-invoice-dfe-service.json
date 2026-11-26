@@ -1,0 +1,131 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d13-70ee-85b3-01017f901443",
+		"dig": {
+			"alg": "sha256",
+			"val": "96b01431ac997aa4528bda2b3bd8000b2af7dd19c3617135d61bf7ce83bdc57e"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a simple service invoice (NFS-e) from a Brazilian supplier to another Brazilian business customer.",
+			"title": "Example B2B service invoice (NFS-e)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "BR",
+		"$addons": [
+			"br-nfse-v1"
+		],
+		"uuid": "01a1ab50-6d13-70f2-af41-eb027b4196fc",
+		"type": "standard",
+		"series": "XXBR",
+		"issue_date": "2026-07-08",
+		"currency": "BRL",
+		"supplier": {
+			"name": "TechNova Soluções Digitais Ltda.",
+			"tax_id": {
+				"country": "BR",
+				"code": "05229829000184"
+			},
+			"identities": [
+				{
+					"key": "br-nfse-municipal-reg",
+					"code": "45678901234567"
+				}
+			],
+			"addresses": [
+				{
+					"num": "101",
+					"street": "Avenida Paulista",
+					"locality": "Bela Vista",
+					"region": "São Paulo",
+					"state": "SP",
+					"code": "01311-000",
+					"country": "BR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "contact@technova.test"
+				}
+			],
+			"ext": {
+				"br-ibge-municipality": "3550308",
+				"br-nfse-fiscal-incentive": "2",
+				"br-nfse-simples": "1"
+			}
+		},
+		"customer": {
+			"name": "Construforte Engenharia Ltda.",
+			"tax_id": {
+				"country": "BR",
+				"code": "46602178000103"
+			},
+			"addresses": [
+				{
+					"num": "75",
+					"street": "Avenida Sete de Setembro",
+					"street_extra": "Bloco C",
+					"locality": "Centro",
+					"region": "Salvador",
+					"state": "BA",
+					"code": "40060-000",
+					"country": "BR"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "15",
+				"item": {
+					"name": "Consultancy Services",
+					"price": "100.00",
+					"ext": {
+						"br-nfse-cnae": "62.01-5-01",
+						"br-nfse-service": "10.5"
+					}
+				},
+				"sum": "1500.00",
+				"taxes": [
+					{
+						"cat": "ISS",
+						"percent": "15%",
+						"ext": {
+							"br-nfse-iss-liability": "1"
+						}
+					}
+				],
+				"total": "1500.00"
+			}
+		],
+		"totals": {
+			"sum": "1500.00",
+			"total": "1500.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "ISS",
+						"informative": true,
+						"rates": [
+							{
+								"ext": {
+									"br-nfse-iss-liability": "1"
+								},
+								"base": "1500.00",
+								"percent": "15%",
+								"amount": "225.00"
+							}
+						],
+						"amount": "225.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "1500.00",
+			"payable": "1500.00"
+		}
+	}
+}

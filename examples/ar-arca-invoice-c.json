@@ -1,0 +1,150 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6cf7-73a5-b9bb-f0af0555cbed",
+		"dig": {
+			"alg": "sha256",
+			"val": "90a96104038764ee2caed614f68f398564f6ab7e8ae04499df53c33542fc2111"
+		},
+		"stamps": [
+			{
+				"prv": "arca-cae",
+				"val": "1234567891"
+			},
+			{
+				"prv": "arca-cae-expiry",
+				"val": "2025-01-18"
+			},
+			{
+				"prv": "arca-qr",
+				"val": "https://www.afip.gob.ar/fe/qr/conceptos-generales.asp"
+			}
+		],
+		"meta": {
+			"description": "Factura C is issued by monotributistas (simplified tax regime for small businesses and freelancers) to any type of customer. This invoice type does not break down VAT separately.",
+			"title": "Factura C - Monotributista invoice (small business)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "AR",
+		"$addons": [
+			"ar-arca-v4"
+		],
+		"$tags": [
+			"monotax"
+		],
+		"uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"type": "standard",
+		"series": "1",
+		"code": "0001",
+		"issue_date": "2025-01-18",
+		"currency": "ARS",
+		"tax": {
+			"ext": {
+				"ar-arca-concept": "2",
+				"ar-arca-doc-type": "11"
+			}
+		},
+		"supplier": {
+			"name": "María García - Diseño Gráfico",
+			"tax_id": {
+				"country": "AR",
+				"code": "20172543597"
+			},
+			"addresses": [
+				{
+					"street": "Calle Florida 500",
+					"locality": "Buenos Aires",
+					"region": "Ciudad Autónoma de Buenos Aires",
+					"code": "C1005",
+					"country": "AR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "maria.garcia@email.com.ar"
+				}
+			],
+			"registration": {
+				"other": "Inicio de actividades: 2016-03-01"
+			}
+		},
+		"customer": {
+			"name": "Startup Tech S.R.L.",
+			"tax_id": {
+				"country": "AR",
+				"code": "30987654321"
+			},
+			"addresses": [
+				{
+					"street": "Av. Belgrano 1000",
+					"locality": "Buenos Aires",
+					"region": "Ciudad Autónoma de Buenos Aires",
+					"code": "C1092",
+					"country": "AR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "admin@startuptech.com.ar"
+				}
+			],
+			"ext": {
+				"ar-arca-vat-status": "1"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"key": "services",
+					"name": "Diseño de logotipo e identidad visual",
+					"price": "150000.00"
+				},
+				"sum": "150000.00",
+				"total": "150000.00"
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"key": "tax",
+				"reason": "Tributo Nacional",
+				"percent": "10%",
+				"amount": "15000.00",
+				"ext": {
+					"ar-arca-tax-type": "1"
+				}
+			}
+		],
+		"ordering": {
+			"period": {
+				"start": "2025-01-01",
+				"end": "2025-01-15"
+			}
+		},
+		"payment": {
+			"terms": {
+				"due_dates": [
+					{
+						"date": "2025-01-25",
+						"amount": "150000.00"
+					}
+				]
+			}
+		},
+		"totals": {
+			"sum": "150000.00",
+			"charge": "15000.00",
+			"total": "165000.00",
+			"tax": "0.00",
+			"total_with_tax": "165000.00",
+			"payable": "165000.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE1ZmQtN2UyNS1iZGE4LTIzNGQwZDgzYThiZCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmNmNy03M2E1LWI5YmItZjBhZjA1NTVjYmVkIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjkwYTk2MTA0MDM4NzY0ZWUyY2FlZDYxNGY2OGYzOTg1NjRmNmFiN2U4YWUwNDQ5OWRmNTNjMzM1NDJmYzIxMTEifSwiaWF0IjoxNzkzODk0Njg4fQ.-AQ_V_QSJymZ0olmrF50ggpVS05nBT4LCad7DewiG_Q7f0F7cHc3cMS69zjtkk_IuweqBUdweeLQkHfMV5n1ww"
+	]
+}

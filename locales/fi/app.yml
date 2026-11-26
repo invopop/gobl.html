@@ -157,6 +157,9 @@ fi:
       notes:
         title: "Huomautukset"
 
+      attachments:
+        title: "Liitteet"
+
     payment:
       <<: *invoice
       title:

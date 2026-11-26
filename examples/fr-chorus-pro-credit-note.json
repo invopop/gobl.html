@@ -1,0 +1,169 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d65-7032-acfd-bbe7c77a8e08",
+		"dig": {
+			"alg": "sha256",
+			"val": "a9cc56b13d41e5e9e1e3edf6caa07c62f6dda4787ad2a100121f9bc2cb5a7188"
+		},
+		"meta": {
+			"description": "A credit note (avoir) reversing part of a previously submitted Chorus Pro invoice.",
+			"title": "Chorus Pro Credit Note"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FR",
+		"$addons": [
+			"eu-en16931-v2017",
+			"fr-choruspro-v1"
+		],
+		"uuid": "019783e7-33b1-7000-a1a5-6139e214b448",
+		"type": "credit-note",
+		"series": "SAMPLE-CN",
+		"code": "2346",
+		"issue_date": "2025-06-25",
+		"currency": "EUR",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2025-06-18",
+				"series": "SAMPLE",
+				"code": "2345",
+				"reason": "Partial refund for undelivered services"
+			}
+		],
+		"tax": {
+			"ext": {
+				"fr-choruspro-framework": "A1",
+				"untdid-document-type": "381"
+			}
+		},
+		"supplier": {
+			"name": "Provide One Inc.",
+			"tax_id": {
+				"country": "FR",
+				"code": "43498927917"
+			},
+			"identities": [
+				{
+					"type": "SIRET",
+					"code": "49892791768734",
+					"ext": {
+						"iso-scheme-id": "0009"
+					}
+				}
+			],
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			],
+			"ext": {
+				"fr-choruspro-scheme": "1"
+			}
+		},
+		"customer": {
+			"name": "Sample Consumer",
+			"tax_id": {
+				"country": "FR",
+				"code": "39356000000"
+			},
+			"identities": [
+				{
+					"type": "SIRET",
+					"code": "35600000012345",
+					"ext": {
+						"iso-scheme-id": "0009"
+					}
+				}
+			],
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Rue Sundacsakn",
+					"locality": "Saint-Germain-En-Laye",
+					"code": "75050",
+					"country": "FR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "email@sample.com"
+				}
+			],
+			"ext": {
+				"fr-choruspro-scheme": "1"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "5",
+				"item": {
+					"name": "Development services",
+					"price": "90.00",
+					"unit": "h"
+				},
+				"sum": "450.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "20%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "450.00"
+			}
+		],
+		"payment": {
+			"instructions": {
+				"key": "card",
+				"ext": {
+					"untdid-payment-means": "48"
+				}
+			}
+		},
+		"totals": {
+			"sum": "450.00",
+			"total": "450.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "450.00",
+								"percent": "20%",
+								"amount": "90.00"
+							}
+						],
+						"amount": "90.00"
+					}
+				],
+				"sum": "90.00"
+			},
+			"tax": "90.00",
+			"total_with_tax": "540.00",
+			"payable": "540.00"
+		}
+	}
+}

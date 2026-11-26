@@ -156,6 +156,9 @@ de:
       notes:
         title: "Hinweise"
 
+      attachments:
+        title: "Anhänge"
+
     payment:
       <<: *invoice
       title:

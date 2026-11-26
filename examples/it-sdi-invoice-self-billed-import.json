@@ -4,7 +4,7 @@
 		"uuid": "0195a1c2-7d4e-7a10-9b3c-5e6f7a8b9c01",
 		"dig": {
 			"alg": "sha256",
-			"val": "7945516f49af07f6fd30e9664b2d4b7591a3d573c0db2cc154f55f03cf79d3b8"
+			"val": "6d85ad54e186aba5805c1c988ee2c731fbf7a77c3878f404c529b284ee21436a"
 		}
 	},
 	"doc": {
@@ -26,7 +26,8 @@
 		"tax": {
 			"ext": {
 				"it-sdi-document-type": "TD17",
-				"it-sdi-format": "FPR12"
+				"it-sdi-format": "FPR12",
+				"it-sdi-issuer-type": "CC"
 			}
 		},
 		"supplier": {

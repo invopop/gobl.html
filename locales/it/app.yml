@@ -145,6 +145,9 @@ it:
       notes:
         title: "Note"
 
+      attachments:
+        title: "Allegati"
+
     payment:
       <<: *invoice
       title:

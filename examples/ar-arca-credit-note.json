@@ -1,0 +1,161 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6cf2-7c35-8c75-8453e2e4ed35",
+		"dig": {
+			"alg": "sha256",
+			"val": "574151150f05cf8e644097206e9cb0157ba492956b525927083552325e89ec34"
+		},
+		"stamps": [
+			{
+				"prv": "arca-cae",
+				"val": "1234567891"
+			},
+			{
+				"prv": "arca-cae-expiry",
+				"val": "2025-01-22"
+			},
+			{
+				"prv": "arca-qr",
+				"val": "https://www.afip.gob.ar/fe/qr/conceptos-generales.asp"
+			}
+		],
+		"meta": {
+			"description": "Credit notes (notas de crédito) reverse all or part of a previously authorized invoice — for returns, discounts, or billing errors. The credit note class (A, B, or C) follows the class of the invoice it corrects.",
+			"title": "Nota de Crédito A - Credit note correcting a Factura A"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "AR",
+		"$addons": [
+			"ar-arca-v4"
+		],
+		"uuid": "3aea7b56-59d8-4beb-90bd-f8f280d852a1",
+		"type": "credit-note",
+		"series": "1",
+		"code": "0001",
+		"issue_date": "2025-01-22",
+		"currency": "ARS",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2025-01-15",
+				"series": "1",
+				"code": "00001234",
+				"reason": "Devolución de mercadería",
+				"ext": {
+					"ar-arca-doc-type": "1"
+				}
+			}
+		],
+		"tax": {
+			"ext": {
+				"ar-arca-concept": "1",
+				"ar-arca-doc-type": "3"
+			}
+		},
+		"supplier": {
+			"name": "Proveedor Ejemplo S.A.",
+			"tax_id": {
+				"country": "AR",
+				"code": "30712345671"
+			},
+			"addresses": [
+				{
+					"street": "Av. Corrientes 1234",
+					"locality": "Buenos Aires",
+					"region": "Ciudad Autónoma de Buenos Aires",
+					"code": "C1043",
+					"country": "AR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "ventas@proveedorejemplo.com.ar"
+				}
+			],
+			"registration": {
+				"other": "Inicio de actividades: 2016-03-01"
+			}
+		},
+		"customer": {
+			"name": "Cliente Comercial S.R.L.",
+			"tax_id": {
+				"country": "AR",
+				"code": "30987654321"
+			},
+			"addresses": [
+				{
+					"street": "Av. Santa Fe 2500",
+					"locality": "Buenos Aires",
+					"region": "Ciudad Autónoma de Buenos Aires",
+					"code": "C1123",
+					"country": "AR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "compras@clientecomercial.com.ar"
+				}
+			],
+			"ext": {
+				"ar-arca-vat-status": "1"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"key": "goods",
+					"name": "Notebooks Dell Latitude",
+					"price": "450000.00"
+				},
+				"sum": "900000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"ar-arca-vat-rate": "5"
+						}
+					}
+				],
+				"total": "900000.00"
+			}
+		],
+		"totals": {
+			"sum": "900000.00",
+			"total": "900000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"ar-arca-vat-rate": "5"
+								},
+								"base": "900000.00",
+								"percent": "21.0%",
+								"amount": "189000.00"
+							}
+						],
+						"amount": "189000.00"
+					}
+				],
+				"sum": "189000.00"
+			},
+			"tax": "189000.00",
+			"total_with_tax": "1089000.00",
+			"payable": "1089000.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE1ZjktNzAwYi04OGY1LTI3Njk3MmI0YWIxYyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmNmMi03YzM1LThjNzUtODQ1M2UyZTRlZDM1IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjU3NDE1MTE1MGYwNWNmOGU2NDQwOTcyMDZlOWNiMDE1N2JhNDkyOTU2YjUyNTkyNzA4MzU1MjMyNWU4OWVjMzQifSwiaWF0IjoxNzkzODk0Njg4fQ.0Jb9PZMR_sGPaV8tQk7U5aQnDGng4qgev6xAJGMibGEDNAJslLR1ygOoJshl50ULSmgoqR8lBbc3m_WQ4PbjmQ"
+	]
+}

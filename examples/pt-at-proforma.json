@@ -1,0 +1,172 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6db8-7a0e-94d3-377c9c84aba6",
+		"dig": {
+			"alg": "sha256",
+			"val": "1c0ee97492f5f90696aaa46784f5e5c0cba5bc9256ff8ab2ca6dbc1ab8a07a4b"
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJR2KW4-2"
+			},
+			{
+				"prv": "at-hash",
+				"val": "0vot"
+			},
+			{
+				"prv": "at-hash-full",
+				"val": "0WMEHADswWv5aavY+2VboOclMpPyoQtl7neqfA/7PPvhayQR1OQMok5fFr8N4vi6TGm8ymmHSpfX4QG28jeDJqNuO92v5TbRH78/4lPbcryEmVIgG0x9jXtYPX6RehwYYuUZg1q1XSEYrEGg+zQoPN8VZetI5PxGRWqrkIe8G5w="
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:770013813*B:999999990*C:PT*D:FT*E:N*F:20241223*G:PF SERIES-A 0001*H:AAJFJR2KW4-2*I1:PT*I7:2214.00*N:0.00*O:2214.00*Q:0vot*R:0"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "0"
+			}
+		],
+		"meta": {
+			"description": "In this example, we're issuing a proforma (_pró-forma_): a non-fiscal document sent to a customer to request payment in advance of the final invoice.",
+			"title": "AT proforma invoice"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"uuid": "01a1ab50-6db8-7a12-8635-c675b703d862",
+		"type": "proforma",
+		"series": "PF SERIES-A",
+		"code": "0001",
+		"issue_date": "2024-12-23",
+		"value_date": "2024-12-23",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"pt-saft-source": "P",
+				"pt-saft-work-type": "PF"
+			}
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "770013813"
+			},
+			"addresses": [
+				{
+					"street": "Rua das Flores 200 3º Esquerdo",
+					"locality": "Porto",
+					"code": "4050-265",
+					"country": "PT"
+				}
+			],
+			"registration": {
+				"capital": "100000.00",
+				"office": "Porto"
+			}
+		},
+		"customer": {
+			"name": "Gusto Unipessoal Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Licença anual de software",
+					"price": "1200.00",
+					"unit": "item",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "1200.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "1200.00"
+			},
+			{
+				"i": 2,
+				"quantity": "8",
+				"item": {
+					"name": "Serviços de implementação",
+					"price": "75.00",
+					"unit": "h",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "600.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "600.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"key": "advanced"
+			}
+		},
+		"totals": {
+			"sum": "1800.00",
+			"total": "1800.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "NOR"
+								},
+								"base": "1800.00",
+								"percent": "23.0%",
+								"amount": "414.00"
+							}
+						],
+						"amount": "414.00"
+					}
+				],
+				"sum": "414.00"
+			},
+			"tax": "414.00",
+			"total_with_tax": "2214.00",
+			"payable": "2214.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE3MDEtN2JhOC1hY2RmLTE2NGExZmMzMGNmMSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRiOC03YTBlLTk0ZDMtMzc3YzljODRhYmE2IiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjFjMGVlOTc0OTJmNWY5MDY5NmFhYTQ2Nzg0ZjVlNWMwY2JhNWJjOTI1NmZmOGFiMmNhNmRiYzFhYjhhMDdhNGIifSwiaWF0IjoxNzkzODk0Njg4fQ.kbGShXnVUejpTKx-Xx0agXDBLA6Z2jtxHGlIlYVR9ftQ9ml9NQH4mgo9Sou_pbtoHLgifSDSRr-PQN6LJwSl2w"
+	]
+}

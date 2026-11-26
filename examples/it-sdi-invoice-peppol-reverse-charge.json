@@ -1,0 +1,164 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d8c-749b-b5e7-dce3c2f80402",
+		"dig": {
+			"alg": "sha256",
+			"val": "cefefc4919ca99a0acc3041d39ccf7ebb8f6e9d3a813c07db966a25379c16c35"
+		},
+		"meta": {
+			"description": "Reverse charge invoices are used for B2B services provided to customers in other EU member states. Reverse charge must be applied when:",
+			"title": "Peppol Italy - B2B services → EU customer (Reverse Charge)"
+		},
+		"from": "iso6523-actorid-upis::0205:IT00159560366",
+		"to": "iso6523-actorid-upis::9920:ESB85905495"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"eu-en16931-v2017",
+			"it-sdi-v1"
+		],
+		"uuid": "01a1ab50-6d8c-749c-b5ce-c206cfaf108c",
+		"type": "standard",
+		"series": "INV",
+		"code": "PP000003",
+		"issue_date": "2025-04-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"it-sdi-document-type": "TD01",
+				"it-sdi-format": "FPR12",
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Tecnologie Adriatico S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "00159560366"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0205:IT00159560366"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0205",
+					"code": "IT00159560366"
+				}
+			],
+			"addresses": [
+				{
+					"num": "15",
+					"street": "Via Giuseppe Verdi",
+					"locality": "Milano",
+					"region": "Milano-Capital",
+					"code": "20121",
+					"country": "IT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "fatturazione@tecnologieadriatico.it"
+				}
+			],
+			"ext": {
+				"it-sdi-fiscal-regime": "RF01"
+			}
+		},
+		"customer": {
+			"name": "Invopop SL",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9920:ESB85905495"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9920",
+					"code": "ESB85905495"
+				}
+			],
+			"addresses": [
+				{
+					"street": "Calle Pradillo 42",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing+test@invopop.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "12",
+				"item": {
+					"name": "Sambox services",
+					"price": "145.00",
+					"unit": "one"
+				},
+				"sum": "1740.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "reverse-charge",
+						"ext": {
+							"cef-vatex": "VATEX-EU-AE",
+							"it-sdi-exempt": "N6.9",
+							"untdid-tax-category": "AE"
+						}
+					}
+				],
+				"total": "1740.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			}
+		},
+		"totals": {
+			"sum": "1740.00",
+			"total": "1740.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "reverse-charge",
+								"ext": {
+									"cef-vatex": "VATEX-EU-AE",
+									"it-sdi-exempt": "N6.9",
+									"untdid-tax-category": "AE"
+								},
+								"base": "1740.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "1740.00",
+			"payable": "1740.00"
+		}
+	}
+}

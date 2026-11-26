@@ -1,0 +1,165 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d8f-71a5-b6f9-79f81dc246f1",
+		"dig": {
+			"alg": "sha256",
+			"val": "e4cde8eb750f30dc31c3cac011418edbf9eba95ec0890027bf5b890eb6e66812"
+		},
+		"meta": {
+			"description": "Goods and services that are subject to VAT but taxed at a 0% rate. Zero rated goods in Italy are:",
+			"title": "Peppol Italy - B2B zero rated goods invoice"
+		},
+		"from": "iso6523-actorid-upis::0205:IT00159560366",
+		"to": "iso6523-actorid-upis::0205:IT05140920017"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"eu-en16931-v2017",
+			"it-sdi-v1"
+		],
+		"uuid": "01a1ab50-6d8f-71a6-b53b-2462f5d3213b",
+		"type": "standard",
+		"series": "INV",
+		"code": "PP000003",
+		"issue_date": "2025-04-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"it-sdi-document-type": "TD01",
+				"it-sdi-format": "FPR12",
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Tecnologie Adriatico S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "00159560366"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0205:IT00159560366"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0205",
+					"code": "IT00159560366"
+				}
+			],
+			"addresses": [
+				{
+					"num": "15",
+					"street": "Via Giuseppe Verdi",
+					"locality": "Milano",
+					"region": "MI",
+					"code": "20121",
+					"country": "IT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "fatturazione@tecnologieadriatico.it"
+				}
+			],
+			"ext": {
+				"it-sdi-fiscal-regime": "RF01"
+			}
+		},
+		"customer": {
+			"name": "Roma Solutions S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "05140920017"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0205:IT05140920017"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0205",
+					"code": "IT05140920017"
+				}
+			],
+			"addresses": [
+				{
+					"num": "10",
+					"street": "Via del Corso",
+					"locality": "Roma",
+					"region": "RM",
+					"code": "00186",
+					"country": "IT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "test@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "La Repubblica",
+					"price": "2.00",
+					"unit": "one"
+				},
+				"sum": "2.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "zero",
+						"percent": "0%",
+						"ext": {
+							"it-sdi-exempt": "N1",
+							"untdid-tax-category": "Z"
+						}
+					}
+				],
+				"total": "2.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			}
+		},
+		"totals": {
+			"sum": "2.00",
+			"total": "2.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "zero",
+								"ext": {
+									"it-sdi-exempt": "N1",
+									"untdid-tax-category": "Z"
+								},
+								"base": "2.00",
+								"percent": "0%",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "2.00",
+			"payable": "2.00"
+		}
+	}
+}

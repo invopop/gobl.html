@@ -1,0 +1,172 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d40-79cf-9bda-fc24abbe661a",
+		"dig": {
+			"alg": "sha256",
+			"val": "8bcb29877dda5fa7a35a152dd9fc7f36790af586240ee4b77c350fb65435782b"
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=INV-PP000003\u0026fecha=03-04-2025\u0026importe=2.00"
+			}
+		],
+		"meta": {
+			"description": "Zero-rated invoices are used for goods and services that are subject to VAT but taxed at a 0% rate.",
+			"title": "Peppol Spain - B2B zero-rated invoice"
+		},
+		"from": "iso6523-actorid-upis::9920:ESB85905495",
+		"to": "iso6523-actorid-upis::9920:ESB03176864"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"eu-en16931-v2017",
+			"es-verifactu-v1"
+		],
+		"uuid": "01a1ab50-6d40-79d3-8702-3e81885aff79",
+		"type": "standard",
+		"series": "INV",
+		"code": "PP000003",
+		"issue_date": "2025-04-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"es-verifactu-doc-type": "F1",
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Invopop S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9920:ESB85905495"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9920",
+					"code": "ESB85905495"
+				}
+			],
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Barcelona Commerce S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B03176864"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9920:ESB03176864"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9920",
+					"code": "ESB03176864"
+				}
+			],
+			"addresses": [
+				{
+					"num": "20",
+					"street": "Passeig de Gràcia",
+					"locality": "Barcelona",
+					"region": "Cataluña",
+					"code": "08008",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "test@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "El País",
+					"price": "2.00",
+					"unit": "one"
+				},
+				"sum": "2.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "zero",
+						"percent": "0%",
+						"ext": {
+							"es-verifactu-op-class": "S1",
+							"es-verifactu-regime": "01",
+							"untdid-tax-category": "Z"
+						}
+					}
+				],
+				"total": "2.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			}
+		},
+		"totals": {
+			"sum": "2.00",
+			"total": "2.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "zero",
+								"ext": {
+									"es-verifactu-op-class": "S1",
+									"es-verifactu-regime": "01",
+									"untdid-tax-category": "Z"
+								},
+								"base": "2.00",
+								"percent": "0%",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "2.00",
+			"payable": "2.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NTUtN2I0Ni04MzIyLTEyNjk1NmNkNjgxMCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ0MC03OWNmLTliZGEtZmMyNGFiYmU2NjFhIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjhiY2IyOTg3N2RkYTVmYTdhMzVhMTUyZGQ5ZmM3ZjM2NzkwYWY1ODYyNDBlZTRiNzdjMzUwZmI2NTQzNTc4MmIifSwiaWF0IjoxNzkzODk0Njg4fQ.Ot0JyJiBzYAVFtbPErPQupGipdAGmRAEp96PM4Y_Dg-_lqNu6INqpf0qI8d-mPzEAmWCyaL98doGoc6PQKf3mQ"
+	]
+}

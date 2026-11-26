@@ -1,0 +1,243 @@
+{
+	"head": {
+		"meta": {
+			"title": "NF-e debit note",
+			"description": "Purpose 6 debit note for penalty, interest and a boleto reissue fee, referring to the prior NF-e by its SEFAZ key."
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "BR",
+		"$addons": [
+			"br-nfe-v4"
+		],
+		"type": "debit-note",
+		"series": "1",
+		"code": "20260058",
+		"issue_date": "2026-04-22",
+		"currency": "BRL",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2026-03-16",
+				"series": "1",
+				"code": "20260042",
+				"reason": "Multa e juros por atraso no pagamento da parcela 1/2",
+				"stamps": [
+					{
+						"prv": "sefaz-key",
+						"val": "35241105229829000184550010000000011000000019"
+					}
+				]
+			}
+		],
+		"tax": {
+			"ext": {
+				"br-nfe-model": "55",
+				"br-nfe-operation-type": "0",
+				"br-nfe-presence": "2",
+				"br-nfe-purpose": "6",
+				"br-nfe-debit-note-type": "04"
+			}
+		},
+		"supplier": {
+			"name": "TechNova Soluções Digitais Ltda.",
+			"tax_id": {
+				"country": "BR",
+				"code": "05229829000184"
+			},
+			"identities": [
+				{
+					"key": "br-nfe-state-reg",
+					"code": "12345678901234"
+				}
+			],
+			"addresses": [
+				{
+					"num": "101",
+					"street": "Avenida Paulista",
+					"locality": "Bela Vista",
+					"region": "São Paulo",
+					"state": "SP",
+					"code": "01311-000",
+					"country": "BR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "faturamento@technova.test"
+				}
+			],
+			"ext": {
+				"br-ibge-municipality": "3550308",
+				"br-nfe-regime": "3"
+			}
+		},
+		"customer": {
+			"name": "Construforte Engenharia Ltda.",
+			"tax_id": {
+				"country": "BR",
+				"code": "46602178000103"
+			},
+			"addresses": [
+				{
+					"num": "75",
+					"street": "Avenida Sete de Setembro",
+					"street_extra": "Bloco C",
+					"locality": "Centro",
+					"region": "Salvador",
+					"state": "BA",
+					"code": "40060-000",
+					"country": "BR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "contaspagar@construforte.test"
+				}
+			],
+			"ext": {
+				"br-ibge-municipality": "2927408",
+				"br-nfe-state-reg-ind": "9"
+			}
+		},
+		"lines": [
+			{
+				"quantity": "1",
+				"item": {
+					"name": "Multa contratual por atraso no pagamento",
+					"description": "2% sobre a parcela 1/2 da NF-e 20260042, vencida em 15/04/2026",
+					"price": "1356.40"
+				},
+				"taxes": [
+					{
+						"cat": "ICMS",
+						"percent": "0%",
+						"ext": {
+							"br-nfe-icms-cst": "41",
+							"br-nfe-icms-origin": "0"
+						}
+					},
+					{
+						"cat": "PIS",
+						"percent": "1.65%",
+						"ext": {
+							"br-nfe-pis-cst": "01"
+						}
+					},
+					{
+						"cat": "COFINS",
+						"percent": "7.60%",
+						"ext": {
+							"br-nfe-cofins-cst": "01"
+						}
+					}
+				],
+				"ext": {
+					"br-nfe-cfop": "6949"
+				}
+			},
+			{
+				"quantity": "7",
+				"item": {
+					"name": "Juros de mora",
+					"description": "1% ao mês pro rata, por dia de atraso",
+					"unit": "day",
+					"price": "22.61"
+				},
+				"taxes": [
+					{
+						"cat": "ICMS",
+						"percent": "0%",
+						"ext": {
+							"br-nfe-icms-cst": "41",
+							"br-nfe-icms-origin": "0"
+						}
+					},
+					{
+						"cat": "PIS",
+						"percent": "1.65%",
+						"ext": {
+							"br-nfe-pis-cst": "01"
+						}
+					},
+					{
+						"cat": "COFINS",
+						"percent": "7.60%",
+						"ext": {
+							"br-nfe-cofins-cst": "01"
+						}
+					}
+				],
+				"ext": {
+					"br-nfe-cfop": "6949"
+				}
+			},
+			{
+				"quantity": "1",
+				"item": {
+					"name": "Tarifa de reemissão de boleto",
+					"price": "15.00"
+				},
+				"taxes": [
+					{
+						"cat": "ICMS",
+						"percent": "0%",
+						"ext": {
+							"br-nfe-icms-cst": "41",
+							"br-nfe-icms-origin": "0"
+						}
+					},
+					{
+						"cat": "PIS",
+						"percent": "1.65%",
+						"ext": {
+							"br-nfe-pis-cst": "01"
+						}
+					},
+					{
+						"cat": "COFINS",
+						"percent": "7.60%",
+						"ext": {
+							"br-nfe-cofins-cst": "01"
+						}
+					}
+				],
+				"ext": {
+					"br-nfe-cfop": "6949"
+				}
+			}
+		],
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-05-06",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"label": "Chave Pix (CNPJ)",
+						"number": "05229829000184",
+						"name": "TechNova Soluções Digitais Ltda."
+					}
+				]
+			}
+		},
+		"notes": [
+			{
+				"key": "reason",
+				"text": "Nota de débito - multa e juros"
+			},
+			{
+				"key": "general",
+				"text": "Nota de débito referente à NF-e 1-20260042 de 16/03/2026: encargos por atraso no pagamento da parcela 1/2, conforme cláusula 7 do contrato CON-2026-015."
+			}
+		]
+	}
+}

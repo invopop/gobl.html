@@ -1,0 +1,173 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d3f-7841-b1d4-a8a4f2cc97f0",
+		"dig": {
+			"alg": "sha256",
+			"val": "0456ce9c953ababc442161c91c65825d66816e7d31192e8fc29829f1c42d909f"
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=INV-PP000003\u0026fecha=03-04-2025\u0026importe=2105.40"
+			}
+		],
+		"meta": {
+			"description": "Regular invoices are used for B2B transactions. Regular invoices must be issued when:",
+			"title": "Peppol Spain - B2B standard invoice"
+		},
+		"from": "iso6523-actorid-upis::9920:ESB85905495",
+		"to": "iso6523-actorid-upis::9920:ESB48994131"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"eu-en16931-v2017",
+			"es-verifactu-v1"
+		],
+		"uuid": "01a1ab50-6d3f-7845-92cf-15ffd619ddbc",
+		"type": "standard",
+		"series": "INV",
+		"code": "PP000003",
+		"issue_date": "2025-04-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"es-verifactu-doc-type": "F1",
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Invopop S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9920:ESB85905495"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9920",
+					"code": "ESB85905495"
+				}
+			],
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Barcelona Commerce S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B48994131"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9920:ESB48994131"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9920",
+					"code": "ESB48994131"
+				}
+			],
+			"addresses": [
+				{
+					"num": "20",
+					"street": "Passeig de Gràcia",
+					"locality": "Barcelona",
+					"region": "Cataluña",
+					"code": "08008",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "test@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "12",
+				"item": {
+					"name": "Sambox services",
+					"price": "145.00",
+					"unit": "one"
+				},
+				"sum": "1740.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"es-verifactu-op-class": "S1",
+							"es-verifactu-regime": "01",
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "1740.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			}
+		},
+		"totals": {
+			"sum": "1740.00",
+			"total": "1740.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"es-verifactu-op-class": "S1",
+									"es-verifactu-regime": "01",
+									"untdid-tax-category": "S"
+								},
+								"base": "1740.00",
+								"percent": "21.0%",
+								"amount": "365.40"
+							}
+						],
+						"amount": "365.40"
+					}
+				],
+				"sum": "365.40"
+			},
+			"tax": "365.40",
+			"total_with_tax": "2105.40",
+			"payable": "2105.40"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NTMtNzljYi1hNDk1LTE2OWEwOGFhZGY4ZSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQzZi03ODQxLWIxZDQtYThhNGYyY2M5N2YwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjA0NTZjZTljOTUzYWJhYmM0NDIxNjFjOTFjNjU4MjVkNjY4MTZlN2QzMTE5MmU4ZmMyOTgyOWYxYzQyZDkwOWYifSwiaWF0IjoxNzkzODk0Njg4fQ.TrcJtOp9gxPFHzjWLsiJUYeWe9k4ekb7C6KJ-1rnBirD55DUXrSJ_bquJuc2XkwKgc88yd5_HjEoStE39afn-Q"
+	]
+}

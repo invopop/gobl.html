@@ -1,0 +1,164 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d8a-70ab-a6a8-a1063f0be5c7",
+		"dig": {
+			"alg": "sha256",
+			"val": "2bfe516f3bb5981e52182d7fa89299fb83b946811edb732087fae114df4ed5dc"
+		},
+		"meta": {
+			"description": "Intra-community supply invoices are used for B2B goods delivered to customers in other EU member states. Intra-community supplies must be applied when:",
+			"title": "Peppol Italy - B2B goods → EU customer (Intra-Community)"
+		},
+		"from": "iso6523-actorid-upis::0205:IT00159560366",
+		"to": "iso6523-actorid-upis::9920:ESB85905495"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"eu-en16931-v2017",
+			"it-sdi-v1"
+		],
+		"uuid": "01a1ab50-6d8a-70af-87cb-d9a316c69afd",
+		"type": "standard",
+		"series": "INV",
+		"code": "PP000003",
+		"issue_date": "2025-04-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"it-sdi-document-type": "TD01",
+				"it-sdi-format": "FPR12",
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Tecnologie Adriatico S.r.l.",
+			"tax_id": {
+				"country": "IT",
+				"code": "00159560366"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0205:IT00159560366"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0205",
+					"code": "IT00159560366"
+				}
+			],
+			"addresses": [
+				{
+					"num": "15",
+					"street": "Via Giuseppe Verdi",
+					"locality": "Milano",
+					"region": "Milano-Capital",
+					"code": "20121",
+					"country": "IT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "fatturazione@tecnologieadriatico.it"
+				}
+			],
+			"ext": {
+				"it-sdi-fiscal-regime": "RF01"
+			}
+		},
+		"customer": {
+			"name": "Invopop SL",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9920:ESB85905495"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9920",
+					"code": "ESB85905495"
+				}
+			],
+			"addresses": [
+				{
+					"street": "Calle Pradillo 42",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing+test@invopop.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "12",
+				"item": {
+					"name": "Sambox product",
+					"price": "145.00",
+					"unit": "one"
+				},
+				"sum": "1740.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "intra-community",
+						"ext": {
+							"cef-vatex": "VATEX-EU-IC",
+							"it-sdi-exempt": "N3.2",
+							"untdid-tax-category": "K"
+						}
+					}
+				],
+				"total": "1740.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			}
+		},
+		"totals": {
+			"sum": "1740.00",
+			"total": "1740.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "intra-community",
+								"ext": {
+									"cef-vatex": "VATEX-EU-IC",
+									"it-sdi-exempt": "N3.2",
+									"untdid-tax-category": "K"
+								},
+								"base": "1740.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "1740.00",
+			"payable": "1740.00"
+		}
+	}
+}

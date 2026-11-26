@@ -1,0 +1,157 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6daa-7b27-82c4-903845dcf43a",
+		"dig": {
+			"alg": "sha256",
+			"val": "66105ad30e0f442863b25b13a60be366c856dd2c010ed22fe815198d09a4213a"
+		},
+		"stamps": [
+			{
+				"prv": "favat-ksef-number",
+				"val": "9876543210-20260120-D1984449A6BC-02"
+			},
+			{
+				"prv": "favat-qr",
+				"val": "https://ksef-test.mf.gov.pl/web/verify/9876543210-20260120-D1984449A6BC-02/8KCfB1Sa5Jc4Gg6ctK4HKdwnRwK%2BdxT1ScymF6m5d18%3D"
+			}
+		],
+		"meta": {
+			"description": "In this example, we're issuing a prepayment invoice to document an advance payment received before completing the delivery of goods or services.",
+			"title": "B2B Prepayment Invoice (Faktura Zaliczkowa)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "PL",
+		"$addons": [
+			"pl-favat-v3"
+		],
+		"$tags": [
+			"partial"
+		],
+		"uuid": "01a1ab50-6daa-7b28-ac69-0c1d455d10c6",
+		"type": "standard",
+		"series": "ZAL",
+		"code": "001",
+		"issue_date": "2026-01-20",
+		"currency": "PLN",
+		"tax": {
+			"ext": {
+				"pl-favat-invoice-type": "ZAL"
+			}
+		},
+		"supplier": {
+			"name": "Testowa Firma Sp. z o.o.",
+			"tax_id": {
+				"country": "PL",
+				"code": "9876543210"
+			},
+			"addresses": [
+				{
+					"street": "ul. Główna 1",
+					"locality": "Warszawa",
+					"code": "00-001",
+					"country": "PL"
+				}
+			]
+		},
+		"customer": {
+			"name": "Klient Testowy Sp. z o.o.",
+			"tax_id": {
+				"country": "PL",
+				"code": "1111111111"
+			},
+			"addresses": [
+				{
+					"street": "ul. Testowa 10",
+					"locality": "Kraków",
+					"code": "30-001",
+					"country": "PL"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "10",
+				"item": {
+					"name": "Software Development Services",
+					"price": "100.00",
+					"unit": "h"
+				},
+				"sum": "1000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "23.0%",
+						"ext": {
+							"pl-favat-tax-category": "1"
+						}
+					}
+				],
+				"total": "1000.00"
+			}
+		],
+		"payment": {
+			"advances": [
+				{
+					"date": "2026-01-20",
+					"key": "credit-transfer",
+					"description": "Advance payment for software development project",
+					"percent": "50%",
+					"amount": "615.00",
+					"ext": {
+						"pl-favat-payment-means": "6"
+					}
+				}
+			],
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "PL61109010140000071219812874",
+						"name": "Testowa Firma Sp. z o.o."
+					}
+				],
+				"ext": {
+					"pl-favat-payment-means": "6"
+				}
+			}
+		},
+		"totals": {
+			"sum": "1000.00",
+			"total": "1000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pl-favat-tax-category": "1"
+								},
+								"base": "1000.00",
+								"percent": "23.0%",
+								"amount": "230.00"
+							}
+						],
+						"amount": "230.00"
+					}
+				],
+				"sum": "230.00"
+			},
+			"tax": "230.00",
+			"total_with_tax": "1230.00",
+			"payable": "1230.00",
+			"advance": "615.00",
+			"due": "615.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZWUtNzBiMy1iZjk2LTEwY2MwNjFiZWQzNSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhYS03YjI3LTgyYzQtOTAzODQ1ZGNmNDNhIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjY2MTA1YWQzMGUwZjQ0Mjg2M2IyNWIxM2E2MGJlMzY2Yzg1NmRkMmMwMTBlZDIyZmU4MTUxOThkMDlhNDIxM2EifSwiaWF0IjoxNzkzODk0Njg4fQ.RWns4L_sZe37dy2F_9XT1ZE0Q0JP0_p7Dxv8ZtqMZdgFC1b-LsEQqk5zZ_JwTKPHFFACsk5efhE28ghc29MIhg"
+	]
+}

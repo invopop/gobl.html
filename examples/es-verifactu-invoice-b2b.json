@@ -1,0 +1,124 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d57-7c8e-8a38-aece2de3a52b",
+		"dig": {
+			"alg": "sha256",
+			"val": "2c0d8f827a4b152ff728cdadb1c6cbff9c9b95bbf4b8212cc1813c30b41bb17a"
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-004\u0026fecha=13-11-2024\u0026importe=2178.00"
+			}
+		],
+		"meta": {
+			"description": "Regular invoices are used for B2B transactions. Regular invoices must be issued when:",
+			"title": "B2B Standard Invoice"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-verifactu-v1"
+		],
+		"uuid": "01a1ab50-6d57-7c8f-82b6-634a9ab8064c",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "004",
+		"issue_date": "2024-11-13",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"es-verifactu-doc-type": "F1"
+			}
+		},
+		"supplier": {
+			"name": "Invopop S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			]
+		},
+		"customer": {
+			"name": "Sample Consumer",
+			"tax_id": {
+				"country": "ES",
+				"code": "B63272603"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Development services",
+					"price": "90.00",
+					"unit": "h"
+				},
+				"sum": "1800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"es-verifactu-op-class": "S1",
+							"es-verifactu-regime": "01"
+						}
+					}
+				],
+				"total": "1800.00"
+			}
+		],
+		"totals": {
+			"sum": "1800.00",
+			"total": "1800.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"es-verifactu-op-class": "S1",
+									"es-verifactu-regime": "01"
+								},
+								"base": "1800.00",
+								"percent": "21.0%",
+								"amount": "378.00"
+							}
+						],
+						"amount": "378.00"
+					}
+				],
+				"sum": "378.00"
+			},
+			"tax": "378.00",
+			"total_with_tax": "2178.00",
+			"payable": "2178.00"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "This is a sample invoice with a exempt tax"
+			}
+		]
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NzItNzIzZS1hNjVjLWFjODVkZmQ4NTcwYiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1Ny03YzhlLThhMzgtYWVjZTJkZTNhNTJiIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjJjMGQ4ZjgyN2E0YjE1MmZmNzI4Y2RhZGIxYzZjYmZmOWM5Yjk1YmJmNGI4MjEyY2MxODEzYzMwYjQxYmIxN2EifSwiaWF0IjoxNzkzODk0Njg4fQ.i0vM0rKvfjLlFCtKcnJGTt_Mvt8w0Y_x6tUJs3AN3WrKy-MAbjZkrmPjuV2AbB1NEJ3u0YEEgiFAVVc7B87oaA"
+	]
+}

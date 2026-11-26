@@ -1,0 +1,137 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d98-7318-afa4-c7b5c91e61e6",
+		"dig": {
+			"alg": "sha256",
+			"val": "79ca158fb8411b854da5a51704d894036cc7b8658864981128951b1650b059bf"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a simplified invoice for a €49.00 restaurant bill to a private customer identified only by their codice fiscale.",
+			"title": "Simplified Invoice (Fattura Semplificata)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "IT",
+		"$addons": [
+			"it-sdi-v1"
+		],
+		"$tags": [
+			"simplified"
+		],
+		"uuid": "01a1ab50-6d98-7319-a72a-5318fa2d4c9f",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "003",
+		"issue_date": "2026-10-01",
+		"currency": "EUR",
+		"tax": {
+			"prices_include": "VAT",
+			"ext": {
+				"it-sdi-document-type": "TD07",
+				"it-sdi-format": "FSM10"
+			}
+		},
+		"supplier": {
+			"name": "Hotel California",
+			"tax_id": {
+				"country": "IT",
+				"code": "12345678903"
+			},
+			"addresses": [
+				{
+					"num": "102",
+					"street": "Via California",
+					"locality": "Palermo",
+					"region": "PA",
+					"code": "33213",
+					"country": "IT"
+				}
+			],
+			"ext": {
+				"it-sdi-fiscal-regime": "RF01"
+			}
+		},
+		"customer": {
+			"tax_id": {
+				"country": "IT"
+			},
+			"identities": [
+				{
+					"key": "it-fiscal-code",
+					"code": "RSSGNN60R30H501U"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Menu di lavoro",
+					"price": "18.50"
+				},
+				"sum": "37.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "intermediate",
+						"percent": "10.0%"
+					}
+				],
+				"total": "37.00"
+			},
+			{
+				"i": 2,
+				"quantity": "2",
+				"item": {
+					"name": "Vino della casa",
+					"price": "6.00"
+				},
+				"sum": "12.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "22.0%"
+					}
+				],
+				"total": "12.00"
+			}
+		],
+		"totals": {
+			"sum": "49.00",
+			"tax_included": "5.53",
+			"total": "43.47",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "33.64",
+								"percent": "10.0%",
+								"amount": "3.36"
+							},
+							{
+								"key": "standard",
+								"base": "9.84",
+								"percent": "22.0%",
+								"amount": "2.16"
+							}
+						],
+						"amount": "5.53"
+					}
+				],
+				"sum": "5.53"
+			},
+			"tax": "5.53",
+			"total_with_tax": "49.00",
+			"payable": "49.00"
+		}
+	}
+}

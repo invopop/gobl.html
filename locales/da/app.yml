@@ -156,6 +156,9 @@ da:
       notes:
         title: "Bemærkninger"
 
+      attachments:
+        title: "Bilag"
+
     payment:
       <<: *invoice
       title:

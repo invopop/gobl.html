@@ -1,0 +1,164 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab5e-5db2-74f5-8791-862788d78c4c",
+		"dig": {
+			"alg": "sha256",
+			"val": "bc6515bd26c95ac43091a3da6de2fe72afb297505352aa1ebd96917a24f3a94e"
+		},
+		"meta": {
+			"description": "In this example, we're invoicing a customer outside the EU — an export of goods, zero-rated under Momslovens §34.",
+			"title": "Example export invoice"
+		},
+		"from": "iso6523-actorid-upis::0184:16356700",
+		"to": "iso6523-actorid-upis::0088:7080000000000"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "DK",
+		"$addons": [
+			"eu-en16931-v2017",
+			"dk-oioubl-v2"
+		],
+		"uuid": "01a1ab5e-5db2-74f9-af05-a1a9caab9ac3",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "0048",
+		"issue_date": "2026-08-01",
+		"currency": "DKK",
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Nordlys Software ApS",
+			"tax_id": {
+				"country": "DK",
+				"code": "16356700"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"code": "16356700"
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0184:16356700"
+				}
+			],
+			"addresses": [
+				{
+					"num": "24",
+					"street": "Vesterbrogade",
+					"locality": "København V",
+					"code": "1620",
+					"country": "DK"
+				}
+			],
+			"emails": [
+				{
+					"addr": "faktura@nordlys.dk"
+				}
+			]
+		},
+		"customer": {
+			"name": "Fjellvann Utstyr AS",
+			"tax_id": {
+				"country": "NO",
+				"code": "987654325MVA"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0088:7080000000000"
+				}
+			],
+			"addresses": [
+				{
+					"num": "7",
+					"street": "Storgata",
+					"locality": "Oslo",
+					"code": "0155",
+					"country": "NO"
+				}
+			],
+			"emails": [
+				{
+					"addr": "faktura@fjellvann.no"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "40",
+				"item": {
+					"name": "Industrial valves",
+					"price": "320.00",
+					"unit": "item"
+				},
+				"sum": "12800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "export",
+						"ext": {
+							"cef-vatex": "VATEX-EU-G"
+						}
+					}
+				],
+				"total": "12800.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"due_dates": [
+					{
+						"date": "2026-08-31",
+						"amount": "12800.00",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer+sepa",
+				"credit_transfer": [
+					{
+						"iban": "DK5000400440116243"
+					}
+				],
+				"ext": {
+					"untdid-payment-means": "58"
+				}
+			}
+		},
+		"totals": {
+			"sum": "12800.00",
+			"total": "12800.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "export",
+								"ext": {
+									"cef-vatex": "VATEX-EU-G"
+								},
+								"base": "12800.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "12800.00",
+			"payable": "12800.00"
+		}
+	}
+}

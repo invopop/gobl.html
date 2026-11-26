@@ -1,0 +1,157 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d79-7ad5-9b6b-6741b1432555",
+		"dig": {
+			"alg": "sha256",
+			"val": "442a381ac6c3030b34d9af9636896e48230bdfab5b24ef3b6d61b72c4c7a629f"
+		},
+		"meta": {
+			"description": "Exempt invoices are used for B2B transactions that are exempt from VAT, which also covers exemptions in internal operations.",
+			"title": "B2B exempt invoice France"
+		},
+		"from": "iso6523-actorid-upis::0088:FR66093885154",
+		"to": "iso6523-actorid-upis::0088:FR44257623119"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FR",
+		"$addons": [
+			"eu-en16931-v2017"
+		],
+		"uuid": "01a1ab50-6d79-7ad6-8a9d-baef7212e6df",
+		"type": "standard",
+		"series": "INV",
+		"code": "PP000003",
+		"issue_date": "2025-04-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "École de Langue Française",
+			"tax_id": {
+				"country": "FR",
+				"code": "66093885154"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0088:FR66093885154"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0088",
+					"code": "FR66093885154"
+				}
+			],
+			"addresses": [
+				{
+					"num": "10",
+					"street": "Rue de la République",
+					"locality": "Lyon",
+					"region": "Auvergne-Rhône-Alpes",
+					"code": "69001",
+					"country": "FR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "test@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Marseille Commerce S.A.S.",
+			"tax_id": {
+				"country": "FR",
+				"code": "44257623119"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0088:FR44257623119"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0088",
+					"code": "FR44257623119"
+				}
+			],
+			"addresses": [
+				{
+					"num": "25",
+					"street": "Avenue des Champs-Élysées",
+					"locality": "Paris",
+					"region": "IDF",
+					"code": "75008",
+					"country": "FR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "facturation@marseillecommerce.fr"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Cours de Français - Mois",
+					"price": "120.00",
+					"unit": "one"
+				},
+				"sum": "120.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "exempt",
+						"ext": {
+							"cef-vatex": "VATEX-EU-132-1I",
+							"untdid-tax-category": "E"
+						}
+					}
+				],
+				"total": "120.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			}
+		},
+		"totals": {
+			"sum": "120.00",
+			"total": "120.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "exempt",
+								"ext": {
+									"cef-vatex": "VATEX-EU-132-1I",
+									"untdid-tax-category": "E"
+								},
+								"base": "120.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "120.00",
+			"payable": "120.00"
+		}
+	}
+}

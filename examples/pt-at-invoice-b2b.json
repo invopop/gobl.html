@@ -1,0 +1,186 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6db2-72b3-bd38-2b2179fd0950",
+		"dig": {
+			"alg": "sha256",
+			"val": "35ba16598c7172a83f5c7d2d253ecb1624b6a400d97118b6b033e7718d3bd22e"
+		},
+		"stamps": [
+			{
+				"prv": "at-atcud",
+				"val": "AAJFJR2KW4-2"
+			},
+			{
+				"prv": "at-hash",
+				"val": "0vot"
+			},
+			{
+				"prv": "at-hash-full",
+				"val": "0WMEHADswWv5aavY+2VboOclMpPyoQtl7neqfA/7PPvhayQR1OQMok5fFr8N4vi6TGm8ymmHSpfX4QG28jeDJqNuO92v5TbRH78/4lPbcryEmVIgG0x9jXtYPX6RehwYYuUZg1q1XSEYrEGg+zQoPN8VZetI5PxGRWqrkIe8G5w="
+			},
+			{
+				"prv": "at-qr",
+				"val": "A:504614240*B:999999990*C:PT*D:FT*E:N*F:20241223*G:FT SERIES-A 0001*H:AAJFJR2KW4-2*I1:PT*I7:1230.00*N:0.00*O:1230.00*Q:0vot*R:0"
+			},
+			{
+				"prv": "at-app-id",
+				"val": "0"
+			}
+		],
+		"meta": {
+			"description": "In this example, we're issuing a simple invoice from a Portuguese supplier to another Portuguese business.",
+			"title": "AT B2B invoice"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"uuid": "01a1ab50-6db2-72b7-989e-5d028216a44d",
+		"type": "standard",
+		"series": "FT SERIES-A",
+		"code": "0001",
+		"issue_date": "2024-12-23",
+		"value_date": "2024-12-23",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"pt-saft-invoice-type": "FT",
+				"pt-saft-source": "P"
+			}
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "504614240"
+			},
+			"addresses": [
+				{
+					"num": "156",
+					"street": "Avenida da República",
+					"locality": "Lisboa",
+					"code": "1050-045",
+					"country": "PT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "maria@example.com"
+				}
+			],
+			"registration": {
+				"capital": "150000.00",
+				"office": "CRC Lisboa",
+				"other": "sob NIF 770013813"
+			}
+		},
+		"customer": {
+			"name": "Gusto Unipessoal Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"addresses": [
+				{
+					"street": "Avenida da Liberdade 152 2º Direito",
+					"locality": "Lisboa",
+					"code": "1250-146",
+					"country": "PT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "gusto@example.com"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://gusto.example.com"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+351912345678"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20.0",
+				"item": {
+					"name": "Development services",
+					"price": "50.00",
+					"unit": "h",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"sum": "1000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "23.0%",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-tax-rate": "NOR"
+						}
+					}
+				],
+				"total": "1000.00"
+			}
+		],
+		"payment": {
+			"advances": [
+				{
+					"date": "2024-12-23",
+					"key": "card",
+					"description": "Advance payment",
+					"amount": "12.34",
+					"ext": {
+						"pt-saft-payment-means": "CC"
+					}
+				}
+			]
+		},
+		"totals": {
+			"sum": "1000.00",
+			"total": "1000.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"pt-region": "PT",
+									"pt-saft-tax-rate": "NOR"
+								},
+								"base": "1000.00",
+								"percent": "23.0%",
+								"amount": "230.00"
+							}
+						],
+						"amount": "230.00"
+					}
+				],
+				"sum": "230.00"
+			},
+			"tax": "230.00",
+			"total_with_tax": "1230.00",
+			"payable": "1230.00",
+			"advance": "12.34",
+			"due": "1217.66"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZmEtN2M5Ni05OWI4LWY1OGQ5ZGY2NmE4ZiJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRiMi03MmIzLWJkMzgtMmIyMTc5ZmQwOTUwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjM1YmExNjU5OGM3MTcyYTgzZjVjN2QyZDI1M2VjYjE2MjRiNmE0MDBkOTcxMThiNmIwMzNlNzcxOGQzYmQyMmUifSwiaWF0IjoxNzkzODk0Njg4fQ.iLEnSuyzOZY5noL4q-aNS4jrD4j1UBiQmqedLgkAWBuMRv_ByfDZQ4w3CyYr8jE1ZcxQRnRQsEmiutbWfTgFeQ"
+	]
+}

@@ -1,0 +1,163 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d60-7e96-81c1-c441dfdb52b2",
+		"dig": {
+			"alg": "sha256",
+			"val": "ff2d23068645c417bb1374b8afd200d49d6ef5b9c106d911f64fe2cb1545dad3"
+		},
+		"meta": {
+			"description": "In this example, we're invoicing a Finnish public body, the segment where e-invoicing is mandatory.",
+			"title": "Example B2G invoice"
+		},
+		"from": "iso6523-actorid-upis::0216:003726174164",
+		"to": "iso6523-actorid-upis::0216:003754321096"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FI",
+		"$addons": [
+			"eu-en16931-v2017",
+			"fi-finvoice-v3"
+		],
+		"uuid": "01a1ab50-6d60-7e97-80f5-b81ba79d5c23",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "0043",
+		"issue_date": "2026-08-01",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Aurora Ohjelmistot Oy",
+			"tax_id": {
+				"country": "FI",
+				"code": "26174164"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0216:003726174164"
+				}
+			],
+			"addresses": [
+				{
+					"num": "12",
+					"street": "Mannerheimintie",
+					"locality": "Helsinki",
+					"code": "00100",
+					"country": "FI"
+				}
+			]
+		},
+		"customer": {
+			"name": "Suomen Valtion Virasto",
+			"tax_id": {
+				"country": "FI",
+				"code": "54321096"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0216:003754321096"
+				}
+			],
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Snellmaninkatu",
+					"locality": "Helsinki",
+					"code": "00170",
+					"country": "FI"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "1",
+				"item": {
+					"name": "Consulting services, July 2026",
+					"price": "4500.00",
+					"unit": "one"
+				},
+				"sum": "4500.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "25.5%",
+						"ext": {
+							"untdid-tax-category": "S"
+						}
+					}
+				],
+				"total": "4500.00"
+			}
+		],
+		"ordering": {
+			"contracts": [
+				{
+					"code": "VSK12026001"
+				}
+			],
+			"purchases": [
+				{
+					"code": "V12026001"
+				}
+			]
+		},
+		"payment": {
+			"terms": {
+				"due_dates": [
+					{
+						"date": "2026-08-31",
+						"amount": "5647.50",
+						"percent": "100%"
+					}
+				]
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"ref": "100230",
+				"credit_transfer": [
+					{
+						"iban": "FI2112345600000785",
+						"bic": "NDEAFIHH"
+					}
+				],
+				"ext": {
+					"untdid-payment-means": "30"
+				}
+			}
+		},
+		"totals": {
+			"sum": "4500.00",
+			"total": "4500.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"untdid-tax-category": "S"
+								},
+								"base": "4500.00",
+								"percent": "25.5%",
+								"amount": "1147.50"
+							}
+						],
+						"amount": "1147.50"
+					}
+				],
+				"sum": "1147.50"
+			},
+			"tax": "1147.50",
+			"total_with_tax": "5647.50",
+			"payable": "5647.50"
+		}
+	}
+}

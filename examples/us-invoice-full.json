@@ -1,0 +1,483 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1aba5-b513-7213-88ad-baff21c40d35",
+		"dig": {
+			"alg": "sha256",
+			"val": "791463681178a1369316c8ba8dd02bb4687d32c2de41a49d9b268a28560b2d8a"
+		},
+		"meta": {
+			"description": "EIN identities, two supplier addresses, sales tax at state and city rates with untaxed service and resale lines, taxed freight, document discount, ACH and card advances, routing and account numbers, notes and attachments.",
+			"title": "US sales tax invoice with every feature"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "US",
+		"uuid": "01a1aba5-b513-721e-a5cd-0bdf00d0dae5",
+		"type": "standard",
+		"series": "INV",
+		"code": "2026-0219",
+		"issue_date": "2026-05-06",
+		"issue_time": "11:32:08",
+		"currency": "USD",
+		"supplier": {
+			"name": "Invopop Inc.",
+			"tax_id": {
+				"country": "US"
+			},
+			"identities": [
+				{
+					"type": "EIN",
+					"code": "12-3456789"
+				},
+				{
+					"label": "Texas sales tax permit",
+					"code": "3-20456-7890-1"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Registered agent",
+					"num": "1111B",
+					"street": "S Governors Ave #6229",
+					"locality": "Dover",
+					"region": "DE",
+					"code": "19904",
+					"country": "US"
+				},
+				{
+					"label": "Austin office",
+					"num": "500",
+					"street": "W 2nd St",
+					"street_extra": "Suite 1900",
+					"locality": "Austin",
+					"region": "TX",
+					"code": "78701",
+					"country": "US"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@invopop.com"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://www.invopop.com"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+1 512 555 0142"
+				}
+			],
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+				}
+			]
+		},
+		"customer": {
+			"name": "Customer Random Inc.",
+			"tax_id": {
+				"country": "US"
+			},
+			"identities": [
+				{
+					"type": "EIN",
+					"code": "98-7654321"
+				},
+				{
+					"label": "Customer account",
+					"code": "CR-00231"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Accounts payable",
+					"po_box": "4410",
+					"num": "350",
+					"street": "Fifth Avenue",
+					"street_extra": "Floor 21",
+					"locality": "New York",
+					"region": "NY",
+					"code": "10118",
+					"country": "US"
+				}
+			],
+			"emails": [
+				{
+					"addr": "ap@customerrandom.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "120",
+				"item": {
+					"ref": "DEV-SENIOR",
+					"name": "Senior software engineering",
+					"description": "Integration work delivered remotely, April 2026. Professional services are not subject to sales tax.",
+					"price": "210.00",
+					"unit": "h"
+				},
+				"sum": "25200.00",
+				"discounts": [
+					{
+						"reason": "Framework agreement discount",
+						"percent": "10%",
+						"amount": "2520.00"
+					}
+				],
+				"total": "22680.00"
+			},
+			{
+				"i": 2,
+				"quantity": "8",
+				"item": {
+					"ref": "KIOSK-22",
+					"name": "Self-service kiosk 22\"",
+					"identities": [
+						{
+							"type": "UPC",
+							"code": "012345678905"
+						}
+					],
+					"description": "Delivered to Austin, TX — state 6.25% + local 2% sales tax",
+					"price": "2450.00",
+					"unit": "piece"
+				},
+				"sum": "19600.00",
+				"charges": [
+					{
+						"key": "insurance",
+						"reason": "Shipping insurance",
+						"percent": "1.5%",
+						"amount": "294.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "ST",
+						"percent": "8.25%"
+					}
+				],
+				"total": "19894.00"
+			},
+			{
+				"i": 3,
+				"quantity": "40",
+				"item": {
+					"ref": "CBL-HDMI",
+					"name": "HDMI cable 2m",
+					"description": "Shipped to the New York office — NY state 4% + NYC 4.5% + MCTD 0.375%",
+					"price": "14.50",
+					"unit": "piece"
+				},
+				"sum": "580.00",
+				"taxes": [
+					{
+						"cat": "ST",
+						"percent": "8.875%"
+					}
+				],
+				"total": "580.00"
+			},
+			{
+				"i": 4,
+				"quantity": "250",
+				"item": {
+					"ref": "MOUNT-RAIL",
+					"name": "Aluminium mounting rail",
+					"description": "Shipped to Los Angeles, CA — 9.5% combined rate",
+					"price": "6.40",
+					"unit": "m"
+				},
+				"sum": "1600.00",
+				"taxes": [
+					{
+						"cat": "ST",
+						"percent": "9.5%"
+					}
+				],
+				"total": "1600.00"
+			},
+			{
+				"i": 5,
+				"quantity": "12",
+				"item": {
+					"ref": "SAAS-SEAT",
+					"name": "Kiosk management platform seat",
+					"description": "Software as a service — taxable in New York at the state rate only",
+					"price": "95.00",
+					"unit": "mon"
+				},
+				"sum": "1140.00",
+				"taxes": [
+					{
+						"cat": "ST",
+						"percent": "4%"
+					}
+				],
+				"total": "1140.00"
+			},
+			{
+				"i": 6,
+				"quantity": "60",
+				"item": {
+					"ref": "PKG-FOAM",
+					"name": "Protective foam packaging",
+					"description": "Shipped to Portland, OR — Oregon has no sales tax",
+					"price": "3.20",
+					"unit": "kg"
+				},
+				"sum": "192.00",
+				"taxes": [
+					{
+						"cat": "ST",
+						"percent": "0%"
+					}
+				],
+				"total": "192.00"
+			},
+			{
+				"i": 7,
+				"quantity": "3",
+				"item": {
+					"ref": "TRAIN-ONSITE",
+					"name": "On-site training day",
+					"price": "1800.00",
+					"unit": "day"
+				},
+				"sum": "5400.00",
+				"discounts": [
+					{
+						"reason": "Multi-day booking",
+						"amount": "400.00"
+					}
+				],
+				"total": "5000.00"
+			},
+			{
+				"i": 8,
+				"quantity": "1",
+				"item": {
+					"ref": "RESALE-DISPLAY",
+					"name": "Display stand for resale",
+					"description": "Sold for resale under certificate RC-TX-55120 — no tax collected",
+					"price": "650.00",
+					"unit": "piece"
+				},
+				"sum": "650.00",
+				"total": "650.00"
+			}
+		],
+		"discounts": [
+			{
+				"i": 1,
+				"key": "early-completion",
+				"code": "DISC-EC-26",
+				"reason": "Early completion credit",
+				"percent": "2%",
+				"amount": "1034.72"
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"key": "delivery",
+				"code": "CHG-FREIGHT",
+				"reason": "Freight to Austin, TX",
+				"amount": "920.00",
+				"taxes": [
+					{
+						"cat": "ST",
+						"percent": "8.25%"
+					}
+				]
+			}
+		],
+		"ordering": {
+			"code": "PO-CR-2026-0912",
+			"identities": [
+				{
+					"label": "Project",
+					"code": "PRJ-ROLLOUT-26"
+				}
+			],
+			"period": {
+				"label": "Service period",
+				"start": "2026-04-01",
+				"end": "2026-04-30"
+			},
+			"contracts": [
+				{
+					"issue_date": "2025-08-15",
+					"code": "MSA-2025-0033"
+				}
+			],
+			"purchases": [
+				{
+					"issue_date": "2026-03-20",
+					"code": "PO-CR-2026-0912"
+				}
+			]
+		},
+		"payment": {
+			"advances": [
+				{
+					"date": "2026-04-02",
+					"key": "credit-transfer",
+					"ref": "ACH-20260402-118",
+					"description": "Deposit received by ACH",
+					"amount": "10000.00"
+				},
+				{
+					"date": "2026-04-18",
+					"key": "card",
+					"ref": "CARD-55731",
+					"description": "Card payment for the training days",
+					"amount": "2500.00"
+				}
+			],
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-05-20",
+						"notes": "First installment",
+						"amount": "20543.76",
+						"percent": "50%"
+					},
+					{
+						"date": "2026-06-05",
+						"notes": "Second installment",
+						"amount": "20543.76",
+						"percent": "50%"
+					}
+				],
+				"notes": "Net 30. A 1.5% monthly finance charge applies to past-due balances."
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"detail": "ACH or wire transfer to the account below",
+				"ref": "INV-2026-0219",
+				"credit_transfer": [
+					{
+						"label": "JPMorgan Chase operating account",
+						"bic": "CHASUS33",
+						"number": "000123456789",
+						"clearing": "021000021",
+						"name": "Invopop Inc."
+					}
+				],
+				"card": {
+					"last4": "4242",
+					"holder": "Customer Random Inc."
+				},
+				"online": [
+					{
+						"key": "stripe",
+						"label": "Pay online",
+						"url": "https://pay.invopop.com/inv/INV-2026-0219"
+					}
+				],
+				"notes": "Please reference the invoice number on all remittances. **Checks** are accepted at the Austin office."
+			}
+		},
+		"delivery": {
+			"receiver": {
+				"name": "Customer Random Inc. — Austin distribution center",
+				"addresses": [
+					{
+						"num": "9800",
+						"street": "Metric Blvd",
+						"street_extra": "Dock 4",
+						"locality": "Austin",
+						"region": "TX",
+						"code": "78758",
+						"country": "US"
+					}
+				]
+			},
+			"date": "2026-04-30",
+			"period": {
+				"start": "2026-04-01",
+				"end": "2026-04-30"
+			}
+		},
+		"totals": {
+			"sum": "51736.00",
+			"discount": "1034.72",
+			"charge": "920.00",
+			"total": "51621.28",
+			"taxes": {
+				"categories": [
+					{
+						"code": "ST",
+						"rates": [
+							{
+								"base": "20814.00",
+								"percent": "8.25%",
+								"amount": "1717.16"
+							},
+							{
+								"base": "580.00",
+								"percent": "8.875%",
+								"amount": "51.48"
+							},
+							{
+								"base": "1600.00",
+								"percent": "9.5%",
+								"amount": "152.00"
+							},
+							{
+								"base": "1140.00",
+								"percent": "4%",
+								"amount": "45.60"
+							},
+							{
+								"base": "192.00",
+								"percent": "0%",
+								"amount": "0.00"
+							}
+						],
+						"amount": "1966.23"
+					}
+				],
+				"sum": "1966.23"
+			},
+			"tax": "1966.23",
+			"total_with_tax": "53587.51",
+			"payable": "53587.51",
+			"advance": "12500.00",
+			"due": "41087.51"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Thank you for your business."
+			},
+			{
+				"key": "legal",
+				"text": "Sales tax is collected on tangible goods and taxable services based on the ship-to address. Line items marked for resale are exempt on receipt of a valid resale certificate.",
+				"meta": {
+					"position": "footer"
+				}
+			}
+		],
+		"attachments": [
+			{
+				"key": "delivery-note",
+				"code": "BOL-2026-0442",
+				"name": "BOL-2026-0442.pdf",
+				"description": "Bill of lading for the kiosk shipment to Austin",
+				"url": "https://files.invopop.com/bol/BOL-2026-0442.pdf",
+				"mime": "application/pdf"
+			}
+		]
+	}
+}

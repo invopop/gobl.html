@@ -1,0 +1,516 @@
+{
+	"head": {
+		"meta": {
+			"title": "AT invoice with every feature",
+			"description": "FT with 23%, 13% and 6% rates, an M07 exemption, a Madeira line at 22%, IRC withholding, product types, document discount and delivery charge, advances by card, transfer, notes and attachments."
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "PT",
+		"$addons": [
+			"pt-saft-v1"
+		],
+		"type": "standard",
+		"series": "FT INVOPOP-2026",
+		"code": "0042",
+		"issue_date": "2026-03-16",
+		"issue_time": "10:42:15",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"pt-saft-invoice-type": "FT",
+				"pt-saft-source": "P"
+			},
+			"notes": [
+				{
+					"cat": "IRC",
+					"text": "Retenção na fonte nos termos do art. 94.º do CIRC"
+				}
+			]
+		},
+		"supplier": {
+			"name": "Innovatech Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "504614240"
+			},
+			"identities": [
+				{
+					"label": "CAE",
+					"code": "62010"
+				},
+				{
+					"type": "LEI",
+					"code": "9845001ABCDEF1234567"
+				}
+			],
+			"addresses": [
+				{
+					"num": "156",
+					"street": "Avenida da República",
+					"street_extra": "Piso 4, Fração C",
+					"locality": "Lisboa",
+					"region": "Lisboa",
+					"code": "1050-045",
+					"country": "PT"
+				}
+			],
+			"emails": [
+				{
+					"label": "Faturação",
+					"addr": "faturacao@innovatech.example.pt"
+				},
+				{
+					"label": "Suporte",
+					"addr": "suporte@innovatech.example.pt"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+351 210 123 456"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://innovatech.example.pt"
+				}
+			],
+			"registration": {
+				"capital": "150000.00",
+				"currency": "EUR",
+				"office": "CRC Lisboa",
+				"entry": "504614240"
+			},
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+				}
+			]
+		},
+		"customer": {
+			"name": "Gusto Unipessoal Lda",
+			"tax_id": {
+				"country": "PT",
+				"code": "514329874"
+			},
+			"identities": [
+				{
+					"label": "Código de Cliente",
+					"code": "CLI-00817"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Sede",
+					"po_box": "1042",
+					"num": "152",
+					"street": "Avenida da Liberdade",
+					"street_extra": "2.º Direito",
+					"locality": "Lisboa",
+					"region": "Lisboa",
+					"code": "1250-146",
+					"country": "PT"
+				}
+			],
+			"emails": [
+				{
+					"addr": "contabilidade@gusto.example.pt"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+351 912 345 678"
+				}
+			]
+		},
+		"lines": [
+			{
+				"quantity": "40",
+				"item": {
+					"ref": "CONS-SENIOR",
+					"name": "Consultoria sénior em arquitetura de sistemas",
+					"description": "Desenho da nova plataforma de faturação, março de 2026",
+					"identities": [
+						{
+							"label": "SKU",
+							"code": "CONS-SR-2026"
+						}
+					],
+					"price": "95.00",
+					"unit": "h",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"discounts": [
+					{
+						"reason": "Desconto de volume",
+						"percent": "10%"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general",
+						"ext": {
+							"pt-region": "PT"
+						}
+					},
+					{
+						"cat": "IRC",
+						"percent": "25%"
+					}
+				]
+			},
+			{
+				"quantity": "3",
+				"item": {
+					"ref": "LIC-ERP-M",
+					"name": "Licença mensal ERP Cloud",
+					"description": "Subscrição de 10 utilizadores, março a maio de 2026",
+					"price": "320.00",
+					"unit": "mon",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				]
+			},
+			{
+				"quantity": "25",
+				"item": {
+					"ref": "CAB-UTP6",
+					"name": "Cabo de rede UTP Cat.6",
+					"identities": [
+						{
+							"type": "EAN",
+							"code": "5601234567890"
+						}
+					],
+					"price": "1.85",
+					"unit": "m",
+					"ext": {
+						"pt-saft-product-type": "P"
+					}
+				},
+				"charges": [
+					{
+						"reason": "Corte à medida",
+						"amount": "4.50"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				]
+			},
+			{
+				"quantity": "12.5",
+				"item": {
+					"ref": "CAFE-ORG",
+					"name": "Café em grão biológico para o escritório",
+					"price": "14.80",
+					"unit": "kg",
+					"ext": {
+						"pt-saft-product-type": "P"
+					}
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "intermediate",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				]
+			},
+			{
+				"quantity": "60",
+				"item": {
+					"ref": "LIV-TEC",
+					"name": "Manual técnico impresso",
+					"identities": [
+						{
+							"type": "ISBN",
+							"code": "978-972-1-00000-1"
+						}
+					],
+					"price": "24.00",
+					"unit": "piece",
+					"ext": {
+						"pt-saft-product-type": "P"
+					}
+				},
+				"discounts": [
+					{
+						"reason": "Promoção de lançamento",
+						"amount": "60.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				]
+			},
+			{
+				"quantity": "2",
+				"item": {
+					"ref": "FORM-RGPD",
+					"name": "Formação certificada em proteção de dados",
+					"description": "Ação de formação profissional isenta de IVA",
+					"price": "450.00",
+					"unit": "day",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "exempt",
+						"ext": {
+							"pt-region": "PT",
+							"pt-saft-exemption": "M07"
+						}
+					}
+				]
+			},
+			{
+				"quantity": "4",
+				"item": {
+					"ref": "INST-MAD",
+					"name": "Instalação de equipamento na delegação do Funchal",
+					"price": "180.00",
+					"unit": "service",
+					"ext": {
+						"pt-saft-product-type": "S"
+					}
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general",
+						"ext": {
+							"pt-region": "PT-MA"
+						}
+					}
+				]
+			},
+			{
+				"quantity": "1",
+				"item": {
+					"ref": "TAXA-AMB",
+					"name": "Ecovalor sobre equipamento elétrico",
+					"price": "6.00",
+					"unit": "one",
+					"ext": {
+						"pt-saft-product-type": "I"
+					}
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				]
+			}
+		],
+		"discounts": [
+			{
+				"code": "DESC-PP",
+				"reason": "Desconto por pronto pagamento",
+				"percent": "2%",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				]
+			}
+		],
+		"charges": [
+			{
+				"key": "delivery",
+				"code": "PORTES",
+				"reason": "Portes de envio para o Funchal",
+				"amount": "35.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general",
+						"ext": {
+							"pt-region": "PT"
+						}
+					}
+				]
+			}
+		],
+		"ordering": {
+			"code": "PO-2026-0317",
+			"identities": [
+				{
+					"label": "Ref. do fornecedor",
+					"code": "INV-GUSTO-03"
+				},
+				{
+					"label": "Centro de custo",
+					"code": "CC-TI-04"
+				}
+			],
+			"period": {
+				"label": "Período de prestação",
+				"start": "2026-03-01",
+				"end": "2026-03-31"
+			},
+			"purchases": [
+				{
+					"code": "PO-2026-0317",
+					"issue_date": "2026-02-20"
+				}
+			],
+			"contracts": [
+				{
+					"code": "CTR-2025-118",
+					"issue_date": "2025-11-03"
+				}
+			]
+		},
+		"delivery": {
+			"receiver": {
+				"name": "Gusto Unipessoal Lda - Delegação do Funchal",
+				"addresses": [
+					{
+						"num": "7",
+						"street": "Rua da Carreira",
+						"locality": "Funchal",
+						"region": "Madeira",
+						"code": "9000-042",
+						"country": "PT"
+					}
+				],
+				"telephones": [
+					{
+						"num": "+351 291 200 300"
+					}
+				]
+			},
+			"identities": [
+				{
+					"label": "Guia de remessa",
+					"code": "GR INVOPOP-2026/0019"
+				}
+			],
+			"date": "2026-03-13",
+			"period": {
+				"start": "2026-03-12",
+				"end": "2026-03-13"
+			}
+		},
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-04-15",
+						"percent": "50%",
+						"notes": "Primeira prestação"
+					},
+					{
+						"date": "2026-05-15",
+						"percent": "50%",
+						"notes": "Segunda prestação"
+					}
+				],
+				"notes": "Pagamento em duas prestações, sem juros."
+			},
+			"advances": [
+				{
+					"date": "2026-02-25",
+					"key": "card",
+					"ref": "ADJ-2026-0042",
+					"description": "Adjudicação paga por cartão",
+					"amount": "1500.00"
+				}
+			],
+			"instructions": {
+				"key": "credit-transfer",
+				"ref": "FT INVOPOP-2026/0042",
+				"credit_transfer": [
+					{
+						"label": "Conta principal",
+						"iban": "PT50 0002 0123 1234 5678 9015 4",
+						"bic": "BPIPTPL",
+						"name": "Innovatech Lda"
+					}
+				],
+				"card": {
+					"last4": "4321",
+					"holder": "Innovatech Lda"
+				},
+				"direct_debit": {
+					"ref": "MANDATO-GUSTO-001",
+					"creditor": "PT12ZZZ504614240",
+					"account": "PT50 0002 0123 1234 5678 9015 4"
+				},
+				"online": [
+					{
+						"key": "mbway",
+						"label": "MB WAY",
+						"url": "https://pay.innovatech.example.pt/mbway/FT-2026-0042"
+					}
+				],
+				"notes": "Indique o número da fatura na referência da transferência."
+			}
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Obrigado pela sua preferência. Os bens e serviços foram colocados à disposição do adquirente nas datas indicadas."
+			},
+			{
+				"key": "legal",
+				"text": "Processado por programa certificado n.º 0000/AT. Os bens/serviços foram colocados à disposição do adquirente na data do documento. Em caso de atraso no pagamento são devidos juros de mora à taxa legal em vigor.",
+				"meta": {
+					"position": "footer"
+				}
+			}
+		],
+		"attachments": [
+			{
+				"key": "delivery-note",
+				"code": "GR-0019",
+				"name": "Guia de remessa GR INVOPOP-2026/0019",
+				"description": "Guia de remessa que acompanhou a entrega do equipamento no Funchal.",
+				"url": "https://docs.innovatech.example.pt/guias/GR-INVOPOP-2026-0019.pdf",
+				"mime": "application/pdf"
+			}
+		]
+	}
+}

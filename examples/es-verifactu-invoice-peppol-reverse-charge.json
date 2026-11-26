@@ -1,0 +1,172 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d3e-72e6-870c-7613635ed7a1",
+		"dig": {
+			"alg": "sha256",
+			"val": "912a2741b24d3dbee4fc044665cbd57d7e7bcdc69f57eb4c931ee96516c771a5"
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=INV-PP000003\u0026fecha=03-04-2025\u0026importe=1740.00"
+			}
+		],
+		"meta": {
+			"description": "Reverse charge invoices are used for B2B services provided to customers in other EU member states. Reverse charge must be applied when:",
+			"title": "Peppol Spain - B2B services → EU customer (Reverse Charge)"
+		},
+		"from": "iso6523-actorid-upis::9920:ESB85905495",
+		"to": "iso6523-actorid-upis::0208:0316597904"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"eu-en16931-v2017",
+			"es-verifactu-v1"
+		],
+		"uuid": "01a1ab50-6d3e-72ea-8835-a919bdebef9e",
+		"type": "standard",
+		"series": "INV",
+		"code": "PP000003",
+		"issue_date": "2025-04-03",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"es-verifactu-doc-type": "F1",
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Invopop S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::9920:ESB85905495"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "9920",
+					"code": "ESB85905495"
+				}
+			],
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid-Capital",
+					"code": "28002",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@example.com"
+				}
+			]
+		},
+		"customer": {
+			"name": "Benelux Industries SA/NV",
+			"tax_id": {
+				"country": "BE",
+				"code": "0316597904"
+			},
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0208:0316597904"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0208",
+					"code": "0316597904"
+				}
+			],
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Rue de la Loi",
+					"locality": "Brussels",
+					"region": "Brussels-Capital",
+					"code": "1040",
+					"country": "BE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "test@example.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "12",
+				"item": {
+					"name": "Sambox services",
+					"price": "145.00",
+					"unit": "one"
+				},
+				"sum": "1740.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "reverse-charge",
+						"ext": {
+							"cef-vatex": "VATEX-EU-AE",
+							"es-verifactu-op-class": "S2",
+							"es-verifactu-regime": "01",
+							"untdid-tax-category": "AE"
+						}
+					}
+				],
+				"total": "1740.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Will be paid by 2026-06-02"
+			}
+		},
+		"totals": {
+			"sum": "1740.00",
+			"total": "1740.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "reverse-charge",
+								"ext": {
+									"cef-vatex": "VATEX-EU-AE",
+									"es-verifactu-op-class": "S2",
+									"es-verifactu-regime": "01",
+									"untdid-tax-category": "AE"
+								},
+								"base": "1740.00",
+								"amount": "0.00"
+							}
+						],
+						"amount": "0.00"
+					}
+				],
+				"sum": "0.00"
+			},
+			"tax": "0.00",
+			"total_with_tax": "1740.00",
+			"payable": "1740.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2NTEtNzQyMi1iZDdiLTIwMDUwOTQ5ODhjOSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQzZS03MmU2LTg3MGMtNzYxMzYzNWVkN2ExIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjkxMmEyNzQxYjI0ZDNkYmVlNGZjMDQ0NjY1Y2JkNTdkN2U3YmNkYzY5ZjU3ZWI0YzkzMWVlOTY1MTZjNzcxYTUifSwiaWF0IjoxNzkzODk0Njg4fQ.DCObNEVVZJS3XY3Jyy7ollPgPcxuVnrKZOWsDZty2bn8-UQDc5LFOPV3mGnHIyzwbblV4zAxJ9ldbZqwkkeVYA"
+	]
+}

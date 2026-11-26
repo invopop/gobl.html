@@ -1,0 +1,557 @@
+{
+	"head": {
+		"meta": {
+			"title": "French CTC invoice with every feature",
+			"description": "Mixed goods and services (billing mode M1), SIREN and SIRET identities, 20%, 10% and 5.5% rates with an exempt line and VATEX code, allowance and charge codes, delivery terms, the three mandatory notes, ordering references, attachments with BON_LIVRAISON and BON_COMMANDE codes."
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "FR",
+		"$addons": [
+			"eu-en16931-v2017",
+			"fr-ctc-flow2-v1"
+		],
+		"type": "standard",
+		"series": "FAC",
+		"code": "2026-0042",
+		"issue_date": "2026-03-16",
+		"issue_time": "10:42:15",
+		"currency": "EUR",
+		"tax": {
+			"rounding": "currency",
+			"point": "delivery",
+			"ext": {
+				"fr-ctc-billing-mode": "M1",
+				"untdid-document-type": "380"
+			}
+		},
+		"supplier": {
+			"name": "Innovatech SARL",
+			"tax_id": {
+				"country": "FR",
+				"code": "44732829320"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"type": "SIREN",
+					"code": "732829320",
+					"ext": {
+						"iso-scheme-id": "0002"
+					}
+				},
+				{
+					"type": "SIRET",
+					"code": "73282932000074",
+					"ext": {
+						"iso-scheme-id": "0009"
+					}
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0225:732829320"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0225",
+					"code": "732829320"
+				}
+			],
+			"addresses": [
+				{
+					"num": "123",
+					"street": "Rue de la Paix",
+					"street_extra": "Bâtiment B, 4e étage",
+					"locality": "Paris",
+					"region": "Île-de-France",
+					"code": "75001",
+					"country": "FR"
+				}
+			],
+			"emails": [
+				{
+					"label": "Facturation",
+					"addr": "facturation@innovatech.example.fr"
+				},
+				{
+					"label": "Support",
+					"addr": "support@innovatech.example.fr"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+33100200300"
+				}
+			],
+			"websites": [
+				{
+					"url": "https://innovatech.example.fr"
+				}
+			],
+			"registration": {
+				"capital": "150000.00",
+				"currency": "EUR",
+				"office": "RCS Paris",
+				"entry": "732 829 320"
+			},
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+				}
+			]
+		},
+		"customer": {
+			"name": "Gusto Commerce SAS",
+			"tax_id": {
+				"country": "FR",
+				"code": "39356000000"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"type": "SIREN",
+					"code": "356000000",
+					"ext": {
+						"iso-scheme-id": "0002"
+					}
+				},
+				{
+					"key": "private-id",
+					"label": "Code client",
+					"code": "CLI-00817"
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0225:356000000"
+				}
+			],
+			"inboxes": [
+				{
+					"key": "peppol",
+					"scheme": "0225",
+					"code": "356000000"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Siège social",
+					"po_box": "1042",
+					"num": "456",
+					"street": "Avenue des Champs-Élysées",
+					"street_extra": "2e étage",
+					"locality": "Paris",
+					"region": "Île-de-France",
+					"code": "75008",
+					"country": "FR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "comptabilite@gusto.example.fr"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+33100200400"
+				}
+			]
+		},
+		"lines": [
+			{
+				"quantity": "40",
+				"identifier": {
+					"code": "SN-0000001",
+					"ext": {
+						"untdid-reference": "SE"
+					}
+				},
+				"order": "PO-2026-0317-1",
+				"item": {
+					"ref": "CONS-SENIOR",
+					"name": "Conseil senior en architecture logicielle",
+					"description": "Conception de la nouvelle plateforme de facturation, mars 2026",
+					"identities": [
+						{
+							"label": "SKU",
+							"code": "CONS-SR-2026"
+						}
+					],
+					"price": "95.00",
+					"unit": "h"
+				},
+				"discounts": [
+					{
+						"reason": "Remise sur volume",
+						"percent": "10%",
+						"ext": {
+							"untdid-allowance": "95"
+						}
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "3",
+				"order": "PO-2026-0317-2",
+				"item": {
+					"ref": "LIC-ERP-M",
+					"name": "Licence mensuelle ERP Cloud",
+					"description": "Abonnement 10 utilisateurs, de mars à mai 2026",
+					"price": "320.00",
+					"unit": "mon"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "25",
+				"item": {
+					"ref": "CAB-UTP6",
+					"name": "Câble réseau UTP Cat.6",
+					"identities": [
+						{
+							"type": "EAN",
+							"code": "3001234567890"
+						}
+					],
+					"price": "1.85",
+					"unit": "m"
+				},
+				"charges": [
+					{
+						"reason": "Coupe sur mesure",
+						"amount": "4.50",
+						"ext": {
+							"untdid-charge": "AAH"
+						}
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			},
+			{
+				"quantity": "12.5",
+				"item": {
+					"ref": "CAFE-BIO",
+					"name": "Café en grains biologique pour le bureau",
+					"price": "14.80",
+					"unit": "kg"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced"
+					}
+				]
+			},
+			{
+				"quantity": "60",
+				"item": {
+					"ref": "LIV-TEC",
+					"name": "Manuel technique imprimé",
+					"identities": [
+						{
+							"type": "ISBN",
+							"code": "978-2-00-000000-1"
+						}
+					],
+					"price": "24.00",
+					"unit": "piece"
+				},
+				"discounts": [
+					{
+						"reason": "Promotion de lancement",
+						"amount": "60.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "reduced"
+					}
+				]
+			},
+			{
+				"quantity": "8",
+				"item": {
+					"ref": "REST-ENT",
+					"name": "Repas d'équipe au restaurant d'entreprise",
+					"price": "18.50",
+					"unit": "service"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "intermediate"
+					}
+				]
+			},
+			{
+				"quantity": "2",
+				"item": {
+					"ref": "FORM-RGPD",
+					"name": "Formation certifiée protection des données",
+					"description": "Action de formation professionnelle continue exonérée de TVA (art. 261-4-4° CGI)",
+					"price": "450.00",
+					"unit": "day"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "exempt",
+						"ext": {
+							"cef-vatex": "VATEX-EU-132-1I"
+						}
+					}
+				]
+			},
+			{
+				"quantity": "1",
+				"item": {
+					"ref": "ECO-DEEE",
+					"name": "Éco-participation DEEE sur équipements",
+					"price": "6.00",
+					"unit": "one"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			}
+		],
+		"discounts": [
+			{
+				"code": "REM-PP",
+				"reason": "Remise pour paiement anticipé",
+				"percent": "2%",
+				"ext": {
+					"untdid-allowance": "95"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			}
+		],
+		"charges": [
+			{
+				"key": "delivery",
+				"code": "PORT",
+				"reason": "Frais de port vers Lyon",
+				"amount": "35.00",
+				"ext": {
+					"untdid-charge": "DL"
+				},
+				"taxes": [
+					{
+						"cat": "VAT",
+						"rate": "general"
+					}
+				]
+			}
+		],
+		"ordering": {
+			"code": "PO-2026-0317",
+			"identities": [
+				{
+					"label": "Réf. fournisseur",
+					"code": "INV-GUSTO-03"
+				},
+				{
+					"label": "Centre de coût",
+					"code": "CC-IT-04",
+					"ext": {
+						"untdid-reference": "AWW"
+					}
+				}
+			],
+			"period": {
+				"label": "Période de prestation",
+				"start": "2026-03-01",
+				"end": "2026-03-31"
+			},
+			"purchases": [
+				{
+					"code": "PO-2026-0317",
+					"issue_date": "2026-02-20"
+				}
+			],
+			"contracts": [
+				{
+					"code": "CTR-2025-118",
+					"issue_date": "2025-11-03"
+				}
+			],
+			"tender": [
+				{
+					"code": "AO-2025-07"
+				}
+			]
+		},
+		"delivery": {
+			"receiver": {
+				"name": "Gusto Commerce SAS - Entrepôt de Lyon",
+				"addresses": [
+					{
+						"num": "15",
+						"street": "Rue de la Part-Dieu",
+						"locality": "Lyon",
+						"region": "Auvergne-Rhône-Alpes",
+						"code": "69003",
+						"country": "FR"
+					}
+				],
+				"telephones": [
+					{
+						"num": "+33400200300"
+					}
+				]
+			},
+			"identities": [
+				{
+					"label": "Bon de livraison",
+					"code": "BL-2026-0019"
+				}
+			],
+			"date": "2026-03-13",
+			"period": {
+				"start": "2026-03-12",
+				"end": "2026-03-13"
+			},
+			"ext": {
+				"fr-ctc-delivery-terms": "DAP"
+			}
+		},
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-04-15",
+						"percent": "50%",
+						"notes": "Première échéance"
+					},
+					{
+						"date": "2026-05-15",
+						"percent": "50%",
+						"notes": "Seconde échéance"
+					}
+				],
+				"notes": "Paiement en deux échéances, sans intérêts."
+			},
+			"advances": [
+				{
+					"date": "2026-02-25",
+					"key": "card",
+					"ref": "ACPT-2026-0042",
+					"description": "Acompte réglé par carte",
+					"amount": "1500.00"
+				}
+			],
+			"instructions": {
+				"key": "credit-transfer",
+				"ref": "FAC-2026-0042",
+				"credit_transfer": [
+					{
+						"label": "Compte principal",
+						"iban": "FR7630006000011234567890189",
+						"bic": "AGRIFRPP",
+						"name": "Innovatech SARL"
+					}
+				],
+				"card": {
+					"last4": "4321",
+					"holder": "Innovatech SARL"
+				},
+				"direct_debit": {
+					"ref": "MANDAT-GUSTO-001",
+					"creditor": "FR12ZZZ123456",
+					"account": "FR7630006000011234567890189"
+				},
+				"online": [
+					{
+						"key": "paylink",
+						"label": "Paiement en ligne",
+						"url": "https://pay.innovatech.example.fr/FAC-2026-0042"
+					}
+				],
+				"notes": "Merci d'indiquer le numéro de facture en référence du virement."
+			}
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Merci de votre confiance. Les biens ont été livrés avec le bon de livraison BL-2026-0019 du 13/03/2026."
+			},
+			{
+				"key": "payment",
+				"text": "Une indemnité forfaitaire de 40 EUR pour frais de recouvrement sera appliquée en cas de retard de paiement (art. L441-10 C. com.).",
+				"ext": {
+					"untdid-text-subject": "PMT"
+				}
+			},
+			{
+				"key": "payment-method",
+				"text": "Des pénalités de retard au taux de 3 fois le taux d'intérêt légal s'appliquent conformément à nos conditions générales de vente.",
+				"ext": {
+					"untdid-text-subject": "PMD"
+				}
+			},
+			{
+				"key": "payment-term",
+				"text": "Escompte de 2 % pour paiement anticipé, déjà déduit sur cette facture.",
+				"ext": {
+					"untdid-text-subject": "AAB"
+				}
+			},
+			{
+				"key": "legal",
+				"text": "SARL au capital de 150 000 EUR - RCS Paris 732 829 320 - TVA intracommunautaire FR44732829320. Facture établie selon les règles de facturation électronique françaises (flux 2).",
+				"meta": {
+					"position": "footer"
+				}
+			}
+		],
+		"attachments": [
+			{
+				"key": "delivery-note",
+				"code": "BL-2026-0019",
+				"name": "Bon de livraison BL-2026-0019",
+				"description": "BON_LIVRAISON",
+				"url": "https://docs.innovatech.example.fr/bl/BL-2026-0019.pdf",
+				"mime": "application/pdf"
+			},
+			{
+				"key": "purchase-order",
+				"code": "PO-2026-0317",
+				"name": "Bon de commande PO-2026-0317",
+				"description": "BON_COMMANDE",
+				"url": "https://docs.innovatech.example.fr/po/PO-2026-0317.pdf",
+				"mime": "application/pdf"
+			}
+		]
+	}
+}

@@ -1,0 +1,177 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6da0-7b4a-85a4-9dc90a7e38ff",
+		"dig": {
+			"alg": "sha256",
+			"val": "60ee09e1b94392103274c2c2d318aef6cf6942459abf2cf8e7d597698c81ca12"
+		},
+		"stamps": [
+			{
+				"prv": "sat-uuid",
+				"val": "01a1ab50-6da0-7b4a-85a4-9dc90a7e38ff"
+			},
+			{
+				"prv": "cfdi-sig",
+				"val": "Qk+hftgbpSYMqcc7BoBzGOctcNbDypP4IiHfzgf4mJuraxGEFbo8JEfS6BOzfqXojVLbRxPkXE83fqzWdnowOhOmi0Mvk3CdlTZNZ9i2i7hJv6cwfHXMTPpeOxfptuv2AzhFX7O14gS2szeai5yJIcT+d8/W6H0zN6b/2S12GkMdik0tyF8XRtQQat4Q1jxQzslOp46brROc0Xuobc7/jogq2ib7oaJEu7qDKhjYAkH7BHMaLMJgeC6eVeHUkkrr7RVTkH75H4wteKZNuP85E/F12nCkbMSQq7uplzRuLyO6YEkyIWxpT+0Gqtcb6pziYk8wqwP1pVsVZZ4Q0PPOsw=="
+			},
+			{
+				"prv": "cfdi-serial",
+				"val": "30001000000500003416"
+			},
+			{
+				"prv": "sat-sig",
+				"val": "MQWzFEvDEWag8sM8OWjlCS1DmrZWe+/1VtGsxDz8ycSH1yh8aoUGV3lKezQy190TnB2mncusGvFoUpbDhrk0tlRpTGT2+68/43yb0RZ+yWTVCrd09sCzRk/Dct+oyUKWr2AYYxA0Jt7ECyR4DQfPQYbPF4shsmcerMWxsbMUKqR43shvsb5QTxk/yA6CiWx3z/+uSxvJitUoUihAtFeBBdiNnKVBcG7ifWNJaoaBL03UOm1Ro77rGvUfYuxqqI02Fav98iv9eS//YmGzUTpz0Uvc9Lut+MRqkBvs3G/PBiJvO5Yi6I2PhzNo0O7z9SD6P9WnmufmVI9JFCbHVk+PNg=="
+			},
+			{
+				"prv": "sat-serial",
+				"val": "30001000000500003456"
+			},
+			{
+				"prv": "sat-timestamp",
+				"val": "2026-07-08T07:16:10"
+			},
+			{
+				"prv": "sat-chain",
+				"val": "||1.1|01a1ab50-6da0-7b4a-85a4-9dc90a7e38ff|2026-07-08T07:16:10|SPR190613I52|Qk+hftgbpSYMqcc7BoBzGOctcNbDypP4IiHfzgf4mJuraxGEFbo8JEfS6BOzfqXojVLbRxPkXE83fqzWdnowOhOmi0Mvk3CdlTZNZ9i2i7hJv6cwfHXMTPpeOxfptuv2AzhFX7O14gS2szeai5yJIcT+d8/W6H0zN6b/2S12GkMdik0tyF8XRtQQat4Q1jxQzslOp46brROc0Xuobc7/jogq2ib7oaJEu7qDKhjYAkH7BHMaLMJgeC6eVeHUkkrr7RVTkH75H4wteKZNuP85E/F12nCkbMSQq7uplzRuLyO6YEkyIWxpT+0Gqtcb6pziYk8wqwP1pVsVZZ4Q0PPOsw==|30001000000500003456||"
+			},
+			{
+				"prv": "sat-url",
+				"val": "https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=01a1ab50-6da0-7b4a-85a4-9dc90a7e38ff\u0026re=EKU9003173C9\u0026tt=232.23\u0026fe=0PPOsw=="
+			}
+		],
+		"meta": {
+			"description": "The credit note (_nota de crédito_) is used to correct, cancel, or refund a previously issued invoice.",
+			"title": "Credit note"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "MX",
+		"$addons": [
+			"mx-cfdi-v4"
+		],
+		"uuid": "01a1ab50-6da0-7b4e-ba35-786d3e9c96d6",
+		"type": "credit-note",
+		"series": "CN",
+		"code": "0003",
+		"issue_date": "2026-07-08",
+		"issue_time": "08:53:24",
+		"currency": "MXN",
+		"preceding": [
+			{
+				"issue_date": "2023-07-10",
+				"series": "TEST",
+				"code": "0001",
+				"stamps": [
+					{
+						"prv": "sat-uuid",
+						"val": "1fac4464-1111-0000-1111-cd37179db12e"
+					}
+				]
+			}
+		],
+		"tax": {
+			"ext": {
+				"mx-cfdi-doc-type": "E",
+				"mx-cfdi-issue-place": "44100",
+				"mx-cfdi-payment-method": "PPD",
+				"mx-cfdi-rel-type": "01"
+			}
+		},
+		"supplier": {
+			"name": "ESCUELA KEMPER URGATE",
+			"tax_id": {
+				"country": "MX",
+				"code": "EKU9003173C9"
+			},
+			"addresses": [
+				{
+					"street": "Julia Navarrete No. 1430",
+					"locality": "Guadalajara",
+					"region": "Jalisco",
+					"code": "44100",
+					"country": "MX"
+				}
+			],
+			"ext": {
+				"mx-cfdi-fiscal-regime": "615"
+			}
+		},
+		"customer": {
+			"name": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+			"tax_id": {
+				"country": "MX",
+				"code": "URE180429TM6"
+			},
+			"addresses": [
+				{
+					"locality": "Ciudad de Mexico",
+					"region": "Ciudad de Mexico",
+					"code": "86991",
+					"country": "MX"
+				}
+			],
+			"ext": {
+				"mx-cfdi-fiscal-regime": "624",
+				"mx-cfdi-use": "G01"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Cigarros",
+					"price": "100.1010",
+					"unit": "piece",
+					"ext": {
+						"mx-cfdi-prod-serv": "50211502"
+					}
+				},
+				"sum": "200.2020",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "16.0%"
+					}
+				],
+				"total": "200.2020"
+			}
+		],
+		"payment": {
+			"terms": {
+				"notes": "Pago a 30 días."
+			}
+		},
+		"totals": {
+			"sum": "200.20",
+			"total": "200.20",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "200.20",
+								"percent": "16.0%",
+								"amount": "32.03"
+							}
+						],
+						"amount": "32.03"
+					}
+				],
+				"sum": "32.03"
+			},
+			"tax": "32.03",
+			"total_with_tax": "232.23",
+			"payable": "232.23"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2ZGQtNzZjMi1hOTM3LWY2ODAwY2VmMmI5MyJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmRhMC03YjRhLTg1YTQtOWRjOTBhN2UzOGZmIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjYwZWUwOWUxYjk0MzkyMTAzMjc0YzJjMmQzMThhZWY2Y2Y2OTQyNDU5YWJmMmNmOGU3ZDU5NzY5OGM4MWNhMTIifSwiaWF0IjoxNzkzODk0Njg4fQ.Q-sUupPU5wqt37jqn6JYVrF3dBvZpilTwnQAauf8v2oDeN04RjCrU8lE0VnYn3ZfAY8EKxCr-HgzUF5qfSByPg"
+	]
+}

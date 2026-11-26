@@ -1,0 +1,621 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1aba7-7105-7d3e-9b6d-81d008cacda0",
+		"dig": {
+			"alg": "sha256",
+			"val": "a1962de4dce5455197156abe5710e0da3ec44b58c6859662fad4dcc2e87486de"
+		},
+		"stamps": [
+			{
+				"prv": "arca-cae",
+				"val": "1234567891"
+			},
+			{
+				"prv": "arca-cae-expiry",
+				"val": "2025-06-16"
+			},
+			{
+				"prv": "arca-qr",
+				"val": "https://www.afip.gob.ar/fe/qr/conceptos-generales.asp"
+			}
+		],
+		"meta": {
+			"description": "Goods and services with VAT at 21%, 10.5%, 27% and 0%, perceptions for Ingresos Brutos, VAT and municipal tax as charges, document discount, delivery, ordering, advances, card, transfer, debit and online payment, notes and attachments.",
+			"title": "Factura A with every ARCA feature"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "AR",
+		"$addons": [
+			"ar-arca-v4"
+		],
+		"uuid": "01a1aba7-7105-7d6d-bc34-0782e9d8f4b9",
+		"type": "standard",
+		"series": "3",
+		"code": "00000042",
+		"issue_date": "2025-06-16",
+		"issue_time": "10:42:15",
+		"currency": "ARS",
+		"tax": {
+			"ext": {
+				"ar-arca-concept": "3",
+				"ar-arca-doc-type": "1"
+			}
+		},
+		"supplier": {
+			"name": "Proveedor Ejemplo S.A.",
+			"tax_id": {
+				"country": "AR",
+				"code": "30712345671"
+			},
+			"identities": [
+				{
+					"label": "Ingresos Brutos",
+					"code": "901-123456-7"
+				},
+				{
+					"label": "Inicio de actividades",
+					"code": "2016-03-01"
+				}
+			],
+			"addresses": [
+				{
+					"street": "Av. Corrientes 1234",
+					"street_extra": "Piso 7, Oficina B",
+					"locality": "Buenos Aires",
+					"region": "Ciudad Autónoma de Buenos Aires",
+					"code": "C1043",
+					"country": "AR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "ventas@proveedorejemplo.com.ar"
+				},
+				{
+					"label": "Administración",
+					"addr": "administracion@proveedorejemplo.com.ar"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+54 11 4321 0000"
+				}
+			],
+			"registration": {
+				"other": "Responsable Inscripto. Inicio de actividades: 2016-03-01"
+			},
+			"logos": [
+				{
+					"label": "Invopop",
+					"url": "https://ams3.digitaloceanspaces.com/invopop-console-files-dev/3c5f601121ad9726776ce51b00a585e4e09387a7375fe352536bacd1793affd0"
+				}
+			]
+		},
+		"customer": {
+			"name": "Cliente Comercial S.R.L.",
+			"tax_id": {
+				"country": "AR",
+				"code": "30987654321"
+			},
+			"identities": [
+				{
+					"label": "Código de cliente",
+					"code": "CLI-00231"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Casa central",
+					"po_box": "45",
+					"street": "Av. Santa Fe 2500",
+					"locality": "Buenos Aires",
+					"region": "Ciudad Autónoma de Buenos Aires",
+					"code": "C1123",
+					"country": "AR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "compras@clientecomercial.com.ar"
+				}
+			],
+			"ext": {
+				"ar-arca-vat-status": "1"
+			}
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "10",
+				"item": {
+					"ref": "NB-LAT-5540",
+					"key": "goods",
+					"name": "Notebooks Dell Latitude 5540",
+					"identities": [
+						{
+							"type": "EAN",
+							"code": "0884116374152"
+						}
+					],
+					"description": "Intel Core i7, 32 GB RAM, 1 TB SSD, garantía 3 años",
+					"price": "450000.00",
+					"unit": "item"
+				},
+				"sum": "4500000.00",
+				"discounts": [
+					{
+						"reason": "Descuento por volumen",
+						"percent": "5%",
+						"amount": "225000.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"ar-arca-vat-rate": "5"
+						}
+					}
+				],
+				"total": "4275000.00"
+			},
+			{
+				"i": 2,
+				"quantity": "40",
+				"item": {
+					"key": "services",
+					"name": "Soporte técnico en sitio",
+					"description": "Horas de técnico certificado, junio 2025",
+					"price": "18500.00",
+					"unit": "h"
+				},
+				"sum": "740000.00",
+				"charges": [
+					{
+						"reason": "Recargo por horario nocturno",
+						"percent": "15%",
+						"amount": "111000.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"ar-arca-vat-rate": "5"
+						}
+					}
+				],
+				"total": "851000.00"
+			},
+			{
+				"i": 3,
+				"quantity": "250",
+				"item": {
+					"key": "goods",
+					"name": "Cable de red Cat6 UTP",
+					"price": "1200.00",
+					"unit": "m"
+				},
+				"sum": "300000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"ar-arca-vat-rate": "5"
+						}
+					}
+				],
+				"total": "300000.00"
+			},
+			{
+				"i": 4,
+				"quantity": "12.5",
+				"item": {
+					"key": "goods",
+					"name": "Harina de trigo 000",
+					"description": "Producto de la canasta básica, alícuota reducida",
+					"price": "950.00",
+					"unit": "kg"
+				},
+				"sum": "11875.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "reduced",
+						"percent": "10.5%",
+						"ext": {
+							"ar-arca-vat-rate": "4"
+						}
+					}
+				],
+				"total": "11875.00"
+			},
+			{
+				"i": 5,
+				"quantity": "1",
+				"item": {
+					"key": "services",
+					"name": "Suministro de energía eléctrica medida",
+					"description": "Consumo del período, alícuota incrementada",
+					"price": "320000.00",
+					"unit": "kwh"
+				},
+				"sum": "320000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "increased",
+						"percent": "27.0%",
+						"ext": {
+							"ar-arca-vat-rate": "6"
+						}
+					}
+				],
+				"total": "320000.00"
+			},
+			{
+				"i": 6,
+				"quantity": "3",
+				"item": {
+					"key": "goods",
+					"name": "Libros técnicos impresos",
+					"description": "Alícuota 0%",
+					"price": "42000.00",
+					"unit": "item"
+				},
+				"sum": "126000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "zero",
+						"percent": "0%",
+						"ext": {
+							"ar-arca-vat-rate": "3"
+						}
+					}
+				],
+				"total": "126000.00"
+			},
+			{
+				"i": 7,
+				"quantity": "6",
+				"item": {
+					"key": "services",
+					"name": "Licencia de software de gestión",
+					"description": "Suscripción mensual por puesto",
+					"price": "75000.00",
+					"unit": "mon"
+				},
+				"sum": "450000.00",
+				"discounts": [
+					{
+						"reason": "Promoción lanzamiento",
+						"amount": "30000.00"
+					}
+				],
+				"charges": [
+					{
+						"key": "admin",
+						"reason": "Gastos administrativos",
+						"amount": "5000.00"
+					}
+				],
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"ar-arca-vat-rate": "5"
+						}
+					}
+				],
+				"total": "425000.00"
+			},
+			{
+				"i": 8,
+				"quantity": "2",
+				"item": {
+					"key": "services",
+					"name": "Capacitación de usuarios",
+					"description": "Jornada completa en las oficinas del cliente",
+					"price": "210000.00",
+					"unit": "day"
+				},
+				"sum": "420000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%",
+						"ext": {
+							"ar-arca-vat-rate": "5"
+						}
+					}
+				],
+				"total": "420000.00"
+			}
+		],
+		"discounts": [
+			{
+				"i": 1,
+				"code": "DESC-PP",
+				"reason": "Descuento por pronto pago",
+				"percent": "2%",
+				"amount": "134577.50"
+			}
+		],
+		"charges": [
+			{
+				"i": 1,
+				"key": "delivery",
+				"code": "FLETE",
+				"reason": "Flete y seguro de transporte",
+				"amount": "85000.00"
+			},
+			{
+				"i": 2,
+				"key": "tax",
+				"reason": "Percepción Ingresos Brutos CABA",
+				"percent": "3%",
+				"amount": "201866.25",
+				"ext": {
+					"ar-arca-tax-type": "5"
+				}
+			},
+			{
+				"i": 3,
+				"key": "tax",
+				"reason": "Percepción IVA RG 2408",
+				"percent": "1.5%",
+				"amount": "100933.13",
+				"ext": {
+					"ar-arca-tax-type": "6"
+				}
+			},
+			{
+				"i": 4,
+				"key": "tax",
+				"reason": "Tasa municipal de seguridad e higiene",
+				"percent": "0.5%",
+				"amount": "33644.38",
+				"ext": {
+					"ar-arca-tax-type": "3"
+				}
+			}
+		],
+		"ordering": {
+			"code": "OC-2025-0471",
+			"identities": [
+				{
+					"label": "Nº de proveedor",
+					"code": "PROV-8821"
+				},
+				{
+					"label": "Centro de costos",
+					"code": "CC-IT-04"
+				}
+			],
+			"period": {
+				"label": "Período de servicio",
+				"start": "2025-06-01",
+				"end": "2025-06-30"
+			},
+			"contracts": [
+				{
+					"issue_date": "2024-09-01",
+					"code": "CONTR-2024-15"
+				}
+			],
+			"purchases": [
+				{
+					"issue_date": "2025-05-28",
+					"code": "OC-2025-0471"
+				}
+			]
+		},
+		"payment": {
+			"advances": [
+				{
+					"date": "2025-05-30",
+					"key": "credit-transfer",
+					"ref": "TRF-889213",
+					"description": "Anticipo por transferencia bancaria",
+					"amount": "1500000.00"
+				},
+				{
+					"date": "2025-06-02",
+					"key": "card",
+					"ref": "POS-00981",
+					"description": "Seña con tarjeta de crédito",
+					"amount": "250000.00",
+					"card": {
+						"last4": "9021",
+						"holder": "Cliente Comercial S.R.L."
+					}
+				}
+			],
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2025-07-16",
+						"notes": "Primera cuota",
+						"amount": "3335149.07",
+						"percent": "50%"
+					},
+					{
+						"date": "2025-08-15",
+						"notes": "Segunda cuota",
+						"amount": "3335149.07",
+						"percent": "50%"
+					}
+				],
+				"notes": "Pago en dos cuotas sin interés"
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"detail": "Transferencia bancaria a la cuenta indicada; incluir el número de factura como referencia",
+				"ref": "FC-A-0003-00000042",
+				"credit_transfer": [
+					{
+						"label": "Cuenta corriente en pesos",
+						"number": "0170099520000012345678",
+						"clearing": "ALIAS: PROVEEDOR.EJEMPLO",
+						"name": "Proveedor Ejemplo S.A."
+					}
+				],
+				"card": {
+					"last4": "9021",
+					"holder": "Cliente Comercial S.R.L."
+				},
+				"direct_debit": {
+					"ref": "DEB-2024-15",
+					"creditor": "30712345671",
+					"account": "0170099520000012345678"
+				},
+				"online": [
+					{
+						"key": "mercado-pago",
+						"label": "Mercado Pago",
+						"url": "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=00000042"
+					}
+				],
+				"notes": "**Vencimiento**: pasado el plazo se aplicará un interés del _2% mensual_."
+			}
+		},
+		"delivery": {
+			"receiver": {
+				"name": "Cliente Comercial S.R.L. - Depósito Pilar",
+				"addresses": [
+					{
+						"street": "Ruta 8 Km 50, Parque Industrial Pilar",
+						"locality": "Pilar",
+						"region": "Buenos Aires",
+						"code": "B1629",
+						"country": "AR"
+					}
+				],
+				"telephones": [
+					{
+						"num": "+54 230 449 0000"
+					}
+				]
+			},
+			"identities": [
+				{
+					"label": "Remito",
+					"code": "0003-00012345"
+				}
+			],
+			"date": "2025-06-12",
+			"period": {
+				"start": "2025-06-10",
+				"end": "2025-06-12"
+			}
+		},
+		"totals": {
+			"sum": "6728875.00",
+			"discount": "134577.50",
+			"charge": "421443.75",
+			"total": "7015741.25",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"ext": {
+									"ar-arca-vat-rate": "5"
+								},
+								"base": "6271000.00",
+								"percent": "21.0%",
+								"amount": "1316910.00"
+							},
+							{
+								"key": "standard",
+								"ext": {
+									"ar-arca-vat-rate": "4"
+								},
+								"base": "11875.00",
+								"percent": "10.5%",
+								"amount": "1246.88"
+							},
+							{
+								"key": "standard",
+								"ext": {
+									"ar-arca-vat-rate": "6"
+								},
+								"base": "320000.00",
+								"percent": "27.0%",
+								"amount": "86400.00"
+							},
+							{
+								"key": "zero",
+								"ext": {
+									"ar-arca-vat-rate": "3"
+								},
+								"base": "126000.00",
+								"percent": "0%",
+								"amount": "0.00"
+							}
+						],
+						"amount": "1404556.88"
+					}
+				],
+				"sum": "1404556.88"
+			},
+			"tax": "1404556.88",
+			"total_with_tax": "8420298.13",
+			"payable": "8420298.13",
+			"advance": "1750000.00",
+			"due": "6670298.13"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Gracias por su compra. Los bienes viajan por cuenta y riesgo del comprador una vez entregados al transportista."
+			},
+			{
+				"key": "legal",
+				"text": "Comprobante autorizado por ARCA. Conserve este documento como respaldo de la operación. Ante cualquier reclamo comuníquese con administracion@proveedorejemplo.com.ar.",
+				"meta": {
+					"position": "footer"
+				}
+			}
+		],
+		"attachments": [
+			{
+				"name": "Remito 0003-00012345",
+				"description": "Remito firmado por el depósito del cliente",
+				"url": "https://example.com/docs/remito-0003-00012345.pdf",
+				"mime": "application/pdf"
+			},
+			{
+				"name": "Orden de compra OC-2025-0471",
+				"url": "https://example.com/docs/oc-2025-0471.pdf",
+				"mime": "application/pdf"
+			}
+		]
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc1LWU2YjMtNzNhZC1hYzQ3LTZlZmY3NGI1OTA4MiJ9.eyJ1dWlkIjoiMDFhMWFiYTctNzEwNS03ZDNlLTliNmQtODFkMDA4Y2FjZGEwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6ImExOTYyZGU0ZGNlNTQ1NTE5NzE1NmFiZTU3MTBlMGRhM2VjNDRiNThjNjg1OTY2MmZhZDRkY2MyZTg3NDg2ZGUifSwiaWF0IjoxNzkzODk0NzcwfQ.7EV79-s0O01wcz7xntvy3BHqnDrhF8eH5xNzmlbH6R3TV2knt-I0sd26YG6F-T6kMpWfU2JBXSNQ65vvw8aCqA"
+	]
+}

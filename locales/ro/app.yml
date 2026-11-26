@@ -161,6 +161,9 @@ ro:
       notes:
         title: "Observații"
 
+      attachments:
+        title: "Anexe"
+
     payment:
       <<: *invoice
       title:

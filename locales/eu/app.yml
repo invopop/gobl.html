@@ -160,6 +160,9 @@ eu:
       notes:
         title: "Oharrak"
 
+      attachments:
+        title: "Eranskinak"
+
     payment:
       <<: *invoice
       title:

@@ -1,0 +1,230 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ac53-3614-78b6-83f2-7f04186a09e6",
+		"dig": {
+			"alg": "sha256",
+			"val": "39f0da89a2015021415cc37fcf476bdd0230e450bcedcf7571f733b9bea54590"
+		},
+		"meta": {
+			"description": "Additional kiosks, installation and taxable freight added to a prior invoice under a change order.",
+			"title": "US debit note"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "US",
+		"uuid": "01a1ac53-3614-78ba-9b27-8cbf64e70194",
+		"type": "debit-note",
+		"series": "DN",
+		"code": "2026-0031",
+		"issue_date": "2026-05-19",
+		"currency": "USD",
+		"preceding": [
+			{
+				"type": "standard",
+				"issue_date": "2026-05-06",
+				"series": "INV",
+				"code": "2026-0219",
+				"reason": "Two additional kiosks and expedited freight requested after invoicing"
+			}
+		],
+		"supplier": {
+			"name": "Invopop Inc.",
+			"tax_id": {
+				"country": "US"
+			},
+			"identities": [
+				{
+					"type": "EIN",
+					"code": "12-3456789"
+				},
+				{
+					"label": "Texas sales tax permit",
+					"code": "3-20456-7890-1"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Austin office",
+					"num": "500",
+					"street": "W 2nd St",
+					"street_extra": "Suite 1900",
+					"locality": "Austin",
+					"region": "TX",
+					"code": "78701",
+					"country": "US"
+				}
+			],
+			"emails": [
+				{
+					"addr": "billing@invopop.com"
+				}
+			],
+			"telephones": [
+				{
+					"num": "+1 512 555 0142"
+				}
+			]
+		},
+		"customer": {
+			"name": "Customer Random Inc.",
+			"tax_id": {
+				"country": "US"
+			},
+			"identities": [
+				{
+					"type": "EIN",
+					"code": "98-7654321"
+				},
+				{
+					"label": "Customer account",
+					"code": "CR-00231"
+				}
+			],
+			"addresses": [
+				{
+					"label": "Accounts payable",
+					"num": "350",
+					"street": "Fifth Avenue",
+					"street_extra": "Floor 21",
+					"locality": "New York",
+					"region": "NY",
+					"code": "10118",
+					"country": "US"
+				}
+			],
+			"emails": [
+				{
+					"addr": "ap@customerrandom.com"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"ref": "KIOSK-22",
+					"name": "Self-service kiosk 22\"",
+					"description": "Added to the Austin, TX rollout under change order A1 — state 6.25% + local 2% sales tax",
+					"price": "2450.00",
+					"unit": "piece"
+				},
+				"sum": "4900.00",
+				"taxes": [
+					{
+						"cat": "ST",
+						"percent": "8.25%"
+					}
+				],
+				"total": "4900.00"
+			},
+			{
+				"i": 2,
+				"quantity": "1",
+				"item": {
+					"ref": "FRT-EXP",
+					"name": "Expedited freight",
+					"description": "Next-day delivery to Austin, TX — freight is taxable when charged with taxable goods in Texas",
+					"price": "320.00",
+					"unit": "service"
+				},
+				"sum": "320.00",
+				"taxes": [
+					{
+						"cat": "ST",
+						"percent": "8.25%"
+					}
+				],
+				"total": "320.00"
+			},
+			{
+				"i": 3,
+				"quantity": "4",
+				"item": {
+					"ref": "INSTALL-HR",
+					"name": "On-site installation",
+					"description": "Installation labor for the two additional kiosks. Labor billed separately is not subject to sales tax.",
+					"price": "150.00",
+					"unit": "h"
+				},
+				"sum": "600.00",
+				"total": "600.00"
+			}
+		],
+		"ordering": {
+			"code": "PO-CR-2026-0912",
+			"purchases": [
+				{
+					"issue_date": "2026-05-11",
+					"code": "PO-CR-2026-0912-A1",
+					"description": "Change order adding two kiosks to the Austin rollout"
+				}
+			]
+		},
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2026-06-18",
+						"amount": "6250.65",
+						"percent": "100%"
+					}
+				],
+				"notes": "Net 30. A 1.5% monthly finance charge applies to past-due balances."
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"detail": "ACH or wire transfer to the account below",
+				"ref": "DN-2026-0031",
+				"credit_transfer": [
+					{
+						"label": "JPMorgan Chase operating account",
+						"bic": "CHASUS33",
+						"number": "000123456789",
+						"clearing": "021000021",
+						"name": "Invopop Inc."
+					}
+				]
+			}
+		},
+		"totals": {
+			"sum": "5820.00",
+			"total": "5820.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "ST",
+						"rates": [
+							{
+								"base": "5220.00",
+								"percent": "8.25%",
+								"amount": "430.65"
+							}
+						],
+						"amount": "430.65"
+					}
+				],
+				"sum": "430.65"
+			},
+			"tax": "430.65",
+			"total_with_tax": "6250.65",
+			"payable": "6250.65"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Debit note to invoice INV-2026-0219 of May 6, 2026. It bills the two extra kiosks, the expedited freight and the installation hours added by change order PO-CR-2026-0912-A1. The original invoice remains payable in full; this note is due in addition to it."
+			},
+			{
+				"key": "legal",
+				"text": "Sales tax is collected on tangible goods and taxable services based on the ship-to address.",
+				"meta": {
+					"position": "footer"
+				}
+			}
+		]
+	}
+}

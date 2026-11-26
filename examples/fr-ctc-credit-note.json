@@ -1,10 +1,14 @@
 {
 	"$schema": "https://gobl.org/draft-0/envelope",
 	"head": {
-		"uuid": "8a51fd30-2a27-11ee-be56-0242ac120002",
+		"uuid": "01a1ac94-b207-7ad9-be14-a7c1ad4ed888",
 		"dig": {
 			"alg": "sha256",
-			"val": "b349c25ffdea6bf96ada5fc32966a6ff85e2f45f555d4853f4f867827fe0ed9c"
+			"val": "dea27f26a0de4e1afba3cce4d8923ea812314cbd47c3f176a789e0f84f50c3e1"
+		},
+		"meta": {
+			"description": "A credit note that partially cancels a previously issued PA invoice. The preceding array references the original invoice by series, code, and issue date.",
+			"title": "PA B2B credit note"
 		},
 		"from": "iso6523-actorid-upis::0225:732829320",
 		"to": "iso6523-actorid-upis::0225:356000000"
@@ -16,12 +20,11 @@
 			"eu-en16931-v2017",
 			"fr-ctc-flow2-v1"
 		],
-		"uuid": "b2c3d4e5-6789-01bc-def0-234567890abc",
+		"uuid": "01a1ac94-b207-7add-acf7-bf5205829461",
 		"type": "credit-note",
 		"series": "AV",
 		"code": "2024-001",
 		"issue_date": "2024-06-20",
-		"value_date": "2024-06-25",
 		"currency": "EUR",
 		"preceding": [
 			{
@@ -34,7 +37,7 @@
 		"tax": {
 			"rounding": "currency",
 			"ext": {
-				"fr-ctc-billing-mode": "B7",
+				"fr-ctc-billing-mode": "S1",
 				"untdid-document-type": "381"
 			}
 		},

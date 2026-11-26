@@ -1,0 +1,181 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d34-7065-a77e-f2c5e11c5c21",
+		"dig": {
+			"alg": "sha256",
+			"val": "27e2967977841f41a67a1bfbdda8289c35365a60a8a59e5a56d5e3d4e43f5fb2"
+		},
+		"meta": {
+			"description": "A standard Facturae invoice from a Spanish supplier to a Spanish public sector customer.",
+			"title": "Facturae B2G Invoice"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-facturae-v3"
+		],
+		"uuid": "01a1ab50-6d34-7069-a366-50569a38266b",
+		"type": "standard",
+		"code": "TEST01001F",
+		"issue_date": "2021-12-08",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"es-facturae-doc-type": "FC",
+				"es-facturae-invoice-class": "OO"
+			}
+		},
+		"supplier": {
+			"name": "Hypeprop Sl",
+			"alias": "Hypeprop",
+			"tax_id": {
+				"country": "ES",
+				"code": "B23103039"
+			},
+			"people": [
+				{
+					"name": {
+						"given": "Paloma",
+						"surname": "Araujo"
+					}
+				}
+			],
+			"addresses": [
+				{
+					"num": "74",
+					"street": "Campo Real",
+					"locality": "Torrejón De La Calzada",
+					"region": "Madrid",
+					"code": "28023",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "rxazy27xfc@iname.com"
+				}
+			],
+			"telephones": [
+				{
+					"label": "office",
+					"num": "+34910730028"
+				}
+			]
+		},
+		"customer": {
+			"name": "Moniward Sl",
+			"tax_id": {
+				"country": "ES",
+				"code": "B77436020"
+			},
+			"addresses": [
+				{
+					"num": "35",
+					"street": "Plaza Horno",
+					"locality": "Nombela",
+					"region": "Toledo",
+					"code": "45083",
+					"country": "ES"
+				}
+			],
+			"emails": [
+				{
+					"addr": "bfn25xf3p@lycos.co.uk"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Operations and development - day rate",
+					"price": "200.00"
+				},
+				"sum": "4000.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "4000.00"
+			},
+			{
+				"i": 2,
+				"quantity": "2",
+				"item": {
+					"name": "Additional Overtime",
+					"price": "101.00"
+				},
+				"sum": "202.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "21.0%"
+					}
+				],
+				"total": "202.00"
+			}
+		],
+		"payment": {
+			"terms": {
+				"key": "due-date",
+				"due_dates": [
+					{
+						"date": "2021-12-30",
+						"amount": "5084.42",
+						"percent": "100%"
+					}
+				],
+				"notes": "Some kind of payment term note"
+			},
+			"instructions": {
+				"key": "credit-transfer",
+				"credit_transfer": [
+					{
+						"iban": "ES25 0188 2570 7185 4470 4761",
+						"name": "Bankrandom"
+					}
+				]
+			}
+		},
+		"totals": {
+			"sum": "4202.00",
+			"total": "4202.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "4202.00",
+								"percent": "21.0%",
+								"amount": "882.42"
+							}
+						],
+						"amount": "882.42"
+					}
+				],
+				"sum": "882.42"
+			},
+			"tax": "882.42",
+			"total_with_tax": "5084.42",
+			"payable": "5084.42"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Thank you for your custom!"
+			}
+		]
+	}
+}

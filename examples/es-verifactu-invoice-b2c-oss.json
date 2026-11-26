@@ -1,0 +1,139 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d58-7a44-8365-2fca396295b1",
+		"dig": {
+			"alg": "sha256",
+			"val": "0c260733e611057a99fef1e9c0456d9078ff5da0c43fa7a7210d670a26ad83fb"
+		},
+		"stamps": [
+			{
+				"prv": "verifactu-qr",
+				"val": "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR?nif=B85905495\u0026numserie=SAMPLE-004\u0026fecha=13-11-2024\u0026importe=2142.00"
+			}
+		],
+		"meta": {
+			"description": "One-Stop-Shop (OSS) invoices are used for B2C distance sales of goods and services to consumers in other EU member states when the supplier is registered under the OSS scheme.",
+			"title": "B2C One-Stop-Shop Invoice"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "ES",
+		"$addons": [
+			"es-verifactu-v1"
+		],
+		"$tags": [
+			"simplified"
+		],
+		"uuid": "01a1ab50-6d58-7a48-adbb-455f86439fb8",
+		"type": "standard",
+		"series": "SAMPLE",
+		"code": "004",
+		"issue_date": "2024-11-13",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"es-verifactu-doc-type": "F2"
+			}
+		},
+		"supplier": {
+			"name": "Invopop S.L.",
+			"tax_id": {
+				"country": "ES",
+				"code": "B85905495"
+			},
+			"addresses": [
+				{
+					"num": "42",
+					"street": "Calle Pradillo",
+					"locality": "Madrid",
+					"region": "Madrid",
+					"code": "28002",
+					"country": "ES"
+				}
+			]
+		},
+		"customer": {
+			"name": "Anna Müller",
+			"addresses": [
+				{
+					"num": "12",
+					"street": "Rosenthaler Straße",
+					"locality": "Berlin",
+					"code": "10119",
+					"country": "DE"
+				}
+			],
+			"emails": [
+				{
+					"addr": "anna.mueller@example.de"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "20",
+				"item": {
+					"name": "Development services",
+					"price": "90.00",
+					"unit": "h"
+				},
+				"sum": "1800.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"country": "DE",
+						"key": "standard",
+						"rate": "general",
+						"percent": "19%",
+						"ext": {
+							"es-verifactu-op-class": "N2",
+							"es-verifactu-regime": "17"
+						}
+					}
+				],
+				"total": "1800.00"
+			}
+		],
+		"totals": {
+			"sum": "1800.00",
+			"total": "1800.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"country": "DE",
+								"key": "standard",
+								"ext": {
+									"es-verifactu-op-class": "N2",
+									"es-verifactu-regime": "17"
+								},
+								"base": "1800.00",
+								"percent": "19%",
+								"amount": "342.00"
+							}
+						],
+						"amount": "342.00"
+					}
+				],
+				"sum": "342.00"
+			},
+			"tax": "342.00",
+			"total_with_tax": "2142.00",
+			"payable": "2142.00"
+		},
+		"notes": [
+			{
+				"key": "general",
+				"text": "Distance sale to a consumer in Germany under the EU One Stop Shop (OSS) scheme: VAT is charged at the German rate and declared through the Spanish OSS return."
+			}
+		]
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFiMDc0LTFiODgtN2Q0YS1iZTk5LTAxZTdiNDE3YzVhOCJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ1OC03YTQ0LTgzNjUtMmZjYTM5NjI5NWIxIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjBjMjYwNzMzZTYxMTA1N2E5OWZlZjFlOWMwNDU2ZDkwNzhmZjVkYTBjNDNmYTdhNzIxMGQ2NzBhMjZhZDgzZmIifSwiaWF0IjoxNzkzOTYxNzYxfQ.Pfyn1ECFezPrTkYf8uJhCP3Yn1-r56fd_F7cv_1_u7kMDWf91YbntnkuuAclPRJVuW3nMaOJ0VA78449HhEjMw"
+	]
+}

@@ -1,0 +1,153 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab5e-5db1-73bd-a2a4-b48821d23499",
+		"dig": {
+			"alg": "sha256",
+			"val": "e828c98af854731f0cc2582722c3c199246b6a48744fffa9c8f4195ce539b49b"
+		},
+		"meta": {
+			"description": "In this example, we're issuing a credit note that corrects a previously issued invoice.",
+			"title": "Example credit note"
+		},
+		"from": "iso6523-actorid-upis::0184:16356700",
+		"to": "iso6523-actorid-upis::0184:12345674"
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "DK",
+		"$addons": [
+			"eu-en16931-v2017",
+			"dk-oioubl-v2"
+		],
+		"uuid": "01a1ab5e-5db1-73be-826f-6be2246b0886",
+		"type": "credit-note",
+		"series": "SAMPLE",
+		"code": "0044",
+		"issue_date": "2026-08-10",
+		"currency": "DKK",
+		"preceding": [
+			{
+				"issue_date": "2026-08-01",
+				"series": "SAMPLE",
+				"code": "0043",
+				"reason": "Ordered quantity reduced"
+			}
+		],
+		"tax": {
+			"rounding": "currency",
+			"ext": {
+				"untdid-document-type": "381"
+			}
+		},
+		"supplier": {
+			"name": "Nordlys Software ApS",
+			"tax_id": {
+				"country": "DK",
+				"code": "16356700"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"code": "16356700"
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0184:16356700"
+				}
+			],
+			"addresses": [
+				{
+					"num": "24",
+					"street": "Vesterbrogade",
+					"locality": "København V",
+					"code": "1620",
+					"country": "DK"
+				}
+			],
+			"emails": [
+				{
+					"addr": "faktura@nordlys.dk"
+				}
+			]
+		},
+		"customer": {
+			"name": "Havnens Byggemarked A/S",
+			"tax_id": {
+				"country": "DK",
+				"code": "12345674"
+			},
+			"identities": [
+				{
+					"scope": "legal",
+					"code": "12345674"
+				}
+			],
+			"endpoints": [
+				{
+					"uri": "iso6523-actorid-upis::0184:12345674"
+				}
+			],
+			"addresses": [
+				{
+					"num": "3",
+					"street": "Havnegade",
+					"locality": "Aarhus C",
+					"code": "8000",
+					"country": "DK"
+				}
+			],
+			"emails": [
+				{
+					"addr": "faktura@havnens-byggemarked.dk"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Consulting services",
+					"price": "800.00",
+					"unit": "h"
+				},
+				"sum": "1600.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"rate": "general",
+						"percent": "25.0%"
+					}
+				],
+				"total": "1600.00"
+			}
+		],
+		"totals": {
+			"sum": "1600.00",
+			"total": "1600.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "1600.00",
+								"percent": "25.0%",
+								"amount": "400.00"
+							}
+						],
+						"amount": "400.00"
+					}
+				],
+				"sum": "400.00"
+			},
+			"tax": "400.00",
+			"total_with_tax": "2000.00",
+			"payable": "2000.00"
+		}
+	}
+}

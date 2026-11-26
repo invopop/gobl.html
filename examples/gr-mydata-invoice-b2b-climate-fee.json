@@ -1,0 +1,126 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "01a1ab50-6d82-725d-8b15-6c375c991230",
+		"dig": {
+			"alg": "sha256",
+			"val": "3d8f12132078ab7a925826551544b310aee53a47ebdaeb8cc26ed5b547aae8e6"
+		},
+		"stamps": [
+			{
+				"prv": "iapr-qr",
+				"val": "https://test.vs.gr/iv/invoice/10cc0a7d90a1c9470190a634ec19073e"
+			},
+			{
+				"prv": "iapr-hash",
+				"val": "792F62ADE1B5E4CCBC8FFA787258CC68E90B817B"
+			},
+			{
+				"prv": "iapr-mark",
+				"val": "400001929816893"
+			},
+			{
+				"prv": "iapr-provider",
+				"val": "ΙΛΥΔΑ ΠΛΗΡΟΦΟΡΙΚΗ Α.Ε. — https://test.vs.gr"
+			},
+			{
+				"prv": "iapr-uid",
+				"val": "EB1CF2137764B0D534885F361365C39A32C0205A"
+			}
+		],
+		"meta": {
+			"description": "In this example, we're issuing a standalone climate fee invoice (no lines) from a Greek supplier to another Greek business customer. This is an example of how special records and other document types can be used in Greece.",
+			"title": "Example climate fee standalone invoice (B2B)"
+		}
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "EL",
+		"$addons": [
+			"gr-mydata-v1"
+		],
+		"uuid": "01a1ab50-6d82-7261-9263-a77e61a86a78",
+		"type": "other",
+		"series": "XXGR",
+		"code": "0001",
+		"issue_date": "2026-07-08",
+		"currency": "EUR",
+		"tax": {
+			"ext": {
+				"gr-mydata-invoice-type": "8.2"
+			}
+		},
+		"supplier": {
+			"name": "Αθηναϊκό Ξενοδοχείο Α.Ε.",
+			"tax_id": {
+				"country": "EL",
+				"code": "177472438"
+			},
+			"addresses": [
+				{
+					"num": "28",
+					"street": "Λεωφόρος Συγγρού",
+					"locality": "Αθήνα",
+					"code": "11743",
+					"country": "GR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "reservations@athenianhotel.gr"
+				}
+			]
+		},
+		"customer": {
+			"name": "Τεχνολογικές Λύσεις Ελλάς Α.Ε.",
+			"tax_id": {
+				"country": "EL",
+				"code": "841442160"
+			},
+			"addresses": [
+				{
+					"num": "15",
+					"street": "Οδός Πανεπιστημίου",
+					"locality": "Αθήνα",
+					"code": "10671",
+					"country": "GR"
+				}
+			],
+			"emails": [
+				{
+					"addr": "accounting@techsolutions.gr"
+				}
+			]
+		},
+		"charges": [
+			{
+				"i": 1,
+				"reason": "Τέλος ανθεκτικότητας στην κλιματική κρίση",
+				"amount": "3.00",
+				"ext": {
+					"gr-mydata-other-tax": "8",
+					"gr-mydata-tax-type": "3"
+				}
+			}
+		],
+		"payment": {
+			"instructions": {
+				"key": "credit-transfer",
+				"ext": {
+					"gr-mydata-payment-means": "1"
+				}
+			}
+		},
+		"totals": {
+			"sum": "0.00",
+			"charge": "3.00",
+			"total": "3.00",
+			"tax": "0.00",
+			"total_with_tax": "3.00",
+			"payable": "3.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjAxYTFhYzc0LWE2YWUtNzg1MC1hMDE4LTQ4Yzk4MjJkZWJmNSJ9.eyJ1dWlkIjoiMDFhMWFiNTAtNmQ4Mi03MjVkLThiMTUtNmMzNzVjOTkxMjMwIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjNkOGYxMjEzMjA3OGFiN2E5MjU4MjY1NTE1NDRiMzEwYWVlNTNhNDdlYmRhZWI4Y2MyNmVkNWI1NDdhYWU4ZTYifSwiaWF0IjoxNzkzODk0Njg4fQ.vg590KTkMohNBQaL5v3GwnXzFb-HNxm6GKaLUMta9dZ7EloxJsM3wEykCHIp9SvPqtESvoYmutdDqCWONaCmgg"
+	]
+}
