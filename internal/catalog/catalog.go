@@ -116,7 +116,9 @@ func Scan(ctx context.Context, dir string, render Renderer) (entries []Entry, er
 }
 
 // sameKey identifies what an example renders: its document without the
-// UUIDs that make each copy unique, plus the stamps on it.
+// UUIDs that make each copy unique, plus the stamps on it. A stamp's value
+// counts too: a VERI*FACTU QR and a NO VERI*FACTU QR on the same document
+// render different pages.
 func sameKey(env *gobl.Envelope) string {
 	if env.Document == nil {
 		return ""
@@ -136,7 +138,7 @@ func sameKey(env *gobl.Envelope) string {
 	sum := sha256.Sum256(data)
 	key := hex.EncodeToString(sum[:])
 	for _, st := range env.Head.Stamps {
-		key += " " + st.Provider.String()
+		key += " " + st.Provider.String() + "=" + st.Value
 	}
 	return key
 }

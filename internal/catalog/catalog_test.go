@@ -84,4 +84,5 @@ func TestFold(t *testing.T) {
 	assert.True(t, files["es-verifactu-invoice-full.json"], "the plain name stays")
 	assert.False(t, files["es-verifactu-invoice-full.hidden.json"], "its hidden variant folds into it")
 	assert.True(t, files["es-tbai-invoice.json"] && files["es-verifactu-invoice.json"], "same document, different stamps: both stay")
+	assert.True(t, files["es-noverifactu-invoice.json"], "same stamp provider, different QR: stays")
 }
