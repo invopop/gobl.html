@@ -1,6 +1,8 @@
 package es
 
 import (
+	"strings"
+
 	"github.com/invopop/gobl"
 	verifactu "github.com/invopop/gobl.es.verifactu/addon"
 	"github.com/invopop/gobl.html/components/images"
@@ -58,7 +60,11 @@ templ generateVerifactuQR(qr string) {
 				</a>
 			</div>
 			<div class="label">
-				VERI*FACTU
+				if strings.Contains(qr, "/ValidarQRNoVerifactu") {
+					NO VERI*FACTU
+				} else {
+					VERI*FACTU
+				}
 			</div>
 		</div>
 	</section>
