@@ -1,0 +1,132 @@
+{
+	"$schema": "https://gobl.org/draft-0/envelope",
+	"head": {
+		"uuid": "019a5a3e-6c1e-7d4a-9b8e-2f4c6a8d0e13",
+		"dig": {
+			"alg": "sha256",
+			"val": "f9edf6454f7f222e10c8c841fa606a0c8b96969a1732eac8cd8a795d5e745c6d"
+		},
+		"stamps": [
+			{
+				"prv": "fiskal-zki",
+				"val": "0123456789abcdef0123456789abcdef"
+			},
+			{
+				"prv": "fiskal-qr",
+				"val": "https://porezna.gov.hr/rn?zki=0123456789abcdef0123456789abcdef\u0026datv=20261106_1358\u0026izn=1065"
+			}
+		]
+	},
+	"doc": {
+		"$schema": "https://gobl.org/draft-0/bill/invoice",
+		"$regime": "HR",
+		"uuid": "019a5a3e-6c1e-7d4a-9b8e-2f4c6a8d0e13",
+		"type": "standard",
+		"series": "POS1",
+		"code": "1001",
+		"issue_date": "2026-11-06",
+		"issue_time": "13:58:10",
+		"currency": "EUR",
+		"tax": {
+			"prices_include": "VAT"
+		},
+		"supplier": {
+			"name": "Invopop d.o.o.",
+			"tax_id": {
+				"country": "HR",
+				"code": "80432461483"
+			},
+			"addresses": [
+				{
+					"num": "1",
+					"street": "Ilica",
+					"locality": "Zagreb",
+					"code": "10000",
+					"country": "HR"
+				}
+			]
+		},
+		"lines": [
+			{
+				"i": 1,
+				"quantity": "2",
+				"item": {
+					"name": "Kava",
+					"price": "2.50"
+				},
+				"sum": "5.00",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "25.0%"
+					}
+				],
+				"total": "5.00"
+			},
+			{
+				"i": 2,
+				"quantity": "1",
+				"item": {
+					"name": "Sendvič",
+					"price": "5.65"
+				},
+				"sum": "5.65",
+				"taxes": [
+					{
+						"cat": "VAT",
+						"key": "standard",
+						"percent": "13.0%"
+					}
+				],
+				"total": "5.65"
+			}
+		],
+		"payment": {
+			"advances": [
+				{
+					"key": "cash",
+					"description": "Gotovina",
+					"percent": "100%",
+					"amount": "10.65"
+				}
+			]
+		},
+		"totals": {
+			"sum": "10.65",
+			"tax_included": "1.65",
+			"total": "9.00",
+			"taxes": {
+				"categories": [
+					{
+						"code": "VAT",
+						"rates": [
+							{
+								"key": "standard",
+								"base": "4.00",
+								"percent": "25.0%",
+								"amount": "1.00"
+							},
+							{
+								"key": "standard",
+								"base": "5.00",
+								"percent": "13.0%",
+								"amount": "0.65"
+							}
+						],
+						"amount": "1.65"
+					}
+				],
+				"sum": "1.65"
+			},
+			"tax": "1.65",
+			"total_with_tax": "10.65",
+			"payable": "10.65",
+			"advance": "10.65",
+			"due": "0.00"
+		}
+	},
+	"sigs": [
+		"eyJhbGciOiJFUzI1NiIsImtpZCI6IjViN2FmMTBhLTNjYWEtNDE1NS04MDRhLThhOTA3NDk5YjI4YyJ9.eyJ1dWlkIjoiMDE5MGExNjgtM2JiMi03MWRlLTk4OWUtMWFmYTg4NGU4MzhjIiwiZGlnIjp7ImFsZyI6InNoYTI1NiIsInZhbCI6IjFkZGVlZmE1ZmE5ZjRiOTA5MTc5Yzc1MWM2MjY5ZDVmMzZiMTYyOGIxZDFlYzdkZjI3YTNhYjRmMjgzZmQ0MjAifX0.NgeE6HgrrGSMr-oV2MRPj1XC8vrzsm-Y4WqDENPUyjb2ZBsmyQcWCk6r2e8Va1ZHRf1QUlknybs2gM5GETVpOA"
+	]
+}

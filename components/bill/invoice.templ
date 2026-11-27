@@ -13,6 +13,7 @@ import (
 	"github.com/invopop/gobl.html/components/regimes/co"
 	"github.com/invopop/gobl.html/components/regimes/es"
 	"github.com/invopop/gobl.html/components/regimes/gr"
+	"github.com/invopop/gobl.html/components/regimes/hr"
 	"github.com/invopop/gobl.html/components/regimes/it"
 	"github.com/invopop/gobl.html/components/regimes/mx"
 	"github.com/invopop/gobl.html/components/regimes/pl"
@@ -60,6 +61,7 @@ templ Invoice(env *gobl.Envelope, inv *bill.Invoice) {
 					@pt.ATQR(env)
 					@sa.ZATCAQR(env)
 					@gr.IAPR(env)
+					@hr.Fiskal(env)
 				</div>
 			</div>
 		</article>
