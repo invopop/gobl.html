@@ -1,0 +1,69 @@
+package hr
+
+import (
+	"github.com/invopop/gobl"
+	"github.com/invopop/gobl.html/components/images"
+	"github.com/invopop/gobl/cbc"
+)
+
+// Stamps that gov-hr adds to a B2C invoice fiscalized with CIS, the Tax
+// Administration's fiscalization service. They copy the keys of
+// gobl.hr.fiskal's addon/fiskal package, which cannot be imported until it
+// is released on a GOBL version with the hr regime.
+const (
+	stampZKI cbc.Key = "fiskal-zki"
+	stampJIR cbc.Key = "fiskal-jir"
+	stampQR  cbc.Key = "fiskal-qr"
+)
+
+// Fiskal renders the fiscalization codes of a Croatian B2C invoice: the
+// ZKI (issuer's protection code), the JIR (unique invoice identifier) and
+// the QR code a buyer scans to check the invoice with the Tax
+// Administration. The Fiscalization Act (Art. 9(5)) asks for the ZKI and
+// the JIR on the printed invoice. An invoice that CIS has not accepted yet
+// has no JIR, and its QR code holds the ZKI.
+templ Fiskal(env *gobl.Envelope) {
+	if env.Head.GetStamp(stampZKI) != nil {
+		<style type="text/css">
+			.fiskal {
+				break-inside: avoid;
+				font-size: 7pt;
+				line-height: 1.6em;
+				display: flex;
+				align-items: center;
+			}
+			.fiskal .image {
+				margin-right: 6mm;
+			}
+			.fiskal img {
+				width: 30mm;
+				height: 30mm;
+				padding: 2mm;
+			}
+			.fiskal .value {
+				font-family: "Geist Mono", monospace;
+			}
+		</style>
+		<section class="fiskal">
+			if st := env.Head.GetStamp(stampQR); st != nil {
+				<div class="image">
+					<a href={ templ.URL(st.Value) }>
+						@images.QR(st.Value)
+					</a>
+				</div>
+			}
+			<div class="text">
+				<div>
+					<b>ZKI:</b>
+					<span class="value">{ env.Head.GetStamp(stampZKI).Value }</span>
+				</div>
+				if st := env.Head.GetStamp(stampJIR); st != nil {
+					<div>
+						<b>JIR:</b>
+						<span class="value">{ st.Value }</span>
+					</div>
+				}
+			</div>
+		</section>
+	}
+}
